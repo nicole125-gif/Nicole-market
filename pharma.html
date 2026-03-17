@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>制药装备 · 战略分析 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#020810;--bg2:rgba(6,13,32,.9);--bg3:rgba(10,18,40,.8);
+  --red:#E30613;--cyan:#22d3ee;--green:#00FFB2;--gold:#FFD700;
+  --purple:#BF80FF;--orange:#FF6B35;--teal:#00C8FF;--pink:#FF6EB4;
+  --text:rgba(255,255,255,.9);--text2:rgba(255,255,255,.78);--text3:rgba(255,255,255,.65);
+  --border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.13);
+  --mono:'IBM Plex Mono',monospace;--display:'Syne',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--display);min-height:100vh;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08)}
+
+/* ── NAV ── */
+#site-nav{position:fixed;top:0;left:0;right:0;z-index:10000;background:rgba(2,5,18,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1300px;margin:0 auto;padding:0 40px;display:flex;align-items:center;height:52px;gap:8px}
+.nav-divider{width:1px;height:16px;background:var(--border2);margin:0 4px}
+.nav-links{display:flex;gap:4px;margin-left:auto}
+.nav-link{padding:5px 14px;font-size:11px;font-family:var(--mono);letter-spacing:.12em;color:rgba(255,255,255,.82);text-decoration:none;border:1px solid transparent;transition:all .2s}
+.nav-link:hover{color:#fff;border-color:rgba(255,255,255,.12)}
+.nav-link.active{color:var(--pink);border-color:var(--pink);background:rgba(255,110,180,.06)}
+.nav-progress{position:absolute;bottom:0;left:0;height:1px;background:var(--pink);width:0%;transition:width .1s}
+
+/* ── BG ── */
+.bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.01) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.01) 1px,transparent 1px);background-size:60px 60px}
+.bg-glow1{position:fixed;top:-20%;left:20%;width:80vw;height:600px;background:radial-gradient(ellipse,rgba(255,110,180,.03) 0%,transparent 65%);pointer-events:none;z-index:0}
+.bg-glow2{position:fixed;bottom:-10%;right:5%;width:50vw;height:500px;background:radial-gradient(ellipse,rgba(191,128,255,.025) 0%,transparent 70%);pointer-events:none;z-index:0}
+
+/* ── LAYOUT ── */
+.wrap{position:relative;z-index:1}
+.section{max-width:1300px;margin:0 auto;padding:80px 40px}
+.divider{height:1px;background:var(--border);max-width:1300px;margin:0 auto}
+.section-label{font-family:var(--mono);font-size:8px;letter-spacing:.35em;color:var(--text3);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.section-label::after{content:'';flex:1;max-width:60px;height:1px;background:var(--border2)}
+.section-title{font-size:clamp(22px,3vw,36px);font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.section-sub{color:var(--text2);font-size:13px;line-height:1.7;max-width:720px;margin-bottom:40px}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 40px 80px;max-width:1300px;margin:0 auto}
+.hero-eyebrow{font-family:var(--mono);font-size:9px;letter-spacing:.35em;color:var(--pink);margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--pink)}
+.hero-title{font-size:clamp(42px,6vw,80px);font-weight:800;line-height:1.0;letter-spacing:-.03em;margin-bottom:20px}
+.hero-title .accent{color:var(--pink)}
+.hero-sub{font-size:15px;color:var(--text2);max-width:620px;line-height:1.7;margin-bottom:48px}
+
+/* Key findings strip */
+.findings{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:0}
+.finding-cell{background:var(--bg2);padding:22px 24px;position:relative;transition:background .2s;cursor:default}
+.finding-cell:hover{background:rgba(255,110,180,.04)}
+.finding-icon{font-size:18px;margin-bottom:10px}
+.finding-val{font-size:26px;font-weight:800;letter-spacing:-.03em;line-height:1;margin-bottom:4px}
+.finding-label{font-family:var(--mono);font-size:8px;color:var(--text3);letter-spacing:.15em;margin-bottom:4px}
+.finding-note{font-size:10px;color:var(--text2);line-height:1.5}
+.finding-bar{position:absolute;top:0;left:0;right:0;height:2px}
+
+/* ── MARKET SECTION ── */
+.market-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px}
+.mcard{background:var(--bg2);border:1px solid var(--border);padding:24px;position:relative;overflow:hidden;transition:all .25s}
+.mcard:hover{border-color:var(--border2);transform:translateY(-2px)}
+.mcard-tag{font-family:var(--mono);font-size:8px;letter-spacing:.2em;padding:3px 10px;border:1px solid;margin-bottom:14px;display:inline-block}
+.mcard-val{font-size:30px;font-weight:800;letter-spacing:-.03em;margin-bottom:4px}
+.mcard-cagr{font-family:var(--mono);font-size:9px;color:var(--text2);margin-bottom:12px}
+.mcard-title{font-size:12px;font-weight:700;margin-bottom:4px}
+.mcard-desc{font-size:11px;color:var(--text2);line-height:1.6}
+
+/* drivers */
+.drivers{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.driver{background:var(--bg2);border:1px solid var(--border);padding:20px;display:flex;gap:14px;align-items:flex-start;transition:border-color .2s}
+.driver:hover{border-color:var(--border2)}
+.driver-icon{font-size:20px;flex-shrink:0}
+.driver-title{font-size:12px;font-weight:700;margin-bottom:4px}
+.driver-desc{font-size:11px;color:var(--text2);line-height:1.6}
+
+/* ── COMPETITION ── */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px}
+.tier{background:var(--bg2);border:1px solid var(--border);padding:22px;text-align:center}
+.tier-label{font-family:var(--mono);font-size:8px;letter-spacing:.2em;color:var(--text3);margin-bottom:8px}
+.tier-pct{font-size:32px;font-weight:800;letter-spacing:-.03em;margin-bottom:6px}
+.tier-names{font-size:11px;color:var(--text2);line-height:1.6}
+.tier-sub{font-family:var(--mono);font-size:9px;color:var(--text3);margin-top:4px}
+
+/* success factors */
+.factors{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.factor{background:var(--bg2);border:1px solid var(--border);padding:20px;display:flex;gap:14px}
+.factor-level{flex-shrink:0;width:48px;height:48px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:8px;font-weight:700;letter-spacing:.1em;border:1px solid}
+.factor-title{font-size:12px;font-weight:700;margin-bottom:4px}
+.factor-desc{font-size:11px;color:var(--text2);line-height:1.6}
+
+/* ── SUBSTITUTION ── */
+.sub-stages{display:flex;flex-direction:column;gap:0}
+.sub-stage{border:1px solid var(--border);margin-bottom:12px;overflow:hidden;transition:all .25s}
+.sub-stage:hover{border-color:var(--border2)}
+.sub-stage-header{padding:18px 24px;display:flex;align-items:center;gap:16px;cursor:pointer}
+.sub-stage-pct{font-size:28px;font-weight:800;letter-spacing:-.03em;min-width:70px}
+.sub-stage-info{flex:1}
+.sub-stage-title{font-size:13px;font-weight:700;margin-bottom:2px}
+.sub-stage-items{font-family:var(--mono);font-size:9px;color:var(--text2);letter-spacing:.05em}
+.sub-stage-badge{padding:3px 10px;font-family:var(--mono);font-size:8px;letter-spacing:.1em;border:1px solid;white-space:nowrap}
+.sub-stage-body{padding:0 24px 18px;font-size:11px;color:var(--text2);line-height:1.7;border-top:1px solid var(--border);padding-top:14px;margin-top:0}
+
+/* ── SUPPLY CHAIN ── */
+.supply-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px}
+.supply-card{background:var(--bg2);border:1px solid var(--border);padding:24px}
+.supply-title{font-size:14px;font-weight:700;margin-bottom:4px}
+.supply-market{font-family:var(--mono);font-size:9px;color:var(--text2);margin-bottom:16px}
+
+/* valve table */
+.valve-table{width:100%;border-collapse:collapse;margin-bottom:16px}
+.valve-table th{font-family:var(--mono);font-size:8px;letter-spacing:.12em;color:var(--text3);padding:8px 12px;text-align:left;border-bottom:1px solid var(--border)}
+.valve-table td{padding:10px 12px;border-bottom:1px solid var(--border);font-size:11px;vertical-align:middle}
+.valve-table tr:hover td{background:rgba(255,255,255,.02)}
+.progress-bar{height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;margin-top:4px}
+.progress-fill{height:100%;border-radius:2px}
+
+/* bom costs */
+.bom-list{display:flex;flex-direction:column;gap:8px}
+.bom-row{display:flex;align-items:center;gap:10px}
+.bom-name{font-size:11px;flex:1}
+.bom-pct{font-family:var(--mono);font-size:10px;font-weight:700;min-width:40px;text-align:right}
+.bom-track{flex:1;max-width:100px;height:3px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
+.bom-fill{height:100%;border-radius:2px}
+
+/* bottleneck cards */
+.bottlenecks{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+.bn{background:rgba(255,107,53,.05);border:1px solid rgba(255,107,53,.2);padding:20px}
+.bn-num{font-family:var(--mono);font-size:10px;color:var(--orange);letter-spacing:.15em;margin-bottom:8px}
+.bn-title{font-size:12px;font-weight:700;margin-bottom:4px}
+.bn-detail{font-size:11px;color:var(--text2);line-height:1.6}
+.bn-strategy{font-family:var(--mono);font-size:9px;color:var(--text3);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,107,53,.1)}
+
+/* ── DOWNSTREAM ── */
+.cycle-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:32px}
+.cycle-card{background:var(--bg2);border:1px solid var(--border);padding:20px;position:relative;overflow:hidden}
+.cycle-tag{font-family:var(--mono);font-size:8px;letter-spacing:.15em;padding:2px 8px;border:1px solid;display:inline-block;margin-bottom:10px}
+.cycle-name{font-size:13px;font-weight:700;margin-bottom:6px}
+.cycle-status{font-family:var(--mono);font-size:9px;color:var(--text2);margin-bottom:8px}
+.cycle-equip{font-size:11px;color:var(--text2);line-height:1.6}
+.cycle-signal{position:absolute;top:16px;right:16px;width:8px;height:8px;border-radius:50%}
+
+/* biomanufacturing */
+.bio-highlight{background:rgba(0,255,178,.04);border:1px solid rgba(0,255,178,.2);padding:28px;margin-top:24px}
+.bio-title{font-size:16px;font-weight:800;color:var(--green);margin-bottom:4px}
+.bio-sub{font-family:var(--mono);font-size:9px;color:rgba(0,255,178,.5);letter-spacing:.15em;margin-bottom:20px}
+.bio-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.bio-item-label{font-family:var(--mono);font-size:8px;color:rgba(0,255,178,.5);letter-spacing:.15em;margin-bottom:4px}
+.bio-item-val{font-size:20px;font-weight:800;color:var(--green)}
+.bio-item-note{font-size:10px;color:var(--text2);margin-top:2px}
+
+/* ── OVERSEAS ── */
+.overseas-compare{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px}
+.oc{background:var(--bg2);border:1px solid var(--border);padding:22px}
+.oc-company{font-size:14px;font-weight:800;margin-bottom:2px}
+.oc-overseas{font-family:var(--mono);font-size:9px;color:var(--text2);margin-bottom:12px}
+.oc-stat-label{font-family:var(--mono);font-size:8px;color:var(--text3);letter-spacing:.12em;margin-bottom:2px}
+.oc-stat-val{font-size:22px;font-weight:800;margin-bottom:12px}
+.oc-desc{font-size:11px;color:var(--text2);line-height:1.6}
+
+/* margin comparison */
+.margin-compare{background:var(--bg2);border:1px solid var(--border);padding:28px;display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;text-align:center;margin-bottom:32px}
+.margin-val{font-size:48px;font-weight:800;letter-spacing:-.04em;line-height:1;margin-bottom:4px}
+.margin-label{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.15em}
+.margin-vs{font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:.1em}
+
+/* overseas tips */
+.tips{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.tip{background:var(--bg2);border:1px solid var(--border);padding:16px;text-align:center}
+.tip-num{font-family:var(--mono);font-size:9px;color:var(--text3);margin-bottom:6px}
+.tip-title{font-size:11px;font-weight:700;margin-bottom:4px}
+.tip-desc{font-size:10px;color:var(--text2);line-height:1.5}
+
+/* ── POLICY ── */
+.policy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px}
+.policy-card{background:var(--bg2);border:1px solid var(--border);padding:22px}
+.policy-icon{font-size:20px;margin-bottom:10px}
+.policy-title{font-size:13px;font-weight:700;margin-bottom:8px}
+.policy-items{list-style:none}
+.policy-items li{font-size:11px;color:var(--text2);line-height:1.7;padding-left:12px;position:relative}
+.policy-items li::before{content:'·';position:absolute;left:0;color:var(--text3)}
+
+/* ── STRATEGY ── */
+.strategy-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:32px}
+.strat{background:var(--bg2);border:1px solid var(--border);padding:24px;position:relative;transition:all .25s}
+.strat:hover{border-color:var(--border2)}
+.strat-num{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--text3);margin-bottom:10px}
+.strat-title{font-size:16px;font-weight:800;margin-bottom:8px}
+.strat-priority{display:inline-block;padding:2px 10px;font-family:var(--mono);font-size:8px;letter-spacing:.12em;border:1px solid;margin-bottom:12px}
+.strat-items{list-style:none}
+.strat-items li{font-size:11px;color:var(--text2);line-height:1.8;padding-left:14px;position:relative}
+.strat-items li::before{content:'▸';position:absolute;left:0;color:var(--text3);font-size:9px}
+.strat::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+
+/* cycle diagram */
+.cycle-diagram{background:var(--bg2);border:1px solid var(--border);padding:28px;margin-bottom:32px;text-align:center}
+.cycle-stages{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap}
+.cs{padding:12px 20px;font-size:11px;font-weight:700;position:relative}
+.cs::after{content:'→';position:absolute;right:-8px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:12px}
+.cs:last-child::after{display:none}
+
+/* ── CONCLUSION ── */
+.conclusions{display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
+.conclusion{background:var(--bg2);border:1px solid var(--border);padding:18px 24px;display:flex;gap:16px;align-items:flex-start;transition:border-color .2s}
+.conclusion:hover{border-color:var(--border2)}
+.conclusion-bullet{flex-shrink:0;width:6px;height:6px;border-radius:50%;margin-top:6px}
+.conclusion-text{font-size:12px;line-height:1.7;color:var(--text2)}
+.conclusion-text strong{color:var(--text)}
+
+/* risks */
+.risks{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.risk{background:rgba(227,6,19,.04);border:1px solid rgba(227,6,19,.12);padding:14px 18px;font-size:11px;color:var(--text2);display:flex;gap:10px}
+.risk::before{content:'⚠';color:var(--red);flex-shrink:0;font-size:12px}
+
+/* animations */
+.reveal{opacity:0;transform:translateY(20px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  .market-grid,.tiers,.overseas-compare,.policy-grid,.bottlenecks{grid-template-columns:1fr 1fr}
+  .findings{grid-template-columns:1fr 1fr}
+  .supply-grid,.strategy-grid,.cycle-grid,.drivers,.factors{grid-template-columns:1fr}
+  .margin-compare{grid-template-columns:1fr;text-align:left}
+  .tips,.bio-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .market-grid,.tiers,.findings,.overseas-compare,.policy-grid,.bottlenecks,.risks{grid-template-columns:1fr}
+  .section,.hero{padding-left:20px;padding-right:20px}
+  .nav-inner{padding:0 20px}
+  .tips{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="bg-glow1"></div>
+<div class="bg-glow2"></div>
+
+<!-- NAV -->
+<nav id="site-nav">
+  <div class="nav-inner">
+    <div class="nav-links">
+      <a href="/index.html" class="nav-link">宏观脉搏</a>
+      <a href="/liquid.html" class="nav-link">AI 液冷</a>
+      <a href="/semiconductor.html" class="nav-link">半导体 SBU</a>
+      <a href="/mscc.html" class="nav-link">质谱·色谱</a>
+      <a href="/pharma.html" class="nav-link active">制药装备</a>
+    </div>
+    <div class="nav-progress" id="nav-bar"></div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">制药装备行业 · 深度研究报告</div>
+  <h1 class="hero-title">市场格局 · 产业链<br/><span class="accent">战略机会</span></h1>
+  <p class="hero-sub">系统覆盖制药装备市场规模、竞争格局、供应链卡脖子环节、出海战略与政策环境，数据截至2026年3月</p>
+
+  <!-- Key findings -->
+  <div class="findings reveal">
+    <div class="finding-cell">
+      <div class="finding-bar" style="background:var(--pink)"></div>
+      <div class="finding-label">2026E 中国市场规模</div>
+      <div class="finding-val" style="color:var(--pink)">980-1,050亿</div>
+      <div class="finding-note">同比增长 10-12%，有望突破千亿</div>
+    </div>
+    <div class="finding-cell">
+      <div class="finding-bar" style="background:var(--gold)"></div>
+      <div class="finding-label">海外毛利率</div>
+      <div class="finding-val" style="color:var(--gold)">48%</div>
+      <div class="finding-note">是国内 19% 的 2倍以上，出海是破局关键</div>
+    </div>
+    <div class="finding-cell">
+      <div class="finding-bar" style="background:var(--orange)"></div>
+      <div class="finding-label">高端无菌阀国产化率</div>
+      <div class="finding-val" style="color:var(--orange)">&lt;40%</div>
+      <div class="finding-note">关键卡脖子环节，中大型PLC西门子占40%+</div>
+    </div>
+    <div class="finding-cell">
+      <div class="finding-bar" style="background:var(--green)"></div>
+      <div class="finding-label">生物制药设备 CAGR</div>
+      <div class="finding-val" style="color:var(--green)">15-25%</div>
+      <div class="finding-note">复苏窗口 2027-2028，生物制造当前即可布局</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 01 MARKET -->
+<div class="section reveal">
+  <div class="section-label">01 · MARKET SIZE</div>
+  <h2 class="section-title">市场规模与增长趋势</h2>
+  <p class="section-sub">2026年中国制药装备市场有望突破千亿元，生物制造成为核心增长极</p>
+
+  <div class="market-grid">
+    <div class="mcard" style="border-top:2px solid var(--pink)">
+      <div class="mcard-tag" style="color:var(--pink);border-color:rgba(255,110,180,.3)">中国市场</div>
+      <div class="mcard-val" style="color:var(--pink)">980-1,050亿</div>
+      <div class="mcard-cagr">2026E · 同比 +10-12%</div>
+      <div class="mcard-title">中国制药装备市场</div>
+      <div class="mcard-desc">整体筑底中，2027-2028年有望迎来复苏；生物制造、ADC/小核酸当前即可积极布局</div>
+    </div>
+    <div class="mcard" style="border-top:2px solid var(--gold)">
+      <div class="mcard-tag" style="color:var(--gold);border-color:rgba(255,215,0,.3)">全球市场</div>
+      <div class="mcard-val" style="color:var(--gold)">500亿+</div>
+      <div class="mcard-cagr">2024年 · CAGR 6-8% (USD)</div>
+      <div class="mcard-title">全球制药装备市场</div>
+      <div class="mcard-desc">亚太增速最快；中国龙头加速出海，海外毛利率显著高于国内，成为利润增长核心引擎</div>
+    </div>
+    <div class="mcard" style="border-top:2px solid var(--green)">
+      <div class="mcard-tag" style="color:var(--green);border-color:rgba(0,255,178,.3)">核心增量</div>
+      <div class="mcard-val" style="color:var(--green)">21.6%</div>
+      <div class="mcard-cagr">一次性反应器 CAGR · 增速最快</div>
+      <div class="mcard-title">生物制药设备</div>
+      <div class="mcard-desc">CAGR 15-25%，一次性生物反应器、层析系统、冻干机成为突破重点；十五五重点支持领域</div>
+    </div>
+  </div>
+
+  <div class="drivers reveal">
+    <div class="driver">
+      <div class="driver-icon">🔬</div>
+      <div>
+        <div class="driver-title">创新药复苏</div>
+        <div class="driver-desc">下游生物制药投资回暖，ADC、小核酸、细胞治疗等新兴赛道爆发，带动上游设备需求释放</div>
+      </div>
+    </div>
+    <div class="driver">
+      <div class="driver-icon">🏭</div>
+      <div>
+        <div class="driver-title">国产替代加速</div>
+        <div class="driver-desc">高端设备国产化率持续提升，一次性反应器、层析系统、冻干机等成为突破重点领域</div>
+      </div>
+    </div>
+    <div class="driver">
+      <div class="driver-icon">🌍</div>
+      <div>
+        <div class="driver-title">出海战略放量</div>
+        <div class="driver-desc">龙头企业海外收入占比提升至30-60%，海外毛利率48%显著高于国内19%，成为利润增长核心</div>
+      </div>
+    </div>
+    <div class="driver">
+      <div class="driver-icon">📋</div>
+      <div>
+        <div class="driver-title">十五五政策支持</div>
+        <div class="driver-desc">生物制造列为六大未来产业，揭榜挂帅聚焦高性能生物反应器，政策资源倾斜加大</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 02 COMPETITION -->
+<div class="section reveal">
+  <div class="section-label">02 · COMPETITION</div>
+  <h2 class="section-title">竞争格局与龙头分析</h2>
+  <p class="section-sub">CR4≈34%，市场高度分散，龙头通过出海+并购+产品线延伸构建竞争壁垒</p>
+
+  <div class="tiers reveal">
+    <div class="tier" style="border-top:2px solid var(--pink)">
+      <div class="tier-label">第一梯队</div>
+      <div class="tier-pct" style="color:var(--pink)">~28%</div>
+      <div class="tier-names">东富龙 · 楚天科技 · 森松国际</div>
+      <div class="tier-sub">产品线全 · 出海能力强</div>
+    </div>
+    <div class="tier" style="border-top:2px solid var(--gold)">
+      <div class="tier-label">第二梯队</div>
+      <div class="tier-pct" style="color:var(--gold)">~10%</div>
+      <div class="tier-names">新华医疗 · 迦南科技</div>
+      <div class="tier-sub">细分龙头 · 差异化</div>
+    </div>
+    <div class="tier" style="border-top:2px solid var(--text3)">
+      <div class="tier-label">第三梯队</div>
+      <div class="tier-pct" style="color:var(--text2)">~10%</div>
+      <div class="tier-names">泰林 · 诚益通 等</div>
+      <div class="tier-sub">聚焦细分 · 区域优势</div>
+    </div>
+  </div>
+
+  <div class="factors reveal">
+    <div class="factor">
+      <div class="factor-level" style="color:var(--orange);border-color:rgba(255,107,53,.3);background:rgba(255,107,53,.06)">技术<br/>壁垒</div>
+      <div>
+        <div class="factor-title">高 — 长期技术积累</div>
+        <div class="factor-desc">高端冻干、一次性反应器等需要长期技术积累；GMP合规要求严格，验证周期长</div>
+      </div>
+    </div>
+    <div class="factor">
+      <div class="factor-level" style="color:var(--pink);border-color:rgba(255,110,180,.3);background:rgba(255,110,180,.06)">客户<br/>粘性</div>
+      <div>
+        <div class="factor-title">高 — 切换成本极高</div>
+        <div class="factor-desc">大药厂设备验证周期长达1-2年，切换成本高；服务能力决定复购和扩单</div>
+      </div>
+    </div>
+    <div class="factor">
+      <div class="factor-level" style="color:var(--gold);border-color:rgba(255,215,0,.3);background:rgba(255,215,0,.06)">出海<br/>能力</div>
+      <div>
+        <div class="factor-title">关键 — 利润倍增器</div>
+        <div class="factor-desc">海外毛利率48%是国内2倍；本地化生产+服务网络是高端市场准入关键</div>
+      </div>
+    </div>
+    <div class="factor">
+      <div class="factor-level" style="color:var(--cyan);border-color:rgba(34,211,238,.3);background:rgba(34,211,238,.06)">并购<br/>整合</div>
+      <div>
+        <div class="factor-title">重要 — 快速跨越壁垒</div>
+        <div class="factor-desc">楚天收购Romaco切入欧洲高端市场；并购是快速获取技术、渠道、品牌的有效路径</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 03 SUBSTITUTION -->
+<div class="section reveal">
+  <div class="section-label">03 · DOMESTIC SUBSTITUTION</div>
+  <h2 class="section-title">细分品类与国产替代</h2>
+  <p class="section-sub">生物制药设备是最大战略机会，国产替代率50-80%，增速15-25%</p>
+
+  <div class="sub-stages reveal">
+    <div class="sub-stage" style="border-color:rgba(0,255,178,.2)">
+      <div class="sub-stage-header">
+        <div class="sub-stage-pct" style="color:var(--green)">&gt;80%</div>
+        <div class="sub-stage-info">
+          <div class="sub-stage-title">已完成阶段</div>
+          <div class="sub-stage-items">包装机械 · 不锈钢反应器 · 中低端冻干机 · 常规配液系统</div>
+        </div>
+        <div class="sub-stage-badge" style="color:var(--green);border-color:rgba(0,255,178,.3)">防守为主</div>
+      </div>
+      <div class="sub-stage-body">成熟红海市场，价格竞争为主，利润空间有限。企业需通过规模效应、成本控制、服务增值取胜。提升效率是核心任务。</div>
+    </div>
+    <div class="sub-stage" style="border-color:rgba(255,215,0,.2)">
+      <div class="sub-stage-header">
+        <div class="sub-stage-pct" style="color:var(--gold)">50-80%</div>
+        <div class="sub-stage-info">
+          <div class="sub-stage-title">进行中阶段</div>
+          <div class="sub-stage-items">高端冻干系统 · 无菌灌装线 · 高端配液系统 · 检测包装线</div>
+        </div>
+        <div class="sub-stage-badge" style="color:var(--gold);border-color:rgba(255,215,0,.3)">差异化竞争</div>
+      </div>
+      <div class="sub-stage-body">差异化竞争主战场，技术升级是关键，服务能力成为重要竞争维度。本土龙头正在快速追赶，加大研发投入是核心策略。</div>
+    </div>
+    <div class="sub-stage" style="border-color:rgba(255,107,53,.2)">
+      <div class="sub-stage-header">
+        <div class="sub-stage-pct" style="color:var(--orange)">&lt;50%</div>
+        <div class="sub-stage-info">
+          <div class="sub-stage-title">待突破阶段 ⭐ 最大机会</div>
+          <div class="sub-stage-items">一次性生物反应器 · 层析/纯化系统 · 高端生物耗材 · 细胞培养设备</div>
+        </div>
+        <div class="sub-stage-badge" style="color:var(--orange);border-color:rgba(255,107,53,.3)">战略聚焦</div>
+      </div>
+      <div class="sub-stage-body">技术攻关重点，政策支持力度大（揭榜挂帅），是国产替代的主战场和最大增量机会。高端无菌阀国产化率&lt;40%，是关键卡脖子环节。</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 04 SUPPLY CHAIN -->
+<div class="section reveal">
+  <div class="section-label">04 · SUPPLY CHAIN</div>
+  <h2 class="section-title">上游供应链深度分析</h2>
+  <p class="section-sub">卫生级泵阀（40-50亿元）、自动化控制系统是核心卡脖子环节，高端无菌阀国产化率&lt;40%</p>
+
+  <div class="supply-grid reveal">
+    <div class="supply-card" style="border-top:2px solid var(--orange)">
+      <div class="supply-title">卫生级泵阀</div>
+      <div class="supply-market">中国市场 40-50亿元 · 高端市场外资主导</div>
+      <table class="valve-table">
+        <thead>
+          <tr><th>制药级别</th><th>应用场景</th><th>国产化率</th><th>状态</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>卫生级 I-III</td>
+            <td style="color:var(--text2)">一般制药、食品</td>
+            <td><span style="color:var(--green);font-weight:700">&gt;70%</span><div class="progress-bar"><div class="progress-fill" style="width:70%;background:var(--green)"></div></div></td>
+            <td><span style="color:var(--green);font-family:var(--mono);font-size:9px">成熟</span></td>
+          </tr>
+          <tr>
+            <td>超洁净级 IV</td>
+            <td style="color:var(--text2)">高纯水、精细化工</td>
+            <td><span style="color:var(--gold);font-weight:700">50-60%</span><div class="progress-bar"><div class="progress-fill" style="width:55%;background:var(--gold)"></div></div></td>
+            <td><span style="color:var(--gold);font-family:var(--mono);font-size:9px">进行中</span></td>
+          </tr>
+          <tr>
+            <td><strong>无菌级 V ⭐</strong></td>
+            <td style="color:var(--text2)">注射剂、疫苗、生物制剂</td>
+            <td><span style="color:var(--orange);font-weight:700">&lt;40%</span><div class="progress-bar"><div class="progress-fill" style="width:40%;background:var(--orange)"></div></div></td>
+            <td><span style="color:var(--orange);font-family:var(--mono);font-size:9px">待突破</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="font-family:var(--mono);font-size:8.5px;color:var(--text3);line-height:1.8">
+        全球龙头：Alfa Laval · GEA Group · GEMÜ · SPX FLOW · Bürkert<br/>
+        国产龙头：浙江远安液体设备 · 杭州凯维阀门集团
+      </div>
+    </div>
+
+    <div class="supply-card" style="border-top:2px solid var(--purple)">
+      <div class="supply-title">自动化与控制系统</div>
+      <div class="supply-market">中大型PLC（西门子40%+）· 高端传感器（外资>70%）</div>
+      <div style="margin-bottom:16px">
+        <div class="proc-section-title" style="font-family:var(--mono);font-size:8.5px;color:var(--text3);letter-spacing:.15em;margin-bottom:12px">上游供应链 BOM 成本占比</div>
+        <div class="bom-list">
+          <div class="bom-row">
+            <span class="bom-name">自动化控制系统（PLC/DCS）</span>
+            <div class="bom-track"><div class="bom-fill" style="width:100%;background:var(--purple)"></div></div>
+            <span class="bom-pct" style="color:var(--purple)">20-25%</span>
+          </div>
+          <div class="bom-row">
+            <span class="bom-name">卫生级泵阀</span>
+            <div class="bom-track"><div class="bom-fill" style="width:65%;background:var(--orange)"></div></div>
+            <span class="bom-pct" style="color:var(--orange)">10-15%</span>
+          </div>
+          <div class="bom-row">
+            <span class="bom-name">传感器 & 检测仪表</span>
+            <div class="bom-track"><div class="bom-fill" style="width:45%;background:var(--cyan)"></div></div>
+            <span class="bom-pct" style="color:var(--cyan)">8-12%</span>
+          </div>
+          <div class="bom-row">
+            <span class="bom-name">一次性耗材</span>
+            <div class="bom-track"><div class="bom-fill" style="width:40%;background:var(--gold)"></div></div>
+            <span class="bom-pct" style="color:var(--gold)">8-10%</span>
+          </div>
+          <div class="bom-row">
+            <span class="bom-name">其他结构件</span>
+            <div class="bom-track"><div class="bom-fill" style="width:30%;background:rgba(255,255,255,.2)"></div></div>
+            <span class="bom-pct">40-54%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottlenecks -->
+  <div class="bottlenecks reveal">
+    <div class="bn">
+      <div class="bn-num">卡脖子 01</div>
+      <div class="bn-title">中大型 PLC</div>
+      <div class="bn-detail">西门子占40%+，国产化率&lt;10%。汇川、中控是国产替代龙头，但高端制药级PLC仍依赖进口</div>
+      <div class="bn-strategy">→ 关注汇川、中控国产替代进展；多供应商策略降低风险</div>
+    </div>
+    <div class="bn">
+      <div class="bn-num">卡脖子 02</div>
+      <div class="bn-title">高端传感器</div>
+      <div class="bn-detail">外资占比&gt;70%（基恩士、欧姆龙为主）。精密压力、温度、流量传感器在无菌级应用中国产化率低</div>
+      <div class="bn-strategy">→ 与上游传感器企业联合研发定制化方案；建立国产替代验证体系</div>
+    </div>
+    <div class="bn">
+      <div class="bn-num">卡脖子 03</div>
+      <div class="bn-title">高端无菌阀</div>
+      <div class="bn-detail">国产化率&lt;40%，GEMÜ、Bürkert等欧洲品牌主导。无菌级V级阀门技术门槛高但溢价高</div>
+      <div class="bn-strategy">→ 无菌级(V级)是突破重点；与整机企业联合研发加速GMP验证周期</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 05 DOWNSTREAM -->
+<div class="section reveal">
+  <div class="section-label">05 · DOWNSTREAM DEMAND</div>
+  <h2 class="section-title">下游需求与赛道周期</h2>
+  <p class="section-sub">聚焦生物制造、ADC、小核酸等新兴赛道，规避传统抗体/疫苗产能过剩风险</p>
+
+  <div class="cycle-grid reveal">
+    <div class="cycle-card" style="border-color:rgba(0,255,178,.2)">
+      <div class="cycle-signal" style="background:var(--green);box-shadow:0 0 8px var(--green)"></div>
+      <div class="cycle-tag" style="color:var(--green);border-color:rgba(0,255,178,.3)">当前即可布局</div>
+      <div class="cycle-name">ADC / 抗体偶联药物</div>
+      <div class="cycle-status">早期快速增长期 · 装备需求旺盛</div>
+      <div class="cycle-equip">高毒性化合物偶联设备、封闭式灌装线、高端检测系统；技术壁垒高，国产替代空间大</div>
+    </div>
+    <div class="cycle-card" style="border-color:rgba(0,255,178,.2)">
+      <div class="cycle-signal" style="background:var(--green);box-shadow:0 0 8px var(--green)"></div>
+      <div class="cycle-tag" style="color:var(--green);border-color:rgba(0,255,178,.3)">当前即可布局</div>
+      <div class="cycle-name">小核酸药物</div>
+      <div class="cycle-status">爆发初期 · 专用设备需求激增</div>
+      <div class="cycle-equip">专用合成设备、纯化系统、递送系统制造设备；高度专业化，进口依赖度极高</div>
+    </div>
+    <div class="cycle-card" style="border-color:rgba(255,215,0,.2)">
+      <div class="cycle-signal" style="background:var(--gold)"></div>
+      <div class="cycle-tag" style="color:var(--gold);border-color:rgba(255,215,0,.3)">谨慎评估</div>
+      <div class="cycle-name">传统单抗 / 生物类似药</div>
+      <div class="cycle-status">成熟期 · 产能局部过剩</div>
+      <div class="cycle-equip">大规模生物反应器、纯化系统；价格竞争激烈，设备采购趋于谨慎</div>
+    </div>
+    <div class="cycle-card" style="border-color:rgba(255,107,53,.2)">
+      <div class="cycle-signal" style="background:var(--orange)"></div>
+      <div class="cycle-tag" style="color:var(--orange);border-color:rgba(255,107,53,.3)">规避风险</div>
+      <div class="cycle-name">新冠疫苗 / 传统疫苗</div>
+      <div class="cycle-status">产能严重过剩 · 需求萎缩</div>
+      <div class="cycle-equip">大规模灌装线、冻干设备大量闲置；新订单极少，设备更新需求有限</div>
+    </div>
+  </div>
+
+  <!-- Biomanufacturing highlight -->
+  <div class="bio-highlight reveal">
+    <div class="bio-title">🌱 生物制造：万亿级新赛道</div>
+    <div class="bio-sub">十五五六大未来产业之一 · 揭榜挂帅聚焦高性能生物反应器</div>
+    <div class="bio-grid">
+      <div>
+        <div class="bio-item-label">2025年产业规模</div>
+        <div class="bio-item-val">1.1万亿</div>
+        <div class="bio-item-note">生物基材料·生物燃料·合成生物学</div>
+      </div>
+      <div>
+        <div class="bio-item-label">2030年预测</div>
+        <div class="bio-item-val">1.8万亿</div>
+        <div class="bio-item-note">CAGR ~10% · 政策重点支持</div>
+      </div>
+      <div>
+        <div class="bio-item-label">一次性反应器 CAGR</div>
+        <div class="bio-item-val">21.6%</div>
+        <div class="bio-item-note">核心装备机会 · 国产突破中</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 06 OVERSEAS -->
+<div class="section reveal">
+  <div class="section-label">06 · OVERSEAS STRATEGY</div>
+  <h2 class="section-title">出海战略分析</h2>
+  <p class="section-sub">海外毛利率48%是国内的2倍以上，出海是破局关键和利润增长核心引擎</p>
+
+  <!-- Margin comparison -->
+  <div class="margin-compare reveal">
+    <div>
+      <div class="margin-label">海外毛利率</div>
+      <div class="margin-val" style="color:var(--gold)">48%</div>
+      <div style="font-family:var(--mono);font-size:9px;color:var(--text3)">出海业务</div>
+    </div>
+    <div class="margin-vs">× 2.5<br/>倍差距</div>
+    <div>
+      <div class="margin-label">国内毛利率</div>
+      <div class="margin-val" style="color:var(--text2)">19%</div>
+      <div style="font-family:var(--mono);font-size:9px;color:var(--text3)">国内业务 · 价格竞争激烈</div>
+    </div>
+  </div>
+
+  <!-- Three companies -->
+  <div class="overseas-compare reveal">
+    <div class="oc" style="border-top:2px solid var(--pink)">
+      <div class="oc-company">东富龙</div>
+      <div class="oc-overseas">海外收入占比持续提升</div>
+      <div class="oc-stat-label">核心策略</div>
+      <div class="oc-stat-val" style="color:var(--pink)">本地化生产</div>
+      <div class="oc-desc">意大利设立生产基地，突破欧美高端市场准入壁垒；全球服务网络支撑客户粘性</div>
+    </div>
+    <div class="oc" style="border-top:2px solid var(--gold)">
+      <div class="oc-company">楚天科技</div>
+      <div class="oc-overseas">美洲市场 +319%</div>
+      <div class="oc-stat-label">核心策略</div>
+      <div class="oc-stat-val" style="color:var(--gold)">并购整合</div>
+      <div class="oc-desc">收购Romaco切入欧洲高端市场，快速获取技术、渠道、品牌认证；美洲增速最快</div>
+    </div>
+    <div class="oc" style="border-top:2px solid var(--cyan)">
+      <div class="oc-company">森松国际</div>
+      <div class="oc-overseas">海外收入占比30-60%</div>
+      <div class="oc-stat-label">核心策略</div>
+      <div class="oc-stat-val" style="color:var(--cyan)">大客户战略</div>
+      <div class="oc-desc">与Sanofi、Novartis等国际大药厂建立长期合作，形成品牌背书；服务网络本地化</div>
+    </div>
+  </div>
+
+  <!-- 5 tips -->
+  <div class="tips reveal">
+    <div class="tip">
+      <div class="tip-num">策略 01</div>
+      <div class="tip-title">本地化生产</div>
+      <div class="tip-desc">高端市场准入必要条件，规避贸易壁垒</div>
+    </div>
+    <div class="tip">
+      <div class="tip-num">策略 02</div>
+      <div class="tip-title">并购整合</div>
+      <div class="tip-desc">快速获取技术、渠道、品牌、认证</div>
+    </div>
+    <div class="tip">
+      <div class="tip-num">策略 03</div>
+      <div class="tip-title">服务网络</div>
+      <div class="tip-desc">建立本地服务中心（SSC），提升响应速度</div>
+    </div>
+    <div class="tip">
+      <div class="tip-num">策略 04</div>
+      <div class="tip-title">大客户战略</div>
+      <div class="tip-desc">与国际大药厂建立长期合作，形成品牌背书</div>
+    </div>
+    <div class="tip">
+      <div class="tip-num">策略 05 ⭐</div>
+      <div class="tip-title">区域聚焦</div>
+      <div class="tip-desc">美洲市场当前最大增量（+319%），优先布局</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 07 POLICY -->
+<div class="section reveal">
+  <div class="section-label">07 · POLICY ENVIRONMENT</div>
+  <h2 class="section-title">政策环境与十五五规划</h2>
+  <p class="section-sub">生物制造列为六大未来产业，揭榜挂帅聚焦高性能生物反应器，政策资源倾斜加大</p>
+
+  <div class="policy-grid reveal">
+    <div class="policy-card" style="border-top:2px solid var(--pink)">
+      <div class="policy-icon">📈</div>
+      <div class="policy-title">行业地位提升</div>
+      <ul class="policy-items">
+        <li>生物医药列为战略性新兴产业</li>
+        <li>生物制造列为六大未来产业</li>
+        <li>政策资源和资金倾斜加大</li>
+        <li>产业园区建设加速</li>
+      </ul>
+    </div>
+    <div class="policy-card" style="border-top:2px solid var(--orange)">
+      <div class="policy-icon">🔧</div>
+      <div class="policy-title">国产替代加速</div>
+      <ul class="policy-items">
+        <li>揭榜挂帅聚焦核心装备突破</li>
+        <li>高性能生物反应器重点攻关</li>
+        <li>产学研合作机制强化</li>
+        <li>首台套保险政策支持</li>
+        <li>2027年培育中试平台20+个</li>
+      </ul>
+    </div>
+    <div class="policy-card" style="border-top:2px solid var(--green)">
+      <div class="policy-icon">💊</div>
+      <div class="policy-title">下游需求复苏</div>
+      <ul class="policy-items">
+        <li>创新药国十条支持产业化</li>
+        <li>医保支付改革利好创新药</li>
+        <li>资本市场融资环境改善</li>
+        <li>出海支持政策加码</li>
+        <li>国家级生物制造产业集群</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 08 STRATEGY -->
+<div class="section reveal">
+  <div class="section-label">08 · STRATEGIC DIRECTIONS</div>
+  <h2 class="section-title">四大战略方向</h2>
+  <p class="section-sub">基于行业周期判断：整体筑底中，2027-2028年有望复苏；生物制造、ADC/小核酸当前即可积极布局</p>
+
+  <!-- Cycle diagram -->
+  <div class="cycle-diagram reveal">
+    <div style="font-family:var(--mono);font-size:8px;color:var(--text3);letter-spacing:.2em;margin-bottom:16px">行业周期判断</div>
+    <div class="cycle-stages">
+      <div class="cs" style="background:rgba(255,107,53,.08);color:var(--orange)">2023-2024<br/>下行筑底</div>
+      <div class="cs" style="background:rgba(255,215,0,.08);color:var(--gold)">2025-2026<br/>底部盘整</div>
+      <div class="cs" style="background:rgba(0,255,178,.08);color:var(--green)">2027-2028<br/>复苏反弹</div>
+      <div class="cs" style="background:rgba(255,110,180,.08);color:var(--pink)">2029-2030<br/>新一轮扩张</div>
+    </div>
+    <div style="font-size:11px;color:var(--text2);margin-top:16px">当前位置：底部盘整期 · 生物制造新赛道当前即可布局</div>
+  </div>
+
+  <div class="strategy-grid reveal">
+    <div class="strat" style="--strat-color:var(--gold)">
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold)"></div>
+      <div class="strat-num">01</div>
+      <div class="strat-title">加速出海布局</div>
+      <div class="strat-priority" style="color:var(--gold);border-color:rgba(255,215,0,.3)">最高优先级</div>
+      <ul class="strat-items">
+        <li>本地化生产突破高端市场准入</li>
+        <li>并购整合获取技术/渠道/品牌</li>
+        <li>美洲市场是最大增量 (+319%)</li>
+        <li>建立全球服务网络 (SSC)</li>
+      </ul>
+    </div>
+    <div class="strat">
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--green)"></div>
+      <div class="strat-num">02</div>
+      <div class="strat-title">聚焦生物制造</div>
+      <div class="strat-priority" style="color:var(--green);border-color:rgba(0,255,178,.3)">战略机遇</div>
+      <ul class="strat-items">
+        <li>一次性反应器 CAGR 21.6%</li>
+        <li>层析/纯化系统国产突破</li>
+        <li>大型发酵设备规模化</li>
+        <li>生物基材料新赛道</li>
+      </ul>
+    </div>
+    <div class="strat">
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--orange)"></div>
+      <div class="strat-num">03</div>
+      <div class="strat-title">突破上游部件</div>
+      <div class="strat-priority" style="color:var(--orange);border-color:rgba(255,107,53,.3)">长期布局</div>
+      <ul class="strat-items">
+        <li>高端无菌阀 国产化&lt;40%</li>
+        <li>中大型PLC 西门子40%+</li>
+        <li>与上游企业联合研发</li>
+        <li>降低供应链风险</li>
+      </ul>
+    </div>
+    <div class="strat">
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--cyan)"></div>
+      <div class="strat-num">04</div>
+      <div class="strat-title">推进智能化</div>
+      <div class="strat-priority" style="color:var(--cyan);border-color:rgba(34,211,238,.3)">持续投入</div>
+      <ul class="strat-items">
+        <li>数字化产线升级</li>
+        <li>AI 预测性维护服务</li>
+        <li>远程运维能力建设</li>
+        <li>工业互联网平台</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- CONCLUSION -->
+<div class="section reveal">
+  <div class="section-label">09 · CONCLUSIONS</div>
+  <h2 class="section-title">核心结论</h2>
+
+  <div class="conclusions">
+    <div class="conclusion">
+      <div class="conclusion-bullet" style="background:var(--pink)"></div>
+      <div class="conclusion-text"><strong>市场规模：</strong>2026年中国市场有望突破千亿（980-1,050亿），生物制造成为核心增长极（CAGR 15-25%）</div>
+    </div>
+    <div class="conclusion">
+      <div class="conclusion-bullet" style="background:var(--gold)"></div>
+      <div class="conclusion-text"><strong>竞争格局：</strong>CR4≈34%，市场高度分散，龙头通过出海+并购+产品线延伸构建竞争壁垒</div>
+    </div>
+    <div class="conclusion">
+      <div class="conclusion-bullet" style="background:var(--gold)"></div>
+      <div class="conclusion-text"><strong>出海战略：</strong>海外毛利率48%是国内的2倍以上，出海是破局关键；美洲市场增速最快（+319%）</div>
+    </div>
+    <div class="conclusion">
+      <div class="conclusion-bullet" style="background:var(--orange)"></div>
+      <div class="conclusion-text"><strong>供应链机会：</strong>高端无菌阀（国产化&lt;40%）、中大型PLC（西门子40%+）是卡脖子环节，存在国产替代机会</div>
+    </div>
+    <div class="conclusion">
+      <div class="conclusion-bullet" style="background:var(--green)"></div>
+      <div class="conclusion-text"><strong>行业周期：</strong>整体筑底中，2027-2028年有望复苏；生物制造、ADC/小核酸当前即可积极布局</div>
+    </div>
+  </div>
+
+  <!-- Risks -->
+  <div style="margin-top:32px">
+    <div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.2em;margin-bottom:12px">风险提示</div>
+    <div class="risks">
+      <div class="risk">下游生物制药投资复苏不及预期</div>
+      <div class="risk">国产替代进度慢于预期</div>
+      <div class="risk">海外市场拓展受地缘政治影响</div>
+      <div class="risk">行业价格竞争加剧导致毛利率下降</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div style="border-top:1px solid var(--border);padding:32px 40px;max-width:1300px;margin:0 auto;display:flex;justify-content:space-between;align-items:center">
+  <div style="font-family:var(--mono);font-size:8.5px;color:var(--text3);letter-spacing:.15em">
+    数据来源：中国医药设备工程协会 · Frost & Sullivan · 公司公告 · 行业调研
+  </div>
+  <div style="font-family:var(--mono);font-size:8.5px;color:var(--text3);letter-spacing:.15em">
+    STRATEGIC ANALYSIS · MARCH 2026
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+  document.getElementById('nav-bar').style.width = pct + '%';
+});
+
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 60);
+      observer.unobserve(e.target);
+    }
+  });
+}, {threshold: 0.06});
+reveals.forEach(r => observer.observe(r));
+</script>
+</body>
+</html>

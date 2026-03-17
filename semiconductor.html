@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>半导体 SBU · 战略分析 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,700;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<style>
+/* ── Reset ──────────────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+::-webkit-scrollbar{width:3px;height:3px}
+::-webkit-scrollbar-thumb{background:rgba(34,211,238,.12);border-radius:2px}
+
+/* ── Keyframes ──────────────────────────────────────────────────── */
+@keyframes sc-fadeUp   {from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes sc-scanV    {0%{transform:translateY(-100%)}100%{transform:translateY(200vh)}}
+@keyframes sc-scanH    {0%{transform:translateX(-100%)}100%{transform:translateX(200vw)}}
+@keyframes sc-dotPulse {0%,100%{box-shadow:0 0 0 0 rgba(34,211,238,.55)}50%{box-shadow:0 0 0 5px rgba(34,211,238,0)}}
+@keyframes sc-rotate   {to{transform:rotate(360deg)}}
+@keyframes sc-rotateCCW{from{transform:rotate(360deg)}to{transform:rotate(0deg)}}
+@keyframes sc-shimmer  {0%{transform:translateX(-130%)}100%{transform:translateX(230%)}}
+@keyframes sc-glowPulse{0%,100%{opacity:.04;transform:scale(1)}50%{opacity:.1;transform:scale(1.05)}}
+@keyframes sc-blink    {0%,100%{opacity:1}50%{opacity:.2}}
+
+/* ── Animation utility classes ──────────────────────────────────── */
+.sca-fadeUp   {animation:sc-fadeUp .65s ease both}
+.sca-scanV    {animation:sc-scanV 20s linear infinite}
+.sca-scanH    {animation:sc-scanH 26s linear infinite}
+.sca-rotate   {animation:sc-rotate 14s linear infinite}
+.sca-rotateCCW{animation:sc-rotateCCW 9s linear infinite}
+.sca-glowPulse{animation:sc-glowPulse 5s ease-in-out infinite}
+.sca-blink    {animation:sc-blink 2.4s ease-in-out infinite}
+.sca-dotPulse {animation:sc-dotPulse 2.2s ease-in-out infinite}
+
+/* ── Type scale ─────────────────────────────────────────────────── */
+.f-hero  {font-size:clamp(2rem,5.5vw,3.2rem);font-family:'Syne',sans-serif;font-weight:800;letter-spacing:-.03em;line-height:1.05;color:#fff}
+.f-stat  {font-size:clamp(1.3rem,3vw,1.9rem)}
+.f-h3    {font-size:clamp(14px,2.2vw,18px);font-family:'Syne',sans-serif;font-weight:800;color:#fff;letter-spacing:-.01em}
+.f-body  {font-size:clamp(11px,1.7vw,13px)}
+.f-label {font-size:clamp(8px,1.2vw,9.5px)}
+.f-mono  {font-family:'IBM Plex Mono',monospace}
+
+/* ── Layout grids ───────────────────────────────────────────────── */
+.main-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(14px,2.5vw,24px);align-items:start}
+@media(max-width:700px){.main-grid{grid-template-columns:1fr}}
+
+/* ── Spec row ───────────────────────────────────────────────────── */
+.sc-spec{
+  position:relative;
+  padding:clamp(13px,2.2vw,18px) clamp(14px,2vw,20px);
+  border-left:2px solid rgba(34,211,238,.14);
+  background:rgba(34,211,238,.022);
+  transition:all .24s ease;
+  cursor:default;overflow:hidden;
+}
+.sc-spec:hover{border-left-color:#22d3ee;background:rgba(34,211,238,.05)}
+.sc-spec::after{
+  content:'';position:absolute;right:-1px;top:50%;
+  width:0;height:1px;
+  background:linear-gradient(90deg,rgba(34,211,238,.6),transparent);
+  transform:translateY(-50%);transition:width .3s ease;
+}
+.sc-spec:hover::after{width:28px}
+
+/* ── Progress bar ───────────────────────────────────────────────── */
+.sc-track{height:2px;background:rgba(255,255,255,.05);position:relative;overflow:hidden;margin-top:8px}
+.sc-fill{
+  height:100%;position:absolute;left:0;top:0;
+  background:linear-gradient(90deg,#22d3ee 0%,#67e8f9 60%,rgba(34,211,238,.4) 100%);
+  transform-origin:left;
+  transition:transform 1.2s cubic-bezier(.16,1,.3,1);
+}
+
+/* ── Glass card ─────────────────────────────────────────────────── */
+.sc-glass{
+  position:relative;
+  background:rgba(4,11,30,.82);
+  border:1px solid rgba(34,211,238,.07);
+  backdrop-filter:blur(18px) saturate(140%);
+  -webkit-backdrop-filter:blur(18px) saturate(140%);
+  overflow:hidden;
+  transition:border-color .3s,box-shadow .3s;
+}
+.sc-glass:hover{
+  border-color:rgba(34,211,238,.22);
+  box-shadow:0 0 44px rgba(34,211,238,.06),inset 0 0 24px rgba(34,211,238,.03);
+}
+.sc-glass::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent 0%,rgba(34,211,238,.5) 30%,rgba(34,211,238,.2) 60%,transparent 100%);
+  background-size:300% 100%;
+  animation:sc-shimmer 6s ease infinite;
+}
+
+/* ── Corner accents ─────────────────────────────────────────────── */
+.sc-corners{position:relative}
+.sc-corners::before,.sc-corners::after{content:'';position:absolute;width:20px;height:20px;pointer-events:none}
+.sc-corner-tl::before{top:0;left:0;border-top:1px solid rgba(34,211,238,.45);border-left:1px solid rgba(34,211,238,.45)}
+.sc-corner-tr::after {top:0;right:0;border-top:1px solid rgba(34,211,238,.25);border-right:1px solid rgba(34,211,238,.25)}
+.sc-corner-bl{position:relative}
+.sc-corner-bl::before{bottom:0;left:0;border-bottom:1px solid rgba(34,211,238,.2);border-left:1px solid rgba(34,211,238,.2)}
+.sc-corner-br::after{bottom:0;right:0;border-bottom:1px solid rgba(34,211,238,.18);border-right:1px solid rgba(34,211,238,.18)}
+
+/* ── Risk badges ────────────────────────────────────────────────── */
+.sc-badge{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:2px 7px;font-size:8px;letter-spacing:.18em;
+  font-family:'IBM Plex Mono',monospace;text-transform:uppercase;
+  border:1px solid rgba(34,211,238,.28);
+  color:rgba(34,211,238,.85);background:rgba(34,211,238,.07);
+}
+.sc-badge.red  {border-color:rgba(239,68,68,.4); color:rgba(239,68,68,.9);  background:rgba(239,68,68,.07)}
+.sc-badge.amber{border-color:rgba(251,191,36,.4);color:rgba(251,191,36,.9); background:rgba(251,191,36,.06)}
+.sc-badge.green{border-color:rgba(52,211,153,.4);color:rgba(52,211,153,.9); background:rgba(52,211,153,.07)}
+
+/* ── Action row ─────────────────────────────────────────────────── */
+.act-row{
+  display:flex;gap:12px;
+  padding:clamp(12px,2vw,16px);
+  border:1px solid rgba(255,255,255,.04);
+  border-left:2px solid rgba(239,68,68,.27);
+  background:rgba(255,255,255,.018);
+  transition:all .22s ease;cursor:default;
+}
+.act-row:hover{background:rgba(34,211,238,.05);border-color:rgba(34,211,238,.22);border-left-color:#22d3ee}
+
+/* ── Product table row ──────────────────────────────────────────── */
+.prod-row{
+  display:grid;grid-template-columns:100px 1fr 1fr 56px;
+  gap:8px;align-items:center;
+  padding:clamp(8px,1.5vw,11px) 0;
+  border-bottom:1px solid rgba(255,255,255,.03);
+  transition:background .2s;cursor:default;
+}
+.prod-row:last-child{border-bottom:none}
+.prod-row:hover{background:rgba(34,211,238,.028)}
+
+/* ── Section divider label ──────────────────────────────────────── */
+.sec-label{display:flex;align-items:center;gap:10px}
+.sec-label span{white-space:nowrap}
+.sec-label .line{flex:1;height:1px;background:linear-gradient(90deg,rgba(34,211,238,.2),transparent)}
+.sec-label.red .line{background:linear-gradient(90deg,rgba(239,68,68,.2),transparent)}
+
+/* ── Process step ───────────────────────────────────────────────── */
+.proc-step{
+  flex:1 1 80px;
+  padding:clamp(10px,1.8vw,14px) clamp(8px,1.5vw,12px);
+  border-left:1px solid rgba(34,211,238,.08);
+  border-bottom:1px solid rgba(34,211,238,.08);
+  position:relative;
+  transition:opacity .5s ease,transform .5s ease;
+}
+.proc-step:first-child{border-left:2px solid #22d3ee}
+.proc-step:nth-child(odd){background:rgba(34,211,238,.025)}
+</style>
+</head>
+<body style="padding-top:52px;background:linear-gradient(168deg,#020617 0%,#030c22 55%,#020a1a 100%);min-height:100vh" style="background:linear-gradient(168deg,#020617 0%,#030c22 55%,#020a1a 100%);min-height:100vh;font-family:'Helvetica Neue',Arial,sans-serif">
+<nav id="site-nav" style="position:fixed;top:0;left:0;right:0;z-index:10000;background:rgba(2,5,18,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06)">
+  <div style="max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:0 clamp(16px,4vw,40px);height:52px">
+    <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+      <span style="width:7px;height:7px;border-radius:50%;background:#22d3ee;box-shadow:0 0 8px #22d3ee;animation:sc-blink 2.4s ease-in-out infinite;display:inline-block"></span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:#fff;letter-spacing:.22em"></span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.22);letter-spacing:.15em">&nbsp;· STRATEGIC ANALYSIS 2026</span>
+    </div>
+    <div style="display:flex;gap:4px;margin-left:auto">
+      <a href="index.html"  style="padding:5px 14px;font-size:11px;font-family:'IBM Plex Mono',monospace;letter-spacing:.12em;color:rgba(255,255,255,.82);text-decoration:none;border:1px solid transparent;transition:all .2s" onmouseenter="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,.12)'" onmouseleave="this.style.color='rgba(255,255,255,.82)';this.style.borderColor='transparent'">宏观脉搏</a>
+      <a href="liquid.html" style="padding:5px 14px;font-size:11px;font-family:'IBM Plex Mono',monospace;letter-spacing:.12em;color:rgba(255,255,255,.82);text-decoration:none;border:1px solid transparent;transition:all .2s" onmouseenter="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,.12)'" onmouseleave="this.style.color='rgba(255,255,255,.82)';this.style.borderColor='transparent'">AI 液冷</a>
+      <a href="semiconductor.html" style="padding:5px 14px;font-size:11px;font-family:'IBM Plex Mono',monospace;letter-spacing:.12em;color:#22d3ee;text-decoration:none;border:1px solid #22d3ee;background:rgba(34,211,238,.08)">半导体 SBU</a>
+      <a href="/mscc.html" style="padding:5px 14px;font-size:11px;font-family:'IBM Plex Mono',monospace;letter-spacing:.12em;color:rgba(255,255,255,.82);text-decoration:none;border:1px solid transparent;transition:all .2s">质谱·色谱</a>
+      <a href="/pharma.html" class="nav-link">制药装备</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
+      <span style="width:5px;height:5px;border-radius:50%;background:#00FFB2;animation:sc-blink 2.8s ease-in-out infinite;display:inline-block"></span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:rgba(255,255,255,.22);letter-spacing:.2em">LIVE 2026</span>
+    </div>
+  </div>
+  <div id="sc-nav-bar" style="height:2px;background:linear-gradient(90deg,#22d3ee,transparent);width:0;transition:width .3s"></div>
+</nav>
+<script>
+window.addEventListener('scroll',()=>{
+  const pct=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
+  document.getElementById('sc-nav-bar').style.width=pct+'%';
+});
+</script>
+
+<section id="root" style="padding:clamp(56px,8vw,88px) clamp(16px,5vw,48px);position:relative;overflow:hidden">
+
+  <!-- BG: laser grid -->
+  <div style="position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(34,211,238,.042) 1px,transparent 1px),linear-gradient(90deg,rgba(34,211,238,.042) 1px,transparent 1px);background-size:100px 100px"></div>
+
+  <!-- Cyan ambient glow -->
+  <div class="sca-glowPulse" style="position:absolute;top:-80px;left:38%;width:clamp(280px,48vw,560px);height:clamp(280px,48vw,560px);background:#22d3ee;border-radius:50%;filter:blur(145px);opacity:.045;pointer-events:none"></div>
+
+  <!-- Vertical scanline -->
+  <div class="sca-scanV" style="position:absolute;top:0;left:22%;width:1px;background:linear-gradient(180deg,transparent,rgba(34,211,238,.14),transparent);pointer-events:none;height:100%"></div>
+
+  <!-- Horizontal scanline -->
+  <div class="sca-scanH" style="position:absolute;left:0;top:38%;height:1px;background:linear-gradient(90deg,transparent,rgba(34,211,238,.1),transparent);pointer-events:none;width:100%"></div>
+
+  <!-- Decorative wafer top-right -->
+  <div style="position:absolute;top:-60px;right:-80px;opacity:.07;pointer-events:none">
+    <svg id="wafer-bg" width="340" height="340" viewBox="0 0 340 340" style="overflow:visible">
+      <defs>
+        <radialGradient id="wg" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#22d3ee" stop-opacity=".14"/>
+          <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+    </svg>
+  </div>
+
+  <!-- Content -->
+  <div style="max-width:1280px;margin:0 auto;position:relative;z-index:1">
+
+    <!-- ═══ HEADER ═══ -->
+    <header class="sca-fadeUp" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:clamp(20px,4vw,40px);margin-bottom:clamp(36px,6vw,64px)">
+      <div style="max-width:640px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <span class="sca-blink" style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#22d3ee;box-shadow:0 0 10px #22d3ee;flex-shrink:0"></span>
+          <span class="f-label f-mono" style="color:rgba(34,211,238,.5);letter-spacing:.3em;text-transform:uppercase">SBU · Advanced Process · Semiconductor</span>
+        </div>
+        <h1 class="f-hero" style="margin:0 0 10px">
+          SEMI&shy;CONDUCTOR
+          <span class="f-mono" style="display:block;font-size:.3em;font-weight:400;color:#22d3ee;letter-spacing:.15em;margin-top:8px">// 先进制程 · 超高纯气路控制</span>
+        </h1>
+        <p class="f-body" style="color:rgba(255,255,255,.65);line-height:1.78;margin:0;max-width:520px">
+          在 2026 年国产 7nm/5nm 产线爬坡的关键窗口期，<span style="color:#22d3ee;font-weight:600">原子级精度</span>的流体控制，为刻蚀、薄膜沉积与超纯介质输送工艺提供绝对的良率保障。
+        </p>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-end">
+        <div class="f-mono f-label" style="display:inline-flex;align-items:center;gap:8px;padding:8px 16px;background:rgba(34,211,238,.07);border:1px solid rgba(34,211,238,.25);backdrop-filter:blur(8px);color:#22d3ee;letter-spacing:.2em;text-transform:uppercase">
+          <span class="sca-dotPulse" style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#22d3ee;flex-shrink:0"></span>
+          2026 战略地位：核心护城河
+        </div>
+        <!-- Metrics strip -->
+        <div id="metrics-strip" style="display:flex;gap:2px"></div>
+      </div>
+    </header>
+
+    <!-- ═══ MAIN GRID ═══ -->
+    <div class="main-grid">
+
+      <!-- ── LEFT: Spec Wall + Risk ── -->
+      <div style="display:flex;flex-direction:column;gap:clamp(10px,2vw,16px)">
+
+        <div class="sec-label">
+          <span class="f-label f-mono" style="color:rgba(34,211,238,.42);letter-spacing:.25em;text-transform:uppercase">01 · 核心技术规格</span>
+          <div class="line"></div>
+        </div>
+
+        <div id="spec-wall" style="display:flex;flex-direction:column;gap:clamp(7px,1.5vw,10px)"></div>
+
+        <!-- Risk Matrix -->
+        <div style="margin-top:4px">
+          <div class="sec-label red" style="margin-bottom:12px">
+            <span class="f-label f-mono" style="color:rgba(239,68,68,.45);letter-spacing:.25em;text-transform:uppercase">04 · 风险矩阵</span>
+            <div class="line"></div>
+          </div>
+          <div id="risk-wall" style="display:flex;flex-direction:column;gap:5px"></div>
+        </div>
+      </div>
+
+      <!-- ── RIGHT: Actions + Product + Process ── -->
+      <div style="display:flex;flex-direction:column;gap:clamp(12px,2vw,18px)">
+
+        <!-- Strategic Actions -->
+        <div class="sc-glass sc-corner-tl sc-corner-tr sc-corner-bl sc-corner-br" style="padding:clamp(18px,3vw,28px)">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:clamp(16px,3vw,24px);position:relative;z-index:1">
+            <div style="width:2px;height:clamp(28px,4vw,36px);background:linear-gradient(180deg,#22d3ee,rgba(34,211,238,.08));flex-shrink:0"></div>
+            <div>
+              <h2 class="f-h3" style="margin-bottom:2px">2026 战略行动路线</h2>
+              <p class="f-label f-mono" style="color:rgba(34,211,238,.35);letter-spacing:.18em;margin:0;text-transform:uppercase">02 · Strategic Actions &amp; Execution Timing</p>
+            </div>
+          </div>
+          <div id="action-list" style="display:flex;flex-direction:column;gap:7px;position:relative;z-index:1"></div>
+        </div>
+
+        <!-- Product Matrix -->
+        <div class="sc-glass" style="padding:clamp(16px,3vw,22px)">
+          <div class="sec-label" style="margin-bottom:14px;position:relative;z-index:1">
+            <span class="f-label f-mono" style="color:rgba(34,211,238,.42);letter-spacing:.22em;text-transform:uppercase">03 · 产品适配矩阵</span>
+            <div class="line"></div>
+          </div>
+          <!-- Table header -->
+          <div style="display:grid;grid-template-columns:100px 1fr 1fr 56px;gap:8px;padding:5px 0 8px;border-bottom:1px solid rgba(34,211,238,.08);margin-bottom:4px;position:relative;z-index:1">
+            <span class="f-label f-mono" style="color:rgba(34,211,238,.38);letter-spacing:.15em;text-transform:uppercase">产品型号</span>
+            <span class="f-label f-mono" style="color:rgba(34,211,238,.38);letter-spacing:.15em;text-transform:uppercase">阀门功能</span>
+            <span class="f-label f-mono" style="color:rgba(34,211,238,.38);letter-spacing:.15em;text-transform:uppercase">适用工艺</span>
+            <span class="f-label f-mono" style="color:rgba(34,211,238,.38);letter-spacing:.15em;text-transform:uppercase">匹配度</span>
+          </div>
+          <div id="product-table" style="position:relative;z-index:1"></div>
+          <!-- <div style="margin-top:12px;padding:11px 13px;background:rgba(34,211,238,.045);border:1px solid rgba(34,211,238,.14);border-left:2px solid #22d3ee;position:relative;z-index:1">
+            <span class="f-label f-mono" style="color:#22d3ee;letter-spacing:.15em;display:block;margin-bottom:5px"></span>
+            <p class="f-body" style="color:rgba(255,255,255,.82);line-height:1.65;margin:0">高洁净度隔膜阀 · 质量流量控制器 · 腐蚀介质电磁阀 · 超纯水回路精密阀组 —— EP 全电解抛光内壁全系列，覆盖 14nm 以下先进节点全工艺流程。</p>
+          </div>
+        </div>
+
+        <!-- Process Flow -->
+        <div class="sc-glass" style="overflow:hidden">
+          <div style="padding:clamp(14px,2.5vw,20px) clamp(16px,3vw,22px);border-bottom:1px solid rgba(34,211,238,.07);position:relative;z-index:1">
+            <div class="sec-label">
+              <span class="f-label f-mono" style="color:rgba(34,211,238,.42);letter-spacing:.22em;text-transform:uppercase">05 </span>
+              <div class="line"></div>
+              <!-- Mini wafer -->
+              <div style="opacity:.4;flex-shrink:0">
+                <svg width="48" height="48" viewBox="0 0 48 48" style="overflow:visible">
+                  <defs><radialGradient id="wg2" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#22d3ee" stop-opacity=".14"/><stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/></radialGradient></defs>
+                  <circle cx="24" cy="24" r="21" fill="url(#wg2)"/>
+                  <circle cx="24" cy="24" r="21" fill="none" stroke="rgba(34,211,238,.14)" stroke-width="1"/>
+                  <circle cx="24" cy="24" r="16" fill="none" stroke="rgba(34,211,238,.09)" stroke-width="1" stroke-dasharray="4 6"/>
+                  <circle cx="24" cy="24" r="10" fill="none" stroke="rgba(34,211,238,.07)" stroke-width="1"/>
+                  <circle cx="24" cy="24" r="5" fill="none" stroke="rgba(34,211,238,.18)" stroke-width="1.5"/>
+                  <line x1="14" y1="24" x2="34" y2="24" stroke="rgba(34,211,238,.7)" stroke-width="1"/>
+                  <line x1="24" y1="14" x2="24" y2="34" stroke="rgba(34,211,238,.7)" stroke-width="1"/>
+                  <circle cx="24" cy="24" r="2.5" fill="#22d3ee" filter="drop-shadow(0 0 5px #22d3ee)"/>
+                  <g class="sca-rotate" style="transform-origin:24px 24px"><circle cx="24" cy="24" r="23" fill="none" stroke="rgba(34,211,238,.2)" stroke-width="1" stroke-dasharray="8 10"/></g>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div id="process-flow" style="display:flex;flex-wrap:wrap"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="margin-top:clamp(28px,5vw,48px);padding-top:16px;border-top:1px solid rgba(34,211,238,.07);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px">
+      <span class="f-label f-mono" style="color:rgba(255,255,255,.18);letter-spacing:.15em">'S STRATEGIC ANALYSIS 2026</span>
+      <span class="f-label f-mono" style="color:rgba(34,211,238,.3);letter-spacing:.12em">DATA SOURCE: SEMI · NBS · DELOITTE · MCKINSEY</span>
+    </footer>
+
+  </div><!-- /content -->
+</section>
+
+<script>
+/* ══════════════════════════════════════════════════════════
+   DATA
+══════════════════════════════════════════════════════════ */
+const UHP_SPECS = [
+  {icon:"◈", label:"表面粗糙度 (Ra)",  value:"< 0.1 μm",     detail:"全电解抛光工艺 (EP)，符合 SEMI F19 超纯标准",         bar:96},
+  {icon:"◎", label:"气体泄漏率",        value:"1×10⁻¹²",      detail:"mbar·l/s 氦质谱检漏，超出行业安全裕度 10×",           bar:99},
+  {icon:"◇", label:"洁净等级",          value:"ISO Class 1",  detail:"粒径 ≥0.1μm 颗粒数 < 10 个/m³，适配 2nm 以下节点",   bar:100},
+  {icon:"◉", label:"流量重复精度",      value:"± 0.05% FS",   detail:"MFC 长期零漂 < 0.1% FS/年，免年度重新标定",           bar:94},
+  {icon:"⊙", label:"开关响应时间",      value:"< 50 ms",      detail:"脉冲阀组满足 ALD 原子层沉积的纳秒级时序切换要求",     bar:88},
+];
+
+const ACTIONS = [
+  {timing:"Q1 2026", urgency:"high",  title:"JDM 切入光刻机气路标准",
+   detail:"以 Joint Development Manufacturing 模式联合国内主流 DUV 光刻机厂商，共同制定超纯气路控制模块规格，锁定先发壁垒。"},
+  {timing:"Q2 2026", urgency:"high",  title:"12\" 晶圆厂超纯水阀组替换",
+   detail:"针对 UPW 循环回路隔膜阀的 MRO 更换需求，推出带 IO-Link 数字化接口的一体式替换套件，将决策周期压缩至 4 周以内。"},
+  {timing:"Q3 2026", urgency:"amber", title:"CoWoS 封装底填点胶控制",
+   detail:"先进封装 CoWoS/HBM 产线对底部填充胶的精密分配提出新需求，推出低温、无死体积分配阀解决方案，打开封装赛道。"},
+  {timing:"H2 2026", urgency:"amber", title:"第三代半导体 ALD/CVD 集成",
+   detail:"与 MOCVD 设备商合作预埋 "},
+];
+
+const PRODUCTS = [
+  {name:"Type 2030", role:"超纯气体隔膜阀",    process:"Etch / CVD",          score:95},
+  {name:"Type 8626", role:"质量流量控制器 MFC", process:"ALD / CVD / Diffusion", score:98},
+  {name:"Type 2101", role:"高压 H₂ 截止阀",    process:"清洗 / 氢化退火",      score:82},
+  {name:"Type 8640", role:"比例压力调节阀",     process:"CMP 研磨液",           score:89},
+  {name:"Type 8049", role:"卫生级无死体积阀",   process:"湿法清洗 SC1/SC2",     score:91},
+];
+
+const RISKS = [
+  {level:"red",   label:"美国 EAR 出口管制扩围", detail:"先进节点精密控制器可能被纳入管制清单，欧洲交货路径或受阻"},
+  {level:"amber", label:"产能与交期压力",          detail:"高端 MFC 产能集中欧洲，亚太交期拉长至 20–26 周"},
+  {level:"amber", label:"本土低价竞争渗透",        detail:"国内厂商加速向中低端隔膜阀下沉，价格战压力持续"},
+  {level:"green", label:"客户认证导入周期",        detail:"晶圆厂产线认证 12–18 个月，新客户导入节奏受限"},
+];
+
+const METRICS = [
+  {v:"3,200+", k:"精密节点/产线",   c:"#22d3ee"},
+  {v:"+21%",   k:"晶圆厂固投增速", c:"#67e8f9"},
+  {v:"18%",    k:"UPW 用量 CAGR",  c:"#a5f3fc"},
+  {v:"9.2",    k:"景气度指数 /10", c:"#22d3ee"},
+];
+
+const STEPS = [
+  {step:"01", label:"氧化层生长", en:"Oxidation",    color:"#22d3ee"},
+  {step:"02", label:"光刻曝光",   en:"Lithography",  color:"#67e8f9"},
+  {step:"03", label:"刻蚀工艺",   en:"Etching",      color:"#22d3ee"},
+  {step:"04", label:"薄膜沉积",   en:"CVD / ALD",    color:"#a5f3fc"},
+  {step:"05", label:"CMP 研磨",   en:"Planarization",color:"#22d3ee"},
+  {step:"06", label:"清洗检测",   en:"Clean & Inspect",color:"#67e8f9"},
+];
+
+const URGENCY_COLOR = {high:"#ef4444", amber:"#fbbf24", green:"#34d399", red:"#ef4444"};
+
+/* ══════════════════════════════════════════════════════════
+   WAFER SVG GENERATOR
+══════════════════════════════════════════════════════════ */
+function buildWafer(size, id_suffix) {
+  const cx = size/2, cy = size/2;
+  const R = [size*.44, size*.34, size*.22, size*.12];
+  const alphas = [.14,.09,.07,.18];
+  const NS = "http://www.w3.org/2000/svg";
+
+  const svg = document.createElementNS(NS,"svg");
+  svg.setAttribute("width",size); svg.setAttribute("height",size);
+  svg.setAttribute("viewBox",`0 0 ${size} ${size}`);
+  svg.style.overflow="visible";
+
+  // defs
+  const defs = document.createElementNS(NS,"defs");
+  const grad = document.createElementNS(NS,"radialGradient");
+  grad.setAttribute("id","wg"+id_suffix);
+  grad.setAttribute("cx","50%"); grad.setAttribute("cy","50%"); grad.setAttribute("r","50%");
+  ["0%","100%"].forEach((off,i) => {
+    const s = document.createElementNS(NS,"stop");
+    s.setAttribute("offset",off);
+    s.setAttribute("stop-color","#22d3ee");
+    s.setAttribute("stop-opacity",i===0?".14":"0");
+    grad.appendChild(s);
+  });
+  defs.appendChild(grad); svg.appendChild(defs);
+
+  // fill glow
+  const fill = document.createElementNS(NS,"circle");
+  fill.setAttribute("cx",cx); fill.setAttribute("cy",cy); fill.setAttribute("r",R[0]);
+  fill.setAttribute("fill","url(#wg"+id_suffix+")");
+  svg.appendChild(fill);
+
+  // rings
+  R.forEach((r,i) => {
+    const c = document.createElementNS(NS,"circle");
+    c.setAttribute("cx",cx); c.setAttribute("cy",cy); c.setAttribute("r",r);
+    c.setAttribute("fill","none");
+    c.setAttribute("stroke",`rgba(34,211,238,${alphas[i]})`);
+    c.setAttribute("stroke-width", i===3?"1.5":"1");
+    if(i===1) c.setAttribute("stroke-dasharray","4 6");
+    svg.appendChild(c);
+  });
+
+  // ticks
+  for(let i=0;i<48;i++){
+    const a=(i/48)*Math.PI*2, major=i%8===0;
+    const ro=R[0]+2, ri=R[0]-(major?10:5);
+    const line=document.createElementNS(NS,"line");
+    line.setAttribute("x1",cx+Math.cos(a)*ro); line.setAttribute("y1",cy+Math.sin(a)*ro);
+    line.setAttribute("x2",cx+Math.cos(a)*ri); line.setAttribute("y2",cy+Math.sin(a)*ri);
+    line.setAttribute("stroke",major?"rgba(34,211,238,.55)":"rgba(34,211,238,.18)");
+    line.setAttribute("stroke-width",major?"1.5":"1");
+    svg.appendChild(line);
+  }
+
+  // die grid
+  [-1.5,-.5,.5,1.5].forEach(g => {
+    [true,false].forEach(horiz => {
+      const l=document.createElementNS(NS,"line");
+      if(horiz){
+        l.setAttribute("x1",cx+g*22); l.setAttribute("y1",cy-R[0]*.8);
+        l.setAttribute("x2",cx+g*22); l.setAttribute("y2",cy+R[0]*.8);
+      } else {
+        l.setAttribute("x1",cx-R[0]*.8); l.setAttribute("y1",cy+g*22);
+        l.setAttribute("x2",cx+R[0]*.8); l.setAttribute("y2",cy+g*22);
+      }
+      l.setAttribute("stroke","rgba(34,211,238,.07)"); l.setAttribute("stroke-width","1");
+      svg.appendChild(l);
+    });
+  });
+
+  // crosshair
+  ["h","v"].forEach(d => {
+    const l=document.createElementNS(NS,"line");
+    if(d==="h"){ l.setAttribute("x1",cx-10);l.setAttribute("y1",cy);l.setAttribute("x2",cx+10);l.setAttribute("y2",cy); }
+    else       { l.setAttribute("x1",cx);l.setAttribute("y1",cy-10);l.setAttribute("x2",cx);l.setAttribute("y2",cy+10); }
+    l.setAttribute("stroke","rgba(34,211,238,.7)"); l.setAttribute("stroke-width","1");
+    svg.appendChild(l);
+  });
+
+  // center dot
+  const dot=document.createElementNS(NS,"circle");
+  dot.setAttribute("cx",cx); dot.setAttribute("cy",cy); dot.setAttribute("r","3");
+  dot.setAttribute("fill","#22d3ee"); dot.style.filter="drop-shadow(0 0 7px #22d3ee)";
+  svg.appendChild(dot);
+
+  // rotating outer ring
+  const g1=document.createElementNS(NS,"g");
+  g1.classList.add("sca-rotate"); g1.style.transformOrigin=`${cx}px ${cy}px`;
+  const rc1=document.createElementNS(NS,"circle");
+  rc1.setAttribute("cx",cx);rc1.setAttribute("cy",cy);rc1.setAttribute("r",R[0]+11);
+  rc1.setAttribute("fill","none");rc1.setAttribute("stroke","rgba(34,211,238,.2)");
+  rc1.setAttribute("stroke-width","1");rc1.setAttribute("stroke-dasharray","16 20");
+  g1.appendChild(rc1); svg.appendChild(g1);
+
+  // CCW inner ring
+  const g2=document.createElementNS(NS,"g");
+  g2.classList.add("sca-rotateCCW"); g2.style.transformOrigin=`${cx}px ${cy}px`;
+  const rc2=document.createElementNS(NS,"circle");
+  rc2.setAttribute("cx",cx);rc2.setAttribute("cy",cy);rc2.setAttribute("r",R[1]+6);
+  rc2.setAttribute("fill","none");rc2.setAttribute("stroke","rgba(34,211,238,.1)");
+  rc2.setAttribute("stroke-width","1");rc2.setAttribute("stroke-dasharray","8 30");
+  g2.appendChild(rc2); svg.appendChild(g2);
+
+  return svg;
+}
+
+/* ══════════════════════════════════════════════════════════
+   RENDER FUNCTIONS
+══════════════════════════════════════════════════════════ */
+function renderMetrics() {
+  const el = document.getElementById("metrics-strip");
+  METRICS.forEach((m,i) => {
+    const d = document.createElement("div");
+    d.style.cssText = `padding:clamp(8px,1.5vw,12px) clamp(10px,1.8vw,14px);background:rgba(34,211,238,.04);border:1px solid rgba(34,211,238,.07);border-left:${i===0?"2px solid #22d3ee":"1px solid rgba(34,211,238,.07)"};min-width:80px`;
+    d.innerHTML = `
+      <div class="f-mono f-stat" style="font-weight:700;color:${m.c};line-height:1;margin-bottom:4px;text-shadow:0 0 16px ${m.c}60">${m.v}</div>
+      <div class="f-label" style="color:rgba(255,255,255,.65);line-height:1.3">${m.k}</div>`;
+    el.appendChild(d);
+  });
+}
+
+function renderSpecs(vis) {
+  const el = document.getElementById("spec-wall");
+  el.innerHTML = "";
+  UHP_SPECS.forEach((s,i) => {
+    const d = document.createElement("div");
+    d.className = "sc-spec sca-fadeUp";
+    d.style.animationDelay = `${i*70}ms`;
+    d.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:6px">
+        <div style="min-width:0">
+          <span class="f-label f-mono" style="color:rgba(34,211,238,.42);letter-spacing:.15em;text-transform:uppercase;display:block;margin-bottom:3px">${s.icon} ${s.label}</span>
+          <p class="f-body" style="color:rgba(255,255,255,.65);line-height:1.55;margin:0;font-style:italic">${s.detail}</p>
+        </div>
+        <span class="f-mono" style="font-size:clamp(15px,2.2vw,19px);font-weight:700;color:#22d3ee;line-height:1;flex-shrink:0;text-shadow:0 0 10px rgba(34,211,238,.3);transition:text-shadow .2s">${s.value}</span>
+      </div>
+      <div class="sc-track"><div class="sc-fill" style="transform:scaleX(${vis?s.bar/100:0});transition-delay:${vis?300+i*80:0}ms"></div></div>
+      <div style="display:flex;justify-content:space-between;margin-top:4px">
+        <span class="f-label f-mono" style="color:rgba(34,211,238,.25);letter-spacing:.1em">PERFORMANCE RATING</span>
+        <span class="f-label f-mono" style="color:rgba(34,211,238,.5)">${s.bar}%</span>
+      </div>`;
+    d.addEventListener("mouseenter",()=>{ d.querySelector("span[style*='text-shadow']").style.textShadow="0 0 20px rgba(34,211,238,.7)"; });
+    d.addEventListener("mouseleave",()=>{ d.querySelector("span[style*='text-shadow']").style.textShadow="0 0 10px rgba(34,211,238,.3)"; });
+    el.appendChild(d);
+  });
+}
+
+function renderRisks() {
+  const el = document.getElementById("risk-wall");
+  RISKS.forEach((r,i) => {
+    const bgRGB = r.level==="red"?"239,68,68":r.level==="amber"?"251,191,36":"52,211,153";
+    const d = document.createElement("div");
+    d.className = "sca-fadeUp";
+    d.style.cssText = `display:flex;gap:10px;align-items:flex-start;padding:clamp(9px,1.6vw,12px) clamp(10px,1.8vw,14px);background:rgba(${bgRGB},.028);border-left:2px solid ${URGENCY_COLOR[r.level]}45;animation-delay:${400+i*60}ms`;
+    d.innerHTML = `
+      <span class="sc-badge ${r.level}" style="flex-shrink:0;margin-top:1px">${r.level}</span>
+      <div>
+        <div class="f-body" style="font-weight:600;color:rgba(255,255,255,.82);margin-bottom:3px">${r.label}</div>
+        <p class="f-label" style="color:rgba(255,255,255,.65);line-height:1.55;margin:0">${r.detail}</p>
+      </div>`;
+    el.appendChild(d);
+  });
+}
+
+function renderActions() {
+  const el = document.getElementById("action-list");
+  ACTIONS.forEach((a,i) => {
+    const uc = URGENCY_COLOR[a.urgency];
+    const d = document.createElement("div");
+    d.className = "act-row sca-fadeUp";
+    d.style.cssText = `border-left-color:${uc}45;animation-delay:${200+i*90}ms`;
+    d.innerHTML = `
+      <div style="flex-shrink:0;min-width:62px">
+        <div class="f-mono" style="padding:3px 7px;background:${uc}14;border:1px solid ${uc}40;font-size:8px;font-weight:700;color:${uc};letter-spacing:.1em;text-align:center;margin-bottom:4px;white-space:nowrap">${a.timing}</div>
+        <div class="f-label f-mono" style="color:rgba(255,255,255,.2);letter-spacing:.1em;text-align:center;text-transform:uppercase">${a.urgency}</div>
+      </div>
+      <div style="flex:1;min-width:0">
+        <div class="f-body" style="font-weight:700;color:rgba(255,255,255,.82);margin-bottom:5px;transition:color .2s">${a.title}</div>
+        <p class="f-body" style="color:rgba(255,255,255,.65);line-height:1.65;margin:0;font-size:clamp(10px,1.5vw,11.5px)">${a.detail}</p>
+      </div>`;
+    d.addEventListener("mouseenter",()=>{ d.style.background="rgba(34,211,238,.05)"; d.style.borderColor="rgba(34,211,238,.22)"; d.style.borderLeftColor="#22d3ee"; d.querySelector(".f-body").style.color="#fff"; });
+    d.addEventListener("mouseleave",()=>{ d.style.background="rgba(255,255,255,.018)"; d.style.borderColor="rgba(255,255,255,.04)"; d.style.borderLeftColor=uc+"45"; d.querySelector(".f-body").style.color="rgba(255,255,255,.82)"; });
+    el.appendChild(d);
+  });
+}
+
+function renderProducts(vis) {
+  const el = document.getElementById("product-table");
+  el.innerHTML = "";
+  PRODUCTS.forEach((p,i) => {
+    const d = document.createElement("div");
+    d.className = "prod-row sca-fadeUp";
+    d.style.animationDelay = `${300+i*55}ms`;
+    d.innerHTML = `
+      <span class="f-mono" style="font-size:11px;font-weight:700;color:#22d3ee">${p.name}</span>
+      <span class="f-body" style="color:rgba(255,255,255,.78)">${p.role}</span>
+      <span class="f-body" style="color:rgba(255,255,255,.65);font-style:italic;font-size:clamp(9.5px,1.4vw,11px)">${p.process}</span>
+      <div style="display:flex;flex-direction:column;gap:3px">
+        <div style="height:2px;background:rgba(255,255,255,.06);position:relative;overflow:hidden">
+          <div style="position:absolute;left:0;top:0;height:100%;width:${p.score}%;background:linear-gradient(90deg,#22d3ee,#67e8f9);opacity:${vis?1:0};transition:opacity .4s ease ${350+i*70}ms"></div>
+        </div>
+        <span class="f-label f-mono" style="color:rgba(34,211,238,.65);text-align:right">${p.score}%</span>
+      </div>`;
+    el.appendChild(d);
+  });
+}
+
+function renderProcess(vis) {
+  const el = document.getElementById("process-flow");
+  STEPS.forEach((s,i) => {
+    const d = document.createElement("div");
+    d.className = "proc-step";
+    d.style.opacity = vis ? 1 : 0;
+    d.style.transform = vis ? "none" : "translateY(8px)";
+    d.style.transitionDelay = `${i*80}ms`;
+    d.innerHTML = `
+      <div class="f-label f-mono" style="color:rgba(34,211,238,.4);letter-spacing:.2em;margin-bottom:5px">${s.step}</div>
+      <div style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,.82);margin-bottom:2px">${s.label}</div>
+      <div class="f-label f-mono" style="color:rgba(255,255,255,.65);letter-spacing:.08em">${s.en}</div>
+      <div style="position:absolute;top:6px;right:6px;width:5px;height:5px;border-radius:50%;background:${s.color};box-shadow:0 0 6px ${s.color};opacity:.7"></div>`;
+    el.appendChild(d);
+  });
+}
+
+function renderBgWafer() {
+  const container = document.querySelector("[id='wafer-bg']").parentElement;
+  container.innerHTML = "";
+  container.appendChild(buildWafer(340, "bg"));
+}
+
+/* ══════════════════════════════════════════════════════════
+   INTERSECTION OBSERVER — trigger bar animations
+══════════════════════════════════════════════════════════ */
+let visible = false;
+const observer = new IntersectionObserver(([e]) => {
+  if (e.isIntersecting && !visible) {
+    visible = true;
+    observer.disconnect();
+    // Re-render with vis=true to trigger bar grow
+    renderSpecs(true);
+    renderProducts(true);
+    document.querySelectorAll(".proc-step").forEach((el,i) => {
+      el.style.opacity = 1; el.style.transform = "none";
+      el.style.transitionDelay = `${i*80}ms`;
+    });
+  }
+}, {threshold:0.05});
+
+/* ══════════════════════════════════════════════════════════
+   INIT
+══════════════════════════════════════════════════════════ */
+document.addEventListener("DOMContentLoaded", () => {
+  renderBgWafer();
+  renderMetrics();
+  renderSpecs(false);
+  renderRisks();
+  renderActions();
+  renderProducts(false);
+  renderProcess(false);
+  observer.observe(document.getElementById("root"));
+});
+</script>
+</body>
+</html>

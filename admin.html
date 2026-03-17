@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>后台管理 · Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#010612;--bg2:#060d20;--bg3:#0a1530;
+  --red:#E30613;--cyan:#22d3ee;--green:#00FFB2;--gold:#FFD700;--purple:#BF80FF;--orange:#FF6B35;
+  --text:#fff;--text2:rgba(255,255,255,.55);--text3:rgba(255,255,255,.25);
+  --border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.12);
+  --font-mono:'IBM Plex Mono',monospace;--font-display:'Syne',sans-serif;
+}
+html{height:100%}
+body{background:var(--bg);color:var(--text);font-family:var(--font-display);min-height:100vh;overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
+
+/* ── LOCK SCREEN ─────────────────────────────── */
+#lock{
+  position:fixed;inset:0;z-index:9999;
+  background:radial-gradient(ellipse at 30% 40%, rgba(227,6,19,.08) 0%, transparent 60%),
+             radial-gradient(ellipse at 80% 70%, rgba(34,211,238,.05) 0%, transparent 50%),
+             #010612;
+  display:flex;align-items:center;justify-content:center;
+}
+.lock-box{
+  width:380px;padding:48px 40px;
+  background:rgba(6,13,32,.9);
+  border:1px solid var(--border2);
+  position:relative;overflow:hidden;
+}
+.lock-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--red),var(--cyan));background-size:200% 100%;animation:flow 3s ease infinite}
+.lock-logo{font-family:var(--font-mono);font-size:11px;letter-spacing:.3em;color:var(--text3);margin-bottom:32px}
+.lock-logo span{color:var(--red)}
+.lock-title{font-size:22px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+.lock-sub{font-family:var(--font-mono);font-size:9px;color:var(--text3);letter-spacing:.2em;margin-bottom:32px}
+.lock-field{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--border);padding:12px 16px;color:var(--text);font-family:var(--font-mono);font-size:13px;letter-spacing:.1em;outline:none;transition:border-color .2s;margin-bottom:12px}
+.lock-field:focus{border-color:var(--cyan)}
+.lock-field.shake{animation:shake .4s ease}
+.lock-btn{width:100%;padding:13px;background:var(--red);border:none;color:#fff;font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.2em;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.lock-btn:hover{background:#ff1a1a;box-shadow:0 0 30px rgba(227,6,19,.4)}
+.lock-err{font-family:var(--font-mono);font-size:9px;color:var(--red);letter-spacing:.1em;margin-top:10px;height:14px;transition:opacity .2s}
+
+/* ── MAIN LAYOUT ────────────────────────────── */
+#app{display:none;min-height:100vh}
+
+/* TOP BAR */
+.topbar{
+  position:sticky;top:0;z-index:100;
+  background:rgba(1,6,18,.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:16px;padding:0 32px;height:56px;
+}
+.topbar-brand{font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.25em;color:var(--text)}
+.topbar-brand span{color:var(--red)}
+.topbar-badge{font-family:var(--font-mono);font-size:8px;padding:2px 8px;background:rgba(0,255,178,.08);border:1px solid rgba(0,255,178,.2);color:var(--green);letter-spacing:.15em}
+.topbar-right{margin-left:auto;display:flex;align-items:center;gap:12px}
+.save-btn{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 20px;background:var(--red);border:none;color:#fff;
+  font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.15em;
+  cursor:pointer;transition:all .2s;position:relative;overflow:hidden;
+}
+.save-btn:hover{background:#ff1a1a;box-shadow:0 0 20px rgba(227,6,19,.35)}
+.save-btn.saved{background:rgba(0,255,178,.15);border:1px solid var(--green);color:var(--green)}
+.preview-btn{display:flex;align-items:center;gap:6px;padding:8px 16px;background:transparent;border:1px solid var(--border2);color:var(--text2);font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;cursor:pointer;transition:all .2s;text-decoration:none}
+.preview-btn:hover{border-color:var(--cyan);color:var(--cyan)}
+.logout-btn{background:none;border:none;color:var(--text3);font-family:var(--font-mono);font-size:9px;letter-spacing:.15em;cursor:pointer;padding:6px 10px;transition:color .2s}
+.logout-btn:hover{color:var(--red)}
+
+/* SIDEBAR */
+.layout{display:flex;min-height:calc(100vh - 56px)}
+.sidebar{
+  width:220px;flex-shrink:0;
+  background:rgba(4,9,24,.6);border-right:1px solid var(--border);
+  padding:24px 0;position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto;
+}
+.sidebar-section{padding:0 16px;margin-bottom:24px}
+.sidebar-label{font-family:var(--font-mono);font-size:8px;color:var(--text3);letter-spacing:.25em;margin-bottom:10px;padding:0 8px}
+.nav-item{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 12px;cursor:pointer;
+  font-size:12px;color:var(--text2);letter-spacing:.03em;
+  border-left:2px solid transparent;transition:all .18s;border-radius:0 4px 4px 0;
+  margin-bottom:2px;
+}
+.nav-item:hover{color:var(--text);background:rgba(255,255,255,.04)}
+.nav-item.active{color:var(--text);border-left-color:var(--red);background:rgba(227,6,19,.06)}
+.nav-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.meta-info{padding:16px;margin:16px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
+.meta-row{display:flex;justify-content:space-between;margin-bottom:6px;font-family:var(--font-mono);font-size:8.5px}
+.meta-key{color:var(--text3);letter-spacing:.1em}
+.meta-val{color:var(--text2)}
+
+/* MAIN CONTENT */
+.main{flex:1;padding:32px;overflow-y:auto;max-width:1000px}
+
+/* SECTION HEADER */
+.section-header{margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.section-title{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:4px}
+.section-sub{font-family:var(--font-mono);font-size:9px;color:var(--text3);letter-spacing:.2em}
+.section-badge{display:inline-block;padding:3px 10px;font-family:var(--font-mono);font-size:8px;letter-spacing:.15em;margin-bottom:12px;border:1px solid;border-radius:0}
+
+/* CARDS */
+.card{background:var(--bg2);border:1px solid var(--border);padding:24px;margin-bottom:16px;position:relative}
+.card-title{font-family:var(--font-mono);font-size:9px;color:var(--text3);letter-spacing:.2em;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.card-title::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* FORM ELEMENTS */
+.field-group{margin-bottom:18px}
+.field-label{font-family:var(--font-mono);font-size:8.5px;color:var(--text3);letter-spacing:.15em;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.field-label .tag{padding:1px 6px;background:rgba(34,211,238,.08);border:1px solid rgba(34,211,238,.2);color:var(--cyan);font-size:7.5px}
+input[type=text],input[type=number],textarea,select{
+  width:100%;background:rgba(255,255,255,.04);border:1px solid var(--border);
+  color:var(--text);font-family:var(--font-mono);font-size:12px;
+  padding:10px 14px;outline:none;transition:border-color .2s;resize:vertical;
+}
+input[type=text]:focus,input[type=number]:focus,textarea:focus,select:focus{border-color:var(--cyan)}
+input[type=range]{width:100%;accent-color:var(--cyan);margin-top:4px}
+.range-val{font-family:var(--font-mono);font-size:10px;color:var(--cyan);margin-left:8px}
+
+/* GRID */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:700px){.grid-2,.grid-3{grid-template-columns:1fr}}
+
+/* LIST ITEMS (editable) */
+.list-item{
+  background:rgba(255,255,255,.025);border:1px solid var(--border);
+  padding:16px;margin-bottom:10px;position:relative;
+  transition:border-color .2s;
+}
+.list-item:hover{border-color:var(--border2)}
+.list-item-header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.item-num{font-family:var(--font-mono);font-size:9px;color:var(--text3);letter-spacing:.1em;width:24px}
+.urgency-badge{padding:2px 8px;font-family:var(--font-mono);font-size:8px;letter-spacing:.1em;border:1px solid;cursor:pointer}
+.urgency-badge.HIGH{color:#FF6B35;border-color:rgba(255,107,53,.4);background:rgba(255,107,53,.08)}
+.urgency-badge.MED{color:#FFD700;border-color:rgba(255,215,0,.4);background:rgba(255,215,0,.08)}
+.urgency-badge.LOW{color:#00FFB2;border-color:rgba(0,255,178,.4);background:rgba(0,255,178,.08)}
+
+/* COLOR PICKER ROW */
+.color-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.color-chip{width:24px;height:24px;border:2px solid transparent;cursor:pointer;transition:transform .15s;border-radius:2px}
+.color-chip:hover{transform:scale(1.15)}
+.color-chip.selected{border-color:#fff;transform:scale(1.1)}
+
+/* SPARKLINE PREVIEW */
+.spark-preview{display:flex;align-items:flex-end;gap:4px;height:32px;margin-top:8px}
+.spark-bar{background:var(--cyan);opacity:.6;border-radius:1px;min-width:8px;transition:height .3s}
+
+/* TABS */
+.tabs{display:flex;gap:0;margin-bottom:24px;border-bottom:1px solid var(--border)}
+.tab{padding:10px 20px;font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;color:var(--text3);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .18s}
+.tab:hover{color:var(--text2)}
+.tab.active{color:var(--text);border-bottom-color:var(--red)}
+
+/* STATUS */
+.status-bar{
+  position:fixed;bottom:0;left:0;right:0;
+  background:rgba(1,6,18,.95);border-top:1px solid var(--border);
+  padding:8px 32px;display:flex;align-items:center;gap:16px;z-index:50;
+}
+.status-dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:blink 2s infinite}
+.status-txt{font-family:var(--font-mono);font-size:8.5px;color:var(--text3);letter-spacing:.15em}
+.status-time{margin-left:auto;font-family:var(--font-mono);font-size:8.5px;color:var(--text3);letter-spacing:.1em}
+
+/* PUBLISH PANEL */
+.publish-panel{background:rgba(0,255,178,.05);border:1px solid rgba(0,255,178,.15);padding:20px;margin-bottom:24px}
+.publish-title{font-size:13px;font-weight:700;color:var(--green);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.publish-sub{font-family:var(--font-mono);font-size:9px;color:rgba(0,255,178,.5);letter-spacing:.1em}
+
+/* ANIMATIONS */
+@keyframes flow{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.fade-in{animation:fadeIn .3s ease both}
+
+/* TOAST */
+.toast{
+  position:fixed;top:72px;right:24px;z-index:9999;
+  background:rgba(0,255,178,.12);border:1px solid var(--green);
+  padding:12px 20px;font-family:var(--font-mono);font-size:10px;color:var(--green);
+  letter-spacing:.12em;transform:translateX(120%);transition:transform .3s cubic-bezier(.16,1,.3,1);
+}
+.toast.show{transform:translateX(0)}
+</style>
+</head>
+<body>
+
+<!-- LOCK SCREEN -->
+<div id="lock">
+  <div class="lock-box">
+    <div class="lock-logo">CMS ADMIN</div>
+    <h1 class="lock-title">后台管理系统</h1>
+    <p class="lock-sub">STRATEGIC DASHBOARD · ACCESS CONTROL</p>
+    <input type="password" class="lock-field" id="pw-input" placeholder="输入访问密码" autocomplete="current-password"/>
+    <button class="lock-btn" onclick="tryLogin()">进入系统 →</button>
+    <div class="lock-err" id="lock-err"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- MAIN APP -->
+<div id="app">
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-brand">CMS</div>
+    <div class="topbar-badge">ADMIN MODE</div>
+    <div class="topbar-right">
+      <a class="preview-btn" href="/" target="_blank">↗ 预览网站</a>
+      <button class="save-btn" id="save-btn" onclick="saveAll()">
+        <span>💾</span> 保存并发布
+      </button>
+      <button class="logout-btn" onclick="logout()">退出</button>
+    </div>
+  </div>
+
+  <div class="layout">
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-label">页面模块</div>
+        <div class="nav-item active" onclick="showPage('macro')" id="nav-macro">
+          <span class="nav-dot" style="background:#00FFB2"></span> 宏观脉搏
+        </div>
+        <div class="nav-item" onclick="showPage('liquid')" id="nav-liquid">
+          <span class="nav-dot" style="background:#00C8FF"></span> AI 液冷
+        </div>
+        <div class="nav-item" onclick="showPage('semi')" id="nav-semi">
+          <span class="nav-dot" style="background:#22d3ee"></span> 半导体 SBU
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">系统</div>
+        <div class="nav-item" onclick="showPage('settings')" id="nav-settings">
+          <span class="nav-dot" style="background:#BF80FF"></span> 设置
+        </div>
+      </div>
+      <div class="meta-info">
+        <div class="meta-row"><span class="meta-key">最后更新</span><span class="meta-val" id="meta-date">—</span></div>
+        <div class="meta-row"><span class="meta-key">更新人</span><span class="meta-val" id="meta-author">—</span></div>
+        <div class="meta-row"><span class="meta-key">版本</span><span class="meta-val" id="meta-ver">—</span></div>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main" id="main-content"></div>
+  </div>
+
+  <!-- STATUS BAR -->
+  <div class="status-bar">
+    <span class="status-dot"></span>
+    <span class="status-txt">系统在线 · 所有更改实时保存到本地</span>
+    <span class="status-time" id="status-time"></span>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════
+//  "2026-02-28",
+    updatedBy: "Nicole",
+    version: "2.1"
+  },
+
+  // ── MACRO PAGE ───────────────────────────────────────────
+  macro: {
+    headline: "中国宏观脉搏",
+    subline: "基于"十五五"规划开局之年的精密流体市场环境分析",
+    period: "十五五规划开局年 / FY-2026",
+    summaryStats: [
+      { label: "综合景气度", value: "Expansionary" },
+      { label: "政策向量",   value: "Targeted Easing" },
+      { label: "外部压力指数", value: "Moderate" },
+      { label: "数字经济比重", value: "43.7%" }
+    ],
+    metrics: [
+      {
+        label: "GDP 增速", labelEn: "GDP GROWTH",
+        value: 5.0, unit: "%", trend: "+0.2%",
+        insight: "结构性增长优于规模扩张",
+        color: "#00FFB2",
+        sparkData: [4.6, 4.8, 5.0], years: ["2024","2025","2026E"],
+        note: "GDP 目标值 5.0% 来源于国家统计局公报及中金宏观研究团队预测。",
+        actions: [
+          { tag: "Q1", text: "完成重点晶圆客户年框合同续签，锁定 Q2–Q3 备货需求" },
+          { tag: "Q2", text: "联动液冷集成商预演 2026 扩容节点，提前部署冷却阀组样品" },
+          { tag: "H2", text: "布局生物医药园区本地化服务站，缩短响应链路至 48H" }
+        ]
+      },
+      {
+        label: "工业增加值", labelEn: "IND. VALUE ADD",
+        value: 6.2, unit: "%", trend: "↑ Upward",
+        insight: "新质生产力贡献率超 35%",
+        color: "#00C8FF",
+        sparkData: [5.1, 5.7, 6.2], years: ["2024","2025","2026E"],
+        note: "工业增加值数据来源于国家统计局月度数据，德勤白皮书提供数字化转型量化分析。",
+        actions: [
+          { tag: "立即", text: "梳理先进封装 TOP 15 客户，建立超纯水阀组专项产品组合" },
+          { tag: "Q2",  text: "与动力电池热管理集成商联合定义比例控制阀技术规格书" },
+          { tag: "Q3",  text: "在长三角/珠三角工业园区推进流体诊断服务包订阅模式试点" }
+        ]
+      },
+      {
+        label: "制造业固投", labelEn: "MFG. CAPEX",
+        value: 11.4, unit: "%", trend: "Stable",
+        insight: "数字化转型进入产线深水区",
+        color: "#FFD700",
+        sparkData: [9.2, 10.8, 11.4], years: ["2024","2025","2026E"],
+        note: "制造业固定资产投资数据引自国家统计局固投月报，麦肯锡报告提供行业拆解。",
+        actions: [
+          { tag: "战略", text: "建立制造业固投项目预警数据库，锁定 6 个月前采购决策窗口" },
+          { tag: "产品", text: "推出智能工厂流体控制套件（含 IO-Link 数字接口）" },
+          { tag: "渠道", text: "与系统集成商签署优先供应协议，覆盖华东/华南重点工业园区" }
+        ]
+      },
+      {
+        label: "出口增速", labelEn: "EXPORT GROWTH",
+        value: 4.8, unit: "%", trend: "Shift",
+        insight: "高附加值组件替代传统代工",
+        color: "#FF6B35",
+        sparkData: [5.9, 4.2, 4.8], years: ["2024","2025","2026E"],
+        note: "出口增速数据来源于商务部月度贸易统计，商务部研究院提供出口结构升级分析。",
+        actions: [
+          { tag: "品牌", text: "联合半导体设备商打造「洁净流体合规出口」联合解决方案白皮书" },
+          { tag: "服务", text: "在东南亚/中东布局本地化备件库，支持随主机出海的售后服务" },
+          { tag: "认证", text: "加速推进 SEMI F57/F19 认证体系，提升客户出口竞争力背书" }
+        ]
+      },
+      {
+        label: "PPI 走势", labelEn: "PPI TREND",
+        value: 1.2, unit: "%", trend: "Recovery",
+        insight: "中下游利润空间重构",
+        color: "#BF80FF",
+        sparkData: [-2.7, -0.8, 1.2], years: ["2024","2025","2026E"],
+        note: "PPI 数据来源于国家统计局价格统计司，中金宏观团队提供 PPI 回升路径预测。",
+        actions: [
+          { tag: "定价", text: "基于 PPI 回升重新校准产品定价策略，推出 ROI 可视化计算工具" },
+          { tag: "价值", text: "将「降耗增效」纳入核心销售话术，量化流体控制精度带来的节省数据" },
+          { tag: "时机", text: "把握利润修复窗口，推进存量客户设备升级与服务合同升级谈判" }
+        ]
+      }
+    ]
+  },
+
+  // ── LIQUID COOLING PAGE ──────────────────────────────────
+  liquid: {
+    headline: "AI Infrastructure",
+    subline: "算力密度突破物理极限，流体控制成为 AI 基础设施的关键变量",
+    eyebrow: "SBU · AI Infrastructure · Liquid Cooling",
+    marketRows: [
+      { label: "新建智算中心液冷渗透率", value: "45%",    note: "↑ +16pp vs 2025", color: "#00FFB2" },
+      { label: "国家级枢纽 PUE 准入",    value: "< 1.15", note: "法规强制执行",     color: "#00C8FF" },
+      { label: "CDU 市场规模 CAGR",     value: "47%",    note: "2024–2028E",      color: "#FFD700" }
+    ],
+    bodyText: "在 AI 算力集群（新一代 Blackwell 架构）功率密度突破 100kW/机柜背景下，流体控制的绝对可靠性已成为算力基建的「第一优先级」变量。",
+    roadmap: [
+      { year: "2026", title: "精密动态平衡", color: "#00FFB2", desc: "基于 AI 负载的毫秒级流量调节，响应延迟 <5ms" },
+      { year: "2027", title: "预测性维护",   color: "#00C8FF", desc: "自诊断执行器接入 DCIM，故障预警窗口达 72H" },
+      { year: "2028", title: "相变冷却突破", color: "#BF80FF", desc: "两相流高压气密控制，散热密度突破 300W/cm²" }
+    ],
+    swot: [
+      { tag: "ADVANTAGE",   zh: "核心优势", color: "#00FFB2", text: "基于全球领先的无泄漏（Zero-Leakage）密封技术，卡位高附加值二次侧流量均衡控制，替代壁垒极高。" },
+      { tag: "OPPORTUNITY", zh: "战略机遇", color: "#00C8FF", text: "AI 训练集群功率密度突破 100kW/机柜，CDU 出货量 CAGR 83%，精密流量控制窗口期在 2026–2027 完全打开。" },
+      { tag: "THREAT",      zh: "潜在威胁", color: "#FF6B35", text: "本土系统集成商自研低端零部件的「系统化替代」，需从单一零件销售转向系统模块化方案，缩短决策链路。" }
+    ]
+  },
+
+  // ── SEMICONDUCTOR PAGE ───────────────────────────────────
+  semiconductor: {
+    headline: "半导体 SBU",
+    subline: "先进制程 · 超高纯气路控制",
+    tagline: "AI 驱动产能扩张，精密流体需求激增",
+    stats: [
+      { label: "精密流体管控节点/线", value: "3,200+", color: "#22d3ee" },
+      { label: "晶圆厂固投增速",      value: "+21%",   color: "#22d3ee" },
+      { label: "超纯水用量 CAGR",     value: "18%",    color: "#22d3ee" },
+      { label: "景气度指数",           value: "9.2",    color: "#22d3ee" }
+    ],
+    specs: [
+      { label: "表面粗糙度 (RA)",   value: "< 0.1 μm",   bar: 96, unit: "PERFORMANCE RATING" },
+      { label: "气体泡漏率",         value: "1×10⁻¹²",   bar: 99, unit: "PERFORMANCE RATING" },
+      { label: "耐腐蚀介质",         value: "HF / H₂SO₄", bar: 88, unit: "COMPATIBILITY RATING" },
+      { label: "响应时间",           value: "< 50ms",     bar: 92, unit: "SPEED RATING" },
+      { label: "洁净等级",           value: "ISO Class 1", bar: 100, unit: "CLEANLINESS RATING" }
+    ],
+    actions: [
+      { quarter: "Q1 2026", title: "JDM 切入光刻机气路标准", urgency: "HIGH",
+        desc: "以 Joint Development Manufacturing 模式联合国内主流 DUV 光刻机厂商，共同制定超纯气路控制模块规格，锁定先发壁垒。" },
+      { quarter: "Q2 2026", title: "CoWoS 封装产线系统集成", urgency: "HIGH",
+        desc: "针对台积电/长电科技 CoWoS 产能扩张，推出化学品精密配送系统完整解决方案，目标单线配套额 ¥2,800 万+。" },
+      { quarter: "Q3 2026", title: "国产 12\" 晶圆厂批量导入", urgency: "MED",
+        desc: "锁定中芯国际、华虹半导体新增 12 英寸产线，推进超纯水回路精密流量阀组替换传统品牌的系统迁移方案。" },
+      { quarter: "H2 2026", title: "氢能源电解槽配套",       urgency: "MED",
+        desc: "将半导体级腐蚀介质控制能力横向移植至碱性电解槽 KOH 管路，打开氢能赛道增量入口。" }
+    ],
+    risks: [
+      { level: "HIGH",  label: "出口管制扩大", desc: "美国 BIS 规则可能进一步限制配套设备出口，需建立合规预警机制" },
+      { level: "MED",   label: "设备交期延误", desc: "主机设备延期传导至配套采购延迟，建议提前 9 个月锁定框架协议" },
+      { level: "LOW",   label: "国产替代提速", desc: "本土阀门厂商在低端品类持续渗透，需加速向高洁净度差异化品类迁移" }
+    ]
+  }
+};
+
+// ── STORAGE LAYER ─────────────────────────────────────────
+// Loads saved edits from localStorage, merges over defaults
+(function() {
+  try {
+    const saved = localStorage.getItem('burkert_data');
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      // Deep merge saved data over defaults
+      function deepMerge(target, source) {
+        for (const key of Object.keys(source)) {
+          if (source[key] && typeof source[key] === 'object' && !Array.isArray(source[key])) {
+            if (!target[key]) target[key] = {};
+            deepMerge(target[key], source[key]);
+          } else {
+            target[key] = source[key];
+          }
+        }
+        return target;
+      }
+      deepMerge(window.BURKERT_DATA, parsed);
+    }
+  } catch(e) {
+    console.warn('Could not load saved data:', e);
+  }
+})();
+
+</script>
+<script>
+/* ══ AUTH ══════════════════════════════════════════════ */
+const PASSWORDS = ['burkert2026', 'nicole888', 'admin2026'];  // 可在设置页修改
+
+function tryLogin() {
+  const val = document.getElementById('pw-input').value;
+  const stored = localStorage.getItem('burkert_passwords');
+  const validPws = stored ? JSON.parse(stored) : PASSWORDS;
+  if (validPws.includes(val)) {
+    localStorage.setItem('burkert_session', Date.now());
+    document.getElementById('lock').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    initApp();
+  } else {
+    const el = document.getElementById('pw-input');
+    el.classList.add('shake');
+    document.getElementById('lock-err').textContent = '密码错误，请重试';
+    setTimeout(()=>el.classList.remove('shake'), 400);
+    document.getElementById('pw-input').value = '';
+  }
+}
+document.getElementById('pw-input').addEventListener('keydown', e=>{ if(e.key==='Enter') tryLogin(); });
+
+// Check existing session (8h)
+document.addEventListener('DOMContentLoaded', function() {
+  if (localStorage.getItem('burkert_session') && Date.now() - parseInt(localStorage.getItem('burkert_session')) < 28800000) {
+    document.getElementById('lock').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    initApp();
+  }
+});
+
+function logout() {
+  localStorage.removeItem('burkert_session');
+  location.reload();
+}
+
+/* ══ INIT ══════════════════════════════════════════════ */
+const D = window.BURKERT_DATA;
+let currentPage = 'macro';
+
+function initApp() {
+  document.getElementById('meta-date').textContent = D.meta.lastUpdated;
+  document.getElementById('meta-author').textContent = D.meta.updatedBy;
+  document.getElementById('meta-ver').textContent = D.meta.version;
+  updateClock();
+  setInterval(updateClock, 1000);
+  showPage('macro');
+}
+
+function updateClock() {
+  const now = new Date();
+  document.getElementById('status-time').textContent =
+    now.toLocaleDateString('zh-CN') + ' ' + now.toLocaleTimeString('zh-CN', {hour:'2-digit',minute:'2-digit',second:'2-digit'});
+}
+
+/* ══ NAVIGATION ════════════════════════════════════════ */
+function showPage(page) {
+  currentPage = page;
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  const nav = document.getElementById('nav-' + (page==='semi'?'semi':page==='settings'?'settings':page));
+  if(nav) nav.classList.add('active');
+  const main = document.getElementById('main-content');
+  main.innerHTML = '';
+  main.classList.remove('fade-in');
+  void main.offsetWidth;
+  main.classList.add('fade-in');
+  if(page==='macro') renderMacro();
+  else if(page==='liquid') renderLiquid();
+  else if(page==='semi') renderSemi();
+  else if(page==='settings') renderSettings();
+}
+
+/* ══ COLOR PALETTE ═════════════════════════════════════ */
+const COLORS = ['#00FFB2','#00C8FF','#FFD700','#FF6B35','#BF80FF','#E30613','#22d3ee','#fff'];
+
+function colorPicker(current, onChange) {
+  const row = document.createElement('div');
+  row.className = 'color-row';
+  COLORS.forEach(c => {
+    const chip = document.createElement('div');
+    chip.className = 'color-chip' + (c===current?' selected':'');
+    chip.style.background = c;
+    chip.title = c;
+    chip.onclick = () => {
+      row.querySelectorAll('.color-chip').forEach(ch=>ch.classList.remove('selected'));
+      chip.classList.add('selected');
+      onChange(c);
+    };
+    row.appendChild(chip);
+  });
+  return row;
+}
+
+function field(label, value, onChange, tag='', type='text') {
+  const g = document.createElement('div');
+  g.className = 'field-group';
+  g.innerHTML = `<div class="field-label">${label}${tag?`<span class="tag">${tag}</span>`:''}</div>`;
+  const input = document.createElement(type==='textarea'?'textarea':'input');
+  if(type!=='textarea') input.type = type;
+  input.value = value;
+  if(type==='textarea') input.rows = 3;
+  input.style.cssText = type==='textarea'?'':'';
+  input.addEventListener('input', ()=>onChange(input.value));
+  g.appendChild(input);
+  return g;
+}
+
+/* ══ SAVE ══════════════════════════════════════════════ */
+function saveAll() {
+  D.meta.lastUpdated = new Date().toISOString().slice(0,10);
+  D.meta.version = (parseFloat(D.meta.version) + 0.1).toFixed(1);
+  localStorage.setItem('burkert_data', JSON.stringify(D));
+  document.getElementById('meta-date').textContent = D.meta.lastUpdated;
+  document.getElementById('meta-ver').textContent = D.meta.version;
+  const btn = document.getElementById('save-btn');
+  btn.classList.add('saved');
+  btn.innerHTML = '<span>✓</span> 已发布';
+  showToast('✓ 内容已保存，刷新主网站即可看到更新');
+  setTimeout(()=>{ btn.classList.remove('saved'); btn.innerHTML = '<span>💾</span> 保存并发布'; }, 3000);
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 3500);
+}
+
+/* ══ MACRO PAGE ════════════════════════════════════════ */
+function renderMacro() {
+  const main = document.getElementById('main-content');
+  const m = D.macro;
+
+  // Publish panel
+  main.insertAdjacentHTML('beforeend', `
+    <div class="publish-panel">
+      <div class="publish-title">⚡ 宏观脉搏模块</div>
+      <div class="publish-sub">MACRO PULSE · ${m.metrics.length} 个指标卡片 · ${m.summaryStats.length} 个摘要数据</div>
+    </div>
+  `);
+
+  // Header fields
+  const headerCard = document.createElement('div');
+  headerCard.className = 'card';
+  headerCard.innerHTML = `<div class="card-title">01 · 页面标题</div>`;
+  headerCard.appendChild(field('主标题', m.headline, v=>m.headline=v));
+  const g2 = document.createElement('div'); g2.className='grid-2';
+  const f1 = field('副标题', m.subline, v=>m.subline=v);
+  const f2 = field('期间标注', m.period, v=>m.period=v);
+  g2.appendChild(f1); g2.appendChild(f2);
+  headerCard.appendChild(g2);
+  main.appendChild(headerCard);
+
+  // Summary stats
+  const statsCard = document.createElement('div');
+  statsCard.className = 'card';
+  statsCard.innerHTML = `<div class="card-title">02 · 摘要统计条</div>`;
+  const sg = document.createElement('div'); sg.className='grid-2';
+  m.summaryStats.forEach((s,i) => {
+    const item = document.createElement('div');
+    item.appendChild(field(`标签 ${i+1}`, s.label, v=>s.label=v));
+    item.appendChild(field(`数值 ${i+1}`, s.value, v=>s.value=v));
+    sg.appendChild(item);
+  });
+  statsCard.appendChild(sg);
+  main.appendChild(statsCard);
+
+  // Metrics
+  const metricsCard = document.createElement('div');
+  metricsCard.className = 'card';
+  metricsCard.innerHTML = `<div class="card-title">03 · 指标卡片</div>`;
+
+  const tabs = document.createElement('div'); tabs.className='tabs';
+  const panels = [];
+  m.metrics.forEach((mt,i) => {
+    const tab = document.createElement('div');
+    tab.className = 'tab' + (i===0?' active':'');
+    tab.textContent = mt.label;
+    tab.onclick = () => {
+      tabs.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+      tab.classList.add('active');
+      panels.forEach((p,pi)=>p.style.display=pi===i?'block':'none');
+    };
+    tabs.appendChild(tab);
+
+    const panel = document.createElement('div');
+    panel.style.display = i===0?'block':'none';
+    const pg = document.createElement('div'); pg.className='grid-2';
+
+    const left = document.createElement('div');
+    left.appendChild(field('中文标签', mt.label, v=>{ mt.label=v; tab.textContent=v; }));
+    left.appendChild(field('英文标签', mt.labelEn, v=>mt.labelEn=v));
+    left.appendChild(field('洞察文字', mt.insight, v=>mt.insight=v));
+    left.appendChild(field('趋势文字', mt.trend, v=>mt.trend=v));
+    left.appendChild(field('数据来源注释', mt.note, v=>mt.note=v, '', 'textarea'));
+    pg.appendChild(left);
+
+    const right = document.createElement('div');
+    // Value + sparkline
+    const vg = document.createElement('div'); vg.className='grid-3';
+    [['当前值',mt.value,v=>{mt.value=parseFloat(v)||0},'number'],
+     ['2024',mt.sparkData[0],v=>{mt.sparkData[0]=parseFloat(v)||0},'number'],
+     ['2025',mt.sparkData[1],v=>{mt.sparkData[1]=parseFloat(v)||0},'number']
+    ].forEach(([l,v,fn,t])=>{ vg.appendChild(field(l,v,fn,'',t)); });
+    right.appendChild(vg);
+    right.insertAdjacentHTML('beforeend','<div class="field-label" style="margin-top:12px">颜色</div>');
+    right.appendChild(colorPicker(mt.color, v=>mt.color=v));
+
+    // Actions
+    right.insertAdjacentHTML('beforeend','<div class="field-label" style="margin-top:16px">行动建议</div>');
+    mt.actions.forEach((a,ai) => {
+      const ar = document.createElement('div');
+      ar.className='list-item';
+      ar.innerHTML=`<div class="list-item-header"><span class="item-num">${ai+1}</span></div>`;
+      const ig = document.createElement('div'); ig.className='grid-2';
+      ig.appendChild(field('时间节点', a.tag, v=>a.tag=v));
+      ig.appendChild(field('行动内容', a.text, v=>a.text=v, '', 'textarea'));
+      ar.appendChild(ig);
+      right.appendChild(ar);
+    });
+    pg.appendChild(right);
+    panel.appendChild(pg);
+    panels.push(panel);
+  });
+  metricsCard.appendChild(tabs);
+  panels.forEach(p=>metricsCard.appendChild(p));
+  main.appendChild(metricsCard);
+}
+
+/* ══ LIQUID PAGE ═══════════════════════════════════════ */
+function renderLiquid() {
+  const main = document.getElementById('main-content');
+  const lq = D.liquid;
+
+  main.insertAdjacentHTML('beforeend', `
+    <div class="publish-panel">
+      <div class="publish-title" style="color:#00C8FF">💧 AI 液冷模块</div>
+      <div class="publish-sub" style="color:rgba(0,200,255,.5)">LIQUID COOLING · ${lq.marketRows.length} 市场数据 · ${lq.roadmap.length} 路线节点 · ${lq.swot.length} SWOT 项</div>
+    </div>
+  `);
+
+  // Header
+  const hc = document.createElement('div'); hc.className='card';
+  hc.innerHTML='<div class="card-title">01 · 页面标题</div>';
+  hc.appendChild(field('主标题', lq.headline, v=>lq.headline=v));
+  hc.appendChild(field('副标题', lq.subline, v=>lq.subline=v));
+  hc.appendChild(field('正文段落', lq.bodyText, v=>lq.bodyText=v, '', 'textarea'));
+  main.appendChild(hc);
+
+  // Market rows
+  const mc = document.createElement('div'); mc.className='card';
+  mc.innerHTML='<div class="card-title">02 · 市场动态数据</div>';
+  lq.marketRows.forEach((r,i) => {
+    const li = document.createElement('div'); li.className='list-item';
+    li.innerHTML=`<div class="list-item-header"><span class="item-num">0${i+1}</span></div>`;
+    const g = document.createElement('div'); g.className='grid-3';
+    g.appendChild(field('标签', r.label, v=>r.label=v));
+    g.appendChild(field('数值', r.value, v=>r.value=v));
+    g.appendChild(field('备注', r.note, v=>r.note=v));
+    li.appendChild(g);
+    li.insertAdjacentHTML('beforeend','<div class="field-label" style="margin-top:10px">颜色</div>');
+    li.appendChild(colorPicker(r.color, v=>r.color=v));
+    mc.appendChild(li);
+  });
+  main.appendChild(mc);
+
+  // Roadmap
+  const rc = document.createElement('div'); rc.className='card';
+  rc.innerHTML='<div class="card-title">03 · 技术路线图</div>';
+  lq.roadmap.forEach((r,i) => {
+    const li = document.createElement('div'); li.className='list-item';
+    li.innerHTML=`<div class="list-item-header"><span class="item-num">0${i+1}</span></div>`;
+    const g = document.createElement('div'); g.className='grid-3';
+    g.appendChild(field('年份', r.year, v=>r.year=v));
+    g.appendChild(field('标题', r.title, v=>r.title=v));
+    g.appendChild(field('描述', r.desc, v=>r.desc=v));
+    li.appendChild(g);
+    li.insertAdjacentHTML('beforeend','<div class="field-label" style="margin-top:10px">颜色</div>');
+    li.appendChild(colorPicker(r.color, v=>r.color=v));
+    rc.appendChild(li);
+  });
+  main.appendChild(rc);
+
+  // SWOT
+  const sc = document.createElement('div'); sc.className='card';
+  sc.innerHTML='<div class="card-title">04 · 战略 SWOT</div>';
+  lq.swot.forEach((s,i) => {
+    const li = document.createElement('div'); li.className='list-item';
+    li.innerHTML=`<div class="list-item-header"><span class="item-num">0${i+1}</span><span class="urgency-badge ${s.tag}">${s.tag}</span></div>`;
+    const g = document.createElement('div'); g.className='grid-2';
+    g.appendChild(field('标签', s.tag, v=>s.tag=v));
+    g.appendChild(field('中文名', s.zh, v=>s.zh=v));
+    sc.appendChild(li);
+    li.appendChild(g);
+    li.appendChild(field('描述内容', s.text, v=>s.text=v, '', 'textarea'));
+    li.insertAdjacentHTML('beforeend','<div class="field-label" style="margin-top:10px">颜色</div>');
+    li.appendChild(colorPicker(s.color, v=>s.color=v));
+  });
+  main.appendChild(sc);
+}
+
+/* ══ SEMICONDUCTOR PAGE ════════════════════════════════ */
+function renderSemi() {
+  const main = document.getElementById('main-content');
+  const sm = D.semiconductor;
+
+  main.insertAdjacentHTML('beforeend', `
+    <div class="publish-panel" style="background:rgba(34,211,238,.05);border-color:rgba(34,211,238,.2)">
+      <div class="publish-title" style="color:#22d3ee">⬡ 半导体 SBU 模块</div>
+      <div class="publish-sub" style="color:rgba(34,211,238,.5)">SEMICONDUCTOR · ${sm.specs.length} 技术指标 · ${sm.actions.length} 战略行动 · ${sm.risks.length} 风险项</div>
+    </div>
+  `);
+
+  // Header
+  const hc = document.createElement('div'); hc.className='card';
+  hc.innerHTML='<div class="card-title">01 · 页面标题</div>';
+  const hg = document.createElement('div'); hg.className='grid-2';
+  hg.appendChild(field('主标题', sm.headline, v=>sm.headline=v));
+  hg.appendChild(field('副标题', sm.subline, v=>sm.subline=v));
+  hc.appendChild(hg);
+  hc.appendChild(field('标语', sm.tagline, v=>sm.tagline=v));
+  main.appendChild(hc);
+
+  // Stats
+  const stc = document.createElement('div'); stc.className='card';
+  stc.innerHTML='<div class="card-title">02 · 核心数据</div>';
+  const sg = document.createElement('div'); sg.className='grid-2';
+  sm.stats.forEach((s,i) => {
+    const item = document.createElement('div'); item.className='list-item';
+    item.appendChild(field(`标签 ${i+1}`, s.label, v=>s.label=v));
+    item.appendChild(field(`数值 ${i+1}`, s.value, v=>s.value=v));
+    sg.appendChild(item);
+  });
+  stc.appendChild(sg);
+  main.appendChild(stc);
+
+  // Specs
+  const spc = document.createElement('div'); spc.className='card';
+  spc.innerHTML='<div class="card-title">03 · 技术规格</div>';
+  sm.specs.forEach((s,i) => {
+    const li = document.createElement('div'); li.className='list-item';
+    li.innerHTML=`<div class="list-item-header"><span class="item-num">0${i+1}</span></div>`;
+    const g = document.createElement('div'); g.className='grid-3';
+    g.appendChild(field('规格名', s.label, v=>s.label=v));
+    g.appendChild(field('显示值', s.value, v=>s.value=v));
+    const barWrap = document.createElement('div');
+    barWrap.innerHTML=`<div class="field-label">评分 <span class="range-val" id="rv${i}">${s.bar}%</span></div>`;
+    const rng = document.createElement('input'); rng.type='range'; rng.min=0; rng.max=100; rng.value=s.bar;
+    rng.oninput = ()=>{ s.bar=parseInt(rng.value); document.getElementById(`rv${i}`).textContent=rng.value+'%'; };
+    barWrap.appendChild(rng);
+    g.appendChild(barWrap);
+    li.appendChild(g);
+    spc.appendChild(li);
+  });
+  main.appendChild(spc);
+
+  // Actions
+  const ac = document.createElement('div'); ac.className='card';
+  ac.innerHTML='<div class="card-title">04 · 战略行动路线</div>';
+  sm.actions.forEach((a,i) => {
+    const li = document.createElement('div'); li.className='list-item';
+    const urgencies = ['HIGH','MED','LOW'];
+    let ui = urgencies.indexOf(a.urgency);
+    const badge = document.createElement('span');
+    badge.className=`urgency-badge ${a.urgency}`;
+    badge.textContent=a.urgency;
+    badge.title='点击切换';
+    badge.onclick=()=>{ ui=(ui+1)%3; a.urgency=urgencies[ui]; badge.className=`urgency-badge ${a.urgency}`; badge.textContent=a.urgency; };
+    li.innerHTML=`<div class="list-item-header"><span class="item-num">0${i+1}</span></div>`;
+    li.querySelector('.list-item-header').appendChild(badge);
+    const g = document.createElement('div'); g.className='grid-2';
+    g.appendChild(field('季度', a.quarter, v=>a.quarter=v));
+    g.appendChild(field('行动标题', a.title, v=>a.title=v));
+    li.appendChild(g);
+    li.appendChild(field('详细描述', a.desc, v=>a.desc=v, '', 'textarea'));
+    ac.appendChild(li);
+  });
+  main.appendChild(ac);
+
+  // Risks
+  const rc = document.createElement('div'); rc.className='card';
+  rc.innerHTML='<div class="card-title">05 · 风险矩阵</div>';
+  sm.risks.forEach((r,i) => {
+    const li = document.createElement('div'); li.className='list-item';
+    const urgencies = ['HIGH','MED','LOW'];
+    let ui = urgencies.indexOf(r.level);
+    const badge = document.createElement('span');
+    badge.className=`urgency-badge ${r.level}`;
+    badge.textContent=r.level;
+    badge.onclick=()=>{ ui=(ui+1)%3; r.level=urgencies[ui]; badge.className=`urgency-badge ${r.level}`; badge.textContent=r.level; };
+    li.innerHTML=`<div class="list-item-header"><span class="item-num">0${i+1}</span></div>`;
+    li.querySelector('.list-item-header').appendChild(badge);
+    const g = document.createElement('div'); g.className='grid-2';
+    g.appendChild(field('风险名称', r.label, v=>r.label=v));
+    g.appendChild(field('风险描述', r.desc, v=>r.desc=v, '', 'textarea'));
+    li.appendChild(g);
+    rc.appendChild(li);
+  });
+  main.appendChild(rc);
+}
+
+/* ══ SETTINGS PAGE ═════════════════════════════════════ */
+function renderSettings() {
+  const main = document.getElementById('main-content');
+  main.innerHTML = `
+    <div class="section-header">
+      <div class="section-title">系统设置</div>
+      <div class="section-sub">SYSTEM CONFIGURATION</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">01 · 密码管理</div>
+      <div class="field-group">
+        <div class="field-label">当前密码列表（每行一个）</div>
+        <textarea id="pw-list" rows="4" style="width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:12px;padding:10px 14px;outline:none;resize:vertical"></textarea>
+      </div>
+      <button onclick="savePw()" style="padding:10px 20px;background:var(--red);border:none;color:#fff;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.15em;cursor:pointer">保存密码</button>
+    </div>
+
+    <div class="card">
+      <div class="card-title">02 · 作者信息</div>
+      <div class="grid-2">
+        <div class="field-group">
+          <div class="field-label">更新人姓名</div>
+          <input type="text" id="author-name" value="${D.meta.updatedBy}" style="width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:12px;padding:10px 14px;outline:none"/>
+        </div>
+        <div class="field-group">
+          <div class="field-label">版本号</div>
+          <input type="text" id="ver-num" value="${D.meta.version}" style="width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:12px;padding:10px 14px;outline:none"/>
+        </div>
+      </div>
+      <button onclick="saveMeta()" style="padding:10px 20px;background:rgba(0,255,178,.1);border:1px solid rgba(0,255,178,.3);color:var(--green);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.15em;cursor:pointer;margin-top:8px">保存信息</button>
+    </div>
+
+    <div class="card" style="border-color:rgba(255,107,53,.2)">
+      <div class="card-title">03 · 危险操作</div>
+      <button onclick="resetAll()" style="padding:10px 20px;background:transparent;border:1px solid rgba(255,107,53,.4);color:#FF6B35;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.15em;cursor:pointer">⚠ 重置所有内容到默认值</button>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:rgba(255,255,255,.2);margin-top:10px;letter-spacing:.08em">此操作不可撤销，将清除所有已保存的编辑内容</p>
+    </div>
+  `;
+
+  // Load current passwords
+  const stored = localStorage.getItem('burkert_passwords');
+  const pws = stored ? JSON.parse(stored) : PASSWORDS;
+  document.getElementById('pw-list').value = pws.join('\n');
+}
+
+function savePw() {
+  const pws = document.getElementById('pw-list').value.split('\n').map(p=>p.trim()).filter(Boolean);
+  localStorage.setItem('burkert_passwords', JSON.stringify(pws));
+  showToast('✓ 密码已更新');
+}
+
+function saveMeta() {
+  D.meta.updatedBy = document.getElementById('author-name').value;
+  D.meta.version = document.getElementById('ver-num').value;
+  saveAll();
+}
+
+function resetAll() {
+  if(confirm('确定要重置所有内容吗？此操作不可撤销。')) {
+    localStorage.removeItem('burkert_data');
+    showToast('⚠ 已重置，请刷新页面');
+    setTimeout(()=>location.reload(), 1500);
+  }
+}
+</script>
+</body>
+</html>
