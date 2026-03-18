@@ -1,10 +1,10 @@
 // ═══════════════════════════════════════════════════════════
-//  BÜRKERT STRATEGIC DASHBOARD — CENTRAL DATA STORE
+//  STRATEGIC DASHBOARD — CENTRAL DATA STORE
 //  Edit this file OR use /admin to update content visually
 //  Last structure update: 2026-02
 // ═══════════════════════════════════════════════════════════
 
-window.BURKERT_DATA = {
+window.MARKET_DATA = {
   meta: {
     lastUpdated: "2026-02-28",
     updatedBy: "Nicole",
@@ -115,63 +115,4 @@ window.BURKERT_DATA = {
   },
 
   // ── SEMICONDUCTOR PAGE ───────────────────────────────────
-  semiconductor: {
-    headline: "半导体 SBU",
-    subline: "先进制程 · 超高纯气路控制",
-    tagline: "AI 驱动产能扩张，精密流体需求激增",
-    stats: [
-      { label: "精密流体管控节点/线", value: "3,200+", color: "#22d3ee" },
-      { label: "晶圆厂固投增速",      value: "+21%",   color: "#22d3ee" },
-      { label: "超纯水用量 CAGR",     value: "18%",    color: "#22d3ee" },
-      { label: "景气度指数",           value: "9.2",    color: "#22d3ee" }
-    ],
-    specs: [
-      { label: "表面粗糙度 (RA)",   value: "< 0.1 μm",   bar: 96, unit: "PERFORMANCE RATING" },
-      { label: "气体泡漏率",         value: "1×10⁻¹²",   bar: 99, unit: "PERFORMANCE RATING" },
-      { label: "耐腐蚀介质",         value: "HF / H₂SO₄", bar: 88, unit: "COMPATIBILITY RATING" },
-      { label: "响应时间",           value: "< 50ms",     bar: 92, unit: "SPEED RATING" },
-      { label: "洁净等级",           value: "ISO Class 1", bar: 100, unit: "CLEANLINESS RATING" }
-    ],
-    actions: [
-      { quarter: "Q1 2026", title: "JDM 切入光刻机气路标准", urgency: "HIGH",
-        desc: "以 Joint Development Manufacturing 模式联合国内主流 DUV 光刻机厂商，共同制定超纯气路控制模块规格，锁定先发壁垒。" },
-      { quarter: "Q2 2026", title: "CoWoS 封装产线系统集成", urgency: "HIGH",
-        desc: "针对台积电/长电科技 CoWoS 产能扩张，推出化学品精密配送系统完整解决方案，目标单线配套额 ¥2,800 万+。" },
-      { quarter: "Q3 2026", title: "国产 12\" 晶圆厂批量导入", urgency: "MED",
-        desc: "锁定中芯国际、华虹半导体新增 12 英寸产线，推进超纯水回路精密流量阀组替换传统品牌的系统迁移方案。" },
-      { quarter: "H2 2026", title: "氢能源电解槽配套",       urgency: "MED",
-        desc: "将半导体级腐蚀介质控制能力横向移植至碱性电解槽 KOH 管路，打开氢能赛道增量入口。" }
-    ],
-    risks: [
-      { level: "HIGH",  label: "出口管制扩大", desc: "美国 BIS 规则可能进一步限制配套设备出口，需建立合规预警机制" },
-      { level: "MED",   label: "设备交期延误", desc: "主机设备延期传导至配套采购延迟，建议提前 9 个月锁定框架协议" },
-      { level: "LOW",   label: "国产替代提速", desc: "本土阀门厂商在低端品类持续渗透，需加速向高洁净度差异化品类迁移" }
-    ]
-  }
-};
-
-// ── STORAGE LAYER ─────────────────────────────────────────
-// Loads saved edits from localStorage, merges over defaults
-(function() {
-  try {
-    const saved = localStorage.getItem('burkert_data');
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      // Deep merge saved data over defaults
-      function deepMerge(target, source) {
-        for (const key of Object.keys(source)) {
-          if (source[key] && typeof source[key] === 'object' && !Array.isArray(source[key])) {
-            if (!target[key]) target[key] = {};
-            deepMerge(target[key], source[key]);
-          } else {
-            target[key] = source[key];
-          }
-        }
-        return target;
-      }
-      deepMerge(window.BURKERT_DATA, parsed);
-    }
-  } catch(e) {
-    console.warn('Could not load saved data:', e);
-  }
-})();
+  semicon
