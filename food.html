@@ -256,9 +256,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--display);min-heigh
   </div>
 </nav>
 
-<button id="toc-btn" onclick="tocToggle()" title="目录">☰</button>
-<div id="toc-panel" style="display:none">
-  <div id="toc-head"><span>目录</span><button onclick="tocToggle()">×</button></div>
   <a class="ti" href="#s01"><span>01</span><span>行业全景</span></a>
   <a class="ti" href="#s02"><span>02</span><span>设备产业链</span></a>
   <a class="ti" href="#s03"><span>03</span><span>竞争情报</span></a>
@@ -968,5 +965,8 @@ function _at(){let c=_SI[0];_SI.forEach(id=>{const e=document.getElementById(id)
 window.addEventListener('scroll',_at,{passive:true});_at();
 
 </script>
+<button id="toc-btn" onclick="tocToggle()" title="目录">☰</button>
+<div id="toc-panel">
+  <div id="toc-head"><span>目录</span><button onclick="tocToggle()">×</button></div>
 </body>
 </html>
