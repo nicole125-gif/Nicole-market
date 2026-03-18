@@ -80,7 +80,7 @@ def summarize_with_minimax(raw_items):
         max_tokens=2000,
         messages=[{"role": "user", "content": prompt}],
     )
-    raw_json = message.content[0].text.strip()
+    raw_json = next(b.text for b in message.content if b.type == "text").strip()
     raw_json = re.sub(r"^```json\s*", "", raw_json)
     raw_json = re.sub(r"\s*```$", "", raw_json)
     return json.loads(raw_json)
