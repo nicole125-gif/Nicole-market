@@ -25,7 +25,7 @@ window.MARKET_DATA = {
     metrics: [
       {
         label: "GDP 增速", labelEn: "GDP GROWTH",
-        value: 5.0, unit: "%", trend: "+0.2%",
+        value: 5.0, unit: "%", trend: "↑",
         insight: "结构性增长优于规模扩张",
         color: "#00FFB2",
         sparkData: [4.6, 4.8, 5.0], years: ["2024","2025","2026E"],
@@ -38,7 +38,7 @@ window.MARKET_DATA = {
       },
       {
         label: "工业增加值", labelEn: "IND. VALUE ADD",
-        value: 6.3, unit: "%", trend: "↑ Upward",
+        value: 6.3, unit: "%", trend: "↑",
         insight: "新质生产力贡献率超 35%",
         color: "#00C8FF",
         sparkData: [5.1, 5.7, 6.3], years: ["2024","2025","2026E"],
@@ -51,7 +51,7 @@ window.MARKET_DATA = {
       },
       {
         label: "制造业固投", labelEn: "MFG. CAPEX",
-        value: 11.4, unit: "%", trend: "Stable",
+        value: 11.4, unit: "%", trend: "↑",
         insight: "数字化转型进入产线深水区",
         color: "#FFD700",
         sparkData: [9.2, 10.8, 11.4], years: ["2024","2025","2026E"],
@@ -64,7 +64,7 @@ window.MARKET_DATA = {
       },
       {
         label: "出口增速", labelEn: "EXPORT GROWTH",
-        value: 21.8, unit: "%", trend: "↑ Sharp Increase",
+        value: 21.8, unit: "%", trend: "→",
         insight: "高附加值组件替代传统代工",
         color: "#FF6B35",
         sparkData: [5.9, 4.2, 4.8], years: ["2024","2025","2026E"],
@@ -77,7 +77,7 @@ window.MARKET_DATA = {
       },
       {
         label: "PPI 走势", labelEn: "PPI TREND",
-        value: 1.2, unit: "%", trend: "Recovery",
+        value: 1.2, unit: "%", trend: "→",
         insight: "中下游利润空间重构",
         color: "#BF80FF",
         sparkData: [-2.7, -0.8, 1.2], years: ["2024","2025","2026E"],
