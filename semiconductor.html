@@ -694,7 +694,10 @@ document.querySelectorAll('.ti').forEach(function(a){
   a.addEventListener('click',function(e){
     e.preventDefault();
     var el=document.getElementById(a.getAttribute('href').slice(1));
-    if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+    if(el){
+      var offset = el.getBoundingClientRect().top + window.pageYOffset - 72;
+      window.scrollTo({top: offset, behavior: 'smooth'});
+    }
     tocToggle();
   });
 });
