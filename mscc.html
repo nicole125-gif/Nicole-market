@@ -936,8 +936,9 @@ reveals.forEach(r => observer.observe(r));
 
 function tocToggle(){
   const p=document.getElementById('toc-panel'),b=document.getElementById('toc-btn');
+  if(p.style.display==='none') p.style.display='';
   const o=p.classList.toggle('open');
-  b.style.opacity=o?'0':'1';b.style.pointerEvents=o?'none':'auto';
+  b.style.cssText=o?"opacity:0;pointer-events:none":"opacity:1;pointer-events:auto";
 }
 document.querySelectorAll('.ti').forEach(a=>{
   a.addEventListener('click',e=>{

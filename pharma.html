@@ -285,7 +285,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--display);min-heigh
   <a class="ti" href="#s09"><span>09</span><span>核心结论</span></a>
 </div>
 <button id="toc-btn" onclick="tocToggle()" title="目录">☰</button>
-<div id="toc-panel">
+<div id="toc-panel" style="display:none">
   <div id="toc-head"><span>目录</span><button onclick="tocToggle()">×</button></div>
   <a class="ti" href="#s01"><span>01</span><span>市场规模与增长趋势</span></a>
   <a class="ti" href="#s02"><span>02</span><span>竞争格局与龙头分析</span></a>
@@ -939,8 +939,9 @@ reveals.forEach(r => observer.observe(r));
 
 function tocToggle(){
   const p=document.getElementById('toc-panel'),b=document.getElementById('toc-btn');
+  if(p.style.display==='none') p.style.display='';
   const o=p.classList.toggle('open');
-  b.style.opacity=o?'0':'1';b.style.pointerEvents=o?'none':'auto';
+  b.style.cssText=o?"opacity:0;pointer-events:none":"opacity:1;pointer-events:auto";
 }
 document.querySelectorAll('.ti').forEach(a=>{
   a.addEventListener('click',e=>{
