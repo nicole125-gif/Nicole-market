@@ -25,7 +25,7 @@ jobs:
 
       - name: Run update script
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
         run: python scripts/update_news.py
 
       - name: Commit and push if changed
