@@ -140,8 +140,10 @@ def collect_raw_items():
 
 def summarize_with_claude(raw_items):
     """把原始条目列表送给 Claude，返回精选后的10条结构化摘要"""
-    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
-
+client = anthropic.Anthropic(
+    api_key=os.environ["MINIMAX_API_KEY"],
+    base_url="https://api.minimaxi.com/anthropic"
+)
     items_text = "\n\n".join([
         f"来源：{i['source']}\n标题：{i['title']}\n内容：{i['summary'][:300]}\n链接：{i['link']}"
         for i in raw_items
@@ -176,7 +178,7 @@ def summarize_with_claude(raw_items):
 """
 
     message = client.messages.create(
-        model="claude-sonnet-4-20250514",
+        model="MiniMax-M2.5",
         max_tokens=2000,
         messages=[{"role": "user", "content": prompt}],
     )
