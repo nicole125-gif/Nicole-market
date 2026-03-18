@@ -3,113 +3,53 @@ import re
 import json
 import datetime
 import feedparser
+import requests
 import anthropic
 
 # ── 子赛道配置 ─────────────────────────────────────────────
 TRACKS = [
-    {
-        "id": "EI·液冷数据中心",
-        "board": "EI",
-        "keywords": ["AI液冷数据中心 CDU冷板", "液冷渗透率 数据中心", "AI基础设施 液冷设备"],
-    },
-    {
-        "id": "EI·半导体设备国产化",
-        "board": "EI",
-        "keywords": ["半导体设备国产化 北方华创", "晶圆厂扩产 设备投资", "DRAM 半导体涨价"],
-    },
-    {
-        "id": "EI·绿氢电解槽",
-        "board": "EI",
-        "keywords": ["PEM电解槽 绿氢", "氢能 电解槽招标", "质子交换膜 氢能设备"],
-    },
-    {
-        "id": "EI·燃料电池",
-        "board": "EI",
-        "keywords": ["燃料电池 FCEV重卡", "氢燃料电池 销量", "燃料电池补贴政策"],
-    },
-    {
-        "id": "GI·锂电设备",
-        "board": "GI",
-        "keywords": ["锂电设备 宁德时代 CATL", "锂电池产能扩张 设备订单", "先导智能 赢合科技"],
-    },
-    {
-        "id": "P&B·生物药出海",
-        "board": "P&B",
-        "keywords": ["创新药 License-out BD交易", "司美格鲁肽 GLP-1 CDMO", "生物药出海 ADC"],
-    },
-    {
-        "id": "P&B·合成生物学",
-        "board": "P&B",
-        "keywords": ["合成生物学 中试车间", "华恒生物 凯赛生物 发酵罐", "合成生物学 十五五"],
-    },
-    {
-        "id": "P&B·生物药融资",
-        "board": "P&B",
-        "keywords": ["生物医药投融资 一级市场", "创新药融资 生物科技"],
-    },
-    {
-        "id": "P&B·制药装备Capex",
-        "board": "P&B",
-        "keywords": ["医药制造业固定资产投资 FAI", "制药装备 资本支出", "医药FAI 国家统计局"],
-    },
-    {
-        "id": "P&B·CDMO",
-        "board": "P&B",
-        "keywords": ["CDMO 药明康德 凯莱英", "TIDES ADC CDMO订单", "CDMO询单 多肽原料药"],
-    },
-    {
-        "id": "L&M·质谱色谱仪器",
-        "board": "L&M",
-        "keywords": ["质谱仪 国产替代 禾信谱育", "色谱仪器 进口替代", "分析仪器 国产化率"],
-    },
-    {
-        "id": "L&M·基因测序",
-        "board": "L&M",
-        "keywords": ["基因测序 华大智造 因美纳", "测序仪 国产替代", "WGS 肿瘤早检 测序"],
-    },
-    {
-        "id": "L&M·医疗IVD",
-        "board": "L&M",
-        "keywords": ["IVD体外诊断 集采降价", "化学发光 国产化率", "医疗IVD 市场规模"],
-    },
-    {
-        "id": "F&B·食品制造FAI",
-        "board": "F&B",
-        "keywords": ["食品制造业 固定资产投资", "食品装备 预制菜 产线", "食品制造FAI 统计局"],
-    },
-    {
-        "id": "F&B·酒饮料制造FAI",
-        "board": "F&B",
-        "keywords": ["酒饮料制造 固定资产投资", "白酒产能 碳酸饮料 投资", "饮料制造FAI"],
-    },
-    {
-        "id": "F&B·食品饮料消费",
-        "board": "F&B",
-        "keywords": ["食品饮料 消费数据 零售", "春节消费 年货 餐饮", "功能饮品 无糖茶 消费"],
-    },
-    {
-        "id": "F&B·食品添加剂",
-        "board": "F&B",
-        "keywords": ["食品添加剂 合成生物学 发酵", "天然甜味剂 益生菌 扩产", "功能性食品成分 市场"],
-    },
-    {
-        "id": "Macro·制造业PMI",
-        "board": "Macro",
-        "keywords": ["中国制造业PMI 官方 财新", "PMI 制造业景气指数"],
-    },
-    {
-        "id": "Macro·M2社融CPIPPI",
-        "board": "Macro",
-        "keywords": ["中国M2 社融 货币政策", "CPI PPI 通胀 价格指数"],
-    },
-    {
-        "id": "Macro·投资工业增加值",
-        "board": "Macro",
-        "keywords": ["固定资产投资 工业增加值 统计局", "制造业FAI 规上工业增加值"],
-    },
+    {"id": "EI·液冷数据中心", "board": "EI",
+     "keywords": ["AI液冷数据中心 CDU冷板", "液冷渗透率 数据中心", "AI基础设施 液冷设备"]},
+    {"id": "EI·半导体设备国产化", "board": "EI",
+     "keywords": ["半导体设备国产化 北方华创", "晶圆厂扩产 设备投资", "DRAM 半导体涨价"]},
+    {"id": "EI·绿氢电解槽", "board": "EI",
+     "keywords": ["PEM电解槽 绿氢", "氢能 电解槽招标", "质子交换膜 氢能设备"]},
+    {"id": "EI·燃料电池", "board": "EI",
+     "keywords": ["燃料电池 FCEV重卡", "氢燃料电池 销量", "燃料电池补贴政策"]},
+    {"id": "GI·锂电设备", "board": "GI",
+     "keywords": ["锂电设备 宁德时代 CATL", "锂电池产能扩张 设备订单", "先导智能 赢合科技"]},
+    {"id": "P&B·生物药出海", "board": "P&B",
+     "keywords": ["创新药 License-out BD交易", "司美格鲁肽 GLP-1 CDMO", "生物药出海 ADC"]},
+    {"id": "P&B·合成生物学", "board": "P&B",
+     "keywords": ["合成生物学 中试车间", "华恒生物 凯赛生物 发酵罐", "合成生物学 十五五"]},
+    {"id": "P&B·生物药融资", "board": "P&B",
+     "keywords": ["生物医药投融资 一级市场", "创新药融资 生物科技"]},
+    {"id": "P&B·制药装备Capex", "board": "P&B",
+     "keywords": ["医药制造业固定资产投资 FAI", "制药装备 资本支出", "医药FAI 国家统计局"]},
+    {"id": "P&B·CDMO", "board": "P&B",
+     "keywords": ["CDMO 药明康德 凯莱英", "TIDES ADC CDMO订单", "CDMO询单 多肽原料药"]},
+    {"id": "L&M·质谱色谱仪器", "board": "L&M",
+     "keywords": ["质谱仪 国产替代 禾信谱育", "色谱仪器 进口替代", "分析仪器 国产化率"]},
+    {"id": "L&M·基因测序", "board": "L&M",
+     "keywords": ["基因测序 华大智造 因美纳", "测序仪 国产替代", "WGS 肿瘤早检 测序"]},
+    {"id": "L&M·医疗IVD", "board": "L&M",
+     "keywords": ["IVD体外诊断 集采降价", "化学发光 国产化率", "医疗IVD 市场规模"]},
+    {"id": "F&B·食品制造FAI", "board": "F&B",
+     "keywords": ["食品制造业 固定资产投资", "食品装备 预制菜 产线", "食品制造FAI 统计局"]},
+    {"id": "F&B·酒饮料制造FAI", "board": "F&B",
+     "keywords": ["酒饮料制造 固定资产投资", "白酒产能 碳酸饮料 投资", "饮料制造FAI"]},
+    {"id": "F&B·食品饮料消费", "board": "F&B",
+     "keywords": ["食品饮料 消费数据 零售", "春节消费 年货 餐饮", "功能饮品 无糖茶 消费"]},
+    {"id": "F&B·食品添加剂", "board": "F&B",
+     "keywords": ["食品添加剂 合成生物学 发酵", "天然甜味剂 益生菌 扩产", "功能性食品成分 市场"]},
+    {"id": "Macro·制造业PMI", "board": "Macro",
+     "keywords": ["中国制造业PMI 官方 财新", "PMI 制造业景气指数"]},
+    {"id": "Macro·M2社融CPIPPI", "board": "Macro",
+     "keywords": ["中国M2 社融 货币政策", "CPI PPI 通胀 价格指数"]},
+    {"id": "Macro·投资工业增加值", "board": "Macro",
+     "keywords": ["固定资产投资 工业增加值 统计局", "制造业FAI 规上工业增加值"]},
 ]
 
-# 板块综合分权重
 BOARD_WEIGHTS = {
     "EI":    {"EI·液冷数据中心": 0.30, "EI·半导体设备国产化": 0.30,
                "EI·绿氢电解槽": 0.25, "EI·燃料电池": 0.15},
@@ -123,6 +63,11 @@ BOARD_WEIGHTS = {
                "Macro·投资工业增加值": 0.30},
 }
 
+EM_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+    "Referer": "https://data.eastmoney.com/"
+}
+
 
 def get_client():
     return anthropic.Anthropic(
@@ -131,7 +76,54 @@ def get_client():
     )
 
 
-# ── 抓取新闻 ───────────────────────────────────────────────
+# ── 东方财富精确宏观数据 ───────────────────────────────────
+
+def fetch_em(sty, field_index, name):
+    """通用东方财富数据接口抓取"""
+    try:
+        url = f"https://datainterface3.eastmoney.com/EM_DataCenter/JS.aspx?type=CR&sty={sty}&js=({{data}})&p=1&ps=3&mkt=0"
+        r = requests.get(url, headers=EM_HEADERS, timeout=10)
+        text = r.text.strip().lstrip("(").rstrip(")")
+        data = json.loads(text)
+        if data and "data" in data and data["data"]:
+            parts = data["data"][0].split(",")
+            if len(parts) > field_index:
+                val = float(parts[field_index])
+                print(f"  [OK] {name}: {val}")
+                return val
+    except Exception as e:
+        print(f"  [WARN] {name} 抓取失败: {e}")
+    return None
+
+
+def fetch_eastmoney_macro():
+    """从东方财富接口抓取所有精确宏观数值"""
+    result = {}
+
+    ppi = fetch_em("PPI", 2, "PPI同比")
+    if ppi is not None:
+        result["PPI"] = {"value": ppi, "trend": "↑" if ppi > -1.0 else "↓"}
+
+    cpi = fetch_em("CPI", 2, "CPI同比")
+    if cpi is not None:
+        result["CPI"] = {"value": cpi, "trend": "↑" if cpi > 0 else "↓"}
+
+    pmi = fetch_em("PMI", 1, "制造业PMI")
+    if pmi is not None:
+        result["PMI"] = {"value": pmi, "trend": "↑" if pmi >= 50 else "↓"}
+
+    gyzjz = fetch_em("GYZJZ", 1, "工业增加值")
+    if gyzjz is not None:
+        result["工业增加值"] = {"value": gyzjz, "trend": "↑" if gyzjz > 5.5 else "→"}
+
+    gdp = fetch_em("GDP", 1, "GDP")
+    if gdp is not None:
+        result["GDP"] = {"value": gdp, "trend": "↑" if gdp >= 5.0 else "↓"}
+
+    return result
+
+
+# ── Heat Score 打分 ────────────────────────────────────────
 
 def fetch_news_for_track(track, days=35):
     items = []
@@ -149,11 +141,9 @@ def fetch_news_for_track(track, days=35):
                 items.append({
                     "title": entry.get("title", "").strip(),
                     "summary": entry.get("summary", "")[:200],
-                    "date": entry.get("published", ""),
                 })
         except Exception as e:
             print(f"  [WARN] {kw}: {e}")
-    # 去重
     seen, unique = set(), []
     for i in items:
         k = i["title"][:15]
@@ -163,34 +153,27 @@ def fetch_news_for_track(track, days=35):
     return unique[:12]
 
 
-# ── MiniMax 打分 ───────────────────────────────────────────
-
 def score_track(client, track, news_items):
     if not news_items:
-        print(f"  [WARN] {track['id']} 无新闻，使用默认分50")
         return {"D": 50, "C": 50, "P": 50, "Pol": 50,
                 "core_data": "本期无有效新闻数据", "comment": "数据不足，参考上期"}
 
     news_text = "\n".join([f"- {i['title']}" for i in news_items[:10]])
-
     prompt = f"""你是中国B2B设备行业景气度分析师，使用以下打分方法论对赛道进行评分。
 
 打分方法论：
-- Demand(需求动能,35%)：出货量YoY/新订单/渗透率变化，Min-Max归一化，领先指标为主
+- Demand(需求动能,35%)：出货量YoY/新订单/渗透率变化，领先指标为主
 - Capex(投资强度,30%)：招标规模YoY/融资额/固定资产投资，设备链最直接领先指标
-- Price(价格盈利,20%)：反向指标！价格下跌=低分。Score=100-正向标准化。集采降价50%→38分
-- Policy(政策情绪,15%)：产业补贴/社融/监管，定性评分，政策强催化→80+分
+- Price(价格盈利,20%)：反向指标！价格下跌=低分。集采降价50%→38分
+- Policy(政策情绪,15%)：产业补贴/社融/监管，政策强催化→80+分
 
 当前赛道：{track['id']}
 
 本期相关新闻：
 {news_text}
 
-请基于以上新闻，对该赛道打分。
 只返回以下格式，不要其他文字：
-D|C|P|Pol|核心数据摘要(30字)|一句话点评(40字)
-
-示例：82|75|58|88|DRAM Q1合约价+90%，设备投资2622亿|全产业链涨价潮确认，国产替代升级为供应链必选项"""
+D|C|P|Pol|核心数据摘要(30字)|一句话点评(40字)"""
 
     try:
         msg = client.messages.create(
@@ -210,35 +193,28 @@ D|C|P|Pol|核心数据摘要(30字)|一句话点评(40字)
                 "comment":   parts[5].strip(),
             }
     except Exception as e:
-        print(f"  [WARN] 打分解析失败 {track['id']}: {e}, raw={raw if 'raw' in dir() else 'N/A'}")
-    return {"D": 50, "C": 50, "P": 50, "Pol": 50,
-            "core_data": "解析失败", "comment": ""}
+        print(f"  [WARN] 打分解析失败 {track['id']}: {e}")
+    return {"D": 50, "C": 50, "P": 50, "Pol": 50, "core_data": "解析失败", "comment": ""}
 
 
 def calc_heat(scores):
-    return round(
-        scores["D"] * 0.35 + scores["C"] * 0.30 +
-        scores["P"] * 0.20 + scores["Pol"] * 0.15, 2
-    )
+    return round(scores["D"]*0.35 + scores["C"]*0.30 + scores["P"]*0.20 + scores["Pol"]*0.15, 2)
 
 
 def calc_trend(heat_now, heat_prev):
     if heat_prev is None:
         return "→"
     delta = heat_now - heat_prev
-    if delta >= 2:
-        return "↑"
-    elif delta <= -2:
-        return "↓"
+    if delta >= 2:   return "↑"
+    if delta <= -2:  return "↓"
     return "→"
 
 
-# ── 读写 history.json ──────────────────────────────────────
+# ── history.json ───────────────────────────────────────────
 
 def load_history():
-    path = "data/history.json"
     try:
-        with open(path, "r", encoding="utf-8") as f:
+        with open("data/history.json", "r", encoding="utf-8") as f:
             return json.load(f)
     except Exception:
         return {}
@@ -260,36 +236,42 @@ def get_prev_heat(history, track_id):
 
 # ── 更新 data.js ───────────────────────────────────────────
 
-def update_data_js(results, board_heats, today_str):
+def update_data_js(macro_values, today_str):
     with open("data.js", "r", encoding="utf-8") as f:
         content = f.read()
 
     content = re.sub(r'lastUpdated:\s*"[^"]*"', f'lastUpdated: "{today_str}"', content)
 
-    # 更新宏观指标 value（从 Macro 子赛道结果提取）
-    macro_map = {
-        "GDP GROWTH":    ("Macro·制造业PMI",         "GDP 增速"),
-        "IND. VALUE ADD":("Macro·投资工业增加值",    "工业增加值"),
-        "MFG. CAPEX":    ("Macro·投资工业增加值",    "制造业固投"),
-        "EXPORT GROWTH": ("Macro·M2社融CPIPPI",      "出口增速"),
-        "PPI TREND":     ("Macro·M2社融CPIPPI",      "PPI 走势"),
+    field_map = {
+        "GDP":    "GDP GROWTH",
+        "工业增加值": "IND. VALUE ADD",
+        "PPI":    "PPI TREND",
+        "PMI":    "MFG. PMI",
     }
-    for label_en, (track_id, label_zh) in macro_map.items():
-        if track_id in results:
-            heat = results[track_id]["heat"]
-            trend = results[track_id]["trend"]
-            content = re.sub(
-                rf'(labelEn:\s*"{re.escape(label_en)}"[^}}]*?trend:\s*")[^"]*"',
-                rf'\g<1>{trend}"',
-                content, flags=re.DOTALL
-            )
+
+    for key, label_en in field_map.items():
+        if key not in macro_values:
+            continue
+        new_val = macro_values[key]["value"]
+        new_trend = macro_values[key]["trend"]
+        content = re.sub(
+            rf'(labelEn:\s*"{re.escape(label_en)}"[^}}]*?value:\s*)[0-9.-]+',
+            rf'\g<1>{new_val}',
+            content, flags=re.DOTALL
+        )
+        content = re.sub(
+            rf'(labelEn:\s*"{re.escape(label_en)}"[^}}]*?trend:\s*")[^"]*"',
+            rf'\g<1>{new_trend}"',
+            content, flags=re.DOTALL
+        )
+        print(f"  [OK] {label_en}: {new_val} / {new_trend}")
 
     with open("data.js", "w", encoding="utf-8") as f:
         f.write(content)
-    print(f"[OK] data.js 已更新")
+    print("[OK] data.js 已更新")
 
 
-# ── 制药装备新闻模块（保留原有功能）─────────────────────────
+# ── 制药装备新闻 ───────────────────────────────────────────
 
 PHARMA_FEEDS = [
     ("制药装备动态", "https://news.google.com/rss/search?q=制药装备&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"),
@@ -420,7 +402,7 @@ if __name__ == "__main__":
     history = load_history()
     results = {}
 
-    # 1. 对每个子赛道打分
+    # 1. Heat Score 打分
     print("\n--- Heat Score 打分 ---")
     for track in TRACKS:
         print(f"  处理: {track['id']}")
@@ -429,19 +411,16 @@ if __name__ == "__main__":
         heat = calc_heat(scores)
         prev_heat = get_prev_heat(history, track["id"])
         trend = calc_trend(heat, prev_heat)
-        results[track["id"]] = {
-            "heat": heat, "trend": trend,
-            "scores": scores, "prev_heat": prev_heat
-        }
+        results[track["id"]] = {"heat": heat, "trend": trend, "scores": scores}
         print(f"    Heat={heat} Trend={trend} D={scores['D']} C={scores['C']} P={scores['P']} Pol={scores['Pol']}")
 
-    # 2. 计算板块综合分
+    # 2. 板块综合分
     board_heats = {}
     for board, weights in BOARD_WEIGHTS.items():
         total_w, total_score = 0, 0
-        for track_id, w in weights.items():
-            if track_id in results:
-                total_score += results[track_id]["heat"] * w
+        for tid, w in weights.items():
+            if tid in results:
+                total_score += results[tid]["heat"] * w
                 total_w += w
         board_heats[board] = round(total_score / total_w, 1) if total_w else 50
     print("\n板块综合分:")
@@ -451,8 +430,10 @@ if __name__ == "__main__":
     # 3. 保存历史
     save_history(history, period, results)
 
-    # 4. 更新 data.js
-    update_data_js(results, board_heats, today_str)
+    # 4. 东方财富精确数据 + 更新 data.js
+    print("\n--- 东方财富宏观数据 ---")
+    macro_values = fetch_eastmoney_macro()
+    update_data_js(macro_values, today_str)
 
     # 5. 制药装备新闻
     print("\n--- 制药装备行业动态 ---")
