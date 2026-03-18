@@ -1,8 +1,3 @@
-"""
-update_news.py
-每周抓取制药装备相关行业动态，用 Claude 生成摘要，注入 pharma.html
-"""
-
 import os
 import re
 import json
@@ -12,48 +7,15 @@ import requests
 from bs4 import BeautifulSoup
 import anthropic
 
-# ── 1. 信号源配置 ──────────────────────────────────────────────
 SOURCES = [
-    # 东方财富 - 楚天科技公告
-    {
-        "name": "楚天科技",
-        "url": "https://so.eastmoney.com/news/s?keyword=楚天科技&pageindex=1&pagesize=5",
-        "type": "eastmoney",
-    },
-    # 东方财富 - 东富龙公告
-    {
-        "name": "东富龙",
-        "url": "https://so.eastmoney.com/news/s?keyword=东富龙制药&pageindex=1&pagesize=5",
-        "type": "eastmoney",
-    },
-    # 医药经济报 RSS（如不可用会跳过）
-    {
-        "name": "医药经济报",
-        "url": "https://www.yyjjb.com.cn/rss.xml",
-        "type": "rss",
-    },
-    # 药融云 - 制药装备
-    {
-        "name": "制药装备动态",
-        "url": "https://news.baidu.com/ns?word=制药装备+国产替代&tn=news&from=news&cl=2&rn=10&ct=1",
-        "type": "baidu_news",
-    },
-    # NMPA 政策 RSS
-    {
-        "name": "NMPA政策",
-        "url": "https://www.nmpa.gov.cn/xxgk/ggtg/index.html",
-        "type": "nmpa",
-    },
+    {"name": "医药经济报", "url": "https://www.yyjjb.com.cn/rss.xml", "type": "rss"},
 ]
 
-MAX_ITEMS = 10          # 最终展示条数
-MAX_CHARS = 300         # 每条摘要最大字数
+MAX_ITEMS = 10
+MAX_CHARS = 300
 
-
-# ── 2. 抓取函数 ────────────────────────────────────────────────
 
 def fetch_rss(url, source_name, limit=4):
-    """通用 RSS 抓取"""
     items = []
     try:
         feed = feedparser.parse(url)
@@ -73,7 +35,6 @@ def fetch_rss(url, source_name, limit=4):
 
 
 def fetch_baidu_news(keyword, source_name, limit=5):
-    """百度新闻搜索（简单抓取标题+链接）"""
     items = []
     try:
         url = f"https://www.baidu.com/s?tn=news&rtt=1&bsst=1&cl=2&wd={requests.utils.quote(keyword)}&ie=utf-8"
@@ -94,7 +55,6 @@ def fetch_baidu_news(keyword, source_name, limit=5):
 
 
 def fetch_nmpa(limit=3):
-    """抓取 NMPA 最新公告标题"""
     items = []
     try:
         url = "https://www.nmpa.gov.cn/xxgk/ggtg/index.html"
@@ -119,13 +79,11 @@ def fetch_nmpa(limit=3):
 
 
 def collect_raw_items():
-    """汇总所有来源的原始条目"""
     all_items = []
-    all_items += fetch_rss(SOURCES[2]["url"], SOURCES[2]["name"], limit=4)
+    all_items += fetch_rss(SOURCES[0]["url"], SOURCES[0]["name"], limit=4)
     all_items += fetch_baidu_news("制药装备 国产替代", "制药装备动态", limit=5)
     all_items += fetch_baidu_news("东富龙 楚天科技 森松", "龙头动态", limit=4)
     all_items += fetch_nmpa(limit=3)
-    # 去重（按标题前20字）
     seen = set()
     unique = []
     for item in all_items:
@@ -133,17 +91,15 @@ def collect_raw_items():
         if key and key not in seen:
             seen.add(key)
             unique.append(item)
-    return unique[:20]  # 送给 Claude 的原料，最多20条
+    return unique[:20]
 
-
-# ── 3. Claude 生成摘要 ─────────────────────────────────────────
 
 def summarize_with_claude(raw_items):
-    """把原始条目列表送给 Claude，返回精选后的10条结构化摘要"""
-client = anthropic.Anthropic(
-    api_key=os.environ["MINIMAX_API_KEY"],
-    base_url="https://api.minimaxi.com/anthropic"
-)
+    client = anthropic.Anthropic(
+        api_key=os.environ["MINIMAX_API_KEY"],
+        base_url="https://api.minimaxi.com/anthropic"
+    )
+
     items_text = "\n\n".join([
         f"来源：{i['source']}\n标题：{i['title']}\n内容：{i['summary'][:300]}\n链接：{i['link']}"
         for i in raw_items
@@ -184,16 +140,12 @@ client = anthropic.Anthropic(
     )
 
     raw_json = message.content[0].text.strip()
-    # 兼容 Claude 偶尔包裹 ```json ``` 的情况
     raw_json = re.sub(r"^```json\s*", "", raw_json)
     raw_json = re.sub(r"\s*```$", "", raw_json)
     return json.loads(raw_json)
 
 
-# ── 4. 生成 HTML 片段 ──────────────────────────────────────────
-
 def build_news_html(data):
-    """把结构化数据渲染成注入用的 HTML 片段"""
     items_html = ""
     for item in data["items"]:
         link_open = f'<a href="{item["link"]}" target="_blank" rel="noopener">' if item["link"] else "<span>"
@@ -304,13 +256,9 @@ def build_news_html(data):
 <!-- NEWS_BLOCK_END -->"""
 
 
-# ── 5. 注入 pharma.html ────────────────────────────────────────
-
 def inject_into_html(news_html, html_path="pharma.html"):
     with open(html_path, "r", encoding="utf-8") as f:
         content = f.read()
-
-    # 如果已有旧的动态块，替换它
     if "<!-- NEWS_BLOCK_START -->" in content:
         content = re.sub(
             r"<!-- NEWS_BLOCK_START -->.*?<!-- NEWS_BLOCK_END -->",
@@ -319,30 +267,21 @@ def inject_into_html(news_html, html_path="pharma.html"):
             flags=re.DOTALL,
         )
     else:
-        # 没有则插入到 </body> 前
         content = content.replace("</body>", news_html + "\n</body>")
-
     with open(html_path, "w", encoding="utf-8") as f:
         f.write(content)
-
     print(f"[OK] Injected {len(news_html)} chars into {html_path}")
 
-
-# ── 6. 主流程 ─────────────────────────────────────────────────
 
 if __name__ == "__main__":
     print("=== 开始抓取行业动态 ===")
     raw = collect_raw_items()
     print(f"[INFO] 抓取原始条目 {len(raw)} 条")
-
     if not raw:
         print("[WARN] 无有效条目，跳过更新")
         exit(0)
-
-    print("[INFO] 调用 Claude 生成摘要...")
+    print("[INFO] 调用 MiniMax 生成摘要...")
     data = summarize_with_claude(raw)
-    print(f"[OK] Claude 返回 {len(data['items'])} 条摘要")
-
-    news_html = build_news_html(data)
-    inject_into_html(news_html, html_path="pharma.html")
+    print(f"[OK] 返回 {len(data['items'])} 条摘要")
+    inject_into_html(news_html=build_news_html(data), html_path="pharma.html")
     print("=== 完成 ===")
