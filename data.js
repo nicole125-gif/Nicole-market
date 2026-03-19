@@ -1,14 +1,14 @@
 // ═══════════════════════════════════════════════════════════
-//  STRATEGIC DASHBOARD — CENTRAL DATA STORE
+//  BÜRKERT STRATEGIC DASHBOARD — CENTRAL DATA STORE
 //  Edit this file OR use /admin to update content visually
-//  Last structure update: 2026-03
+//  Last structure update: 2026-02
 // ═══════════════════════════════════════════════════════════
 
-window.MARKET_DATA = {
+window.BURKERT_DATA = {
   meta: {
-    lastUpdated: "2026-03-18",
+    lastUpdated: "2026-02-28",
     updatedBy: "Nicole",
-    version: "2.2"
+    version: "2.1"
   },
 
   // ── MACRO PAGE ───────────────────────────────────────────
@@ -38,10 +38,10 @@ window.MARKET_DATA = {
       },
       {
         label: "工业增加值", labelEn: "IND. VALUE ADD",
-        value: 6.3, unit: "%", trend: "↑ Upward",
+        value: 6.2, unit: "%", trend: "↑ Upward",
         insight: "新质生产力贡献率超 35%",
         color: "#00C8FF",
-        sparkData: [5.1, 5.7, 6.3], years: ["2024","2025","2026E"],
+        sparkData: [5.1, 5.7, 6.2], years: ["2024","2025","2026E"],
         note: "工业增加值数据来源于国家统计局月度数据，德勤白皮书提供数字化转型量化分析。",
         actions: [
           { tag: "立即", text: "梳理先进封装 TOP 15 客户，建立超纯水阀组专项产品组合" },
@@ -77,28 +77,15 @@ window.MARKET_DATA = {
       },
       {
         label: "PPI 走势", labelEn: "PPI TREND",
-        value: -0.9, unit: "%", trend: "↓",
+        value: 1.2, unit: "%", trend: "Recovery",
         insight: "中下游利润空间重构",
         color: "#BF80FF",
-        sparkData: [-2.7, -0.8, -0.9], years: ["2024","2025","2026E"],
+        sparkData: [-2.7, -0.8, 1.2], years: ["2024","2025","2026E"],
         note: "PPI 数据来源于国家统计局价格统计司，中金宏观团队提供 PPI 回升路径预测。",
         actions: [
           { tag: "定价", text: "基于 PPI 回升重新校准产品定价策略，推出 ROI 可视化计算工具" },
           { tag: "价值", text: "将「降耗增效」纳入核心销售话术，量化流体控制精度带来的节省数据" },
           { tag: "时机", text: "把握利润修复窗口，推进存量客户设备升级与服务合同升级谈判" }
-        ]
-      },
-      {
-        label: "制造业PMI", labelEn: "MFG. PMI",
-        value: 49.0, unit: "", trend: "↓",
-        insight: "官方PMI收缩区间，财新PMI回扩张",
-        color: "#FF2D78",
-        sparkData: [49.1, 49.3, 49.0], years: ["2024","2025","2026E"],
-        note: "制造业PMI数据来源于国家统计局月度数据。",
-        actions: [
-          { tag: "关注", text: "两会政策定调，关注制造业景气拐点信号" },
-          { tag: "Q2",  text: "PMI回升至50以上是加大制造业覆盖的关键触发点" },
-          { tag: "H2",  text: "结合财新PMI判断中小企业景气分化趋势" }
         ]
       }
     ]
@@ -164,11 +151,13 @@ window.MARKET_DATA = {
 };
 
 // ── STORAGE LAYER ─────────────────────────────────────────
+// Loads saved edits from localStorage, merges over defaults
 (function() {
   try {
-    const saved = localStorage.getItem('market_data');
+    const saved = localStorage.getItem('burkert_data');
     if (saved) {
       const parsed = JSON.parse(saved);
+      // Deep merge saved data over defaults
       function deepMerge(target, source) {
         for (const key of Object.keys(source)) {
           if (source[key] && typeof source[key] === 'object' && !Array.isArray(source[key])) {
@@ -180,7 +169,7 @@ window.MARKET_DATA = {
         }
         return target;
       }
-      deepMerge(window.MARKET_DATA, parsed);
+      deepMerge(window.BURKERT_DATA, parsed);
     }
   } catch(e) {
     console.warn('Could not load saved data:', e);

@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>氢能行业 · 战略分析 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#020810;--bg2:rgba(6,13,32,.9);
+  --cyan:#22d3ee;--green:#00FFB2;--gold:#FFD700;--orange:#FF6B35;
+  --red:#E30613;--purple:#BF80FF;--h2blue:#38BDF8;--h2green:#4ADE80;
+  --text:rgba(255,255,255,.9);--text2:rgba(255,255,255,.72);--text3:rgba(255,255,255,.42);
+  --border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.13);
+  --mono:'IBM Plex Mono',monospace;--display:'Syne',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--display);min-height:100vh;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08)}
+
+#site-nav{position:fixed;top:0;left:0;right:0;z-index:10000;background:rgba(2,5,18,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1380px;margin:0 auto;padding:0 32px;display:flex;align-items:center;height:52px}
+.nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+.nav-link{padding:5px 11px;font-size:10px;font-family:var(--mono);letter-spacing:.08em;color:var(--text3);text-decoration:none;border:1px solid transparent;transition:all .2s;white-space:nowrap}
+.nav-link:hover{color:var(--text);border-color:var(--border2)}
+.nav-link.active{color:var(--h2blue);border-color:var(--h2blue);background:rgba(56,189,248,.06)}
+.nav-progress{position:absolute;bottom:0;left:0;height:1px;background:var(--h2blue);width:0%;transition:width .1s}
+
+.bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.01) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.01) 1px,transparent 1px);background-size:60px 60px}
+.bg-g1{position:fixed;top:-20%;left:20%;width:80vw;height:600px;background:radial-gradient(ellipse,rgba(56,189,248,.04) 0%,transparent 65%);pointer-events:none;z-index:0}
+.bg-g2{position:fixed;bottom:-10%;right:5%;width:50vw;height:500px;background:radial-gradient(ellipse,rgba(74,222,128,.025) 0%,transparent 70%);pointer-events:none;z-index:0}
+
+.wrap{position:relative;z-index:1}
+.section{max-width:1300px;margin:0 auto;padding:80px 40px}
+.divider{height:1px;background:var(--border);max-width:1300px;margin:0 auto}
+.sl{font-family:var(--mono);font-size:8px;letter-spacing:.35em;color:var(--text3);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.sl::after{content:'';flex:1;max-width:60px;height:1px;background:var(--border2)}
+.st{font-size:clamp(22px,3vw,36px);font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.ss{color:var(--text2);font-size:13px;line-height:1.7;max-width:720px;margin-bottom:40px}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 40px 80px;max-width:1300px;margin:0 auto}
+.hero-eye{font-family:var(--mono);font-size:9px;letter-spacing:.35em;color:var(--h2blue);margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.hero-eye::before{content:'';width:32px;height:1px;background:var(--h2blue)}
+.hero-title{font-size:clamp(38px,5.5vw,76px);font-weight:800;line-height:1.0;letter-spacing:-.03em;margin-bottom:20px}
+.hero-title .a1{color:var(--h2blue)}
+.hero-title .a2{color:var(--h2green)}
+.hero-sub{font-size:14px;color:var(--text2);max-width:640px;line-height:1.7;margin-bottom:48px}
+
+/* GOVERNING THOUGHT */
+.gov-thought{background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.15);border-left:3px solid var(--h2blue);padding:24px 28px;margin-bottom:48px}
+.gov-label{font-family:var(--mono);font-size:8px;letter-spacing:.3em;color:rgba(56,189,248,.6);margin-bottom:10px}
+.gov-text{font-size:14px;line-height:1.75;color:var(--text2);font-weight:400}
+.gov-text strong{color:var(--text)}
+
+/* KEY STATS */
+.kstats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.ks{background:var(--bg2);padding:22px 20px;position:relative;transition:background .2s}
+.ks:hover{background:rgba(56,189,248,.04)}
+.ks-label{font-family:var(--mono);font-size:8px;color:var(--text3);letter-spacing:.15em;margin-bottom:6px}
+.ks-val{font-size:28px;font-weight:800;letter-spacing:-.03em;line-height:1;margin-bottom:4px}
+.ks-note{font-size:10px;color:var(--text2)}
+.ks-bar{position:absolute;top:0;left:0;right:0;height:2px}
+
+/* 4 ACTION CARDS */
+.actions{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:32px}
+.action{background:var(--bg2);border:1px solid var(--border);padding:24px;position:relative;transition:all .25s}
+.action:hover{border-color:var(--border2);transform:translateY(-2px)}
+.action-priority{position:absolute;top:16px;right:16px;font-family:var(--mono);font-size:8px;padding:3px 10px;border:1px solid;letter-spacing:.1em}
+.action-num{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.15em;margin-bottom:8px}
+.action-title{font-size:14px;font-weight:800;margin-bottom:6px}
+.action-why{font-size:11px;color:var(--text2);line-height:1.7;margin-bottom:10px}
+.action-products{font-family:var(--mono);font-size:9px;color:var(--text3);padding:8px 12px;background:rgba(255,255,255,.03);border-left:2px solid var(--border2);line-height:1.8}
+.action-timing{font-family:var(--mono);font-size:8.5px;margin-top:10px;padding:4px 10px;display:inline-flex;align-items:center;gap:6px;border:1px solid;letter-spacing:.08em}
+
+/* TECH TIMELINE */
+.tech-timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-bottom:32px}
+.tt{background:var(--bg2);padding:24px}
+.tt-period{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--text3);margin-bottom:8px}
+.tt-title{font-size:13px;font-weight:800;margin-bottom:14px}
+.tt-items{display:flex;flex-direction:column;gap:6px}
+.tt-item{font-size:11px;color:var(--text2);line-height:1.5;padding-left:14px;position:relative}
+.tt-item::before{position:absolute;left:0;font-size:10px}
+.tt-item.good::before{content:'✓';color:var(--h2green)}
+.tt-item.warn::before{content:'!';color:var(--gold)}
+.tt-item.up::before{content:'↑';color:var(--h2blue)}
+.tt-item.down::before{content:'↓';color:var(--orange)}
+.tt-item.target::before{content:'★';color:var(--h2blue)}
+
+/* PAIN POINTS */
+.pains{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:32px}
+.pain{background:var(--bg2);border:1px solid var(--border);padding:16px}
+.pain-num{font-family:var(--mono);font-size:9px;color:var(--orange);letter-spacing:.1em;margin-bottom:6px}
+.pain-title{font-size:11px;font-weight:700;margin-bottom:4px}
+.pain-desc{font-size:10px;color:var(--text2);line-height:1.6}
+
+/* POLICY */
+.policy-scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px}
+.ps{background:var(--bg2);border:1px solid var(--border);padding:20px}
+.ps-num{font-family:var(--mono);font-size:9px;letter-spacing:.1em;margin-bottom:6px}
+.ps-title{font-size:12px;font-weight:700;margin-bottom:4px}
+.ps-type{font-family:var(--mono);font-size:8px;padding:2px 8px;border:1px solid;margin-bottom:8px;display:inline-block;letter-spacing:.1em}
+.ps-desc{font-size:10.5px;color:var(--text2);line-height:1.6}
+
+.policy-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin-bottom:32px}
+.pstat{background:var(--bg2);padding:18px;text-align:center}
+.pstat-val{font-size:22px;font-weight:800;letter-spacing:-.02em;margin-bottom:4px}
+.pstat-label{font-family:var(--mono);font-size:8px;color:var(--text3);letter-spacing:.12em}
+
+/* COMPETITION */
+.comp-table{width:100%;border-collapse:collapse;margin-bottom:32px}
+.comp-table th{font-family:var(--mono);font-size:8px;letter-spacing:.12em;color:var(--text3);padding:10px 14px;text-align:left;border-bottom:1px solid var(--border)}
+.comp-table td{padding:11px 14px;border-bottom:1px solid var(--border);font-size:11px;vertical-align:top}
+.comp-table tr:hover td{background:rgba(255,255,255,.02)}
+.stars{color:var(--gold)}
+.tier-badge{padding:2px 8px;font-family:var(--mono);font-size:8px;letter-spacing:.1em;border:1px solid}
+
+/* SOFC demand curves */
+.curves{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px}
+.curve{background:var(--bg2);border:1px solid var(--border);padding:22px;text-align:center}
+.curve-status{font-family:var(--mono);font-size:8px;letter-spacing:.15em;margin-bottom:8px;padding:3px 10px;border:1px solid;display:inline-block}
+.curve-name{font-size:14px;font-weight:800;margin-bottom:6px}
+.curve-sub{font-family:var(--mono);font-size:9px;color:var(--text3);margin-bottom:12px}
+.curve-desc{font-size:11px;color:var(--text2);line-height:1.6}
+
+/* SOFC companies */
+.sofc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:32px}
+.sofc-co{background:var(--bg2);border:1px solid var(--border);padding:20px;display:flex;gap:14px}
+.sofc-stars{font-size:11px;color:var(--gold);flex-shrink:0;width:70px}
+.sofc-name{font-size:13px;font-weight:800;margin-bottom:3px}
+.sofc-tag{font-family:var(--mono);font-size:8.5px;color:var(--h2blue);margin-bottom:6px}
+.sofc-desc{font-size:11px;color:var(--text2);line-height:1.6}
+
+/* 3 VARIABLES */
+.vars{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px}
+.var{background:var(--bg2);border:1px solid var(--border);padding:24px;position:relative}
+.var-num{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.15em;margin-bottom:8px}
+.var-title{font-size:14px;font-weight:800;margin-bottom:4px}
+.var-sub{font-family:var(--mono);font-size:9px;color:var(--h2blue);margin-bottom:12px}
+.var-warn{font-family:var(--mono);font-size:9px;padding:6px 10px;background:rgba(255,107,53,.06);border-left:2px solid var(--orange);margin-bottom:10px;color:var(--orange)}
+.var-action{font-size:11px;color:var(--text2);line-height:1.7}
+.var-arrow{font-family:var(--mono);font-size:9px;color:var(--h2blue);margin-top:10px;padding:4px 10px;background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.2)}
+
+/* BOP products */
+.bop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:32px}
+.bop{background:var(--bg2);border:1px solid var(--border);padding:18px}
+.bop-name{font-size:12px;font-weight:700;margin-bottom:4px}
+.bop-spec{font-family:var(--mono);font-size:9px;color:var(--h2blue);margin-bottom:6px}
+.bop-desc{font-size:10.5px;color:var(--text2);line-height:1.5}
+.bop-importance{font-family:var(--mono);font-size:8px;padding:2px 8px;border:1px solid;margin-top:8px;display:inline-block;letter-spacing:.1em}
+
+/* Progress bars */
+.prog-row{margin-bottom:12px}
+.prog-label{display:flex;justify-content:space-between;margin-bottom:4px}
+.prog-name{font-size:11px;color:var(--text2)}
+.prog-val{font-family:var(--mono);font-size:10px;font-weight:700}
+.prog-track{height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
+.prog-fill{height:100%;border-radius:2px;transition:width 1.4s cubic-bezier(.16,1,.3,1)}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(20px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  .kstats{grid-template-columns:1fr 1fr}
+  .actions,.vars,.curves,.sofc-grid,.tech-timeline{grid-template-columns:1fr}
+  .policy-scenarios,.pains{grid-template-columns:1fr 1fr}
+  .bop-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .section,.hero{padding-left:20px;padding-right:20px}
+  .nav-inner{padding:0 16px}
+  .kstats,.policy-stats,.pains,.bop-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="bg-g1"></div>
+<div class="bg-g2"></div>
+
+<nav id="site-nav">
+  <div class="nav-inner">
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">宏观脉搏</a>
+      <a href="liquid.html" class="nav-link">AI 液冷</a>
+      <a href="semiconductor.html" class="nav-link">半导体</a>
+      <a href="mscc.html" class="nav-link">质谱·色谱</a>
+      <a href="pharma.html" class="nav-link">制药装备</a>
+      <a href="food.html" class="nav-link">食品饮料</a>
+      <a href="hydrogen.html" class="nav-link active">氢能行业</a>
+    </div>
+    <div class="nav-progress" id="nav-bar"></div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eye">STRATEGY RESEARCH · HYDROGEN ENERGY · 2026</div>
+  <h1 class="hero-title">氢能行业<br/><span class="a1">深度研究</span><span class="a2">报告</span></h1>
+  <p class="hero-sub">产业链全景 · 技术路径 · 政策格局 · SOFC储能 · 流体控制切入战略。基于2025年全年中标数据，从流体控制供应商视角出发的行动性分析。</p>
+
+  <div class="gov-thought reveal">
+    <div class="gov-label">GOVERNING THOUGHT · 核心判断</div>
+    <div class="gov-text">2026–2030年：<strong>PEM/AEM/SOEC制氢设备 × SOFC分布式发电</strong>同步商业化爆发，流体控制BOP辅机国产化替代窗口打开——<strong>进入成本最低、市场确定性最强的黄金时机。</strong></div>
+  </div>
+
+  <div class="kstats reveal">
+    <div class="ks">
+      <div class="ks-bar" style="background:var(--h2blue)"></div>
+      <div class="ks-label">中国电解槽招标 2025</div>
+      <div class="ks-val" style="color:var(--h2blue)">6,055 MW</div>
+      <div class="ks-note">同比 +155% · 商业化拐点确认</div>
+    </div>
+    <div class="ks">
+      <div class="ks-bar" style="background:var(--gold)"></div>
+      <div class="ks-label">2050年全球氢能产值</div>
+      <div class="ks-val" style="color:var(--gold)">$2.5万亿</div>
+      <div class="ks-note">IHC预测路径 · >50国已制定战略</div>
+    </div>
+    <div class="ks">
+      <div class="ks-bar" style="background:var(--h2green)"></div>
+      <div class="ks-label">FCEV销量 2025</div>
+      <div class="ks-val" style="color:var(--h2green)">10,782辆</div>
+      <div class="ks-note">首次突破万辆 · +51% YoY</div>
+    </div>
+    <div class="ks">
+      <div class="ks-bar" style="background:var(--orange)"></div>
+      <div class="ks-label">BOP进口替代价差</div>
+      <div class="ks-val" style="color:var(--orange)">&gt;40%</div>
+      <div class="ks-note">BPR背压阀最高 · 窗口现在打开</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 01 EXECUTIVE SUMMARY -->
+<div class="section reveal">
+  <div class="sl" id="s01">01 · EXECUTIVE SUMMARY</div>
+  <h2 class="st">四大行动性结论</h2>
+  <p class="ss">所有结论均从流体控制供应商视角出发，具体到产品、客户名称、切入时间窗口</p>
+
+  <div class="actions">
+    <div class="action" style="border-top:2px solid var(--h2blue)">
+      <div class="action-priority" style="color:var(--h2blue);border-color:rgba(56,189,248,.3)">立即启动</div>
+      <div class="action-num">ACTION 01</div>
+      <div class="action-title">进入PEM背压阀市场</div>
+      <div class="action-why">中能建8家PEM供应商BOP选型窗口现在开放，BPR背压阀是最薄弱国产化环节，进口替代价差&gt;40%。目标客户：<strong>阳光氢能 / 派瑞氢能 / 长春绿动</strong></div>
+      <div class="action-products">背压调节阀（3~4MPa）· 差压控制阀组（±0.3bar）<br/>H₂-grade截止阀 · 液位控制阀（电导率&lt;0.1μS/cm）</div>
+      <div class="action-timing" style="color:var(--h2blue);border-color:rgba(56,189,248,.3)">⏱ 2026 Q1–Q2 启动拜访，年内争取框架协议</div>
+    </div>
+    <div class="action" style="border-top:2px solid var(--gold)">
+      <div class="action-priority" style="color:var(--gold);border-color:rgba(255,215,0,.3)">立即启动</div>
+      <div class="action-num">ACTION 02</div>
+      <div class="action-title">锁定三环集团 + 潍柴动力（SOFC BOP）</div>
+      <div class="action-why">三环300kW医院示范已投产；潍柴2026年SOFC确认收入——两家均进入BOP国产化采购窗口。<strong>三环集团是★★★★★优先级</strong></div>
+      <div class="action-products">高温蒸汽流控阀（650~950℃）· 空气预热阀<br/>燃料控制阀 · 高温截止阀</div>
+      <div class="action-timing" style="color:var(--gold);border-color:rgba(255,215,0,.3)">⏱ 三环 2026 Q1 立即建立技术合作关系</div>
+    </div>
+    <div class="action" style="border-top:2px solid var(--h2green)">
+      <div class="action-priority" style="color:var(--h2green);border-color:rgba(74,222,128,.3)">2026–27</div>
+      <div class="action-num">ACTION 03</div>
+      <div class="action-title">进入测试台供应体系（氢导智能为核心）</div>
+      <div class="action-why">FCEV销量首破万辆（+51%），测试台需求随整车厂同步放量。<strong>氢导智能是国内最大测试台供应商</strong></div>
+      <div class="action-products">H₂/空气侧MFC（±1%FS）· 背压控制阀<br/>加湿器配套阀 · 大连景源并行切入</div>
+      <div class="action-timing" style="color:var(--h2green);border-color:rgba(74,222,128,.3)">⏱ 2026年内进入氢导智能/大连景源供应商体系</div>
+    </div>
+    <div class="action" style="border-top:2px solid var(--purple)">
+      <div class="action-priority" style="color:var(--purple);border-color:rgba(191,128,255,.3)">12–18个月内</div>
+      <div class="action-num">ACTION 04</div>
+      <div class="action-title">CE/ATEX认证——锁定出海溢价</div>
+      <div class="action-why">同样的阀门出口欧洲毛利率<strong>35–55% vs 国内15–25%</strong>；阳光/派瑞均有欧洲项目，认证即护城河，越早启动越早收益</div>
+      <div class="action-products">CE/ATEX/PED认证 · BPR背压阀和差压阀组优先<br/>跟随阳光/派瑞欧洲项目出海，用海外案例撬动</div>
+      <div class="action-timing" style="color:var(--purple);border-color:rgba(191,128,255,.3)">⏱ 一次性投入、持续受益的壁垒，立即启动</div>
+    </div>
+  </div>
+
+  <!-- Strategic positioning matrix -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border)" class="reveal">
+    <div style="background:rgba(227,6,19,.05);border-left:2px solid var(--red);padding:20px">
+      <div style="font-family:var(--mono);font-size:8px;letter-spacing:.15em;color:var(--red);margin-bottom:8px">ALK · 非重点</div>
+      <div style="font-size:12px;font-weight:700;margin-bottom:6px">已是红海</div>
+      <div style="font-size:10.5px;color:var(--text2);line-height:1.6">价格跌51%，BOP国产化已完成——不再是重点，仅维持性收入</div>
+    </div>
+    <div style="background:rgba(56,189,248,.06);border-left:2px solid var(--h2blue);padding:20px">
+      <div style="font-family:var(--mono);font-size:8px;letter-spacing:.15em;color:var(--h2blue);margin-bottom:8px">PEM/AEM · 立即切入</div>
+      <div style="font-size:12px;font-weight:700;margin-bottom:6px">主战场</div>
+      <div style="font-size:10.5px;color:var(--text2);line-height:1.6">2026–30招标占比升至20–30%；BOP进口替代&gt;40%，最大机会</div>
+    </div>
+    <div style="background:rgba(255,215,0,.05);border-left:2px solid var(--gold);padding:20px">
+      <div style="font-family:var(--mono);font-size:8px;letter-spacing:.15em;color:var(--gold);margin-bottom:8px">SOFC · 现在跟进</div>
+      <div style="font-size:12px;font-weight:700;margin-bottom:6px">商业化爆发</div>
+      <div style="font-size:10.5px;color:var(--text2);line-height:1.6">AI数据中心拉动，潍柴2026年确认收入，第三条需求曲线打开</div>
+    </div>
+    <div style="background:rgba(74,222,128,.04);border-left:2px solid var(--h2green);padding:20px">
+      <div style="font-family:var(--mono);font-size:8px;letter-spacing:.15em;color:var(--h2green);margin-bottom:8px">SOEC · 2026布局</div>
+      <div style="font-size:12px;font-weight:700;margin-bottom:6px">5年战略卡位</div>
+      <div style="font-size:10.5px;color:var(--text2);line-height:1.6">工业余热场景不可替代，现在进入，2028–30年收获</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 02 MARKET OVERVIEW -->
+<div class="section reveal">
+  <div class="sl" id="s02">02 · MARKET OVERVIEW</div>
+  <h2 class="st">行业背景与市场拐点</h2>
+  <p class="ss">全球氢能商业化拐点已至：2025年数据证实，不再只是预测</p>
+
+  <!-- 5 inflection signals -->
+  <div style="background:var(--bg2);border:1px solid var(--border);padding:28px;margin-bottom:32px" class="reveal">
+    <div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.2em;margin-bottom:20px">五大拐点信号（2025年实测）</div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:14px;align-items:flex-start">
+        <span style="font-family:var(--mono);font-size:11px;color:var(--h2blue);font-weight:700;flex-shrink:0;width:24px">①</span>
+        <div><span style="font-weight:700">FCEV销量10,782辆</span>，首次突破万辆里程碑，同比+51%</div>
+      </div>
+      <div style="display:flex;gap:14px;align-items:flex-start">
+        <span style="font-family:var(--mono);font-size:11px;color:var(--h2blue);font-weight:700;flex-shrink:0;width:24px">②</span>
+        <div><span style="font-weight:700">PEM招标103MW大增；AEM 79MW首次规模性招标</span>——高端技术路线商业化确认</div>
+      </div>
+      <div style="display:flex;gap:14px;align-items:flex-start">
+        <span style="font-family:var(--mono);font-size:11px;color:var(--gold);font-weight:700;flex-shrink:0;width:24px">③</span>
+        <div><span style="font-weight:700">3·16新政</span>：应用场景从1个→6个，奖励≤16亿/群，非车用氢需求全面打开</div>
+      </div>
+      <div style="display:flex;gap:14px;align-items:flex-start">
+        <span style="font-family:var(--mono);font-size:11px;color:var(--orange);font-weight:700;flex-shrink:0;width:24px">④</span>
+        <div><span style="font-weight:700">ALK碱槽均价降破242万（51%↓）</span>，竞争转向BOP降本——流体控制切入窗口</div>
+      </div>
+      <div style="display:flex;gap:14px;align-items:flex-start">
+        <span style="font-family:var(--mono);font-size:11px;color:var(--h2green);font-weight:700;flex-shrink:0;width:24px">⑤</span>
+        <div><span style="font-weight:700">三环300kW SOFC投产；潍柴2026年确认SOFC收入</span>——分布式发电商业化拐点</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Electrolyzer growth chart -->
+  <div style="background:var(--bg2);border:1px solid var(--border);padding:28px;margin-bottom:32px" class="reveal">
+    <div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.2em;margin-bottom:20px">电解槽年招标规模（MW，中国）</div>
+    <div id="mw-chart" style="display:flex;align-items:flex-end;gap:24px;height:120px"></div>
+    <div style="font-family:var(--mono);font-size:8.5px;color:var(--text3);margin-top:12px">数据来源：香橙会氢能数据库 · 2025全年</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 03 TECH ROADMAP -->
+<div class="section reveal">
+  <div class="sl" id="s03">03 · TECHNOLOGY ROADMAP</div>
+  <h2 class="st">制氢技术演进路径</h2>
+  <p class="ss">2025–2035战略窗口：ALK主导→PEM/ALK双轨→PEM/SOEC崛起</p>
+
+  <div class="tech-timeline reveal">
+    <div class="tt" style="border-top:2px solid var(--orange)">
+      <div class="tt-period">当前 · 2025</div>
+      <div class="tt-title" style="color:var(--orange)">ALK主导期</div>
+      <div class="tt-items">
+        <div class="tt-item good">ALK招标占比96.7%</div>
+        <div class="tt-item warn">绿氢成本25–35元/kg</div>
+        <div class="tt-item good">单槽最大2,000Nm³/h</div>
+        <div class="tt-item up">PEM &lt;5%市占，加速国产化</div>
+      </div>
+    </div>
+    <div class="tt" style="border-top:2px solid var(--h2blue)">
+      <div class="tt-period">过渡期 · 2026–2030</div>
+      <div class="tt-title" style="color:var(--h2blue)">ALK+PEM双轨期 ⭐</div>
+      <div class="tt-items">
+        <div class="tt-item up">PEM招标占比预计升至20–30%</div>
+        <div class="tt-item down">ALK价格跌破600元/kW</div>
+        <div class="tt-item target">绿氢成本目标降至15元/kg</div>
+        <div class="tt-item up">膜电极国产化率突破80%</div>
+      </div>
+    </div>
+    <div class="tt" style="border-top:2px solid var(--h2green)">
+      <div class="tt-period">成熟期 · 2031–2035</div>
+      <div class="tt-title" style="color:var(--h2green)">PEM/SOEC崛起</div>
+      <div class="tt-items">
+        <div class="tt-item good">首条GW级PEM产线投产</div>
+        <div class="tt-item target">SOEC进入规模化商业应用</div>
+        <div class="tt-item target">绿氢成本逼近10元/kg平价</div>
+        <div class="tt-item up">PEM寿命突破10万小时</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 pain points -->
+  <div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.2em;margin-bottom:16px">当前五大核心卡点</div>
+  <div class="pains reveal">
+    <div class="pain" style="border-top:2px solid var(--orange)">
+      <div class="pain-num">卡点 01</div>
+      <div class="pain-title">电力成本占60–70%</div>
+      <div class="pain-desc">绿电价格是绿氢经济性最大变量；西北优先但消纳+外送仍是难题</div>
+    </div>
+    <div class="pain" style="border-top:2px solid var(--red)">
+      <div class="pain-num">卡点 02</div>
+      <div class="pain-title">PEM质子膜依赖进口</div>
+      <div class="pain-desc">杜邦Nafion膜占主导；铱催化剂全球供应约7–8吨/年，扩产天花板明显</div>
+    </div>
+    <div class="pain" style="border-top:2px solid var(--gold)">
+      <div class="pain-num">卡点 03</div>
+      <div class="pain-title">SOEC耐久性不足</div>
+      <div class="pain-desc">800°C工况下材料衰减快，寿命仅1–2万小时，距商业化4万小时有差距</div>
+    </div>
+    <div class="pain" style="border-top:2px solid var(--purple)">
+      <div class="pain-num">卡点 04</div>
+      <div class="pain-title">大规模储运瓶颈</div>
+      <div class="pain-desc">管道运输配套滞后；液氢成本仍高，阻碍西北绿氢向东部流动</div>
+    </div>
+    <div class="pain" style="border-top:2px solid var(--cyan)">
+      <div class="pain-num">卡点 05</div>
+      <div class="pain-title">商业模式尚未跑通</div>
+      <div class="pain-desc">绿氢仍比灰氢贵2–3倍；CCER方法学落地（2024.12）是重要突破口</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 04 POLICY -->
+<div class="section reveal">
+  <div class="sl" id="s04">04 · POLICY LANDSCAPE</div>
+  <h2 class="st">3·16新政：六大场景重塑格局</h2>
+  <p class="ss">工信部联节〔2026〕59号 · 应用范围从燃料电池商用车→ 1+N+X多场景生态</p>
+
+  <div class="policy-stats reveal">
+    <div class="pstat">
+      <div class="pstat-val" style="color:var(--gold)">5个</div>
+      <div class="pstat-label">城市群揭榜挂帅</div>
+    </div>
+    <div class="pstat">
+      <div class="pstat-val" style="color:var(--orange)">16亿元</div>
+      <div class="pstat-label">单群奖励上限</div>
+    </div>
+    <div class="pstat">
+      <div class="pstat-val" style="color:var(--h2blue)">4年</div>
+      <div class="pstat-label">试点期</div>
+    </div>
+    <div class="pstat">
+      <div class="pstat-val" style="color:var(--h2green)">≤25元/kg</div>
+      <div class="pstat-label">2030年用氢目标</div>
+    </div>
+  </div>
+
+  <div class="policy-scenarios reveal">
+    <div class="ps" style="border-top:2px solid var(--h2blue)">
+      <div class="ps-num">① 通用场景</div>
+      <div class="ps-type" style="color:var(--h2blue);border-color:rgba(56,189,248,.3)">TRANSPORT</div>
+      <div class="ps-title">燃料电池汽车</div>
+      <div class="ps-desc">中重型商用车、冷链、公交——传统主场景，FCEV 2025年首破万辆</div>
+    </div>
+    <div class="ps" style="border-top:2px solid var(--gold)">
+      <div class="ps-num">② 工业场景</div>
+      <div class="ps-type" style="color:var(--gold);border-color:rgba(255,215,0,.3)">INDUSTRIAL</div>
+      <div class="ps-title">绿色氨醇</div>
+      <div class="ps-desc">绿氢制绿氨/绿色甲醇，为化工脱碳开辟用氢新路径</div>
+    </div>
+    <div class="ps" style="border-top:2px solid var(--orange)">
+      <div class="ps-num">③ 工业场景</div>
+      <div class="ps-type" style="color:var(--orange);border-color:rgba(255,107,53,.3)">INDUSTRIAL</div>
+      <div class="ps-title">氢基化工原料替代</div>
+      <div class="ps-desc">炼化/化工中替代灰氢，中石化/中石油体量巨大</div>
+    </div>
+    <div class="ps" style="border-top:2px solid var(--h2green)">
+      <div class="ps-num">④ 工业场景</div>
+      <div class="ps-type" style="color:var(--h2green);border-color:rgba(74,222,128,.3)">INDUSTRY</div>
+      <div class="ps-title">氢冶金</div>
+      <div class="ps-desc">钢铁行业用氢替代焦炭，减碳力度最强的工业用氢场景</div>
+    </div>
+    <div class="ps" style="border-top:2px solid var(--purple)">
+      <div class="ps-num">⑤ 工业场景</div>
+      <div class="ps-type" style="color:var(--purple);border-color:rgba(191,128,255,.3)">ENERGY</div>
+      <div class="ps-title">掺氢燃烧</div>
+      <div class="ps-desc">天然气管网/工业锅炉掺氢，改造成本低，规模效应显著</div>
+    </div>
+    <div class="ps" style="border-top:2px solid var(--cyan)">
+      <div class="ps-num">⑥ X创新场景</div>
+      <div class="ps-type" style="color:var(--cyan);border-color:rgba(34,211,238,.3)">INNOVATION</div>
+      <div class="ps-title">轨道/船舶/叉车/热电联供</div>
+      <div class="ps-desc">SOFC分布式发电纳入创新场景，为氢能多元化应用打开政策空间</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 05 COMPETITION -->
+<div class="section reveal">
+  <div class="sl" id="s05">05 · COMPETITION 2025</div>
+  <h2 class="st">竞争格局：市场大扩容，分散化加剧</h2>
+  <p class="ss">2025年招标总量6,055MW +155%；CR3从2023年的67%降至约26%，新势力崛起明显</p>
+
+  <!-- Market share shift -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px" class="reveal">
+    <div style="background:var(--bg2);border:1px solid var(--border);padding:24px">
+      <div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.2em;margin-bottom:16px">2023年中标格局</div>
+      <div class="prog-row">
+        <div class="prog-label"><span class="prog-name">派瑞氢能</span><span class="prog-val" style="color:var(--h2blue)">29%</span></div>
+        <div class="prog-track"><div class="prog-fill" style="width:29%;background:var(--h2blue)"></div></div>
+      </div>
+      <div class="prog-row">
+        <div class="prog-label"><span class="prog-name">阳光氢能</span><span class="prog-val" style="color:var(--gold)">19.4%</span></div>
+        <div class="prog-track"><div class="prog-fill" style="width:19.4%;background:var(--gold)"></div></div>
+      </div>
+      <div class="prog-row">
+        <div class="prog-label"><span class="prog-name">隆基氢能</span><span class="prog-val" style="color:var(--green)">18.7%</span></div>
+        <div class="prog-track"><div class="prog-fill" style="width:18.7%;background:var(--green)"></div></div>
+      </div>
+      <div class="prog-row">
+        <div class="prog-label"><span class="prog-name">其他</span><span class="prog-val">32.9%</span></div>
+        <div class="prog-track"><div class="prog-fill" style="width:32.9%;background:rgba(255,255,255,.2)"></div></div>
+      </div>
+      <div style="font-family:var(--mono);font-size:8.5px;color:var(--orange);margin-top:12px">CR3 = 67% · 高度集中</div>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);padding:24px">
+      <div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.2em;margin-bottom:16px">2025年中标格局</div>
+      <div class="prog-row">
+        <div class="prog-label"><span class="prog-name">双良氢能</span><span class="prog-val" style="color:var(--h2blue)">10.7%</span></div>
+        <div class="prog-track"><div class="prog-fill" style="width:50%;background:var(--h2blue)"></div></div>
+      </div>
+      <div class="prog-row">
+        <div class="prog-label"><span class="prog-name">隆基氢能</span><span class="prog-val" style="color:var(--gold)">9.5%</span></div>
+        <div class="prog-track"><div class="prog-fill" style="width:45%;background:var(--gold)"></div></div>
+      </div>
+      <div class="prog-row">
+        <div class="prog-label"><span class="prog-name">三一氢能 🆕</span><span class="prog-val" style="color:var(--orange)">8.2%</span></div>
+        <div class="prog-track"><div class="prog-fill" style="width:38%;background:var(--orange)"></div></div>
+      </div>
+      <div class="prog-row">
+        <div class="prog-label"><span class="prog-name">长尾40+家</span><span class="prog-val">41.5%</span></div>
+        <div class="prog-track"><div class="prog-fill" style="width:100%;background:rgba(255,255,255,.15)"></div></div>
+      </div>
+      <div style="font-family:var(--mono);font-size:8.5px;color:var(--h2green);margin-top:12px">CR3 = 26% · 大幅分散化 ↓</div>
+    </div>
+  </div>
+
+  <!-- TOP 10 table -->
+  <div style="overflow-x:auto" class="reveal">
+    <table class="comp-table">
+      <thead>
+        <tr><th>#</th><th>企业名称</th><th>路线</th><th>订单（MW）</th><th>占比</th><th>核心标签</th></tr>
+      </thead>
+      <tbody id="top10-tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 06 PEM BATTLEGROUND -->
+<div class="section reveal">
+  <div class="sl" id="s06">06 · PEM BATTLEGROUND</div>
+  <h2 class="st">PEM：国产化替代窗口现在打开</h2>
+  <p class="ss">中能建8家入围供应商，BOP背压阀是最薄弱环节，进口替代价差&gt;40%</p>
+
+  <!-- PEM stats -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin-bottom:32px;border:1px solid var(--border)" class="reveal">
+    <div style="background:var(--bg2);padding:20px">
+      <div style="font-family:var(--mono);font-size:8px;color:var(--text3);letter-spacing:.12em;margin-bottom:4px">2025全年PEM招标</div>
+      <div style="font-size:24px;font-weight:800;color:var(--h2blue)">103.65 MW</div>
+    </div>
+    <div style="background:var(--bg2);padding:20px">
+      <div style="font-family:var(--mono);font-size:8px;color:var(--text3);letter-spacing:.12em;margin-bottom:4px">中能建入围供应商</div>
+      <div style="font-size:24px;font-weight:800;color:var(--gold)">8家</div>
+      <div style="font-size:10px;color:var(--text2)">vs 2023年5家</div>
+    </div>
+    <div style="background:var(--bg2);padding:20px">
+      <div style="font-family:var(--mono);font-size:8px;color:var(--text3);letter-spacing:.12em;margin-bottom:4px">中能建2025均价</div>
+      <div style="font-size:24px;font-weight:800;color:var(--orange)">460万/套</div>
+      <div style="font-size:10px;color:var(--text2)">较2023年756万 ↓39%</div>
+    </div>
+    <div style="background:rgba(56,189,248,.05);padding:20px">
+      <div style="font-family:var(--mono);font-size:8px;color:var(--h2blue);letter-spacing:.12em;margin-bottom:4px">BOP进口替代价差</div>
+      <div style="font-size:24px;font-weight:800;color:var(--h2blue)">&gt;40%</div>
+      <div style="font-size:10px;color:var(--text2)">BPR背压阀最高</div>
+    </div>
+  </div>
+
+  <!-- BOP products -->
+  <div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.2em;margin-bottom:16px">PEM BOP 切入产品矩阵</div>
+  <div class="bop-grid reveal">
+    <div class="bop" style="border-top:2px solid var(--red)">
+      <div class="bop-name">背压调节阀（BPR）</div>
+      <div class="bop-spec">3~4MPa精控，防膜损伤</div>
+      <div class="bop-desc">最关键，进口替代最薄弱。防止质子交换膜因背压波动损伤，是PEM系统核心流控部件</div>
+      <div class="bop-importance" style="color:var(--red);border-color:rgba(227,6,19,.3)">最高优先级</div>
+    </div>
+    <div class="bop" style="border-top:2px solid var(--orange)">
+      <div class="bop-name">差压控制阀组</div>
+      <div class="bop-spec">阴阳极 ≤±0.3bar</div>
+      <div class="bop-desc">膜损伤直接原因。阴阳极差压超标会导致膜穿孔，是PEM安全运行的关键保障</div>
+      <div class="bop-importance" style="color:var(--orange);border-color:rgba(255,107,53,.3)">最高优先级</div>
+    </div>
+    <div class="bop" style="border-top:2px solid var(--h2blue)">
+      <div class="bop-name">H₂侧精密MFC</div>
+      <div class="bop-spec">±1%FS，秒级响应</div>
+      <div class="bop-desc">测试台/BOP双用。质量流量控制器用于精确控制氢气流量，测试台和正式系统均需</div>
+      <div class="bop-importance" style="color:var(--h2blue);border-color:rgba(56,189,248,.3)">高优先级</div>
+    </div>
+    <div class="bop" style="border-top:2px solid var(--cyan)">
+      <div class="bop-name">安全截止阀（H2-grade）</div>
+      <div class="bop-spec">响应 &lt;100ms</div>
+      <div class="bop-desc">全线配套。H₂专用材质，防渗漏，快速切断，是系统安全最后一道防线</div>
+      <div class="bop-importance" style="color:var(--cyan);border-color:rgba(34,211,238,.3)">高优先级</div>
+    </div>
+    <div class="bop" style="border-top:2px solid var(--green)">
+      <div class="bop-name">液位控制阀 HPS/LPS</div>
+      <div class="bop-spec">电导率 &lt;0.1μS/cm水路</div>
+      <div class="bop-desc">水管理子系统。超纯水回路专用，防止离子污染导致质子膜性能下降</div>
+      <div class="bop-importance" style="color:var(--green);border-color:rgba(0,255,178,.3)">中优先级</div>
+    </div>
+    <div class="bop" style="border-top:2px solid var(--purple)">
+      <div class="bop-name">阵列阀组集成方案</div>
+      <div class="bop-spec">4合1/8合1，DN50+</div>
+      <div class="bop-desc">阵列化趋势下的机会。单台阀件减少但大通径阀升值，系统BOP价值从15–22万→35–60万</div>
+      <div class="bop-importance" style="color:var(--purple);border-color:rgba(191,128,255,.3)">2026新机会</div>
+    </div>
+  </div>
+
+  <!-- Priority customers -->
+  <div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.2em;margin-bottom:16px;margin-top:32px">优先目标客户</div>
+  <div style="overflow-x:auto" class="reveal">
+    <table class="comp-table">
+      <thead>
+        <tr><th>客户</th><th>路线</th><th>优先级</th><th>切入理由</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-weight:700">阳光氢能（阳光电源）</td>
+          <td><span style="font-family:var(--mono);font-size:9px">ALK+PEM</span></td>
+          <td><span class="stars">★★★★★</span></td>
+          <td>中能建3年连续中标 · GW产能工厂 · BOP选型窗口开放</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700">派瑞氢能（中船718）</td>
+          <td><span style="font-family:var(--mono);font-size:9px">ALK+PEM</span></td>
+          <td><span class="stars">★★★★★</span></td>
+          <td>MW级PEM最早商业化 · 高压截止阀需求大 · 欧洲出口项目</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700">长春绿动（国家电投）</td>
+          <td><span style="font-family:var(--mono);font-size:9px">PEM</span></td>
+          <td><span class="stars">★★★★</span></td>
+          <td>央企倾向国产 · 中能建3年连续中标 · 政策支持强</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700">中电丰业</td>
+          <td><span style="font-family:var(--mono);font-size:9px">ALK+PEM+AEM</span></td>
+          <td><span class="stars">★★★★</span></td>
+          <td>国内唯一三线有业绩 · BOP多品类采购机会</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700">赛克赛斯 / 卡沃罗</td>
+          <td><span style="font-family:var(--mono);font-size:9px">PEM</span></td>
+          <td><span class="stars">★★★</span></td>
+          <td>分布式场景为主 · 小型化MFC切入 · 出口30+国</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 07 SOFC -->
+<div class="section reveal">
+  <div class="sl" id="s07">07 · SOFC · THIRD DEMAND CURVE</div>
+  <h2 class="st">SOFC：独立需求爆发——AI数据中心驱动</h2>
+  <p class="ss">三环集团×潍柴动力×Bloom Energy · 2026年商业化拐点确认 · 第三条需求曲线打开</p>
+
+  <div class="curves reveal">
+    <div class="curve" style="border-top:2px solid var(--text3)">
+      <div class="curve-status" style="color:var(--text3);border-color:rgba(255,255,255,.15)">研发→示范</div>
+      <div class="curve-name">曲线① SOEC制氢</div>
+      <div class="curve-sub">风光配储 → 绿氢供给</div>
+      <div class="curve-desc">工业余热场景不可替代，2028–30年规模化，现在布局，5年收获</div>
+    </div>
+    <div class="curve" style="border-top:2px solid var(--gold)">
+      <div class="curve-status" style="color:var(--gold);border-color:rgba(255,215,0,.3)">示范阶段</div>
+      <div class="curve-name">曲线② ReSOC氢储能</div>
+      <div class="curve-sub">电—氢—电长时储能</div>
+      <div class="curve-desc">质子动力/国网宁夏项目推进，可逆电池技术路线，长时储能市场机会</div>
+    </div>
+    <div class="curve" style="border-top:2px solid var(--h2blue)">
+      <div class="curve-status" style="color:var(--h2blue);border-color:rgba(56,189,248,.3)">商业化爆发 🔥</div>
+      <div class="curve-name">曲线③ SOFC分布式发电</div>
+      <div class="curve-sub">AI数据中心 / 热电联供</div>
+      <div class="curve-desc">IEA预测2030年数据中心用电较2024年翻倍达945TWh。SOFC效率60%+，90天完成MW级部署，是最快填补AI电力缺口的方案</div>
+    </div>
+  </div>
+
+  <!-- Key SOFC stats -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:32px" class="reveal">
+    <div style="background:rgba(56,189,248,.05);padding:20px">
+      <div style="font-family:var(--mono);font-size:8px;color:var(--h2blue);letter-spacing:.12em;margin-bottom:4px">未来3年SOFC数据中心规模</div>
+      <div style="font-size:22px;font-weight:800;color:var(--h2blue)">$70亿</div>
+    </div>
+    <div style="background:var(--bg2);padding:20px">
+      <div style="font-family:var(--mono);font-size:8px;color:var(--text3);letter-spacing:.12em;margin-bottom:4px">AEP单笔SOFC订单</div>
+      <div style="font-size:22px;font-weight:800;color:var(--gold)">26.5亿美元</div>
+      <div style="font-size:10px;color:var(--text2)">900MW · 史上最大单笔</div>
+    </div>
+    <div style="background:var(--bg2);padding:20px">
+      <div style="font-family:var(--mono);font-size:8px;color:var(--text3);letter-spacing:.12em;margin-bottom:4px">三环全球隔膜市占率</div>
+      <div style="font-size:22px;font-weight:800;color:var(--orange)">60%+</div>
+      <div style="font-size:10px;color:var(--text2)">Bloom独家供应商</div>
+    </div>
+    <div style="background:var(--bg2);padding:20px">
+      <div style="font-family:var(--mono);font-size:8px;color:var(--text3);letter-spacing:.12em;margin-bottom:4px">潍柴SOFC确认收入</div>
+      <div style="font-size:22px;font-weight:800;color:var(--h2green)">2026年</div>
+      <div style="font-size:10px;color:var(--text2)">92.55%效率 · CE认证</div>
+    </div>
+  </div>
+
+  <div class="sofc-grid reveal">
+    <div class="sofc-co" style="border-top:2px solid var(--gold)">
+      <div>
+        <div class="sofc-stars">★★★★★</div>
+        <div style="font-family:var(--mono);font-size:7.5px;color:var(--text3)">BOP采购窗口</div>
+      </div>
+      <div>
+        <div class="sofc-name">三环集团</div>
+        <div class="sofc-tag">全球最大隔膜供应商 · Bloom独家 · 300kW投产</div>
+        <div class="sofc-desc">三环300kW医院示范全国首个投产；Bloom Energy全球SOFC爆发，三环作为独家隔膜供应商直接受益。高温蒸汽/燃料控制阀BOP需求进入国产化采购窗口</div>
+      </div>
+    </div>
+    <div class="sofc-co" style="border-top:2px solid var(--h2blue)">
+      <div>
+        <div class="sofc-stars">★★★★</div>
+        <div style="font-family:var(--mono);font-size:7.5px;color:var(--text3)">2026确认收入</div>
+      </div>
+      <div>
+        <div class="sofc-name">潍柴动力（000338）</div>
+        <div class="sofc-tag">国内系统集成龙头 · 92.55%效率 · CE认证 · 2026收入确认</div>
+        <div class="sofc-desc">国内SOFC系统集成龙头，与Ceres签制造许可协议，山东重工列电力能源为第七大板块，2026年确认SOFC收入是行业标志性事件</div>
+      </div>
+    </div>
+    <div class="sofc-co">
+      <div>
+        <div class="sofc-stars">★★★</div>
+        <div style="font-family:var(--mono);font-size:7.5px;color:var(--text3)">储能项目</div>
+      </div>
+      <div>
+        <div class="sofc-name">质子动力</div>
+        <div class="sofc-tag">ReSOC可逆电堆 · 国网宁夏储能项目</div>
+        <div class="sofc-desc">可逆电池技术（制氢+发电双向），国网宁夏储能项目落地，长时储能市场的SOFC先行者</div>
+      </div>
+    </div>
+    <div class="sofc-co">
+      <div>
+        <div class="sofc-stars">★★★</div>
+        <div style="font-family:var(--mono);font-size:7.5px;color:var(--text3)">量产中</div>
+      </div>
+      <div>
+        <div class="sofc-name">壹石通</div>
+        <div class="sofc-tag">12.1亿合肥1GW产能建设中 · 2026Q1投运</div>
+        <div class="sofc-desc">合肥1GW SOFC产能2026Q1投运，是国内SOFC产能规模最大的扩产计划之一</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 08 THREE VARIABLES -->
+<div class="section reveal">
+  <div class="sl" id="s08">08 · THREE STRATEGIC VARIABLES</div>
+  <h2 class="st">三大变量：决定战略打法的结构性因素</h2>
+  <p class="ss">PEM系统造价约5,000–7,000元/kW（2025年）；BOP辅机占12–18%≈600–1,260元/kW</p>
+
+  <div class="vars reveal">
+    <div class="var" style="border-top:2px solid var(--orange)">
+      <div class="var-num">变量 ①</div>
+      <div class="var-title">大标效应</div>
+      <div class="var-sub">80%订单集中在Top5集成商</div>
+      <div class="var-warn">中石化/中能建大型招标拿走绝大多数份额——BOP采购决策权在集成商</div>
+      <div class="var-action">分散拜访20家小客户，不如深耕阳光/派瑞/隆基3家集成商。Top5集成商议价能力极强，进入体系容易，守住价格难。用认证+系统方案抬高「替换成本」。</div>
+      <div class="var-arrow">→ 60%销售资源压在阳光/派瑞/隆基/双良4家，建立框架协议</div>
+    </div>
+    <div class="var" style="border-top:2px solid var(--h2blue)">
+      <div class="var-num">变量 ②</div>
+      <div class="var-title">阵列化趋势</div>
+      <div class="var-sub">4合1/8合1——单体阀减少，大通径阀升值</div>
+      <div class="var-warn">2026年多台共用一套流体系统，单体阀件数量减少，但总管BPR口径增大</div>
+      <div class="var-action">阵列化后总管BPR口径DN50以上，单价是单体阀的3–5倍。系统总BOP价值从15–22万元/台→35–60万元/组，反而上升。按单体阀报价的企业将被边缘化。</div>
+      <div class="var-arrow">→ 开发「阵列阀组集成方案」产品线</div>
+    </div>
+    <div class="var" style="border-top:2px solid var(--gold)">
+      <div class="var-num">变量 ③</div>
+      <div class="var-title">出海溢价</div>
+      <div class="var-sub">同款阀门出口欧洲，毛利率35–55% vs 国内15–25%</div>
+      <div class="var-warn">欧洲客户决策逻辑：认证优先（CE/ATEX），质量次之，价格最后</div>
+      <div class="var-action">BPR背压阀国内均价8,000–15,000元 vs 欧洲€2,500–5,000（约18,000–36,000元）。付款周期：国内90–180天账期 vs 欧洲30–60天。跟随阳光/派瑞欧洲项目出海。</div>
+      <div class="var-arrow">→ CE/ATEX/PED认证列为12–18个月优先战略项目</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div style="border-top:1px solid var(--border);padding:32px 40px;max-width:1300px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+  <div style="font-family:var(--mono);font-size:8.5px;color:var(--text3);letter-spacing:.15em">
+    数据来源：麦肯锡 · 国际氢能委员会 · IEA · 香橙会氢能数据库（2025全年）
+  </div>
+  <div style="font-family:var(--mono);font-size:8.5px;color:var(--text3);letter-spacing:.15em">
+    STRATEGY RESEARCH · MARCH 2026 · 机密文件
+  </div>
+</div>
+
+</div>
+
+<script>
+// TOP 10 table
+const TOP10 = [
+  {rank:1, name:'双良氢能（双良节能）', route:'ALK', mw:546, pct:'10.7%', tag:'含360MW闳扬项目'},
+  {rank:2, name:'隆基氢能', route:'ALK', mw:486, pct:'9.5%', tag:'全年最稳定头部'},
+  {rank:3, name:'三一氢能', route:'ALK', mw:420, pct:'8.2%', tag:'🆕 新势力崛起最快'},
+  {rank:4, name:'阳光氢能（阳光电源）', route:'ALK+PEM', mw:380, pct:'7.4%', tag:'双路线出货'},
+  {rank:5, name:'派瑞氢能（中船718）', route:'ALK+PEM', mw:310, pct:'6.1%', tag:'老牌央企'},
+  {rank:6, name:'中车株洲所', route:'ALK', mw:258, pct:'5%', tag:'轨道交通跨界'},
+  {rank:7, name:'华电科工', route:'ALK', mw:190, pct:'3.7%', tag:'华电集团EPC'},
+  {rank:8, name:'考克利尔竞立', route:'ALK', mw:165, pct:'3.2%', tag:'中比合资30年'},
+  {rank:9, name:'希倍优氢能', route:'ALK', mw:142, pct:'2.8%', tag:'中核项目受益'},
+  {rank:10, name:'稳石氢能', route:'AEM', mw:98, pct:'1.9%', tag:'全球首个MW级AEM'},
+];
+const tbody = document.getElementById('top10-tbody');
+TOP10.forEach(r => {
+  const routeColor = r.route.includes('PEM') ? 'var(--h2blue)' : r.route==='AEM' ? 'var(--h2green)' : 'rgba(255,255,255,.42)';
+  tbody.innerHTML += `<tr>
+    <td style="font-family:var(--mono);color:rgba(255,255,255,.4)">${r.rank}</td>
+    <td style="font-weight:700">${r.name}</td>
+    <td><span style="font-family:var(--mono);font-size:9px;color:${routeColor}">${r.route}</span></td>
+    <td style="font-family:var(--mono);font-weight:700;color:var(--h2blue)">${r.mw} MW</td>
+    <td style="font-family:var(--mono);color:rgba(255,255,255,.6)">${r.pct}</td>
+    <td style="font-size:10.5px;color:rgba(255,255,255,.6)">${r.tag}</td>
+  </tr>`;
+});
+
+// MW chart
+const MW_DATA = [{y:2022,v:350},{y:2023,v:1100},{y:2024,v:2369},{y:2025,v:6055}];
+const maxV = 6055;
+const chart = document.getElementById('mw-chart');
+MW_DATA.forEach(d => {
+  const h = Math.round((d.v/maxV)*110);
+  const color = d.y===2025?'var(--h2blue)':'rgba(56,189,248,.3)';
+  chart.innerHTML += `<div style="display:flex;flex-direction:column;align-items:center;gap:6px;flex:1">
+    <div style="font-family:var(--mono);font-size:10px;font-weight:700;color:${color}">${d.v.toLocaleString()}</div>
+    <div style="width:100%;max-width:80px;height:${h}px;background:${color};transition:height 1s"></div>
+    <div style="font-family:var(--mono);font-size:9px;color:rgba(255,255,255,.4)">${d.y}</div>
+  </div>`;
+});
+if(MW_DATA[MW_DATA.length-1]) {
+  chart.innerHTML += `<div style="display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;justify-content:flex-end">
+    <div style="font-family:var(--mono);font-size:9px;color:rgba(56,189,248,.5)">+155%</div>
+    <div style="font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.25);margin-bottom:24px">YoY</div>
+  </div>`;
+}
+
+// Scroll progress
+window.addEventListener('scroll',()=>{
+  const pct=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
+  document.getElementById('nav-bar').style.width=pct+'%';
+});
+
+// Reveal
+const reveals=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);observer.unobserve(e.target);}
+  });
+},{threshold:0.06});
+reveals.forEach(r=>observer.observe(r));
+</script>
+
+<!-- TOC -->
+<style>
+#toc-btn{position:fixed;top:80px;left:14px;z-index:9500;width:30px;height:30px;background:rgba(2,5,18,.9);border:1px solid rgba(56,189,248,.4);border-left:2px solid #38BDF8;color:rgba(255,255,255,.7);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s}
+#toc-btn:hover{color:#fff;background:rgba(56,189,248,.12)}
+#toc-panel{position:fixed;top:80px;left:14px;z-index:9499;width:196px;background:rgba(2,5,18,.96);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);border-left:2px solid #38BDF8;transform:translateX(-220px);opacity:0;pointer-events:none;transition:transform .28s cubic-bezier(.16,1,.3,1),opacity .28s}
+#toc-panel.open{transform:translateX(0);opacity:1;pointer-events:auto}
+#toc-head{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.07)}
+#toc-head span{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.25em;color:rgba(56,189,248,.7)}
+#toc-head button{background:none;border:none;color:rgba(255,255,255,.4);cursor:pointer;font-size:16px;line-height:1;padding:0}
+#toc-head button:hover{color:#fff}
+.ti{display:flex;gap:8px;align-items:center;padding:7px 14px;text-decoration:none;border-left:2px solid transparent;margin-left:-2px;transition:background .15s}
+.ti:hover{background:rgba(255,255,255,.04)}
+.ti.on{border-left-color:#38BDF8;background:rgba(56,189,248,.08)}
+.ti span:first-child{font-family:'IBM Plex Mono',monospace;font-size:8px;color:rgba(255,255,255,.3);width:18px;flex-shrink:0}
+.ti span:last-child{font-size:11px;color:rgba(255,255,255,.72)}
+.ti.on span:first-child{color:#38BDF8}
+.ti.on span:last-child{color:#fff}
+@media(max-width:768px){#toc-btn,#toc-panel{display:none!important}}
+</style>
+<button id="toc-btn" onclick="tocToggle()" title="目录">☰</button>
+<div id="toc-panel">
+  <div id="toc-head"><span>目录</span><button onclick="tocToggle()">×</button></div>
+  <a class="ti" href="#s01"><span>01</span><span>四大行动结论</span></a>
+  <a class="ti" href="#s02"><span>02</span><span>行业背景与拐点</span></a>
+  <a class="ti" href="#s03"><span>03</span><span>技术演进路径</span></a>
+  <a class="ti" href="#s04"><span>04</span><span>政策格局</span></a>
+  <a class="ti" href="#s05"><span>05</span><span>竞争格局 2025</span></a>
+  <a class="ti" href="#s06"><span>06</span><span>PEM主战场</span></a>
+  <a class="ti" href="#s07"><span>07</span><span>SOFC需求爆发</span></a>
+  <a class="ti" href="#s08"><span>08</span><span>三大战略变量</span></a>
+</div>
+<script>
+function tocToggle(){
+  var p=document.getElementById('toc-panel'),b=document.getElementById('toc-btn');
+  var o=p.classList.toggle('open');
+  b.style.cssText=o?"opacity:0;pointer-events:none":"opacity:1;pointer-events:auto";
+}
+document.querySelectorAll('.ti').forEach(function(a){
+  a.addEventListener('click',function(e){
+    e.preventDefault();
+    var el=document.getElementById(a.getAttribute('href').slice(1));
+    if(el){var offset=el.getBoundingClientRect().top+window.pageYOffset-64;window.scrollTo({top:offset,behavior:'smooth'});}
+    tocToggle();
+  });
+});
+var _SI=Array.from(document.querySelectorAll('.ti')).map(function(a){return a.getAttribute('href').slice(1);});
+function _at(){var c=_SI[0];_SI.forEach(function(id){var e=document.getElementById(id);if(e&&e.getBoundingClientRect().top<=120)c=id;});document.querySelectorAll('.ti').forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+c);});}
+window.addEventListener('scroll',_at,{passive:true});_at();
+</script>
+</body>
+</html>
