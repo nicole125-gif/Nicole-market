@@ -140,7 +140,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--display);min-heigh
 .tl-m-val{font-family:var(--mono);font-size:12px;font-weight:700}
 
 /* SUMMARY STATS */
-.summary-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:32px}
+.summary-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:0}
 .ss-cell{background:var(--bg2);padding:18px 20px}
 .ss-label{font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:.15em;margin-bottom:6px}
 .ss-val{font-size:24px;font-weight:800;letter-spacing:-.03em;line-height:1}
@@ -213,8 +213,13 @@ body{background:var(--bg);color:var(--text);font-family:var(--display);min-heigh
   <!-- SUMMARY STATS -->
   <div class="summary-strip reveal" id="summary-strip"></div>
 
+  <!-- DIVIDER -->
+  <div style="height:1px;background:linear-gradient(90deg,rgba(255,255,255,.06),rgba(255,255,255,.12) 30%,rgba(255,255,255,.06));margin:0 0 0 0"></div>
+
   <!-- CONTROLS -->
-  <div class="controls">
+  <div style="background:rgba(4,8,22,.7);border:1px solid rgba(255,255,255,.07);border-top:none;padding:20px 24px;margin-bottom:0">
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.3em;color:rgba(255,255,255,.35);margin-bottom:14px">FILTER &amp; VIEW CONTROLS</div>
+  <div class="controls" style="margin-bottom:0">
     <div style="font-family:var(--mono);font-size:8.5px;color:var(--text3);letter-spacing:.1em">时间段</div>
     <div class="period-tabs">
       <button class="ptab" onclick="setPeriod(0)">2024FY</button>
@@ -235,8 +240,9 @@ body{background:var(--bg);color:var(--text);font-family:var(--display);min-heigh
       </div>
     </div>
   </div>
+  </div><!-- /controls-wrap -->
 
-  <div class="legend">
+  <div style="margin-top:36px;padding-top:28px;border-top:1px solid rgba(255,255,255,.05)" class="legend">
     <div class="leg-item"><div class="leg-dot" style="background:rgba(0,255,178,.5)"></div> 强势上行 &gt;20%</div>
     <div class="leg-item"><div class="leg-dot" style="background:rgba(74,222,128,.4)"></div> 上行 0–20%</div>
     <div class="leg-item"><div class="leg-dot" style="background:rgba(255,255,255,.35)"></div> 持平 ±5%</div>
@@ -246,7 +252,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--display);min-heigh
 
   <!-- HEATMAP -->
   <div class="reveal" style="margin-bottom:40px">
-    <div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.2em;margin-bottom:12px">行业景气度热力图</div>
+    <div style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.55);letter-spacing:.2em;margin-bottom:12px;display:flex;align-items:center;gap:10px"><span style="width:3px;height:12px;background:var(--gold);display:inline-block"></span>行业景气度热力图</div>
     <div class="heatmap-wrap">
       <table class="heatmap" id="heatmap"></table>
     </div>
