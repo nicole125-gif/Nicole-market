@@ -203,20 +203,21 @@ body{background:var(--bg);color:var(--text);font-family:var(--display);min-heigh
 }
 #cursor-dot{
   position:fixed;pointer-events:none;z-index:100000;
-  width:6px;height:6px;border-radius:50%;
-  background:#00FFB2;
+  width:24px;height:24px;border-radius:50%;
+  background:transparent;
+  border:1.5px solid rgba(0,255,178,.8);
   transform:translate(-50%,-50%);
-  box-shadow:0 0 8px #00FFB2,0 0 16px rgba(0,255,178,.4);
-  transition:transform .1s ease,width .2s,height .2s,background .2s;
+  box-shadow:0 0 8px rgba(0,255,178,.4),inset 0 0 6px rgba(0,255,178,.1);
+  transition:width .2s ease,height .2s ease,border-color .2s,box-shadow .2s;
 }
 body:has(a:hover) #cursor-dot,
 body:has(button:hover) #cursor-dot,
 body:has(.co-card:hover) #cursor-dot,
 body:has(.ptab:hover) #cursor-dot,
 body:has(.mtab:hover) #cursor-dot{
-  width:12px;height:12px;
-  background:#FFD700;
-  box-shadow:0 0 12px #FFD700,0 0 24px rgba(255,215,0,.4);
+  width:36px;height:36px;
+  border-color:rgba(255,215,0,.9);
+  box-shadow:0 0 16px rgba(255,215,0,.4),inset 0 0 10px rgba(255,215,0,.08);
 }
 </style>
 </head>
