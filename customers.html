@@ -190,9 +190,41 @@ body{background:var(--bg);color:var(--text);font-family:var(--display);min-heigh
   .summary-strip{grid-template-columns:1fr 1fr}
   .company-grid{grid-template-columns:1fr}
 }
+
+/* CURSOR GLOW */
+#cursor-glow{
+  position:fixed;pointer-events:none;z-index:99999;
+  width:320px;height:320px;
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(0,255,178,.06) 0%,rgba(0,200,255,.04) 30%,transparent 70%);
+  transition:opacity .3s ease;
+  mix-blend-mode:screen;
+}
+#cursor-dot{
+  position:fixed;pointer-events:none;z-index:100000;
+  width:6px;height:6px;border-radius:50%;
+  background:#00FFB2;
+  transform:translate(-50%,-50%);
+  box-shadow:0 0 8px #00FFB2,0 0 16px rgba(0,255,178,.4);
+  transition:transform .1s ease,width .2s,height .2s,background .2s;
+}
+body:has(a:hover) #cursor-dot,
+body:has(button:hover) #cursor-dot,
+body:has(.co-card:hover) #cursor-dot,
+body:has(.ptab:hover) #cursor-dot,
+body:has(.mtab:hover) #cursor-dot{
+  width:12px;height:12px;
+  background:#FFD700;
+  box-shadow:0 0 12px #FFD700,0 0 24px rgba(255,215,0,.4);
+}
 </style>
 </head>
 <body>
+
+<div id="cursor-glow"></div>
+<div id="cursor-dot"></div>
+
 <div class="bg-grid"></div>
 <div class="bg-glow"></div>
 
@@ -1959,5 +1991,26 @@ function scrollToInd(ind){
   if(grid){var offset=grid.getBoundingClientRect().top+window.pageYOffset-80;window.scrollTo({top:offset,behavior:'smooth'});}
 }
 </script>
+
+<script>
+(function(){
+  const glow = document.getElementById('cursor-glow');
+  const dot  = document.getElementById('cursor-dot');
+  let mx=0,my=0,gx=0,gy=0;
+  document.addEventListener('mousemove', e=>{
+    mx=e.clientX; my=e.clientY;
+    dot.style.left=mx+'px'; dot.style.top=my+'px';
+  });
+  function animGlow(){
+    gx+=(mx-gx)*.08; gy+=(my-gy)*.08;
+    glow.style.left=gx+'px'; glow.style.top=gy+'px';
+    requestAnimationFrame(animGlow);
+  }
+  animGlow();
+  document.addEventListener('mouseleave',()=>{ glow.style.opacity='0'; dot.style.opacity='0'; });
+  document.addEventListener('mouseenter',()=>{ glow.style.opacity='1'; dot.style.opacity='1'; });
+})();
+</script>
+
 </body>
 </html>
