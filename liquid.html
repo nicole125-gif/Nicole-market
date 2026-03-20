@@ -1,12 +1,11 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AI 液冷战略 · 战略分析 2026</title>
+<script>
 // ═══════════════════════════════════════════════════════════
-//  BÜRKERT STRATEGIC DASHBOARD — CENTRAL DATA STORE
-//  Edit this file OR use /admin to update content visually
-//  Last structure update: 2026-02
-// ═══════════════════════════════════════════════════════════
-
-window.BURKERT_DATA = {
-  meta: {
-    lastUpdated: "2026-02-28",
+//  "2026-02-28",
     updatedBy: "Nicole",
     version: "2.1"
   },
@@ -175,3 +174,287 @@ window.BURKERT_DATA = {
     console.warn('Could not load saved data:', e);
   }
 })();
+
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08)}
+body{background:linear-gradient(160deg,#040912 0%,#050A18 60%,#040810 100%);color:#fff;font-family:'Helvetica Neue',Arial,sans-serif;min-height:100vh}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spinCCW{from{transform:rotate(360deg)}to{transform:rotate(0deg)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes borderFlow{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes shimmer{0%{transform:translateX(-120%)}100%{transform:translateX(220%)}}
+@keyframes dotBlink{0%,100%{opacity:1}50%{opacity:.15}}
+@keyframes pulseGlow{0%,100%{opacity:.04;transform:scale(1)}50%{opacity:.09;transform:scale(1.05)}}
+@keyframes scanline{0%{transform:translateY(-100%)}100%{transform:translateY(200vh)}}
+.t-hero{font-size:clamp(1.6rem,5.2vw,2.5rem)}
+.t-stat{font-size:clamp(1.4rem,3.5vw,2rem)}
+.t-body{font-size:clamp(11px,1.75vw,13px)}
+.t-label{font-size:clamp(8.5px,1.25vw,10px)}
+.t-h3{font-size:clamp(14px,2.2vw,18px)}
+.ring-cw{position:absolute;inset:-1px;z-index:0;padding:1px;border-radius:inherit;pointer-events:none;background:conic-gradient(from 0deg,rgba(227,6,19,0) 0deg,rgba(227,6,19,.92) 52deg,rgba(255,80,30,.45) 88deg,rgba(12,4,4,.05) 155deg,rgba(227,6,19,.68) 218deg,rgba(8,3,3,.04) 288deg,rgba(227,6,19,0) 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .4s ease}
+.ring-ccw{position:absolute;inset:-3px;z-index:0;padding:1px;border-radius:inherit;pointer-events:none;background:conic-gradient(from 180deg,rgba(0,200,255,0) 0deg,rgba(0,200,255,.30) 68deg,rgba(4,8,28,.05) 155deg,rgba(0,200,255,.16) 238deg,rgba(0,200,255,0) 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .5s ease}
+.ring-host:hover .ring-cw,.ring-host:hover .ring-ccw{opacity:1}
+.ring-cw{animation:spin 9s linear infinite}
+.ring-ccw{animation:spinCCW 14s linear infinite}
+.grain::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:9;opacity:.024;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:128px}
+.animate-border-flow{animation:borderFlow 5s ease infinite;background-size:300% 300%}
+.animate-dot-blink{animation:dotBlink 2.4s ease-in-out infinite}
+.animate-shimmer{animation:shimmer 2.2s ease infinite}
+.animate-fade-up{animation:fadeUp .6s ease both}
+.main-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2.5vw,24px);align-items:start}
+@media(max-width:559px){.main-grid{grid-template-columns:1fr}}
+.roadmap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(6px,1.5vw,10px)}
+@media(max-width:400px){.roadmap-grid{grid-template-columns:1fr}}
+/* Nav */
+#site-nav{position:fixed;top:0;left:0;right:0;z-index:10000;background:rgba(2,5,18,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:0 clamp(16px,4vw,40px);height:52px}
+.nav-brand{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.nav-dot{width:7px;height:7px;border-radius:50%;background:#E30613;box-shadow:0 0 8px #E30613;animation:dotBlink 2.4s ease-in-out infinite}
+.nav-logo{font-family:'Courier New',monospace;font-size:11px;font-weight:700;color:#fff;letter-spacing:.22em}
+.nav-sub{font-family:'Courier New',monospace;font-size:9px;color:rgba(255,255,255,.22);letter-spacing:.15em}
+.nav-links{display:flex;gap:4px;margin-left:auto}
+.nav-link{padding:5px 14px;font-size:11px;font-family:'Courier New',monospace;letter-spacing:.12em;color:rgba(255,255,255,.82);text-decoration:none;border:1px solid transparent;transition:all .2s}
+.nav-link:hover{color:#fff;border-color:rgba(255,255,255,.12)}
+.nav-link.active{color:#E30613;border-color:#E30613;background:rgba(227,6,19,.08)}
+.status-dot{width:5px;height:5px;border-radius:50%;background:#00FFB2;animation:dotBlink 2.8s ease-in-out infinite;display:inline-block}
+.nav-bar{height:2px;background:linear-gradient(90deg,#E30613,transparent);width:0;transition:width .3s}
+@media(max-width:600px){.nav-sub,.nav-link:last-child+span{display:none}.nav-link{padding:5px 8px;font-size:10px}}
+</style>
+</head>
+<body>
+<nav id="site-nav">
+  <div class="nav-inner">
+    
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">宏观脉搏</a>
+      <a href="liquid.html" class="nav-link active">AI 液冷</a>
+      <a href="semiconductor.html" class="nav-link">半导体 SBU</a>
+      <a href="mscc.html" class="nav-link">质谱·色谱</a>
+      <a href="pharma.html" class="nav-link">制药装备</a>
+      <a href="food.html" class="nav-link">食品饮料装备</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px;flex-shrink:0"><span class="status-dot"></span><span style="font-family:'Courier New',monospace;font-size:8px;color:rgba(255,255,255,.22);letter-spacing:.2em">LIVE 2026</span></div>
+  </div>
+  <div class="nav-bar" id="nav-bar"></div>
+</nav>
+
+<!-- BG effects -->
+<div style="position:fixed;top:-110px;right:-110px;width:clamp(240px,42vw,460px);height:clamp(240px,42vw,460px);background:#E30613;border-radius:50%;filter:blur(130px);pointer-events:none;animation:pulseGlow 5s ease-in-out infinite;z-index:0"></div>
+<div style="position:fixed;bottom:-80px;left:-60px;width:clamp(150px,28vw,320px);height:clamp(150px,28vw,320px);background:#00C8FF;border-radius:50%;filter:blur(110px);opacity:.022;pointer-events:none;z-index:0"></div>
+<div style="position:fixed;inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.055) 1px,transparent 1px);background-size:32px 32px;opacity:.55;z-index:0"></div>
+<div style="position:fixed;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(227,6,19,.18),rgba(0,200,255,.1),transparent);pointer-events:none;z-index:0;animation:scanline 14s linear infinite"></div>
+
+<section style="padding:clamp(70px,10vw,100px) clamp(16px,5vw,40px) 60px;position:relative;z-index:1">
+<div style="max-width:1280px;margin:0 auto">
+
+  <!-- HEADER -->
+  <header style="margin-bottom:clamp(28px,5vw,52px);animation:fadeUp .5s ease both">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+      <span class="animate-dot-blink" style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#E30613;box-shadow:0 0 10px #E30613;flex-shrink:0"></span>
+      <span class="t-label" style="font-family:monospace;color:rgba(255,255,255,.65);letter-spacing:.28em;text-transform:uppercase">SBU · AI Infrastructure · Liquid Cooling</span>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:clamp(14px,3vw,22px)">
+      <div style="width:3px;height:clamp(52px,7vw,68px);flex-shrink:0;margin-top:2px;background:linear-gradient(180deg,#E30613,rgba(227,6,19,.08))"></div>
+      <div>
+        <h1 class="t-hero" style="font-weight:800;color:#fff;letter-spacing:-.02em;line-height:1.1;margin-bottom:6px">
+          AI Infrastructure
+          <span style="display:block;font-weight:200;font-size:.56em;letter-spacing:.08em;color:rgba(255,255,255,.2);margin-top:5px;font-family:monospace">LIQUID COOLING · 2026 STRATEGIC OUTLOOK</span>
+        </h1>
+        <p class="t-body" style="color:rgba(255,255,255,.82);letter-spacing:.03em;max-width:560px;line-height:1.65">算力密度突破物理极限，流体控制成为 AI 基础设施的关键变量</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN GRID -->
+  <div class="main-grid">
+
+    <!-- LEFT: market card + roadmap -->
+    <div style="display:flex;flex-direction:column;gap:clamp(14px,2.5vw,22px)">
+
+      <!-- Featured card with spin ring -->
+      <div class="ring-host grain" style="position:relative">
+        <div class="ring-cw"></div>
+        <div class="ring-ccw"></div>
+        <div style="position:relative;z-index:1;background:rgba(7,12,28,.88);backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);border:1px solid rgba(255,255,255,.07);padding:clamp(20px,4vw,32px);overflow:hidden;animation:fadeUp .55s ease both">
+          <div style="position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.024;background-image:url('data:image/svg+xml,%3Csvg viewBox=\\'0 0 200 200\\' xmlns=\\'http://www.w3.org/2000/svg\\'%3E%3Cfilter id=\\'n\\'%3E%3CfeTurbulence type=\\'fractalNoise\\' baseFrequency=\\'0.82\\' numOctaves=\\'4\\'/%3E%3C/filter%3E%3Crect width=\\'100%25\\' height=\\'100%25\\' filter=\\'url(%23n)\\'/%3E%3C/svg%3E');background-size:128px"></div>
+          <div class="animate-border-flow" style="position:absolute;bottom:0;left:0;right:0;height:1px;z-index:0;background:linear-gradient(90deg,transparent,rgba(227,6,19,.55),rgba(0,200,255,.35),transparent)"></div>
+          <div style="position:relative;z-index:1">
+            <h3 class="t-label" style="font-family:monospace;color:#E30613;letter-spacing:.22em;text-transform:uppercase;margin-bottom:clamp(16px,3vw,24px);display:flex;align-items:center;gap:7px"><span style="opacity:.4">//</span> 2026 Market Dynamics</h3>
+            <div id="market-rows"></div>
+            <p class="t-body" style="color:rgba(255,255,255,.65);line-height:1.78;margin-top:clamp(14px,2.5vw,20px);border-top:1px solid rgba(255,255,255,.05);padding-top:clamp(12px,2vw,16px)">
+              在 AI 算力集群（新一代 Blackwell 架构）功率密度突破 100kW/机柜背景下，流体控制的绝对可靠性已成为算力基建的<span style="color:#E30613;font-weight:600">「第一优先级」</span>变量。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roadmap -->
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:clamp(10px,2vw,14px)">
+          <span class="t-label" style="font-family:monospace;color:rgba(255,255,255,.22);letter-spacing:.2em;text-transform:uppercase;white-space:nowrap">Technical Roadmap</span>
+          <div style="flex:1;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.08),transparent)"></div>
+        </div>
+        <div class="roadmap-grid" id="roadmap-grid"></div>
+      </div>
+    </div>
+
+    <!-- RIGHT: SWOT + CTA -->
+    <div class="grain" style="position:relative;background:rgba(255,255,255,.028);backdrop-filter:blur(26px) saturate(160%);-webkit-backdrop-filter:blur(26px) saturate(160%);border:1px solid rgba(255,255,255,.07);padding:clamp(20px,4vw,32px);overflow:hidden;animation:fadeUp .7s ease .12s both">
+      <div style="position:absolute;top:0;left:0;pointer-events:none;width:clamp(22px,3.5vw,34px);height:clamp(22px,3.5vw,34px);border-top:1px solid rgba(227,6,19,.5);border-left:1px solid rgba(227,6,19,.5)"></div>
+      <div style="position:absolute;bottom:0;right:0;pointer-events:none;width:clamp(22px,3.5vw,34px);height:clamp(22px,3.5vw,34px);border-bottom:1px solid rgba(0,200,255,.22);border-right:1px solid rgba(0,200,255,.22)"></div>
+      <div class="animate-border-flow" style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,rgba(227,6,19,.6),rgba(255,255,255,.1) 40%,rgba(227,6,19,.4));background-size:300% 100%"></div>
+      <div style="position:absolute;inset:0;opacity:.02;pointer-events:none;background-image:url('data:image/svg+xml,%3Csvg viewBox=\\'0 0 200 200\\' xmlns=\\'http://www.w3.org/2000/svg\\'%3E%3Cfilter id=\\'n\\'%3E%3CfeTurbulence type=\\'fractalNoise\\' baseFrequency=\\'0.82\\' numOctaves=\\'4\\'/%3E%3C/filter%3E%3Crect width=\\'100%25\\' height=\\'100%25\\' filter=\\'url(%23n)\\'/%3E%3C/svg%3E');background-size:128px"></div>
+      <div style="position:relative;z-index:1">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:clamp(16px,3vw,26px)">
+          <div style="width:2px;height:clamp(28px,4vw,36px);flex-shrink:0;background:linear-gradient(180deg,#E30613,rgba(227,6,19,.1))"></div>
+          <div>
+            <h2 class="t-h3" style="font-weight:800;color:#fff;letter-spacing:-.01em;margin-bottom:2px">Strategic SWOT</h2>
+            <p class="t-label" style="font-family:monospace;color:rgba(255,255,255,.22);letter-spacing:.15em">LIQUID COOLING · </p>
+          </div>
+        </div>
+        <div id="swot-list"></div>
+        <div style="margin-top:clamp(20px,3vw,30px)">
+          <button id="cta-btn" style="width:100%;padding:clamp(12px,2.5vw,15px) 20px;background:transparent;border:1px solid #E30613;color:#E30613;font-family:monospace;font-weight:700;font-size:clamp(9.5px,1.8vw,11px);letter-spacing:.22em;text-transform:uppercase;cursor:pointer;transition:all .25s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:10px">
+            <span style="position:relative">下载液冷战略白皮书</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;flex-shrink:0;position:relative;transition:transform .2s"><path d="M8 2v8M4 7l4 4 4-4M2 14h12"/></svg>
+          </button>
+          <p class="t-label" style="font-family:monospace;text-align:center;color:rgba(255,255,255,.18);letter-spacing:.1em;margin-top:10px"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<script>
+const MARKET_ROWS=[
+  {label:"新建智算中心液冷渗透率",value:"45%",note:"↑ +16pp vs 2025",color:"#00FFB2"},
+  {label:"国家级枢纽 PUE 准入",value:"< 1.15",note:"法规强制执行",color:"#00C8FF"},
+  {label:"CDU 市场规模 CAGR",value:"47%",note:"2024–2028E",color:"#FFD700"},
+];
+const ROADMAP=[
+  {year:"2026",title:"精密动态平衡",color:"#00FFB2",desc:"基于 AI 负载的毫秒级流量调节，响应延迟 <5ms"},
+  {year:"2027",title:"预测性维护",color:"#00C8FF",desc:"自诊断执行器接入 DCIM，故障预警窗口达 72H"},
+  {year:"2028",title:"相变冷却突破",color:"#BF80FF",desc:"两相流高压气密控制，散热密度突破 300W/cm²"},
+];
+const SWOT=[
+  {tag:"ADVANTAGE",zh:"核心优势",color:"#00FFB2",text:"基于全球领先的无泄漏（Zero-Leakage）密封技术，卡位高附加值二次侧（Secondary Loop）流量均衡控制，替代壁垒极高。"},
+  {tag:"OPPORTUNITY",zh:"战略机遇",color:"#00C8FF",text:"AI 训练集群功率密度突破 100kW/机柜，CDU 出货量 CAGR 83%，精密流量控制窗口期在 2026–2027 完全打开。"},
+  {tag:"THREAT",zh:"潜在威胁",color:"#FF6B35",text:"本土系统集成商自研低端零部件的「系统化替代」，需从单一零件销售转向系统模块化方案，缩短决策链路。"},
+];
+
+// Market rows
+const mr = document.getElementById('market-rows');
+MARKET_ROWS.forEach((r,i)=>{
+  mr.insertAdjacentHTML('beforeend',`<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding:clamp(11px,2vw,16px) 0;${i<MARKET_ROWS.length-1?'border-bottom:1px solid rgba(255,255,255,.05)':''}">
+    <div style="min-width:0"><p class="t-body" style="color:rgba(255,255,255,.65);margin-bottom:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.label}</p><span class="t-label" style="font-family:monospace;color:${r.color};opacity:.78">${r.note}</span></div>
+    <span class="t-stat" style="font-family:monospace;font-weight:700;color:${r.color};line-height:1;flex-shrink:0;text-shadow:0 0 20px ${r.color}60">${r.value}</span>
+  </div>`);
+});
+
+// Roadmap
+const rg = document.getElementById('roadmap-grid');
+ROADMAP.forEach((item,i)=>{
+  const d = document.createElement('div');
+  d.style.cssText=`position:relative;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(12px);padding:clamp(12px,2.5vw,18px) clamp(10px,2vw,14px);cursor:pointer;transition:all .28s cubic-bezier(.16,1,.3,1);overflow:hidden;animation:fadeUp .6s ease both;animation-delay:${220+i*110}ms`;
+  d.innerHTML=`<span style="display:block;margin-bottom:8px;font-family:monospace;font-size:9.5px;color:${item.color};letter-spacing:.2em;font-weight:700">${item.year}</span>
+    <h4 style="font-size:clamp(12px,2vw,13.5px);font-weight:700;margin-bottom:6px;color:rgba(255,255,255,.78);transition:color .2s">${item.title}</h4>
+    <p class="t-body" style="color:rgba(255,255,255,.82);line-height:1.65">${item.desc}</p>
+    <div style="position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,${item.color},transparent);opacity:0;transition:opacity .3s" class="glow-line"></div>`;
+  d.addEventListener('mouseenter',()=>{d.style.background=`linear-gradient(135deg,rgba(6,11,26,.97),${item.color}12)`;d.style.borderColor=item.color+'55';d.style.transform='translateY(-4px)';d.querySelector('.glow-line').style.opacity='.75'});
+  d.addEventListener('mouseleave',()=>{d.style.background='rgba(255,255,255,.04)';d.style.borderColor='rgba(255,255,255,.08)';d.style.transform='';d.querySelector('.glow-line').style.opacity='0'});
+  rg.appendChild(d);
+});
+
+// SWOT
+const sl = document.getElementById('swot-list');
+SWOT.forEach((item,i)=>{
+  sl.insertAdjacentHTML('beforeend',`<div style="padding:clamp(12px,2vw,16px) 0;${i<SWOT.length-1?'border-bottom:1px solid rgba(255,255,255,.05)':''}">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">
+      <span class="animate-dot-blink" style="display:inline-block;width:5px;height:5px;border-radius:50%;background:${item.color};box-shadow:0 0 6px ${item.color};flex-shrink:0"></span>
+      <span class="t-label" style="font-family:monospace;color:${item.color};letter-spacing:.2em;font-weight:700">${item.tag} · ${item.zh}</span>
+    </div>
+    <p class="t-body" style="color:rgba(255,255,255,.65);line-height:1.72;padding-left:13px;transition:color .25s">${item.text}</p>
+  </div>`);
+});
+
+// CTA button
+const btn = document.getElementById('cta-btn');
+btn.addEventListener('mouseenter',()=>{btn.style.background='#E30613';btn.style.color='#fff';btn.style.boxShadow='0 0 36px rgba(227,6,19,.28)'});
+btn.addEventListener('mouseleave',()=>{btn.style.background='transparent';btn.style.color='#E30613';btn.style.boxShadow='none'});
+
+// Scroll progress
+window.addEventListener('scroll',()=>{
+  const pct=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
+  document.getElementById('nav-bar').style.width=pct+'%';
+});
+</script>
+
+<style>
+#toc-btn{position:fixed;top:80px;left:14px;z-index:9500;width:30px;height:30px;background:rgba(2,5,18,.92);border:1px solid #00C8FF55;border-left:2px solid #00C8FF;color:rgba(255,255,255,.7);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s}
+#toc-btn:hover{color:#fff;background:#00C8FF22}
+#toc-panel{position:fixed;top:80px;left:14px;z-index:9499;width:200px;background:rgba(2,5,18,.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);border-left:2px solid #00C8FF;transform:translateX(-220px);opacity:0;pointer-events:none;transition:transform .28s cubic-bezier(.16,1,.3,1),opacity .28s}
+#toc-panel.open{transform:translateX(0);opacity:1;pointer-events:auto}
+#toc-head{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.07)}
+#toc-head span{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.25em;color:#00C8FF99}
+#toc-head button{background:none;border:none;color:rgba(255,255,255,.4);cursor:pointer;font-size:16px;line-height:1;padding:0}
+#toc-head button:hover{color:#fff}
+.ti{display:flex;gap:8px;align-items:center;padding:7px 14px;text-decoration:none;border-left:2px solid transparent;margin-left:-2px;transition:background .15s}
+.ti:hover{background:rgba(255,255,255,.04)}
+.ti.on{border-left-color:#00C8FF;background:#00C8FF18}
+.ti span:first-child{font-family:'IBM Plex Mono',monospace;font-size:8px;color:rgba(255,255,255,.3);width:18px;flex-shrink:0}
+.ti span:last-child{font-size:11px;color:rgba(255,255,255,.72)}
+.ti.on span:first-child{color:#00C8FF}
+.ti.on span:last-child{color:#fff}
+@media(max-width:768px){#toc-btn,#toc-panel{display:none!important}}
+</style>
+<button id="toc-btn" onclick="tocToggle()" title="目录">☰</button>
+<div id="toc-panel">
+  <div id="toc-head"><span>目录</span><button onclick="tocToggle()">×</button></div>
+  <a class="ti" href="#s01"><span>01</span><span>市场动态数据</span></a>
+  <a class="ti" href="#s02"><span>02</span><span>技术路线图</span></a>
+  <a class="ti" href="#s03"><span>03</span><span>战略 SWOT</span></a>
+</div>
+<script>
+function tocToggle(){
+  var p=document.getElementById('toc-panel'),b=document.getElementById('toc-btn');
+  var o=p.classList.toggle('open');
+  b.style.cssText=o?"opacity:0;pointer-events:none":"opacity:1;pointer-events:auto";
+}
+document.querySelectorAll('.ti').forEach(function(a){
+  a.addEventListener('click',function(e){
+    e.preventDefault();
+    var el=document.getElementById(a.getAttribute('href').slice(1));
+    if(el){
+      var offset = el.getBoundingClientRect().top + window.pageYOffset - 64;
+      window.scrollTo({top: offset, behavior: 'smooth'});
+    }
+    tocToggle();
+  });
+});
+var _ids=Array.from(document.querySelectorAll('.ti')).map(function(a){return a.getAttribute('href').slice(1);});
+function _at(){var c=_ids[0];_ids.forEach(function(id){var e=document.getElementById(id);if(e&&e.getBoundingClientRect().top<=120)c=id;});document.querySelectorAll('.ti').forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+c);});}
+window.addEventListener('scroll',_at,{passive:true});_at();
+</script>
+
+</body>
+</html>
+<script>
+// Dynamic data override from data.js
+(function() {
+  if (!window.BURKERT_DATA || !window.BURKERT_DATA.liquid) return;
+  const lq = window.BURKERT_DATA.liquid;
+  // Override MARKET_ROWS, ROADMAP, SWOT with saved data
+  if (lq.marketRows) { MARKET_ROWS.splice(0); lq.marketRows.forEach(r=>MARKET_ROWS.push(r)); }
+  if (lq.roadmap)    { ROADMAP.splice(0);     lq.roadmap.forEach(r=>ROADMAP.push(r)); }
+  if (lq.swot)       { SWOT.splice(0);        lq.swot.forEach(s=>SWOT.push(s)); }
+  // Re-render
+  document.getElementById('market-rows').innerHTML='';
+  document.getElementById('roadmap-grid').innerHTML='';
+  document.getElementById('swot-list').innerHTML='';
+  // Trigger renders by re-running the render logic
+  location.search; // noop to reference script order
+})();
+</script>
