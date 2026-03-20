@@ -295,7 +295,7 @@ body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([oncli
 
 <!-- 01 GLOBAL MARKET -->
 <div class="section reveal">
-  <div class="section-label">01 · GLOBAL MARKET</div>
+  <div class="section-label" id="s01">01 · GLOBAL MARKET</div>
   <h2 class="section-title">全球市场概览</h2>
   <p class="section-sub">全球质谱与色谱市场合计约$21.8B，亚太以9%+成最快增速地区；Orbitrap/FT-MS以CAGR 8.78%领跑各技术平台</p>
 
@@ -376,7 +376,7 @@ body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([oncli
 
 <!-- 02 CUSTOMER EVOLUTION -->
 <div class="section reveal">
-  <div class="section-label">02 · CUSTOMER STRUCTURE</div>
+  <div class="section-label" id="s02">02 · CUSTOMER STRUCTURE</div>
   <h2 class="section-title">客户结构演变</h2>
   <p class="section-sub">制药占比从 40% 降至预计 33%，台式化普及使中小实验室成为规模增量新群体；临床 CAGR 9.8% 领跑全行业</p>
 
@@ -450,7 +450,7 @@ body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([oncli
 
 <!-- 03 COMPETITORS -->
 <div class="section reveal">
-  <div class="section-label">03 · COMPETITION</div>
+  <div class="section-label" id="s03">03 · COMPETITION</div>
   <h2 class="section-title">全球竞争格局</h2>
   <p class="section-sub">前三强（赛默飞/安捷伦/SCIEX）合计占全球约 55% 份额；AI 软件生态成各厂商新竞争维度</p>
 
@@ -525,7 +525,7 @@ body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([oncli
 
 <!-- 04 CHINA MARKET -->
 <div class="section reveal">
-  <div class="section-label">04 · CHINA MARKET</div>
+  <div class="section-label" id="s04">04 · CHINA MARKET</div>
   <h2 class="section-title">中国市场总览</h2>
   <p class="section-sub">2025年政府采购 34.72亿创历史峰值；质谱预测 221亿、色谱产业链 287亿——两市场合计超 500亿</p>
 
@@ -835,7 +835,7 @@ body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([oncli
 
 <!-- 07 SIX SIGNALS -->
 <div class="section reveal">
-  <div class="section-label">07 · STRATEGIC SIGNALS</div>
+  <div class="section-label" id="s07">07 · STRATEGIC SIGNALS</div>
   <h2 class="section-title">六大核心信号</h2>
   <p class="section-sub">出口元年、政策叠加、新加坡枢纽化、临床破局、高端化、MALDI路径复制——2026–2028 年窗口期已开启</p>
 
@@ -939,6 +939,54 @@ reveals.forEach(r => observer.observe(r));
   document.addEventListener('mouseleave',()=>{glow.style.opacity='0';dot.style.opacity='0';});
   document.addEventListener('mouseenter',()=>{glow.style.opacity='1';dot.style.opacity='1';});
 })();
+</script>
+
+<style>
+#toc-btn{position:fixed;top:80px;left:14px;z-index:9500;width:30px;height:30px;background:rgba(2,5,18,.9);border:1px solid #FFD70055;border-left:2px solid #FFD700;color:rgba(255,255,255,.7);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s;font-family:sans-serif}
+#toc-btn:hover{color:#fff;background:#FFD70022}
+#toc-panel{position:fixed;top:80px;left:14px;z-index:9499;width:200px;background:rgba(2,5,18,.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);border-left:2px solid #FFD700;transform:translateX(-220px);opacity:0;pointer-events:none;transition:transform .28s cubic-bezier(.16,1,.3,1),opacity .28s}
+#toc-panel.open{transform:translateX(0);opacity:1;pointer-events:auto}
+#toc-head{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.07)}
+#toc-head span{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.25em;color:#FFD70099}
+#toc-head button{background:none;border:none;color:rgba(255,255,255,.4);cursor:pointer;font-size:16px;line-height:1;padding:0}
+#toc-head button:hover{color:#fff}
+.ti{display:flex;gap:8px;align-items:center;padding:7px 14px;text-decoration:none;border-left:2px solid transparent;margin-left:-2px;transition:background .15s}
+.ti:hover{background:rgba(255,255,255,.04)}
+.ti.on{border-left-color:#FFD700;background:#FFD70018}
+.ti span:first-child{font-family:'IBM Plex Mono',monospace;font-size:8px;color:rgba(255,255,255,.3);width:18px;flex-shrink:0}
+.ti span:last-child{font-size:11px;color:rgba(255,255,255,.72)}
+.ti.on span:first-child{color:#FFD700}
+.ti.on span:last-child{color:#fff}
+@media(max-width:768px){#toc-btn,#toc-panel{display:none!important}}
+</style>
+<button id="toc-btn" onclick="tocToggle()" title="目录">☰</button>
+<div id="toc-panel">
+  <div id="toc-head"><span>目录</span><button onclick="tocToggle()">×</button></div>
+  <a class="ti" href="#s01"><span>01</span><span>全球市场概览</span></a>
+  <a class="ti" href="#s02"><span>02</span><span>客户结构演变</span></a>
+  <a class="ti" href="#s03"><span>03</span><span>全球竞争格局</span></a>
+  <a class="ti" href="#s04"><span>04</span><span>中国市场总览</span></a>
+  <a class="ti" href="#s05"><span>05</span><span>进出口贸易</span></a>
+  <a class="ti" href="#s06"><span>06</span><span>行业里程碑</span></a>
+  <a class="ti" href="#s07"><span>07</span><span>六大核心信号</span></a>
+</div>
+<script>
+function tocToggle(){
+  var p=document.getElementById('toc-panel'),b=document.getElementById('toc-btn');
+  var o=p.classList.toggle('open');
+  b.style.cssText=o?"opacity:0;pointer-events:none":"opacity:1;pointer-events:auto";
+}
+document.querySelectorAll('.ti').forEach(function(a){
+  a.addEventListener('click',function(e){
+    e.preventDefault();
+    var el=document.getElementById(a.getAttribute('href').slice(1));
+    if(el){var offset=el.getBoundingClientRect().top+window.pageYOffset-64;window.scrollTo({top:offset,behavior:'smooth'});}
+    tocToggle();
+  });
+});
+var _SI=Array.from(document.querySelectorAll('.ti')).map(function(a){return a.getAttribute('href').slice(1);});
+function _at(){var c=_SI[0];_SI.forEach(function(id){var e=document.getElementById(id);if(e&&e.getBoundingClientRect().top<=120)c=id;});document.querySelectorAll('.ti').forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+c);});}
+window.addEventListener('scroll',_at,{passive:true});_at();
 </script>
 </body>
 </html>
