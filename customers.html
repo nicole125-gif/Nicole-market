@@ -1666,84 +1666,109 @@ function renderCards() {
   const container = document.getElementById('cards-container');
   container.innerHTML = '';
 
-  const byInd = {};
+  // Group by ind then sector
+  const byIndSector = {};
   COMPANIES.forEach(c => {
-    if (!byInd[c.ind]) byInd[c.ind] = [];
-    byInd[c.ind].push(c);
+    if (!byIndSector[c.ind]) byIndSector[c.ind] = {};
+    if (!byIndSector[c.ind][c.sector]) byIndSector[c.ind][c.sector] = [];
+    byIndSector[c.ind][c.sector].push(c);
   });
 
-  Object.entries(byInd).forEach(([ind, companies]) => {
+  const IND_ORDER = ['PB','FB','LM','EI','GI'];
+  const SHOW_INIT = 5;
+
+  IND_ORDER.forEach(ind => {
+    if (!byIndSector[ind]) return;
     const cfg = IND_CONFIG[ind];
-    const section = document.createElement('div');
-    section.className = 'industry-section reveal';
+    const totalCount = Object.values(byIndSector[ind]).reduce((s,a) => s + a.length, 0);
 
-    const filtered = companies.filter(c =>
-      c.name.toLowerCase().includes(query) ||
-      c.sector.toLowerCase().includes(query) ||
-      ind.toLowerCase().includes(query)
-    );
+    const indSection = document.createElement('div');
+    indSection.className = 'industry-section';
+    indSection.style.marginBottom = '40px';
+    indSection.innerHTML =
+      '<div class="ind-header" style="cursor:pointer" onclick="toggleIndSection(\'' + ind + '\',this)">' +
+        '<span class="ind-badge" style="color:' + cfg.color + ';border-color:' + cfg.color + '44">' + cfg.label + '</span>' +
+        '<span class="ind-name">' + cfg.name + '</span>' +
+        '<span class="ind-count">' + totalCount + ' 家</span>' +
+        '<span style="margin-left:auto;font-family:\'IBM Plex Mono\',monospace;font-size:11px;color:' + cfg.color + '" id="toggle-icon-' + ind + '">▼</span>' +
+      '</div>' +
+      '<div id="ind-body-' + ind + '" style="padding-top:16px"></div>';
+    container.appendChild(indSection);
 
-    section.innerHTML = `
-      <div class="ind-header">
-        <span class="ind-badge" style="color:${cfg.color};border-color:${cfg.color}44">${cfg.label}</span>
-        <span class="ind-name">${cfg.name}</span>
-        <span class="ind-count">${filtered.length} 家</span>
-      </div>
-      <div class="company-grid" id="grid-${ind}"></div>
-    `;
-    container.appendChild(section);
+    const indBody = indSection.querySelector('#ind-body-' + ind);
 
-    const grid = section.querySelector(`#grid-${ind}`);
-    companies.forEach(co => {
-      const pd = co.periods[currentPeriod] || {};
-      const rev = pd.rev;
-      const profit = pd.profit;
-      const contract = pd.contract;
-      const note = pd.note;
+    Object.entries(byIndSector[ind]).forEach(([sector, companies]) => {
+      const matchedCos = query === '' ? companies : companies.filter(c =>
+        c.name.toLowerCase().includes(query) ||
+        c.sector.toLowerCase().includes(query) ||
+        ind.toLowerCase().includes(query)
+      );
+      if (matchedCos.length === 0) return;
 
-      const visible = co.name.toLowerCase().includes(query) ||
-        co.sector.toLowerCase().includes(query) ||
-        ind.toLowerCase().includes(query) ||
-        query === '';
+      const sectorDiv = document.createElement('div');
+      sectorDiv.style.cssText = 'margin-bottom:28px';
 
-      const overallSignal = rev !== null && rev !== undefined ? sigColor(rev) : 'rgba(255,255,255,.2)';
+      const sectorLabel = document.createElement('div');
+      sectorLabel.style.cssText = 'display:flex;align-items:center;gap:10px;margin-bottom:12px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06)';
+      sectorLabel.innerHTML =
+        '<span style="font-family:\'IBM Plex Mono\',monospace;font-size:9px;font-weight:700;letter-spacing:.18em;color:' + cfg.color + ';background:' + cfg.color + '12;border:1px solid ' + cfg.color + '30;padding:3px 10px">' + sector + '</span>' +
+        '<span style="font-family:\'IBM Plex Mono\',monospace;font-size:9px;color:rgba(255,255,255,.4)">' + matchedCos.length + ' 家</span>';
+      sectorDiv.appendChild(sectorLabel);
 
-      const card = document.createElement('div');
-      card.className = 'co-card' + (visible ? '' : ' filtered-out');
-      card.onclick = () => openModal(co);
-      card.innerHTML = `
-        <div class="co-header">
-          <div>
-            <div class="co-name">${co.name}</div>
-            <div class="co-sector">${co.sector} · ${ind}</div>
-          </div>
-          <div class="co-signal" style="background:${overallSignal};box-shadow:0 0 6px ${overallSignal}"></div>
-        </div>
-        <div class="co-metrics">
-          <div class="co-metric">
-            <div class="co-metric-label">收入增速</div>
-            <div class="co-metric-val" style="color:${sigColor(rev)}">${fmt(rev)}</div>
-          </div>
-          <div class="co-metric">
-            <div class="co-metric-label">利润增速</div>
-            <div class="co-metric-val" style="color:${sigColor(profit)}">${fmt(profit)}</div>
-          </div>
-          <div class="co-metric">
-            <div class="co-metric-label">合同负债</div>
-            <div class="co-metric-val" style="color:${sigColor(contract)}">${fmt(contract)}</div>
-          </div>
-        </div>
-        ${note ? `<div style="margin-top:10px;padding:6px 10px;background:rgba(255,215,0,.05);border-left:2px solid rgba(255,215,0,.3);font-size:10px;color:rgba(255,255,255,.55);line-height:1.5">${note}</div>` : ''}
-      `;
-      grid.appendChild(card);
+      const grid = document.createElement('div');
+      grid.className = 'company-grid';
+      sectorDiv.appendChild(grid);
+
+      matchedCos.forEach((co, idx) => {
+        const pd = co.periods[currentPeriod] || {};
+        const rev = pd.rev, profit = pd.profit, contract = pd.contract, note = pd.note;
+        const overallSignal = rev !== null && rev !== undefined ? sigColor(rev) : 'rgba(255,255,255,.2)';
+        const card = document.createElement('div');
+        card.className = 'co-card';
+        card.dataset.extraCard = (idx >= SHOW_INIT && query === '') ? '1' : '0';
+        if (idx >= SHOW_INIT && query === '') card.style.display = 'none';
+        card.onclick = () => openModal(co);
+        card.innerHTML =
+          '<div class="co-header">' +
+            '<div>' +
+              '<div class="co-name">' + co.name + '</div>' +
+              '<div class="co-sector">' + co.sector + ' · ' + ind + '</div>' +
+            '</div>' +
+            '<div class="co-signal" style="background:' + overallSignal + ';box-shadow:0 0 6px ' + overallSignal + '"></div>' +
+          '</div>' +
+          '<div class="co-metrics">' +
+            '<div class="co-metric"><div class="co-metric-label">收入增速</div><div class="co-metric-val" style="color:' + sigColor(rev) + '">' + fmt(rev) + '</div></div>' +
+            '<div class="co-metric"><div class="co-metric-label">利润增速</div><div class="co-metric-val" style="color:' + sigColor(profit) + '">' + fmt(profit) + '</div></div>' +
+            '<div class="co-metric"><div class="co-metric-label">合同负债</div><div class="co-metric-val" style="color:' + sigColor(contract) + '">' + fmt(contract) + '</div></div>' +
+          '</div>' +
+          (note ? '<div style="margin-top:10px;padding:6px 10px;background:rgba(255,215,0,.05);border-left:2px solid rgba(255,215,0,.3);font-size:10px;color:rgba(255,255,255,.55);line-height:1.5">' + note + '</div>' : '');
+        grid.appendChild(card);
+      });
+
+      if (matchedCos.length > SHOW_INIT && query === '') {
+        const moreWrap = document.createElement('div');
+        moreWrap.style.cssText = 'margin-top:10px;text-align:center';
+        const btn = document.createElement('button');
+        btn.style.cssText = 'background:transparent;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.65);font-family:\'IBM Plex Mono\',monospace;font-size:11px;letter-spacing:.1em;padding:7px 24px;cursor:pointer;transition:all .2s';
+        btn.innerHTML = '展开更多 (' + (matchedCos.length - SHOW_INIT) + ' 家) ▼';
+        btn.onmouseenter = () => { btn.style.borderColor='rgba(255,255,255,.4)'; btn.style.color='#fff'; };
+        btn.onmouseleave = () => { btn.style.borderColor='rgba(255,255,255,.15)'; btn.style.color='rgba(255,255,255,.65)'; };
+        let expanded = false;
+        btn.onclick = () => {
+          expanded = !expanded;
+          grid.querySelectorAll('[data-extra-card="1"]').forEach(c => { c.style.display = expanded ? '' : 'none'; });
+          btn.innerHTML = expanded ? '收起 ▲' : '展开更多 (' + (matchedCos.length - SHOW_INIT) + ' 家) ▼';
+        };
+        moreWrap.appendChild(btn);
+        sectorDiv.appendChild(moreWrap);
+      }
+
+      indBody.appendChild(sectorDiv);
     });
   });
 
-  // Trigger reveal
   setTimeout(() => {
-    document.querySelectorAll('.reveal').forEach(el => {
-      el.classList.add('visible');
-    });
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
   }, 50);
 }
 
@@ -1754,6 +1779,15 @@ function checkReveal() {
   });
 }
 window.addEventListener('scroll', checkReveal, {passive: true});
+
+
+function toggleIndSection(ind, headerEl) {
+  const body = document.getElementById('ind-body-' + ind);
+  const icon = document.getElementById('toggle-icon-' + ind);
+  const hidden = body.style.display === 'none';
+  body.style.display = hidden ? '' : 'none';
+  if (icon) icon.textContent = hidden ? '▼' : '▶';
+}
 
 // ══ MODAL ══════════════════════════════════════════════════════════
 function openModal(co) {
