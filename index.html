@@ -233,21 +233,21 @@ body{background:#020810;color:#fff;font-family:'Helvetica Neue',Arial,sans-serif
 .panel-overlay.vis .panel-slide{transform:translateX(0)}
 
 /* Nav */
-#site-nav{position:fixed;top:0;left:0;right:0;z-index:10000;background:rgba(2,5,18,.88);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);border-bottom:1px solid rgba(255,255,255,.06)}
-.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:0 clamp(16px,4vw,40px);height:52px}
+
+
 .nav-brand{display:flex;align-items:center;gap:8px;flex-shrink:0}
 .nav-dot{width:7px;height:7px;border-radius:50%;background:#E30613;box-shadow:0 0 8px #E30613;animation:dotBlink 2.4s ease-in-out infinite}
 .nav-logo{font-family:'Courier New',monospace;font-size:11px;font-weight:700;color:#fff;letter-spacing:.22em}
 .nav-sub{font-family:'Courier New',monospace;font-size:9px;color:rgba(255,255,255,.70);letter-spacing:.15em}
-.nav-links{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
-.nav-link{padding:5px 12px;font-size:11px;font-family:var(--mono);letter-spacing:.08em;color:rgba(255,255,255,.65);text-decoration:none;border:1px solid transparent;transition:all .2s;white-space:nowrap}
-.nav-link:hover{color:#fff;border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
+
+
+
 
 .nav-status{display:flex;align-items:center;gap:6px;flex-shrink:0}
 .status-dot{width:5px;height:5px;border-radius:50%;background:#00FFB2;animation:dotBlink 2.8s ease-in-out infinite}
 .status-txt{font-family:'Courier New',monospace;font-size:8px;color:rgba(255,255,255,.70);letter-spacing:.2em}
 .nav-bar{height:2px;background:linear-gradient(90deg,#E30613,transparent);width:0;transition:width .3s ease}
-@media(max-width:600px){.nav-sub,.nav-status{display:none}.nav-link{padding:5px 8px;font-size:10px}}
+@media(max-width:600px){.nav-sub,.nav-status{display:none}}
 
 .main-wrap{max-width:1200px;margin:0 auto;padding:80px 40px 60px;position:relative;z-index:1}
 @media(max-width:768px){.main-wrap{padding:72px 16px 40px}}
@@ -265,6 +265,11 @@ body{background:#020810;color:#fff;font-family:'Helvetica Neue',Arial,sans-serif
 #cursor-glow{position:fixed;pointer-events:none;z-index:99999;width:320px;height:320px;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(0,255,178,.07) 0%,rgba(0,200,255,.04) 30%,transparent 70%);transition:opacity .3s ease;mix-blend-mode:screen}
 #cursor-dot{position:fixed;pointer-events:none;z-index:100000;width:24px;height:24px;border-radius:50%;background:transparent;border:1.5px solid rgba(0,255,178,.8);transform:translate(-50%,-50%);box-shadow:0 0 8px rgba(0,255,178,.4),inset 0 0 6px rgba(0,255,178,.2);transition:width .2s ease,height .2s ease,border-color .2s,box-shadow .2s}
 body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([onclick]:hover) #cursor-dot{width:36px;height:36px;border-color:rgba(255,215,0,.9);box-shadow:0 0 16px rgba(255,215,0,.4),inset 0 0 10px rgba(255,215,0,.08)}
+#site-nav{position:fixed;top:0;left:0;right:0;z-index:10000;background:rgba(2,5,18,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav-inner{max-width:1380px;margin:0 auto;padding:0 32px;display:flex;align-items:center;height:52px}
+.nav-links{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.nav-link{padding:5px 12px;font-size:11px;font-family:'IBM Plex Mono',monospace;letter-spacing:.08em;color:rgba(255,255,255,.65);text-decoration:none;border:1px solid transparent;transition:all .2s;white-space:nowrap}
+.nav-link:hover{color:#fff;border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
 </style>
 </head>
 <body>
@@ -274,9 +279,8 @@ body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([oncli
 <!-- NAV -->
 <nav id="site-nav">
   <div class="nav-inner">
-    
-        <div class="nav-links">
-      <a href="index.html" class="nav-link" style="color:#00FFB2;border-color:#00FFB2;background:rgba(0,255,178,.06)">宏观脉搏</a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link" style="color:#00FFB2;border-color:#00FFB2;background:rgba(0,255,178,.08)">宏观脉搏</a>
       <a href="liquid.html" class="nav-link">AI 液冷</a>
       <a href="semiconductor.html" class="nav-link">半导体 SBU</a>
       <a href="mscc.html" class="nav-link">质谱·色谱</a>
@@ -285,9 +289,7 @@ body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([oncli
       <a href="hydrogen.html" class="nav-link">氢能行业</a>
       <a href="customers.html" class="nav-link">客户监控</a>
     </div>
-    <div class="nav-status"><span class="status-dot"></span><span class="status-txt">LIVE 2026</span></div>
   </div>
-  <div class="nav-bar" id="nav-bar"></div>
 </nav>
 
 <!-- BG -->

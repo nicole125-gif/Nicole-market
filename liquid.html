@@ -208,24 +208,29 @@ body{background:linear-gradient(160deg,#040912 0%,#050A18 60%,#040810 100%);colo
 .roadmap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(6px,1.5vw,10px)}
 @media(max-width:400px){.roadmap-grid{grid-template-columns:1fr}}
 /* Nav */
-#site-nav{position:fixed;top:0;left:0;right:0;z-index:10000;background:rgba(2,5,18,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06)}
-.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:0 clamp(16px,4vw,40px);height:52px}
+
+
 .nav-brand{display:flex;align-items:center;gap:8px;flex-shrink:0}
 .nav-dot{width:7px;height:7px;border-radius:50%;background:#E30613;box-shadow:0 0 8px #E30613;animation:dotBlink 2.4s ease-in-out infinite}
 .nav-logo{font-family:'Courier New',monospace;font-size:11px;font-weight:700;color:#fff;letter-spacing:.22em}
 .nav-sub{font-family:'Courier New',monospace;font-size:9px;color:rgba(255,255,255,.22);letter-spacing:.15em}
-.nav-links{display:flex;gap:4px;margin-left:auto}
-.nav-link{padding:5px 14px;font-size:11px;font-family:'Courier New',monospace;letter-spacing:.12em;color:rgba(255,255,255,.82);text-decoration:none;border:1px solid transparent;transition:all .2s}
-.nav-link:hover{color:#fff;border-color:rgba(255,255,255,.12)}
-.nav-link.active{color:#E30613;border-color:#E30613;background:rgba(227,6,19,.08)}
+
+
+
+
 .status-dot{width:5px;height:5px;border-radius:50%;background:#00FFB2;animation:dotBlink 2.8s ease-in-out infinite;display:inline-block}
 .nav-bar{height:2px;background:linear-gradient(90deg,#E30613,transparent);width:0;transition:width .3s}
-@media(max-width:600px){.nav-sub,.nav-link:last-child+span{display:none}.nav-link{padding:5px 8px;font-size:10px}}
+@media(max-width:600px){.nav-sub,.nav-link:last-child+span{display:none}}
 
 /* ── CURSOR ── */
 #cursor-glow{position:fixed;pointer-events:none;z-index:99999;width:320px;height:320px;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(0,200,255,.07) 0%,rgba(0,255,178,.04) 30%,transparent 70%);transition:opacity .3s ease;mix-blend-mode:screen}
 #cursor-dot{position:fixed;pointer-events:none;z-index:100000;width:24px;height:24px;border-radius:50%;background:transparent;border:1.5px solid rgba(0,200,255,.8);transform:translate(-50%,-50%);box-shadow:0 0 8px rgba(0,200,255,.4),inset 0 0 6px rgba(0,200,255,.2);transition:width .2s ease,height .2s ease,border-color .2s,box-shadow .2s}
 body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([onclick]:hover) #cursor-dot{width:36px;height:36px;border-color:rgba(255,215,0,.9);box-shadow:0 0 16px rgba(255,215,0,.4),inset 0 0 10px rgba(255,215,0,.08)}
+#site-nav{position:fixed;top:0;left:0;right:0;z-index:10000;background:rgba(2,5,18,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav-inner{max-width:1380px;margin:0 auto;padding:0 32px;display:flex;align-items:center;height:52px}
+.nav-links{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.nav-link{padding:5px 12px;font-size:11px;font-family:'IBM Plex Mono',monospace;letter-spacing:.08em;color:rgba(255,255,255,.65);text-decoration:none;border:1px solid transparent;transition:all .2s;white-space:nowrap}
+.nav-link:hover{color:#fff;border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
 </style>
 </head>
 <body>
@@ -234,18 +239,17 @@ body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([oncli
 
 <nav id="site-nav">
   <div class="nav-inner">
-    
     <div class="nav-links">
       <a href="index.html" class="nav-link">宏观脉搏</a>
-      <a href="liquid.html" class="nav-link active">AI 液冷</a>
+      <a href="liquid.html" class="nav-link" style="color:#00C8FF;border-color:#00C8FF;background:rgba(0,200,255,.08)">AI 液冷</a>
       <a href="semiconductor.html" class="nav-link">半导体 SBU</a>
       <a href="mscc.html" class="nav-link">质谱·色谱</a>
       <a href="pharma.html" class="nav-link">制药装备</a>
-      <a href="food.html" class="nav-link">食品饮料装备</a>
+      <a href="food.html" class="nav-link">食品饮料</a>
+      <a href="hydrogen.html" class="nav-link">氢能行业</a>
+      <a href="customers.html" class="nav-link">客户监控</a>
     </div>
-    <div style="display:flex;align-items:center;gap:6px;flex-shrink:0"><span class="status-dot"></span><span style="font-family:'Courier New',monospace;font-size:8px;color:rgba(255,255,255,.22);letter-spacing:.2em">LIVE 2026</span></div>
   </div>
-  <div class="nav-bar" id="nav-bar"></div>
 </nav>
 
 <!-- BG effects -->
@@ -399,6 +403,54 @@ window.addEventListener('scroll',()=>{
   document.getElementById('nav-bar').style.width=pct+'%';
 });
 </script>
+
+<style>
+#toc-btn{position:fixed;top:80px;left:14px;z-index:9500;width:30px;height:30px;background:rgba(2,5,18,.92);border:1px solid #00C8FF55;border-left:2px solid #00C8FF;color:rgba(255,255,255,.7);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s}
+#toc-btn:hover{color:#fff;background:#00C8FF22}
+#toc-panel{position:fixed;top:80px;left:14px;z-index:9499;width:200px;background:rgba(2,5,18,.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);border-left:2px solid #00C8FF;transform:translateX(-220px);opacity:0;pointer-events:none;transition:transform .28s cubic-bezier(.16,1,.3,1),opacity .28s}
+#toc-panel.open{transform:translateX(0);opacity:1;pointer-events:auto}
+#toc-head{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.07)}
+#toc-head span{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.25em;color:#00C8FF99}
+#toc-head button{background:none;border:none;color:rgba(255,255,255,.4);cursor:pointer;font-size:16px;line-height:1;padding:0}
+#toc-head button:hover{color:#fff}
+.ti{display:flex;gap:8px;align-items:center;padding:7px 14px;text-decoration:none;border-left:2px solid transparent;margin-left:-2px;transition:background .15s}
+.ti:hover{background:rgba(255,255,255,.04)}
+.ti.on{border-left-color:#00C8FF;background:#00C8FF18}
+.ti span:first-child{font-family:'IBM Plex Mono',monospace;font-size:8px;color:rgba(255,255,255,.3);width:18px;flex-shrink:0}
+.ti span:last-child{font-size:11px;color:rgba(255,255,255,.72)}
+.ti.on span:first-child{color:#00C8FF}
+.ti.on span:last-child{color:#fff}
+@media(max-width:768px){#toc-btn,#toc-panel{display:none!important}}
+</style>
+<button id="toc-btn" onclick="tocToggle()" title="目录">☰</button>
+<div id="toc-panel">
+  <div id="toc-head"><span>目录</span><button onclick="tocToggle()">×</button></div>
+  <a class="ti" href="#s01"><span>01</span><span>市场动态数据</span></a>
+  <a class="ti" href="#s02"><span>02</span><span>技术路线图</span></a>
+  <a class="ti" href="#s03"><span>03</span><span>战略 SWOT</span></a>
+</div>
+<script>
+function tocToggle(){
+  var p=document.getElementById('toc-panel'),b=document.getElementById('toc-btn');
+  var o=p.classList.toggle('open');
+  b.style.cssText=o?"opacity:0;pointer-events:none":"opacity:1;pointer-events:auto";
+}
+document.querySelectorAll('.ti').forEach(function(a){
+  a.addEventListener('click',function(e){
+    e.preventDefault();
+    var el=document.getElementById(a.getAttribute('href').slice(1));
+    if(el){
+      var offset = el.getBoundingClientRect().top + window.pageYOffset - 64;
+      window.scrollTo({top: offset, behavior: 'smooth'});
+    }
+    tocToggle();
+  });
+});
+var _ids=Array.from(document.querySelectorAll('.ti')).map(function(a){return a.getAttribute('href').slice(1);});
+function _at(){var c=_ids[0];_ids.forEach(function(id){var e=document.getElementById(id);if(e&&e.getBoundingClientRect().top<=120)c=id;});document.querySelectorAll('.ti').forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+c);});}
+window.addEventListener('scroll',_at,{passive:true});_at();
+</script>
+
 <script>
 (function(){
   const glow=document.getElementById('cursor-glow'),dot=document.getElementById('cursor-dot');
