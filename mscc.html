@@ -2,15 +2,15 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>食品饮料装备 · 战略分析 2026</title>
+<title>质谱·色谱 · 战略分析 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#020810;--bg2:rgba(6,13,32,.9);
-  --red:#E30613;--cyan:#22d3ee;--green:#00FFB2;--gold:#FFD700;
-  --purple:#BF80FF;--orange:#FF6B35;--teal:#00C8FF;--lime:#AAFF00;
-  --text:rgba(255,255,255,.9);--text2:rgba(255,255,255,.72);--text3:rgba(255,255,255,.42);
+  --bg:#020810;--bg2:rgba(6,13,32,.9);--bg3:rgba(10,18,40,.8);
+  --red:#E30613;--cyan:#22d3ee;--green:#00FFB2;--gold:#FFD700;--purple:#BF80FF;--orange:#FF6B35;
+  --teal:#00C8FF;--white:#fff;
+  --text:rgba(255,255,255,.9);--text2:rgba(255,255,255,.78);--text3:rgba(255,255,255,.65);
   --border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.13);
   --mono:'IBM Plex Mono',monospace;--display:'Syne',sans-serif;
 }
@@ -18,205 +18,195 @@ html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--display);min-height:100vh;overflow-x:hidden}
 ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08)}
 
-/* NAV */
+/* ── NAV ─────────────────────────────────── */
 #site-nav{position:fixed;top:0;left:0;right:0;z-index:10000;background:rgba(2,5,18,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
-.nav-inner{max-width:1300px;margin:0 auto;padding:0 32px;display:flex;align-items:center;height:52px}
-.nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
-.nav-link{padding:5px 12px;font-size:10px;font-family:var(--mono);letter-spacing:.1em;color:var(--text3);text-decoration:none;border:1px solid transparent;transition:all .2s;white-space:nowrap}
-.nav-link:hover{color:var(--text);border-color:var(--border2)}
-.nav-link.active{color:var(--lime);border-color:var(--lime);background:rgba(170,255,0,.06)}
-.nav-progress{position:absolute;bottom:0;left:0;height:1px;background:var(--lime);width:0%;transition:width .1s}
+.nav-inner{max-width:1300px;margin:0 auto;padding:0 40px;display:flex;align-items:center;height:52px;gap:8px}
+.nav-brand{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.25em;color:var(--white);margin-right:16px}
+.nav-brand span{color:var(--red)}
+.nav-divider{width:1px;height:16px;background:var(--border2);margin:0 4px}
+.nav-links{display:flex;gap:4px;margin-left:auto}
+.nav-link{padding:5px 14px;font-size:11px;font-family:var(--mono);letter-spacing:.12em;color:rgba(255,255,255,.82);text-decoration:none;border:1px solid transparent;transition:all .2s}
+.nav-link:hover{color:#fff;border-color:rgba(255,255,255,.12)}
+.nav-link.active{color:var(--gold);border-color:var(--gold);background:rgba(255,215,0,.06)}
+.nav-progress{position:absolute;bottom:0;left:0;height:1px;background:var(--gold);width:0%;transition:width .1s}
 
-/* BG */
-.bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.01) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.01) 1px,transparent 1px);background-size:60px 60px}
-.bg-g1{position:fixed;top:-20%;left:20%;width:80vw;height:600px;background:radial-gradient(ellipse,rgba(170,255,0,.03) 0%,transparent 65%);pointer-events:none;z-index:0}
-.bg-g2{position:fixed;bottom:-10%;right:5%;width:50vw;height:500px;background:radial-gradient(ellipse,rgba(255,215,0,.025) 0%,transparent 70%);pointer-events:none;z-index:0}
+/* ── HERO ────────────────────────────────── */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  padding:120px 40px 80px;max-width:1300px;margin:0 auto;position:relative;
+}
+.hero-eyebrow{font-family:var(--mono);font-size:9px;letter-spacing:.35em;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--gold)}
+.hero-title{font-size:clamp(42px,6vw,80px);font-weight:800;line-height:1.0;letter-spacing:-.03em;margin-bottom:20px}
+.hero-title .accent{color:var(--gold)}
+.hero-sub{font-size:15px;color:var(--text2);max-width:600px;line-height:1.7;margin-bottom:48px;font-weight:400}
+.hero-meta{display:flex;gap:24px;flex-wrap:wrap}
+.hero-meta-item{font-family:var(--mono);font-size:8.5px;letter-spacing:.15em;color:var(--text3)}
+.hero-meta-item span{color:var(--text2);display:block;font-size:11px;margin-top:2px}
 
-.wrap{position:relative;z-index:1}
+/* key stats strip */
+.stats-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--border);border:1px solid var(--border);
+  margin-bottom:80px;
+}
+.stat-cell{background:var(--bg2);padding:24px 28px;position:relative;overflow:hidden;transition:background .2s}
+.stat-cell:hover{background:rgba(255,215,0,.04)}
+.stat-val{font-size:clamp(24px,3.5vw,40px);font-weight:800;letter-spacing:-.03em;line-height:1;margin-bottom:6px}
+.stat-label{font-family:var(--mono);font-size:8.5px;color:var(--text3);letter-spacing:.15em;margin-bottom:4px}
+.stat-note{font-family:var(--mono);font-size:9px;color:var(--text2)}
+.stat-cell::after{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+
+/* ── SECTION ─────────────────────────────── */
 .section{max-width:1300px;margin:0 auto;padding:80px 40px}
+.section-label{font-family:var(--mono);font-size:8px;letter-spacing:.35em;color:var(--text3);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.section-label::after{content:'';flex:1;max-width:60px;height:1px;background:var(--border2)}
+.section-title{font-size:clamp(22px,3vw,36px);font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.section-sub{color:var(--text2);font-size:13px;line-height:1.7;max-width:700px;margin-bottom:48px}
 .divider{height:1px;background:var(--border);max-width:1300px;margin:0 auto}
-.sec-label{font-family:var(--mono);font-size:8px;letter-spacing:.35em;color:var(--text3);margin-bottom:12px;display:flex;align-items:center;gap:10px}
-.sec-label::after{content:'';flex:1;max-width:60px;height:1px;background:var(--border2)}
-.sec-title{font-size:clamp(22px,3vw,36px);font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
-.sec-sub{color:var(--text2);font-size:13px;line-height:1.7;max-width:720px;margin-bottom:40px}
 
-/* HERO */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 40px 80px;max-width:1300px;margin:0 auto}
-.hero-eye{font-family:var(--mono);font-size:9px;letter-spacing:.35em;color:var(--lime);margin-bottom:24px;display:flex;align-items:center;gap:12px}
-.hero-eye::before{content:'';width:32px;height:1px;background:var(--lime)}
-.hero-title{font-size:clamp(38px,5.5vw,72px);font-weight:800;line-height:1.0;letter-spacing:-.03em;margin-bottom:20px}
-.hero-title .accent{color:var(--lime)}
-.hero-sub{font-size:14px;color:var(--text2);max-width:600px;line-height:1.7;margin-bottom:48px}
-.hero-note{font-family:var(--mono);font-size:8.5px;color:var(--text3);letter-spacing:.12em;margin-top:16px}
+/* ── GLOBAL MARKET ───────────────────────── */
+.market-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px}
+.market-card{background:var(--bg2);border:1px solid var(--border);padding:28px;position:relative;overflow:hidden;transition:all .25s}
+.market-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.market-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
+.market-card-icon{font-family:var(--mono);font-size:9px;letter-spacing:.2em;padding:4px 10px;border:1px solid;border-radius:0}
+.market-card-val{font-size:32px;font-weight:800;letter-spacing:-.03em;margin-bottom:4px}
+.market-card-cagr{font-family:var(--mono);font-size:9px;color:var(--text2);letter-spacing:.1em}
+.market-card-title{font-size:13px;font-weight:700;margin-bottom:4px}
+.market-card-note{font-size:11px;color:var(--text2);line-height:1.6}
+.market-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:1px}
 
-/* 5 conclusions */
-.conclusions-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
-.con-cell{background:var(--bg2);padding:20px;transition:background .2s;cursor:default}
-.con-cell:hover{background:rgba(170,255,0,.04)}
-.con-num{font-family:var(--mono);font-size:10px;color:var(--lime);letter-spacing:.15em;margin-bottom:10px}
-.con-title{font-size:12px;font-weight:700;margin-bottom:6px;line-height:1.4}
-.con-desc{font-size:10.5px;color:var(--text2);line-height:1.6}
-.con-cell-top{position:relative;overflow:hidden}
-.con-cell-top::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--lime)}
+/* ── CUSTOMER EVOLUTION ─────────────────── */
+.evo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-bottom:48px}
+.evo-col{background:var(--bg2);padding:28px 24px}
+.evo-year{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--text3);margin-bottom:16px}
+.evo-bar-row{margin-bottom:10px}
+.evo-bar-label{display:flex;justify-content:space-between;margin-bottom:4px}
+.evo-bar-name{font-size:11px;color:var(--text2)}
+.evo-bar-pct{font-family:var(--mono);font-size:10px;font-weight:700}
+.evo-bar-track{height:3px;background:rgba(255,255,255,.06);border-radius:1px;overflow:hidden}
+.evo-bar-fill{height:100%;border-radius:1px;transition:width 1.2s cubic-bezier(.16,1,.3,1)}
 
-/* MARKET GRID */
-.market-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin-bottom:32px}
-.m4-cell{background:var(--bg2);padding:22px 18px}
-.m4-label{font-family:var(--mono);font-size:8px;color:var(--text3);letter-spacing:.15em;margin-bottom:6px}
-.m4-val{font-size:28px;font-weight:800;letter-spacing:-.03em;line-height:1;margin-bottom:4px}
-.m4-note{font-size:10px;color:var(--text2)}
+/* customer deep-dive cards */
+.customer-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.cc{background:var(--bg2);border:1px solid var(--border);padding:20px 24px;display:flex;gap:16px;align-items:flex-start;transition:border-color .2s}
+.cc:hover{border-color:var(--border2)}
+.cc-badge{flex-shrink:0;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.05em}
+.cc-pct{font-size:22px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.cc-cagr{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;margin-top:2px}
+.cc-title{font-size:12px;font-weight:700;margin-bottom:3px}
+.cc-desc{font-size:11px;color:var(--text2);line-height:1.6}
 
-/* sector cards */
-.sector-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:32px}
-.sector{background:var(--bg2);border:1px solid var(--border);padding:24px;transition:all .25s}
-.sector:hover{border-color:var(--border2)}
-.sector-tag{font-family:var(--mono);font-size:8px;letter-spacing:.2em;padding:3px 10px;border:1px solid;display:inline-block;margin-bottom:14px}
-.sector-name{font-size:16px;font-weight:800;margin-bottom:4px}
-.sector-size{font-size:28px;font-weight:800;letter-spacing:-.03em;margin-bottom:8px}
-.sector-signals{display:flex;flex-direction:column;gap:6px;margin-top:12px}
-.signal-row{display:flex;gap:8px;align-items:flex-start;font-size:11px;color:var(--text2);line-height:1.5}
-.signal-row::before{content:'▸';color:var(--text3);flex-shrink:0;font-size:9px;margin-top:2px}
+/* ── COMPETITOR MATRIX ───────────────────── */
+.comp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px}
+.comp-card{background:var(--bg2);border:1px solid var(--border);padding:24px;position:relative;transition:all .25s}
+.comp-card:hover{border-color:var(--border2)}
+.comp-rank{position:absolute;top:16px;right:16px;font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.1em}
+.comp-name{font-size:16px;font-weight:800;margin-bottom:2px}
+.comp-origin{font-family:var(--mono);font-size:8px;color:var(--text3);letter-spacing:.15em;margin-bottom:12px}
+.comp-share{font-size:28px;font-weight:800;letter-spacing:-.03em;margin-bottom:12px}
+.comp-products{font-family:var(--mono);font-size:9px;color:var(--text2);line-height:1.8;margin-bottom:12px}
+.comp-china{font-size:11px;color:var(--text2);padding-top:12px;border-top:1px solid var(--border)}
 
-/* supply chain */
-.chain-layers{display:flex;flex-direction:column;gap:1px}
-.chain-layer{display:grid;grid-template-columns:160px 1fr;background:var(--border)}
-.chain-label-cell{background:var(--bg2);padding:16px 20px;display:flex;align-items:center}
-.chain-label-text{font-family:var(--mono);font-size:9px;letter-spacing:.15em;font-weight:700}
-.chain-content{background:rgba(6,13,32,.7);padding:16px 20px;font-size:11px;color:var(--text2);line-height:1.7;display:flex;align-items:center;flex-wrap:wrap;gap:8px}
-.chain-tag{padding:2px 8px;font-family:var(--mono);font-size:8px;letter-spacing:.1em;border:1px solid rgba(255,255,255,.12);color:var(--text3)}
+/* matrix table */
+.matrix-wrap{overflow-x:auto;margin-bottom:48px}
+.matrix{width:100%;border-collapse:collapse}
+.matrix th{font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;color:var(--text3);padding:10px 16px;text-align:center;border-bottom:1px solid var(--border);white-space:nowrap}
+.matrix th:first-child{text-align:left}
+.matrix td{padding:12px 16px;border-bottom:1px solid var(--border);font-size:11px;text-align:center;vertical-align:middle}
+.matrix td:first-child{font-weight:700;text-align:left;font-size:12px}
+.matrix tr:hover td{background:rgba(255,255,255,.02)}
+.dot-filled{color:var(--gold)}
+.dot-empty{color:var(--border2)}
 
-/* substitution table */
-.sub-table{width:100%;border-collapse:collapse;margin-bottom:32px}
-.sub-table th{font-family:var(--mono);font-size:8px;letter-spacing:.12em;color:var(--text3);padding:10px 14px;text-align:left;border-bottom:1px solid var(--border)}
-.sub-table td{padding:12px 14px;border-bottom:1px solid var(--border);font-size:11px;vertical-align:middle}
-.sub-table tr:hover td{background:rgba(255,255,255,.02)}
-.rate-bar{height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;margin-top:5px;width:100px}
-.rate-fill{height:100%;border-radius:2px}
-.risk-badge{padding:2px 8px;font-family:var(--mono);font-size:8px;letter-spacing:.1em;border:1px solid}
+/* ── CHINA MARKET ────────────────────────── */
+.china-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);margin-bottom:48px}
+.china-cell{background:var(--bg2);padding:20px 18px}
+.china-val{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:4px}
+.china-label{font-family:var(--mono);font-size:8px;color:var(--text3);letter-spacing:.12em;margin-bottom:2px}
+.china-note{font-size:10px;color:var(--text2)}
 
-/* CI heatmap */
-.ci-wrap{overflow-x:auto;margin-bottom:32px}
-.ci-table{border-collapse:collapse;min-width:900px}
-.ci-table th{font-family:var(--mono);font-size:8px;letter-spacing:.1em;color:var(--text3);padding:8px 10px;text-align:center;border:1px solid var(--border);white-space:nowrap}
-.ci-table th:first-child{text-align:left;min-width:140px}
-.ci-table td{padding:10px;border:1px solid var(--border);text-align:center;font-family:var(--mono);font-size:11px;font-weight:700}
-.ci-score-high{background:rgba(0,255,178,.12);color:var(--green)}
-.ci-score-mid{background:rgba(34,211,238,.08);color:var(--cyan)}
-.ci-score-ok{background:rgba(255,215,0,.08);color:var(--gold)}
-.ci-score-low{background:rgba(255,107,53,.1);color:var(--orange)}
-.ci-score-vlow{background:rgba(227,6,19,.1);color:var(--red)}
-.ci-company{text-align:left!important;font-size:11px;font-weight:700;color:var(--text)}
+/* procurement breakdown */
+.proc-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:48px}
+.proc-section-title{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--text3);margin-bottom:16px}
+.proc-bar-row{margin-bottom:14px}
+.proc-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
+.proc-name{font-size:12px}
+.proc-val{font-family:var(--mono);font-size:11px;font-weight:700}
+.proc-track{height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
+.proc-fill{height:100%;border-radius:2px;transition:width 1.4s cubic-bezier(.16,1,.3,1)}
 
-/* moats */
-.moats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px}
-.moat{background:var(--bg2);border:1px solid var(--border);padding:22px}
-.moat-score{font-size:32px;font-weight:800;letter-spacing:-.03em;margin-bottom:4px}
-.moat-title{font-size:13px;font-weight:700;margin-bottom:6px}
-.moat-desc{font-size:11px;color:var(--text2);line-height:1.7}
-.moat.attack{background:rgba(255,107,53,.04);border-color:rgba(255,107,53,.2)}
+/* price comparison */
+.price-compare{background:var(--bg2);border:1px solid var(--border);padding:28px;margin-bottom:48px;display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;text-align:center}
+.price-val{font-size:36px;font-weight:800;letter-spacing:-.03em;margin-bottom:4px}
+.price-label{font-family:var(--mono);font-size:9px;letter-spacing:.15em;color:var(--text3)}
+.price-vs{font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:.1em}
 
-/* overseas */
-.ceiling-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px}
-.ceiling{background:var(--bg2);border:1px solid var(--border);padding:22px;position:relative}
-.ceiling-num{font-family:var(--mono);font-size:9px;color:var(--orange);letter-spacing:.15em;margin-bottom:8px}
-.ceiling-title{font-size:13px;font-weight:700;margin-bottom:6px}
-.ceiling-signal{font-family:var(--mono);font-size:9px;color:var(--text3);margin-bottom:10px;padding:6px 10px;background:rgba(255,255,255,.03);border-left:2px solid var(--orange)}
-.ceiling-desc{font-size:11px;color:var(--text2);line-height:1.7}
+/* ── TRADE ───────────────────────────────── */
+.trade-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px}
+.trade-card{background:var(--bg2);border:1px solid var(--border);padding:28px}
+.trade-card-title{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--text3);margin-bottom:20px}
+.trade-big{font-size:48px;font-weight:800;letter-spacing:-.04em;line-height:1;margin-bottom:4px}
+.trade-sub{font-size:12px;color:var(--text2);margin-bottom:24px}
+.origin-list{display:flex;flex-direction:column;gap:8px}
+.origin-row{display:flex;align-items:center;gap:10px}
+.origin-flag{font-size:14px;width:20px}
+.origin-name{font-size:11px;flex:1}
+.origin-pct{font-family:var(--mono);font-size:11px;font-weight:700}
+.origin-bar-track{flex:1;height:3px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
+.origin-bar{height:100%;border-radius:2px}
 
-/* brand outgoing */
-.brands-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:32px}
-.brand-card{background:var(--bg2);border:1px solid var(--border);padding:20px;display:flex;gap:16px;align-items:flex-start;transition:border-color .2s}
-.brand-card:hover{border-color:var(--border2)}
-.brand-icon{font-size:22px;flex-shrink:0}
-.brand-name{font-size:13px;font-weight:800;margin-bottom:2px}
-.brand-stat{font-family:var(--mono);font-size:9px;color:var(--lime);margin-bottom:6px}
-.brand-desc{font-size:11px;color:var(--text2);line-height:1.6}
-.brand-equip{font-family:var(--mono);font-size:8.5px;color:var(--text3);margin-top:6px;padding:4px 8px;background:rgba(170,255,0,.05);border:1px solid rgba(170,255,0,.15);display:inline-block}
+/* ── POLICY TIMELINE ─────────────────────── */
+.timeline{position:relative;padding-left:32px}
+.timeline::before{content:'';position:absolute;left:6px;top:0;bottom:0;width:1px;background:var(--border)}
+.tl-item{position:relative;margin-bottom:32px}
+.tl-dot{position:absolute;left:-29px;top:4px;width:11px;height:11px;border-radius:50%;border:1px solid var(--border2)}
+.tl-date{font-family:var(--mono);font-size:8.5px;letter-spacing:.15em;color:var(--text3);margin-bottom:4px}
+.tl-tag{display:inline-block;padding:1px 8px;font-family:var(--mono);font-size:7.5px;letter-spacing:.12em;border:1px solid;margin-bottom:6px}
+.tl-title{font-size:13px;font-weight:700;margin-bottom:4px}
+.tl-desc{font-size:11px;color:var(--text2);line-height:1.7}
 
-/* model evolution */
-.models{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-bottom:32px}
-.model{background:var(--bg2);padding:22px;text-align:center}
-.model-ver{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.2em;margin-bottom:8px}
-.model-name{font-size:14px;font-weight:800;margin-bottom:6px}
-.model-desc{font-size:11px;color:var(--text2);line-height:1.6;margin-bottom:10px}
-.model-verdict{font-family:var(--mono);font-size:9px;padding:3px 10px;border:1px solid;display:inline-block}
+/* ── SIGNAL CARDS ────────────────────────── */
+.signals{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.signal-card{background:var(--bg2);border:1px solid var(--border);padding:24px;position:relative;transition:all .25s}
+.signal-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.signal-num{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.1em;margin-bottom:12px}
+.signal-title{font-size:13px;font-weight:700;margin-bottom:8px}
+.signal-stat{font-size:20px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.signal-desc{font-size:11px;color:var(--text2);line-height:1.7}
+.signal-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
 
-/* geo */
-.geo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px}
-.geo{background:var(--bg2);border:1px solid var(--border);padding:22px;position:relative}
-.geo-pri{position:absolute;top:14px;right:14px;font-family:var(--mono);font-size:8px;padding:2px 8px;border:1px solid;letter-spacing:.1em}
-.geo-name{font-size:16px;font-weight:800;margin-bottom:4px}
-.geo-countries{font-family:var(--mono);font-size:9px;color:var(--text3);margin-bottom:12px}
-.geo-why{font-size:11px;color:var(--text2);line-height:1.6;margin-bottom:8px}
-.geo-how{font-family:var(--mono);font-size:9px;color:var(--text3);padding:6px 10px;background:rgba(255,255,255,.03);border-left:2px solid}
+/* ── DOMESTIC BRANDS ─────────────────────── */
+.brand-matrix{overflow-x:auto;margin-bottom:48px}
+.brand-row{display:grid;grid-template-columns:120px 80px 100px 100px 1fr;gap:1px;background:var(--border);margin-bottom:1px}
+.brand-cell{background:var(--bg2);padding:12px 16px;font-size:11px}
+.brand-cell.head{font-family:var(--mono);font-size:8px;letter-spacing:.15em;color:var(--text3);background:rgba(6,13,32,.95)}
+.maturity-star{color:var(--gold)}
+.maturity-empty{color:var(--border2)}
+.brand-badge{display:inline-block;padding:2px 8px;font-family:var(--mono);font-size:8px;letter-spacing:.1em;border:1px solid}
 
-/* machine companies */
-.machine-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:32px}
-.mco{background:var(--bg2);border:1px solid var(--border);padding:24px;position:relative}
-.mco-name{font-size:15px;font-weight:800;margin-bottom:4px}
-.mco-period{font-family:var(--mono);font-size:8.5px;color:var(--text3);margin-bottom:14px}
-.mco-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
-.mco-stat-label{font-family:var(--mono);font-size:7.5px;color:var(--text3);letter-spacing:.1em;margin-bottom:2px}
-.mco-stat-val{font-size:18px;font-weight:800;letter-spacing:-.02em}
-.mco-moat{font-size:11px;color:var(--text2);line-height:1.6;margin-bottom:8px}
-.mco-risk{font-family:var(--mono);font-size:9px;color:var(--orange);padding:6px 10px;background:rgba(255,107,53,.05);border-left:2px solid var(--orange)}
-.mco-priority{position:absolute;top:16px;right:16px;font-family:var(--mono);font-size:8px;padding:3px 10px;border:1px solid;letter-spacing:.1em}
-
-/* BOM analysis */
-.bom-section{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px}
-.bom-card{background:var(--bg2);border:1px solid var(--border);padding:24px}
-.bom-card-title{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--text3);margin-bottom:16px}
-.bom-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.bom-name{font-size:11px;flex:1;min-width:0}
-.bom-val{font-family:var(--mono);font-size:10px;font-weight:700;min-width:60px;text-align:right}
-.bom-track{width:80px;flex-shrink:0;height:3px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
-.bom-fill{height:100%;border-radius:2px}
-.bom-risk{font-size:9px;color:var(--text3)}
-
-/* addressable market */
-.tam-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-bottom:32px}
-.tam-cell{background:var(--bg2);padding:22px;text-align:center}
-.tam-val{font-size:28px;font-weight:800;letter-spacing:-.03em;margin-bottom:4px}
-.tam-label{font-family:var(--mono);font-size:8.5px;color:var(--text3);letter-spacing:.15em;margin-bottom:4px}
-.tam-note{font-size:10px;color:var(--text2)}
-
-/* risks */
-.risks{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px}
-.risk-card{background:var(--bg2);border:1px solid var(--border);padding:20px}
-.risk-level{font-family:var(--mono);font-size:8px;letter-spacing:.15em;margin-bottom:8px;padding:2px 8px;border:1px solid;display:inline-block}
-.risk-title{font-size:13px;font-weight:700;margin-bottom:6px}
-.risk-signal{font-family:var(--mono);font-size:9px;color:var(--text3);margin-bottom:8px;line-height:1.6}
-.risk-action{font-size:11px;color:var(--text2);line-height:1.6}
-
-/* priority table */
-.priority-list{display:flex;flex-direction:column;gap:10px}
-.pri{background:var(--bg2);border:1px solid var(--border);padding:18px 22px;display:flex;gap:16px;align-items:flex-start;transition:border-color .2s}
-.pri:hover{border-color:var(--border2)}
-.pri-badge{flex-shrink:0;padding:4px 12px;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.15em;border:1px solid;white-space:nowrap}
-.pri-company{font-size:13px;font-weight:700;margin-bottom:2px}
-.pri-reason{font-size:11px;color:var(--text2);line-height:1.6}
-
-/* progress bars */
-.prog-row{margin-bottom:12px}
-.prog-label{display:flex;justify-content:space-between;margin-bottom:4px}
-.prog-name{font-size:11px;color:var(--text2)}
-.prog-val{font-family:var(--mono);font-size:10px;font-weight:700}
-.prog-track{height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
-.prog-fill{height:100%;border-radius:2px;transition:width 1.4s cubic-bezier(.16,1,.3,1)}
-
+/* ── ANIMATIONS ──────────────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes countUp{from{opacity:0}to{opacity:1}}
+@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(200%)}}
 .reveal{opacity:0;transform:translateY(20px);transition:all .7s cubic-bezier(.16,1,.3,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
+/* ── RESPONSIVE ──────────────────────────── */
 @media(max-width:900px){
-  .conclusions-grid{grid-template-columns:1fr 1fr}
-  .market-4,.models,.tam-strip{grid-template-columns:1fr 1fr}
-  .sector-grid,.moats,.brands-grid,.machine-grid,.bom-section,.geo-grid,.ceiling-grid,.risks{grid-template-columns:1fr}
-  .chain-layer{grid-template-columns:1fr}
+  .market-grid,.comp-grid,.signals{grid-template-columns:1fr 1fr}
+  .stats-strip{grid-template-columns:1fr 1fr}
+  .china-strip{grid-template-columns:repeat(3,1fr)}
+  .evo-grid{grid-template-columns:1fr}
+  .trade-grid,.proc-grid{grid-template-columns:1fr}
+  .customer-cards{grid-template-columns:1fr}
 }
 @media(max-width:600px){
+  .market-grid,.comp-grid,.signals,.stats-strip{grid-template-columns:1fr}
+  .price-compare{grid-template-columns:1fr;text-align:left}
+  .nav-inner{padding:0 20px}
   .section,.hero{padding-left:20px;padding-right:20px}
-  .nav-inner{padding:0 16px}
-  .conclusions-grid,.market-4{grid-template-columns:1fr}
 }
 
 /* CURSOR GLOW */
@@ -249,19 +239,19 @@ body:has([onclick]:hover) #cursor-dot{
 <div id="cursor-glow"></div>
 <div id="cursor-dot"></div>
 
-<div class="bg-grid"></div>
-<div class="bg-g1"></div>
-<div class="bg-g2"></div>
 
+<!-- NAV -->
 <nav id="site-nav">
   <div class="nav-inner">
+    
+    <div class="nav-divider"></div>
     <div class="nav-links">
       <a href="index.html" class="nav-link">宏观脉搏</a>
       <a href="liquid.html" class="nav-link">AI 液冷</a>
       <a href="semiconductor.html" class="nav-link">半导体 SBU</a>
-      <a href="mscc.html" class="nav-link">质谱·色谱</a>
+      <a href="mscc.html" class="nav-link active">质谱·色谱</a>
       <a href="pharma.html" class="nav-link">制药装备</a>
-      <a href="food.html" class="nav-link active">食品饮料</a>
+      <a href="food.html" class="nav-link">食品饮料</a>
       <a href="hydrogen.html" class="nav-link">氢能行业</a>
       <a href="customers.html" class="nav-link">客户监控</a>
     </div>
@@ -269,501 +259,591 @@ body:has([onclick]:hover) #cursor-dot{
   </div>
 </nav>
 
-<div class="wrap">
+<!-- BG -->
+<div style="position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.01) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.01) 1px,transparent 1px);background-size:60px 60px"></div>
+<div style="position:fixed;top:-20%;left:30%;width:80vw;height:600px;background:radial-gradient(ellipse,rgba(255,215,0,.03) 0%,transparent 65%);pointer-events:none;z-index:0"></div>
+<div style="position:fixed;bottom:-10%;right:5%;width:50vw;height:500px;background:radial-gradient(ellipse,rgba(34,211,238,.025) 0%,transparent 70%);pointer-events:none;z-index:0"></div>
+
+<div style="position:relative;z-index:1">
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-eye">食品饮料装备 · 产业链全景与出海趋势</div>
-  <h1 class="hero-title">从行业格局到竞争情报<br/>从国产替代到<span class="accent">价值输出</span></h1>
-  <p class="hero-sub">系统覆盖食品饮料装备产业链全景，含竞争情报CI评分、BOM拆解、可寻址市场测算与出海战略</p>
-
-  <!-- 5 conclusions -->
-  <div class="conclusions-grid reveal">
-    <div class="con-cell con-cell-top">
-      <div class="con-num">01</div>
-      <div class="con-title">市场规模：3.8万亿大盘，装备是隐形受益者</div>
-      <div class="con-desc">无糖茶/功能饮料高速增长，直接拉动新型灌装产线投资需求</div>
-    </div>
-    <div class="con-cell" style="border-top:2px solid var(--gold)">
-      <div class="con-num">02</div>
-      <div class="con-title">配件是利润漏斗，也是最大白地</div>
-      <div class="con-desc">卫生级阀门/传感器国产化率15-30%，BOM配件外采超40%</div>
-    </div>
-    <div class="con-cell" style="border-top:2px solid var(--orange)">
-      <div class="con-num">03</div>
-      <div class="con-title">竞争情报：Festo数字化9分，国产仅5分</div>
-      <div class="con-desc">差距即机会——响应速度是最大可攻击薄弱点</div>
-    </div>
-    <div class="con-cell" style="border-top:2px solid var(--cyan)">
-      <div class="con-num">04</div>
-      <div class="con-title">随中国食品品牌出海是最低风险入口</div>
-      <div class="con-desc">蜜雪冰城3年+5000家海外门店，东鹏、元气森林加速建厂</div>
-    </div>
-    <div class="con-cell" style="border-top:2px solid var(--purple)">
-      <div class="con-num">05</div>
-      <div class="con-title">三位一体，缺一不可</div>
-      <div class="con-desc">随客出海 + 配件自主化 + 数字化服务，从价格输出到价值输出</div>
-    </div>
+  <div class="hero-eyebrow">质谱 · 色谱行业</div>
+  <h1 class="hero-title">全球与中国<br/><span class="accent">市场情报</span></h1>
+  <p class="hero-sub">系统覆盖全球与中国质谱·色谱市场的规模、竞争、贸易与政策维度，数据截至2026年3月</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">DATE<span>March 2026</span></div>
+    <div class="hero-meta-item">TYPE<span>Market Intelligence</span></div>
+    <div class="hero-meta-item">COVERAGE<span>质谱 + 色谱 + 进出口</span></div>
+    <div class="hero-meta-item">SOURCE<span>化工仪器网 · 艺创媒体 · 智研咨询</span></div>
   </div>
-  <div class="hero-note">数据截止：2026年2月 · 仅供内部战略参考</div>
 </div>
 
-<div class="divider"></div>
-
-<!-- 01 INDUSTRY OVERVIEW -->
-<div class="section reveal">
-  <div class="sec-label" id="s01">01 · INDUSTRY OVERVIEW</div>
-  <h2 class="sec-title">行业全景：3.8万亿大盘</h2>
-  <p class="sec-sub">2025年中国食品饮料工业营收规模约3.8万亿元，四大赛道结构性分化，无糖茶/功能饮料高速增长</p>
-
-  <div class="market-4 reveal">
-    <div class="m4-cell">
-      <div class="m4-label">食品饮料市场总规模</div>
-      <div class="m4-val" style="color:var(--lime)">3.8万亿</div>
-      <div class="m4-note">2025E · 粮油食品零售增速9.9%</div>
+<!-- STATS STRIP -->
+<div class="section" style="padding-top:0">
+  <div class="stats-strip reveal">
+    <div class="stat-cell" style="--accent:var(--gold)">
+      <div class="stat-label">全球质谱市场 2025</div>
+      <div class="stat-val" style="color:var(--gold)">$6.6B</div>
+      <div class="stat-note">CAGR 7.97% → $10.65B 2030</div>
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold)"></div>
     </div>
-    <div class="m4-cell">
-      <div class="m4-label">全国饮料总产量</div>
-      <div class="m4-val" style="color:var(--cyan)">188.2百万吨</div>
-      <div class="m4-note">2024年 · +6.3% YoY</div>
+    <div class="stat-cell">
+      <div class="stat-label">中国质谱市场 2024</div>
+      <div class="stat-val" style="color:var(--cyan)">192.7亿</div>
+      <div class="stat-note">+15.37% YoY · 预测2025E: ~221亿</div>
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--cyan)"></div>
     </div>
-    <div class="m4-cell">
-      <div class="m4-label">全球食品饮料设备市场</div>
-      <div class="m4-val" style="color:var(--gold)">769亿美元</div>
-      <div class="m4-note">2025年 · CAGR 5.87% → 1146亿@2032</div>
+    <div class="stat-cell">
+      <div class="stat-label">2025全年政府采购</div>
+      <div class="stat-val" style="color:var(--green)">34.72亿</div>
+      <div class="stat-note">历史新高 · 1,454套</div>
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--green)"></div>
     </div>
-    <div class="m4-cell">
-      <div class="m4-label">十四五总产值目标</div>
-      <div class="m4-val" style="color:var(--purple)">1,500亿</div>
-      <div class="m4-note">食品包装机械 · 2025年目标</div>
-    </div>
-  </div>
-
-  <div class="sector-grid reveal">
-    <div class="sector" style="border-top:2px solid var(--lime)">
-      <div class="sector-tag" style="color:var(--lime);border-color:rgba(170,255,0,.3)">饮料</div>
-      <div class="sector-name">无糖茶引领品类重构</div>
-      <div class="sector-size" style="color:var(--lime)">~8,000亿元</div>
-      <div class="sector-signals">
-        <div class="signal-row">无糖茶2024年翻倍增长，超越碳酸饮料成饮料市场份额第一品类</div>
-        <div class="signal-row">功能饮料+45%（东鹏）；电解质水+213%（东鹏补水啦）</div>
-        <div class="signal-row">全新产线投资旺盛，无糖茶灌装+后道包装需求最强</div>
-        <div class="signal-row">东鹏饮料2026年2月完成A+H两地上市</div>
-      </div>
-    </div>
-    <div class="sector" style="border-top:2px solid var(--cyan)">
-      <div class="sector-tag" style="color:var(--cyan);border-color:rgba(34,211,238,.3)">乳制品</div>
-      <div class="sector-name">双寡头格局，低温奶是增量</div>
-      <div class="sector-size" style="color:var(--cyan)">~7,000亿元</div>
-      <div class="sector-signals">
-        <div class="signal-row">CR2=45.5%（伊利23%+蒙牛22%），格局稳固</div>
-        <div class="signal-row">2025年原奶过剩是全行业头号风险，常温无菌线新增需求减少</div>
-        <div class="signal-row">低温鲜奶渗透率持续提升，巴氏杀菌灌装设备需求旺盛</div>
-        <div class="signal-row">宁夏伊利新增2条1L砖产线，2026年1月已投产</div>
-      </div>
-    </div>
-    <div class="sector" style="border-top:2px solid var(--gold)">
-      <div class="sector-tag" style="color:var(--gold);border-color:rgba(255,215,0,.3)">酒类</div>
-      <div class="sector-name">白酒缩量周期，技改红利强</div>
-      <div class="sector-size" style="color:var(--gold)">7,563亿+240亿</div>
-      <div class="sector-signals">
-        <div class="signal-row">白酒第8年连续产量下滑（2024年414.5万千升，-1.8%）</div>
-        <div class="signal-row">上市公司技改投资超400亿，年均60亿，确定性高</div>
-        <div class="signal-row">果酒/低度酒：200-240亿元，5年CAGR&gt;20%，新建产线快速释放</div>
-        <div class="signal-row">300-500元价格带动销最佳；高端技改积极</div>
-      </div>
-    </div>
-    <div class="sector" style="border-top:2px solid var(--purple)">
-      <div class="sector-tag" style="color:var(--purple);border-color:rgba(191,128,255,.3)">食品添加剂/淀粉糖</div>
-      <div class="sector-name">B2B隐形价值，逆周期稳定</div>
-      <div class="sector-size" style="color:var(--purple)">~1,400亿元</div>
-      <div class="sector-signals">
-        <div class="signal-row">代糖（赤藓糖醇/甜菊糖苷）随无糖热潮高速增长</div>
-        <div class="signal-row">淀粉糖CAGR 5-7%，其中饮料消费占比36%</div>
-        <div class="signal-row">行业不存在明显周期性，下游刚需，改扩建项目连续</div>
-        <div class="signal-row">集中度低+技术壁垒高=国产设备突破窗口</div>
-      </div>
+    <div class="stat-cell">
+      <div class="stat-label">中国质谱出口增幅 2025</div>
+      <div class="stat-val" style="color:var(--orange)">+234%</div>
+      <div class="stat-note">联用仪 +597% · 出口元年</div>
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--orange)"></div>
     </div>
   </div>
 </div>
 
 <div class="divider"></div>
 
-<!-- 02 SUPPLY CHAIN -->
+<!-- 01 GLOBAL MARKET -->
 <div class="section reveal">
-  <div class="sec-label" id="s02">02 · SUPPLY CHAIN</div>
-  <h2 class="sec-title">设备产业链：四层结构</h2>
-  <p class="sec-sub">越往上游国产化率越低；配件层是整个产业链中国产化率最低、外资主导最强的环节</p>
+  <div class="section-label">01 · GLOBAL MARKET</div>
+  <h2 class="section-title">全球市场概览</h2>
+  <p class="section-sub">全球质谱与色谱市场合计约$21.8B，亚太以9%+成最快增速地区；Orbitrap/FT-MS以CAGR 8.78%领跑各技术平台</p>
 
-  <div class="chain-layers reveal" style="margin-bottom:32px">
-    <div class="chain-layer">
-      <div class="chain-label-cell" style="background:rgba(170,255,0,.06)">
-        <div class="chain-label-text" style="color:var(--lime)">下游客户</div>
+  <div class="market-grid">
+    <div class="market-card" style="border-top:2px solid var(--gold)">
+      <div class="market-card-top">
+        <div class="market-card-icon" style="color:var(--gold);border-color:rgba(255,215,0,.3)">MS</div>
       </div>
-      <div class="chain-content">饮料企业 &nbsp;·&nbsp; 乳品企业 &nbsp;·&nbsp; 酒类企业 &nbsp;·&nbsp; 食品企业</div>
+      <div class="market-card-val" style="color:var(--gold)">$6.6B</div>
+      <div class="market-card-cagr">CAGR 7.97% → $10.65B @ 2030</div>
+      <div class="market-card-title" style="margin-top:12px">全球质谱市场 2025</div>
+      <div class="market-card-note">临床诊断 CAGR 9.8% 领跑全行业；全自动 LC-MS 普及驱动 2025–2028 关键窗口期</div>
     </div>
-    <div class="chain-layer">
-      <div class="chain-label-cell" style="background:rgba(34,211,238,.05)">
-        <div class="chain-label-text" style="color:var(--cyan)">整机层</div>
+    <div class="market-card" style="border-top:2px solid var(--cyan)">
+      <div class="market-card-top">
+        <div class="market-card-icon" style="color:var(--cyan);border-color:rgba(34,211,238,.3)">LC-MS</div>
       </div>
-      <div class="chain-content">
-        <span class="chain-tag">加工设备</span>
-        <span class="chain-tag">灌装设备</span>
-        <span class="chain-tag">包装设备</span>
-        <span style="font-family:var(--mono);font-size:9px;color:var(--cyan);margin-left:8px">国产化率 65-80%</span>
-      </div>
+      <div class="market-card-val" style="color:var(--cyan)">$5.2B</div>
+      <div class="market-card-cagr">CAGR 7.8% → $11.7B @ 2034</div>
+      <div class="market-card-title" style="margin-top:12px">全球 LC-MS 市场 2024</div>
+      <div class="market-card-note">Roche cobas i601（2024.12 CE Mark）入局，免色谱全自动平台引发赛道重塑</div>
     </div>
-    <div class="chain-layer">
-      <div class="chain-label-cell" style="background:rgba(255,215,0,.05)">
-        <div class="chain-label-text" style="color:var(--gold)">子系统层</div>
+    <div class="market-card" style="border-top:2px solid var(--purple)">
+      <div class="market-card-top">
+        <div class="market-card-icon" style="color:var(--purple);border-color:rgba(191,128,255,.3)">CHROM</div>
       </div>
-      <div class="chain-content">
-        <span class="chain-tag">控制系统</span>
-        <span class="chain-tag">流体管路</span>
-        <span class="chain-tag">传动系统</span>
-        <span class="chain-tag">检测系统</span>
-        <span class="chain-tag">CIP</span>
-        <span style="font-family:var(--mono);font-size:9px;color:var(--gold);margin-left:8px">国产化率 40-60%</span>
-      </div>
-    </div>
-    <div class="chain-layer">
-      <div class="chain-label-cell" style="background:rgba(255,107,53,.06)">
-        <div class="chain-label-text" style="color:var(--orange)">配件层 ⭐</div>
-      </div>
-      <div class="chain-content">
-        <span class="chain-tag">密封件</span>
-        <span class="chain-tag">卫生级阀门/泵</span>
-        <span class="chain-tag">轴承</span>
-        <span class="chain-tag">伺服电机</span>
-        <span class="chain-tag">传感器</span>
-        <span class="chain-tag">PLC</span>
-        <span style="font-family:var(--mono);font-size:9px;color:var(--orange);margin-left:8px">国产化率 15-55%</span>
-      </div>
+      <div class="market-card-val" style="color:var(--purple)">$10.0B</div>
+      <div class="market-card-cagr">CAGR 5.32% → $13.7B @ 2031</div>
+      <div class="market-card-title" style="margin-top:12px">全球色谱市场 2025</div>
+      <div class="market-card-note">北美 41.6%，欧洲 29%，亚太 21%；亚太 CAGR 9%+ 最快，中国·印度法规升级驱动</div>
     </div>
   </div>
 
-  <!-- 7 component types -->
-  <div style="overflow-x:auto">
-    <table class="sub-table reveal">
+  <!-- Region breakdown -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px">
+    <div style="background:var(--bg2);border:1px solid var(--border);padding:24px">
+      <div class="proc-section-title">地区格局 2024</div>
+      <div class="proc-bar-row">
+        <div class="proc-label"><span class="proc-name">北美</span><span class="proc-val" style="color:var(--gold)">41.6%</span></div>
+        <div class="proc-track"><div class="proc-fill" style="width:41.6%;background:var(--gold)"></div></div>
+      </div>
+      <div class="proc-bar-row">
+        <div class="proc-label"><span class="proc-name">欧洲</span><span class="proc-val" style="color:var(--cyan)">29%</span></div>
+        <div class="proc-track"><div class="proc-fill" style="width:29%;background:var(--cyan)"></div></div>
+      </div>
+      <div class="proc-bar-row">
+        <div class="proc-label"><span class="proc-name">亚太（CAGR 9%+最快）</span><span class="proc-val" style="color:var(--green)">21%</span></div>
+        <div class="proc-track"><div class="proc-fill" style="width:21%;background:var(--green)"></div></div>
+      </div>
+      <div class="proc-bar-row">
+        <div class="proc-label"><span class="proc-name">其他</span><span class="proc-val" style="color:var(--text2)">9%</span></div>
+        <div class="proc-track"><div class="proc-fill" style="width:9%;background:rgba(255,255,255,.2)"></div></div>
+      </div>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);padding:24px">
+      <div class="proc-section-title">终端应用 CAGR 对比</div>
+      <div class="proc-bar-row">
+        <div class="proc-label"><span class="proc-name">临床诊断 ⭐ 最快</span><span class="proc-val" style="color:var(--orange)">9.8%</span></div>
+        <div class="proc-track"><div class="proc-fill" style="width:90%;background:var(--orange)"></div></div>
+      </div>
+      <div class="proc-bar-row">
+        <div class="proc-label"><span class="proc-name">制药 & 生物制药</span><span class="proc-val" style="color:var(--gold)">8.5%</span></div>
+        <div class="proc-track"><div class="proc-fill" style="width:79%;background:var(--gold)"></div></div>
+      </div>
+      <div class="proc-bar-row">
+        <div class="proc-label"><span class="proc-name">食品 & 农业检测</span><span class="proc-val" style="color:var(--cyan)">9.2%</span></div>
+        <div class="proc-track"><div class="proc-fill" style="width:85%;background:var(--cyan)"></div></div>
+      </div>
+      <div class="proc-bar-row">
+        <div class="proc-label"><span class="proc-name">环境监测</span><span class="proc-val" style="color:var(--green)">7.5%</span></div>
+        <div class="proc-track"><div class="proc-fill" style="width:70%;background:var(--green)"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 02 CUSTOMER EVOLUTION -->
+<div class="section reveal">
+  <div class="section-label">02 · CUSTOMER STRUCTURE</div>
+  <h2 class="section-title">客户结构演变</h2>
+  <p class="section-sub">制药占比从 40% 降至预计 33%，台式化普及使中小实验室成为规模增量新群体；临床 CAGR 9.8% 领跑全行业</p>
+
+  <div class="evo-grid reveal">
+    <div class="evo-col">
+      <div class="evo-year">2019</div>
+      <div class="evo-bar-row"><div class="evo-bar-label"><span class="evo-bar-name">制药</span><span class="evo-bar-pct" style="color:var(--gold)">40%</span></div><div class="evo-bar-track"><div class="evo-bar-fill" style="width:40%;background:var(--gold)"></div></div></div>
+      <div class="evo-bar-row"><div class="evo-bar-label"><span class="evo-bar-name">学术</span><span class="evo-bar-pct" style="color:var(--cyan)">20%</span></div><div class="evo-bar-track"><div class="evo-bar-fill" style="width:20%;background:var(--cyan)"></div></div></div>
+      <div class="evo-bar-row"><div class="evo-bar-label"><span class="evo-bar-name">食品</span><span class="evo-bar-pct" style="color:var(--green)">15%</span></div><div class="evo-bar-track"><div class="evo-bar-fill" style="width:15%;background:var(--green)"></div></div></div>
+      <div class="evo-bar-row"><div class="evo-bar-label"><span class="evo-bar-name">其他</span><span class="evo-bar-pct" style="color:var(--text2)">25%</span></div><div class="evo-bar-track"><div class="evo-bar-fill" style="width:25%;background:rgba(255,255,255,.2)"></div></div></div>
+    </div>
+    <div class="evo-col">
+      <div class="evo-year">2025 ●</div>
+      <div class="evo-bar-row"><div class="evo-bar-label"><span class="evo-bar-name">制药</span><span class="evo-bar-pct" style="color:var(--gold)">36%</span></div><div class="evo-bar-track"><div class="evo-bar-fill" style="width:36%;background:var(--gold)"></div></div></div>
+      <div class="evo-bar-row"><div class="evo-bar-label"><span class="evo-bar-name">食品</span><span class="evo-bar-pct" style="color:var(--green)">18%</span></div><div class="evo-bar-track"><div class="evo-bar-fill" style="width:18%;background:var(--green)"></div></div></div>
+      <div class="evo-bar-row"><div class="evo-bar-label"><span class="evo-bar-name">临床 ⭐</span><span class="evo-bar-pct" style="color:var(--orange)">15%</span></div><div class="evo-bar-track"><div class="evo-bar-fill" style="width:15%;background:var(--orange)"></div></div></div>
+      <div class="evo-bar-row"><div class="evo-bar-label"><span class="evo-bar-name">环境</span><span class="evo-bar-pct" style="color:var(--cyan)">12%</span></div><div class="evo-bar-track"><div class="evo-bar-fill" style="width:12%;background:var(--cyan)"></div></div></div>
+      <div class="evo-bar-row"><div class="evo-bar-label"><span class="evo-bar-name">学术</span><span class="evo-bar-pct" style="color:var(--text2)">15%</span></div><div class="evo-bar-track"><div class="evo-bar-fill" style="width:15%;background:rgba(255,255,255,.2)"></div></div></div>
+    </div>
+    <div class="evo-col">
+      <div class="evo-year">2030 预判</div>
+      <div class="evo-bar-row"><div class="evo-bar-label"><span class="evo-bar-name">制药</span><span class="evo-bar-pct" style="color:var(--gold)">33%</span></div><div class="evo-bar-track"><div class="evo-bar-fill" style="width:33%;background:var(--gold)"></div></div></div>
+      <div class="evo-bar-row"><div class="evo-bar-label"><span class="evo-bar-name">食品</span><span class="evo-bar-pct" style="color:var(--green)">20%</span></div><div class="evo-bar-track"><div class="evo-bar-fill" style="width:20%;background:var(--green)"></div></div></div>
+      <div class="evo-bar-row"><div class="evo-bar-label"><span class="evo-bar-name">临床 ⭐ 最快</span><span class="evo-bar-pct" style="color:var(--orange)">19%</span></div><div class="evo-bar-track"><div class="evo-bar-fill" style="width:19%;background:var(--orange)"></div></div></div>
+      <div class="evo-bar-row"><div class="evo-bar-label"><span class="evo-bar-name">环境</span><span class="evo-bar-pct" style="color:var(--cyan)">13%</span></div><div class="evo-bar-track"><div class="evo-bar-fill" style="width:13%;background:var(--cyan)"></div></div></div>
+      <div class="evo-bar-row"><div class="evo-bar-label"><span class="evo-bar-name">学术</span><span class="evo-bar-pct" style="color:var(--text2)">12%</span></div><div class="evo-bar-track"><div class="evo-bar-fill" style="width:12%;background:rgba(255,255,255,.2)"></div></div></div>
+    </div>
+  </div>
+
+  <div class="customer-cards reveal" style="margin-top:32px">
+    <div class="cc">
+      <div class="cc-badge" style="background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2)"><span style="font-size:16px">💊</span></div>
+      <div>
+        <div class="cc-pct" style="color:var(--gold)">36%</div>
+        <div class="cc-cagr" style="color:var(--gold)">CAGR 8.5%</div>
+        <div class="cc-title">制药 & 生物制药</div>
+        <div class="cc-desc">mAb/ADC/生物类似药驱动高分辨 MS 采购；PhRMA 2024 R&D 支出 $1,024亿 (+18%)；GMP 合规要求高，进口依赖强</div>
+      </div>
+    </div>
+    <div class="cc">
+      <div class="cc-badge" style="background:rgba(255,107,53,.08);border:1px solid rgba(255,107,53,.2)"><span style="font-size:16px">🏥</span></div>
+      <div>
+        <div class="cc-pct" style="color:var(--orange)">15% → 19%</div>
+        <div class="cc-cagr" style="color:var(--orange)">CAGR 9.8% ⭐ 最快</div>
+        <div class="cc-title">临床医院 & 诊断</div>
+        <div class="cc-desc">TDM·新生儿筛查·类固醇激素驱动全自动 LC-MS；Roche cobas i601 进入，免色谱全自动是核心竞争方向</div>
+      </div>
+    </div>
+    <div class="cc">
+      <div class="cc-badge" style="background:rgba(0,255,178,.08);border:1px solid rgba(0,255,178,.2)"><span style="font-size:16px">🌾</span></div>
+      <div>
+        <div class="cc-pct" style="color:var(--green)">18% → 20%</div>
+        <div class="cc-cagr" style="color:var(--green)">CAGR 9.2%</div>
+        <div class="cc-title">食品 & 农业检测</div>
+        <div class="cc-desc">PFAS 法规·GB 23200 农残标准持续扩容，强制 LC-MS/MS 应用；第三方检测批量采购，国产渗透 15–20%</div>
+      </div>
+    </div>
+    <div class="cc">
+      <div class="cc-badge" style="background:rgba(191,128,255,.08);border:1px solid rgba(191,128,255,.2)"><span style="font-size:16px">🔬</span></div>
+      <div>
+        <div class="cc-pct" style="color:var(--purple)">5%</div>
+        <div class="cc-cagr" style="color:var(--purple)">CAGR 18% ⭐ 增速最快</div>
+        <div class="cc-title">第三方检测</div>
+        <div class="cc-desc">华测/谱尼/SGS 批量议价；青睐性价比；是国产中高端突破重要渠道</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 03 COMPETITORS -->
+<div class="section reveal">
+  <div class="section-label">03 · COMPETITION</div>
+  <h2 class="section-title">全球竞争格局</h2>
+  <p class="section-sub">前三强（赛默飞/安捷伦/SCIEX）合计占全球约 55% 份额；AI 软件生态成各厂商新竞争维度</p>
+
+  <div class="comp-grid">
+    <div class="comp-card" style="border-top:2px solid var(--gold)">
+      <div class="comp-rank">金额 #1 中国</div>
+      <div class="comp-name">Thermo Fisher</div>
+      <div class="comp-origin">US · $200B+ · 赛默飞</div>
+      <div class="comp-share" style="color:var(--gold)">~22%</div>
+      <div class="comp-products">Orbitrap Astral · Stellar MS · ICP-MS<br/>Astral Zoom + Excedion Pro (2025.06)</div>
+      <div class="comp-china">中国中标金额 #1：6.99亿 · 188套 · OEM 策略（赢生/丰华）</div>
+    </div>
+    <div class="comp-card" style="border-top:2px solid var(--cyan)">
+      <div class="comp-rank">台数 #1 中国</div>
+      <div class="comp-name">Agilent</div>
+      <div class="comp-origin">US · $25B · 安捷伦</div>
+      <div class="comp-share" style="color:var(--cyan)">~18%</div>
+      <div class="comp-products">7010D GC/MS · ExD Cell · LC/Q-TOF<br/>上海工厂占中国 GC 出口 92.3%</div>
+      <div class="comp-china">中国台数 #1：297套 · Merck KGaA / Newomics 合作</div>
+    </div>
+    <div class="comp-card" style="border-top:2px solid var(--purple)">
+      <div class="comp-rank">金额 #3 中国</div>
+      <div class="comp-name">SCIEX / Danaher</div>
+      <div class="comp-origin">US · $60B</div>
+      <div class="comp-share" style="color:var(--purple)">~15%</div>
+      <div class="comp-products">ZenoTOF 7600 · AI Quant · QTRAP<br/>AI Quant 软件商业化（2024.06）</div>
+      <div class="comp-china">IonOpticks 超灵敏蛋白质组学合作；临床布局领跑</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-name">Waters</div>
+      <div class="comp-origin">US · $18B</div>
+      <div class="comp-share" style="color:var(--text2)">~13%</div>
+      <div class="comp-products">Xevo MRT · ACQUITY UPLC · Empower<br/>Xevo MRT 10万分辨率@100Hz</div>
+      <div class="comp-china">Empower 软件深度绑定制药 QC 用户；中国 100 套</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-name">Bruker</div>
+      <div class="comp-origin">US · $8B · 布鲁克</div>
+      <div class="comp-share" style="color:var(--text2)">~10%</div>
+      <div class="comp-products">timsTOF · MALDI Biotyper · ClinDART<br/>收购 RECIPE（2025.04）→ 临床 TDM</div>
+      <div class="comp-china">中国单台最高：1,885万（中科院广州）</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-name">Shimadzu</div>
+      <div class="comp-origin">Japan · $5B · 岛津</div>
+      <div class="comp-share" style="color:var(--text2)">~8%</div>
+      <div class="comp-products">LCMS-TQ RX · Nexera QX · ICPMS-2050<br/>亚太渗透率最强·价格最具侵略性</div>
+      <div class="comp-china">中国台数 #2：193套</div>
+    </div>
+  </div>
+
+  <!-- Matrix table -->
+  <div class="matrix-wrap reveal" style="margin-top:32px">
+    <table class="matrix">
       <thead>
         <tr>
-          <th>配件品类</th>
-          <th>主要外资供应商</th>
-          <th>国产现状</th>
-          <th>国产化率</th>
-          <th>风险等级</th>
+          <th>维度</th>
+          <th>Thermo</th>
+          <th>Agilent</th>
+          <th>SCIEX</th>
+          <th>Waters</th>
+          <th>Bruker</th>
+          <th>Shimadzu</th>
         </tr>
       </thead>
-      <tbody id="comp-tbody"></tbody>
+      <tbody id="matrix-body"></tbody>
     </table>
   </div>
+</div>
 
-  <!-- Substitution maturity -->
+<div class="divider"></div>
+
+<!-- 04 CHINA MARKET -->
+<div class="section reveal">
+  <div class="section-label">04 · CHINA MARKET</div>
+  <h2 class="section-title">中国市场总览</h2>
+  <p class="section-sub">2025年政府采购 34.72亿创历史峰值；质谱预测 221亿、色谱产业链 287亿——两市场合计超 500亿</p>
+
+  <div class="china-strip reveal">
+    <div class="china-cell">
+      <div class="china-label">质谱市场规模 2024</div>
+      <div class="china-val" style="color:var(--cyan)">192.7亿</div>
+      <div class="china-note">+15.37% YoY</div>
+    </div>
+    <div class="china-cell">
+      <div class="china-label">质谱市场预测 2025E</div>
+      <div class="china-val" style="color:var(--gold)">~221亿</div>
+      <div class="china-note">⚠ 按15%增速推算</div>
+    </div>
+    <div class="china-cell">
+      <div class="china-label">政府采购 2025全年</div>
+      <div class="china-val" style="color:var(--green)">34.72亿</div>
+      <div class="china-note">1,454套 · 历史最高</div>
+    </div>
+    <div class="china-cell">
+      <div class="china-label">色谱产业链 2025E</div>
+      <div class="china-val" style="color:var(--purple)">287亿</div>
+      <div class="china-note">含耗材 · YoY +10.7%</div>
+    </div>
+    <div class="china-cell">
+      <div class="china-label">十五五预测 2026+</div>
+      <div class="china-val" style="color:var(--orange)">230亿+</div>
+      <div class="china-note">109项重大工程在列</div>
+    </div>
+  </div>
+
+  <!-- Procurement breakdown -->
+  <div class="proc-grid reveal">
+    <div>
+      <div class="proc-section-title">按仪器类型（金额份额）</div>
+      <div class="proc-bar-row">
+        <div class="proc-label"><span class="proc-name">LC-MS 联用仪</span><span class="proc-val" style="color:var(--gold)">63% · 21.77亿</span></div>
+        <div class="proc-track"><div class="proc-fill" style="width:63%;background:var(--gold)"></div></div>
+      </div>
+      <div class="proc-bar-row">
+        <div class="proc-label"><span class="proc-name">其他质谱仪</span><span class="proc-val" style="color:var(--cyan)">19% · 6.51亿</span></div>
+        <div class="proc-track"><div class="proc-fill" style="width:19%;background:var(--cyan)"></div></div>
+      </div>
+      <div class="proc-bar-row">
+        <div class="proc-label"><span class="proc-name">GC-MS 联用仪</span><span class="proc-val" style="color:var(--green)">18% · 6.44亿</span></div>
+        <div class="proc-track"><div class="proc-fill" style="width:18%;background:var(--green)"></div></div>
+      </div>
+      <div style="margin-top:20px">
+        <div class="proc-section-title">按采购单位（金额份额）</div>
+        <div class="proc-bar-row">
+          <div class="proc-label"><span class="proc-name">学校/高校</span><span class="proc-val" style="color:var(--gold)">43% · 522套</span></div>
+          <div class="proc-track"><div class="proc-fill" style="width:43%;background:var(--gold)"></div></div>
+        </div>
+        <div class="proc-bar-row">
+          <div class="proc-label"><span class="proc-name">医疗卫生</span><span class="proc-val" style="color:var(--orange)">24% · 414套</span></div>
+          <div class="proc-track"><div class="proc-fill" style="width:24%;background:var(--orange)"></div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="proc-section-title">H1 vs H2 台数分布</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px">
+        <div style="background:rgba(255,215,0,.05);border:1px solid rgba(255,215,0,.15);padding:16px;text-align:center">
+          <div style="font-size:28px;font-weight:800;color:var(--gold)">469</div>
+          <div style="font-family:var(--mono);font-size:8px;color:var(--text3);letter-spacing:.15em;margin-top:4px">H1 · 33%</div>
+        </div>
+        <div style="background:rgba(0,255,178,.05);border:1px solid rgba(0,255,178,.15);padding:16px;text-align:center">
+          <div style="font-size:28px;font-weight:800;color:var(--green)">985</div>
+          <div style="font-family:var(--mono);font-size:8px;color:var(--text3);letter-spacing:.15em;margin-top:4px">H2 · 67% ▲</div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.7;padding:12px;background:rgba(255,255,255,.03);border:1px solid var(--border)">
+        下半年集中放量，政策推动年末冲量。参与品牌：115个（国产86家 · 进口29家）
+      </div>
+    </div>
+  </div>
+
+  <!-- Price comparison -->
+  <div class="price-compare reveal">
+    <div>
+      <div class="price-label">进口均价</div>
+      <div class="price-val" style="color:var(--orange)">280.7万</div>
+      <div style="font-family:var(--mono);font-size:9px;color:var(--text3)">元/套</div>
+    </div>
+    <div class="price-vs">× 2.1<br/>倍差距</div>
+    <div>
+      <div class="price-label">国产均价</div>
+      <div class="price-val" style="color:var(--green)">136.6万</div>
+      <div style="font-family:var(--mono);font-size:9px;color:var(--text3)">元/套 · 价值替代仍是核心挑战</div>
+    </div>
+  </div>
+
+  <!-- Top domestic brands -->
+  <div class="reveal">
+    <div class="proc-section-title" style="margin-bottom:16px">国产品牌 TOP 5（按金额）</div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px">
+      <div style="background:var(--bg2);border:1px solid var(--border);padding:16px;text-align:center">
+        <div style="font-family:var(--mono);font-size:8px;color:var(--gold);letter-spacing:.1em;margin-bottom:8px">① 金额#1</div>
+        <div style="font-size:13px;font-weight:700;margin-bottom:4px">中元汇吉</div>
+        <div style="font-size:18px;font-weight:800;color:var(--gold)">1.12亿</div>
+        <div style="font-size:10px;color:var(--text2);margin-top:4px">MALDI-TOF</div>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--border);padding:16px;text-align:center">
+        <div style="font-family:var(--mono);font-size:8px;color:var(--text3);letter-spacing:.1em;margin-bottom:8px">②</div>
+        <div style="font-size:13px;font-weight:700;margin-bottom:4px">安图生物</div>
+        <div style="font-size:18px;font-weight:800;color:var(--cyan)">0.88亿</div>
+        <div style="font-size:10px;color:var(--text2);margin-top:4px">MALDI-TOF 临床</div>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--border);padding:16px;text-align:center">
+        <div style="font-family:var(--mono);font-size:8px;color:var(--green);letter-spacing:.1em;margin-bottom:8px">③ 🆕 新进</div>
+        <div style="font-size:13px;font-weight:700;margin-bottom:4px">凯莱谱</div>
+        <div style="font-size:18px;font-weight:800;color:var(--green)">0.70亿</div>
+        <div style="font-size:10px;color:var(--text2);margin-top:4px">临床 LC-MS</div>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--border);padding:16px;text-align:center">
+        <div style="font-family:var(--mono);font-size:8px;color:var(--text3);letter-spacing:.1em;margin-bottom:8px">④</div>
+        <div style="font-size:13px;font-weight:700;margin-bottom:4px">谱育科技</div>
+        <div style="font-size:18px;font-weight:800;color:var(--text2)">0.52亿</div>
+        <div style="font-size:10px;color:var(--text2);margin-top:4px">环境/工业</div>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--border);padding:16px;text-align:center">
+        <div style="font-family:var(--mono);font-size:8px;color:var(--text3);letter-spacing:.1em;margin-bottom:8px">⑤</div>
+        <div style="font-size:13px;font-weight:700;margin-bottom:4px">安益谱</div>
+        <div style="font-size:18px;font-weight:800;color:var(--text2)">0.44亿</div>
+        <div style="font-size:10px;color:var(--text2);margin-top:4px">食品安全</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 05 TRADE -->
+<div class="section reveal">
+  <div class="section-label">05 · TRADE FLOWS 2025</div>
+  <h2 class="section-title">进出口贸易 · 历史性出口爆发</h2>
+  <p class="section-sub">2025年质谱出口 +234%（10,151台）为历史突破，联用仪 +597% 开创出海元年；新加坡枢纽化趋势确认</p>
+
+  <div class="trade-grid reveal">
+    <div class="trade-card" style="border-top:2px solid var(--cyan)">
+      <div class="trade-card-title">质谱进口 2025</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px">
+        <div>
+          <div style="font-family:var(--mono);font-size:8px;color:var(--text3);letter-spacing:.15em;margin-bottom:4px">总金额</div>
+          <div style="font-size:28px;font-weight:800;color:var(--cyan)">103.66亿</div>
+          <div style="font-family:var(--mono);font-size:9px;color:var(--text2)">↑ +4.3% · 量减价升</div>
+        </div>
+        <div>
+          <div style="font-family:var(--mono);font-size:8px;color:var(--text3);letter-spacing:.15em;margin-bottom:4px">总台数</div>
+          <div style="font-size:28px;font-weight:800;color:var(--text2)">12,578台</div>
+          <div style="font-family:var(--mono);font-size:9px;color:var(--text2)">↓ -2.6% YoY</div>
+        </div>
+      </div>
+      <div class="origin-list">
+        <div class="origin-row">
+          <span class="origin-flag">🇸🇬</span>
+          <span class="origin-name">新加坡 <span style="color:var(--orange);font-size:9px">首次#1 🔥</span></span>
+          <div class="origin-bar-track"><div class="origin-bar" style="width:33%;background:var(--orange)"></div></div>
+          <span class="origin-pct" style="color:var(--orange)">33%</span>
+        </div>
+        <div class="origin-row">
+          <span class="origin-flag">🇩🇪</span>
+          <span class="origin-name">德国</span>
+          <div class="origin-bar-track"><div class="origin-bar" style="width:29%;background:var(--gold)"></div></div>
+          <span class="origin-pct" style="color:var(--gold)">29%</span>
+        </div>
+        <div class="origin-row">
+          <span class="origin-flag">🇺🇸</span>
+          <span class="origin-name">美国 <span style="color:var(--red);font-size:9px">↓↓</span></span>
+          <div class="origin-bar-track"><div class="origin-bar" style="width:11%;background:var(--red)"></div></div>
+          <span class="origin-pct" style="color:var(--red)">11%</span>
+        </div>
+        <div class="origin-row">
+          <span class="origin-flag">🇬🇧</span>
+          <span class="origin-name">英国</span>
+          <div class="origin-bar-track"><div class="origin-bar" style="width:8%;background:rgba(255,255,255,.65)"></div></div>
+          <span class="origin-pct">8%</span>
+        </div>
+        <div class="origin-row">
+          <span class="origin-flag">🇯🇵</span>
+          <span class="origin-name">日本</span>
+          <div class="origin-bar-track"><div class="origin-bar" style="width:7%;background:rgba(255,255,255,.65)"></div></div>
+          <span class="origin-pct">7%</span>
+        </div>
+      </div>
+    </div>
+    <div class="trade-card" style="border-top:2px solid var(--orange)">
+      <div class="trade-card-title">质谱出口 2025</div>
+      <div class="trade-big" style="color:var(--orange)">+234%</div>
+      <div class="trade-sub">10,151台 · 历史性突破</div>
+      <div style="background:rgba(255,107,53,.06);border:1px solid rgba(255,107,53,.2);padding:16px;margin-bottom:16px">
+        <div style="font-family:var(--mono);font-size:8.5px;color:var(--orange);letter-spacing:.15em;margin-bottom:6px">联用仪出口</div>
+        <div style="font-size:28px;font-weight:800;color:var(--orange)">+597%</div>
+        <div style="font-size:11px;color:var(--text2)">122 → 850台 · 历史性突破</div>
+      </div>
+      <div style="background:rgba(255,215,0,.05);border:1px solid rgba(255,215,0,.15);padding:16px">
+        <div style="font-family:var(--mono);font-size:8.5px;color:var(--gold);letter-spacing:.15em;margin-bottom:6px">新加坡枢纽确认</div>
+        <div style="font-size:11px;color:var(--text2);line-height:1.7">GC 出口中新加坡 48.2% 台数 #1（6,751台）；中新成为中美质谱贸易脱钩核心转口节点</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GC Trade -->
   <div style="background:var(--bg2);border:1px solid var(--border);padding:28px;margin-top:24px" class="reveal">
-    <div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.2em;margin-bottom:20px">国产替代成熟度评估</div>
-    <div id="sub-bars"></div>
-    <div style="font-family:var(--mono);font-size:8.5px;color:var(--text3);margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
-      2024年中国包装专用机械产量同比 +117.82%，国产替代从「观望期」进入「加速期」
-    </div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- 03 CI HEATMAP -->
-<div class="section reveal">
-  <div class="sec-label" id="s03">03 · COMPETITIVE INTELLIGENCE</div>
-  <h2 class="sec-title">竞争情报评分热力图</h2>
-  <p class="sec-sub">10维度 × 9企业全景 · 绿色≥8.5 / 蓝色7-8.4 / 橙色5.5-6.9 / 红色&lt;5.5</p>
-
-  <div class="ci-wrap reveal">
-    <table class="ci-table" id="ci-table"></table>
-  </div>
-
-  <!-- Moats and weaknesses -->
-  <div class="moats reveal">
-    <div class="moat" style="border-top:2px solid var(--green)">
-      <div class="moat-score" style="color:var(--green)">8.3</div>
-      <div class="moat-title">完整流体控制回路</div>
-      <div class="moat-desc">传感器+执行器+控制头一体化能力，国产品牌评分仅5-6分，形成难以逾越的系统性壁垒</div>
-    </div>
-    <div class="moat" style="border-top:2px solid var(--cyan)">
-      <div class="moat-score" style="color:var(--cyan)">9.0</div>
-      <div class="moat-title">数字化服务（Festo）</div>
-      <div class="moat-desc">数字孪生服务9分领先全场，远超国产5分；AI/IoT驱动下客户粘性将持续强化</div>
-    </div>
-    <div class="moat attack" style="border-top:2px solid var(--orange)">
-      <div class="moat-score" style="color:var(--orange)">6.7</div>
-      <div class="moat-title">⚡ 可攻击：快速响应（Bürkert）</div>
-      <div class="moat-desc">代理商模式响应慢；海外售后网络薄弱——国产本地化服务可直接击中这一软肋</div>
-    </div>
-    <div class="moat attack" style="border-top:2px solid var(--red)">
-      <div class="moat-score" style="color:var(--red)">3.5</div>
-      <div class="moat-title">⚡ 可攻击：数字化服务（国产）</div>
-      <div class="moat-desc">国产品牌数字化评分3.5-5分，Festo 9分已建立明显壁垒——数字化是反超的唯一路径</div>
-    </div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- 04 OVERSEAS -->
-<div class="section reveal">
-  <div class="sec-label" id="s04">04 · OVERSEAS STRATEGY</div>
-  <h2 class="sec-title">出海战略：从价格输出到价值输出</h2>
-  <p class="sec-sub">低价出海三重结构性天花板已触及；随客出海是最低风险最高确定性的出海入口</p>
-
-  <!-- 3 ceilings -->
-  <div class="ceiling-grid reveal">
-    <div class="ceiling" style="border-top:2px solid var(--orange)">
-      <div class="ceiling-num">天花板 01 · 利润漏斗</div>
-      <div class="ceiling-title">赚了营收，跑了利润</div>
-      <div class="ceiling-signal">毛利率差距：15个百分点</div>
-      <div class="ceiling-desc">国产整机毛利率23-30% vs 欧洲龙头35-45%。BOM中卫生级配件外采成本占比超40%，出海规模越大，漏斗越深</div>
-    </div>
-    <div class="ceiling" style="border-top:2px solid var(--gold)">
-      <div class="ceiling-num">天花板 02 · 品牌锁定</div>
-      <div class="ceiling-title">低价是竞争优势，也是品牌囚笼</div>
-      <div class="ceiling-signal">品牌溢价差：2-3倍单价</div>
-      <div class="ceiling-desc">国产价格评分9分，但长期低价定位将国产装备锚定为「中低端选项」，克朗斯报价是国产2-3倍仍是首选</div>
-    </div>
-    <div class="ceiling" style="border-top:2px solid var(--red)">
-      <div class="ceiling-num">天花板 03 · 竞争压缩</div>
-      <div class="ceiling-title">欧洲巨头本地化反攻正在到来</div>
-      <div class="ceiling-signal">2024年GF/Festo加速本地化</div>
-      <div class="ceiling-desc">GF国内工厂在建；Festo本地化评分9分；欧洲品牌通过本地化制造压缩价差——这不是「如果」，而是「何时」</div>
-    </div>
-  </div>
-
-  <!-- Brand outgoing -->
-  <div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.2em;margin-bottom:16px">中国食品品牌出海建厂动态（2025-2026）</div>
-  <div class="brands-grid reveal">
-    <div class="brand-card">
-      <div class="brand-icon">🧋</div>
+    <div class="trade-card-title">GC 气相色谱进出口 2025</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
       <div>
-        <div class="brand-name">蜜雪冰城</div>
-        <div class="brand-stat">2025H1营收148.7亿 · +39.3% · 3年+5000家海外门店</div>
-        <div class="brand-desc">2025年港股上市后，海外建厂全面提速；东南亚是核心战场</div>
-        <div class="brand-equip">茶饮设备直接需求</div>
+        <div style="font-family:var(--mono);font-size:8px;color:var(--text3);letter-spacing:.15em;margin-bottom:4px">进口台数</div>
+        <div style="font-size:24px;font-weight:800;color:var(--cyan)">7,699台</div>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--text2)">↑ +19.0% YoY</div>
       </div>
-    </div>
-    <div class="brand-card">
-      <div class="brand-icon">⚡</div>
       <div>
-        <div class="brand-name">东鹏饮料</div>
-        <div class="brand-stat">2026年2月A+H双上市 · 电解质饮料2025H1 +213.7%</div>
-        <div class="brand-desc">完成A+H两地上市，海外建厂全面提速；功能饮料产线需求旺盛</div>
-        <div class="brand-equip">功能饮料产线需求</div>
+        <div style="font-family:var(--mono);font-size:8px;color:var(--text3);letter-spacing:.15em;margin-bottom:4px">进口金额</div>
+        <div style="font-size:24px;font-weight:800;color:var(--text2)">14.14亿</div>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--text2)">↓ -4.0% · 量增价减</div>
       </div>
-    </div>
-    <div class="brand-card">
-      <div class="brand-icon">🌿</div>
       <div>
-        <div class="brand-name">元气森林</div>
-        <div class="brand-stat">冰茶登陆印尼主流渠道 · 进入全球40+国家</div>
-        <div class="brand-desc">2025年7月冰茶系列登陆印尼主流零售渠道，本地产能建设在即</div>
-        <div class="brand-equip">无糖饮料产线需求</div>
+        <div style="font-family:var(--mono);font-size:8px;color:var(--text3);letter-spacing:.15em;margin-bottom:4px">出口台数</div>
+        <div style="font-size:24px;font-weight:800;color:var(--green)">13,996台</div>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--text2)">↑ +20.4%</div>
       </div>
-    </div>
-    <div class="brand-card">
-      <div class="brand-icon">🍵</div>
       <div>
-        <div class="brand-name">霸王茶姬</div>
-        <div class="brand-stat">2025年登陆纳斯达克 · 东南亚+北美双线建厂</div>
-        <div class="brand-desc">「中国茶饮赴美第一股」，东南亚+北美双线快速建厂，采购窗口明确</div>
-        <div class="brand-equip">茶饮设备直接需求</div>
+        <div style="font-family:var(--mono);font-size:8px;color:var(--orange);letter-spacing:.15em;margin-bottom:4px">大陆制造 首次#1 🔥</div>
+        <div style="font-size:24px;font-weight:800;color:var(--orange)">45.8%</div>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--text2)">3,530台（安捷伦上海产）</div>
       </div>
     </div>
-  </div>
-
-  <!-- Model evolution -->
-  <div class="models reveal">
-    <div class="model" style="border-top:2px solid var(--red)">
-      <div class="model-ver">出海 1.0</div>
-      <div class="model-name">单次设备出口</div>
-      <div class="model-desc">交付即结束，无售后、无服务、无复购</div>
-      <div class="model-verdict" style="color:var(--red);border-color:rgba(227,6,19,.3)">❌ 无护城河</div>
-    </div>
-    <div class="model" style="border-top:2px solid var(--gold)">
-      <div class="model-ver">出海 2.0</div>
-      <div class="model-name">交钥匙工程</div>
-      <div class="model-desc">产线规划+设备+安装调试+人员培训+首年运维，将一次性收入转化为长期服务合同</div>
-      <div class="model-verdict" style="color:var(--gold);border-color:rgba(255,215,0,.3)">↑ 建立粘性</div>
-    </div>
-    <div class="model" style="border-top:2px solid var(--green)">
-      <div class="model-ver">出海 3.0</div>
-      <div class="model-name">本地化服务网络</div>
-      <div class="model-desc">区域备件仓库+本地工程师+48小时响应+MES数据集成，与客户形成「被依赖」关系</div>
-      <div class="model-verdict" style="color:var(--green);border-color:rgba(0,255,178,.3)">✅ 真正壁垒</div>
-    </div>
-  </div>
-
-  <!-- 3 geo markets -->
-  <div class="geo-grid reveal">
-    <div class="geo" style="border-top:2px solid var(--lime)">
-      <div class="geo-pri" style="color:var(--lime);border-color:rgba(170,255,0,.3)">优先 #1</div>
-      <div class="geo-name">东南亚</div>
-      <div class="geo-countries">越南 / 印度尼西亚 / 泰国</div>
-      <div class="geo-why">蜜雪冰城/元气森林/东鹏大规模建厂；欧洲售后网络薄弱；价格/响应/文化三重优势。中国-东盟双边贸易超万亿美元</div>
-      <div class="geo-how" style="border-color:var(--lime)">交钥匙工程切入 → 越南/印尼区域备件仓 → 本地工程师团队</div>
-    </div>
-    <div class="geo" style="border-top:2px solid var(--gold)">
-      <div class="geo-pri" style="color:var(--gold);border-color:rgba(255,215,0,.3)">优先 #2</div>
-      <div class="geo-name">一带一路沿线</div>
-      <div class="geo-countries">中亚 / 中东欧 / 南亚</div>
-      <div class="geo-why">2025年一带一路国家首次撑起中国出口半壁江山（占比&gt;50%）；EPC总包项目食品设施建设需求旺盛</div>
-      <div class="geo-how" style="border-color:var(--gold)">借道EPC总包商渠道切入 → 政策背书进入 → 单笔订单体量大</div>
-    </div>
-    <div class="geo" style="border-top:2px solid var(--cyan)">
-      <div class="geo-pri" style="color:var(--cyan);border-color:rgba(34,211,238,.3)">优先 #3</div>
-      <div class="geo-name">欧洲发达市场</div>
-      <div class="geo-countries">德国 / 荷兰 / 英国</div>
-      <div class="geo-why">完成品牌叙事从「廉价」到「精密」转变的唯一舞台；无糖茶/植物基等新品类欧洲本土设备商无先发优势</div>
-      <div class="geo-how" style="border-color:var(--cyan)">聚焦中小食品企业 + 新品类设备 → 用样板客户建立高端背书</div>
+    <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border);font-family:var(--mono);font-size:9px;color:var(--text3)">
+      ⭐ 美国 GC 进口份额：28% → 14.5%（单年历史最大降幅） · Q4 出口均价 +30% · 俄罗斯均价 108万（完整系统）= 高端出口萌芽信号
     </div>
   </div>
 </div>
 
 <div class="divider"></div>
 
-<!-- 05 MACHINE COMPANIES -->
+<!-- 06 POLICY TIMELINE -->
 <div class="section reveal">
-  <div class="sec-label" id="s05">05 · OEM COMPANIES</div>
-  <h2 class="sec-title">国产整机厂商深度</h2>
-  <p class="sec-sub">四大整机厂2025年全面扭转，达意隆/新美星净利暴增，可寻址市场上调至1.3-2.5亿元/年</p>
+  <div class="section-label">06 · POLICY & MILESTONES</div>
+  <h2 class="section-title">行业里程碑 · 监管节点</h2>
+  <p class="section-sub">Roche 入局、出口禁令落地、MALDI 临床普及——2024–2025 年是格局重塑密集节点期</p>
 
-  <!-- TAM -->
-  <div class="tam-strip reveal">
-    <div class="tam-cell">
-      <div class="tam-label">卫生级阀门</div>
-      <div class="tam-val" style="color:var(--orange)">0.8-1.6亿</div>
-      <div class="tam-note">元/年 · 四大整机厂</div>
-    </div>
-    <div class="tam-cell">
-      <div class="tam-label">流量计/传感器</div>
-      <div class="tam-val" style="color:var(--cyan)">0.5-0.9亿</div>
-      <div class="tam-note">元/年 · 四大整机厂</div>
-    </div>
-    <div class="tam-cell" style="background:rgba(170,255,0,.04)">
-      <div class="tam-label">合计可寻址市场</div>
-      <div class="tam-val" style="color:var(--lime)">1.3-2.5亿</div>
-      <div class="tam-note">↑ 较原估算上调15-20%</div>
-    </div>
-  </div>
-
-  <div class="machine-grid reveal">
-    <div class="mco" style="border-top:2px solid var(--lime)">
-      <div class="mco-priority" style="color:var(--lime);border-color:rgba(170,255,0,.3)">P1 立即突破</div>
-      <div class="mco-name">达意隆</div>
-      <div class="mco-period">2025年前三季度 · PET吹灌旋一体机</div>
-      <div class="mco-stats">
-        <div>
-          <div class="mco-stat-label">营收</div>
-          <div class="mco-stat-val" style="color:var(--lime)">13.35亿</div>
-        </div>
-        <div>
-          <div class="mco-stat-label">增速</div>
-          <div class="mco-stat-val" style="color:var(--green)">+38.95%</div>
-        </div>
-        <div>
-          <div class="mco-stat-label">净利增速</div>
-          <div class="mco-stat-val" style="color:var(--green)">+146%</div>
-        </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px">
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--gold);border-color:var(--gold)"></div>
+        <div class="tl-date">2025.06</div>
+        <span class="tl-tag" style="color:var(--gold);border-color:rgba(255,215,0,.3)">NEW</span>
+        <div class="tl-title">Orbitrap Astral Zoom + Excedion Pro</div>
+        <div class="tl-desc">蛋白质组学新纪元：混合 MS 结合替代碎裂技术，检测速度提升 2×</div>
       </div>
-      <div class="mco-moat">出口覆盖80+国家；随客出海领跑，首发无糖茶专属产线；东南亚备件仓布局启动</div>
-      <div class="mco-risk">主要风险：净利仍在1亿以下，配件外采成本侵蚀毛利率</div>
-    </div>
-    <div class="mco" style="border-top:2px solid var(--lime)">
-      <div class="mco-priority" style="color:var(--lime);border-color:rgba(170,255,0,.3)">P1 立即突破</div>
-      <div class="mco-name">新美星</div>
-      <div class="mco-period">2025年前三季度 · 无菌灌装全产线</div>
-      <div class="mco-stats">
-        <div>
-          <div class="mco-stat-label">营收</div>
-          <div class="mco-stat-val" style="color:var(--lime)">8.70亿</div>
-        </div>
-        <div>
-          <div class="mco-stat-label">净利率</div>
-          <div class="mco-stat-val" style="color:var(--green)">9.4%</div>
-        </div>
-        <div>
-          <div class="mco-stat-label">净利增速</div>
-          <div class="mco-stat-val" style="color:var(--green)">+192%</div>
-        </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--purple);border-color:var(--purple)"></div>
+        <div class="tl-date">2025.04</div>
+        <span class="tl-tag" style="color:var(--purple);border-color:rgba(191,128,255,.3)">M&A</span>
+        <div class="tl-title">Bruker 收购 RECIPE</div>
+        <div class="tl-desc">进军临床 TDM 诊断试剂盒，ClinDART 平台战略卡位</div>
       </div>
-      <div class="mco-moat">无菌灌装+智能仓储全链路；国内首台81000BPH吹贴灌旋一体机；已服务东鹏/娃哈哈；11月设立香港子公司</div>
-      <div class="mco-risk">主要风险：无菌灌装与利乐正面竞争壁垒极高</div>
-    </div>
-    <div class="mco">
-      <div class="mco-priority" style="color:var(--gold);border-color:rgba(255,215,0,.3)">P2 积极进入</div>
-      <div class="mco-name">中亚股份</div>
-      <div class="mco-period">2025年前三季度 · 吹灌旋一体机（多元）</div>
-      <div class="mco-stats">
-        <div>
-          <div class="mco-stat-label">营收</div>
-          <div class="mco-stat-val" style="color:var(--gold)">8.83亿</div>
-        </div>
-        <div>
-          <div class="mco-stat-label">增速</div>
-          <div class="mco-stat-val" style="color:var(--gold)">+15.65%</div>
-        </div>
-        <div>
-          <div class="mco-stat-label">净利增速</div>
-          <div class="mco-stat-val" style="color:var(--gold)">+21%</div>
-        </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--red);border-color:var(--red)"></div>
+        <div class="tl-date">2025.01</div>
+        <span class="tl-tag" style="color:var(--red);border-color:rgba(227,6,19,.3)">GEO</span>
+        <div class="tl-title">美国对华质谱出口禁令落地</div>
+        <div class="tl-desc">含高端 LC-QTOFMS；禾信 688622 公告确认，计划 2026年中量产替代</div>
       </div>
-      <div class="mco-moat">11大类产品品类；吹灌旋+后道包装全品类；经营现金流从-2,547万转正至+1.11亿</div>
-      <div class="mco-risk">主要风险：2024年营收小幅下滑，下游饮料竞争加剧</div>
-    </div>
-    <div class="mco">
-      <div class="mco-priority" style="color:var(--text3);border-color:rgba(255,255,255,.15)">P3 关注评估</div>
-      <div class="mco-name">永创智能</div>
-      <div class="mco-period">2025全年预增 · 后道包装线</div>
-      <div class="mco-stats">
-        <div>
-          <div class="mco-stat-label">营收（估）</div>
-          <div class="mco-stat-val" style="color:var(--text2)">39-44亿</div>
-        </div>
-        <div>
-          <div class="mco-stat-label">净利增速</div>
-          <div class="mco-stat-val" style="color:var(--cyan)">+722%</div>
-        </div>
-        <div>
-          <div class="mco-stat-label">合同负债</div>
-          <div class="mco-stat-val" style="color:var(--cyan)">21.38亿</div>
-        </div>
-      </div>
-      <div class="mco-moat">「增收不增利」困局彻底扭转；饮料智能包装产线+37%（无糖茶拉动）；定增募资获证监会注册同意</div>
-      <div class="mco-risk">注意：后道包装线单台阀门需求量结构性偏低，配件价值相对低</div>
-    </div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- 06 BOM ANALYSIS -->
-<div class="section reveal">
-  <div class="sec-label" id="s06">06 · BOM ANALYSIS</div>
-  <h2 class="sec-title">BOM渗透机会：单条无糖茶灌装产线拆解</h2>
-  <p class="sec-sub">以标准无糖茶PET瓶热灌装产线（3.6万瓶/小时）为基准，拆解卫生阀门与流量计配件价值</p>
-
-  <div class="bom-section reveal">
-    <div class="bom-card" style="border-top:2px solid var(--orange)">
-      <div class="bom-card-title">卫生级阀门 · 单条产线采购价值</div>
-      <div id="bom-valve"></div>
-      <div style="margin-top:16px;padding:12px 16px;background:rgba(255,107,53,.06);border:1px solid rgba(255,107,53,.2)">
-        <div style="font-family:var(--mono);font-size:8.5px;color:var(--orange);letter-spacing:.12em">合计采购价值（估）</div>
-        <div style="font-size:22px;font-weight:800;color:var(--orange);margin-top:4px">18–46万元</div>
-        <div style="font-size:10px;color:var(--text2)">不含灌装专用阀</div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--cyan);border-color:var(--cyan)"></div>
+        <div class="tl-date">2024.12</div>
+        <span class="tl-tag" style="color:var(--cyan);border-color:rgba(34,211,238,.3)">入局</span>
+        <div class="tl-title">Roche cobas i601 CE Mark</div>
+        <div class="tl-desc">诊断巨头正式进入质谱赛道，全自动平台商业化</div>
       </div>
     </div>
-    <div class="bom-card" style="border-top:2px solid var(--cyan)">
-      <div class="bom-card-title">流量计 / 传感器 · 单条产线采购价值</div>
-      <div id="bom-sensor"></div>
-      <div style="margin-top:16px;padding:12px 16px;background:rgba(34,211,238,.06);border:1px solid rgba(34,211,238,.2)">
-        <div style="font-family:var(--mono);font-size:8.5px;color:var(--cyan);letter-spacing:.12em">合计采购价值（估）</div>
-        <div style="font-size:22px;font-weight:800;color:var(--cyan);margin-top:4px">13–39万元</div>
-        <div style="font-size:10px;color:var(--text2)">电磁+质量流量计为价值主体</div>
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--gold);border-color:var(--gold)"></div>
+        <div class="tl-date">2026–2030</div>
+        <span class="tl-tag" style="color:var(--gold);border-color:rgba(255,215,0,.3)">政策</span>
+        <div class="tl-title">十五五规划 — 109项重大工程</div>
+        <div class="tl-desc">高端仪器仪表明确在列；中国质谱市场预测突破 230亿，开启新采购大周期</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--green);border-color:var(--green)"></div>
+        <div class="tl-date">持续</div>
+        <span class="tl-tag" style="color:var(--green);border-color:rgba(0,255,178,.3)">法规</span>
+        <div class="tl-title">英国 DWI 48种 PFAS 新规</div>
+        <div class="tl-desc">饮用水 100ng/L 限量标准，欧洲实验室加速配置 PFAS 专用 LC-MS/MS</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--cyan);border-color:var(--cyan)"></div>
+        <div class="tl-date">2024–2025</div>
+        <span class="tl-tag" style="color:var(--cyan);border-color:rgba(34,211,238,.3)">政策</span>
+        <div class="tl-title">中国设备更新技改政策</div>
+        <div class="tl-desc">色谱仪政府采购 +252%，质谱中标历史新高；《工业重点领域设备更新技改指南》落地</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--purple);border-color:var(--purple)"></div>
+        <div class="tl-date">持续</div>
+        <span class="tl-tag" style="color:var(--purple);border-color:rgba(191,128,255,.3)">标准</span>
+        <div class="tl-title">GB 23200 系列持续扩容</div>
+        <div class="tl-desc">食品农残限量标准持续增补，LC-MS/MS 成强制检测工具，批量采购需求稳定</div>
       </div>
     </div>
   </div>
@@ -771,167 +851,83 @@ body:has([onclick]:hover) #cursor-dot{
 
 <div class="divider"></div>
 
-<!-- 07 RISKS -->
+<!-- 07 SIX SIGNALS -->
 <div class="section reveal">
-  <div class="sec-label" id="s07">07 · RISK WARNINGS</div>
-  <h2 class="sec-title">风险预警</h2>
-  <p class="sec-sub">出海窗口期不超过3-5年——三个战略变量需持续监控</p>
+  <div class="section-label">07 · STRATEGIC SIGNALS</div>
+  <h2 class="section-title">六大核心信号</h2>
+  <p class="section-sub">出口元年、政策叠加、新加坡枢纽化、临床破局、高端化、MALDI路径复制——2026–2028 年窗口期已开启</p>
 
-  <div class="risks reveal">
-    <div class="risk-card" style="border-top:2px solid var(--red)">
-      <div class="risk-level" style="color:var(--red);border-color:rgba(227,6,19,.3)">R1 · 风险：高</div>
-      <div class="risk-title">美国关税升级 → 出海路径重构</div>
-      <div class="risk-signal">美国加征关税背景下，中国食品加工设备出口成本激增；2026年2月IEEPA关税裁决引发变数</div>
-      <div class="risk-action">应对：加速东南亚/中东本地化生产能力布局，减少对美直接出口依赖</div>
+  <div class="signals">
+    <div class="signal-card" style="border-top:2px solid var(--orange)">
+      <div class="signal-num">01</div>
+      <div class="signal-stat" style="color:var(--orange)">+234%</div>
+      <div class="signal-title">出口元年：国产质谱走向全球</div>
+      <div class="signal-desc">10,151台出口创历史，联用仪 +597%（122→850台）。从进口替代迈向出口竞争的历史转折——但均价仍远低于进口，低价出口结构亟待升级。</div>
     </div>
-    <div class="risk-card" style="border-top:2px solid var(--orange)">
-      <div class="risk-level" style="color:var(--orange);border-color:rgba(255,107,53,.3)">R2 · 风险：高</div>
-      <div class="risk-title">欧洲巨头本地化反攻 → 价格护城河消失</div>
-      <div class="risk-signal">GF国内工厂即将投产；Festo本地化评分9分；中国装备最后的价格优势将在2-3年内被大幅压缩</div>
-      <div class="risk-action">应对：数字化服务差异化（L1必须在12个月内上线），建立响应速度优势</div>
+    <div class="signal-card" style="border-top:2px solid var(--gold)">
+      <div class="signal-num">02</div>
+      <div class="signal-stat" style="color:var(--gold)">230亿+</div>
+      <div class="signal-title">政策叠加：十五五 × 出口禁令</div>
+      <div class="signal-desc">十五五109项重大工程（230亿+市场）+ 美国出口禁令（2025.01落地）双重叠加。禾信 2026年中计划量产高端替代，是关键观测节点。</div>
     </div>
-    <div class="risk-card" style="border-top:2px solid var(--gold)">
-      <div class="risk-level" style="color:var(--gold);border-color:rgba(255,215,0,.3)">R3 · 风险：中</div>
-      <div class="risk-title">原奶过剩传导 → 乳制品设备需求萎缩</div>
-      <div class="risk-signal">2025年中国乳制品上游奶牛存栏过剩，牧场持续亏损；乳制品企业资本开支可能受压</div>
-      <div class="risk-action">应对：聚焦低温奶（巴氏杀菌线）和奶酪设备增量细分，回避常温白奶产线</div>
+    <div class="signal-card" style="border-top:2px solid var(--cyan)">
+      <div class="signal-num">03</div>
+      <div class="signal-stat" style="color:var(--cyan)">33%</div>
+      <div class="signal-title">新加坡枢纽化：贸易格局重塑</div>
+      <div class="signal-desc">质谱进口新加坡33%（金额#1）；GC出口新加坡48.2%（台数#1，+89% YoY）。中美脱钩背景下，新加坡成为核心转口节点，趋势还将强化。</div>
+    </div>
+    <div class="signal-card" style="border-top:2px solid var(--orange)">
+      <div class="signal-num">04</div>
+      <div class="signal-stat" style="color:var(--orange)">CAGR 12%+</div>
+      <div class="signal-title">临床质谱：破局进行时</div>
+      <div class="signal-desc">74套注册证 · 70亿+VC · 县级医院配置标准。凯莱谱2025年跻身国产Top3。全自动一体机是下一个竞争赛点：Roche cobas i601 vs 国产平台。</div>
+    </div>
+    <div class="signal-card" style="border-top:2px solid var(--purple)">
+      <div class="signal-num">05</div>
+      <div class="signal-stat" style="color:var(--purple)">↑+4.3%</div>
+      <div class="signal-title">进口高端化：量减价升确认</div>
+      <div class="signal-desc">质谱进口台数↓2.6%但金额↑4.3%。中低端被国产替代，中高端严重依赖进口。联用仪成唯一量价双增品类——高端进口市场实际在扩大。</div>
+    </div>
+    <div class="signal-card" style="border-top:2px solid var(--green)">
+      <div class="signal-num">06</div>
+      <div class="signal-stat" style="color:var(--green)">63%</div>
+      <div class="signal-title">MALDI：国产化最成功路径</div>
+      <div class="signal-desc">中元汇吉+安图生物=63%国产主导。核心路径：标准化高频场景 + 服务闭环 + 规模制造。临床LC-MS赛道（凯莱谱）已验证可复制性。</div>
     </div>
   </div>
 </div>
 
 <!-- FOOTER -->
-<div style="border-top:1px solid var(--border);padding:32px 40px;max-width:1300px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+<div style="border-top:1px solid var(--border);padding:32px 40px;max-width:1300px;margin:0 auto;display:flex;justify-content:space-between;align-items:center">
   <div style="font-family:var(--mono);font-size:8.5px;color:var(--text3);letter-spacing:.15em">
-    数据来源：QYResearch · 国家统计局 · 巨潮资讯2025三季报 · 十四五规划
+    数据来源：化工仪器网 · 艺创媒体 · 智研咨询 · 禾信仪器招股书
   </div>
   <div style="font-family:var(--mono);font-size:8.5px;color:var(--text3);letter-spacing:.15em">
-    STRATEGIC ANALYSIS · MARCH 2026 · 仅供内部参考
-  </div>
+    </div>
 </div>
 
-</div>
+</div><!-- /z-index wrapper -->
 
 <script>
-// Component substitution data
-const COMP_DATA = [
-  {name:'卫生级隔膜阀', suppliers:'Bürkert、Gemu、GEA', status:'国产起步阶段', rate:20, risk:'最高', rcolor:'var(--red)'},
-  {name:'卫生级泵（离心/螺杆）', suppliers:'Alfa Laval、WAUKESHA', status:'低端离心泵有替代', rate:25, risk:'高', rcolor:'var(--orange)'},
-  {name:'密封件（EPDM/PTFE）', suppliers:'Trelleborg、Parker', status:'认证体系不健全', rate:20, risk:'最高', rcolor:'var(--red)'},
-  {name:'高精度传感器/流量计', suppliers:'E+H、横河、ABB', status:'电磁流量计几乎空白', rate:15, risk:'最高', rcolor:'var(--red)'},
-  {name:'PLC/控制器', suppliers:'西门子、三菱', status:'汇川AM600追赶', rate:45, risk:'中', rcolor:'var(--gold)'},
-  {name:'伺服电机/变频器', suppliers:'安川、ABB', status:'汇川主导，快速替代', rate:55, risk:'低', rcolor:'var(--green)'},
-  {name:'链条/传送带/轴承', suppliers:'SKF、Rexnord', status:'标准品国产化高', rate:75, risk:'低', rcolor:'var(--green)'},
+// Matrix data
+const MATRIX_DATA = [
+  {dim:'高分辨 Orbitrap/TOF', scores:[3,2,2,2,2,1]},
+  {dim:'三重四极杆定量',       scores:[2,3,1,2,2,3]},
+  {dim:'LC 色谱系统',         scores:[2,2,1,3,1,2]},
+  {dim:'AI 软件/数据平台',    scores:[2,2,3,3,2,2]},
+  {dim:'临床诊断布局',        scores:[2,1,3,1,3,2]},
+  {dim:'亚太市场渗透',        scores:[2,2,1,1,1,3]},
+  {dim:'价格竞争力',          scores:[0,1,3,0,1,3]},
 ];
-const tbody = document.getElementById('comp-tbody');
-COMP_DATA.forEach(d => {
+const VENDORS = ['Thermo','Agilent','SCIEX','Waters','Bruker','Shimadzu'];
+const tbody = document.getElementById('matrix-body');
+MATRIX_DATA.forEach(row => {
   const tr = document.createElement('tr');
-  const rateColor = d.rate >= 60 ? 'var(--green)' : d.rate >= 40 ? 'var(--gold)' : d.rate >= 25 ? 'var(--orange)' : 'var(--red)';
-  tr.innerHTML = `
-    <td style="font-weight:700">${d.name}</td>
-    <td style="color:rgba(255,255,255,.65);font-size:10px">${d.suppliers}</td>
-    <td style="color:rgba(255,255,255,.65)">${d.status}</td>
-    <td>
-      <span style="font-weight:700;color:${rateColor};font-family:var(--mono)">${d.rate}%</span>
-      <div class="rate-bar"><div class="rate-fill" style="width:${d.rate}%;background:${rateColor}"></div></div>
-    </td>
-    <td><span class="risk-badge" style="color:${d.rcolor};border-color:${d.rcolor}40">${d.risk}</span></td>
-  `;
+  tr.innerHTML = `<td>${row.dim}</td>` + row.scores.map(s =>
+    `<td>${'●'.repeat(s)}<span class="dot-empty">${'●'.repeat(3-s)}</span></td>`
+  ).join('');
   tbody.appendChild(tr);
 });
-
-// Substitution maturity bars
-const SUB_BARS = [
-  {name:'后道包装设备（贴标/码垛/装箱）', rate:80, color:'var(--green)', note:'2024年1-11月包装专用机械产量同比+117.82%'},
-  {name:'PET吹灌旋整机（饮料/水）', rate:65, color:'var(--green)', note:'达意隆2024H1收入+25.98%，出口覆盖80+国家'},
-  {name:'伺服电机 + 变频器', rate:55, color:'var(--gold)', note:'汇川2025前三季度通用自动化+25%'},
-  {name:'PLC / HMI 控制器', rate:45, color:'var(--gold)', note:'汇川2024年与食品饮料TOP客户战略合作'},
-  {name:'卫生级阀门（隔膜阀/混流阀）', rate:30, color:'var(--orange)', note:'认证壁垒（3-A/EHEDG）是核心障碍'},
-  {name:'无菌灌装整机（UHT乳品/纸包）', rate:20, color:'var(--orange)', note:'利乐、SIG深度绑定，替代壁垒最高'},
-  {name:'密封件（EPDM / PTFE）', rate:20, color:'var(--red)', note:'FDA/EC 1935标准认证门槛高'},
-  {name:'高精度传感器/电磁流量计', rate:15, color:'var(--red)', note:'E+H垄断高端，十五五攻关目标'},
-];
-const subBars = document.getElementById('sub-bars');
-SUB_BARS.forEach(b => {
-  subBars.innerHTML += `
-    <div class="prog-row">
-      <div class="prog-label">
-        <span class="prog-name">${b.name}</span>
-        <span class="prog-val" style="color:${b.color}">${b.rate}%</span>
-      </div>
-      <div class="prog-track"><div class="prog-fill" style="width:${b.rate}%;background:${b.color}"></div></div>
-      <div style="font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.38);margin-top:3px">${b.note}</div>
-    </div>
-  `;
-});
-
-// CI heatmap data
-const CI_DIMS = ['行业知识','系统化能力','产品质量','完整流体回路','稳定性','全球客户','快速响应','数字化服务','可持续性','售后服务'];
-const CI_COMPANIES = [
-  {name:'Bürkert (第一梯队)', scores:[9,8,9,8.3,8,8,6.7,7,8,7.5], price:7},
-  {name:'Festo (第一梯队)', scores:[8,9,8,7,8,8,7,9,8,7.5], price:7},
-  {name:'Alfa Laval (第一梯队)', scores:[8,7,8.5,7.5,9,8,6,6,8,7], price:6},
-  {name:'Spirax Sarco (第二梯队)', scores:[7,6,8,6,9,7,6,5,7,7], price:6},
-  {name:'GF Piping (第二梯队)', scores:[7,6,7.5,6,8,7,6,5.5,7,6], price:7},
-  {name:'Parker (第二梯队)', scores:[7,7,7,6.5,7.5,7,6,5,7,6.5], price:7},
-  {name:'Yuan\'an / 远安 (国产)', scores:[5,5,6,5,5,4,7,3.5,4,5], price:9},
-  {name:'Liyang / 利洋 (国产)', scores:[5,4,5.5,4.5,5,3,7.5,3.5,4,5], price:9},
-  {name:'汇川 (国产)', scores:[6,6,6.5,5,6,4,7.5,5,5,6], price:9},
-];
-
-function scoreClass(s) {
-  if (s >= 8.5) return 'ci-score-high';
-  if (s >= 7) return 'ci-score-mid';
-  if (s >= 5.5) return 'ci-score-ok';
-  if (s >= 4) return 'ci-score-low';
-  return 'ci-score-vlow';
-}
-
-const ciTable = document.getElementById('ci-table');
-let thead = '<thead><tr><th>企业</th>';
-CI_DIMS.forEach(d => thead += `<th>${d}</th>`);
-thead += '<th>价格竞争力</th></tr></thead>';
-let tbody2 = '<tbody>';
-CI_COMPANIES.forEach(c => {
-  tbody2 += `<tr><td class="ci-company">${c.name}</td>`;
-  c.scores.forEach(s => tbody2 += `<td class="${scoreClass(s)}">${s}</td>`);
-  tbody2 += `<td class="${scoreClass(c.price)}">${c.price}</td></tr>`;
-});
-tbody2 += '</tbody>';
-ciTable.innerHTML = thead + tbody2;
-
-// BOM data
-const VALVE_BOM = [
-  {name:'隔膜阀（DN25-DN100）进入壁垒最高', qty:'40–80个', val:'6–14万', risk:'Bürkert/Gemu主导', color:'var(--red)'},
-  {name:'角座阀/球阀（调节控制）', qty:'15–30个', val:'2–5万', risk:'ESG/国产可替代', color:'var(--gold)'},
-  {name:'蝶阀（大口径截止）', qty:'10–20个', val:'0.5–2万', risk:'国产化率最高', color:'var(--green)'},
-  {name:'灌装阀（专用）', qty:'36–96个', val:'10–25万', risk:'厂商自制，外购难', color:'var(--text3)'},
-];
-const SENSOR_BOM = [
-  {name:'电磁流量计', qty:'4–8个', val:'6–18万', risk:'E+H垄断高端', color:'var(--red)'},
-  {name:'质量流量计（科氏力型）', qty:'2–4个', val:'6–16万', risk:'进口主导，价格高', color:'var(--orange)'},
-  {name:'压力/温度传感器', qty:'20–40个', val:'1–3万', risk:'国产具竞争力', color:'var(--green)'},
-  {name:'液位传感器', qty:'6–12个', val:'0.5–2万', risk:'标准品，国产占有率高', color:'var(--green)'},
-];
-
-function renderBOM(containerId, data) {
-  const el = document.getElementById(containerId);
-  data.forEach(d => {
-    el.innerHTML += `
-      <div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.07)">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px">
-          <span style="font-size:11px;font-weight:700">${d.name}</span>
-          <span style="font-family:var(--mono);font-size:11px;font-weight:700;color:${d.color};margin-left:12px;white-space:nowrap">${d.val}</span>
-        </div>
-        <div style="display:flex;justify-content:space-between">
-          <span style="font-family:var(--mono);font-size:8.5px;color:rgba(255,255,255,.42)">${d.qty}</span>
-          <span style="font-family:var(--mono);font-size:8.5px;color:rgba(255,255,255,.42)">${d.risk}</span>
-        </div>
-      </div>
-    `;
-  });
-}
-renderBOM('bom-valve', VALVE_BOM);
-renderBOM('bom-sensor', SENSOR_BOM);
 
 // Scroll progress
 window.addEventListener('scroll', () => {
@@ -944,42 +940,42 @@ const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver(entries => {
   entries.forEach((e, i) => {
     if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('visible'), i * 60);
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
       observer.unobserve(e.target);
     }
   });
-}, {threshold: 0.06});
+}, {threshold: 0.08});
 reveals.forEach(r => observer.observe(r));
 </script>
 
 <style>
-#toc-btn{position:fixed;top:80px;left:14px;z-index:9500;width:30px;height:30px;background:rgba(2,5,18,.92);border:1px solid #AAFF0055;border-left:2px solid #AAFF00;color:rgba(255,255,255,.7);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s}
-#toc-btn:hover{color:#fff;background:#AAFF0022}
-#toc-panel{position:fixed;top:80px;left:14px;z-index:9499;width:200px;background:rgba(2,5,18,.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);border-left:2px solid #AAFF00;transform:translateX(-220px);opacity:0;pointer-events:none;transition:transform .28s cubic-bezier(.16,1,.3,1),opacity .28s}
+#toc-btn{position:fixed;top:80px;left:14px;z-index:9500;width:30px;height:30px;background:rgba(2,5,18,.92);border:1px solid #FFD70055;border-left:2px solid #FFD700;color:rgba(255,255,255,.7);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s}
+#toc-btn:hover{color:#fff;background:#FFD70022}
+#toc-panel{position:fixed;top:80px;left:14px;z-index:9499;width:200px;background:rgba(2,5,18,.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);border-left:2px solid #FFD700;transform:translateX(-220px);opacity:0;pointer-events:none;transition:transform .28s cubic-bezier(.16,1,.3,1),opacity .28s}
 #toc-panel.open{transform:translateX(0);opacity:1;pointer-events:auto}
 #toc-head{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.07)}
-#toc-head span{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.25em;color:#AAFF0099}
+#toc-head span{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.25em;color:#FFD70099}
 #toc-head button{background:none;border:none;color:rgba(255,255,255,.4);cursor:pointer;font-size:16px;line-height:1;padding:0}
 #toc-head button:hover{color:#fff}
 .ti{display:flex;gap:8px;align-items:center;padding:7px 14px;text-decoration:none;border-left:2px solid transparent;margin-left:-2px;transition:background .15s}
 .ti:hover{background:rgba(255,255,255,.04)}
-.ti.on{border-left-color:#AAFF00;background:#AAFF0018}
+.ti.on{border-left-color:#FFD700;background:#FFD70018}
 .ti span:first-child{font-family:'IBM Plex Mono',monospace;font-size:8px;color:rgba(255,255,255,.3);width:18px;flex-shrink:0}
 .ti span:last-child{font-size:11px;color:rgba(255,255,255,.72)}
-.ti.on span:first-child{color:#AAFF00}
+.ti.on span:first-child{color:#FFD700}
 .ti.on span:last-child{color:#fff}
 @media(max-width:768px){#toc-btn,#toc-panel{display:none!important}}
 </style>
 <button id="toc-btn" onclick="tocToggle()" title="目录">☰</button>
 <div id="toc-panel">
   <div id="toc-head"><span>目录</span><button onclick="tocToggle()">×</button></div>
-  <a class="ti" href="#s01"><span>01</span><span>行业全景</span></a>
-  <a class="ti" href="#s02"><span>02</span><span>设备产业链</span></a>
-  <a class="ti" href="#s03"><span>03</span><span>竞争情报</span></a>
-  <a class="ti" href="#s04"><span>04</span><span>出海战略</span></a>
-  <a class="ti" href="#s05"><span>05</span><span>整机厂商深度</span></a>
-  <a class="ti" href="#s06"><span>06</span><span>BOM渗透机会</span></a>
-  <a class="ti" href="#s07"><span>07</span><span>风险预警</span></a>
+  <a class="ti" href="#s01"><span>01</span><span>全球市场概览</span></a>
+  <a class="ti" href="#s02"><span>02</span><span>客户结构演变</span></a>
+  <a class="ti" href="#s03"><span>03</span><span>全球竞争格局</span></a>
+  <a class="ti" href="#s04"><span>04</span><span>中国市场总览</span></a>
+  <a class="ti" href="#s05"><span>05</span><span>进出口贸易</span></a>
+  <a class="ti" href="#s06"><span>06</span><span>行业里程碑</span></a>
+  <a class="ti" href="#s07"><span>07</span><span>六大核心信号</span></a>
 </div>
 <script>
 function tocToggle(){
