@@ -126,40 +126,43 @@ def write_html(path, content):
     print(f"✓ 已写入 {path}")
 
 def update_one_metric(html: str, m: dict) -> str:
+    """
+    HTML中每个指标存在两份数据：
+    - 格式化多行版（label: "xxx", 含空格换行）
+    - 压缩单行版（label:"xxx", 无空格）
+    使用 subn 不限次数替换，确保两处都被更新。
+    """
     label = m["label"]
     original = html
+    lp = rf'label:\s*"{re.escape(label)}"'  # 兼容有无空格
 
-    # value（label与value跨行，用DOTALL+count=1精确匹配第一个）
-    html = re.sub(
-        rf'(label:\s*"{re.escape(label)}".*?value:\s*)[\d.\-]+',
-        lambda match: match.group(1) + str(m["value"]),
-        html, count=1, flags=re.DOTALL
+    html, n1 = re.subn(
+        rf'({lp}.*?value:\s*)[\d.\-]+',
+        lambda x: x.group(1) + str(m["value"]),
+        html, flags=re.DOTALL
     )
-
-    # trend
-    html = re.sub(
-        rf'(label:\s*"{re.escape(label)}".*?trend:\s*)"[^"]*"',
+    html, n2 = re.subn(
+        rf'({lp}.*?trend:\s*)"[^"]*"',
         rf'\g<1>"{m["trend"]}"',
-        html, count=1, flags=re.DOTALL
+        html, flags=re.DOTALL
     )
-
-    # insight
-    html = re.sub(
-        rf'(label:\s*"{re.escape(label)}".*?insight:\s*)"[^"]*"',
+    html, n3 = re.subn(
+        rf'({lp}.*?insight:\s*)"[^"]*"',
         rf'\g<1>"{m["insight"]}"',
-        html, count=1, flags=re.DOTALL
+        html, flags=re.DOTALL
     )
-
-    # sparkData
     spark_str = "[" + ",".join(str(v) for v in m["sparkData"]) + "]"
-    html = re.sub(
-        rf'(label:\s*"{re.escape(label)}".*?sparkData:\s*)\[[^\]]*\]',
+    html, n4 = re.subn(
+        rf'({lp}.*?sparkData:\s*)\[[^\]]*\]',
         rf'\g<1>{spark_str}',
-        html, count=1, flags=re.DOTALL
+        html, flags=re.DOTALL
     )
 
+    total = n1 + n2 + n3 + n4
     if html == original:
-        print(f"⚠️  {label}：HTML中未找到匹配，跳过")
+        print(f"⚠️  {label}：未找到匹配")
+    else:
+        print(f"✓ {label}：{total}处替换（{m['value']}{m['unit']}）")
     return html
 
 def update_summary_stats(html: str, stats: list) -> str:
