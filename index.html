@@ -214,7 +214,7 @@ body{background:#020810;color:#fff;font-family:'Helvetica Neue',Arial,sans-serif
   position:relative;margin:1px;z-index:1;
   background:rgba(6,10,24,.92);backdrop-filter:blur(16px) saturate(150%);
   -webkit-backdrop-filter:blur(16px) saturate(150%);
-  padding:28px 18px 22px;height:210px;overflow:hidden;
+  padding:28px 22px 22px;height:210px;overflow:hidden;
   transition:all .3s cubic-bezier(.16,1,.3,1);
 }
 .metric-border{
@@ -225,7 +225,7 @@ body{background:#020810;color:#fff;font-family:'Helvetica Neue',Arial,sans-serif
 .metric-card:hover .metric-border{animation:borderFlow 3s ease infinite}
 .metric-card:hover .metric-inner{box-shadow:0 0 52px var(--mc,#fff)16,inset 0 0 32px var(--mc,#fff)05}
 
-.sbu-card{position:relative;flex-shrink:0;cursor:pointer;transition:transform .3s cubic-bezier(.16,1,.3,1);animation:cardReveal .55s cubic-bezier(.16,1,.3,1) both}
+.sbu-card{position:relative;flex-shrink:1;flex-grow:1;cursor:pointer;transition:transform .3s cubic-bezier(.16,1,.3,1);animation:cardReveal .55s cubic-bezier(.16,1,.3,1) both}
 .sbu-card:hover{transform:translateY(-5px)}
 .sbu-inner{position:relative;margin:1px;z-index:1;background:rgba(6,10,24,.9);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);overflow:hidden;transition:all .3s cubic-bezier(.16,1,.3,1)}
 .sbu-border{position:absolute;inset:0;z-index:0;background:linear-gradient(120deg,rgba(227,6,19,0) 0%,rgba(227,6,19,.45) 35%,rgba(15,15,35,.2) 55%,rgba(80,0,10,.3) 80%,rgba(227,6,19,.2) 100%);background-size:300% 300%;animation:borderFlowReverse 8s ease infinite}
@@ -259,7 +259,7 @@ body{background:#020810;color:#fff;font-family:'Helvetica Neue',Arial,sans-serif
 .metrics-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
 @media(max-width:900px){.metrics-grid{grid-template-columns:1fr 1fr;gap:2px}}
 @media(max-width:500px){.metrics-grid{grid-template-columns:1fr;gap:2px}}
-.sbu-scroll{display:flex;gap:10px;overflow-x:auto;padding-bottom:12px;scrollbar-width:none;-ms-overflow-style:none}
+.sbu-scroll{display:flex;gap:10px;}
 .sbu-scroll::-webkit-scrollbar{display:none}
 .sbu-detail{margin-bottom:24px;border:1px solid rgba(255,255,255,.05);background:rgba(6,12,28,.95);transition:border-color .5s,background .5s}
 .sbu-detail.active-sbu{border-color:var(--sc)40;background:linear-gradient(135deg,var(--sc)06 0%,rgba(6,12,28,.98) 100%)}
@@ -409,7 +409,7 @@ const SBU_LIST = [
   {id:"semiconductor",label:"半导体与电子",labelEn:"SEMICONDUCTOR & ELECTRONICS",prosperityIndex:9.2,trend:"+1.4 YoY",color:"#00C8FF",tagline:"AI 驱动产能扩张，精密流体需求激增",icon:"SEMI",keyMetrics:[{k:"晶圆厂固投增速",v:"+21%"},{k:"液体管控节点/线",v:"3,200+"},{k:"超纯水用量 CAGR",v:"18%"}],overview:"2026 年中国半导体产业进入扩产深水期，CoWoS 先进封装与国产 12 英寸晶圆线密集落地。每条生产线对腐蚀性介质、超纯水、特种气体的精密流体管控需求超过 3,200 个节点，形成对 ",burkertAngle:"高洁净度隔膜阀 · 质量流量控制器 · 腐蚀介质电磁阀",opportunities:[{label:"CoWoS 封装产线配套",urgency:"HIGH",timing:"Q1–Q2"},{label:"国产 12\" 晶圆厂首批采购窗口",urgency:"HIGH",timing:"Q2"},{label:"超纯水回路精密流量替换",urgency:"MED",timing:"Q3"}],risks:["美国出口管制扩大范围","设备交期延误传导至配套采购"]},
   {id:"datacenter",label:"数据中心液冷",labelEn:"DATA CENTER LIQUID COOLING",prosperityIndex:9.7,trend:"+2.1 YoY",color:"#00FFB2",tagline:"液冷渗透率三年翻三倍，阀组需求爆发式增长",icon:"DC",keyMetrics:[{k:"液冷渗透率",v:"12%→28%"},{k:"单节点阀组采购额",v:"800 万+"},{k:"市场规模 CAGR",v:"47%"}],overview:"AI 大模型训练集群功率密度突破 100kW/机柜，风冷散热已达物理极限。2026 年数据中心液冷改造及新建项目密集落地，冷却水路的精密流量调节、温控精度（±0.3℃）和泄漏检测成为核心痛点，直接映射 ",burkertAngle:"冷却水路比例调节阀 · 温控传感集成 · 泄漏检测系统",opportunities:[{label:"超大规模 AI 训练集群配套",urgency:"HIGH",timing:"Q1"},{label:"存量数据中心液冷改造",urgency:"HIGH",timing:"Q2–Q3"},{label:"边缘计算节点热管理",urgency:"MED",timing:"H2"}],risks:["液冷集成商标准碎片化","铜价上涨压缩配件预算"]},
   {id:"lifescience",label:"生命科学",labelEn:"LIFE SCIENCE & BIOPHARMA",prosperityIndex:8.1,trend:"+0.9 YoY",color:"#BF80FF",tagline:"国产替代与 GMP 升级双轮驱动无菌流体需求",icon:"BIO",keyMetrics:[{k:"生物制药固投同比",v:"+16%"},{k:"GMP 合规改造项目",v:"320+"},{k:"无菌阀组需求增速",v:"+22%"}],overview:"中国生物制药产业进入 GMP 全面升级周期，创新药 CMO/CDMO 产能扩张与合规改造同步推进。无菌流体系统（隔膜阀、卫生级蝶阀、纯蒸汽管路控制）是 FDA/EMA 认证的必要条件，",burkertAngle:"卫生级隔膜阀 · 纯蒸汽控制 · 无菌取样系统",opportunities:[{label:"CMO 产线 GMP 认证配套",urgency:"HIGH",timing:"Q1–Q2"},{label:"mRNA 疫苗生产线流体系统",urgency:"HIGH",timing:"Q2"},{label:"血液透析耗材生产配套",urgency:"MED",timing:"Q3–Q4"}],risks:["医疗设备集采压缩设备预算","认证周期拉长影响交付节奏"]},
-  {id:"hydrogen",label:"新能源氢能",labelEn:"NEW ENERGY & HYDROGEN",prosperityIndex:7.6,trend:"+1.8 YoY",color:"#FFD700",tagline:"氢能基础设施元年，高压流体控制迎来窗口期",icon:"H2",keyMetrics:[{k:"加氢站新建计划",v:"1,000+"},{k:"电解槽出货量 CAGR",v:"83%"},{k:"氢能管控阀市场规模",v:"42亿"}],overview:"2026 年是中国氢能基础设施的规模化元年，「十五五」规划明确 1,000 座加氢站及 GW 级电解槽目标。高压氢气（70MPa）的安全管控、碱性电解槽的 KOH 溶液精密输送、燃料电池热管理系统均对阀门精度、材质兼容性提出极高要求，",burkertAngle:"高压氢气电磁阀 · KOH 腐蚀介质隔膜阀 · 燃料电池热管理控制",opportunities:[{label:"碱性电解槽 KOH 管路配套",urgency:"HIGH",timing:"Q2–Q3"},{label:"加氢站安全截止阀标准化",urgency:"MED",timing:"Q3"},{label:"燃料电池热管理集成",urgency:"MED",timing:"H2"}],risks:["氢能政策落地节奏不确定","高压认证壁垒导致导入周期长"]},
+  {id:"hydrogen",label:"新能源氢能",labelEn:"NEW ENERGY & HYDROGEN",prosperityIndex:7.6,trend:"+1.8 YoY",color:"#FFD700",tagline:"氢能基建元年，高压流控窗口期",icon:"H2",keyMetrics:[{k:"加氢站新建计划",v:"1,000+"},{k:"电解槽CAGR",v:"83%"},{k:"阀市场规模",v:"42亿"}],overview:"2026 年是中国氢能基础设施的规模化元年，「十五五」规划明确 1,000 座加氢站及 GW 级电解槽目标。高压氢气（70MPa）的安全管控、碱性电解槽的 KOH 溶液精密输送、燃料电池热管理系统均对阀门精度、材质兼容性提出极高要求，",burkertAngle:"高压氢气电磁阀 · KOH 腐蚀介质隔膜阀 · 燃料电池热管理控制",opportunities:[{label:"碱性电解槽 KOH 管路配套",urgency:"HIGH",timing:"Q2–Q3"},{label:"加氢站安全截止阀标准化",urgency:"MED",timing:"Q3"},{label:"燃料电池热管理集成",urgency:"MED",timing:"H2"}],risks:["氢能政策落地节奏不确定","高压认证壁垒导致导入周期长"]},
 ];
 
 /* ── RENDER HELPERS ──────────────────────────────── */
@@ -495,7 +495,7 @@ function renderSummaryStats() {
 
 function renderSBUCards() {
   const scroll = document.getElementById('sbu-scroll');
-  const widths = ['320px','320px','320px','320px'];
+  const widths = ['calc(25% - 8px)','calc(25% - 8px)','calc(25% - 8px)','calc(25% - 8px)'];
   const clips = [
     "polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,0 100%)",
     "polygon(12px 0,100% 0,100% 100%,0 100%,0 12px)",
