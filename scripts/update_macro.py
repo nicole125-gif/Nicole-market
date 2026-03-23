@@ -89,7 +89,40 @@ def fetch_te_table() -> dict:
     return results
 
 
-def update_metric(html, label, value, trend, insight, sparkData):
+def fetch_ppi() -> dict | None:
+    """
+    单独抓取PPI页面，从meta description提取数值
+    格式：Producer Prices in China decreased 0.90 percent in February of 2026
+    """
+    url = "https://tradingeconomics.com/china/producer-prices-change"
+    req = urllib.request.Request(url, headers={
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
+        "Accept-Language": "en-US,en;q=0.9",
+    })
+    with urllib.request.urlopen(req, timeout=20) as r:
+        page = r.read().decode("utf-8", errors="ignore")
+
+    # 从meta description提取：decreased/increased 0.90 percent in February of 2026
+    m = re.search(
+        r'Producer Prices in China (decreased|increased|fell|rose) ([\d.]+) percent in (\w+ of \d{4})',
+        page
+    )
+    if not m:
+        print("⚠️  PPI: meta description未匹配")
+        return None
+
+    direction, raw_value, date_str = m.group(1), float(m.group(2)), m.group(3)
+    value = -raw_value if direction in ("decreased", "fell") else raw_value
+    print(f"✅ PPI 走势: {value}%（{date_str}，TE页面）")
+    return {
+        "label": "PPI 走势",
+        "value": value,
+        "trend": f"{date_str}同比",
+        "insight": f"PPI同比{value}%",
+        "sparkData": [-2.7, -0.8, value],
+    }
+
+
     spark_str = "[" + ",".join(str(v) for v in sparkData) + "]"
     positions = [m.start() for m in re.finditer(rf'"{re.escape(label)}"', html)]
     if not positions:
@@ -153,6 +186,12 @@ def main():
             html = update_metric(html, label, value, trend, insight, spark)
         else:
             print(f"⚠️  {label}: 表格中未找到 '{te_name}'")
+
+    # 单独抓PPI（不在总览表格里）
+    ppi = fetch_ppi()
+    if ppi:
+        html = update_metric(html, ppi["label"], ppi["value"],
+                             ppi["trend"], ppi["insight"], ppi["sparkData"])
 
     print("\n[ 静态指标... ]")
     for m in STATIC_METRICS:
