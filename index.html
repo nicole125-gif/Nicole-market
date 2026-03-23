@@ -27,6 +27,7 @@
         label: "GDP 增速", labelEn: "GDP GROWTH",
         value: 4.5, unit: "%", trend: "↓ 较上期放缓 (-0.3%)",
         insight: "增速温和，内需仍待提振",
+        date: "Q4-2025",
         color: "#00FFB2",
         sparkData: [4.6,4.8,4.5], years: ["2024","2025","2026E"],
         note: "GDP 目标值 5.0% 来源于国家统计局公报及中金宏观研究团队预测。",
@@ -40,6 +41,7 @@
         label: "工业增加值", labelEn: "IND. VALUE ADD",
         value: 6.3, unit: "%", trend: "↑ 较上期加速 (+1.1%)",
         insight: "开年生产强劲，好于预期",
+        date: "Feb-2026",
         color: "#00C8FF",
         sparkData: [5.1,5.7,6.3], years: ["2024","2025","2026E"],
         note: "工业增加值数据来源于国家统计局月度数据，德勤白皮书提供数字化转型量化分析。",
@@ -53,6 +55,7 @@
         label: "制造业PMI", labelEn: "MFG. PMI",
         value: 50.8, unit: "%", trend: "2026-02",
         insight: "制造业扩张区间",
+        date: "Feb-2026",
         color: "#FFD700",
         sparkData: [50.2,50.1,50.8], years: ["2024","2025","2026E"],
         note: "制造业固定资产投资数据引自国家统计局固投月报，麦肯锡报告提供行业拆解。",
@@ -66,6 +69,7 @@
         label: "出口增速", labelEn: "EXPORT GROWTH",
         value: 21.8, unit: "%", trend: "↑ 较上期加速 (+15.2%)",
         insight: "出口超预期，抢出口效应显著",
+        date: "Feb-2026",
         color: "#FF6B35",
         sparkData: [5.9,4.2,21.8], years: ["2024","2025","2026E"],
         note: "出口增速数据来源于商务部月度贸易统计，商务部研究院提供出口结构升级分析。",
@@ -79,6 +83,7 @@
         label: "PPI 走势", labelEn: "PPI TREND",
         value: -0.9, unit: "%", trend: "↑ 通缩收窄 (+0.5)",
         insight: "通缩持续收窄，价格企稳信号",
+        date: "Feb-2026",
         color: "#BF80FF",
         sparkData: [-2.7,-0.8,-0.9], years: ["2024","2025","2026E"],
         note: "PPI 数据来源于国家统计局价格统计司，中金宏观团队提供 PPI 回升路径预测。",
@@ -451,7 +456,7 @@ function renderMetrics() {
       <div class="metric-inner" style="clip-path:${clip}">
         <div style="position:absolute;inset:0;opacity:.022;pointer-events:none;background-image:url('data:image/svg+xml,%3Csvg viewBox=\\'0 0 200 200\\' xmlns=\\'http://www.w3.org/2000/svg\\'%3E%3Cfilter id=\\'n\\'%3E%3CfeTurbulence type=\\'fractalNoise\\' baseFrequency=\\'0.9\\' numOctaves=\\'4\\'/%3E%3C/filter%3E%3Crect width=\\'100%25\\' height=\\'100%25\\' filter=\\'url(%23n)\\'/%3E%3C/svg%3E');background-size:128px"></div>
         <div style="position:relative;z-index:1">
-          <p style="font-family:'Courier New',monospace;font-size:8.5px;color:${m.color};letter-spacing:.2em;margin:0 0 6px;text-transform:uppercase">${m.labelEn}</p>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin:0 0 6px"><p style="font-family:'Courier New',monospace;font-size:8.5px;color:${m.color};letter-spacing:.2em;margin:0;text-transform:uppercase">${m.labelEn}</p><p style="font-family:'Courier New',monospace;font-size:8.5px;color:rgba(255,255,255,.45);letter-spacing:.1em;margin:0">${m.date||''}</p></div>
           <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:8px">
             <span style="font-family:'Courier New',monospace;font-size:38px;font-weight:700;color:${m.color};line-height:1;text-shadow:0 0 24px ${m.color}70" id="mv-${i}">0</span>
             <div style="text-align:right;flex-shrink:0">
