@@ -21,7 +21,7 @@ jobs:
           python-version: '3.11'
 
       - name: 运行更新脚本
-        run: python scripts/debug_te.py
+        run: python scripts/update_macro.py
 
       - name: Commit并Push
         run: |
