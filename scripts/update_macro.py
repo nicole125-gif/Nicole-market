@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
 宏观Dashboard更新脚本
-数据来源：直接解析 tradingeconomics.com/china/indicators 页面表格
-该页面数据在HTML里，无需JS渲染
+数据来源：tradingeconomics.com（无需API key）
 git操作由workflow负责
 """
 
@@ -12,33 +11,25 @@ from datetime import datetime
 
 HTML_FILE = "index.html"
 
-# 指标名称对应TE页面表格中的链接文字
 INDICATOR_MAP = {
     "工业增加值": {
-        "te_name":       "Industrial Production",
-        "trend_tmpl":    "↑ {date}同比",
-        "insight_tmpl":  "工业生产同比{value}%",
+        "te_name":        "Industrial Production",
+        "trend_tmpl":     "↑ {date}同比",
+        "insight_tmpl":   "工业生产同比{value}%",
         "sparkData_2024": 5.1,
         "sparkData_2025": 5.7,
     },
-    "PPI 走势": {
-        "te_name":       "Producer Prices Change",
-        "trend_tmpl":    "{date}同比",
-        "insight_tmpl":  "PPI同比{value}%",
-        "sparkData_2024": -2.7,
-        "sparkData_2025": -0.8,
-    },
     "出口增速": {
-        "te_name":       "Exports YoY",
-        "trend_tmpl":    "{date}同比",
-        "insight_tmpl":  "出口同比{value}%",
+        "te_name":        "Exports YoY",
+        "trend_tmpl":     "{date}同比",
+        "insight_tmpl":   "出口同比{value}%",
         "sparkData_2024": 5.9,
         "sparkData_2025": 4.2,
     },
     "GDP 增速": {
-        "te_name":       "GDP Annual Growth Rate",
-        "trend_tmpl":    "{date}季度同比",
-        "insight_tmpl":  "GDP同比{value}%",
+        "te_name":        "GDP Annual Growth Rate",
+        "trend_tmpl":     "{date}季度同比",
+        "insight_tmpl":   "GDP同比{value}%",
         "sparkData_2024": 4.6,
         "sparkData_2025": 4.8,
     },
@@ -55,74 +46,56 @@ STATIC_SUMMARY = [
     {"label": "数字经济比重", "value": "43.7%"},
 ]
 
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
+    "Accept-Language": "en-US,en;q=0.9",
+}
+
 
 def fetch_te_table() -> dict:
-    """
-    抓取 tradingeconomics.com/china/indicators 页面表格
-    返回 {indicator_name: {"value": float, "date": str}} 字典
-    """
+    """抓取 /china/indicators 总览表格，返回 {指标名: 数值} 字典"""
     url = "https://tradingeconomics.com/china/indicators"
-    req = urllib.request.Request(
-        url,
-        headers={
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-            "Accept": "text/html,application/xhtml+xml",
-            "Accept-Language": "en-US,en;q=0.9",
-        }
-    )
+    req = urllib.request.Request(url, headers=HEADERS)
     with urllib.request.urlopen(req, timeout=20) as r:
         page = r.read().decode("utf-8", errors="ignore")
-
     results = {}
-    # 解析表格：指标名\n</a></td>\n<td>数值</td>
-    rows = re.findall(
-        r'([^\n<]+)\s*\n\s*</a></td>\s*\n\s*<td>([-\d.]+)</td>',
-        page
-    )
+    rows = re.findall(r'([^\n<]+)\s*\n\s*</a></td>\s*\n\s*<td>([-\d.]+)</td>', page)
     for name, value in rows:
         name = name.strip()
         try:
             results[name] = float(value.strip())
         except ValueError:
             pass
-
     return results
 
 
 def fetch_ppi() -> dict | None:
-    """
-    单独抓取PPI页面，从meta description提取数值
-    格式：Producer Prices in China decreased 0.90 percent in February of 2026
-    """
+    """单独抓取PPI页面，从meta description提取数值"""
     url = "https://tradingeconomics.com/china/producer-prices-change"
-    req = urllib.request.Request(url, headers={
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
-        "Accept-Language": "en-US,en;q=0.9",
-    })
+    req = urllib.request.Request(url, headers=HEADERS)
     with urllib.request.urlopen(req, timeout=20) as r:
         page = r.read().decode("utf-8", errors="ignore")
-
-    # 从meta description提取：decreased/increased 0.90 percent in February of 2026
     m = re.search(
         r'Producer Prices in China (decreased|increased|fell|rose) ([\d.]+) percent in (\w+ of \d{4})',
         page
     )
     if not m:
-        print("⚠️  PPI: meta description未匹配")
+        print("⚠️  PPI: 未匹配")
         return None
-
     direction, raw_value, date_str = m.group(1), float(m.group(2)), m.group(3)
     value = -raw_value if direction in ("decreased", "fell") else raw_value
-    print(f"✅ PPI 走势: {value}%（{date_str}，TE页面）")
+    print(f"✅ PPI 走势: {value}%（{date_str}）")
     return {
-        "label": "PPI 走势",
-        "value": value,
-        "trend": f"{date_str}同比",
-        "insight": f"PPI同比{value}%",
+        "label":     "PPI 走势",
+        "value":     value,
+        "trend":     f"{date_str}同比",
+        "insight":   f"PPI同比{value}%",
         "sparkData": [-2.7, -0.8, value],
     }
 
 
+def update_metric(html, label, value, trend, insight, sparkData):
+    """替换HTML中某指标的value/trend/insight/sparkData，两处都改"""
     spark_str = "[" + ",".join(str(v) for v in sparkData) + "]"
     positions = [m.start() for m in re.finditer(rf'"{re.escape(label)}"', html)]
     if not positions:
@@ -164,7 +137,7 @@ def main():
         html = f.read()
     print(f"✓ 读取 {HTML_FILE}（{len(html):,} 字符）\n")
 
-    # 抓取TE表格
+    # 1. 总览表格指标
     print("[ 抓取 tradingeconomics.com/china/indicators 表格... ]")
     try:
         te_data = fetch_te_table()
@@ -173,7 +146,6 @@ def main():
         print(f"❌ 抓取失败: {e}")
         te_data = {}
 
-    # 更新指标
     today = datetime.now().strftime("%Y-%m")
     for label, cfg in INDICATOR_MAP.items():
         te_name = cfg["te_name"]
@@ -187,16 +159,22 @@ def main():
         else:
             print(f"⚠️  {label}: 表格中未找到 '{te_name}'")
 
-    # 单独抓PPI（不在总览表格里）
-    ppi = fetch_ppi()
-    if ppi:
-        html = update_metric(html, ppi["label"], ppi["value"],
-                             ppi["trend"], ppi["insight"], ppi["sparkData"])
+    # 2. PPI单独抓取
+    print("\n[ 抓取PPI... ]")
+    try:
+        ppi = fetch_ppi()
+        if ppi:
+            html = update_metric(html, ppi["label"], ppi["value"],
+                                 ppi["trend"], ppi["insight"], ppi["sparkData"])
+    except Exception as e:
+        print(f"❌ PPI抓取失败: {e}")
 
+    # 3. 静态指标
     print("\n[ 静态指标... ]")
     for m in STATIC_METRICS:
         html = update_metric(html, m["label"], m["value"], m["trend"], m["insight"], m["sparkData"])
 
+    # 4. summaryStats
     print("\n[ summaryStats... ]")
     html = update_summary(html, STATIC_SUMMARY)
 
