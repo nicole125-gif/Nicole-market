@@ -1,0 +1,40 @@
+name: 宏观Dashboard自动更新
+
+on:
+  schedule:
+    - cron: '0 2 * * 1'   # 每周一 UTC 02:00（北京时间周一10:00）
+  workflow_dispatch:        # 允许手动触发
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write       # 允许push回仓库
+
+    steps:
+      - name: Checkout仓库
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 设置Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 运行更新脚本
+        env:
+          MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
+          MINIMAX_GROUP_ID: ${{ secrets.MINIMAX_GROUP_ID }}
+        run: python .github/scripts/update_macro.py
+
+      - name: 配置Git身份
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Push更新
+        run: |
+          git add index.html
+          git diff --staged --quiet || git commit -m "auto: 宏观数据更新 $(date +%Y-%m-%d)"
+          git push
