@@ -129,18 +129,34 @@ def update_one_metric(html: str, m: dict) -> str:
     label = m["label"]
     original = html
 
-    pattern_val = rf'(label:"{re.escape(label)}"[^}}]{{0,30}}value:)\s*[\d.\-]+'
-    html = re.sub(pattern_val, rf'\g<1>{m["value"]}', html)
+    # value（label与value跨行，用DOTALL+count=1精确匹配第一个）
+    html = re.sub(
+        rf'(label:\s*"{re.escape(label)}".*?value:\s*)[\d.\-]+',
+        lambda match: match.group(1) + str(m["value"]),
+        html, count=1, flags=re.DOTALL
+    )
 
-    pattern_trend = rf'(label:"{re.escape(label)}".*?trend:)"[^"]*"'
-    html = re.sub(pattern_trend, rf'\1"{m["trend"]}"', html, flags=re.DOTALL)
+    # trend
+    html = re.sub(
+        rf'(label:\s*"{re.escape(label)}".*?trend:\s*)"[^"]*"',
+        rf'\g<1>"{m["trend"]}"',
+        html, count=1, flags=re.DOTALL
+    )
 
-    pattern_insight = rf'(label:"{re.escape(label)}".*?insight:)"[^"]*"'
-    html = re.sub(pattern_insight, rf'\1"{m["insight"]}"', html, flags=re.DOTALL)
+    # insight
+    html = re.sub(
+        rf'(label:\s*"{re.escape(label)}".*?insight:\s*)"[^"]*"',
+        rf'\g<1>"{m["insight"]}"',
+        html, count=1, flags=re.DOTALL
+    )
 
+    # sparkData
     spark_str = "[" + ",".join(str(v) for v in m["sparkData"]) + "]"
-    pattern_spark = rf'(label:"{re.escape(label)}".*?sparkData:)\[[^\]]*\]'
-    html = re.sub(pattern_spark, rf'\1{spark_str}', html, flags=re.DOTALL)
+    html = re.sub(
+        rf'(label:\s*"{re.escape(label)}".*?sparkData:\s*)\[[^\]]*\]',
+        rf'\g<1>{spark_str}',
+        html, count=1, flags=re.DOTALL
+    )
 
     if html == original:
         print(f"⚠️  {label}：HTML中未找到匹配，跳过")
