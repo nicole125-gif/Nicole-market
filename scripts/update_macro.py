@@ -74,11 +74,10 @@ def fetch_te_table() -> dict:
         page = r.read().decode("utf-8", errors="ignore")
 
     results = {}
-    # 解析表格行：<tr><td><a href="/china/xxx">Name</a></td><td>Value</td>...<td>Date</td></tr>
-    # 格式：| Name | Last | Previous | Highest | Lowest | unit | date |
+    # 解析表格：指标名\n</a></td>\n<td>数值</td>
     rows = re.findall(
-        r'<tr[^>]*>.*?<a[^>]+href="/china/[^"]*"[^>]*>([^<]+)</a>.*?<td[^>]*>([-\d.]+)</td>.*?</tr>',
-        page, re.DOTALL
+        r'([^\n<]+)\s*\n\s*</a></td>\s*\n\s*<td>([-\d.]+)</td>',
+        page
     )
     for name, value in rows:
         name = name.strip()
