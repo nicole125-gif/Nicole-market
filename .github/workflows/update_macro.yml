@@ -24,7 +24,7 @@ jobs:
         run: pip install akshare
 
       - name: 运行更新脚本
-        run: python scripts/debug_te.py
+        run: python scripts/update_macro.py
 
       - name: Commit并Push
         run: |
