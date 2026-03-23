@@ -27,7 +27,7 @@
         label: "GDP 增速", labelEn: "GDP GROWTH",
         value: 4.5, unit: "%", trend: "↓ 较上期放缓 -0.3pp",
         insight: "增速温和，内需仍待提振",
-        date: "Q4-2025",
+        date: "Q4/25",
         color: "#00FFB2",
         sparkData: [4.6,4.8,4.5], years: ["2024","2025","2026E"],
         note: "GDP 目标值 5.0% 来源于国家统计局公报及中金宏观研究团队预测。",
@@ -41,7 +41,7 @@
         label: "工业增加值", labelEn: "IND. VALUE ADD",
         value: 6.3, unit: "%", trend: "↑ 较上期加速 +1.1pp",
         insight: "开年生产强劲，好于预期",
-        date: "Feb-2026",
+        date: "Feb/26",
         color: "#00C8FF",
         sparkData: [5.1,5.7,6.3], years: ["2024","2025","2026E"],
         note: "工业增加值数据来源于国家统计局月度数据，德勤白皮书提供数字化转型量化分析。",
@@ -53,9 +53,9 @@
       },
       {
         label: "制造业PMI", labelEn: "MFG. PMI",
-        value: 50.8, unit: "%", trend: "2026-02",
+        value: 50.8, unit: "%", trend: "↑ 较上期改善 +0.7",
         insight: "制造业扩张区间",
-        date: "Feb-2026",
+        date: "Feb/26",
         color: "#FFD700",
         sparkData: [50.2,50.1,50.8], years: ["2024","2025","2026E"],
         note: "制造业固定资产投资数据引自国家统计局固投月报，麦肯锡报告提供行业拆解。",
@@ -69,7 +69,7 @@
         label: "出口增速", labelEn: "EXPORT GROWTH",
         value: 21.8, unit: "%", trend: "↑ 较上期加速 +15.2pp",
         insight: "出口超预期，抢出口效应显著",
-        date: "Feb-2026",
+        date: "Feb/26",
         color: "#FF6B35",
         sparkData: [5.9,4.2,21.8], years: ["2024","2025","2026E"],
         note: "出口增速数据来源于商务部月度贸易统计，商务部研究院提供出口结构升级分析。",
@@ -81,7 +81,7 @@
       },
       {
         label: "PPI 走势", labelEn: "PPI TREND",
-        value: -0.9, unit: "%", trend: "↑ 通缩收窄 +0.5",
+        value: -0.9, unit: "%", trend: "↑ 通缩收窄 +0.5pp",
         insight: "通缩持续收窄，价格企稳信号",
         date: "Feb/26",
         color: "#BF80FF",
@@ -192,7 +192,7 @@ body{background:#020810;color:#fff;font-family:'Helvetica Neue',Arial,sans-serif
 @keyframes borderFlowReverse{0%,100%{background-position:100% 50%}50%{background-position:0% 50%}}
 @keyframes dotBlink{0%,100%{opacity:1}50%{opacity:.25}}
 @keyframes cardReveal{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(200%)}}
+@keyframes shimmer{0%{transform:translateX-100pp}100%{transform:translateX(200%)}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 @keyframes pulseRing{0%{stroke-dasharray:0 999}100%{stroke-dasharray:var(--ring-len) 999}}
 
@@ -299,7 +299,7 @@ body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([oncli
 
 <!-- BG -->
 <div style="position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);background-size:60px 60px"></div>
-<div style="position:fixed;top:-25%;left:40%;transform:translateX(-50%);width:90vw;height:700px;background:radial-gradient(ellipse,rgba(0,180,255,.035) 0%,transparent 65%);pointer-events:none;z-index:0"></div>
+<div style="position:fixed;top:-25%;left:40%;transform:translateX-50pp;width:90vw;height:700px;background:radial-gradient(ellipse,rgba(0,180,255,.035) 0%,transparent 65%);pointer-events:none;z-index:0"></div>
 <div style="position:fixed;bottom:-10%;right:10%;width:40vw;height:500px;background:radial-gradient(ellipse,rgba(227,6,19,.025) 0%,transparent 70%);pointer-events:none;z-index:0"></div>
 
 <div class="main-wrap">
@@ -354,7 +354,7 @@ body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([oncli
         </div>
       </div>
       <div style="display:flex;gap:6px">
-        <button onclick="scrollSBU(-1)" style="width:30px;height:30px;background:rgba(255,107,53,.08);border:1px solid rgba(255,107,53,.3);color:#FF6B35;cursor:pointer;font-family:'Courier New',monospace;font-size:13px;display:flex;align-items:center;justify-content:center">←</button>
+        <button onclick="scrollSBU-1pp" style="width:30px;height:30px;background:rgba(255,107,53,.08);border:1px solid rgba(255,107,53,.3);color:#FF6B35;cursor:pointer;font-family:'Courier New',monospace;font-size:13px;display:flex;align-items:center;justify-content:center">←</button>
         <button onclick="scrollSBU(1)"  style="width:30px;height:30px;background:rgba(255,107,53,.08);border:1px solid rgba(255,107,53,.3);color:#FF6B35;cursor:pointer;font-family:'Courier New',monospace;font-size:13px;display:flex;align-items:center;justify-content:center">→</button>
       </div>
     </div>
@@ -390,7 +390,7 @@ const AUTHORITIES = {
   CICC:{id:"CICC",shortName:"中金公司",fullName:"中国国际金融股份有限公司",report:"《2026 年中国宏观展望》",date:"2025-12",color:"#FFD700",type:"投行研究",desc:"中国顶级投资银行，覆盖宏观策略、行业深度与资本市场研究。"},
   DELOITTE:{id:"DELOITTE",shortName:"德勤",fullName:"Deloitte China",report:"《2026 中国制造业数字化转型白皮书》",date:"2025-11",color:"#00C8FF",type:"咨询研究",desc:"全球四大会计师事务所之一，中国制造业数字化转型权威研究来源。"},
   MCKINSEY:{id:"MCKINSEY",shortName:"麦肯锡",fullName:"McKinsey & Company",report:"《China Industrial Productivity 2026》",date:"2026-01",color:"#00FFB2",type:"战略咨询",desc:"全球顶级战略咨询机构，聚焦工业生产力、供应链与新兴市场分析。"},
-  NBS:{id:"NBS",shortName:"国家统计局",fullName:"中华人民共和国国家统计局",report:"《2025 年国民经济和社会发展统计公报》",date:"2026-02",color:"#E30613",type:"政府统计",desc:"中国官方宏观经济数据权威发布机构，覆盖 GDP、工业产值、PPI 等核心指标。"},
+  NBS:{id:"NBS",shortName:"国家统计局",fullName:"中华人民共和国国家统计局",report:"《2025 年国民经济和社会发展统计公报》",date:"↑ 较上期改善 +0.7",color:"#E30613",type:"政府统计",desc:"中国官方宏观经济数据权威发布机构，覆盖 GDP、工业产值、PPI 等核心指标。"},
   MOFCOM:{id:"MOFCOM",shortName:"商务部",fullName:"中华人民共和国商务部",report:"《2025 年对外贸易形势报告》",date:"2026-01",color:"#FF6B35",type:"政府统计",desc:"中国对外贸易数据权威来源，提供出口结构、商品分类及贸易趋势分析。"},
   CAITEC:{id:"CAITEC",shortName:"商务部研究院",fullName:"中国国际贸易经济合作研究院",report:"《全球供应链重构与中国出口竞争力报告 2026》",date:"2025-12",color:"#BF80FF",type:"政策研究",desc:"商务部直属研究机构，专注国际贸易政策、出口竞争力与全球供应链分析。"},
   GOLDMAN:{id:"GOLDMAN",shortName:"高盛",fullName:"Goldman Sachs Research",report:"《China 2026 Macro Outlook》",date:"2025-12",color:"#00FFB2",type:"投行研究",desc:"全球顶级投行，提供中国宏观前瞻预测与跨资产配置策略研究。"},
@@ -398,11 +398,11 @@ const AUTHORITIES = {
 };
 
 const METRICS = [
-  {label:"GDP 增速",labelEn:"GDP GROWTH",value:4.5,unit:"%",trend:"↓ 较上期放缓 -0.3pp",insight:"增速温和，内需仍待提振",color:"#00FFB2",sparkData:[4.6,4.8,4.5],years:["2024","2025","2026E"],dataSource:{primary:["NBS","CICC"],supporting:["GOLDMAN","CDIRF"],note:"GDP 目标值 5.0% 来源于国家统计局公报及中金宏观研究团队预测，高盛与中国发展研究基金会提供交叉验证。"},deepDive:{chartLabel:"年度 GDP 增速 (%)",downstream:[{sector:"半导体制造",icon:"◈",logic:"GDP 温和扩张支撑晶圆厂扩产资本开支，12英寸产线投资增速维持 18-22%，带动精密流体阀组采购量同步上升。"},{sector:"数据中心液冷",icon:"◉",logic:"经济质量优先导向推动 AI 算力基础设施快速落地，液冷系统渗透率从 12% 跃升至 28%，冷却水路流量调节阀需求打开增量空间。"},{sector:"生命科学",icon:"◎",logic:"GDP 增长释放医疗基础设施投入，生物制药固投同比 +16%，无菌流体系统与纯化控制阀采购周期缩短至 Q2。"}],actions:[{tag:"Q1",text:"完成重点晶圆客户年框合同续签，锁定 Q2–Q3 备货需求"},{tag:"Q2",text:"联动液冷集成商预演 2026 扩容节点，提前部署冷却阀组样品"},{tag:"H2",text:"布局生物医药园区本地化服务站，缩短响应链路至 48H"}]}},
-  {label:"工业增加值",labelEn:"IND. VALUE ADD",value:6.3,unit:"%",trend:"↑ 较上期加速 +1.1pp",insight:"开年生产强劲，好于预期",color:"#00C8FF",sparkData:[5.1,5.7,6.3],years:["2024","2025","2026E"],dataSource:{primary:["NBS","DELOITTE"],supporting:["CDIRF","MCKINSEY"],note:"工业增加值数据来源于国家统计局月度数据，德勤白皮书提供数字化转型对工业产值贡献的量化分析。"},deepDive:{chartLabel:"工业增加值增速 (%)",downstream:[{sector:"先进封装产线",icon:"◈",logic:"工业产出质量跃升驱动 CoWoS、HBM 封装产能扩张，超纯水与特气输送精度要求提升，推动高洁净度隔膜阀替换传统球阀。"},{sector:"新能源热管理",icon:"◉",logic:"工业增加值中新能源占比超 22%，动力电池热管理系统对温控精度要求达 ±0.5℃，比例阀组获得结构性进入机会。"},{sector:"工业机器人",icon:"◎",logic:"工业自动化密度提升加速末端流体控制场景渗透，协作机器人配套气动精控需求规模 CAGR 预估 31%。"}],actions:[{tag:"立即",text:"梳理先进封装 TOP 15 客户，建立超纯水阀组专项产品组合"},{tag:"Q2",text:"与动力电池热管理集成商联合定义比例控制阀技术规格书"},{tag:"Q3",text:"在长三角/珠三角工业园区推进流体诊断服务包订阅模式试点"}]}},
-  {label:"制造业PMI",labelEn:"MFG. PMI",value:50.8,unit:"%",trend:"2026-02",insight:"制造业扩张区间",color:"#FFD700",sparkData:[50.2,50.1,50.8],years:["2024","2025","2026E"],dataSource:{primary:["NBS","MCKINSEY"],supporting:["DELOITTE","CICC"],note:"制造业固定资产投资数据引自国家统计局固投月报，麦肯锡报告提供行业拆解与趋势预测。"},deepDive:{chartLabel:"制造业固定资产投资增速 (%)",downstream:[{sector:"智能工厂产线",icon:"◈",logic:"固投高位运行意味着新建产线密集落地，每条 12 英寸晶圆线需配套约 3,200 个精密流体控制节点，批量采购窗口集中于投产前 6-9 个月。"},{sector:"液冷基础设施",icon:"◉",logic:"数据中心固投中液冷改造占比从 8% 升至 17%，单个超大规模节点阀组采购额突破 800 万元，需要定制化集成方案支持。"},{sector:"化工精细化",icon:"◎",logic:"制造业固投向高附加值化工延伸，危险介质流体控制（电磁阀+传感器+控制器三位一体）替换传统仪表需求持续释放。"}],actions:[{tag:"战略",text:"建立制造业固投项目预警数据库，锁定 6 个月前采购决策窗口"},{tag:"产品",text:"推出智能工厂流体控制套件（含 IO-Link 数字接口），匹配数字化产线需求"},{tag:"渠道",text:"与系统集成商签署优先供应协议，覆盖华东/华南重点工业园区"}]}},
-  {label:"出口增速",labelEn:"EXPORT GROWTH",value:21.8,unit:"%",trend:"↑ 较上期加速 +15.2pp",insight:"出口超预期，抢出口效应显著",color:"#FF6B35",sparkData:[5.9,4.2,21.8],years:["2024","2025","2026E"],dataSource:{primary:["MOFCOM","CAITEC"],supporting:["GOLDMAN","CICC"],note:"出口增速数据来源于商务部月度贸易统计，商务部研究院提供出口结构升级与高附加值转型的专项分析报告。"},deepDive:{chartLabel:"出口增速 (%)",downstream:[{sector:"半导体设备出海",icon:"◈",logic:"出口结构升级推动半导体设备国产化替代加速，配套流体系统须满足国际洁净度标准（ISO Class 1），欧洲品质背书成为关键差异点。"},{sector:"储能系统出口",icon:"◉",logic:"储能系统出口量 YoY +67%，液冷 BESS 对热管理流体精控要求严苛，"},{sector:"医疗设备全球化",icon:"◎",logic:"高端医疗设备出口 CAGR 19%，CE/FDA 认证流体系统需求迫切，全球合规认证体系直接赋能客户出口资质。"}],actions:[{tag:"品牌",text:"联合半导体设备商打造「洁净流体合规出口」联合解决方案白皮书"},{tag:"服务",text:"在东南亚/中东布局本地化备件库，支持随主机出海的售后服务"},{tag:"认证",text:"加速推进 SEMI F57/F19 认证体系，提升客户出口竞争力背书"}]}},
-  {label:"PPI 走势",labelEn:"PPI TREND",value:-0.9,unit:"%",trend:"↑ 通缩收窄 +0.5",insight:"通缩持续收窄，价格企稳信号",color:"#BF80FF",sparkData:[-2.7,-0.8,-0.9], date: "Feb/26",years:["2024","2025","2026E"],dataSource:{primary:["NBS","CICC"],supporting:["MCKINSEY","DELOITTE"],note:"PPI 数据来源于国家统计局价格统计司，中金宏观团队提供 PPI 回升路径预测与中下游传导分析。"},deepDive:{chartLabel:"PPI 同比 (%)",downstream:[{sector:"半导体材料成本",icon:"◈",logic:"PPI 回正压缩晶圆厂原材料采购议价空间，倒逼向精密控制降本增效转移，高精度流体控制可节省 UPW 耗损 12-18%。"},{sector:"液冷系统经济性",icon:"◉",logic:"PPI 上行使液冷介质成本上涨 8-12%，精密流量控制的节液效益凸显，采购方更愿为可量化节本的高端阀组支付溢价。"},{sector:"工业客户预算重构",icon:"◎",logic:"中下游制造商利润修复推动设备升级预算释放，2026 年工业自动化采购意愿指数较 2024 年底回升 23 个百分点。"}],actions:[{tag:"定价",text:"基于 PPI 回升重新校准产品定价策略，推出 ROI 可视化计算工具辅助客户决策"},{tag:"价值",text:"将「降耗增效」纳入核心销售话术，量化流体控制精度带来的原材料节省数据"},{tag:"时机",text:"把握利润修复窗口，推进存量客户设备升级与服务合同升级谈判"}]}},
+  {label:"GDP 增速",labelEn:"GDP GROWTH",value:4.5,unit:"%",trend:"↓ 较上期放缓 -0.3pp",insight:"增速温和，内需仍待提振",date:"Q4/25",color:"#00FFB2",sparkData:[4.6,4.8,4.5],years:["2024","2025","2026E"],dataSource:{primary:["NBS","CICC"],supporting:["GOLDMAN","CDIRF"],note:"GDP 目标值 5.0% 来源于国家统计局公报及中金宏观研究团队预测，高盛与中国发展研究基金会提供交叉验证。"},deepDive:{chartLabel:"年度 GDP 增速 (%)",downstream:[{sector:"半导体制造",icon:"◈",logic:"GDP 温和扩张支撑晶圆厂扩产资本开支，12英寸产线投资增速维持 18-22%，带动精密流体阀组采购量同步上升。"},{sector:"数据中心液冷",icon:"◉",logic:"经济质量优先导向推动 AI 算力基础设施快速落地，液冷系统渗透率从 12% 跃升至 28%，冷却水路流量调节阀需求打开增量空间。"},{sector:"生命科学",icon:"◎",logic:"GDP 增长释放医疗基础设施投入，生物制药固投同比 +16%，无菌流体系统与纯化控制阀采购周期缩短至 Q2。"}],actions:[{tag:"Q1",text:"完成重点晶圆客户年框合同续签，锁定 Q2–Q3 备货需求"},{tag:"Q2",text:"联动液冷集成商预演 2026 扩容节点，提前部署冷却阀组样品"},{tag:"H2",text:"布局生物医药园区本地化服务站，缩短响应链路至 48H"}]}},
+  {label:"工业增加值",labelEn:"IND. VALUE ADD",value:6.3,unit:"%",trend:"↑ 较上期加速 +1.1pp",insight:"开年生产强劲，好于预期",date:"Feb/26",color:"#00C8FF",sparkData:[5.1,5.7,6.3],years:["2024","2025","2026E"],dataSource:{primary:["NBS","DELOITTE"],supporting:["CDIRF","MCKINSEY"],note:"工业增加值数据来源于国家统计局月度数据，德勤白皮书提供数字化转型对工业产值贡献的量化分析。"},deepDive:{chartLabel:"工业增加值增速 (%)",downstream:[{sector:"先进封装产线",icon:"◈",logic:"工业产出质量跃升驱动 CoWoS、HBM 封装产能扩张，超纯水与特气输送精度要求提升，推动高洁净度隔膜阀替换传统球阀。"},{sector:"新能源热管理",icon:"◉",logic:"工业增加值中新能源占比超 22%，动力电池热管理系统对温控精度要求达 ±0.5℃，比例阀组获得结构性进入机会。"},{sector:"工业机器人",icon:"◎",logic:"工业自动化密度提升加速末端流体控制场景渗透，协作机器人配套气动精控需求规模 CAGR 预估 31%。"}],actions:[{tag:"立即",text:"梳理先进封装 TOP 15 客户，建立超纯水阀组专项产品组合"},{tag:"Q2",text:"与动力电池热管理集成商联合定义比例控制阀技术规格书"},{tag:"Q3",text:"在长三角/珠三角工业园区推进流体诊断服务包订阅模式试点"}]}},
+  {label:"制造业PMI",labelEn:"MFG. PMI",value:50.8,unit:"%",trend:"↑ 较上期改善 +0.7",insight:"制造业扩张区间",date:"Feb/26",color:"#FFD700",sparkData:[50.2,50.1,50.8],years:["2024","2025","2026E"],dataSource:{primary:["NBS","MCKINSEY"],supporting:["DELOITTE","CICC"],note:"制造业固定资产投资数据引自国家统计局固投月报，麦肯锡报告提供行业拆解与趋势预测。"},deepDive:{chartLabel:"制造业固定资产投资增速 (%)",downstream:[{sector:"智能工厂产线",icon:"◈",logic:"固投高位运行意味着新建产线密集落地，每条 12 英寸晶圆线需配套约 3,200 个精密流体控制节点，批量采购窗口集中于投产前 6-9 个月。"},{sector:"液冷基础设施",icon:"◉",logic:"数据中心固投中液冷改造占比从 8% 升至 17%，单个超大规模节点阀组采购额突破 800 万元，需要定制化集成方案支持。"},{sector:"化工精细化",icon:"◎",logic:"制造业固投向高附加值化工延伸，危险介质流体控制（电磁阀+传感器+控制器三位一体）替换传统仪表需求持续释放。"}],actions:[{tag:"战略",text:"建立制造业固投项目预警数据库，锁定 6 个月前采购决策窗口"},{tag:"产品",text:"推出智能工厂流体控制套件（含 IO-Link 数字接口），匹配数字化产线需求"},{tag:"渠道",text:"与系统集成商签署优先供应协议，覆盖华东/华南重点工业园区"}]}},
+  {label:"出口增速",labelEn:"EXPORT GROWTH",value:21.8,unit:"%",trend:"↑ 较上期加速 +15.2pp",insight:"出口超预期，抢出口效应显著",date:"Feb/26",color:"#FF6B35",sparkData:[5.9,4.2,21.8],years:["2024","2025","2026E"],dataSource:{primary:["MOFCOM","CAITEC"],supporting:["GOLDMAN","CICC"],note:"出口增速数据来源于商务部月度贸易统计，商务部研究院提供出口结构升级与高附加值转型的专项分析报告。"},deepDive:{chartLabel:"出口增速 (%)",downstream:[{sector:"半导体设备出海",icon:"◈",logic:"出口结构升级推动半导体设备国产化替代加速，配套流体系统须满足国际洁净度标准（ISO Class 1），欧洲品质背书成为关键差异点。"},{sector:"储能系统出口",icon:"◉",logic:"储能系统出口量 YoY +67%，液冷 BESS 对热管理流体精控要求严苛，"},{sector:"医疗设备全球化",icon:"◎",logic:"高端医疗设备出口 CAGR 19%，CE/FDA 认证流体系统需求迫切，全球合规认证体系直接赋能客户出口资质。"}],actions:[{tag:"品牌",text:"联合半导体设备商打造「洁净流体合规出口」联合解决方案白皮书"},{tag:"服务",text:"在东南亚/中东布局本地化备件库，支持随主机出海的售后服务"},{tag:"认证",text:"加速推进 SEMI F57/F19 认证体系，提升客户出口竞争力背书"}]}},
+  {label:"PPI 走势",labelEn:"PPI TREND",value:-0.9,unit:"%",trend:"↑ 通缩收窄 +0.5pp",insight:"通缩持续收窄，价格企稳信号",date:"Feb/26",color:"#BF80FF",sparkData:[-2.7,-0.8,-0.9], date: "Feb/26",years:["2024","2025","2026E"],dataSource:{primary:["NBS","CICC"],supporting:["MCKINSEY","DELOITTE"],note:"PPI 数据来源于国家统计局价格统计司，中金宏观团队提供 PPI 回升路径预测与中下游传导分析。"},deepDive:{chartLabel:"PPI 同比 (%)",downstream:[{sector:"半导体材料成本",icon:"◈",logic:"PPI 回正压缩晶圆厂原材料采购议价空间，倒逼向精密控制降本增效转移，高精度流体控制可节省 UPW 耗损 12-18%。"},{sector:"液冷系统经济性",icon:"◉",logic:"PPI 上行使液冷介质成本上涨 8-12%，精密流量控制的节液效益凸显，采购方更愿为可量化节本的高端阀组支付溢价。"},{sector:"工业客户预算重构",icon:"◎",logic:"中下游制造商利润修复推动设备升级预算释放，2026 年工业自动化采购意愿指数较 2024 年底回升 23 个百分点。"}],actions:[{tag:"定价",text:"基于 PPI 回升重新校准产品定价策略，推出 ROI 可视化计算工具辅助客户决策"},{tag:"价值",text:"将「降耗增效」纳入核心销售话术，量化流体控制精度带来的原材料节省数据"},{tag:"时机",text:"把握利润修复窗口，推进存量客户设备升级与服务合同升级谈判"}]}},
 ];
 
 const SBU_LIST = [
@@ -457,11 +457,13 @@ function renderMetrics() {
         <div style="position:absolute;inset:0;opacity:.022;pointer-events:none;background-image:url('data:image/svg+xml,%3Csvg viewBox=\\'0 0 200 200\\' xmlns=\\'http://www.w3.org/2000/svg\\'%3E%3Cfilter id=\\'n\\'%3E%3CfeTurbulence type=\\'fractalNoise\\' baseFrequency=\\'0.9\\' numOctaves=\\'4\\'/%3E%3C/filter%3E%3Crect width=\\'100%25\\' height=\\'100%25\\' filter=\\'url(%23n)\\'/%3E%3C/svg%3E');background-size:128px"></div>
         <div style="position:relative;z-index:1">
           <div style="display:flex;justify-content:space-between;align-items:center;margin:0 0 6px"><p style="font-family:'Courier New',monospace;font-size:8.5px;color:${m.color};letter-spacing:.2em;margin:0;text-transform:uppercase">${m.labelEn}</p><p style="font-family:'Courier New',monospace;font-size:8.5px;color:rgba(255,255,255,.45);letter-spacing:.1em;margin:0">${m.date||''}</p></div>
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:8px">
-            <div style="display:flex;align-items:flex-end;gap:2px"><span style="font-family:'Courier New',monospace;font-size:38px;font-weight:700;color:${m.color};line-height:1;text-shadow:0 0 24px ${m.color}70" id="mv-${i}">0</span><span style="font-family:'Courier New',monospace;font-size:12px;color:rgba(255,255,255,.82);margin-bottom:6px">${m.unit}</span></div>
-            <div style="text-align:right;flex-shrink:0">
-              
-              <div style="font-size:10px;font-family:'Courier New',monospace;color:${m.color};margin-top:2px">${m.trend}</div>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px">
+            <div style="display:flex;align-items:flex-end;gap:2px;min-width:0;flex-shrink:1">
+              <span style="font-family:'Courier New',monospace;font-size:38px;font-weight:700;color:${m.color};line-height:1;text-shadow:0 0 24px ${m.color}70" id="mv-${i}">0</span>
+              <span style="font-family:'Courier New',monospace;font-size:11px;color:rgba(255,255,255,.7);margin-bottom:5px">${m.unit}</span>
+            </div>
+            <div style="text-align:right;flex-shrink:0;margin-left:auto;padding-left:8px">
+              <div style="font-size:9px;font-family:'Courier New',monospace;color:${m.color};white-space:nowrap">${m.trend}</div>
             </div>
           </div>
           <h3 style="font-size:14px;font-weight:700;color:#fff;margin:0 0 3px">${m.label}</h3>
