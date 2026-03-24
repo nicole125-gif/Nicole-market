@@ -292,12 +292,12 @@ const CV = {Macro:'--macro',EI:'--ei',GI:'--gi','P&B':'--pb','L&M':'--lm','F&B':
 const cc = b => `var(${CV[b]})`;
 
 const BM = {
-  Macro:{n:'宏观背景',     heat:47.3,tr:'up',sum:'FAI +1.8%转正！两会定调落地，3月PMI月底验证', href:'/macro',tracks:['m1','m2','m3'],sparks:[55,50,48]},
-  EI:   {n:'能源·基础设施',heat:72.5,tr:'up',sum:'两会AI基建落地+美半导体232关税双重催化',href:'/ei',  tracks:['e1','e2','e3','e4'],sparks:[64,72,74,44]},
-  GI:   {n:'通用工业',     heat:75.8,tr:'fl',sum:'CATL三线共振，订单确定性最强',   href:'/gi',  tracks:['g1'],sparks:[70,74,76]},
-  'P&B':{n:'制药·生物技术',heat:63.5,tr:'up',sum:'司美格鲁肽3/20已到期！仿制战全面启动', href:'/pb',  tracks:['p1','p2','p3','p4','p5'],sparks:[58,62,63,62,70]},
-  'L&M':{n:'实验室·医疗',  heat:62.3,tr:'fl',sum:'质谱进口-12.4%，因美纳禁令催化',href:'/lm',  tracks:['l1','l2','l3'],sparks:[58,62,62]},
-  'F&B':{n:'食品·饮料',    heat:54.5,tr:'dn',sum:'双FAI降速/转负，发酵唯一亮点',   href:'/fb',  tracks:['f1','f2','f3','f4'],sparks:[60,56,55,55]},
+  Macro:{n:'宏观背景',     heat:47.3,tr:'up',sum:'FAI +1.8%转正！两会定调落地，3月PMI月底验证', href:'macro.html',tracks:['m1','m2','m3'],sparks:[55,50,48]},
+  EI:   {n:'能源·基础设施',heat:72.5,tr:'up',sum:'两会AI基建落地+美半导体232关税双重催化',href:'hydrogen.html',  tracks:['e1','e2','e3','e4'],sparks:[64,72,74,44]},
+  GI:   {n:'通用工业',     heat:75.8,tr:'fl',sum:'CATL三线共振，订单确定性最强',   href:'semiconductor.html',  tracks:['g1'],sparks:[70,74,76]},
+  'P&B':{n:'制药·生物技术',heat:63.5,tr:'up',sum:'司美格鲁肽3/20已到期！仿制战全面启动', href:'pharma.html',  tracks:['p1','p2','p3','p4','p5'],sparks:[58,62,63,62,70]},
+  'L&M':{n:'实验室·医疗',  heat:62.3,tr:'fl',sum:'质谱进口-12.4%，因美纳禁令催化',href:'mscc.html',  tracks:['l1','l2','l3'],sparks:[58,62,62]},
+  'F&B':{n:'食品·饮料',    heat:54.5,tr:'dn',sum:'双FAI降速/转负，发酵唯一亮点',   href:'food.html',  tracks:['f1','f2','f3','f4'],sparks:[60,56,55,55]},
 };
 const BO = ['Macro','EI','GI','P&B','L&M','F&B'];
 
