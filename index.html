@@ -1,286 +1,199 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>宏观脉搏 · 战略分析 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet"/>
-<script>
-// ═══════════════════════════════════════════════════════════
-//  "2026-02-28",
-    updatedBy: "Nicole",
-    version: "2.1"
-  },
-
-  // ── MACRO PAGE ───────────────────────────────────────────
-  macro: {
-    headline: "中国宏观脉搏",
-    subline: "基于"十五五"规划开局之年的精密流体市场环境分析",
-    period: "十五五规划开局年 / FY-2026",
-    summaryStats: [
-      { label: "综合景气度", value: "Expansionary" },
-      { label: "政策向量",   value: "Targeted Easing" },
-      { label: "外部压力指数", value: "Moderate" },
-      { label: "数字经济比重", value: "43.7%" }
-    ],
-    metrics: [
-      {
-        label: "GDP 增速", labelEn: "GDP GROWTH",
-        value: 5.0, unit: "%", trend: "+0.2%",
-        insight: "结构性增长优于规模扩张",
-        color: "#00FFB2",
-        sparkData: [4.6, 4.8, 5.0], years: ["2024","2025","2026E"],
-        note: "GDP 目标值 5.0% 来源于国家统计局公报及中金宏观研究团队预测。",
-        actions: [
-          { tag: "Q1", text: "完成重点晶圆客户年框合同续签，锁定 Q2–Q3 备货需求" },
-          { tag: "Q2", text: "联动液冷集成商预演 2026 扩容节点，提前部署冷却阀组样品" },
-          { tag: "H2", text: "布局生物医药园区本地化服务站，缩短响应链路至 48H" }
-        ]
-      },
-      {
-        label: "工业增加值", labelEn: "IND. VALUE ADD",
-        value: 6.2, unit: "%", trend: "↑ Upward",
-        insight: "新质生产力贡献率超 35%",
-        color: "#00C8FF",
-        sparkData: [5.1, 5.7, 6.2], years: ["2024","2025","2026E"],
-        note: "工业增加值数据来源于国家统计局月度数据，德勤白皮书提供数字化转型量化分析。",
-        actions: [
-          { tag: "立即", text: "梳理先进封装 TOP 15 客户，建立超纯水阀组专项产品组合" },
-          { tag: "Q2",  text: "与动力电池热管理集成商联合定义比例控制阀技术规格书" },
-          { tag: "Q3",  text: "在长三角/珠三角工业园区推进流体诊断服务包订阅模式试点" }
-        ]
-      },
-      {
-        label: "制造业固投", labelEn: "MFG. CAPEX",
-        value: 11.4, unit: "%", trend: "Stable",
-        insight: "数字化转型进入产线深水区",
-        color: "#FFD700",
-        sparkData: [9.2, 10.8, 11.4], years: ["2024","2025","2026E"],
-        note: "制造业固定资产投资数据引自国家统计局固投月报，麦肯锡报告提供行业拆解。",
-        actions: [
-          { tag: "战略", text: "建立制造业固投项目预警数据库，锁定 6 个月前采购决策窗口" },
-          { tag: "产品", text: "推出智能工厂流体控制套件（含 IO-Link 数字接口）" },
-          { tag: "渠道", text: "与系统集成商签署优先供应协议，覆盖华东/华南重点工业园区" }
-        ]
-      },
-      {
-        label: "出口增速", labelEn: "EXPORT GROWTH",
-        value: 4.8, unit: "%", trend: "Shift",
-        insight: "高附加值组件替代传统代工",
-        color: "#FF6B35",
-        sparkData: [5.9, 4.2, 4.8], years: ["2024","2025","2026E"],
-        note: "出口增速数据来源于商务部月度贸易统计，商务部研究院提供出口结构升级分析。",
-        actions: [
-          { tag: "品牌", text: "联合半导体设备商打造「洁净流体合规出口」联合解决方案白皮书" },
-          { tag: "服务", text: "在东南亚/中东布局本地化备件库，支持随主机出海的售后服务" },
-          { tag: "认证", text: "加速推进 SEMI F57/F19 认证体系，提升客户出口竞争力背书" }
-        ]
-      },
-      {
-        label: "PPI 走势", labelEn: "PPI TREND",
-        value: 1.2, unit: "%", trend: "Recovery",
-        insight: "中下游利润空间重构",
-        color: "#BF80FF",
-        sparkData: [-2.7, -0.8, 1.2], years: ["2024","2025","2026E"],
-        note: "PPI 数据来源于国家统计局价格统计司，中金宏观团队提供 PPI 回升路径预测。",
-        actions: [
-          { tag: "定价", text: "基于 PPI 回升重新校准产品定价策略，推出 ROI 可视化计算工具" },
-          { tag: "价值", text: "将「降耗增效」纳入核心销售话术，量化流体控制精度带来的节省数据" },
-          { tag: "时机", text: "把握利润修复窗口，推进存量客户设备升级与服务合同升级谈判" }
-        ]
-      }
-    ]
-  },
-
-  // ── LIQUID COOLING PAGE ──────────────────────────────────
-  liquid: {
-    headline: "AI Infrastructure",
-    subline: "算力密度突破物理极限，流体控制成为 AI 基础设施的关键变量",
-    eyebrow: "SBU · AI Infrastructure · Liquid Cooling",
-    marketRows: [
-      { label: "新建智算中心液冷渗透率", value: "45%",    note: "↑ +16pp vs 2025", color: "#00FFB2" },
-      { label: "国家级枢纽 PUE 准入",    value: "< 1.15", note: "法规强制执行",     color: "#00C8FF" },
-      { label: "CDU 市场规模 CAGR",     value: "47%",    note: "2024–2028E",      color: "#FFD700" }
-    ],
-    bodyText: "在 AI 算力集群（新一代 Blackwell 架构）功率密度突破 100kW/机柜背景下，流体控制的绝对可靠性已成为算力基建的「第一优先级」变量。",
-    roadmap: [
-      { year: "2026", title: "精密动态平衡", color: "#00FFB2", desc: "基于 AI 负载的毫秒级流量调节，响应延迟 <5ms" },
-      { year: "2027", title: "预测性维护",   color: "#00C8FF", desc: "自诊断执行器接入 DCIM，故障预警窗口达 72H" },
-      { year: "2028", title: "相变冷却突破", color: "#BF80FF", desc: "两相流高压气密控制，散热密度突破 300W/cm²" }
-    ],
-    swot: [
-      { tag: "ADVANTAGE",   zh: "核心优势", color: "#00FFB2", text: "基于全球领先的无泄漏（Zero-Leakage）密封技术，卡位高附加值二次侧流量均衡控制，替代壁垒极高。" },
-      { tag: "OPPORTUNITY", zh: "战略机遇", color: "#00C8FF", text: "AI 训练集群功率密度突破 100kW/机柜，CDU 出货量 CAGR 83%，精密流量控制窗口期在 2026–2027 完全打开。" },
-      { tag: "THREAT",      zh: "潜在威胁", color: "#FF6B35", text: "本土系统集成商自研低端零部件的「系统化替代」，需从单一零件销售转向系统模块化方案，缩短决策链路。" }
-    ]
-  },
-
-  // ── SEMICONDUCTOR PAGE ───────────────────────────────────
-  semiconductor: {
-    headline: "半导体 SBU",
-    subline: "先进制程 · 超高纯气路控制",
-    tagline: "AI 驱动产能扩张，精密流体需求激增",
-    stats: [
-      { label: "精密流体管控节点/线", value: "3,200+", color: "#22d3ee" },
-      { label: "晶圆厂固投增速",      value: "+21%",   color: "#22d3ee" },
-      { label: "超纯水用量 CAGR",     value: "18%",    color: "#22d3ee" },
-      { label: "景气度指数",           value: "9.2",    color: "#22d3ee" }
-    ],
-    specs: [
-      { label: "表面粗糙度 (RA)",   value: "< 0.1 μm",   bar: 96, unit: "PERFORMANCE RATING" },
-      { label: "气体泡漏率",         value: "1×10⁻¹²",   bar: 99, unit: "PERFORMANCE RATING" },
-      { label: "耐腐蚀介质",         value: "HF / H₂SO₄", bar: 88, unit: "COMPATIBILITY RATING" },
-      { label: "响应时间",           value: "< 50ms",     bar: 92, unit: "SPEED RATING" },
-      { label: "洁净等级",           value: "ISO Class 1", bar: 100, unit: "CLEANLINESS RATING" }
-    ],
-    actions: [
-      { quarter: "Q1 2026", title: "JDM 切入光刻机气路标准", urgency: "HIGH",
-        desc: "以 Joint Development Manufacturing 模式联合国内主流 DUV 光刻机厂商，共同制定超纯气路控制模块规格，锁定先发壁垒。" },
-      { quarter: "Q2 2026", title: "CoWoS 封装产线系统集成", urgency: "HIGH",
-        desc: "针对台积电/长电科技 CoWoS 产能扩张，推出化学品精密配送系统完整解决方案，目标单线配套额 ¥2,800 万+。" },
-      { quarter: "Q3 2026", title: "国产 12\" 晶圆厂批量导入", urgency: "MED",
-        desc: "锁定中芯国际、华虹半导体新增 12 英寸产线，推进超纯水回路精密流量阀组替换传统品牌的系统迁移方案。" },
-      { quarter: "H2 2026", title: "氢能源电解槽配套",       urgency: "MED",
-        desc: "将半导体级腐蚀介质控制能力横向移植至碱性电解槽 KOH 管路，打开氢能赛道增量入口。" }
-    ],
-    risks: [
-      { level: "HIGH",  label: "出口管制扩大", desc: "美国 BIS 规则可能进一步限制配套设备出口，需建立合规预警机制" },
-      { level: "MED",   label: "设备交期延误", desc: "主机设备延期传导至配套采购延迟，建议提前 9 个月锁定框架协议" },
-      { level: "LOW",   label: "国产替代提速", desc: "本土阀门厂商在低端品类持续渗透，需加速向高洁净度差异化品类迁移" }
-    ]
-  }
-};
-
-// ── STORAGE LAYER ─────────────────────────────────────────
-// Loads saved edits from localStorage, merges over defaults
-(function() {
-  try {
-    const saved = localStorage.getItem('burkert_data');
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      // Deep merge saved data over defaults
-      function deepMerge(target, source) {
-        for (const key of Object.keys(source)) {
-          if (source[key] && typeof source[key] === 'object' && !Array.isArray(source[key])) {
-            if (!target[key]) target[key] = {};
-            deepMerge(target[key], source[key]);
-          } else {
-            target[key] = source[key];
-          }
-        }
-        return target;
-      }
-      deepMerge(window.BURKERT_DATA, parsed);
-    }
-  } catch(e) {
-    console.warn('Could not load saved data:', e);
-  }
-})();
-
-</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PULSE 2026 · 行业景气度监测</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Mono:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-::-webkit-scrollbar{width:3px;height:3px}
-::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:2px}
-body{background:#020810;color:#fff;font-family:'Helvetica Neue',Arial,sans-serif;min-height:100vh}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 14px; scroll-behavior: smooth; }
 
-@keyframes borderFlow{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-@keyframes borderFlowReverse{0%,100%{background-position:100% 50%}50%{background-position:0% 50%}}
-@keyframes dotBlink{0%,100%{opacity:1}50%{opacity:.25}}
-@keyframes cardReveal{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(200%)}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-@keyframes pulseRing{0%{stroke-dasharray:0 999}100%{stroke-dasharray:var(--ring-len) 999}}
-
-.fluid-border-accent::before{
-  content:'';position:absolute;inset:-1px;z-index:0;padding:1px;
-  background:var(--fluid-color,linear-gradient(120deg,rgba(0,200,255,.8),rgba(0,0,0,.2),rgba(0,200,255,.8)));
-  background-size:300% 300%;animation:borderFlow 4s ease infinite;
-  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
-  mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
-  -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;
+:root {
+  --bg:   #0d0f14; --bg2:  #13161e; --bg3:  #1a1e28;
+  --bdr:  rgba(255,255,255,.07); --bdr2: rgba(255,255,255,.13);
+  --txt:  #e8eaf0; --txt2: #8b90a0; --txt3: #505568;
+  --macro:#e0a040; --ei:#4f8ef7; --gi:#34d07a; --pb:#b06af0; --lm:#22cfe0; --fb:#f06040;
+  --hot:#ef4444; --exp:#4f8ef7; --neu:#f59e0b; --cold:#525a6b;
+  --up:#22c55e; --dn:#ef4444; --fl:#f59e0b;
 }
-.glass-panel{backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);background:rgba(7,12,30,.72)!important}
-.metric-card{
-  position:relative;animation:cardReveal .55s cubic-bezier(.16,1,.3,1) both;cursor:pointer;
-  transition:transform .3s cubic-bezier(.16,1,.3,1);
+
+body { padding-top:52px; font-family:'DM Mono',monospace; background:var(--bg); color:var(--txt); min-height:100vh; overflow-x:hidden; }
+
+body::before {
+  content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+  opacity:.45;
 }
-.metric-card:hover{transform:translateY(-4px)}
-.metric-inner{
-  position:relative;margin:1px;z-index:1;
-  background:rgba(6,10,24,.92);backdrop-filter:blur(16px) saturate(150%);
-  -webkit-backdrop-filter:blur(16px) saturate(150%);
-  padding:28px 22px 22px;height:210px;overflow:hidden;
-  transition:all .3s cubic-bezier(.16,1,.3,1);
-}
-.metric-border{
-  position:absolute;inset:0;z-index:0;
-  background:linear-gradient(120deg,rgba(227,6,19,0) 0%,rgba(227,6,19,.55) 30%,rgba(10,10,25,.2) 55%,rgba(80,0,10,.35) 80%,rgba(227,6,19,.25) 100%);
-  background-size:300% 300%;animation:borderFlowReverse 7s ease infinite;
-}
-.metric-card:hover .metric-border{animation:borderFlow 3s ease infinite}
-.metric-card:hover .metric-inner{box-shadow:0 0 52px var(--mc,#fff)16,inset 0 0 32px var(--mc,#fff)05}
 
-.sbu-card{position:relative;flex-shrink:0;cursor:pointer;transition:transform .3s cubic-bezier(.16,1,.3,1);animation:cardReveal .55s cubic-bezier(.16,1,.3,1) both}
-.sbu-card:hover{transform:translateY(-5px)}
-.sbu-inner{position:relative;margin:1px;z-index:1;background:rgba(6,10,24,.9);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);overflow:hidden;transition:all .3s cubic-bezier(.16,1,.3,1)}
-.sbu-border{position:absolute;inset:0;z-index:0;background:linear-gradient(120deg,rgba(227,6,19,0) 0%,rgba(227,6,19,.45) 35%,rgba(15,15,35,.2) 55%,rgba(80,0,10,.3) 80%,rgba(227,6,19,.2) 100%);background-size:300% 300%;animation:borderFlowReverse 8s ease infinite}
-.sbu-card:hover .sbu-border,.sbu-card.active .sbu-border{animation:borderFlow 3.5s ease infinite}
-.sbu-card.active .sbu-inner{box-shadow:0 16px 60px var(--sc)16,inset 0 0 24px var(--sc)06}
+/* NAV */
+nav { position:sticky; top:0; z-index:100; height:52px; display:flex; align-items:center; padding:0 2rem; background:rgba(13,15,20,.93); backdrop-filter:blur(20px); border-bottom:1px solid var(--bdr); }
+.nlogo { font-family:'Syne',sans-serif; font-size:.95rem; font-weight:800; letter-spacing:.06em; flex-shrink:0; }
+.nlogo span { color:var(--ei); }
+.ndiv { width:1px; height:16px; background:var(--bdr2); margin:0 1.1rem; flex-shrink:0; }
+.ntabs { display:flex; gap:.2rem; flex:1; overflow-x:auto; scrollbar-width:none; }
+.ntabs::-webkit-scrollbar { display:none; }
+.ntab { font-size:.62rem; letter-spacing:.09em; text-transform:uppercase; padding:.28rem .82rem; border-radius:4px; cursor:pointer; white-space:nowrap; flex-shrink:0; color:var(--txt3); background:none; border:none; transition:all .15s; text-decoration:none; display:inline-flex; align-items:center; gap:.38rem; }
+.ntab:hover { color:var(--txt2); background:var(--bg3); }
+.ntab.on { color:var(--txt); background:var(--bg3); }
+.ntab-dot { width:5px; height:5px; border-radius:50%; flex-shrink:0; }
+.nright { display:flex; align-items:center; gap:.8rem; margin-left:auto; flex-shrink:0; }
+.ndate { font-size:.58rem; letter-spacing:.09em; color:var(--txt3); }
+.nsrc { font-size:.58rem; letter-spacing:.09em; text-transform:uppercase; color:var(--txt3); border:1px solid var(--bdr); border-radius:4px; padding:.26rem .6rem; cursor:pointer; background:none; transition:all .15s; }
+.nsrc:hover { color:var(--txt2); border-color:var(--bdr2); }
 
-.panel-overlay{position:fixed;inset:0;z-index:9999;background:rgba(1,3,12,.75);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);display:flex;align-items:stretch;justify-content:flex-end;opacity:0;transition:opacity .32s ease;pointer-events:none}
-.panel-overlay.vis{opacity:1;pointer-events:all}
-.panel-slide{width:min(700px,96vw);background:linear-gradient(160deg,rgba(6,11,30,.96),rgba(9,15,36,.98));backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-left:1px solid var(--pc)25;overflow-y:auto;transform:translateX(80px);transition:transform .38s cubic-bezier(.16,1,.3,1)}
-.panel-overlay.vis .panel-slide{transform:translateX(0)}
+/* HERO */
+.hero { max-width:1400px; margin:0 auto; padding:2.25rem 2rem 1.75rem; display:flex; justify-content:space-between; align-items:flex-end; border-bottom:1px solid var(--bdr); position:relative; z-index:1; }
+.hero-l h1 { font-family:'Syne',sans-serif; font-size:clamp(1.5rem,2.8vw,2rem); font-weight:800; letter-spacing:-.02em; line-height:1.1; margin-bottom:.4rem; }
+.hero-l h1 em { font-style:normal; color:var(--txt2); }
+.hero-l p { font-size:.62rem; color:var(--txt3); letter-spacing:.07em; }
+.hkpis { display:flex; gap:1px; background:var(--bdr); border:1px solid var(--bdr); border-radius:6px; overflow:hidden; }
+.hkpi { padding:.75rem 1.1rem; background:var(--bg2); display:flex; flex-direction:column; gap:.18rem; min-width:100px; }
+.hkpi-v { font-family:'Syne',sans-serif; font-size:1.2rem; font-weight:800; line-height:1; }
+.hkpi-l { font-size:.52rem; letter-spacing:.11em; text-transform:uppercase; color:var(--txt3); }
+.hkpi-d { font-size:.58rem; font-weight:500; }
+.up{color:var(--up)}.dn{color:var(--dn)}.fl{color:var(--fl)}
 
-/* Nav */
+/* SECTION HDR */
+.shdr { max-width:1400px; margin:0 auto; padding:1.5rem 2rem .8rem; display:flex; align-items:center; gap:.9rem; position:relative; z-index:1; }
+.stitle { font-size:.58rem; letter-spacing:.17em; text-transform:uppercase; color:var(--txt3); white-space:nowrap; }
+.sline { flex:1; height:1px; background:var(--bdr); }
+.scol { font-size:.58rem; letter-spacing:.1em; color:var(--txt2); cursor:pointer; white-space:nowrap; }
+.scol:hover { color:var(--txt); }
 
+/* BOARD GRID */
+.bgrid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--bdr); border-top:1px solid var(--bdr); position:relative; z-index:1; }
+@media(max-width:860px){.bgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.bgrid{grid-template-columns:1fr}}
 
-.nav-brand{display:flex;align-items:center;gap:8px;flex-shrink:0}
-.nav-dot{width:7px;height:7px;border-radius:50%;background:#E30613;box-shadow:0 0 8px #E30613;animation:dotBlink 2.4s ease-in-out infinite}
-.nav-logo{font-family:'Courier New',monospace;font-size:11px;font-weight:700;color:#fff;letter-spacing:.22em}
-.nav-sub{font-family:'Courier New',monospace;font-size:9px;color:rgba(255,255,255,.70);letter-spacing:.15em}
+.bcard { background:var(--bg2); padding:1.4rem 1.6rem 1.2rem; cursor:pointer; transition:background .15s; position:relative; overflow:hidden; border:none; text-align:left; width:100%; }
+.bcard:hover { background:var(--bg3); }
+.bcard.on { background:var(--bg3); }
+.bcard-bar { position:absolute; top:0; left:0; right:0; height:2px; background:var(--c,#fff); transform:scaleX(0); transform-origin:left; transition:transform .3s cubic-bezier(.23,1,.32,1); }
+.bcard:hover .bcard-bar, .bcard.on .bcard-bar { transform:scaleX(1); }
 
+.bcard-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:.9rem; }
+.bbadge { font-size:.52rem; letter-spacing:.15em; text-transform:uppercase; padding:.16rem .46rem; border-radius:3px; color:var(--c); border:1px solid color-mix(in srgb,var(--c) 35%,transparent); background:color-mix(in srgb,var(--c) 10%,transparent); }
+.bheat { font-family:'Syne',sans-serif; font-size:1.9rem; font-weight:800; line-height:1; color:var(--c); }
+.btrend { font-size:.78rem; text-align:right; margin-top:.08rem; }
+.bname { font-family:'Noto Sans SC',sans-serif; font-size:.84rem; font-weight:500; margin-bottom:.28rem; }
+.bsum { font-size:.6rem; color:var(--txt3); line-height:1.6; margin-bottom:.8rem; }
 
+/* sparkline */
+.bspark { display:flex; align-items:flex-end; gap:2px; height:18px; margin-bottom:.7rem; }
+.bsbar { flex:1; border-radius:1px; min-height:3px; background:color-mix(in srgb,var(--c) 22%,transparent); transition:background .15s; }
+.bcard:hover .bsbar, .bcard.on .bsbar { background:color-mix(in srgb,var(--c) 38%,transparent); }
+.bsbar.pk { background:var(--c) !important; }
 
+.bchips { display:flex; flex-wrap:wrap; gap:.24rem; margin-bottom:.8rem; }
+.bchip { font-size:.52rem; padding:.12rem .4rem; background:var(--bg); border:1px solid var(--bdr); border-radius:3px; color:var(--txt3); transition:all .15s; }
+.bcard:hover .bchip,.bcard.on .bchip { border-color:color-mix(in srgb,var(--c) 28%,transparent); color:var(--txt2); }
 
-.nav-status{display:flex;align-items:center;gap:6px;flex-shrink:0}
-.status-dot{width:5px;height:5px;border-radius:50%;background:#00FFB2;animation:dotBlink 2.8s ease-in-out infinite}
-.status-txt{font-family:'Courier New',monospace;font-size:8px;color:rgba(255,255,255,.70);letter-spacing:.2em}
-.nav-bar{height:2px;background:linear-gradient(90deg,#E30613,transparent);width:0;transition:width .3s ease}
-@media(max-width:600px){.nav-sub,.nav-status{display:none}}
+.bfoot { display:flex; align-items:center; justify-content:space-between; padding-top:.65rem; border-top:1px solid var(--bdr); }
+.bcnt { font-size:.55rem; color:var(--txt3); letter-spacing:.06em; }
+.barrow { font-size:.75rem; color:var(--txt3); transition:all .2s; }
+.bcard:hover .barrow { color:var(--c); transform:translateX(2px); }
+.bcard.on .barrow { color:var(--c); transform:rotate(90deg); }
 
-.main-wrap{max-width:1200px;margin:0 auto;padding:80px 40px 60px;position:relative;z-index:1}
-@media(max-width:768px){.main-wrap{padding:72px 16px 40px}}
-.metrics-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
-@media(max-width:900px){.metrics-grid{grid-template-columns:1fr 1fr;gap:2px}}
-@media(max-width:500px){.metrics-grid{grid-template-columns:1fr;gap:2px}}
-.sbu-scroll{display:flex;gap:10px;overflow-x:auto;padding-bottom:12px;scrollbar-width:none;-ms-overflow-style:none}
-.sbu-scroll::-webkit-scrollbar{display:none}
-.sbu-detail{margin-bottom:24px;border:1px solid rgba(255,255,255,.05);background:rgba(6,12,28,.95);transition:border-color .5s,background .5s}
-.sbu-detail.active-sbu{border-color:var(--sc)40;background:linear-gradient(135deg,var(--sc)06 0%,rgba(6,12,28,.98) 100%)}
-.sbu-detail-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0}
-@media(max-width:700px){.sbu-detail-grid{grid-template-columns:1fr}}
+/* TRACK PANEL */
+.tpanel { max-height:0; overflow:hidden; transition:max-height .45s cubic-bezier(.23,1,.32,1); background:var(--bg); border-bottom:1px solid var(--bdr); position:relative; z-index:1; }
+.tpanel.open { max-height:900px; }
+.tinner { padding:1.4rem 2rem 1.8rem; max-width:1400px; margin:0 auto; opacity:0; transform:translateY(8px); transition:opacity .28s .08s, transform .28s .08s; }
+.tpanel.open .tinner { opacity:1; transform:none; }
 
-/* ── CURSOR ── */
-#cursor-glow{position:fixed;pointer-events:none;z-index:99999;width:320px;height:320px;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(0,255,178,.07) 0%,rgba(0,200,255,.04) 30%,transparent 70%);transition:opacity .3s ease;mix-blend-mode:screen}
-#cursor-dot{position:fixed;pointer-events:none;z-index:100000;width:24px;height:24px;border-radius:50%;background:transparent;border:1.5px solid rgba(0,255,178,.8);transform:translate(-50%,-50%);box-shadow:0 0 8px rgba(0,255,178,.4),inset 0 0 6px rgba(0,255,178,.2);transition:width .2s ease,height .2s ease,border-color .2s,box-shadow .2s}
-body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([onclick]:hover) #cursor-dot{width:36px;height:36px;border-color:rgba(255,215,0,.9);box-shadow:0 0 16px rgba(255,215,0,.4),inset 0 0 10px rgba(255,215,0,.08)}
-#site-nav{position:fixed;top:0;left:0;right:0;z-index:10000;background:rgba(2,5,18,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.07)}
+.tp-hdr { display:flex; align-items:center; gap:.7rem; margin-bottom:1.1rem; flex-wrap:wrap; }
+.tp-badge { font-size:.52rem; letter-spacing:.15em; text-transform:uppercase; padding:.18rem .55rem; border-radius:3px; font-weight:500; }
+.tp-ttl { font-family:'Syne',sans-serif; font-size:.92rem; font-weight:700; }
+.tp-lnk { margin-left:auto; font-size:.58rem; letter-spacing:.08em; text-transform:uppercase; text-decoration:none; padding:.28rem .7rem; border-radius:4px; border:1px solid var(--bdr); color:var(--txt2); transition:all .15s; white-space:nowrap; }
+.tp-lnk:hover { border-color:var(--bdr2); color:var(--txt); }
+
+.trows { display:flex; flex-direction:column; gap:1px; background:var(--bdr); border:1px solid var(--bdr); border-radius:6px; overflow:hidden; }
+.trow { display:grid; grid-template-columns:155px 1fr 52px 22px 22px; align-items:center; gap:.9rem; padding:.75rem 1rem; background:var(--bg2); cursor:pointer; transition:background .12s; }
+.trow:hover { background:var(--bg3); }
+
+.tr-n { font-family:'Noto Sans SC',sans-serif; font-size:.72rem; font-weight:500; }
+.tr-s { font-size:.52rem; color:var(--txt3); margin-top:.12rem; }
+.tr-bw { position:relative; height:5px; background:var(--bg); border-radius:3px; margin-bottom:.28rem; }
+.tr-b50 { position:absolute; left:50%; top:-2px; bottom:-2px; width:1px; background:var(--bdr2); }
+.tr-b { height:100%; border-radius:3px; transition:width .55s cubic-bezier(.23,1,.32,1); }
+.tr-scs { display:flex; gap:.18rem; }
+.tr-sc { font-size:.48rem; padding:.1rem .26rem; border-radius:2px; background:var(--bg3); display:inline-flex; gap:.15rem; }
+.tr-sc b { font-weight:600; }
+.h b{color:var(--up)}.m b{color:var(--fl)}.l b{color:var(--dn)}
+.tr-hv { font-family:'Syne',sans-serif; font-size:.9rem; font-weight:800; text-align:right; }
+.tr-tr { font-size:.8rem; text-align:center; }
+.hot{color:var(--hot)}.exp{color:var(--exp)}.neu{color:var(--neu)}.cold{color:var(--cold)}
+
+/* MODAL */
+.overlay { position:fixed; inset:0; z-index:200; background:rgba(8,10,16,.78); backdrop-filter:blur(8px); display:flex; align-items:center; justify-content:center; padding:1.5rem; opacity:0; pointer-events:none; transition:opacity .2s; }
+.overlay.open { opacity:1; pointer-events:all; }
+.modal { background:var(--bg2); width:100%; max-width:620px; max-height:88vh; overflow-y:auto; border:1px solid var(--bdr2); border-radius:8px; box-shadow:0 24px 80px rgba(0,0,0,.55); transform:translateY(16px) scale(.97); transition:transform .22s; position:relative; }
+.overlay.open .modal { transform:none; }
+.m-acc { height:3px; border-radius:8px 8px 0 0; }
+.m-hd { padding:1.3rem 1.4rem 1.1rem; display:flex; justify-content:space-between; align-items:flex-start; border-bottom:1px solid var(--bdr); }
+.mhl { flex:1; }
+.m-bg { font-size:.5rem; letter-spacing:.15em; text-transform:uppercase; font-weight:500; margin-bottom:.32rem; display:inline-block; padding:.14rem .42rem; border-radius:3px; }
+.m-tt { font-family:'Syne',sans-serif; font-size:1.15rem; font-weight:800; margin-bottom:.18rem; }
+.m-sb { font-size:.6rem; color:var(--txt3); }
+.mhr { text-align:right; flex-shrink:0; padding-left:.9rem; }
+.m-ht { font-family:'Syne',sans-serif; font-size:2.4rem; font-weight:800; line-height:1; }
+.m-tr { font-size:1rem; }
+.mcl { position:absolute; top:.9rem; right:.9rem; width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--txt3); background:var(--bg3); border:1px solid var(--bdr); font-size:.75rem; transition:all .15s; }
+.mcl:hover { color:var(--txt); }
+.mbody { padding:1.3rem 1.4rem; }
+.m-scs { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--bdr); border:1px solid var(--bdr); border-radius:5px; overflow:hidden; margin-bottom:1.3rem; }
+.msc { background:var(--bg3); padding:.7rem .85rem; display:flex; flex-direction:column; gap:.18rem; }
+.msc-l { font-size:.48rem; letter-spacing:.13em; text-transform:uppercase; color:var(--txt3); }
+.msc-v { font-family:'Syne',sans-serif; font-size:1.45rem; font-weight:800; line-height:1; }
+.msc-w { font-size:.48rem; color:var(--txt3); }
+.msc-b { height:2px; background:var(--bg); border-radius:1px; margin-top:.22rem; }
+.msc-bf { height:100%; border-radius:1px; }
+.msec { margin-bottom:1.1rem; }
+.msecl { font-size:.5rem; letter-spacing:.15em; text-transform:uppercase; color:var(--txt3); margin-bottom:.5rem; display:flex; align-items:center; gap:.55rem; }
+.msecl::after { content:''; flex:1; height:1px; background:var(--bdr); }
+.mdl { display:flex; flex-direction:column; gap:.32rem; }
+.mdi { font-size:.65rem; color:var(--txt2); line-height:1.65; display:flex; gap:.45rem; }
+.mdi::before { content:'·'; color:var(--txt3); flex-shrink:0; }
+.mtw { font-family:'Noto Sans SC',sans-serif; font-size:.72rem; font-weight:300; line-height:1.88; color:var(--txt2); }
+.msrcs { display:flex; flex-wrap:wrap; gap:.28rem; }
+.mstag { font-size:.52rem; padding:.13rem .42rem; background:var(--bg); border:1px solid var(--bdr); border-radius:3px; color:var(--txt3); }
+.mact { background:var(--bg3); border:1px solid var(--bdr2); border-radius:5px; padding:.82rem 1rem; display:flex; gap:.7rem; align-items:center; margin-top:1.1rem; }
+.mact-l { font-size:.48rem; letter-spacing:.13em; text-transform:uppercase; color:var(--txt3); flex-shrink:0; }
+.mact-t { font-family:'Noto Sans SC',sans-serif; font-size:.75rem; font-weight:500; color:var(--txt); }
+
+/* SOURCE PANEL */
+.spanel { position:fixed; right:0; top:52px; bottom:0; width:300px; z-index:90; background:var(--bg2); border-left:1px solid var(--bdr); transform:translateX(100%); transition:transform .28s cubic-bezier(.23,1,.32,1); overflow-y:auto; }
+.spanel.open { transform:none; }
+.sphd { padding:1.1rem 1.4rem; border-bottom:1px solid var(--bdr); position:sticky; top:0; background:var(--bg2); }
+.spttl { font-family:'Syne',sans-serif; font-size:.85rem; font-weight:700; }
+.spsub { font-size:.56rem; color:var(--txt3); margin-top:.18rem; }
+.spcl { position:absolute; top:.85rem; right:.85rem; width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; background:var(--bg3); border:1px solid var(--bdr); font-size:.7rem; color:var(--txt3); }
+.spitems { padding:.8rem 1.4rem; }
+.spit { padding:.75rem 0; border-bottom:1px solid var(--bdr); }
+.spit:last-child { border-bottom:none; }
+.spn { font-size:.68rem; font-weight:500; margin-bottom:.26rem; }
+.spd { font-size:.58rem; color:var(--txt3); line-height:1.6; margin-bottom:.38rem; }
+.sptags { display:flex; flex-wrap:wrap; gap:.24rem; }
+.sptag { font-size:.48rem; padding:.11rem .36rem; background:var(--bg3); border:1px solid var(--bdr); border-radius:100px; color:var(--txt3); }
+
+footer { border-top:1px solid var(--bdr); padding:1.3rem 2rem; display:flex; justify-content:space-between; font-size:.56rem; color:var(--txt3); letter-spacing:.06em; max-width:1400px; margin:0 auto; position:relative; z-index:1; }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:none} }
+.fu { animation:fadeUp .4s ease both; }
+#site-nav{position:fixed;top:0;left:0;right:0;z-index:10000;background:rgba(13,15,20,.93);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07)}
 .nav-inner{max-width:1380px;margin:0 auto;padding:0 32px;display:flex;align-items:center;height:52px}
 .nav-links{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
-.nav-link{padding:5px 12px;font-size:11px;font-family:'IBM Plex Mono',monospace;letter-spacing:.08em;color:rgba(255,255,255,.65);text-decoration:none;border:1px solid transparent;transition:all .2s;white-space:nowrap}
+.nav-link{padding:5px 12px;font-size:11px;font-family:'DM Mono',monospace;letter-spacing:.08em;color:rgba(255,255,255,.65);text-decoration:none;border:1px solid transparent;transition:all .2s;white-space:nowrap}
 .nav-link:hover{color:#fff;border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
 </style>
 </head>
 <body>
-<div id="cursor-glow"></div>
-<div id="cursor-dot"></div>
 
-<!-- NAV -->
 <nav id="site-nav">
   <div class="nav-inner">
     <div class="nav-links">
-      <a href="index.html" class="nav-link" style="color:#00FFB2;border-color:#00FFB2;background:rgba(0,255,178,.08)">宏观脉搏</a>
+      <a href="index.html" class="nav-link" style="color:#e0a040;border-color:#e0a040;background:rgba(224,160,64,.08)">宏观脉搏</a>
       <a href="liquid.html" class="nav-link">AI 液冷</a>
       <a href="semiconductor.html" class="nav-link">半导体 SBU</a>
       <a href="mscc.html" class="nav-link">质谱·色谱</a>
@@ -292,534 +205,228 @@ body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([oncli
   </div>
 </nav>
 
-<!-- BG -->
-<div style="position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);background-size:60px 60px"></div>
-<div style="position:fixed;top:-25%;left:40%;transform:translateX(-50%);width:90vw;height:700px;background:radial-gradient(ellipse,rgba(0,180,255,.035) 0%,transparent 65%);pointer-events:none;z-index:0"></div>
-<div style="position:fixed;bottom:-10%;right:10%;width:40vw;height:500px;background:radial-gradient(ellipse,rgba(227,6,19,.025) 0%,transparent 70%);pointer-events:none;z-index:0"></div>
-
-<div class="main-wrap">
-  <!-- HEADER -->
-  <header style="margin-bottom:48px">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.06)">
-      <div style="display:flex;align-items:center;gap:10px">
-        <div style="width:6px;height:6px;border-radius:50%;background:#00FFB2;box-shadow:0 0 12px #00FFB2;animation:dotBlink 2.4s ease-in-out infinite"></div>
-        <span style="font-family:'Courier New',monospace;font-size:10px;color:rgba(255,255,255,.65);letter-spacing:.25em">SYSTEM ACTIVE — CLICK ANY CARD FOR DEEP ANALYSIS</span>
-      </div>
-      <span style="font-family:'Courier New',monospace;font-size:10px;color:rgba(255,255,255,.65);letter-spacing:.15em">十五五规划开局年 / FY-2026</span>
-    </div>
-    <div style="display:flex;align-items:flex-start;gap:22px">
-      <div style="width:3px;height:68px;flex-shrink:0;background:linear-gradient(180deg,#E30613,rgba(227,6,19,.15))"></div>
-      <div>
-        <h1 style="font-size:clamp(26px,4vw,42px);font-weight:800;color:#fff;margin:0 0 8px;letter-spacing:-.02em;line-height:1.1">
-          中国宏观脉搏 <span style="color:rgba(255,255,255,.65);font-weight:200;margin-left:14px;font-size:.58em;letter-spacing:.1em">THE PULSE 2026</span>
-        </h1>
-        <p style="color:rgba(255,255,255,.82);font-size:13px;margin:0 0 3px;letter-spacing:.04em">基于"十五五"规划开局之年的精密流体市场环境分析 · 点击指标卡片查看深度解读</p>
-        <p style="color:rgba(255,255,255,.65);font-size:10.5px;margin:0;font-family:'Courier New',monospace;letter-spacing:.08em">Trend analysis · Downstream impact · Strategic actions · Data provenance</p>
-      </div>
-    </div>
-  </header>
-
-  <!-- METRICS GRID -->
-  <div class="metrics-grid" id="metrics-grid"></div>
-
-  <!-- SUMMARY STRIP -->
-  <div style="margin-top:24px;position:relative;overflow:hidden">
-    <div style="height:1px;background:linear-gradient(90deg,rgba(227,6,19,.5),rgba(255,255,255,.08) 30%,rgba(227,6,19,.3) 70%,transparent);background-size:300% 100%;animation:borderFlow 5s ease infinite"></div>
-    <div style="padding:18px 24px;background:rgba(5,9,22,.82);backdrop-filter:blur(18px) saturate(150%);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.04)">
-      <div style="display:flex;gap:30px;flex-wrap:wrap" id="summary-stats"></div>
-      <button onclick="openProvenance([])" style="display:flex;align-items:center;gap:10px;background:rgba(227,6,19,.06);border:1px solid rgba(227,6,19,.3);padding:10px 18px;cursor:pointer;font-family:'Courier New',monospace;transition:all .25s" onmouseenter="this.style.background='rgba(227,6,19,.14)'" onmouseleave="this.style.background='rgba(227,6,19,.06)'">
-        <span style="width:7px;height:7px;border-radius:50%;background:#E30613;box-shadow:0 0 8px #E30613;animation:dotBlink 2.4s ease-in-out infinite;display:inline-block"></span>
-        <div style="text-align:left">
-          <div style="font-size:10px;color:rgba(255,255,255,.82);letter-spacing:.15em">数据溯源中心</div>
-          <div style="font-size:8px;color:rgba(255,255,255,.65);letter-spacing:.1em;margin-top:1px">DATA PROVENANCE HUB · 8 SOURCES</div>
-        </div>
-        <span style="color:rgba(227,6,19,.7);font-size:14px;margin-left:4px">→</span>
-      </button>
-    </div>
+<div class="hero fu">
+  <div class="hero-l">
+    <h1>行业景气度<br><em>监测报告 2026</em></h1>
+    <p>HEAT SCORE · D×35% + C×30% + P×20% + Pol×15% · 6 BOARDS · 20 TRACKS</p>
   </div>
+  <div class="hkpis" id="hkpis"></div>
+</div>
 
-  <!-- SBU NAVIGATOR -->
-  <div style="margin-top:48px">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
-      <div style="display:flex;align-items:center;gap:16px">
-        <div style="width:3px;height:44px;background:linear-gradient(180deg,#FF6B35,rgba(255,107,53,.15))"></div>
-        <div>
-          <h2 style="margin:0 0 3px;font-size:20px;font-weight:800;color:#fff;letter-spacing:-.01em">Strategic Business Units <span style="color:rgba(255,255,255,.65);font-weight:200;margin-left:12px;font-size:.55em;letter-spacing:.1em">SBU NAVIGATOR</span></h2>
-          <p style="margin:0;font-family:'Courier New',monospace;font-size:9px;color:rgba(255,255,255,.65);letter-spacing:.18em">点击卡片跳转至行业深度分析 · CLICK TO EXPLORE INDUSTRY ANALYSIS</p>
-        </div>
+<div class="shdr">
+  <span class="stitle">板块总览 · 6 Sectors</span>
+  <div class="sline"></div>
+  <span class="scol" onclick="collapseAll()">收起 ↑</span>
+</div>
+
+<div class="bgrid" id="bgrid"></div>
+<div class="tpanel" id="tpanel"><div class="tinner" id="tinner"></div></div>
+
+<!-- MODAL -->
+<div class="overlay" id="overlay" onclick="maybeClose(event)">
+  <div class="modal">
+    <button class="mcl" onclick="closeModal()">✕</button>
+    <div class="m-acc" id="macc"></div>
+    <div class="m-hd">
+      <div class="mhl">
+        <div class="m-bg" id="mbg"></div>
+        <div class="m-tt" id="mtt"></div>
+        <div class="m-sb" id="msb"></div>
       </div>
-      <div style="display:flex;gap:6px">
-        <button onclick="scrollSBU(-1)" style="width:30px;height:30px;background:rgba(255,107,53,.08);border:1px solid rgba(255,107,53,.3);color:#FF6B35;cursor:pointer;font-family:'Courier New',monospace;font-size:13px;display:flex;align-items:center;justify-content:center">←</button>
-        <button onclick="scrollSBU(1)"  style="width:30px;height:30px;background:rgba(255,107,53,.08);border:1px solid rgba(255,107,53,.3);color:#FF6B35;cursor:pointer;font-family:'Courier New',monospace;font-size:13px;display:flex;align-items:center;justify-content:center">→</button>
+      <div class="mhr">
+        <div class="m-ht" id="mht"></div>
+        <div class="m-tr" id="mtr"></div>
       </div>
     </div>
-    <div style="position:relative"><div class="sbu-scroll" id="sbu-scroll"></div><div style="position:absolute;top:0;right:0;bottom:12px;width:60px;background:linear-gradient(270deg,#030810,transparent);pointer-events:none"></div></div>
-  </div>
-
-  <!-- SBU DETAIL -->
-  <div style="margin-top:56px">
-    <div style="display:flex;align-items:center;gap:16px;margin-bottom:32px">
-      <div style="width:3px;height:44px;background:linear-gradient(180deg,#BF80FF,rgba(191,128,255,.15))"></div>
-      <div>
-        <h2 style="margin:0 0 3px;font-size:20px;font-weight:800;color:#fff;letter-spacing:-.01em">行业深度分析 <span style="color:rgba(255,255,255,.65);font-weight:200;margin-left:12px;font-size:.55em;letter-spacing:.1em">INDUSTRY DEEP ANALYSIS</span></h2>
-        <p style="margin:0;font-family:'Courier New',monospace;font-size:9px;color:rgba(255,255,255,.65);letter-spacing:.18em"></p>
-      </div>
+    <div class="mbody">
+      <div class="m-scs" id="mscs"></div>
+      <div class="msec"><div class="msecl">核心数据</div><div class="mdl" id="mdl"></div></div>
+      <div class="msec"><div class="msecl">关键结论</div><p class="mtw" id="mtw"></p></div>
+      <div class="msec"><div class="msecl">数据来源</div><div class="msrcs" id="msrcs"></div></div>
+      <div class="mact"><span class="mact-l">行动</span><span class="mact-t" id="mact"></span></div>
     </div>
-    <div id="sbu-details"></div>
   </div>
 </div>
 
-<!-- DEEP DIVE PANEL -->
-<div class="panel-overlay" id="dd-overlay" onclick="if(event.target===this)closePanel()">
-  <div class="panel-slide" id="dd-panel"></div>
+<!-- SOURCE PANEL -->
+<div class="spanel" id="spanel">
+  <div class="sphd">
+    <div class="spttl">数据溯源</div>
+    <div class="spsub">Data Provenance · 8 核心来源</div>
+    <div class="spcl" onclick="toggleSrc()">✕</div>
+  </div>
+  <div class="spitems" id="spitems"></div>
 </div>
 
-<!-- PROVENANCE PANEL -->
-<div class="panel-overlay" id="prov-overlay" onclick="if(event.target===this)closeProv()">
-  <div class="panel-slide" id="prov-panel"></div>
-</div>
+<footer>
+  <span>© 2026 Bürkert · PULSE 行业景气度监测 · 202603</span>
+  <span>国家统计局 / 央行 / 行业协会 / 上市公司公告</span>
+</footer>
 
 <script>
-/* ── DATA ─────────────────────────────────────────── */
-const AUTHORITIES = {
-  CICC:{id:"CICC",shortName:"中金公司",fullName:"中国国际金融股份有限公司",report:"《2026 年中国宏观展望》",date:"2025-12",color:"#FFD700",type:"投行研究",desc:"中国顶级投资银行，覆盖宏观策略、行业深度与资本市场研究。"},
-  DELOITTE:{id:"DELOITTE",shortName:"德勤",fullName:"Deloitte China",report:"《2026 中国制造业数字化转型白皮书》",date:"2025-11",color:"#00C8FF",type:"咨询研究",desc:"全球四大会计师事务所之一，中国制造业数字化转型权威研究来源。"},
-  MCKINSEY:{id:"MCKINSEY",shortName:"麦肯锡",fullName:"McKinsey & Company",report:"《China Industrial Productivity 2026》",date:"2026-01",color:"#00FFB2",type:"战略咨询",desc:"全球顶级战略咨询机构，聚焦工业生产力、供应链与新兴市场分析。"},
-  NBS:{id:"NBS",shortName:"国家统计局",fullName:"中华人民共和国国家统计局",report:"《2025 年国民经济和社会发展统计公报》",date:"2026-02",color:"#E30613",type:"政府统计",desc:"中国官方宏观经济数据权威发布机构，覆盖 GDP、工业产值、PPI 等核心指标。"},
-  MOFCOM:{id:"MOFCOM",shortName:"商务部",fullName:"中华人民共和国商务部",report:"《2025 年对外贸易形势报告》",date:"2026-01",color:"#FF6B35",type:"政府统计",desc:"中国对外贸易数据权威来源，提供出口结构、商品分类及贸易趋势分析。"},
-  CAITEC:{id:"CAITEC",shortName:"商务部研究院",fullName:"中国国际贸易经济合作研究院",report:"《全球供应链重构与中国出口竞争力报告 2026》",date:"2025-12",color:"#BF80FF",type:"政策研究",desc:"商务部直属研究机构，专注国际贸易政策、出口竞争力与全球供应链分析。"},
-  GOLDMAN:{id:"GOLDMAN",shortName:"高盛",fullName:"Goldman Sachs Research",report:"《China 2026 Macro Outlook》",date:"2025-12",color:"#00FFB2",type:"投行研究",desc:"全球顶级投行，提供中国宏观前瞻预测与跨资产配置策略研究。"},
-  CDIRF:{id:"CDIRF",shortName:"中国发展研究基金会",fullName:"China Development Research Foundation",report:"《新质生产力发展蓝皮书 2026》",date:"2026-01",color:"#FFD700",type:"政策研究",desc:"国务院发展研究中心主管，聚焦中国经济转型、产业政策与可持续发展研究。"},
+const CV = {Macro:'--macro',EI:'--ei',GI:'--gi','P&B':'--pb','L&M':'--lm','F&B':'--fb'};
+const cc = b => `var(${CV[b]})`;
+
+const BM = {
+  Macro:{n:'宏观背景',     heat:47.3,tr:'up',sum:'FAI +1.8%转正！两会定调落地，3月PMI月底验证', href:'/macro',tracks:['m1','m2','m3'],sparks:[55,50,48]},
+  EI:   {n:'能源·基础设施',heat:72.5,tr:'up',sum:'两会AI基建落地+美半导体232关税双重催化',href:'/ei',  tracks:['e1','e2','e3','e4'],sparks:[64,72,74,44]},
+  GI:   {n:'通用工业',     heat:75.8,tr:'fl',sum:'CATL三线共振，订单确定性最强',   href:'/gi',  tracks:['g1'],sparks:[70,74,76]},
+  'P&B':{n:'制药·生物技术',heat:63.5,tr:'up',sum:'司美格鲁肽3/20已到期！仿制战全面启动', href:'/pb',  tracks:['p1','p2','p3','p4','p5'],sparks:[58,62,63,62,70]},
+  'L&M':{n:'实验室·医疗',  heat:62.3,tr:'fl',sum:'质谱进口-12.4%，因美纳禁令催化',href:'/lm',  tracks:['l1','l2','l3'],sparks:[58,62,62]},
+  'F&B':{n:'食品·饮料',    heat:54.5,tr:'dn',sum:'双FAI降速/转负，发酵唯一亮点',   href:'/fb',  tracks:['f1','f2','f3','f4'],sparks:[60,56,55,55]},
+};
+const BO = ['Macro','EI','GI','P&B','L&M','F&B'];
+
+const T = {
+  m1:{b:'Macro',n:'制造业 PMI',  sub:'总体景气指数',         heat:45.1,tr:'fl',D:44,C:36,P:48,Pol:62,sig:'两会GDP目标4.5-5%已确认，3月PMI月底发布，关税诉讼增加不确定性',data:['2月官方PMI 49.0%（-0.3pp），大型企业51.5%扩张，中小企业44.8%深度收缩','财新制造业PMI 50.8（+0.7pp）近三个月高点（2月数据）','两会确认GDP目标4.5%-5%、赤字率4%；3月PMI数据月底发布','美国最高法院裁定IEEPA关税非法，122条10%关税面临4月法院听证'],tw:'两会政策已落地，本周关注点转向：①3月31日PMI数据能否重返扩张区间；②4月美国法院关税听证（122条有效性）。关税诉讼悬而未决增加出口预期不确定性，对设备出海板块需保持关注。',act:'等待 · 3月PMI月底发布',src:['国家统计局','财新/标普全球']},
+  m2:{b:'Macro',n:'M2 / 社融',   sub:'货币政策综合信号',     heat:50.5,tr:'fl',D:47,C:40,P:56,Pol:68,sig:'两会确认赤字率4%+全年降准降息，货币宽松路径清晰',data:['1月M2同比+9%（近两年新高），社融7.22万亿（历史同期最高）','两会已确认：赤字率4%、Q1降准50BP预期仍在','关税诉讼悬而未决，出口预期承压，内需刺激成货币政策重心','3月信贷数据月底出炉，关注Q1开门红兑现'],tw:'两会货币政策定调清晰，但关税诉讼引入外需不确定性。货币宽松重心转向内需提振，Q1信贷开门红是近期关键验证指标。',act:'关注 · Q1信贷及3月PMI',src:['中国人民银行','国盛宏观']},
+  m3:{b:'Macro',n:'固定资产投资', sub:'制造业FAI/规上增加值',  heat:48.5,tr:'up',D:48,C:42,P:54,Pol:58,sig:'2026年1-2月FAI +1.8%转正！vs 2025全年-3.8%，实现关键好转',data:['2026年1-2月全国FAI +1.8%（vs 2025全年-3.8%，实现转正）','制造业（第二产业）投资+2.5%；高技术制造业+9.4%','规上工业增加值+5.9%，生产侧韧性延续','民间投资仍承压，产能利用率74.4%偏低，扩产意愿待验证'],tw:'FAI转正是年内最重要的宏观好转信号之一。需观察Q1是否延续，以及能否传导至制药/食品等细分板块Capex。Trend由↓转↑。',act:'关注 · FAI转正信号，跟踪Q1延续性',src:['国家统计局']},
+
+  e1:{b:'EI',n:'液冷数据中心',   sub:'AI液冷渗透率/市场规模',  heat:86.1,tr:'up',D:90,C:92,P:72,Pol:84,sig:'TrendForce 47%+美国半导体232关税双重催化，国产液冷需求急迫升级',data:['TrendForce：2026年AI芯片液冷渗透率47%（上调7pp）；北美市场100亿美元','美国对先进AI半导体加征25%关税（232条，1月15日起），倒逼国内液冷+算力加速国产化','两会AI基建政策已落地；PUE>1.35数据中心征差别电价2026年起执行','GB200 NVL72单柜功耗130kW+，风冷已触达物理极限，液冷刚需属性持续强化'],tw:'本月新增催化：美国对先进AI半导体加征25%关税，直接强化国内算力国产化紧迫性，液冷设备作为国产算力基础设施的核心配套，受益逻辑更加完整。渗透率47%+政策+技术三重驱动维持全表最高优先级。',act:'立即跟进 · CDU/冷板/管路系统',src:['TrendForce','国信证券','UPS关税追踪']},
+  e2:{b:'EI',n:'半导体设备国产化', sub:'龙头设备商/前道市场',   heat:80.1,tr:'up',D:82,C:82,P:68,Pol:88,sig:'DRAM Q1合约价+90-95%，全产业链涨价潮确认',data:['DRAM Q1合约价+90-95%，全产业链20+企业发涨价函','WSTS预测2026年全球半导体+26.3%达9750亿美元','北方华创2025前三季度营收273亿（+33%）'],tw:'全产业链涨价潮确认AI需求爆发，Policy分88全表最高之一。出口管制倒逼国产替代升级为必选项。',act:'持续跟进 · 存储/设备/封测多环节',src:['WSTS','北方华创财报']},
+  e3:{b:'EI',n:'绿氢电解槽',     sub:'PEM/AEM高壁垒路线',     heat:68.7,tr:'up',D:68,C:72,P:55,Pol:82,sig:'《能源法》氢能入法，PEM卡脖子材料国产替代窗口',data:['2025年电解槽招标6055MW（+155.6%），ALK内卷','PEM+AEM增速+263%，卡脖子材料国产化率<20%','《能源法》将氢能正式纳入能源管理体系'],tw:'《能源法》氢能入法是历史性信号，精准切入质子交换膜/铱催化剂国产替代，规避ALK内卷（降价>60%）。',act:'布局 · 质子交换膜/铱催化剂',src:['香橙会氢能数据库','能源法(2025)']},
+  e4:{b:'EI',n:'燃料电池',        sub:'FCEV重卡/系统集成',     heat:47.1,tr:'dn',D:40,C:50,P:38,Pol:70,sig:'1月销量-47%断崖，2025高增长冲量失真确认',data:['2026年1月销量70辆（-47% YoY），政策空窗期','五大示范城市群国补2025年底到期','2025全年高增长系12月税收截止日集中冲量'],tw:'1月-47%彻底验证2025数据失真，等待十五五接续补贴，港口/钢厂封闭场景是唯一确定性机会。',act:'暂缓 · 仅盯质子交换膜/碳纸',src:['中汽协','SNE Research']},
+
+  g1:{b:'GI',n:'锂电设备',        sub:'宁德时代产能扩张',       heat:75.8,tr:'fl',D:80,C:82,P:62,Pol:72,sig:'CATL三线共振：匈牙利Q1量产+济宁储能+钠电首发',data:['匈牙利工厂Q1量产，海外产能正式兑现','济宁储能基地新增>100GWh，国内储能双线推进','2026-01全球首款量产钠离子电池首发'],tw:'CATL三线共振支撑景气度高位，先导/赢合设备订单确定性全板块最强。2月PMI回落带来短期扰动，Trend→。',act:'稳步跟进 · 先导智能/赢合科技',src:['宁德时代公告','36kr']},
+
+  p1:{b:'P&B',n:'生物药出海',     sub:'创新药License-out/BD',   heat:69.7,tr:'up',D:80,C:72,P:48,Pol:70,sig:'司美格鲁肽专利3月20日已正式到期！仿制赛道发令枪打响',data:['司美格鲁肽核心专利3月20日已正式到期，国产仿制药法律壁垒全面清零','11款国产上市申请排队；齐鲁/石药改良新药路径预计Q3最快获批首仿','原研药降价至200元/月（已腰斩），价格战启动；多肽CDMO以量补价逻辑兑现','2025年国产创新药BD总额1357亿美元（+161%），CDMO进入订单兑现期'],tw:'专利已到期是P&B板块本月最重要里程碑事件。从"倒计时"进入"竞争实战"阶段：首仿争夺决定2026下半年格局，多肽CDMO产线订单爆发确定性高（口服仿制药原料药消耗是注射剂50倍）。立即跟进相关产线客户。',act:'立即跟进 · 多肽CDMO/仿制药产线',src:['36氪','界面新闻','摩熵医药']},
+  p2:{b:'P&B',n:'合成生物学',     sub:'中试车间开工数',          heat:67.75,tr:'up',D:70,C:68,P:58,Pol:75,sig:'中试→量产转化期，华东开工数+30% YoY',data:['华东中试车间开工数+~30% YoY（2026年2月）','华恒/凯赛/嘉必优新产线2026H1验收','功能性食品成分市场>800亿，益生菌/胶原肽高增速'],tw:'进入中试→量产转化关键期，发酵罐+分离纯化设备需求从预期变为实质交付。',act:'立即跟进 · 发酵罐/分离纯化',src:['科技日报','华恒/凯赛年报']},
+  p3:{b:'P&B',n:'生物药融资',     sub:'早期融资额',              heat:47.55,tr:'dn',D:55,C:35,P:50,Pol:52,sig:'1月融资-11% YoY，3-5年滞后指标勿误判',data:['2026年1月生物医药投融资57.66亿元（-11% YoY）','2025全年一级市场1435起融资（-13.6%），量缩价升','融资→设备需求传导链长达3-5年'],tw:'早期融资收缩是3-5年滞后指标，勿用于短期Capex判断。存量企业ADC/TIDES专线扩产仍是确定性机会。',act:'观察 · 勿用于短期Capex判断',src:['动脉网','IT桔子']},
+  p4:{b:'P&B',n:'制药装备Capex', sub:'医药制造业FAI',            heat:59.6,tr:'dn',D:72,C:46,P:55,Pol:72,sig:'医药FAI -13.5%直接承压，H2转折信号待确认',data:['医药FAI 2025年全年-13.5%，设备端最直接负面指标','司美格鲁肽3月专利到期，仿制药产线建设H2启动预期'],tw:'FAI-13.5%是最直接负面信号，H2仿制药产线建设是中期转折。精选ADC偶联/TIDES专线。',act:'暂缓 · 精选ADC/多肽专线',src:['国家统计局FAI']},
+  p5:{b:'P&B',n:'CDMO',           sub:'海外大客户询单量',        heat:67.55,tr:'up',D:72,C:65,P:58,Pol:62,sig:'询单+8% MoM近期新高，GLP-1多肽需求加速',data:['早期分子询单Index~108（+8% MoM），近期新高','凯莱英GLP-1多肽商业化订单确认，产能扩至44000L'],tw:'询单+8%是本月最强P&B正面信号，CDMO进入订单兑现期。TIDES/ADC/CGT三条高附加值产线是精准切入方向。',act:'跟进 · TIDES/GLP-1多肽专线',src:['药明康德调研','凯莱英公告']},
+
+  l1:{b:'L&M',n:'质谱/色谱仪器', sub:'高端分析仪器国产替代',    heat:68,tr:'fl',D:72,C:65,P:58,Pol:78,sig:'质谱进口-12.4%，国产替代信号最强',data:['质谱仪进口报关量-12.4% YoY，最强国产替代信号','2026年国内质谱市场预计突破230亿元'],tw:'进口-12.4%是最强国产替代确认信号，Policy分78。禾信/谱育是近期最高优先级拓展客户。',act:'跟进 · 禾信/谱育客户拓展',src:['华经产业研究院','海关总署']},
+  l2:{b:'L&M',n:'基因测序',       sub:'测序服务需求',            heat:66.4,tr:'fl',D:70,C:62,P:55,Pol:82,sig:'因美纳列入不可靠实体清单，华大智造直接受益',data:['商务部将因美纳列入"不可靠实体清单"','华大智造CoolMPS受益，三甲医院测序仪替换潮启动'],tw:'因美纳禁令是最强催化，Policy分82全表最高之一。华大智造/真迈生物是直接受益标的。',act:'跟进 · 测序仪替换+耗材双线',src:['商务部公告','21世纪经济报道']},
+  l3:{b:'L&M',n:'医疗IVD',        sub:'IVD体外诊断',             heat:52.55,tr:'dn',D:62,C:45,P:38,Pol:65,sig:'集采降价50-70%，Price分38全表最低',data:['2025年中国IVD市场规模超1400亿元','化学发光国产化率<30%，第28省集采降价50-70%'],tw:'Price分38全表最低，集采降价50-70%最强负面信号。精选基层POCT和化学发光国产替代。',act:'精选 · 基层POCT/化学发光国产',src:['智研咨询','前瞻产业研究院']},
+
+  f1:{b:'F&B',n:'食品制造FAI',    sub:'设备端Capex信号',          heat:54.6,tr:'dn',D:62,C:48,P:55,Pol:50,sig:'FAI +2.2% vs 2024年+22.9%，降速超20pp',data:['食品制造业FAI 2025年+2.2%（vs 2024年+22.9%，降速超20pp）','新建产线逻辑已完全不成立'],tw:'FAI从+22.9%骤降至+2.2%，新建逻辑彻底终结，存量替换和预制菜标准合规是切入点。',act:'存量替换 · 预制菜/烘焙产线',src:['国家统计局FAI']},
+  f2:{b:'F&B',n:'酒/饮料制造FAI', sub:'设备端Capex信号',          heat:48,tr:'dn',D:58,C:35,P:50,Pol:48,sig:'FAI -0.2%直接转负（vs 2024年+18%）',data:['酒饮料制造业FAI 2025年-0.2%（vs 2024年+18%，直接转负）','白酒高端批价持续承压，库存积压严重'],tw:'F&B最强负面信号：FAI直接转负，传统酒饮料扩产逻辑彻底终结。规避白酒/碳酸新建产线。',act:'暂停 · 规避白酒/碳酸新建产线',src:['国家统计局FAI']},
+  f3:{b:'F&B',n:'食品饮料消费',   sub:'春节/年货消费端参考',      heat:54.3,tr:'dn',D:68,C:40,P:55,Pol:50,sig:'春节+17.5%超预期，但滞后设备端3-6月',data:['春节年货市场+17.5%，广州饮料消费+38.5%','消费→设备需求3-6月滞后，不可直接外推'],tw:'消费端超预期但与设备投资有3-6月滞后，功能饮品/预制菜是值得跟进的品类方向。',act:'观察 · 功能饮品/预制菜方向',src:['商务部春节消费数据']},
+  f4:{b:'F&B',n:'食品添加剂',     sub:'合成生物学/功能成分',      heat:61.15,tr:'fl',D:70,C:55,P:52,Pol:65,sig:'发酵设备进入交付期，F&B板块最强结构性机会',data:['功能性食品成分市场>800亿，天然甜味剂/益生菌高增长','华恒/凯赛/嘉必优持续扩产，发酵+纯化设备进入交付期'],tw:'F&B板块最强结构性机会：发酵罐+分离纯化设备迎来替代窗口。聚焦益生菌/胶原肽，规避赤藓糖醇（严重内卷）。',act:'跟进 · 发酵罐/纯化设备商',src:['华恒/凯赛年报','前瞻产业研究院']},
 };
 
-const METRICS = [
-  {label:"GDP 增速",labelEn:"GDP GROWTH",value:5.0,unit:"%",trend:"+0.2%",insight:"结构性增长优于规模扩张",color:"#00FFB2",sparkData:[4.6,4.8,5.0],years:["2024","2025","2026E"],dataSource:{primary:["NBS","CICC"],supporting:["GOLDMAN","CDIRF"],note:"GDP 目标值 5.0% 来源于国家统计局公报及中金宏观研究团队预测，高盛与中国发展研究基金会提供交叉验证。"},deepDive:{chartLabel:"年度 GDP 增速 (%)",downstream:[{sector:"半导体制造",icon:"◈",logic:"GDP 温和扩张支撑晶圆厂扩产资本开支，12英寸产线投资增速维持 18-22%，带动精密流体阀组采购量同步上升。"},{sector:"数据中心液冷",icon:"◉",logic:"经济质量优先导向推动 AI 算力基础设施快速落地，液冷系统渗透率从 12% 跃升至 28%，冷却水路流量调节阀需求打开增量空间。"},{sector:"生命科学",icon:"◎",logic:"GDP 增长释放医疗基础设施投入，生物制药固投同比 +16%，无菌流体系统与纯化控制阀采购周期缩短至 Q2。"}],actions:[{tag:"Q1",text:"完成重点晶圆客户年框合同续签，锁定 Q2–Q3 备货需求"},{tag:"Q2",text:"联动液冷集成商预演 2026 扩容节点，提前部署冷却阀组样品"},{tag:"H2",text:"布局生物医药园区本地化服务站，缩短响应链路至 48H"}]}},
-  {label:"工业增加值",labelEn:"IND. VALUE ADD",value:6.2,unit:"%",trend:"↑ Upward",insight:"新质生产力贡献率超 35%",color:"#00C8FF",sparkData:[5.1,5.7,6.2],years:["2024","2025","2026E"],dataSource:{primary:["NBS","DELOITTE"],supporting:["CDIRF","MCKINSEY"],note:"工业增加值数据来源于国家统计局月度数据，德勤白皮书提供数字化转型对工业产值贡献的量化分析。"},deepDive:{chartLabel:"工业增加值增速 (%)",downstream:[{sector:"先进封装产线",icon:"◈",logic:"工业产出质量跃升驱动 CoWoS、HBM 封装产能扩张，超纯水与特气输送精度要求提升，推动高洁净度隔膜阀替换传统球阀。"},{sector:"新能源热管理",icon:"◉",logic:"工业增加值中新能源占比超 22%，动力电池热管理系统对温控精度要求达 ±0.5℃，比例阀组获得结构性进入机会。"},{sector:"工业机器人",icon:"◎",logic:"工业自动化密度提升加速末端流体控制场景渗透，协作机器人配套气动精控需求规模 CAGR 预估 31%。"}],actions:[{tag:"立即",text:"梳理先进封装 TOP 15 客户，建立超纯水阀组专项产品组合"},{tag:"Q2",text:"与动力电池热管理集成商联合定义比例控制阀技术规格书"},{tag:"Q3",text:"在长三角/珠三角工业园区推进流体诊断服务包订阅模式试点"}]}},
-  {label:"制造业固投",labelEn:"MFG. CAPEX",value:11.4,unit:"%",trend:"Stable",insight:"数字化转型进入产线深水区",color:"#FFD700",sparkData:[9.2,10.8,11.4],years:["2024","2025","2026E"],dataSource:{primary:["NBS","MCKINSEY"],supporting:["DELOITTE","CICC"],note:"制造业固定资产投资数据引自国家统计局固投月报，麦肯锡报告提供行业拆解与趋势预测。"},deepDive:{chartLabel:"制造业固定资产投资增速 (%)",downstream:[{sector:"智能工厂产线",icon:"◈",logic:"固投高位运行意味着新建产线密集落地，每条 12 英寸晶圆线需配套约 3,200 个精密流体控制节点，批量采购窗口集中于投产前 6-9 个月。"},{sector:"液冷基础设施",icon:"◉",logic:"数据中心固投中液冷改造占比从 8% 升至 17%，单个超大规模节点阀组采购额突破 800 万元，需要定制化集成方案支持。"},{sector:"化工精细化",icon:"◎",logic:"制造业固投向高附加值化工延伸，危险介质流体控制（电磁阀+传感器+控制器三位一体）替换传统仪表需求持续释放。"}],actions:[{tag:"战略",text:"建立制造业固投项目预警数据库，锁定 6 个月前采购决策窗口"},{tag:"产品",text:"推出智能工厂流体控制套件（含 IO-Link 数字接口），匹配数字化产线需求"},{tag:"渠道",text:"与系统集成商签署优先供应协议，覆盖华东/华南重点工业园区"}]}},
-  {label:"出口增速",labelEn:"EXPORT GROWTH",value:4.8,unit:"%",trend:"Shift",insight:"高附加值组件替代传统代工",color:"#FF6B35",sparkData:[5.9,4.2,4.8],years:["2024","2025","2026E"],dataSource:{primary:["MOFCOM","CAITEC"],supporting:["GOLDMAN","CICC"],note:"出口增速数据来源于商务部月度贸易统计，商务部研究院提供出口结构升级与高附加值转型的专项分析报告。"},deepDive:{chartLabel:"出口增速 (%)",downstream:[{sector:"半导体设备出海",icon:"◈",logic:"出口结构升级推动半导体设备国产化替代加速，配套流体系统须满足国际洁净度标准（ISO Class 1），欧洲品质背书成为关键差异点。"},{sector:"储能系统出口",icon:"◉",logic:"储能系统出口量 YoY +67%，液冷 BESS 对热管理流体精控要求严苛，"},{sector:"医疗设备全球化",icon:"◎",logic:"高端医疗设备出口 CAGR 19%，CE/FDA 认证流体系统需求迫切，全球合规认证体系直接赋能客户出口资质。"}],actions:[{tag:"品牌",text:"联合半导体设备商打造「洁净流体合规出口」联合解决方案白皮书"},{tag:"服务",text:"在东南亚/中东布局本地化备件库，支持随主机出海的售后服务"},{tag:"认证",text:"加速推进 SEMI F57/F19 认证体系，提升客户出口竞争力背书"}]}},
-  {label:"PPI 走势",labelEn:"PPI TREND",value:1.2,unit:"%",trend:"Recovery",insight:"中下游利润空间重构",color:"#BF80FF",sparkData:[-2.7,-0.8,1.2],years:["2024","2025","2026E"],dataSource:{primary:["NBS","CICC"],supporting:["MCKINSEY","DELOITTE"],note:"PPI 数据来源于国家统计局价格统计司，中金宏观团队提供 PPI 回升路径预测与中下游传导分析。"},deepDive:{chartLabel:"PPI 同比 (%)",downstream:[{sector:"半导体材料成本",icon:"◈",logic:"PPI 回正压缩晶圆厂原材料采购议价空间，倒逼向精密控制降本增效转移，高精度流体控制可节省 UPW 耗损 12-18%。"},{sector:"液冷系统经济性",icon:"◉",logic:"PPI 上行使液冷介质成本上涨 8-12%，精密流量控制的节液效益凸显，采购方更愿为可量化节本的高端阀组支付溢价。"},{sector:"工业客户预算重构",icon:"◎",logic:"中下游制造商利润修复推动设备升级预算释放，2026 年工业自动化采购意愿指数较 2024 年底回升 23 个百分点。"}],actions:[{tag:"定价",text:"基于 PPI 回升重新校准产品定价策略，推出 ROI 可视化计算工具辅助客户决策"},{tag:"价值",text:"将「降耗增效」纳入核心销售话术，量化流体控制精度带来的原材料节省数据"},{tag:"时机",text:"把握利润修复窗口，推进存量客户设备升级与服务合同升级谈判"}]}},
+const SOURCES=[
+  {n:'国家统计局',d:'PMI月度数据、固定资产投资分行业、规上工业增加值',tags:['Macro','F&B','P&B']},
+  {n:'中国人民银行',d:'M2、社会融资规模、信贷数据，月度发布',tags:['Macro']},
+  {n:'财新/标普全球',d:'财新制造业PMI，侧重中小企业景气度交叉验证',tags:['Macro']},
+  {n:'TrendForce / 行业机构',d:'液冷渗透率、半导体市场规模、DRAM价格周期',tags:['EI']},
+  {n:'WSTS 世界半导体贸易统计',d:'全球半导体市场年度/季度统计，2026年预测+26.3%',tags:['EI']},
+  {n:'中汽协 / SNE Research',d:'燃料电池汽车月度产销数据',tags:['EI']},
+  {n:'医药魔方 / 动脉网',d:'国产创新药BD交易数据、生物医药一级市场融资',tags:['P&B']},
+  {n:'商务部公告 / 海关总署',d:'不可靠实体清单、进口报关量数据',tags:['L&M','EI']},
 ];
 
-const SBU_LIST = [
-  {id:"semiconductor",label:"半导体与电子",labelEn:"SEMICONDUCTOR & ELECTRONICS",prosperityIndex:9.2,trend:"+1.4 YoY",color:"#00C8FF",tagline:"AI 驱动产能扩张，精密流体需求激增",icon:"SEMI",keyMetrics:[{k:"晶圆厂固投增速",v:"+21%"},{k:"液体管控节点/线",v:"3,200+"},{k:"超纯水用量 CAGR",v:"18%"}],overview:"2026 年中国半导体产业进入扩产深水期，CoWoS 先进封装与国产 12 英寸晶圆线密集落地。每条生产线对腐蚀性介质、超纯水、特种气体的精密流体管控需求超过 3,200 个节点，形成对 ",burkertAngle:"高洁净度隔膜阀 · 质量流量控制器 · 腐蚀介质电磁阀",opportunities:[{label:"CoWoS 封装产线配套",urgency:"HIGH",timing:"Q1–Q2"},{label:"国产 12\" 晶圆厂首批采购窗口",urgency:"HIGH",timing:"Q2"},{label:"超纯水回路精密流量替换",urgency:"MED",timing:"Q3"}],risks:["美国出口管制扩大范围","设备交期延误传导至配套采购"]},
-  {id:"datacenter",label:"数据中心液冷",labelEn:"DATA CENTER LIQUID COOLING",prosperityIndex:9.7,trend:"+2.1 YoY",color:"#00FFB2",tagline:"液冷渗透率三年翻三倍，阀组需求爆发式增长",icon:"DC",keyMetrics:[{k:"液冷渗透率",v:"12%→28%"},{k:"单节点阀组采购额",v:"800 万+"},{k:"市场规模 CAGR",v:"47%"}],overview:"AI 大模型训练集群功率密度突破 100kW/机柜，风冷散热已达物理极限。2026 年数据中心液冷改造及新建项目密集落地，冷却水路的精密流量调节、温控精度（±0.3℃）和泄漏检测成为核心痛点，直接映射 ",burkertAngle:"冷却水路比例调节阀 · 温控传感集成 · 泄漏检测系统",opportunities:[{label:"超大规模 AI 训练集群配套",urgency:"HIGH",timing:"Q1"},{label:"存量数据中心液冷改造",urgency:"HIGH",timing:"Q2–Q3"},{label:"边缘计算节点热管理",urgency:"MED",timing:"H2"}],risks:["液冷集成商标准碎片化","铜价上涨压缩配件预算"]},
-  {id:"lifescience",label:"生命科学",labelEn:"LIFE SCIENCE & BIOPHARMA",prosperityIndex:8.1,trend:"+0.9 YoY",color:"#BF80FF",tagline:"国产替代与 GMP 升级双轮驱动无菌流体需求",icon:"BIO",keyMetrics:[{k:"生物制药固投同比",v:"+16%"},{k:"GMP 合规改造项目",v:"320+"},{k:"无菌阀组需求增速",v:"+22%"}],overview:"中国生物制药产业进入 GMP 全面升级周期，创新药 CMO/CDMO 产能扩张与合规改造同步推进。无菌流体系统（隔膜阀、卫生级蝶阀、纯蒸汽管路控制）是 FDA/EMA 认证的必要条件，",burkertAngle:"卫生级隔膜阀 · 纯蒸汽控制 · 无菌取样系统",opportunities:[{label:"CMO 产线 GMP 认证配套",urgency:"HIGH",timing:"Q1–Q2"},{label:"mRNA 疫苗生产线流体系统",urgency:"HIGH",timing:"Q2"},{label:"血液透析耗材生产配套",urgency:"MED",timing:"Q3–Q4"}],risks:["医疗设备集采压缩设备预算","认证周期拉长影响交付节奏"]},
-  {id:"hydrogen",label:"新能源氢能",labelEn:"NEW ENERGY & HYDROGEN",prosperityIndex:7.6,trend:"+1.8 YoY",color:"#FFD700",tagline:"氢能基础设施元年，高压流体控制迎来窗口期",icon:"H2",keyMetrics:[{k:"加氢站新建计划",v:"1,000+"},{k:"电解槽出货量 CAGR",v:"83%"},{k:"氢能管控阀市场规模",v:"42亿"}],overview:"2026 年是中国氢能基础设施的规模化元年，「十五五」规划明确 1,000 座加氢站及 GW 级电解槽目标。高压氢气（70MPa）的安全管控、碱性电解槽的 KOH 溶液精密输送、燃料电池热管理系统均对阀门精度、材质兼容性提出极高要求，",burkertAngle:"高压氢气电磁阀 · KOH 腐蚀介质隔膜阀 · 燃料电池热管理控制",opportunities:[{label:"碱性电解槽 KOH 管路配套",urgency:"HIGH",timing:"Q2–Q3"},{label:"加氢站安全截止阀标准化",urgency:"MED",timing:"Q3"},{label:"燃料电池热管理集成",urgency:"MED",timing:"H2"}],risks:["氢能政策落地节奏不确定","高压认证壁垒导致导入周期长"]},
-];
+// helpers
+const HC=h=>h>=75?'hot':h>=60?'exp':h>=45?'neu':'cold';
+const TC=t=>t==='up'?'up':t==='dn'?'dn':'fl';
+const TS=t=>t==='up'?'↑':t==='dn'?'↓':'→';
+const SC=v=>v>=70?'h':v>=55?'m':'l';
 
-/* ── RENDER HELPERS ──────────────────────────────── */
-let activeSBU = null;
+// KPIs
+[{v:'86.1',l:'最高Heat',d:'↑ 液冷+关税双催化',dc:'up'},{v:'已到期',l:'司美格鲁肽专利',d:'🔥 3/20到期，仿制战启动',dc:'dn'},{v:'10%',l:'美国新关税',d:'⚠️ 122条，4月法院听证',dc:'dn'},{v:'月底',l:'3月PMI',d:'→ 关注能否重返50%+',dc:'up'}].forEach(k=>{
+  document.getElementById('hkpis').innerHTML+=`<div class="hkpi"><span class="hkpi-v ${k.dc}">${k.v}</span><span class="hkpi-l">${k.l}</span><span class="hkpi-d ${k.dc}">${k.d}</span></div>`;
+});
 
-function countUp(el, target, dur=1600, delay=0) {
+// Board cards
+let active=null;
+const grid=document.getElementById('bgrid');
+BO.forEach((b,bi)=>{
+  const m=BM[b];
+  const cv=cc(b);
+  const trackArr=m.tracks.map(id=>T[id]?.n||'').filter(Boolean);
+  const mx=Math.max(...m.sparks);
+  const spark=m.sparks.map((v,i)=>`<div class="bsbar${v===mx?' pk':''}" style="height:${Math.round(v/mx*100)}%"></div>`).join('');
+  const card=document.createElement('div');
+  card.className='bcard fu';
+  card.dataset.b=b;
+  card.style.cssText=`--c:${cv};animation-delay:${bi*55}ms`;
+  card.innerHTML=`<div class="bcard-bar"></div>
+    <div class="bcard-top">
+      <span class="bbadge">${b}</span>
+      <div><div class="bheat ${HC(m.heat)}">${m.heat}</div><div class="btrend ${TC(m.tr)}">${TS(m.tr)}</div></div>
+    </div>
+    <div class="bname">${m.n}</div>
+    <div class="bsum">${m.sum}</div>
+    <div class="bspark">${spark}</div>
+    <div class="bchips">${trackArr.slice(0,4).map(n=>`<span class="bchip">${n}</span>`).join('')}${trackArr.length>4?`<span class="bchip">+${trackArr.length-4}</span>`:''}</div>
+    <div class="bfoot"><span class="bcnt">${m.tracks.length} 条赛道</span><span class="barrow">›</span></div>`;
+  card.onclick=()=>toggleBoard(b,card);
+  grid.appendChild(card);
+});
+
+function toggleBoard(b,card){
+  const panel=document.getElementById('tpanel');
+  const inner=document.getElementById('tinner');
+  const m=BM[b]; const cv=cc(b);
+  if(active===b){panel.classList.remove('open');card.classList.remove('on');active=null;return;}
+  document.querySelectorAll('.bcard').forEach(c=>c.classList.remove('on'));
+  card.classList.add('on'); active=b;
+  const tracks=m.tracks.map(id=>T[id]).filter(Boolean);
+  inner.innerHTML=`
+    <div class="tp-hdr">
+      <span class="tp-badge" style="background:color-mix(in srgb,${cv} 12%,transparent);color:${cv};border:1px solid color-mix(in srgb,${cv} 30%,transparent)">${b} · ${m.n}</span>
+      <span class="tp-ttl" style="color:${cv}">${m.sum}</span>
+      <a class="tp-lnk" href="${m.href}">深度分析 →</a>
+    </div>
+    <div class="trows">${tracks.map(t=>`
+      <div class="trow" onclick="openModal('${Object.keys(T).find(k=>T[k]===t)}')">
+        <div><div class="tr-n">${t.n}</div><div class="tr-s">${t.sub}</div></div>
+        <div>
+          <div class="tr-bw"><div class="tr-b50"></div><div class="tr-b" data-w="${t.heat}" style="width:0;background:${cv};opacity:.5"></div></div>
+          <div class="tr-scs">
+            <span class="tr-sc ${SC(t.D)}">D<b>${t.D}</b></span>
+            <span class="tr-sc ${SC(t.C)}">C<b>${t.C}</b></span>
+            <span class="tr-sc ${SC(t.P)}">P<b>${t.P}</b></span>
+            <span class="tr-sc ${SC(t.Pol)}">Pol<b>${t.Pol}</b></span>
+          </div>
+        </div>
+        <div class="tr-hv ${HC(t.heat)}">${t.heat}</div>
+        <div class="tr-tr ${TC(t.tr)}">${TS(t.tr)}</div>
+        <div style="color:var(--txt3);font-size:.7rem">›</div>
+      </div>`).join('')}</div>`;
+  panel.classList.add('open');
   setTimeout(()=>{
-    const s=performance.now();
-    const tick=(now)=>{
-      const p=Math.min((now-s)/dur,1), e=1-Math.pow(1-p,4);
-      el.textContent = parseFloat((e*target).toFixed(1));
-      if(p<1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  }, delay);
+    panel.querySelectorAll('.tr-b').forEach(el=>{el.style.transition='width .52s cubic-bezier(.23,1,.32,1)';el.style.width=el.dataset.w+'%'});
+  },55);
+  setTimeout(()=>panel.scrollIntoView({behavior:'smooth',block:'nearest'}),80);
 }
 
-function urgencyColor(u){ return u==="HIGH"?"#FF6B35":u==="MED"?"#FFD700":"#00FFB2"; }
-
-function sparkPath(data, W=240, H=80) {
-  const padding=0.8, min=Math.min(...data)-padding, max=Math.max(...data)+padding, range=max-min||1;
-  const toY=v=>H-18-((v-min)/range)*(H-32);
-  const toX=i=>(i/(data.length-1))*(W-40)+20;
-  const pts=data.map((v,i)=>[toX(i),toY(v)]);
-  return {pts, pathD:pts.map((p,i)=>`${i===0?"M":"L"}${p[0].toFixed(1)} ${p[1].toFixed(1)}`).join(" "), zeroY:toY(0), W, H};
+function collapseAll(){
+  document.querySelectorAll('.bcard').forEach(c=>c.classList.remove('on'));
+  document.getElementById('tpanel').classList.remove('open');
+  active=null;
 }
 
-function renderMetrics() {
-  const grid = document.getElementById('metrics-grid');
-  const clips = [
-    "polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,0 100%)",
-    "polygon(16px 0,100% 0,100% 100%,0 100%,0 16px)",
-    "polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,0 100%)",
-    "polygon(0 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%)",
-    "polygon(16px 0,100% 0,100% 100%,0 100%,0 16px)",
-  ];
-  METRICS.forEach((m,i) => {
-    const clip = clips[i%clips.length];
-    const d = document.createElement('div');
-    d.className = 'metric-card';
-    d.style.cssText = `--mc:${m.color};animation-delay:${i*90}ms;clip-path:${clip}`;
-    d.innerHTML = `
-      <div class="metric-border" style="clip-path:${clip}"></div>
-      <div class="metric-inner" style="clip-path:${clip}">
-        <div style="position:absolute;inset:0;opacity:.022;pointer-events:none;background-image:url('data:image/svg+xml,%3Csvg viewBox=\\'0 0 200 200\\' xmlns=\\'http://www.w3.org/2000/svg\\'%3E%3Cfilter id=\\'n\\'%3E%3CfeTurbulence type=\\'fractalNoise\\' baseFrequency=\\'0.9\\' numOctaves=\\'4\\'/%3E%3C/filter%3E%3Crect width=\\'100%25\\' height=\\'100%25\\' filter=\\'url(%23n)\\'/%3E%3C/svg%3E');background-size:128px"></div>
-        <div style="position:relative;z-index:1">
-          <p style="font-family:'Courier New',monospace;font-size:8.5px;color:${m.color};letter-spacing:.2em;margin:0 0 6px;text-transform:uppercase">${m.labelEn}</p>
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:8px">
-            <span style="font-family:'Courier New',monospace;font-size:38px;font-weight:700;color:${m.color};line-height:1;text-shadow:0 0 24px ${m.color}70" id="mv-${i}">0</span>
-            <div style="text-align:right;flex-shrink:0">
-              <div style="font-size:12px;font-family:'Courier New',monospace;color:rgba(255,255,255,.82)">${m.unit}</div>
-              <div style="font-size:10px;font-family:'Courier New',monospace;color:${m.color};margin-top:2px">${m.trend}</div>
-            </div>
-          </div>
-          <h3 style="font-size:14px;font-weight:700;color:#fff;margin:0 0 3px">${m.label}</h3>
-          <p style="font-size:10.5px;color:rgba(255,255,255,.65);margin:0 0 10px;line-height:1.4">${m.insight}</p>
-          <div style="height:1px;background:rgba(255,255,255,.05);margin-bottom:8px"></div>
-          <p style="font-family:'Courier New',monospace;font-size:8px;color:rgba(255,255,255,.65);letter-spacing:.15em;margin:0">CLICK FOR DEEP ANALYSIS →</p>
-        </div>
-      </div>`;
-    d.addEventListener('click', ()=>openDeepDive(m));
-    d.addEventListener('mouseenter', ()=>{
-      d.querySelector('.metric-inner').style.transform='translateY(-4px)';
-      d.querySelector('.metric-inner').style.boxShadow=`0 0 52px ${m.color}16,inset 0 0 32px ${m.color}05`;
-      d.querySelector('.metric-inner').style.background=`linear-gradient(135deg,rgba(7,12,28,.96) 0%,${m.color}09 100%)`;
-    });
-    d.addEventListener('mouseleave', ()=>{
-      d.querySelector('.metric-inner').style.transform='';
-      d.querySelector('.metric-inner').style.boxShadow='';
-      d.querySelector('.metric-inner').style.background='rgba(6,10,24,.92)';
-    });
-    grid.appendChild(d);
-    countUp(document.getElementById(`mv-${i}`), m.value, 1600, i*120);
-  });
-}
-
-function renderSummaryStats() {
-  const el = document.getElementById('summary-stats');
-  [["综合景气度","Expansionary"],["政策向量","Targeted Easing"],["外部压力指数","Moderate"],["数字经济比重","43.7%"]].forEach(([k,v])=>{
-    el.insertAdjacentHTML('beforeend',`<div><p style="font-family:'Courier New',monospace;font-size:8.5px;color:rgba(255,255,255,.70);letter-spacing:.2em;margin:0 0 3px;text-transform:uppercase">${k}</p><p style="font-size:13px;color:rgba(255,255,255,.82);margin:0;font-weight:600">${v}</p></div>`);
-  });
-}
-
-function renderSBUCards() {
-  const scroll = document.getElementById('sbu-scroll');
-  const widths = ['300px','265px','280px','255px'];
-  const clips = [
-    "polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,0 100%)",
-    "polygon(12px 0,100% 0,100% 100%,0 100%,0 12px)",
-    "polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,0 100%)",
-    "polygon(0 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%)",
-  ];
-  SBU_LIST.forEach((sbu,i) => {
-    const clip = clips[i%clips.length];
-    const d = document.createElement('div');
-    d.className = 'sbu-card';
-    d.id = `sbu-card-${sbu.id}`;
-    d.style.cssText = `--sc:${sbu.color};width:${widths[i]};animation-delay:${i*80}ms`;
-    const metricsHtml = sbu.keyMetrics.map((m,mi)=>`
-      <div style="flex:1;${mi<sbu.keyMetrics.length-1?'padding-right:8px;border-right:1px solid rgba(255,255,255,.05);margin-right:8px':''}">
-        <div style="font-family:'Courier New',monospace;font-size:11px;font-weight:700;color:${sbu.color}">${m.v}</div>
-        <div style="font-size:9px;color:rgba(255,255,255,.65);margin-top:2px">${m.k}</div>
-      </div>`).join('');
-    d.innerHTML = `
-      <div class="sbu-border" style="clip-path:${clip}"></div>
-      <div class="sbu-inner" style="clip-path:${clip}">
-        <div style="padding:22px 22px 0;display:flex;align-items:center;justify-content:space-between">
-          <div style="width:52px;height:52px;background:${sbu.color}0E;border:1px solid ${sbu.color}22;display:flex;align-items:center;justify-content:center;font-size:11px;font-family:'Courier New',monospace;color:${sbu.color};font-weight:700">${sbu.icon}</div>
-          <div style="text-align:right">
-            <div style="font-family:'Courier New',monospace;font-size:28px;font-weight:700;color:${sbu.color};line-height:1" id="ring-${sbu.id}">0</div>
-            <div style="font-family:'Courier New',monospace;font-size:7px;color:rgba(255,255,255,.70);letter-spacing:.12em;margin-top:2px">景气度 /10</div>
-          </div>
-        </div>
-        <div style="padding:12px 22px 0">
-          <h3 style="margin:0 0 3px;font-size:15px;font-weight:800;color:rgba(255,255,255,.78)">${sbu.label}</h3>
-          <p style="margin:0;font-family:'Courier New',monospace;font-size:7.5px;color:rgba(255,255,255,.65);letter-spacing:.15em">${sbu.labelEn}</p>
-        </div>
-        <div style="padding:8px 22px 0"><p style="margin:0;font-size:11px;color:rgba(255,255,255,.65);line-height:1.55">${sbu.tagline}</p></div>
-        <div style="display:flex;margin:12px 22px 0;gap:0;border-top:1px solid rgba(255,255,255,.05);padding-top:10px">${metricsHtml}</div>
-        <div style="padding:10px 22px 16px;display:flex;align-items:center;justify-content:space-between">
-          <span style="font-family:'Courier New',monospace;font-size:7.5px;color:rgba(255,255,255,.70);letter-spacing:.15em">EXPANDING · ${sbu.trend}</span>
-          <span style="font-family:'Courier New',monospace;font-size:8px;color:rgba(255,255,255,.65)">EXPLORE ↓</span>
-        </div>
-        <div style="position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,${sbu.color},transparent);opacity:.12;background-size:300% 100%;animation:borderFlow 5s ease infinite"></div>
-      </div>`;
-    d.addEventListener('click', ()=>selectSBU(sbu.id));
-    scroll.appendChild(d);
-    const ringEl = document.getElementById(`ring-${sbu.id}`);
-    countUp(ringEl, sbu.prosperityIndex, 1400, 300+i*100);
-  });
-}
-
-function selectSBU(id) {
-  activeSBU = id;
-  document.querySelectorAll('.sbu-card').forEach(c=>c.classList.remove('active'));
-  const card = document.getElementById(`sbu-card-${id}`);
-  if(card) card.classList.add('active');
-  document.querySelectorAll('.sbu-detail').forEach(d=>{
-    d.classList.toggle('active-sbu', d.dataset.id===id);
-    d.style.setProperty('--sc', SBU_LIST.find(s=>s.id===d.dataset.id)?.color||'#fff');
-  });
-  const el = document.querySelector(`.sbu-detail[data-id="${id}"]`);
-  if(el) setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}),80);
-}
-
-function renderSBUDetails() {
-  const container = document.getElementById('sbu-details');
-  SBU_LIST.forEach(sbu => {
-    const uc = (u)=>u==="HIGH"?"#FF6B35":u==="MED"?"#FFD700":"#00FFB2";
-    const opHtml = sbu.opportunities.map(op=>`
-      <div style="display:flex;gap:10px;align-items:stretch;margin-bottom:8px">
-        <div style="flex-shrink:0;display:flex;flex-direction:column;gap:2px;align-items:center">
-          <div style="width:22px;height:20px;background:${uc(op.urgency)}18;border:1px solid ${uc(op.urgency)}40;display:flex;align-items:center;justify-content:center;font-family:'Courier New',monospace;font-size:6.5px;color:${uc(op.urgency)};font-weight:700">${op.urgency}</div>
-          <div style="font-family:'Courier New',monospace;font-size:7px;color:rgba(255,255,255,.65)">${op.timing}</div>
-        </div>
-        <div style="flex:1;padding:8px 10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);font-size:11.5px;color:rgba(255,255,255,.82);line-height:1.5">${op.label}</div>
-      </div>`).join('');
-    const riskHtml = sbu.risks.map(r=>`
-      <div style="display:flex;gap:8px;align-items:flex-start;padding:8px 10px;background:rgba(255,107,53,.04);border:1px solid rgba(255,107,53,.12);border-left:2px solid rgba(255,107,53,.5);margin-bottom:6px">
-        <span style="color:#FF6B35;font-size:9px;flex-shrink:0;margin-top:1px">▲</span>
-        <span style="font-size:11.5px;color:rgba(255,255,255,.82);line-height:1.5">${r}</span>
-      </div>`).join('');
-    const metHtml = sbu.keyMetrics.map(m=>`
-      <div style="padding:10px 12px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04)">
-        <div style="font-family:'Courier New',monospace;font-size:14px;font-weight:700;color:${sbu.color}">${m.v}</div>
-        <div style="font-size:9px;color:rgba(255,255,255,.65);margin-top:3px;line-height:1.3">${m.k}</div>
-      </div>`).join('');
-    const d = document.createElement('div');
-    d.className='sbu-detail'; d.dataset.id=sbu.id;
-    d.style.cssText=`--sc:${sbu.color};scroll-margin-top:32px`;
-    d.innerHTML = `
-      <div style="display:flex;align-items:center;gap:0;border-bottom:1px solid rgba(255,255,255,.04);padding:20px 28px">
-        <div style="width:2px;height:48px;background:rgba(255,255,255,.1);margin-right:20px;flex-shrink:0;transition:all .5s" class="sbu-acc"></div>
-        <div style="margin-right:20px;font-family:'Courier New',monospace;font-size:11px;color:${sbu.color};font-weight:700">${sbu.icon}</div>
-        <div style="flex:1">
-          <h3 style="margin:0 0 3px;font-size:18px;font-weight:800;color:rgba(255,255,255,.82)">${sbu.label}</h3>
-          <p style="margin:0;font-size:12px;color:rgba(255,255,255,.65)">${sbu.tagline}</p>
-        </div>
-        <div style="font-family:'Courier New',monospace;font-size:9px;color:rgba(255,255,255,.65);text-align:right">
-          <div>${sbu.prosperityIndex}/10</div><div style="margin-top:3px;color:rgba(255,255,255,.1)">${sbu.trend}</div>
-        </div>
-      </div>
-      <div class="sbu-detail-grid">
-        <div style="padding:20px 24px;border-right:1px solid rgba(255,255,255,.04)">
-          <div style="font-family:'Courier New',monospace;font-size:8.5px;color:${sbu.color};letter-spacing:.2em;margin-bottom:10px">01 · 行业概述</div>
-          <p style="margin:0 0 14px;font-size:12px;color:rgba(255,255,255,.78);line-height:1.75">${sbu.overview}</p>
-          <div style="padding:8px 12px;background:${sbu.color}0A;border:1px solid ${sbu.color}20">
-            <div style="font-family:'Courier New',monospace;font-size:7.5px;color:${sbu.color};letter-spacing:.15em;margin-bottom:4px"></div>
-            <p style="margin:0;font-size:11px;color:rgba(255,255,255,.82);line-height:1.5">${sbu.burkertAngle}</p>
-          </div>
-        </div>
-        <div style="padding:20px 24px;border-right:1px solid rgba(255,255,255,.04)">
-          <div style="font-family:'Courier New',monospace;font-size:8.5px;color:${sbu.color};letter-spacing:.2em;margin-bottom:10px">02 · 战略机会</div>
-          ${opHtml}
-        </div>
-        <div style="padding:20px 24px">
-          <div style="font-family:'Courier New',monospace;font-size:8.5px;color:${sbu.color};letter-spacing:.2em;margin-bottom:10px">03 · 风险与关键指标</div>
-          ${riskHtml}
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:4px">${metHtml}</div>
-        </div>
-      </div>`;
-    container.appendChild(d);
-  });
-}
-
-/* ── DEEP DIVE PANEL ─────────────────────────────── */
-function openDeepDive(m) {
-  const overlay = document.getElementById('dd-overlay');
-  const panel = document.getElementById('dd-panel');
-  const {pts,pathD,zeroY,W,H} = sparkPath(m.sparkData,260,90);
-  const areaD = `${pathD} L ${pts[pts.length-1][0]} ${zeroY} L ${pts[0][0]} ${zeroY} Z`;
-  const gradId = `g${m.color.replace(/[^a-z0-9]/gi,'')}`;
-  const dsHtml = [...m.dataSource.primary.map(id=>`<span style="display:inline-flex;align-items:center;gap:5px;padding:2px 8px 2px 6px;background:${AUTHORITIES[id].color}18;border:1px solid ${AUTHORITIES[id].color}50;font-family:'Courier New',monospace;font-size:9px;color:${AUTHORITIES[id].color};letter-spacing:.08em"><span style="width:4px;height:4px;border-radius:50%;background:${AUTHORITIES[id].color}"></span>${AUTHORITIES[id].shortName}</span>`),
-    ...m.dataSource.supporting.map(id=>`<span style="display:inline-flex;align-items:center;gap:5px;padding:2px 8px 2px 6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);font-family:'Courier New',monospace;font-size:9px;color:rgba(255,255,255,.65);letter-spacing:.08em"><span style="width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.65)"></span>${AUTHORITIES[id].shortName}</span>`)].join('');
-  const downHtml = m.deepDive.downstream.map((item,i)=>`
-    <div style="background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.05);border-left:2px solid ${m.color};padding:14px 16px;animation:fadeUp .4s ease ${.05+i*.1}s both">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="color:${m.color};font-size:13px">${item.icon}</span><span style="font-size:12px;font-weight:700;color:#fff;letter-spacing:.08em">${item.sector}</span></div>
-      <p style="margin:0;font-size:12.5px;color:rgba(255,255,255,.82);line-height:1.75">${item.logic}</p>
-    </div>`).join('');
-  const actHtml = m.deepDive.actions.map((a,i)=>`
-    <div style="display:flex;gap:12px;align-items:stretch;animation:fadeUp .4s ease ${.1+i*.1}s both">
-      <div style="flex-shrink:0;width:52px;background:${m.color}12;border:1px solid ${m.color}35;display:flex;align-items:center;justify-content:center;font-family:'Courier New',monospace;font-size:9px;font-weight:700;color:${m.color};text-align:center;padding:4px">${a.tag}</div>
-      <div style="flex:1;padding:12px 16px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);font-size:13px;color:rgba(255,255,255,.82);line-height:1.65">${a.text}</div>
-    </div>`).join('');
-  panel.style.setProperty('--pc', m.color);
-  panel.innerHTML = `
-    <div style="height:3px;background:linear-gradient(90deg,${m.color} 0%,${m.color}60 40%,rgba(227,6,19,.4) 70%,transparent 100%);background-size:200% 100%;animation:borderFlow 4s ease infinite"></div>
-    <button onclick="closePanel()" style="position:sticky;top:16px;float:right;margin-right:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.82);width:30px;height:30px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;font-family:'Courier New',monospace">✕</button>
-    <div style="padding:36px 36px 60px;margin-top:-30px">
-      <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:8px">
-        <div style="width:2px;height:52px;background:${m.color};box-shadow:0 0 16px ${m.color};flex-shrink:0;margin-top:4px"></div>
-        <div style="flex:1"><h2 style="margin:0 0 4px;font-size:28px;font-weight:800;color:#fff;letter-spacing:-.02em">${m.label}</h2><p style="margin:0;font-family:'Courier New',monospace;font-size:9px;color:rgba(255,255,255,.65);letter-spacing:.25em">${m.labelEn} · STRATEGIC DEEP DIVE</p></div>
-        <div style="text-align:right;flex-shrink:0"><div style="font-family:'Courier New',monospace;font-size:42px;font-weight:700;color:${m.color};line-height:1;text-shadow:0 0 24px ${m.color}70">${m.value}${m.unit}</div><div style="font-family:'Courier New',monospace;font-size:9px;color:rgba(255,255,255,.65);letter-spacing:.15em;margin-top:4px">2026 ESTIMATE</div></div>
-      </div>
-      <div style="margin-top:24px">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px"><span style="font-family:'Courier New',monospace;font-size:10px;color:${m.color};letter-spacing:.25em;font-weight:700">01</span><div style="height:1px;flex:1;background:linear-gradient(90deg,${m.color}50,transparent)"></div></div>
-        <h3 style="margin:0 0 2px;font-size:17px;font-weight:800;color:#fff">年度趋势走势</h3>
-        <p style="margin:0 0 14px;font-family:'Courier New',monospace;font-size:9px;color:rgba(255,255,255,.65);letter-spacing:.2em">2024–2026 ANNUAL TREND COMPARISON</p>
-        <div style="background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.05);padding:20px 18px 14px">
-          <p style="font-family:'Courier New',monospace;font-size:9px;color:rgba(255,255,255,.65);letter-spacing:.2em;margin:0 0 14px">↗ ${m.deepDive.chartLabel}</p>
-          <svg width="100%" viewBox="0 0 ${W} ${H}" style="overflow:visible;display:block">
-            <defs><linearGradient id="${gradId}" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${m.color}" stop-opacity=".3"/><stop offset="100%" stop-color="${m.color}" stop-opacity=".02"/></linearGradient></defs>
-            ${m.sparkData.some(v=>v<0)&&m.sparkData.some(v=>v>0)?`<line x1="22" x2="${W-22}" y1="${zeroY}" y2="${zeroY}" stroke="rgba(255,255,255,.15)" stroke-width="1" stroke-dasharray="3,3"/>`:''}
-            <path d="${areaD}" fill="url(#${gradId})"/>
-            <path d="${pathD}" fill="none" stroke="${m.color}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            ${pts.map(([x,y],i)=>`<g><circle cx="${x}" cy="${y}" r="5" fill="${i===m.sparkData.length-1?m.color:'#0A1228'}" stroke="${m.color}" stroke-width="2" ${i===m.sparkData.length-1?`style="filter:drop-shadow(0 0 8px ${m.color})"`:''}/><text x="${x}" y="${y-12}" text-anchor="middle" fill="${i===m.sparkData.length-1?m.color:'rgba(255,255,255,.82)'}" font-size="${i===m.sparkData.length-1?11:10}" font-family="'Courier New',monospace" font-weight="${i===m.sparkData.length-1?700:400}">${m.sparkData[i]}%</text><text x="${x}" y="${H-1}" text-anchor="middle" fill="rgba(255,255,255,.65)" font-size="9" font-family="'Courier New',monospace">${m.years[i]}</text></g>`).join('')}
-          </svg>
-        </div>
-      </div>
-      <div style="margin-top:28px">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px"><span style="font-family:'Courier New',monospace;font-size:10px;color:${m.color};letter-spacing:.25em;font-weight:700">02</span><div style="height:1px;flex:1;background:linear-gradient(90deg,${m.color}50,transparent)"></div></div>
-        <h3 style="margin:0 0 2px;font-size:17px;font-weight:800;color:#fff">关联影响分析</h3>
-        <p style="margin:0 0 14px;font-family:'Courier New',monospace;font-size:9px;color:rgba(255,255,255,.65);letter-spacing:.2em"></p>
-        <div style="display:flex;flex-direction:column;gap:10px">${downHtml}</div>
-      </div>
-      <div style="margin-top:28px">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px"><span style="font-family:'Courier New',monospace;font-size:10px;color:${m.color};letter-spacing:.25em;font-weight:700">03</span><div style="height:1px;flex:1;background:linear-gradient(90deg,${m.color}50,transparent)"></div></div>
-        <h3 style="margin:0 0 2px;font-size:17px;font-weight:800;color:#fff">2026 行动策略建议</h3>
-        <p style="margin:0 0 14px;font-family:'Courier New',monospace;font-size:9px;color:rgba(255,255,255,.65);letter-spacing:.2em">STRATEGIC ACTIONS & EXECUTION TIMING</p>
-        <div style="display:flex;flex-direction:column;gap:8px">${actHtml}</div>
-      </div>
-      <div style="margin-top:28px">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px"><span style="font-family:'Courier New',monospace;font-size:10px;color:${m.color};letter-spacing:.25em;font-weight:700">04</span><div style="height:1px;flex:1;background:linear-gradient(90deg,${m.color}50,transparent)"></div></div>
-        <h3 style="margin:0 0 2px;font-size:17px;font-weight:800;color:#fff">数据来源</h3>
-        <p style="margin:0 0 14px;font-family:'Courier New',monospace;font-size:9px;color:rgba(255,255,255,.65);letter-spacing:.2em">DATA PROVENANCE</p>
-        <div style="background:rgba(0,0,0,.25);border:1px solid ${m.color}20;padding:16px 18px">
-          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px"><span style="font-family:'Courier New',monospace;font-size:8.5px;color:rgba(255,255,255,.65);letter-spacing:.15em;margin-right:4px;align-self:center">PRIMARY</span>${dsHtml}</div>
-          <p style="margin:0;font-size:11.5px;color:rgba(255,255,255,.82);line-height:1.7">${m.dataSource.note}</p>
-        </div>
-      </div>
-    </div>`;
-  overlay.classList.add('vis');
-  document.body.style.overflow='hidden';
-}
-
-function closePanel() {
-  document.getElementById('dd-overlay').classList.remove('vis');
-  document.body.style.overflow='';
-}
-
-function openProvenance(ids) {
-  const panel = document.getElementById('prov-panel');
-  const all = Object.values(AUTHORITIES);
-  const highlight = ids.length === 0 ? all.map(a=>a.id) : ids;
-  const html = all.map(a => {
-    const isPrimary = highlight.includes(a.id);
-    return `<div style="padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.04);${isPrimary?`border-left:3px solid ${a.color};background:${a.color}06`:''};animation:fadeUp .4s ease both">
-      <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:8px">
-        <div style="font-size:12px;font-weight:700;color:${isPrimary?a.color:'rgba(255,255,255,.65)'};flex:1;transition:color .3s">${a.shortName}</div>
-        <span style="padding:2px 6px;background:${isPrimary?a.color+'18':'rgba(255,255,255,.04)'};border:1px solid ${isPrimary?a.color+'50':'rgba(255,255,255,.08)'};font-family:'Courier New',monospace;font-size:8px;color:${isPrimary?a.color:'rgba(255,255,255,.65)'};letter-spacing:.1em">${a.type}</span>
-      </div>
-      <p style="margin:0 0 8px;font-size:11.5px;color:rgba(255,255,255,.82);line-height:1.6">${a.desc}</p>
-      <div style="padding-top:8px;border-top:1px solid rgba(255,255,255,.05)">
-        <p style="margin:0 0 2px;font-family:'Courier New',monospace;font-size:8.5px;color:${isPrimary?a.color+'80':'rgba(255,255,255,.65)'};letter-spacing:.1em">REPORT</p>
-        <p style="margin:0;font-size:11px;color:${isPrimary?'rgba(255,255,255,.82)':'rgba(255,255,255,.65)'};line-height:1.5">${a.report}</p>
-        <p style="margin:3px 0 0;font-family:'Courier New',monospace;font-size:8px;color:rgba(255,255,255,.65)">${a.date}</p>
-      </div>
-    </div>`;
+// Modal
+function openModal(id){
+  const t=T[id]; if(!t) return;
+  const cv=cc(t.b); const hc=HC(t.heat);
+  document.getElementById('macc').style.background=cv;
+  document.getElementById('mbg').textContent=t.b;
+  document.getElementById('mbg').style.cssText=`background:color-mix(in srgb,${cv} 12%,transparent);color:${cv};border:1px solid color-mix(in srgb,${cv} 30%,transparent)`;
+  document.getElementById('mtt').textContent=t.n;
+  document.getElementById('msb').textContent=t.sub;
+  document.getElementById('mht').textContent=t.heat;
+  document.getElementById('mht').className=`m-ht ${hc}`;
+  document.getElementById('mtr').innerHTML=`<span class="${TC(t.tr)}">${TS(t.tr)}</span>`;
+  document.getElementById('mscs').innerHTML=[{l:'Demand',v:t.D,w:'35%'},{l:'Capex',v:t.C,w:'30%'},{l:'Price',v:t.P,w:'20%'},{l:'Policy',v:t.Pol,w:'15%'}].map(s=>{
+    const c=s.v>=70?'var(--up)':s.v>=55?'var(--fl)':'var(--dn)';
+    return `<div class="msc"><span class="msc-l">${s.l}</span><span class="msc-v" style="color:${c}">${s.v}</span><span class="msc-w">× ${s.w}</span><div class="msc-b"><div class="msc-bf" style="width:${s.v}%;background:${c}"></div></div></div>`;
   }).join('');
-  panel.innerHTML = `
-    <div style="height:3px;background:linear-gradient(90deg,#E30613,#00C8FF);background-size:200% 100%;animation:borderFlow 4s ease infinite"></div>
-    <button onclick="closeProv()" style="position:sticky;top:16px;float:right;margin-right:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.82);width:30px;height:30px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;font-family:'Courier New',monospace">✕</button>
-    <div style="padding:36px 36px 60px;margin-top:-30px">
-      <h2 style="margin:0 0 4px;font-size:24px;font-weight:800;color:#fff">数据溯源中心</h2>
-      <p style="margin:0 0 24px;font-family:'Courier New',monospace;font-size:9px;color:rgba(255,255,255,.65);letter-spacing:.25em">DATA PROVENANCE HUB · ${all.length} INSTITUTIONS INDEXED</p>
-      ${html}
-    </div>`;
-  document.getElementById('prov-overlay').classList.add('vis');
+  document.getElementById('mdl').innerHTML=t.data.map(d=>`<div class="mdi">${d}</div>`).join('');
+  document.getElementById('mtw').textContent=t.tw;
+  document.getElementById('mact').textContent=t.act;
+  document.getElementById('msrcs').innerHTML=(t.src||[]).map(s=>`<span class="mstag">${s}</span>`).join('');
+  document.getElementById('overlay').classList.add('open');
   document.body.style.overflow='hidden';
 }
-function closeProv() {
-  document.getElementById('prov-overlay').classList.remove('vis');
-  document.body.style.overflow='';
-}
+function closeModal(){document.getElementById('overlay').classList.remove('open');document.body.style.overflow='';}
+function maybeClose(e){if(e.target===document.getElementById('overlay'))closeModal();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
-function scrollSBU(dir) {
-  document.getElementById('sbu-scroll').scrollBy({left:dir*300,behavior:'smooth'});
-}
-
-/* ── SCROLL PROGRESS ───────────────────────────── */
-window.addEventListener('scroll',()=>{
-  const pct = window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
-  document.getElementById('nav-bar').style.width=pct+'%';
-});
-
-/* ── KEYBOARD ESC ──────────────────────────────── */
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'){closePanel();closeProv();}
-});
-
-/* ── INIT ──────────────────────────────────────── */
-renderMetrics();
-renderSummaryStats();
-renderSBUCards();
-renderSBUDetails();
-</script>
-
-<style>
-#toc-btn{position:fixed;top:80px;left:14px;z-index:9500;width:30px;height:30px;background:rgba(2,5,18,.92);border:1px solid #00FFB255;border-left:2px solid #00FFB2;color:rgba(255,255,255,.7);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s}
-#toc-btn:hover{color:#fff;background:#00FFB222}
-#toc-panel{position:fixed;top:80px;left:14px;z-index:9499;width:200px;background:rgba(2,5,18,.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);border-left:2px solid #00FFB2;transform:translateX(-220px);opacity:0;pointer-events:none;transition:transform .28s cubic-bezier(.16,1,.3,1),opacity .28s}
-#toc-panel.open{transform:translateX(0);opacity:1;pointer-events:auto}
-#toc-head{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.07)}
-#toc-head span{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.25em;color:#00FFB299}
-#toc-head button{background:none;border:none;color:rgba(255,255,255,.4);cursor:pointer;font-size:16px;line-height:1;padding:0}
-#toc-head button:hover{color:#fff}
-.ti{display:flex;gap:8px;align-items:center;padding:7px 14px;text-decoration:none;border-left:2px solid transparent;margin-left:-2px;transition:background .15s}
-.ti:hover{background:rgba(255,255,255,.04)}
-.ti.on{border-left-color:#00FFB2;background:#00FFB218}
-.ti span:first-child{font-family:'IBM Plex Mono',monospace;font-size:8px;color:rgba(255,255,255,.3);width:18px;flex-shrink:0}
-.ti span:last-child{font-size:11px;color:rgba(255,255,255,.72)}
-.ti.on span:first-child{color:#00FFB2}
-.ti.on span:last-child{color:#fff}
-@media(max-width:768px){#toc-btn,#toc-panel{display:none!important}}
-</style>
-<button id="toc-btn" onclick="tocToggle()" title="目录">☰</button>
-<div id="toc-panel">
-  <div id="toc-head"><span>目录</span><button onclick="tocToggle()">×</button></div>
-  <a class="ti" href="#s01"><span>01</span><span>综合景气度</span></a>
-  <a class="ti" href="#s02"><span>02</span><span>五大核心指标</span></a>
-  <a class="ti" href="#s03"><span>03</span><span>SBU 战略导航</span></a>
-</div>
-<script>
-function tocToggle(){
-  var p=document.getElementById('toc-panel'),b=document.getElementById('toc-btn');
-  var o=p.classList.toggle('open');
-  b.style.cssText=o?"opacity:0;pointer-events:none":"opacity:1;pointer-events:auto";
-}
-document.querySelectorAll('.ti').forEach(function(a){
-  a.addEventListener('click',function(e){
-    e.preventDefault();
-    var el=document.getElementById(a.getAttribute('href').slice(1));
-    if(el){
-      var offset = el.getBoundingClientRect().top + window.pageYOffset - 64;
-      window.scrollTo({top: offset, behavior: 'smooth'});
-    }
-    tocToggle();
-  });
-});
-var _ids=Array.from(document.querySelectorAll('.ti')).map(function(a){return a.getAttribute('href').slice(1);});
-function _at(){var c=_ids[0];_ids.forEach(function(id){var e=document.getElementById(id);if(e&&e.getBoundingClientRect().top<=120)c=id;});document.querySelectorAll('.ti').forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+c);});}
-window.addEventListener('scroll',_at,{passive:true});_at();
-</script>
-
-<script>
-(function(){
-  const glow=document.getElementById('cursor-glow'),dot=document.getElementById('cursor-dot');
-  let mx=0,my=0,gx=0,gy=0;
-  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
-  function animGlow(){gx+=(mx-gx)*.08;gy+=(my-gy)*.08;glow.style.left=gx+'px';glow.style.top=gy+'px';requestAnimationFrame(animGlow);}
-  animGlow();
-  document.addEventListener('mouseleave',()=>{glow.style.opacity='0';dot.style.opacity='0';});
-  document.addEventListener('mouseenter',()=>{glow.style.opacity='1';dot.style.opacity='1';});
-})();
+// Source panel
+document.getElementById('spitems').innerHTML=SOURCES.map(s=>`<div class="spit"><div class="spn">${s.n}</div><div class="spd">${s.d}</div><div class="sptags">${s.tags.map(t=>`<span class="sptag">${t}</span>`).join('')}</div></div>`).join('');
+function toggleSrc(){document.getElementById('spanel').classList.toggle('open');}
 </script>
 </body>
 </html>
-<script>
-// Dynamic data wiring from data.js — runs after initial render
-(function() {
-  if (!window.BURKERT_DATA) return;
-  const D = window.BURKERT_DATA;
-  if (!D.macro) return;
-
-  // Update headline
-  if (D.macro.headline) {
-    const h1 = document.querySelector('h1');
-    if (h1) { const sp = h1.querySelector('span'); h1.textContent = D.macro.headline + ' '; if(sp) h1.appendChild(sp); }
-  }
-  if (D.macro.subline) {
-    const p = document.querySelector('.main-wrap header p');
-    if (p) p.textContent = D.macro.subline + ' · 点击指标卡片查看深度解读';
-  }
-  if (D.macro.period) {
-    const span = document.querySelector('.main-wrap header .nav-inner + * span:last-child, .main-wrap header > div:first-child span:last-child');
-  }
-})();
-</script>
