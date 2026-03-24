@@ -353,26 +353,8 @@ body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([oncli
           <p style="margin:0;font-family:'Courier New',monospace;font-size:9px;color:rgba(255,255,255,.65);letter-spacing:.18em">点击卡片跳转至行业深度分析 · CLICK TO EXPLORE INDUSTRY ANALYSIS</p>
         </div>
       </div>
-      <div style="display:flex;gap:6px">
-        <button onclick="scrollSBU-1pp" style="width:30px;height:30px;background:rgba(255,107,53,.08);border:1px solid rgba(255,107,53,.3);color:#FF6B35;cursor:pointer;font-family:'Courier New',monospace;font-size:13px;display:flex;align-items:center;justify-content:center">←</button>
-        <button onclick="scrollSBU(1)"  style="width:30px;height:30px;background:rgba(255,107,53,.08);border:1px solid rgba(255,107,53,.3);color:#FF6B35;cursor:pointer;font-family:'Courier New',monospace;font-size:13px;display:flex;align-items:center;justify-content:center">→</button>
       </div>
     </div>
-    <div class="sbu-scroll" id="sbu-scroll"></div>
-  </div>
-
-  <!-- SBU DETAIL -->
-  <div style="margin-top:56px">
-    <div style="display:flex;align-items:center;gap:16px;margin-bottom:32px">
-      <div style="width:3px;height:44px;background:linear-gradient(180deg,#BF80FF,rgba(191,128,255,.15))"></div>
-      <div>
-        <h2 style="margin:0 0 3px;font-size:20px;font-weight:800;color:#fff;letter-spacing:-.01em">行业深度分析 <span style="color:rgba(255,255,255,.65);font-weight:200;margin-left:12px;font-size:.55em;letter-spacing:.1em">INDUSTRY DEEP ANALYSIS</span></h2>
-        <p style="margin:0;font-family:'Courier New',monospace;font-size:9px;color:rgba(255,255,255,.65);letter-spacing:.18em"></p>
-      </div>
-    </div>
-    <div id="sbu-details"></div>
-  </div>
-</div>
 
 <!-- DEEP DIVE PANEL -->
 <div class="panel-overlay" id="dd-overlay" onclick="if(event.target===this)closePanel()">
