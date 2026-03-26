@@ -19,7 +19,7 @@ html { font-size: 14px; scroll-behavior: smooth; }
   --up:#22c55e; --dn:#ef4444; --fl:#f59e0b;
 }
 
-body { font-family:'DM Mono',monospace; background:var(--bg); color:var(--txt); min-height:100vh; overflow-x:hidden; }
+body { padding-top:52px; font-family:'DM Mono',monospace; background:var(--bg); color:var(--txt); min-height:100vh; overflow-x:hidden; }
 
 body::before {
   content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
@@ -28,23 +28,23 @@ body::before {
 }
 
 /* NAV */
-nav { position:sticky; top:0; z-index:100; height:52px; display:flex; align-items:center; padding:0 2rem; background:rgba(13,15,20,.93); backdrop-filter:blur(20px); border-bottom:1px solid var(--bdr); }
-.nlogo { font-family:'Syne',sans-serif; font-size:.95rem; font-weight:800; letter-spacing:.06em; flex-shrink:0; }
+.old-nav { position:sticky; top:0; z-index:100; height:52px; display:flex; align-items:center; padding:0 2rem; background:rgba(13,15,20,.93); backdrop-filter:blur(20px); border-bottom:1px solid var(--bdr); }
+.nlogo { font-family:'Syne',sans-serif; font-size:1.1rem; font-weight:800; letter-spacing:.06em; flex-shrink:0; }
 .nlogo span { color:var(--ei); }
 .ndiv { width:1px; height:16px; background:var(--bdr2); margin:0 1.1rem; flex-shrink:0; }
 .ntabs { display:flex; gap:.2rem; flex:1; overflow-x:auto; scrollbar-width:none; }
 .ntabs::-webkit-scrollbar { display:none; }
-.ntab { font-size:.62rem; letter-spacing:.09em; text-transform:uppercase; padding:.28rem .82rem; border-radius:4px; cursor:pointer; white-space:nowrap; flex-shrink:0; color:var(--txt3); background:none; border:none; transition:all .15s; text-decoration:none; display:inline-flex; align-items:center; gap:.38rem; }
+.ntab { font-size:.78rem; letter-spacing:.09em; text-transform:uppercase; padding:.28rem .82rem; border-radius:4px; cursor:pointer; white-space:nowrap; flex-shrink:0; color:var(--txt3); background:none; border:none; transition:all .15s; text-decoration:none; display:inline-flex; align-items:center; gap:.38rem; }
 .ntab:hover { color:var(--txt2); background:var(--bg3); }
 .ntab.on { color:var(--txt); background:var(--bg3); }
 .ntab-dot { width:5px; height:5px; border-radius:50%; flex-shrink:0; }
 .nright { display:flex; align-items:center; gap:.8rem; margin-left:auto; flex-shrink:0; }
-.ndate { font-size:.58rem; letter-spacing:.09em; color:var(--txt3); }
+.ndate { font-size:.72rem; letter-spacing:.09em; color:var(--txt3); }
 .nsrc { font-size:.58rem; letter-spacing:.09em; text-transform:uppercase; color:var(--txt3); border:1px solid var(--bdr); border-radius:4px; padding:.26rem .6rem; cursor:pointer; background:none; transition:all .15s; }
 .nsrc:hover { color:var(--txt2); border-color:var(--bdr2); }
 
 /* HERO */
-.hero { max-width:1400px; margin:0 auto; padding:2.25rem 2rem 1.75rem; display:flex; justify-content:space-between; align-items:flex-end; border-bottom:1px solid var(--bdr); position:relative; z-index:1; }
+.hero { max-width:1400px; margin:0 auto; padding:1.2rem 2rem 1.2rem; display:flex; justify-content:space-between; align-items:flex-end; border-bottom:1px solid var(--bdr); position:relative; z-index:1; }
 .hero-l h1 { font-family:'Syne',sans-serif; font-size:clamp(1.5rem,2.8vw,2rem); font-weight:800; letter-spacing:-.02em; line-height:1.1; margin-bottom:.4rem; }
 .hero-l h1 em { font-style:normal; color:var(--txt2); }
 .hero-l p { font-size:.62rem; color:var(--txt3); letter-spacing:.07em; }
@@ -181,29 +181,29 @@ footer { border-top:1px solid var(--bdr); padding:1.3rem 2rem; display:flex; jus
 
 @keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:none} }
 .fu { animation:fadeUp .4s ease both; }
+
+#site-nav{position:fixed;top:0;left:0;right:0;z-index:10000;background:rgba(2,5,18,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav-inner{max-width:1380px;margin:0 auto;padding:0 32px;display:flex;align-items:center;height:52px}
+.nav-links{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.nav-link{padding:5px 12px;font-size:11px;font-family:'IBM Plex Mono',monospace;letter-spacing:.08em;color:rgba(255,255,255,.65);text-decoration:none;border:1px solid transparent;transition:all .2s;white-space:nowrap}
+.nav-link:hover{color:#fff;border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
 </style>
 </head>
 <body>
 
-<nav>
-  <span class="nlogo">PULSE<span>·</span>2026</span>
-  <div class="ndiv"></div>
-  <div class="ntabs">
-    <button class="ntab on" onclick="this.classList.add('on')">总览</button>
-    
-    
-    
-    
-    
-    
-    
-    <div class="ndiv"></div>
-    <a class="ntab" href="/liquid"><span class="ntab-dot" style="background:#E30613"></span>AI 液冷</a>
-    <a class="ntab" href="/semiconductor"><span class="ntab-dot" style="background:#22d3ee"></span>半导体</a>
-  </div>
-  <div class="nright">
-    <span class="ndate">202603 · 2026-03-24</span>
-    <button class="nsrc" onclick="toggleSrc()">来源 ↗</button>
+<nav id="site-nav">
+  <div class="nav-inner">
+    <div class="nav-links">
+      <a href="index.html" class="nav-link" style="color:#ef4444;border-color:#ef4444;background:rgba(239,68,68,.08)">总览</a>
+      <a href="macro.html" class="nav-link">宏观脉搏</a>
+      <a href="liquid.html" class="nav-link">AI 液冷</a>
+      <a href="semiconductor.html" class="nav-link">半导体 SBU</a>
+      <a href="mscc.html" class="nav-link">质谱·色谱</a>
+      <a href="pharma.html" class="nav-link">制药装备</a>
+      <a href="food.html" class="nav-link">食品饮料</a>
+      <a href="hydrogen.html" class="nav-link">氢能行业</a>
+      <a href="customers.html" class="nav-link">客户监控</a>
+    </div>
   </div>
 </nav>
 
