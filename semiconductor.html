@@ -156,27 +156,30 @@ body {
 
 /* ═══════════════════════════════════════════
    CURSOR FX
+   FIX: dot 静止时降低透明度，不干扰阅读；hover 时再加亮
 ═══════════════════════════════════════════ */
 #cursor-glow {
   position: fixed; pointer-events: none; z-index: 99999;
   width: 320px; height: 320px; border-radius: 50%;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(34,211,238,.065) 0%, rgba(0,200,255,.035) 30%, transparent 70%);
+  background: radial-gradient(circle, rgba(34,211,238,.04) 0%, rgba(0,200,255,.02) 30%, transparent 70%);
   mix-blend-mode: screen; transition: opacity .3s;
 }
 #cursor-dot {
   position: fixed; pointer-events: none; z-index: 100000;
-  width: 22px; height: 22px; border-radius: 50%;
-  border: 1.5px solid rgba(34,211,238,.8); transform: translate(-50%, -50%);
-  box-shadow: 0 0 8px rgba(34,211,238,.4), inset 0 0 4px rgba(34,211,238,.15);
-  transition: width .2s, height .2s, border-color .2s, box-shadow .2s;
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 1px solid rgba(34,211,238,.35); transform: translate(-50%, -50%);
+  box-shadow: none;
+  transition: width .2s, height .2s, border-color .2s, box-shadow .2s, opacity .2s;
+  opacity: .5;
 }
 body:has(a:hover) #cursor-dot,
 body:has(button:hover) #cursor-dot {
-  width: 34px; height: 34px;
-  border-color: rgba(255,215,0,.9);
-  box-shadow: 0 0 14px rgba(255,215,0,.4);
+  width: 30px; height: 30px; opacity: 1;
+  border-color: rgba(34,211,238,.9);
+  box-shadow: 0 0 10px rgba(34,211,238,.35);
 }
+@media (pointer: coarse) { #cursor-glow, #cursor-dot { display: none; } }
 
 /* ═══════════════════════════════════════════
    GLASSMORPHISM CARD — the main upgrade
@@ -477,6 +480,21 @@ body:has(button:hover) #cursor-dot {
 @media(max-width:768px) { .main-grid { grid-template-columns: 1fr; } }
 
 /* ═══════════════════════════════════════════
+   MOBILE RESPONSIVE FIXES
+   FIX: inline grid-template-columns 无法响应，统一用 class 控制
+═══════════════════════════════════════════ */
+.grid-2col {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+}
+@media(max-width:640px) {
+  .grid-2col { grid-template-columns: 1fr; }
+  .china-stats { grid-template-columns: 1fr 1fr !important; }
+  .prod-row { grid-template-columns: 90px 1fr 56px !important; }
+  .prod-row .prod-process { display: none; }
+  #metrics-strip .metric-card { min-width: calc(50% - 5px) !important; }
+}
+
+/* ═══════════════════════════════════════════
    HERO SECTION
 ═══════════════════════════════════════════ */
 .hero {
@@ -572,10 +590,11 @@ body:has(button:hover) #cursor-dot {
 
 /* ═══════════════════════════════════════════
    TYPE UTILS
+   FIX: f-label 最小值提升至 10px（无障碍），f-body 正文提升至 14px max
 ═══════════════════════════════════════════ */
-.f-mono { font-family: var(--mono); }
-.f-label { font-size: clamp(8px,1.2vw,9.5px); }
-.f-body  { font-size: clamp(11px,1.6vw,13px); }
+.f-mono  { font-family: var(--mono); }
+.f-label { font-size: clamp(10px,1.2vw,11px); }
+.f-body  { font-size: clamp(12px,1.6vw,14px); }
 
 /* ═══════════════════════════════════════════
    FOOTER
@@ -726,7 +745,11 @@ footer {
       </div>
 
       <!-- 4-card grid -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+        <span class="f-label f-mono" style="color:rgba(34,211,238,.4);letter-spacing:.22em;text-transform:uppercase;white-space:nowrap">全球市场细分</span>
+        <div style="flex:1;height:1px;background:linear-gradient(90deg,rgba(34,211,238,.18),transparent)"></div>
+      </div>
+      <div class="grid-2col">
         <div class="data-card">
           <div class="data-card-label">全球设备市场（SEMI官方）</div>
           <div class="data-row"><span class="data-key">2025 全球设备销售额（历史新高）</span><span class="data-val">$1,330亿 +13.7%</span></div>
@@ -882,7 +905,31 @@ const UHP_SPECS = [
 ];
 
 const ACTIONS = [
-  {timing:"待补充", urgency:"amber", title:"行动项规划中", detail:"具体行动方案待补充。"},
+  {
+    timing:"Q2 2026", urgency:"red",
+    title:"建立超前备货机制，锁定 MFC 及隔膜阀产能",
+    detail:"阀门交期已达 3–4 个月、较去年翻倍。与德国工厂协商 H2 2026 框架订单，重点锁 Type 8626 MFC 及 Type 2030 隔膜阀；优先保障 SMIC/YMTC 等核心客户供货窗口。"
+  },
+  {
+    timing:"Q2 2026", urgency:"red",
+    title:"推进 Section 232 / EAR 合规预案，重构交货路径",
+    detail:"美对半导体设备启动 232 调查，欧洲原产零部件面临额外关税。法务与供应链协同评估：新加坡/马来西亚转运可行性、客户合同不可抗力条款修订、高风险 SKU 清单梳理（7nm 以下相关型号优先）。"
+  },
+  {
+    timing:"Q3 2026", urgency:"amber",
+    title:"制定涨价方案，抢在竞品之前向客户沟通",
+    detail:"产业链涨价幅度 10–80%，原材料及能源成本压力持续。建议分级传导：头部客户（SMIC、华虹）H2 合同谈判时提前锁定价格调整条款；标准品调价通知提前 90 天发出，减少订单外流。"
+  },
+  {
+    timing:"Q3 2026", urgency:"amber",
+    title:"防御成熟制程隔膜阀国产替代，锁住 UHP 洁净度差异化",
+    detail:"国产厂商正向 22–40nm 成熟制程渗透，价格较进口低 30–50%。应对策略：主打 ISO Class 1 + EP 全内壁抛光 + 氦质谱检漏证书的技术壁垒，提供 3 年免标定承诺，针对关键产线做 CoO（总使用成本）对比测算。"
+  },
+  {
+    timing:"Q4 2026", urgency:"green",
+    title:"开发 ALD / 先进封装测试场景，拓展 HBM 相关产线入口",
+    detail:"HBM 设备市场 2025 +58%，先进封装测试设备 +48.1%。推动 Type 8626 MFC 在 ALD 纳秒时序切换场景的认证测试；与封测设备集成商（长电、华天）建立联合应用方案，扩大产品覆盖节点。"
+  },
 ];
 
 const PRODUCTS = [
@@ -1006,7 +1053,7 @@ function renderProducts(vis) {
     d.innerHTML = `
       <span class="f-mono" style="font-size:11px;font-weight:700;color:var(--cyan)">${p.name}</span>
       <span class="f-body" style="color:rgba(255,255,255,.8)">${p.role}</span>
-      <span class="f-body" style="color:var(--text-mid);font-style:italic;font-size:clamp(9.5px,1.4vw,11px)">${p.process}</span>
+      <span class="f-body prod-process" style="color:var(--text-mid);font-style:italic;font-size:clamp(9.5px,1.4vw,11px)">${p.process}</span>
       <div style="display:flex;flex-direction:column;gap:3px">
         <div style="height:2px;background:rgba(255,255,255,.06);position:relative;overflow:hidden;border-radius:2px">
           <div style="position:absolute;left:0;top:0;height:100%;width:${p.score}%;background:linear-gradient(90deg,var(--cyan),#67e8f9);opacity:${vis?1:0};transition:opacity .4s ease ${350+i*70}ms;border-radius:2px"></div>
