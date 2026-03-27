@@ -24,10 +24,10 @@
   --bg:         #020617;
   --surface:    rgba(4,11,30,.82);
   --border:     rgba(34,211,238,.09);
-  --text-hi:    rgba(255,255,255,.92);
-  --text-mid:   rgba(255,255,255,.65);
-  --text-lo:    rgba(255,255,255,.35);
-  --text-xlo:   rgba(255,255,255,.2);
+  --text-hi:    rgba(255,255,255,.96);
+  --text-mid:   rgba(255,255,255,.80);
+  --text-lo:    rgba(255,255,255,.55);
+  --text-xlo:   rgba(255,255,255,.38);
   --glass-bg:   rgba(6,15,38,.72);
   --glass-border: rgba(34,211,238,.14);
   --radius-sm:  6px;
@@ -299,8 +299,9 @@ body:has(button:hover) #cursor-dot {
   gap: 8px; padding: 5px 0;
 }
 .data-row + .data-row { border-top: 1px solid rgba(255,255,255,.04); }
-.data-key { font-size: 11.5px; color: var(--text-mid); flex: 1; min-width: 0; }
-.data-val { font-family: var(--mono); font-size: 12.5px; font-weight: 700; color: #fff; white-space: nowrap; flex-shrink: 0; }
+.data-key { font-size: 11.5px; color: rgba(255,255,255,.75)/* fixed */
+  color: var(--text-lo); flex: 1; min-width: 0; }
+.data-val { font-family: var(--mono); font-size: 13px; font-weight: 700; color: #fff; white-space: nowrap; flex-shrink: 0; }
 .data-val.accent { color: var(--cyan); }
 .data-val.red { color: var(--red); }
 .data-val.amber { color: var(--amber); }
@@ -462,7 +463,7 @@ body:has(button:hover) #cursor-dot {
 }
 .card-sub {
   font-family: var(--mono); font-size: clamp(8px,1.1vw,9px);
-  letter-spacing: .18em; color: rgba(34,211,238,.4);
+  letter-spacing: .18em; color: rgba(34,211,238,.65);
   text-transform: uppercase; margin: 0;
 }
 
@@ -516,9 +517,9 @@ body:has(button:hover) #cursor-dot {
   margin-bottom: 16px; color: #fff;
 }
 .hero-title .accent { color: var(--cyan); }
-.hero-title .dim { color: rgba(255,255,255,.4); }
+.hero-title .dim { color: rgba(255,255,255,.65); }
 .hero-sub {
-  font-size: clamp(12px,1.7vw,14px); color: var(--text-mid);
+  font-size: clamp(12px,1.7vw,14px); color: rgba(255,255,255,.80);
   max-width: 640px; line-height: 1.75; margin-bottom: 32px;
 }
 
@@ -598,7 +599,7 @@ body:has(button:hover) #cursor-dot {
 ═══════════════════════════════════════════ */
 .f-mono  { font-family: var(--mono); }
 .f-label { font-size: clamp(10px,1.2vw,11px); }
-.f-body  { font-size: clamp(12px,1.6vw,14px); }
+.f-body  { font-size: clamp(13px,1.6vw,14.5px); }
 
 /* ═══════════════════════════════════════════
    CHART CONTAINER
@@ -672,7 +673,7 @@ body:has(button:hover) #cursor-dot {
   color: var(--text-hi); margin-bottom: 6px; line-height: 1.2;
 }
 .driver-body {
-  font-size: 11px; color: var(--text-mid); line-height: 1.6;
+  font-size: 11px; color: rgba(255,255,255,.78); line-height: 1.6;
 }
 
 /* ═══════════════════════════════════════════
@@ -698,8 +699,8 @@ body:has(button:hover) #cursor-dot {
 }
 .player-name { font-weight: 700; font-size: 13px; color: var(--text-hi); }
 .player-origin { font-family: var(--mono); font-size: 9px; color: var(--text-lo); margin-top: 2px; }
-.player-focus { font-size: 12px; color: var(--text-mid); }
-.player-note { font-size: 11px; color: var(--text-lo); font-style: italic; }
+.player-focus { font-size: 12px; color: rgba(255,255,255,.82); }
+.player-note { font-size: 11px; color: rgba(255,255,255,.62); font-style: italic; }
 @media(max-width:768px) {
   .player-row { grid-template-columns: 36px 1fr; gap: 8px; }
   .player-row > *:nth-child(n+3) { display: none; }
@@ -883,7 +884,7 @@ footer {
           </div>
         </div>
         <div style="margin-top:10px">
-          <span style="color:rgba(255,255,255,.28);font-size:9px;font-family:var(--mono)">注：SEMI预测中国大陆2026年起增速放缓、销售额逐步回落，但仍将保持全球第一地位；本土厂商持续在成熟制程及部分先进节点投入</span>
+          <span style="color:rgba(255,255,255,.52);font-size:9px;font-family:var(--mono)">注：SEMI预测中国大陆2026年起增速放缓、销售额逐步回落，但仍将保持全球第一地位；本土厂商持续在成熟制程及部分先进节点投入</span>
         </div>
       </div>
 
@@ -935,7 +936,7 @@ footer {
       </div>
 
       <div style="margin-top:16px;padding-top:12px;border-top:1px solid rgba(34,211,238,.06)">
-        <span class="f-label f-mono" style="color:rgba(255,255,255,.18);letter-spacing:.1em">DATA SOURCE: SEMI China · SEMI年终设备预测报告(Dec 2025) · SEMICON China 2026 · SIA · MAR 2026</span>
+        <span class="f-label f-mono" style="color:rgba(255,255,255,.48);letter-spacing:.1em">DATA SOURCE: SEMI China · SEMI年终设备预测报告(Dec 2025) · SEMICON China 2026 · SIA · MAR 2026</span>
       </div>
     </div>
 
@@ -1318,7 +1319,7 @@ footer {
 
     <!-- FOOTER -->
     <footer>
-      <span class="f-label f-mono" style="color:rgba(255,255,255,.16);letter-spacing:.14em">STRATEGIC ANALYSIS 2026</span>
+      <span class="f-label f-mono" style="color:rgba(255,255,255,.45);letter-spacing:.14em">STRATEGIC ANALYSIS 2026</span>
       <span class="f-label f-mono" style="color:rgba(34,211,238,.28);letter-spacing:.1em">DATA SOURCE: SEMI · NBS · DELOITTE · MCKINSEY</span>
     </footer>
 
@@ -1484,7 +1485,7 @@ const COMP_VALVE = [
   },
 ];
 
-const TIER_COLOR = {1:"#22d3ee", 2:"#fbbf24", 3:"rgba(255,255,255,.4)"};
+const TIER_COLOR = {1:"#22d3ee", 2:"#fbbf24", 3:"rgba(255,255,255,.62)"};
 const OVERLAP_COLOR = {"HIGH":"#ef4444", "MED":"#fbbf24", "LOW→MED":"rgba(251,191,36,.6)"};
 
 
@@ -1494,8 +1495,8 @@ const OVERLAP_COLOR = {"HIGH":"#ef4444", "MED":"#fbbf24", "LOW→MED":"rgba(251,
 const CYAN = "#22d3ee", CYAN2 = "#67e8f9", CYAN3 = "#a5f3fc";
 const AMBER = "#fbbf24", RED = "#ef4444", GREEN = "#34d399";
 const INDIGO = "#818cf8";
-const TEXTLO = "rgba(255,255,255,.35)";
-const TEXTMID = "rgba(255,255,255,.55)";
+const TEXTLO = "rgba(255,255,255,.58)";
+const TEXTMID = "rgba(255,255,255,.72)";
 const GRIDCOL = "rgba(255,255,255,.055)";
 
 function setupHiDPI(canvas, w, h) {
@@ -1847,7 +1848,7 @@ function renderSpecs(vis) {
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:6px">
         <div style="min-width:0">
           <span class="f-label f-mono" style="color:rgba(34,211,238,.45);letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:3px">${s.icon} ${s.label}</span>
-          <p class="f-body" style="color:var(--text-mid);line-height:1.55;margin:0;font-style:italic">${s.detail}</p>
+          <p class="f-body" style="color:rgba(255,255,255,.75);line-height:1.55;margin:0;font-style:italic">${s.detail}</p>
         </div>
         <span class="f-mono" style="font-size:clamp(14px,2.2vw,18px);font-weight:700;color:var(--cyan);line-height:1;flex-shrink:0;text-shadow:0 0 10px rgba(34,211,238,.3);transition:text-shadow .2s">${s.value}</span>
       </div>
@@ -1870,7 +1871,7 @@ function renderRisks() {
       <span class="badge ${r.level}" style="flex-shrink:0;margin-top:1px">${r.level}</span>
       <div>
         <div class="f-body" style="font-weight:600;color:rgba(255,255,255,.88);margin-bottom:3px">${r.label}</div>
-        <p class="f-label" style="color:var(--text-mid);line-height:1.6;margin:0">${r.detail}</p>
+        <p class="f-label" style="color:rgba(255,255,255,.78);line-height:1.6;margin:0">${r.detail}</p>
       </div>`;
     el.appendChild(d);
   });
@@ -1886,11 +1887,11 @@ function renderActions() {
     d.innerHTML = `
       <div style="flex-shrink:0;min-width:60px">
         <div class="f-mono" style="padding:3px 7px;background:${uc}14;border:1px solid ${uc}40;font-size:8px;font-weight:700;color:${uc};letter-spacing:.1em;text-align:center;margin-bottom:4px;white-space:nowrap;border-radius:3px">${a.timing}</div>
-        <div class="f-label f-mono" style="color:rgba(255,255,255,.2);letter-spacing:.1em;text-align:center;text-transform:uppercase">${a.urgency}</div>
+        <div class="f-label f-mono" style="color:rgba(255,255,255,.50);letter-spacing:.1em;text-align:center;text-transform:uppercase">${a.urgency}</div>
       </div>
       <div style="flex:1;min-width:0">
         <div class="f-body" style="font-weight:700;color:rgba(255,255,255,.85);margin-bottom:5px">${a.title}</div>
-        <p class="f-body" style="color:var(--text-mid);line-height:1.65;margin:0;font-size:clamp(10px,1.5vw,11.5px)">${a.detail}</p>
+        <p class="f-body" style="color:rgba(255,255,255,.78);line-height:1.65;margin:0;font-size:clamp(10px,1.5vw,12px)">${a.detail}</p>
       </div>`;
     el.appendChild(d);
   });
@@ -1937,7 +1938,7 @@ function renderProcess(vis) {
 function renderCompBrand(containerId, data) {
   const el = document.getElementById(containerId);
   data.forEach((c, i) => {
-    const tierC = TIER_COLOR[c.tier] || "rgba(255,255,255,.4)";
+    const tierC = TIER_COLOR[c.tier] || "rgba(255,255,255,.62)";
     const ovC   = OVERLAP_COLOR[c.overlap] || "#fbbf24";
     const d = document.createElement("div");
     d.style.cssText = `
