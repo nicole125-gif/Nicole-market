@@ -7,419 +7,872 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,700;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
 <style>
-/* ── Reset ──────────────────────────────────────────────────────── */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-::-webkit-scrollbar{width:3px;height:3px}
-::-webkit-scrollbar-thumb{background:rgba(34,211,238,.12);border-radius:2px}
-
-/* ── Keyframes ──────────────────────────────────────────────────── */
-@keyframes sc-fadeUp   {from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-@keyframes sc-scanV    {0%{transform:translateY(-100%)}100%{transform:translateY(200vh)}}
-@keyframes sc-scanH    {0%{transform:translateX(-100%)}100%{transform:translateX(200vw)}}
-@keyframes sc-dotPulse {0%,100%{box-shadow:0 0 0 0 rgba(34,211,238,.55)}50%{box-shadow:0 0 0 5px rgba(34,211,238,0)}}
-@keyframes sc-rotate   {to{transform:rotate(360deg)}}
-@keyframes sc-rotateCCW{from{transform:rotate(360deg)}to{transform:rotate(0deg)}}
-@keyframes sc-shimmer  {0%{transform:translateX(-130%)}100%{transform:translateX(230%)}}
-@keyframes sc-glowPulse{0%,100%{opacity:.04;transform:scale(1)}50%{opacity:.1;transform:scale(1.05)}}
-@keyframes sc-blink    {0%,100%{opacity:1}50%{opacity:.2}}
-
-/* ── Animation utility classes ──────────────────────────────────── */
-.sca-fadeUp   {animation:sc-fadeUp .65s ease both}
-.sca-scanV    {animation:sc-scanV 20s linear infinite}
-.sca-scanH    {animation:sc-scanH 26s linear infinite}
-.sca-rotate   {animation:sc-rotate 14s linear infinite}
-.sca-rotateCCW{animation:sc-rotateCCW 9s linear infinite}
-.sca-glowPulse{animation:sc-glowPulse 5s ease-in-out infinite}
-.sca-blink    {animation:sc-blink 2.4s ease-in-out infinite}
-.sca-dotPulse {animation:sc-dotPulse 2.2s ease-in-out infinite}
-
-/* ── Type scale ─────────────────────────────────────────────────── */
-.f-hero  {font-size:clamp(2rem,5.5vw,3.2rem);font-family:'Syne',sans-serif;font-weight:800;letter-spacing:-.03em;line-height:1.05;color:#fff}
-.f-stat  {font-size:clamp(1.3rem,3vw,1.9rem)}
-.f-h3    {font-size:clamp(14px,2.2vw,18px);font-family:'Syne',sans-serif;font-weight:800;color:#fff;letter-spacing:-.01em}
-.f-body  {padding-top:52px;font-size:clamp(11px,1.7vw,13px)}
-.f-label {font-size:clamp(8px,1.2vw,9.5px)}
-.f-mono  {font-family:'IBM Plex Mono',monospace}
-
-/* ── Layout grids ───────────────────────────────────────────────── */
-.main-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(14px,2.5vw,24px);align-items:start}
-@media(max-width:700px){.main-grid{grid-template-columns:1fr}}
-
-/* ── Spec row ───────────────────────────────────────────────────── */
-.sc-spec{
-  position:relative;
-  padding:clamp(13px,2.2vw,18px) clamp(14px,2vw,20px);
-  border-left:2px solid rgba(34,211,238,.14);
-  background:rgba(34,211,238,.022);
-  transition:all .24s ease;
-  cursor:default;overflow:hidden;
-}
-.sc-spec:hover{border-left-color:#22d3ee;background:rgba(34,211,238,.05)}
-.sc-spec::after{
-  content:'';position:absolute;right:-1px;top:50%;
-  width:0;height:1px;
-  background:linear-gradient(90deg,rgba(34,211,238,.6),transparent);
-  transform:translateY(-50%);transition:width .3s ease;
-}
-.sc-spec:hover::after{width:28px}
-
-/* ── Progress bar ───────────────────────────────────────────────── */
-.sc-track{height:2px;background:rgba(255,255,255,.05);position:relative;overflow:hidden;margin-top:8px}
-.sc-fill{
-  height:100%;position:absolute;left:0;top:0;
-  background:linear-gradient(90deg,#22d3ee 0%,#67e8f9 60%,rgba(34,211,238,.4) 100%);
-  transform-origin:left;
-  transition:transform 1.2s cubic-bezier(.16,1,.3,1);
+/* ═══════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cyan:       #22d3ee;
+  --cyan-60:    rgba(34,211,238,.6);
+  --cyan-30:    rgba(34,211,238,.3);
+  --cyan-12:    rgba(34,211,238,.12);
+  --cyan-06:    rgba(34,211,238,.06);
+  --cyan-04:    rgba(34,211,238,.04);
+  --red:        #ef4444;
+  --amber:      #fbbf24;
+  --green:      #34d399;
+  --bg:         #020617;
+  --surface:    rgba(4,11,30,.82);
+  --border:     rgba(34,211,238,.09);
+  --text-hi:    rgba(255,255,255,.92);
+  --text-mid:   rgba(255,255,255,.65);
+  --text-lo:    rgba(255,255,255,.35);
+  --text-xlo:   rgba(255,255,255,.2);
+  --glass-bg:   rgba(6,15,38,.72);
+  --glass-border: rgba(34,211,238,.14);
+  --radius-sm:  6px;
+  --radius-md:  10px;
+  --radius-lg:  16px;
+  --mono:       'IBM Plex Mono', monospace;
+  --sans:       'Syne', sans-serif;
 }
 
-/* ── Glass card ─────────────────────────────────────────────────── */
-.sc-glass{
-  position:relative;
-  background:rgba(4,11,30,.82);
-  border:1px solid rgba(34,211,238,.07);
-  backdrop-filter:blur(18px) saturate(140%);
-  -webkit-backdrop-filter:blur(18px) saturate(140%);
-  overflow:hidden;
-  transition:border-color .3s,box-shadow .3s;
-}
-.sc-glass:hover{
-  border-color:rgba(34,211,238,.22);
-  box-shadow:0 0 44px rgba(34,211,238,.06),inset 0 0 24px rgba(34,211,238,.03);
-}
-.sc-glass::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent 0%,rgba(34,211,238,.5) 30%,rgba(34,211,238,.2) 60%,transparent 100%);
-  background-size:300% 100%;
-  animation:sc-shimmer 6s ease infinite;
+html { scroll-behavior: smooth; }
+body {
+  background: linear-gradient(168deg, #020617 0%, #030c22 55%, #020a1a 100%);
+  min-height: 100vh;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: var(--text-hi);
+  padding-top: 56px;
+  overflow-x: hidden;
 }
 
-/* ── Corner accents ─────────────────────────────────────────────── */
-.sc-corners{position:relative}
-.sc-corners::before,.sc-corners::after{content:'';position:absolute;width:20px;height:20px;pointer-events:none}
-.sc-corner-tl::before{top:0;left:0;border-top:1px solid rgba(34,211,238,.45);border-left:1px solid rgba(34,211,238,.45)}
-.sc-corner-tr::after {top:0;right:0;border-top:1px solid rgba(34,211,238,.25);border-right:1px solid rgba(34,211,238,.25)}
-.sc-corner-bl{position:relative}
-.sc-corner-bl::before{bottom:0;left:0;border-bottom:1px solid rgba(34,211,238,.2);border-left:1px solid rgba(34,211,238,.2)}
-.sc-corner-br::after{bottom:0;right:0;border-bottom:1px solid rgba(34,211,238,.18);border-right:1px solid rgba(34,211,238,.18)}
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--cyan-12); border-radius: 2px; }
 
-/* ── Risk badges ────────────────────────────────────────────────── */
-.sc-badge{
-  display:inline-flex;align-items:center;gap:4px;
-  padding:2px 7px;font-size:8px;letter-spacing:.18em;
-  font-family:'IBM Plex Mono',monospace;text-transform:uppercase;
-  border:1px solid rgba(34,211,238,.28);
-  color:rgba(34,211,238,.85);background:rgba(34,211,238,.07);
+/* ═══════════════════════════════════════════
+   KEYFRAMES
+═══════════════════════════════════════════ */
+@keyframes fadeUp    { from { opacity:0; transform:translateY(18px) } to { opacity:1; transform:translateY(0) } }
+@keyframes scanV     { 0% { transform:translateY(-100%) } 100% { transform:translateY(200vh) } }
+@keyframes scanH     { 0% { transform:translateX(-100%) } 100% { transform:translateX(200vw) } }
+@keyframes glowPulse { 0%,100%{opacity:.04;transform:scale(1)} 50%{opacity:.09;transform:scale(1.04)} }
+@keyframes shimmer   { 0%{transform:translateX(-130%)} 100%{transform:translateX(230%)} }
+@keyframes rotate    { to { transform: rotate(360deg) } }
+@keyframes rotateCCW { from { transform:rotate(360deg) } to { transform:rotate(0deg) } }
+@keyframes dotPulse  { 0%,100%{box-shadow:0 0 0 0 rgba(34,211,238,.55)} 50%{box-shadow:0 0 0 5px rgba(34,211,238,0)} }
+@keyframes blink     { 0%,100%{opacity:1} 50%{opacity:.2} }
+@keyframes barGrow   { from { transform:scaleX(0) } to { transform:scaleX(1) } }
+@keyframes glassIn   { from{opacity:0;transform:translateY(12px) scale(.98)} to{opacity:1;transform:translateY(0) scale(1)} }
+@keyframes progressStripe { 0%{background-position:0 0} 100%{background-position:60px 0} }
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════ */
+#site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 10000;
+  background: rgba(2,5,18,.94);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border-bottom: 1px solid rgba(255,255,255,.06);
 }
-.sc-badge.red  {border-color:rgba(239,68,68,.4); color:rgba(239,68,68,.9);  background:rgba(239,68,68,.07)}
-.sc-badge.amber{border-color:rgba(251,191,36,.4);color:rgba(251,191,36,.9); background:rgba(251,191,36,.06)}
-.sc-badge.green{border-color:rgba(52,211,153,.4);color:rgba(52,211,153,.9); background:rgba(52,211,153,.07)}
-
-/* ── Action row ─────────────────────────────────────────────────── */
-.act-row{
-  display:flex;gap:12px;
-  padding:clamp(12px,2vw,16px);
-  border:1px solid rgba(255,255,255,.04);
-  border-left:2px solid rgba(239,68,68,.27);
-  background:rgba(255,255,255,.018);
-  transition:all .22s ease;cursor:default;
+.nav-inner {
+  max-width: 1400px; margin: 0 auto;
+  padding: 0 28px;
+  display: flex; align-items: center; height: 56px;
+  gap: 16px;
 }
-.act-row:hover{background:rgba(34,211,238,.05);border-color:rgba(34,211,238,.22);border-left-color:#22d3ee}
-
-/* ── Product table row ──────────────────────────────────────────── */
-.prod-row{
-  display:grid;grid-template-columns:100px 1fr 1fr 56px;
-  gap:8px;align-items:center;
-  padding:clamp(8px,1.5vw,11px) 0;
-  border-bottom:1px solid rgba(255,255,255,.03);
-  transition:background .2s;cursor:default;
+.nav-brand {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .2em;
+  color: var(--cyan); flex-shrink: 0;
+  display: flex; align-items: center; gap: 8px;
 }
-.prod-row:last-child{border-bottom:none}
-.prod-row:hover{background:rgba(34,211,238,.028)}
-
-/* ── Section divider label ──────────────────────────────────────── */
-.sec-label{display:flex;align-items:center;gap:10px}
-.sec-label span{white-space:nowrap}
-.sec-label .line{flex:1;height:1px;background:linear-gradient(90deg,rgba(34,211,238,.2),transparent)}
-.sec-label.red .line{background:linear-gradient(90deg,rgba(239,68,68,.2),transparent)}
-
-/* ── Process step ───────────────────────────────────────────────── */
-.proc-step{
-  flex:1 1 80px;
-  padding:clamp(10px,1.8vw,14px) clamp(8px,1.5vw,12px);
-  border-left:1px solid rgba(34,211,238,.08);
-  border-bottom:1px solid rgba(34,211,238,.08);
-  position:relative;
-  transition:opacity .5s ease,transform .5s ease;
+.nav-brand::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 8px var(--cyan); animation: dotPulse 2.2s ease-in-out infinite; }
+.nav-links {
+  display: flex; gap: 2px; margin-left: auto; flex-wrap: wrap;
 }
-.proc-step:first-child{border-left:2px solid #22d3ee}
-.proc-step:nth-child(odd){background:rgba(34,211,238,.025)}
+.nav-link {
+  padding: 5px 11px;
+  font-size: 10.5px; font-family: var(--mono); letter-spacing: .07em;
+  color: var(--text-mid); text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all .2s ease;
+  white-space: nowrap;
+}
+.nav-link:hover { color: var(--text-hi); border-color: rgba(255,255,255,.1); background: rgba(255,255,255,.04); }
+.nav-link.active { color: var(--cyan); border-color: rgba(34,211,238,.35); background: rgba(34,211,238,.08); }
 
-/* ── CURSOR ── */
-#cursor-glow{position:fixed;pointer-events:none;z-index:99999;width:320px;height:320px;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(34,211,238,.07) 0%,rgba(0,200,255,.04) 30%,transparent 70%);transition:opacity .3s ease;mix-blend-mode:screen}
-#cursor-dot{position:fixed;pointer-events:none;z-index:100000;width:24px;height:24px;border-radius:50%;background:transparent;border:1.5px solid rgba(34,211,238,.8);transform:translate(-50%,-50%);box-shadow:0 0 8px rgba(34,211,238,.4),inset 0 0 6px rgba(34,211,238,.2);transition:width .2s ease,height .2s ease,border-color .2s,box-shadow .2s}
-body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([onclick]:hover) #cursor-dot{width:36px;height:36px;border-color:rgba(255,215,0,.9);box-shadow:0 0 16px rgba(255,215,0,.4),inset 0 0 10px rgba(255,215,0,.08)}
+/* Scroll progress */
+#nav-progress {
+  position: absolute; bottom: 0; left: 0; height: 1px;
+  background: linear-gradient(90deg, var(--cyan), rgba(34,211,238,.3));
+  width: 0; transition: width .1s linear;
+}
 
+/* ═══════════════════════════════════════════
+   TOC SIDEBAR
+═══════════════════════════════════════════ */
+#toc-btn {
+  position: fixed; top: 84px; left: 16px; z-index: 9500;
+  width: 32px; height: 32px;
+  background: rgba(2,5,18,.92); border: 1px solid var(--glass-border);
+  border-left: 2px solid var(--cyan);
+  border-radius: 4px;
+  color: var(--text-mid); cursor: pointer; font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .2s;
+}
+#toc-btn:hover { color: #fff; background: rgba(34,211,238,.12); }
+#toc-panel {
+  position: fixed; top: 84px; left: 16px; z-index: 9499; width: 200px;
+  background: rgba(2,5,18,.97); backdrop-filter: blur(20px);
+  border: 1px solid var(--border); border-left: 2px solid var(--cyan);
+  border-radius: 4px;
+  transform: translateX(-220px); opacity: 0; pointer-events: none;
+  transition: transform .28s cubic-bezier(.16,1,.3,1), opacity .28s;
+}
+#toc-panel.open { transform: translateX(0); opacity: 1; pointer-events: auto; }
+#toc-head {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,.06);
+}
+#toc-head span { font-family: var(--mono); font-size: 8px; letter-spacing: .25em; color: rgba(34,211,238,.7); }
+#toc-head button { background: none; border: none; color: var(--text-lo); cursor: pointer; font-size: 16px; line-height: 1; }
+.ti {
+  display: flex; gap: 8px; align-items: center;
+  padding: 7px 14px; text-decoration: none;
+  border-left: 2px solid transparent; margin-left: -2px;
+  transition: background .15s, border-color .15s;
+}
+.ti:hover { background: rgba(255,255,255,.04); }
+.ti.on { border-left-color: var(--cyan); background: rgba(34,211,238,.1); }
+.ti span:first-child { font-family: var(--mono); font-size: 8px; color: var(--text-xlo); width: 18px; flex-shrink: 0; }
+.ti span:last-child { font-size: 11px; color: var(--text-mid); }
+.ti.on span:first-child { color: var(--cyan); }
+.ti.on span:last-child { color: #fff; }
+@media(max-width:768px) { #toc-btn, #toc-panel { display: none !important; } }
 
+/* ═══════════════════════════════════════════
+   CURSOR FX
+═══════════════════════════════════════════ */
+#cursor-glow {
+  position: fixed; pointer-events: none; z-index: 99999;
+  width: 320px; height: 320px; border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(34,211,238,.065) 0%, rgba(0,200,255,.035) 30%, transparent 70%);
+  mix-blend-mode: screen; transition: opacity .3s;
+}
+#cursor-dot {
+  position: fixed; pointer-events: none; z-index: 100000;
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 1.5px solid rgba(34,211,238,.8); transform: translate(-50%, -50%);
+  box-shadow: 0 0 8px rgba(34,211,238,.4), inset 0 0 4px rgba(34,211,238,.15);
+  transition: width .2s, height .2s, border-color .2s, box-shadow .2s;
+}
+body:has(a:hover) #cursor-dot,
+body:has(button:hover) #cursor-dot {
+  width: 34px; height: 34px;
+  border-color: rgba(255,215,0,.9);
+  box-shadow: 0 0 14px rgba(255,215,0,.4);
+}
 
+/* ═══════════════════════════════════════════
+   GLASSMORPHISM CARD — the main upgrade
+═══════════════════════════════════════════ */
+.glass-card {
+  position: relative;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  overflow: hidden;
+  transition: border-color .3s, box-shadow .3s, transform .3s;
+}
+.glass-card:hover {
+  border-color: rgba(34,211,238,.28);
+  box-shadow: 0 8px 48px rgba(34,211,238,.06), 0 2px 16px rgba(0,0,0,.4), inset 0 1px 0 rgba(34,211,238,.12);
+  transform: translateY(-1px);
+}
+/* top shimmer line */
+.glass-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(34,211,238,.7) 35%, rgba(34,211,238,.25) 65%, transparent 100%);
+  background-size: 300% 100%;
+  animation: shimmer 7s ease infinite;
+}
+/* inner glow bottom-right */
+.glass-card::after {
+  content: ''; position: absolute; bottom: 0; right: 0;
+  width: 160px; height: 160px;
+  background: radial-gradient(circle at 100% 100%, rgba(34,211,238,.04), transparent 70%);
+  pointer-events: none;
+}
 
+/* Glass card — accent variants */
+.glass-card.accent-cyan  { border-color: rgba(34,211,238,.25); box-shadow: inset 0 0 30px rgba(34,211,238,.03); }
+.glass-card.accent-red   { border-color: rgba(239,68,68,.2);  box-shadow: inset 0 0 30px rgba(239,68,68,.025); }
+.glass-card.accent-amber { border-color: rgba(251,191,36,.18); }
 
+/* Corner marks */
+.glass-card .corner-tl, .glass-card .corner-tr,
+.glass-card .corner-bl, .glass-card .corner-br {
+  position: absolute; width: 16px; height: 16px; pointer-events: none;
+}
+.glass-card .corner-tl { top: 0; left: 0; border-top: 1px solid rgba(34,211,238,.55); border-left: 1px solid rgba(34,211,238,.55); }
+.glass-card .corner-tr { top: 0; right: 0; border-top: 1px solid rgba(34,211,238,.25); border-right: 1px solid rgba(34,211,238,.25); }
+.glass-card .corner-bl { bottom: 0; left: 0; border-bottom: 1px solid rgba(34,211,238,.18); border-left: 1px solid rgba(34,211,238,.18); }
+.glass-card .corner-br { bottom: 0; right: 0; border-bottom: 1px solid rgba(34,211,238,.14); border-right: 1px solid rgba(34,211,238,.14); }
 
+/* ═══════════════════════════════════════════
+   METRIC GLASS CARD (hero numbers)
+═══════════════════════════════════════════ */
+.metric-card {
+  position: relative;
+  background: rgba(6,15,38,.75);
+  border: 1px solid rgba(34,211,238,.14);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  padding: clamp(14px,2.2vw,22px) clamp(16px,2.5vw,24px);
+  overflow: hidden;
+  transition: border-color .3s, box-shadow .3s, transform .25s;
+  animation: glassIn .5s ease both;
+}
+.metric-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(34,211,238,.6), transparent);
+}
+.metric-card::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 0% 0%, rgba(34,211,238,.06) 0%, transparent 65%);
+  pointer-events: none;
+}
+.metric-card:hover {
+  border-color: rgba(34,211,238,.32);
+  box-shadow: 0 4px 32px rgba(34,211,238,.08), inset 0 0 24px rgba(34,211,238,.04);
+  transform: translateY(-2px);
+}
+.metric-card.red-accent {
+  border-color: rgba(239,68,68,.18);
+  background: rgba(15,5,5,.75);
+}
+.metric-card.red-accent::before { background: linear-gradient(90deg, transparent, rgba(239,68,68,.5), transparent); }
+.metric-card.red-accent::after { background: radial-gradient(ellipse at 0% 0%, rgba(239,68,68,.05) 0%, transparent 65%); }
 
+.metric-num {
+  font-family: var(--mono); font-size: clamp(1.2rem,2.8vw,1.75rem);
+  font-weight: 700; line-height: 1; letter-spacing: -.02em;
+  color: var(--cyan);
+  text-shadow: 0 0 20px rgba(34,211,238,.45);
+  margin-bottom: 6px; position: relative; z-index: 1;
+}
+.metric-label {
+  font-size: clamp(10px,1.4vw,12px); color: var(--text-mid);
+  line-height: 1.4; position: relative; z-index: 1;
+}
+.metric-sub {
+  font-family: var(--mono); font-size: 9px; letter-spacing: .12em;
+  color: rgba(34,211,238,.5); margin-top: 4px; position: relative; z-index: 1;
+}
 
+/* ═══════════════════════════════════════════
+   DATA ROW CARDS (market status sub-cards)
+═══════════════════════════════════════════ */
+.data-card {
+  background: rgba(34,211,238,.04);
+  border: 1px solid rgba(34,211,238,.12);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  transition: background .2s, border-color .2s;
+}
+.data-card:hover { background: rgba(34,211,238,.07); border-color: rgba(34,211,238,.22); }
+.data-card.red { background: rgba(239,68,68,.04); border-color: rgba(239,68,68,.14); }
+.data-card.red:hover { background: rgba(239,68,68,.07); border-color: rgba(239,68,68,.25); }
+.data-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 8px; padding: 5px 0;
+}
+.data-row + .data-row { border-top: 1px solid rgba(255,255,255,.04); }
+.data-key { font-size: 11.5px; color: var(--text-mid); flex: 1; min-width: 0; }
+.data-val { font-family: var(--mono); font-size: 12.5px; font-weight: 700; color: #fff; white-space: nowrap; flex-shrink: 0; }
+.data-val.accent { color: var(--cyan); }
+.data-val.red { color: var(--red); }
+.data-val.amber { color: var(--amber); }
+.data-card-label {
+  font-family: var(--mono); font-size: 8.5px; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--cyan); margin-bottom: 10px;
+  display: flex; align-items: center; gap: 6px;
+}
+.data-card-label.red { color: var(--red); }
+.data-card-label::before { content: ''; width: 3px; height: 3px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
 
+/* ═══════════════════════════════════════════
+   SPEC WALL
+═══════════════════════════════════════════ */
+.spec-item {
+  position: relative;
+  padding: clamp(12px,1.8vw,16px) clamp(14px,2vw,18px);
+  background: rgba(34,211,238,.022);
+  border: 1px solid rgba(34,211,238,.07);
+  border-left: 2px solid rgba(34,211,238,.18);
+  border-radius: 6px;
+  transition: all .25s ease; cursor: default; overflow: hidden;
+  animation: fadeUp .6s ease both;
+}
+.spec-item:hover {
+  background: rgba(34,211,238,.05);
+  border-color: rgba(34,211,238,.18);
+  border-left-color: var(--cyan);
+  box-shadow: 0 2px 20px rgba(34,211,238,.05);
+}
+.spec-item::after {
+  content: ''; position: absolute; right: 0; top: 0; bottom: 0; width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(34,211,238,.3), transparent);
+  opacity: 0; transition: opacity .3s;
+}
+.spec-item:hover::after { opacity: 1; }
 
+/* Progress track */
+.sc-track {
+  height: 2px; background: rgba(255,255,255,.05);
+  position: relative; overflow: hidden; margin-top: 9px;
+  border-radius: 2px;
+}
+.sc-fill {
+  height: 100%; position: absolute; left: 0; top: 0;
+  background: linear-gradient(90deg, var(--cyan) 0%, #67e8f9 60%, rgba(34,211,238,.4) 100%);
+  transform-origin: left;
+  transition: transform 1.2s cubic-bezier(.16,1,.3,1);
+  border-radius: 2px;
+}
 
+/* ═══════════════════════════════════════════
+   RISK BADGE
+═══════════════════════════════════════════ */
+.badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px 7px; font-size: 8px; letter-spacing: .18em;
+  font-family: var(--mono); text-transform: uppercase;
+  border-radius: 3px;
+}
+.badge.red   { border: 1px solid rgba(239,68,68,.4);   color: rgba(239,68,68,.95);  background: rgba(239,68,68,.1); }
+.badge.amber { border: 1px solid rgba(251,191,36,.4);  color: rgba(251,191,36,.95); background: rgba(251,191,36,.08); }
+.badge.green { border: 1px solid rgba(52,211,153,.4);  color: rgba(52,211,153,.95); background: rgba(52,211,153,.08); }
+.badge.cyan  { border: 1px solid rgba(34,211,238,.35); color: rgba(34,211,238,.9);  background: rgba(34,211,238,.07); }
 
+/* ═══════════════════════════════════════════
+   RISK ITEMS
+═══════════════════════════════════════════ */
+.risk-item {
+  display: flex; gap: 10px; align-items: flex-start;
+  padding: clamp(10px,1.6vw,13px) clamp(12px,1.8vw,15px);
+  background: rgba(255,255,255,.018);
+  border: 1px solid rgba(255,255,255,.04);
+  border-radius: 6px;
+  transition: all .22s ease; cursor: default;
+  animation: fadeUp .6s ease both;
+}
+.risk-item:hover {
+  background: rgba(239,68,68,.04);
+  border-color: rgba(239,68,68,.15);
+}
+.risk-item.amber:hover {
+  background: rgba(251,191,36,.04);
+  border-color: rgba(251,191,36,.15);
+}
 
+/* ═══════════════════════════════════════════
+   ACTION ITEMS
+═══════════════════════════════════════════ */
+.action-item {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: clamp(12px,1.8vw,15px) clamp(12px,1.8vw,16px);
+  background: rgba(255,255,255,.018);
+  border: 1px solid rgba(255,255,255,.04);
+  border-left: 2px solid rgba(239,68,68,.3);
+  border-radius: 6px;
+  transition: all .22s ease; cursor: default;
+  animation: fadeUp .6s ease both;
+}
+.action-item:hover {
+  background: rgba(34,211,238,.04);
+  border-color: rgba(34,211,238,.18);
+  border-left-color: var(--cyan);
+}
 
+/* ═══════════════════════════════════════════
+   PRODUCT TABLE
+═══════════════════════════════════════════ */
+.prod-row {
+  display: grid; grid-template-columns: 100px 1fr 1fr 60px;
+  gap: 8px; align-items: center;
+  padding: clamp(8px,1.5vw,11px) 0;
+  border-bottom: 1px solid rgba(255,255,255,.03);
+  transition: background .2s; cursor: default;
+}
+.prod-row:last-child { border-bottom: none; }
+.prod-row:hover { background: rgba(34,211,238,.025); border-radius: 4px; }
 
+/* ═══════════════════════════════════════════
+   PROCESS STEPS
+═══════════════════════════════════════════ */
+.proc-step {
+  flex: 1 1 80px;
+  padding: clamp(10px,1.8vw,14px) clamp(8px,1.5vw,12px);
+  border-left: 1px solid rgba(34,211,238,.08);
+  border-bottom: 1px solid rgba(34,211,238,.06);
+  position: relative;
+  transition: opacity .5s ease, transform .5s ease;
+}
+.proc-step:first-child { border-left: 2px solid var(--cyan); }
+.proc-step:nth-child(odd) { background: rgba(34,211,238,.022); }
 
+/* ═══════════════════════════════════════════
+   SECTION DIVIDER
+═══════════════════════════════════════════ */
+.sec-label {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+}
+.sec-label .line {
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, rgba(34,211,238,.2), transparent);
+}
+.sec-label.red .line { background: linear-gradient(90deg, rgba(239,68,68,.2), transparent); }
 
+/* Section heading */
+.card-header {
+  display: flex; align-items: center; gap: 12px; margin-bottom: clamp(16px,2.8vw,22px);
+}
+.card-header-bar {
+  width: 2px; flex-shrink: 0;
+  height: clamp(28px,3.5vw,36px);
+  background: linear-gradient(180deg, var(--cyan), rgba(34,211,238,.06));
+  border-radius: 2px;
+}
+.card-h2 {
+  font-family: var(--sans); font-size: clamp(14px,2.2vw,17px);
+  font-weight: 800; color: #fff; letter-spacing: -.01em;
+  margin-bottom: 2px;
+}
+.card-sub {
+  font-family: var(--mono); font-size: clamp(8px,1.1vw,9px);
+  letter-spacing: .18em; color: rgba(34,211,238,.4);
+  text-transform: uppercase; margin: 0;
+}
 
+/* ═══════════════════════════════════════════
+   LAYOUT
+═══════════════════════════════════════════ */
+.page-wrap {
+  max-width: 1360px; margin: 0 auto;
+  padding: 0 clamp(16px,4vw,40px);
+}
+.main-grid {
+  display: grid; grid-template-columns: 1fr 1.1fr;
+  gap: clamp(14px,2.2vw,22px); align-items: start;
+}
+@media(max-width:768px) { .main-grid { grid-template-columns: 1fr; } }
 
+/* ═══════════════════════════════════════════
+   HERO SECTION
+═══════════════════════════════════════════ */
+.hero {
+  padding: clamp(28px,5vw,48px) clamp(20px,4vw,40px) clamp(20px,4vw,36px);
+}
+.hero-eye {
+  font-family: var(--mono); font-size: 9px; letter-spacing: .35em; color: var(--cyan);
+  margin-bottom: 20px; display: flex; align-items: center; gap: 12px;
+}
+.hero-eye::before { content: ''; width: 32px; height: 1px; background: var(--cyan); }
+.hero-title {
+  font-family: var(--sans);
+  font-size: clamp(28px,3.8vw,48px);
+  font-weight: 800; line-height: 1.0; letter-spacing: -.03em;
+  margin-bottom: 16px; color: #fff;
+}
+.hero-title .accent { color: var(--cyan); }
+.hero-title .dim { color: rgba(255,255,255,.4); }
+.hero-sub {
+  font-size: clamp(12px,1.7vw,14px); color: var(--text-mid);
+  max-width: 640px; line-height: 1.75; margin-bottom: 32px;
+}
 
+/* Status pill */
+.status-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 14px;
+  background: rgba(34,211,238,.07);
+  border: 1px solid rgba(34,211,238,.25);
+  border-radius: 4px;
+  backdrop-filter: blur(8px);
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--cyan); margin-bottom: 20px;
+}
+.status-pill-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--cyan); flex-shrink: 0;
+  animation: dotPulse 2.2s ease-in-out infinite;
+}
 
+/* Metrics strip */
+#metrics-strip {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  margin-top: 4px;
+}
 
+/* ═══════════════════════════════════════════
+   CHINA MARKET highlight card
+═══════════════════════════════════════════ */
+.china-block {
+  background: rgba(34,211,238,.06);
+  border: 1px solid rgba(34,211,238,.22);
+  border-left: 3px solid var(--cyan);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px; margin-bottom: 14px;
+}
+.china-block-label {
+  font-family: var(--mono); font-size: 8.5px;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--cyan); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.china-stats {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 14px; margin-bottom: 14px;
+}
+@media(max-width:600px) { .china-stats { grid-template-columns: 1fr 1fr; } }
+.china-stat-v {
+  font-family: var(--mono); font-size: clamp(14px,2vw,18px);
+  font-weight: 700; color: #fff;
+  text-shadow: 0 0 12px rgba(255,255,255,.1);
+}
+.china-stat-v.accent { color: var(--cyan); text-shadow: 0 0 12px rgba(34,211,238,.3); }
+.china-stat-k { font-size: 10px; font-family: var(--mono); letter-spacing: .08em; color: var(--text-lo); margin-bottom: 4px; }
+.china-stat-s { color: var(--cyan); font-size: 10px; margin-top: 2px; }
 
+/* ═══════════════════════════════════════════
+   BG DECORATIVES
+═══════════════════════════════════════════ */
+.bg-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(34,211,238,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34,211,238,.04) 1px, transparent 1px);
+  background-size: 100px 100px;
+}
+.bg-glow {
+  position: absolute; border-radius: 50%;
+  filter: blur(140px); pointer-events: none;
+  animation: glowPulse 5s ease-in-out infinite;
+}
 
+/* ═══════════════════════════════════════════
+   TYPE UTILS
+═══════════════════════════════════════════ */
+.f-mono { font-family: var(--mono); }
+.f-label { font-size: clamp(8px,1.2vw,9.5px); }
+.f-body  { font-size: clamp(11px,1.6vw,13px); }
 
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer {
+  margin-top: clamp(28px,5vw,48px);
+  padding: 16px 0 clamp(24px,4vw,40px);
+  border-top: 1px solid rgba(34,211,238,.06);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+}
 
-
-
-
-
-#site-nav{position:fixed;top:0;left:0;right:0;z-index:10000;background:rgba(2,5,18,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.07)}
-.nav-inner{max-width:1380px;margin:0 auto;padding:0 32px;display:flex;align-items:center;height:52px}
-.nav-links{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
-.nav-link{padding:5px 12px;font-size:11px;font-family:'IBM Plex Mono',monospace;letter-spacing:.08em;color:rgba(255,255,255,.65);text-decoration:none;border:1px solid transparent;transition:all .2s;white-space:nowrap}
-.nav-link:hover{color:#fff;border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
-
-/* HERO */
-.hero{padding:40px 40px 40px;max-width:1300px;margin:0 auto}
-.hero-eye{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.35em;color:#22d3ee;margin-bottom:24px;display:flex;align-items:center;gap:12px}
-.hero-eye::before{content:'';width:32px;height:1px;background:#22d3ee}
-.hero-title{font-size:clamp(28px,3.5vw,44px);font-weight:800;line-height:1.0;letter-spacing:-.03em;margin-bottom:20px;color:#fff}
-.hero-title .a1{color:#22d3ee}
-.hero-title .a2{color:rgba(255,255,255,.45)}
-.hero-sub{font-size:14px;color:rgba(255,255,255,.65);max-width:640px;line-height:1.7;margin-bottom:48px}
 </style>
 </head>
-<body style="padding-top:52px;background:linear-gradient(168deg,#020617 0%,#030c22 55%,#020a1a 100%);min-height:100vh" style="background:linear-gradient(168deg,#020617 0%,#030c22 55%,#020a1a 100%);font-family:'Helvetica Neue',Arial,sans-serif">
+<body>
+
+<!-- CURSOR FX -->
 <div id="cursor-glow"></div>
 <div id="cursor-dot"></div>
 
+<!-- NAV -->
 <nav id="site-nav">
   <div class="nav-inner">
+    <div class="nav-brand">SEMI · SBU</div>
     <div class="nav-links">
       <a href="index.html" class="nav-link">总览</a>
       <a href="macro.html" class="nav-link">宏观脉搏</a>
       <a href="liquid.html" class="nav-link">AI 液冷</a>
-      <a href="semiconductor.html" class="nav-link" style="color:#22d3ee;border-color:#22d3ee;background:rgba(34,211,238,.08)">半导体 SBU</a>
+      <a href="semiconductor.html" class="nav-link active">半导体 SBU</a>
       <a href="mscc.html" class="nav-link">质谱·色谱</a>
       <a href="pharma.html" class="nav-link">制药装备</a>
       <a href="food.html" class="nav-link">食品饮料</a>
       <a href="hydrogen.html" class="nav-link">氢能行业</a>
       <a href="customers.html" class="nav-link">客户监控</a>
     </div>
+    <div id="nav-progress"></div>
   </div>
 </nav>
-<script>
-window.addEventListener('scroll',()=>{
-  const pct=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
-  document.getElementById('sc-nav-bar').style.width=pct+'%';
-});
-</script>
 
-<section id="root" style="padding:0 clamp(16px,5vw,48px);position:relative;overflow:visible;z-index:1">
-
-  <!-- BG: laser grid -->
-  <div style="position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(34,211,238,.042) 1px,transparent 1px),linear-gradient(90deg,rgba(34,211,238,.042) 1px,transparent 1px);background-size:100px 100px"></div>
-
-  <!-- Cyan ambient glow -->
-  <div class="sca-glowPulse" style="position:absolute;top:-80px;left:38%;width:clamp(280px,48vw,560px);height:clamp(280px,48vw,560px);background:#22d3ee;border-radius:50%;filter:blur(145px);opacity:.045;pointer-events:none"></div>
-
-  <!-- Vertical scanline -->
-  <div class="sca-scanV" style="position:absolute;top:0;left:22%;width:1px;background:linear-gradient(180deg,transparent,rgba(34,211,238,.14),transparent);pointer-events:none;height:100%"></div>
-
-  <!-- Horizontal scanline -->
-  <div class="sca-scanH" style="position:absolute;left:0;top:38%;height:1px;background:linear-gradient(90deg,transparent,rgba(34,211,238,.1),transparent);pointer-events:none;width:100%"></div>
-
-  <!-- Decorative wafer top-right -->
-  <div style="position:absolute;top:-60px;right:-80px;opacity:.07;pointer-events:none">
-    <svg id="wafer-bg" width="340" height="340" viewBox="0 0 340 340" style="overflow:visible">
-      <defs>
-        <radialGradient id="wg" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#22d3ee" stop-opacity=".14"/>
-          <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
-        </radialGradient>
-      </defs>
-    </svg>
-  </div>
-
-  <!-- Content -->
-  <div style="max-width:1280px;margin:0 auto;position:relative;z-index:1">
-
-<!-- ═══ HEADER ═══ -->
-<div class="hero">
-  <div class="hero-eye">STRATEGY RESEARCH · SEMICONDUCTOR · 2026</div>
-  <h1 class="f-hero" style="margin:0 0 10px">
-    SEMI&shy;CONDUCTOR
-    <span class="f-mono" style="display:block;font-size:.3em;font-weight:400;color:#22d3ee;letter-spacing:.15em;margin-top:8px">// 先进制程 · 超高纯气路控制</span>
-  </h1>
-  <p class="hero-sub">全球市场 2025 增速 23.5%，2026E 迈向万亿美元 · AI 算力虹吸先进产能 · Section 232 关税新变量 · 涨价周期中的流体控制切入战略</p>
-  <div style="display:inline-flex;align-items:center;gap:8px;padding:8px 16px;background:rgba(34,211,238,.07);border:1px solid rgba(34,211,238,.25);backdrop-filter:blur(8px);color:#22d3ee;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px">
-    <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#22d3ee;flex-shrink:0"></span>
-    2026 战略地位：核心护城河
-  </div>
-  <div id="metrics-strip" style="display:flex;gap:2px;flex-wrap:wrap"></div>
+<!-- TOC -->
+<button id="toc-btn" onclick="tocToggle()" title="目录">
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+    <line x1="1" y1="3" x2="13" y2="3" stroke="currentColor" stroke-width="1.5"/>
+    <line x1="1" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="1.5"/>
+    <line x1="1" y1="11" x2="13" y2="11" stroke="currentColor" stroke-width="1.5"/>
+  </svg>
+</button>
+<div id="toc-panel">
+  <div id="toc-head"><span>目录</span><button onclick="tocToggle()">×</button></div>
+  <a class="ti" href="#s01"><span>01</span><span>核心数据</span></a>
+  <a class="ti" href="#s02"><span>02</span><span>市场现状</span></a>
+  <a class="ti" href="#s03"><span>03</span><span>技术规格</span></a>
+  <a class="ti" href="#s04"><span>04</span><span>战略行动</span></a>
+  <a class="ti" href="#s05"><span>05</span><span>产品矩阵</span></a>
+  <a class="ti" href="#s06"><span>06</span><span>风险矩阵</span></a>
 </div>
 
+<!-- PAGE ROOT -->
+<section id="root" style="position:relative;overflow:visible;z-index:1">
 
-<!-- ═══ MARKET STATUS ═══ -->
-<div class="sc-glass" style="padding:clamp(24px,4vw,36px);margin-bottom:clamp(20px,3vw,28px)">
-  <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px">
-    <div style="width:2px;height:clamp(28px,4vw,36px);background:linear-gradient(180deg,#22d3ee,rgba(34,211,238,.08));flex-shrink:0"></div>
-    <div>
-      <h2 class="f-h3" style="margin-bottom:2px">市场现状</h2>
-      <p class="f-label f-mono" style="color:rgba(34,211,238,.35);letter-spacing:.18em;margin:0;text-transform:uppercase">00 · Market Status · March 2026</p>
-    </div>
-  </div>
+  <!-- BG Decoratives -->
+  <div class="bg-grid"></div>
+  <div class="bg-glow" style="top:-80px;left:36%;width:min(52vw,560px);height:min(52vw,560px);background:#22d3ee;opacity:.04"></div>
+  <div class="bg-glow" style="top:40%;right:-5%;width:min(30vw,320px);height:min(30vw,320px);background:#0ea5e9;opacity:.03;animation-delay:2.5s"></div>
 
-  <!-- 三段分析 -->
-  <div style="display:flex;flex-direction:column;gap:20px">
+  <!-- Scanlines -->
+  <div style="position:absolute;top:0;left:22%;width:1px;height:100%;background:linear-gradient(180deg,transparent,rgba(34,211,238,.1),transparent);pointer-events:none;animation:scanV 22s linear infinite"></div>
+  <div style="position:absolute;left:0;top:35%;width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(34,211,238,.08),transparent);pointer-events:none;animation:scanH 28s linear infinite"></div>
 
-    <!-- 段落1：全球市场 -->
-    <div style="border-left:1px solid rgba(34,211,238,.2);padding-left:18px">
-      <div class="f-label f-mono" style="color:#22d3ee;letter-spacing:.22em;text-transform:uppercase;margin-bottom:8px">▸ 全球景气：AI虹吸效应持续主导</div>
-      <p class="f-body" style="color:rgba(255,255,255,.75);line-height:1.85;margin:0;font-size:13px">
-        2025年全球半导体市场规模约 <span style="color:#fff;font-weight:600">7920亿美元</span>，同比增长 <span style="color:#22d3ee;font-weight:600">+23.5%</span>（SIA），为2021年以来最强增速。增长高度集中于逻辑器件（+39.9%）与存储（+34.8%），二者合计贡献总量逾三分之二，核心驱动力均指向AI算力基础设施建设。2026年全球市场规模预计迈向 <span style="color:#fff;font-weight:600">约1万亿美元</span>，高预测机构共识增速集中在23%–30%区间。然而这是一个结构性极不均衡的周期——AI先进算力链高景气，消费电子与PC因产能被AI优先挤占而面临结构性供给短缺，约半数半导体公司仍处于亏损状态。
-      </p>
-    </div>
+  <div class="page-wrap" style="position:relative;z-index:1">
 
-    <!-- 段落2：中国设备市场 -->
-    <div style="border-left:1px solid rgba(34,211,238,.2);padding-left:18px">
-      <div class="f-label f-mono" style="color:#22d3ee;letter-spacing:.22em;text-transform:uppercase;margin-bottom:8px">▸ 中国设备：全球最大单一市场，国产替代加速</div>
-      <p class="f-body" style="color:rgba(255,255,255,.75);line-height:1.85;margin:0;font-size:13px">
-        中国大陆半导体设备市场2024年销售额达 <span style="color:#fff;font-weight:600">495亿美元</span>，占全球比重 <span style="color:#22d3ee;font-weight:600">42%</span>，连续五年位居全球最大单一市场，2020–2024年CAGR达21.5%（SEMI）。2026–2028年间，中国300mm晶圆厂设备支出总额预计达 <span style="color:#fff;font-weight:600">940亿美元</span>。国产替代正进入加速阶段：整体国产化率已从2017年的13%提升至2026年初约 <span style="color:#22d3ee;font-weight:600">35%</span>，其中刻蚀机、薄膜沉积设备突破40%；北方华创、中微公司、拓荆科技订单排期已至2027年一季度，企业订单金额同比增长约 <span style="color:#fff;font-weight:600">80%</span>。光刻机仍是最大瓶颈，国产化率不足1%，但中芯国际已启动首款国产DUV光刻机（宇量昇，浸没式，28nm级）测试，良率验证达92%。
-      </p>
-    </div>
-
-    <!-- 段落3：供应链压力与流体控制关联 -->
-    <div style="border-left:1px solid rgba(34,211,238,.2);padding-left:18px">
-      <div class="f-label f-mono" style="color:#22d3ee;letter-spacing:.22em;text-transform:uppercase;margin-bottom:8px">▸ 供应链压力：涨价+交期双重收紧</div>
-      <p class="f-body" style="color:rgba(255,255,255,.75);line-height:1.85;margin:0;font-size:13px">
-        产业链进入全面涨价周期，涨幅普遍 <span style="color:#fff;font-weight:600">10%–20%</span>，高端功率器件最高达 <span style="color:#fff;font-weight:600">80%</span>（英飞凌自2026年4月调价）；中芯国际、华虹产能利用率分别达 <span style="color:#22d3ee;font-weight:600">93.5%</span> 与 <span style="color:#22d3ee;font-weight:600">106%</span>，双双满载。精密流体控制方面，阀门平均交期已拉长至 <span style="color:#fff;font-weight:600">3–4个月</span>，较2025年翻倍，高端MFC产能集中欧洲、亚太订单积压严峻。外部变量方面，美国Section 232半导体关税调查已启动，欧洲原产精密零部件进入北美供应链面临额外壁垒；EAR出口管制持续扩围，7nm以下产线相关产品需提前做合规预案。
-      </p>
+    <!-- ══ HERO ══════════════════════════════════════ -->
+    <div class="hero" id="s01">
+      <div class="hero-eye">STRATEGY RESEARCH · SEMICONDUCTOR · 2026</div>
+      <h1 class="hero-title">
+        SEMI<span class="dim">·</span><span class="accent">CONDUCTOR</span>
+        <span class="f-mono" style="display:block;font-size:.28em;font-weight:400;color:var(--cyan);letter-spacing:.15em;margin-top:10px">// 先进制程 · 超高纯气路控制</span>
+      </h1>
+      <p class="hero-sub">全球市场 2025 增速 23.5%，2026E 迈向万亿美元 · AI 算力虹吸先进产能 · Section 232 关税新变量 · 涨价周期中的流体控制切入战略</p>
+      <div class="status-pill">
+        <span class="status-pill-dot"></span>
+        2026 战略地位：核心护城河
+      </div>
+      <!-- Metric cards strip -->
+      <div id="metrics-strip"></div>
     </div>
 
-  </div>
+    <!-- ══ MARKET STATUS ══════════════════════════════ -->
+    <div id="s02" class="glass-card" style="padding:clamp(22px,4vw,34px);margin-bottom:clamp(18px,3vw,26px)">
+      <div class="corner-tl"></div><div class="corner-tr"></div>
+      <div class="corner-bl"></div><div class="corner-br"></div>
+      <div class="card-header">
+        <div class="card-header-bar"></div>
+        <div>
+          <h2 class="card-h2">市场现状</h2>
+          <p class="card-sub">00 · Market Status · March 2026</p>
+        </div>
+      </div>
 
-  <!-- 数据来源 -->
-  <div style="margin-top:20px;padding-top:14px;border-top:1px solid rgba(34,211,238,.07)">
-    <span class="f-label f-mono" style="color:rgba(255,255,255,.2);letter-spacing:.12em">DATA SOURCE: SEMI · SIA · 东海证券 · 融中咨询 · 新浪财经 · MAR 2026</span>
-  </div>
-</div>
+      <!-- China block -->
+      <div class="china-block">
+        <div class="china-block-label">
+          <svg width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="5" fill="none" stroke="currentColor" stroke-width="1.2"/><line x1="6" y1="1" x2="6" y2="11" stroke="currentColor" stroke-width="1"/><line x1="1" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="1"/></svg>
+          中国市场 · 全球第一设备市场，连续六年
+        </div>
+        <div class="china-stats">
+          <div>
+            <div class="china-stat-k">2024 设备销售额</div>
+            <div class="china-stat-v">$495亿</div>
+            <div class="china-stat-s">全球占比 42%</div>
+          </div>
+          <div>
+            <div class="china-stat-k">2020–2024 CAGR</div>
+            <div class="china-stat-v accent">21.5%</div>
+            <div class="china-stat-s">远超全球平均增速</div>
+          </div>
+          <div>
+            <div class="china-stat-k">2026–28 设备支出</div>
+            <div class="china-stat-v">$940亿</div>
+            <div class="china-stat-s">300mm晶圆厂扩产</div>
+          </div>
+          <div>
+            <div class="china-stat-k">2028 新建晶圆厂</div>
+            <div class="china-stat-v accent">47座</div>
+            <div class="china-stat-s">全球108座中占43%</div>
+          </div>
+        </div>
+        <div style="height:1px;background:rgba(34,211,238,.1);margin-bottom:12px"></div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+          <div style="background:rgba(34,211,238,.05);padding:10px 12px;border-radius:4px">
+            <div style="color:var(--text-lo);font-size:10px;font-family:var(--mono);margin-bottom:3px">晶圆产能 2020→2030</div>
+            <div style="color:#fff;font-size:12px;font-weight:600">490 → 1,410 万片</div>
+            <div style="color:var(--cyan);font-size:10px;margin-top:2px">全球份额 20% → 32%</div>
+          </div>
+          <div style="background:rgba(34,211,238,.05);padding:10px 12px;border-radius:4px">
+            <div style="color:var(--text-lo);font-size:10px;font-family:var(--mono);margin-bottom:3px">22–40nm 产能占比（2028）</div>
+            <div style="color:#fff;font-size:12px;font-weight:600">25% → 42%</div>
+            <div style="color:var(--cyan);font-size:10px;margin-top:2px">成熟制程主力地位强化</div>
+          </div>
+          <div style="background:rgba(34,211,238,.05);padding:10px 12px;border-radius:4px">
+            <div style="color:var(--text-lo);font-size:10px;font-family:var(--mono);margin-bottom:3px">国产设备替代率（2026初）</div>
+            <div style="color:#fff;font-size:12px;font-weight:600">整体 ~35% ↑</div>
+            <div style="color:var(--cyan);font-size:10px;margin-top:2px">刻蚀/薄膜沉积突破 40%</div>
+          </div>
+        </div>
+        <div style="margin-top:10px">
+          <span style="color:rgba(255,255,255,.28);font-size:9px;font-family:var(--mono)">注：SEMI预测中国大陆2026年起增速放缓、销售额逐步回落，但仍将保持全球第一地位；本土厂商持续在成熟制程及部分先进节点投入</span>
+        </div>
+      </div>
 
-    <!-- ═══ MAIN GRID ═══ -->
-    <div class="main-grid">
-
-      <!-- ── LEFT: Spec Wall + Risk ── -->
-      <div style="display:flex;flex-direction:column;gap:clamp(10px,2vw,16px)">
-
-        <div class="sec-label">
-          <span class="f-label f-mono" style="color:rgba(34,211,238,.42);letter-spacing:.25em;text-transform:uppercase">01 · 核心技术规格</span>
-          <div class="line"></div>
+      <!-- 4-card grid -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="data-card">
+          <div class="data-card-label">全球设备市场（SEMI官方）</div>
+          <div class="data-row"><span class="data-key">2025 全球设备销售额（历史新高）</span><span class="data-val">$1,330亿 +13.7%</span></div>
+          <div class="data-row"><span class="data-key">2026E</span><span class="data-val accent">$1,450亿</span></div>
+          <div class="data-row"><span class="data-key">2027E（历史峰值）</span><span class="data-val accent">$1,560亿</span></div>
+          <div style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(34,211,238,.08)">
+            <span style="color:var(--text-xlo);font-size:9px;font-family:var(--mono)">SOURCE: SEMI 年终设备预测报告 Dec 2025</span>
+          </div>
         </div>
 
-        <div id="spec-wall" style="display:flex;flex-direction:column;gap:clamp(7px,1.5vw,10px)"></div>
+        <div class="data-card">
+          <div class="data-card-label">AI算力驱动</div>
+          <div class="data-row"><span class="data-key">2026 全球AI基础设施支出</span><span class="data-val">$4,500亿</span></div>
+          <div class="data-row"><span class="data-key">推理算力占比（首次）</span><span class="data-val accent">&gt;70%</span></div>
+          <div class="data-row"><span class="data-key">2026E 全球半导体规模</span><span class="data-val accent">~$9,750亿</span></div>
+          <div style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(34,211,238,.08)">
+            <span style="color:var(--text-mid);font-size:11px">万亿美元节点较原预期提前 <span style="color:var(--cyan);font-weight:600">4年</span></span>
+          </div>
+        </div>
+
+        <div class="data-card">
+          <div class="data-card-label">存储 &amp; 先进封装</div>
+          <div class="data-row"><span class="data-key">DRAM设备 2025→2027</span><span class="data-val">$225→$261亿</span></div>
+          <div class="data-row"><span class="data-key">NAND设备 2025→2027</span><span class="data-val accent">$140→$169亿</span></div>
+          <div class="data-row"><span class="data-key">HBM 市场增速 / 规模</span><span class="data-val accent">+58% / $546亿</span></div>
+          <div style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(34,211,238,.08)">
+            <span style="color:var(--text-mid);font-size:11px">测试设备2025 +48.1% · 封装设备 +19.6%</span>
+          </div>
+        </div>
+
+        <div class="data-card red">
+          <div class="data-card-label red">供应链压力</div>
+          <div class="data-row"><span class="data-key">产业链涨价幅度</span><span class="data-val">10–80%</span></div>
+          <div class="data-row"><span class="data-key">阀门平均交期（较2025年翻倍）</span><span class="data-val red">3–4个月</span></div>
+          <div class="data-row"><span class="data-key">晶圆厂产能利用率（中芯/华虹）</span><span class="data-val amber">93–106%</span></div>
+          <div style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(239,68,68,.1)">
+            <span style="color:var(--text-mid);font-size:11px;line-height:1.6">Section 232关税 · EAR美荷日联合管控 · 能源/PFAS危机 · 人才短缺</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:16px;padding-top:12px;border-top:1px solid rgba(34,211,238,.06)">
+        <span class="f-label f-mono" style="color:rgba(255,255,255,.18);letter-spacing:.1em">DATA SOURCE: SEMI China · SEMI年终设备预测报告(Dec 2025) · SEMICON China 2026 · SIA · MAR 2026</span>
+      </div>
+    </div>
+
+    <!-- ══ MAIN GRID ══════════════════════════════════ -->
+    <div class="main-grid">
+
+      <!-- LEFT column -->
+      <div style="display:flex;flex-direction:column;gap:clamp(10px,2vw,16px)">
+
+        <!-- Tech Specs -->
+        <div id="s03">
+          <div class="sec-label">
+            <span class="f-label f-mono" style="color:rgba(34,211,238,.45);letter-spacing:.25em;text-transform:uppercase">01 · 核心技术规格</span>
+            <div class="line"></div>
+          </div>
+          <div id="spec-wall" style="display:flex;flex-direction:column;gap:clamp(6px,1.2vw,9px)"></div>
+        </div>
 
         <!-- Risk Matrix -->
-        <div style="margin-top:4px">
+        <div id="s06" style="margin-top:4px">
           <div class="sec-label red" style="margin-bottom:12px">
-            <span class="f-label f-mono" style="color:rgba(239,68,68,.45);letter-spacing:.25em;text-transform:uppercase">04 · 风险矩阵</span>
+            <span class="f-label f-mono" style="color:rgba(239,68,68,.5);letter-spacing:.25em;text-transform:uppercase">04 · 风险矩阵</span>
             <div class="line"></div>
           </div>
           <div id="risk-wall" style="display:flex;flex-direction:column;gap:5px"></div>
         </div>
       </div>
 
-      <!-- ── RIGHT: Actions + Product + Process ── -->
+      <!-- RIGHT column -->
       <div style="display:flex;flex-direction:column;gap:clamp(12px,2vw,18px)">
 
         <!-- Strategic Actions -->
-        <div class="sc-glass sc-corner-tl sc-corner-tr sc-corner-bl sc-corner-br" style="padding:clamp(18px,3vw,28px)">
-          <div style="display:flex;align-items:center;gap:12px;margin-bottom:clamp(16px,3vw,24px);position:relative;z-index:1">
-            <div style="width:2px;height:clamp(28px,4vw,36px);background:linear-gradient(180deg,#22d3ee,rgba(34,211,238,.08));flex-shrink:0"></div>
+        <div id="s04" class="glass-card accent-cyan" style="padding:clamp(18px,3vw,26px)">
+          <div class="corner-tl"></div><div class="corner-tr"></div>
+          <div class="corner-bl"></div><div class="corner-br"></div>
+          <div class="card-header">
+            <div class="card-header-bar"></div>
             <div>
-              <h2 class="f-h3" style="margin-bottom:2px">2026 战略行动路线</h2>
-              <p class="f-label f-mono" style="color:rgba(34,211,238,.35);letter-spacing:.18em;margin:0;text-transform:uppercase">02 · Strategic Actions &amp; Execution Timing</p>
+              <h2 class="card-h2">2026 战略行动路线</h2>
+              <p class="card-sub">02 · Strategic Actions &amp; Execution Timing</p>
             </div>
           </div>
           <div id="action-list" style="display:flex;flex-direction:column;gap:7px;position:relative;z-index:1"></div>
         </div>
 
         <!-- Product Matrix -->
-        <div class="sc-glass" style="padding:clamp(16px,3vw,22px)">
+        <div id="s05" class="glass-card" style="padding:clamp(16px,2.8vw,22px)">
           <div class="sec-label" style="margin-bottom:14px;position:relative;z-index:1">
-            <span class="f-label f-mono" style="color:rgba(34,211,238,.42);letter-spacing:.22em;text-transform:uppercase">03 · 产品适配矩阵</span>
+            <span class="f-label f-mono" style="color:rgba(34,211,238,.45);letter-spacing:.22em;text-transform:uppercase">03 · 产品适配矩阵</span>
             <div class="line"></div>
           </div>
           <!-- Table header -->
-          <div style="display:grid;grid-template-columns:100px 1fr 1fr 56px;gap:8px;padding:5px 0 8px;border-bottom:1px solid rgba(34,211,238,.08);margin-bottom:4px;position:relative;z-index:1">
-            <span class="f-label f-mono" style="color:rgba(34,211,238,.38);letter-spacing:.15em;text-transform:uppercase">产品型号</span>
-            <span class="f-label f-mono" style="color:rgba(34,211,238,.38);letter-spacing:.15em;text-transform:uppercase">阀门功能</span>
-            <span class="f-label f-mono" style="color:rgba(34,211,238,.38);letter-spacing:.15em;text-transform:uppercase">适用工艺</span>
-            <span class="f-label f-mono" style="color:rgba(34,211,238,.38);letter-spacing:.15em;text-transform:uppercase">匹配度</span>
+          <div style="display:grid;grid-template-columns:100px 1fr 1fr 60px;gap:8px;padding:5px 0 9px;border-bottom:1px solid rgba(34,211,238,.09);margin-bottom:4px;position:relative;z-index:1">
+            <span class="f-label f-mono" style="color:rgba(34,211,238,.4);letter-spacing:.13em;text-transform:uppercase">产品型号</span>
+            <span class="f-label f-mono" style="color:rgba(34,211,238,.4);letter-spacing:.13em;text-transform:uppercase">阀门功能</span>
+            <span class="f-label f-mono" style="color:rgba(34,211,238,.4);letter-spacing:.13em;text-transform:uppercase">适用工艺</span>
+            <span class="f-label f-mono" style="color:rgba(34,211,238,.4);letter-spacing:.13em;text-transform:uppercase">匹配度</span>
           </div>
           <div id="product-table" style="position:relative;z-index:1"></div>
-          <!-- <div style="margin-top:12px;padding:11px 13px;background:rgba(34,211,238,.045);border:1px solid rgba(34,211,238,.14);border-left:2px solid #22d3ee;position:relative;z-index:1">
-            <span class="f-label f-mono" style="color:#22d3ee;letter-spacing:.15em;display:block;margin-bottom:5px"></span>
-            <p class="f-body" style="color:rgba(255,255,255,.82);line-height:1.65;margin:0">高洁净度隔膜阀 · 质量流量控制器 · 腐蚀介质电磁阀 · 超纯水回路精密阀组 —— EP 全电解抛光内壁全系列，覆盖 14nm 以下先进节点全工艺流程。</p>
-          </div>
         </div>
 
         <!-- Process Flow -->
-        <div class="sc-glass" style="overflow:hidden">
+        <div class="glass-card" style="overflow:hidden">
           <div style="padding:clamp(14px,2.5vw,20px) clamp(16px,3vw,22px);border-bottom:1px solid rgba(34,211,238,.07);position:relative;z-index:1">
-            <div class="sec-label">
-              <span class="f-label f-mono" style="color:rgba(34,211,238,.42);letter-spacing:.22em;text-transform:uppercase">05 </span>
+            <div class="sec-label" style="margin-bottom:0">
+              <span class="f-label f-mono" style="color:rgba(34,211,238,.45);letter-spacing:.22em;text-transform:uppercase">05 · 制程工序</span>
               <div class="line"></div>
-              <!-- Mini wafer -->
-              <div style="opacity:.4;flex-shrink:0">
-                <svg width="48" height="48" viewBox="0 0 48 48" style="overflow:visible">
-                  <defs><radialGradient id="wg2" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#22d3ee" stop-opacity=".14"/><stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/></radialGradient></defs>
-                  <circle cx="24" cy="24" r="21" fill="url(#wg2)"/>
-                  <circle cx="24" cy="24" r="21" fill="none" stroke="rgba(34,211,238,.14)" stroke-width="1"/>
-                  <circle cx="24" cy="24" r="16" fill="none" stroke="rgba(34,211,238,.09)" stroke-width="1" stroke-dasharray="4 6"/>
-                  <circle cx="24" cy="24" r="10" fill="none" stroke="rgba(34,211,238,.07)" stroke-width="1"/>
-                  <circle cx="24" cy="24" r="5" fill="none" stroke="rgba(34,211,238,.18)" stroke-width="1.5"/>
-                  <line x1="14" y1="24" x2="34" y2="24" stroke="rgba(34,211,238,.7)" stroke-width="1"/>
-                  <line x1="24" y1="14" x2="24" y2="34" stroke="rgba(34,211,238,.7)" stroke-width="1"/>
-                  <circle cx="24" cy="24" r="2.5" fill="#22d3ee" filter="drop-shadow(0 0 5px #22d3ee)"/>
-                  <g class="sca-rotate" style="transform-origin:24px 24px"><circle cx="24" cy="24" r="23" fill="none" stroke="rgba(34,211,238,.2)" stroke-width="1" stroke-dasharray="8 10"/></g>
+              <!-- Wafer icon -->
+              <div style="opacity:.45;flex-shrink:0">
+                <svg width="44" height="44" viewBox="0 0 44 44">
+                  <circle cx="22" cy="22" r="19" fill="none" stroke="rgba(34,211,238,.18)" stroke-width="1"/>
+                  <circle cx="22" cy="22" r="14" fill="none" stroke="rgba(34,211,238,.1)" stroke-width="1" stroke-dasharray="4 6"/>
+                  <circle cx="22" cy="22" r="8" fill="none" stroke="rgba(34,211,238,.08)" stroke-width="1"/>
+                  <circle cx="22" cy="22" r="3" fill="none" stroke="rgba(34,211,238,.2)" stroke-width="1.5"/>
+                  <line x1="12" y1="22" x2="32" y2="22" stroke="rgba(34,211,238,.6)" stroke-width="1"/>
+                  <line x1="22" y1="12" x2="22" y2="32" stroke="rgba(34,211,238,.6)" stroke-width="1"/>
+                  <circle cx="22" cy="22" r="2" fill="#22d3ee" filter="drop-shadow(0 0 5px #22d3ee)"/>
+                  <g style="animation:rotate 14s linear infinite;transform-origin:22px 22px">
+                    <circle cx="22" cy="22" r="21" fill="none" stroke="rgba(34,211,238,.2)" stroke-width="1" stroke-dasharray="8 10"/>
+                  </g>
                 </svg>
               </div>
             </div>
           </div>
-          <div id="process-flow" style="display:flex;flex-wrap:wrap"></div>
+          <div id="process-flow" style="display:flex;flex-wrap:wrap;position:relative;z-index:1"></div>
         </div>
 
       </div>
     </div>
 
-    <!-- Footer -->
-    <footer style="margin-top:clamp(28px,5vw,48px);padding-top:16px;border-top:1px solid rgba(34,211,238,.07);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px">
-      <span class="f-label f-mono" style="color:rgba(255,255,255,.18);letter-spacing:.15em">'S STRATEGIC ANALYSIS 2026</span>
-      <span class="f-label f-mono" style="color:rgba(34,211,238,.3);letter-spacing:.12em">DATA SOURCE: SEMI · NBS · DELOITTE · MCKINSEY</span>
+    <!-- FOOTER -->
+    <footer>
+      <span class="f-label f-mono" style="color:rgba(255,255,255,.16);letter-spacing:.14em">STRATEGIC ANALYSIS 2026</span>
+      <span class="f-label f-mono" style="color:rgba(34,211,238,.28);letter-spacing:.1em">DATA SOURCE: SEMI · NBS · DELOITTE · MCKINSEY</span>
     </footer>
 
-  </div><!-- /content -->
+  </div><!-- /page-wrap -->
 </section>
 
 <script>
-/* ══════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════
    DATA
-══════════════════════════════════════════════════════════ */
+═══════════════════════════════════════════ */
 const UHP_SPECS = [
   {icon:"◈", label:"表面粗糙度 (Ra)",  value:"< 0.1 μm",     detail:"全电解抛光工艺 (EP)，符合 SEMI F19 超纯标准",         bar:96},
   {icon:"◎", label:"气体泄漏率",        value:"1×10⁻¹²",      detail:"mbar·l/s 氦质谱检漏，超出行业安全裕度 10×",           bar:99},
@@ -448,10 +901,10 @@ const RISKS = [
 ];
 
 const METRICS = [
-  {v:"~$1T",   k:"2026E 全球市场规模",   c:"#22d3ee"},
-  {v:"+23.5%", k:"2025 全年增速 SIA",    c:"#67e8f9"},
-  {v:"3–4 月", k:"阀门平均交期（YoY ×2）", c:"#a5f3fc"},
-  {v:"10~80%", k:"产业链涨价幅度区间",   c:"#22d3ee"},
+  {v:"~$1T",   k:"2026E 全球市场规模",      c:"#22d3ee", delay:0},
+  {v:"+23.5%", k:"2025 全年增速 SIA",       c:"#67e8f9", delay:80},
+  {v:"3–4 月", k:"阀门平均交期（YoY ×2）",  c:"#a5f3fc", delay:160},
+  {v:"10~80%", k:"产业链涨价幅度区间",      c:"#22d3ee", delay:240},
 ];
 
 const STEPS = [
@@ -465,126 +918,20 @@ const STEPS = [
 
 const URGENCY_COLOR = {high:"#ef4444", amber:"#fbbf24", green:"#34d399", red:"#ef4444"};
 
-/* ══════════════════════════════════════════════════════════
-   WAFER SVG GENERATOR
-══════════════════════════════════════════════════════════ */
-function buildWafer(size, id_suffix) {
-  const cx = size/2, cy = size/2;
-  const R = [size*.44, size*.34, size*.22, size*.12];
-  const alphas = [.14,.09,.07,.18];
-  const NS = "http://www.w3.org/2000/svg";
-
-  const svg = document.createElementNS(NS,"svg");
-  svg.setAttribute("width",size); svg.setAttribute("height",size);
-  svg.setAttribute("viewBox",`0 0 ${size} ${size}`);
-  svg.style.overflow="visible";
-
-  // defs
-  const defs = document.createElementNS(NS,"defs");
-  const grad = document.createElementNS(NS,"radialGradient");
-  grad.setAttribute("id","wg"+id_suffix);
-  grad.setAttribute("cx","50%"); grad.setAttribute("cy","50%"); grad.setAttribute("r","50%");
-  ["0%","100%"].forEach((off,i) => {
-    const s = document.createElementNS(NS,"stop");
-    s.setAttribute("offset",off);
-    s.setAttribute("stop-color","#22d3ee");
-    s.setAttribute("stop-opacity",i===0?".14":"0");
-    grad.appendChild(s);
-  });
-  defs.appendChild(grad); svg.appendChild(defs);
-
-  // fill glow
-  const fill = document.createElementNS(NS,"circle");
-  fill.setAttribute("cx",cx); fill.setAttribute("cy",cy); fill.setAttribute("r",R[0]);
-  fill.setAttribute("fill","url(#wg"+id_suffix+")");
-  svg.appendChild(fill);
-
-  // rings
-  R.forEach((r,i) => {
-    const c = document.createElementNS(NS,"circle");
-    c.setAttribute("cx",cx); c.setAttribute("cy",cy); c.setAttribute("r",r);
-    c.setAttribute("fill","none");
-    c.setAttribute("stroke",`rgba(34,211,238,${alphas[i]})`);
-    c.setAttribute("stroke-width", i===3?"1.5":"1");
-    if(i===1) c.setAttribute("stroke-dasharray","4 6");
-    svg.appendChild(c);
-  });
-
-  // ticks
-  for(let i=0;i<48;i++){
-    const a=(i/48)*Math.PI*2, major=i%8===0;
-    const ro=R[0]+2, ri=R[0]-(major?10:5);
-    const line=document.createElementNS(NS,"line");
-    line.setAttribute("x1",cx+Math.cos(a)*ro); line.setAttribute("y1",cy+Math.sin(a)*ro);
-    line.setAttribute("x2",cx+Math.cos(a)*ri); line.setAttribute("y2",cy+Math.sin(a)*ri);
-    line.setAttribute("stroke",major?"rgba(34,211,238,.55)":"rgba(34,211,238,.18)");
-    line.setAttribute("stroke-width",major?"1.5":"1");
-    svg.appendChild(line);
-  }
-
-  // die grid
-  [-1.5,-.5,.5,1.5].forEach(g => {
-    [true,false].forEach(horiz => {
-      const l=document.createElementNS(NS,"line");
-      if(horiz){
-        l.setAttribute("x1",cx+g*22); l.setAttribute("y1",cy-R[0]*.8);
-        l.setAttribute("x2",cx+g*22); l.setAttribute("y2",cy+R[0]*.8);
-      } else {
-        l.setAttribute("x1",cx-R[0]*.8); l.setAttribute("y1",cy+g*22);
-        l.setAttribute("x2",cx+R[0]*.8); l.setAttribute("y2",cy+g*22);
-      }
-      l.setAttribute("stroke","rgba(34,211,238,.07)"); l.setAttribute("stroke-width","1");
-      svg.appendChild(l);
-    });
-  });
-
-  // crosshair
-  ["h","v"].forEach(d => {
-    const l=document.createElementNS(NS,"line");
-    if(d==="h"){ l.setAttribute("x1",cx-10);l.setAttribute("y1",cy);l.setAttribute("x2",cx+10);l.setAttribute("y2",cy); }
-    else       { l.setAttribute("x1",cx);l.setAttribute("y1",cy-10);l.setAttribute("x2",cx);l.setAttribute("y2",cy+10); }
-    l.setAttribute("stroke","rgba(34,211,238,.7)"); l.setAttribute("stroke-width","1");
-    svg.appendChild(l);
-  });
-
-  // center dot
-  const dot=document.createElementNS(NS,"circle");
-  dot.setAttribute("cx",cx); dot.setAttribute("cy",cy); dot.setAttribute("r","3");
-  dot.setAttribute("fill","#22d3ee"); dot.style.filter="drop-shadow(0 0 7px #22d3ee)";
-  svg.appendChild(dot);
-
-  // rotating outer ring
-  const g1=document.createElementNS(NS,"g");
-  g1.classList.add("sca-rotate"); g1.style.transformOrigin=`${cx}px ${cy}px`;
-  const rc1=document.createElementNS(NS,"circle");
-  rc1.setAttribute("cx",cx);rc1.setAttribute("cy",cy);rc1.setAttribute("r",R[0]+11);
-  rc1.setAttribute("fill","none");rc1.setAttribute("stroke","rgba(34,211,238,.2)");
-  rc1.setAttribute("stroke-width","1");rc1.setAttribute("stroke-dasharray","16 20");
-  g1.appendChild(rc1); svg.appendChild(g1);
-
-  // CCW inner ring
-  const g2=document.createElementNS(NS,"g");
-  g2.classList.add("sca-rotateCCW"); g2.style.transformOrigin=`${cx}px ${cy}px`;
-  const rc2=document.createElementNS(NS,"circle");
-  rc2.setAttribute("cx",cx);rc2.setAttribute("cy",cy);rc2.setAttribute("r",R[1]+6);
-  rc2.setAttribute("fill","none");rc2.setAttribute("stroke","rgba(34,211,238,.1)");
-  rc2.setAttribute("stroke-width","1");rc2.setAttribute("stroke-dasharray","8 30");
-  g2.appendChild(rc2); svg.appendChild(g2);
-
-  return svg;
-}
-
-/* ══════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════
    RENDER FUNCTIONS
-══════════════════════════════════════════════════════════ */
+═══════════════════════════════════════════ */
 function renderMetrics() {
   const el = document.getElementById("metrics-strip");
-  METRICS.forEach((m,i) => {
+  METRICS.forEach((m, i) => {
     const d = document.createElement("div");
-    d.style.cssText = `padding:clamp(8px,1.5vw,12px) clamp(10px,1.8vw,14px);background:rgba(34,211,238,.04);border:1px solid rgba(34,211,238,.07);border-left:${i===0?"2px solid #22d3ee":"1px solid rgba(34,211,238,.07)"};min-width:80px`;
+    d.className = "metric-card";
+    d.style.animationDelay = m.delay + "ms";
+    d.style.cssText += `min-width:clamp(80px,14vw,120px);flex:1`;
+    if (i === 3) d.classList.add("red-accent");
     d.innerHTML = `
-      <div class="f-mono f-stat" style="font-weight:700;color:${m.c};line-height:1;margin-bottom:4px;text-shadow:0 0 16px ${m.c}60">${m.v}</div>
-      <div class="f-label" style="color:rgba(255,255,255,.65);line-height:1.3">${m.k}</div>`;
+      <div class="metric-num" style="${i===3?'color:#ef4444;text-shadow:0 0 20px rgba(239,68,68,.4)':'color:'+m.c+';text-shadow:0 0 20px '+m.c+'66'}">${m.v}</div>
+      <div class="metric-label">${m.k}</div>`;
     el.appendChild(d);
   });
 }
@@ -592,41 +939,38 @@ function renderMetrics() {
 function renderSpecs(vis) {
   const el = document.getElementById("spec-wall");
   el.innerHTML = "";
-  UHP_SPECS.forEach((s,i) => {
+  UHP_SPECS.forEach((s, i) => {
     const d = document.createElement("div");
-    d.className = "sc-spec sca-fadeUp";
-    d.style.animationDelay = `${i*70}ms`;
+    d.className = "spec-item";
+    d.style.animationDelay = i * 70 + "ms";
     d.innerHTML = `
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:6px">
         <div style="min-width:0">
-          <span class="f-label f-mono" style="color:rgba(34,211,238,.42);letter-spacing:.15em;text-transform:uppercase;display:block;margin-bottom:3px">${s.icon} ${s.label}</span>
-          <p class="f-body" style="color:rgba(255,255,255,.65);line-height:1.55;margin:0;font-style:italic">${s.detail}</p>
+          <span class="f-label f-mono" style="color:rgba(34,211,238,.45);letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:3px">${s.icon} ${s.label}</span>
+          <p class="f-body" style="color:var(--text-mid);line-height:1.55;margin:0;font-style:italic">${s.detail}</p>
         </div>
-        <span class="f-mono" style="font-size:clamp(15px,2.2vw,19px);font-weight:700;color:#22d3ee;line-height:1;flex-shrink:0;text-shadow:0 0 10px rgba(34,211,238,.3);transition:text-shadow .2s">${s.value}</span>
+        <span class="f-mono" style="font-size:clamp(14px,2.2vw,18px);font-weight:700;color:var(--cyan);line-height:1;flex-shrink:0;text-shadow:0 0 10px rgba(34,211,238,.3);transition:text-shadow .2s">${s.value}</span>
       </div>
       <div class="sc-track"><div class="sc-fill" style="transform:scaleX(${vis?s.bar/100:0});transition-delay:${vis?300+i*80:0}ms"></div></div>
       <div style="display:flex;justify-content:space-between;margin-top:4px">
-        <span class="f-label f-mono" style="color:rgba(34,211,238,.25);letter-spacing:.1em">PERFORMANCE RATING</span>
+        <span class="f-label f-mono" style="color:rgba(34,211,238,.22);letter-spacing:.1em">PERFORMANCE RATING</span>
         <span class="f-label f-mono" style="color:rgba(34,211,238,.5)">${s.bar}%</span>
       </div>`;
-    d.addEventListener("mouseenter",()=>{ d.querySelector("span[style*='text-shadow']").style.textShadow="0 0 20px rgba(34,211,238,.7)"; });
-    d.addEventListener("mouseleave",()=>{ d.querySelector("span[style*='text-shadow']").style.textShadow="0 0 10px rgba(34,211,238,.3)"; });
     el.appendChild(d);
   });
 }
 
 function renderRisks() {
   const el = document.getElementById("risk-wall");
-  RISKS.forEach((r,i) => {
-    const bgRGB = r.level==="red"?"239,68,68":r.level==="amber"?"251,191,36":"52,211,153";
+  RISKS.forEach((r, i) => {
     const d = document.createElement("div");
-    d.className = "sca-fadeUp";
-    d.style.cssText = `display:flex;gap:10px;align-items:flex-start;padding:clamp(9px,1.6vw,12px) clamp(10px,1.8vw,14px);background:rgba(${bgRGB},.028);border-left:2px solid ${URGENCY_COLOR[r.level]}45;animation-delay:${400+i*60}ms`;
+    d.className = "risk-item" + (r.level==="amber"?" amber":"");
+    d.style.animationDelay = (400 + i * 60) + "ms";
     d.innerHTML = `
-      <span class="sc-badge ${r.level}" style="flex-shrink:0;margin-top:1px">${r.level}</span>
+      <span class="badge ${r.level}" style="flex-shrink:0;margin-top:1px">${r.level}</span>
       <div>
-        <div class="f-body" style="font-weight:600;color:rgba(255,255,255,.82);margin-bottom:3px">${r.label}</div>
-        <p class="f-label" style="color:rgba(255,255,255,.65);line-height:1.55;margin:0">${r.detail}</p>
+        <div class="f-body" style="font-weight:600;color:rgba(255,255,255,.88);margin-bottom:3px">${r.label}</div>
+        <p class="f-label" style="color:var(--text-mid);line-height:1.6;margin:0">${r.detail}</p>
       </div>`;
     el.appendChild(d);
   });
@@ -634,22 +978,20 @@ function renderRisks() {
 
 function renderActions() {
   const el = document.getElementById("action-list");
-  ACTIONS.forEach((a,i) => {
+  ACTIONS.forEach((a, i) => {
     const uc = URGENCY_COLOR[a.urgency];
     const d = document.createElement("div");
-    d.className = "act-row sca-fadeUp";
-    d.style.cssText = `border-left-color:${uc}45;animation-delay:${200+i*90}ms`;
+    d.className = "action-item";
+    d.style.cssText += `border-left-color:${uc}55;animation-delay:${200+i*90}ms`;
     d.innerHTML = `
-      <div style="flex-shrink:0;min-width:62px">
-        <div class="f-mono" style="padding:3px 7px;background:${uc}14;border:1px solid ${uc}40;font-size:8px;font-weight:700;color:${uc};letter-spacing:.1em;text-align:center;margin-bottom:4px;white-space:nowrap">${a.timing}</div>
+      <div style="flex-shrink:0;min-width:60px">
+        <div class="f-mono" style="padding:3px 7px;background:${uc}14;border:1px solid ${uc}40;font-size:8px;font-weight:700;color:${uc};letter-spacing:.1em;text-align:center;margin-bottom:4px;white-space:nowrap;border-radius:3px">${a.timing}</div>
         <div class="f-label f-mono" style="color:rgba(255,255,255,.2);letter-spacing:.1em;text-align:center;text-transform:uppercase">${a.urgency}</div>
       </div>
       <div style="flex:1;min-width:0">
-        <div class="f-body" style="font-weight:700;color:rgba(255,255,255,.82);margin-bottom:5px;transition:color .2s">${a.title}</div>
-        <p class="f-body" style="color:rgba(255,255,255,.65);line-height:1.65;margin:0;font-size:clamp(10px,1.5vw,11.5px)">${a.detail}</p>
+        <div class="f-body" style="font-weight:700;color:rgba(255,255,255,.85);margin-bottom:5px">${a.title}</div>
+        <p class="f-body" style="color:var(--text-mid);line-height:1.65;margin:0;font-size:clamp(10px,1.5vw,11.5px)">${a.detail}</p>
       </div>`;
-    d.addEventListener("mouseenter",()=>{ d.style.background="rgba(34,211,238,.05)"; d.style.borderColor="rgba(34,211,238,.22)"; d.style.borderLeftColor="#22d3ee"; d.querySelector(".f-body").style.color="#fff"; });
-    d.addEventListener("mouseleave",()=>{ d.style.background="rgba(255,255,255,.018)"; d.style.borderColor="rgba(255,255,255,.04)"; d.style.borderLeftColor=uc+"45"; d.querySelector(".f-body").style.color="rgba(255,255,255,.82)"; });
     el.appendChild(d);
   });
 }
@@ -657,17 +999,17 @@ function renderActions() {
 function renderProducts(vis) {
   const el = document.getElementById("product-table");
   el.innerHTML = "";
-  PRODUCTS.forEach((p,i) => {
+  PRODUCTS.forEach((p, i) => {
     const d = document.createElement("div");
-    d.className = "prod-row sca-fadeUp";
-    d.style.animationDelay = `${300+i*55}ms`;
+    d.className = "prod-row";
+    d.style.animationDelay = (300 + i * 55) + "ms";
     d.innerHTML = `
-      <span class="f-mono" style="font-size:11px;font-weight:700;color:#22d3ee">${p.name}</span>
-      <span class="f-body" style="color:rgba(255,255,255,.78)">${p.role}</span>
-      <span class="f-body" style="color:rgba(255,255,255,.65);font-style:italic;font-size:clamp(9.5px,1.4vw,11px)">${p.process}</span>
+      <span class="f-mono" style="font-size:11px;font-weight:700;color:var(--cyan)">${p.name}</span>
+      <span class="f-body" style="color:rgba(255,255,255,.8)">${p.role}</span>
+      <span class="f-body" style="color:var(--text-mid);font-style:italic;font-size:clamp(9.5px,1.4vw,11px)">${p.process}</span>
       <div style="display:flex;flex-direction:column;gap:3px">
-        <div style="height:2px;background:rgba(255,255,255,.06);position:relative;overflow:hidden">
-          <div style="position:absolute;left:0;top:0;height:100%;width:${p.score}%;background:linear-gradient(90deg,#22d3ee,#67e8f9);opacity:${vis?1:0};transition:opacity .4s ease ${350+i*70}ms"></div>
+        <div style="height:2px;background:rgba(255,255,255,.06);position:relative;overflow:hidden;border-radius:2px">
+          <div style="position:absolute;left:0;top:0;height:100%;width:${p.score}%;background:linear-gradient(90deg,var(--cyan),#67e8f9);opacity:${vis?1:0};transition:opacity .4s ease ${350+i*70}ms;border-radius:2px"></div>
         </div>
         <span class="f-label f-mono" style="color:rgba(34,211,238,.65);text-align:right">${p.score}%</span>
       </div>`;
@@ -677,50 +1019,90 @@ function renderProducts(vis) {
 
 function renderProcess(vis) {
   const el = document.getElementById("process-flow");
-  STEPS.forEach((s,i) => {
+  STEPS.forEach((s, i) => {
     const d = document.createElement("div");
     d.className = "proc-step";
     d.style.opacity = vis ? 1 : 0;
     d.style.transform = vis ? "none" : "translateY(8px)";
-    d.style.transitionDelay = `${i*80}ms`;
+    d.style.transitionDelay = i * 80 + "ms";
     d.innerHTML = `
       <div class="f-label f-mono" style="color:rgba(34,211,238,.4);letter-spacing:.2em;margin-bottom:5px">${s.step}</div>
-      <div style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,.82);margin-bottom:2px">${s.label}</div>
-      <div class="f-label f-mono" style="color:rgba(255,255,255,.65);letter-spacing:.08em">${s.en}</div>
-      <div style="position:absolute;top:6px;right:6px;width:5px;height:5px;border-radius:50%;background:${s.color};box-shadow:0 0 6px ${s.color};opacity:.7"></div>`;
+      <div style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,.88);margin-bottom:2px">${s.label}</div>
+      <div class="f-label f-mono" style="color:var(--text-mid);letter-spacing:.08em">${s.en}</div>
+      <div style="position:absolute;top:6px;right:6px;width:5px;height:5px;border-radius:50%;background:${s.color};box-shadow:0 0 6px ${s.color};opacity:.75"></div>`;
     el.appendChild(d);
   });
 }
 
-function renderBgWafer() {
-  const container = document.querySelector("[id='wafer-bg']").parentElement;
-  container.innerHTML = "";
-  container.appendChild(buildWafer(340, "bg"));
-}
-
-/* ══════════════════════════════════════════════════════════
-   INTERSECTION OBSERVER — trigger bar animations
-══════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════
+   INTERSECTION OBSERVER
+═══════════════════════════════════════════ */
 let visible = false;
 const observer = new IntersectionObserver(([e]) => {
   if (e.isIntersecting && !visible) {
     visible = true;
     observer.disconnect();
-    // Re-render with vis=true to trigger bar grow
     renderSpecs(true);
     renderProducts(true);
-    document.querySelectorAll(".proc-step").forEach((el,i) => {
-      el.style.opacity = 1; el.style.transform = "none";
-      el.style.transitionDelay = `${i*80}ms`;
+    document.querySelectorAll(".proc-step").forEach((el, i) => {
+      el.style.opacity = 1;
+      el.style.transform = "none";
+      el.style.transitionDelay = i * 80 + "ms";
     });
   }
-}, {threshold:0.05});
+}, {threshold: 0.05});
 
-/* ══════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════
+   NAV SCROLL PROGRESS
+═══════════════════════════════════════════ */
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+  document.getElementById('nav-progress').style.width = pct + '%';
+}, {passive: true});
+
+/* ═══════════════════════════════════════════
+   TOC
+═══════════════════════════════════════════ */
+function tocToggle() {
+  const p = document.getElementById('toc-panel');
+  const b = document.getElementById('toc-btn');
+  const o = p.classList.toggle('open');
+  b.style.cssText = o ? "opacity:0;pointer-events:none" : "";
+}
+document.querySelectorAll('.ti').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const el = document.getElementById(a.getAttribute('href').slice(1));
+    if (el) window.scrollTo({top: el.getBoundingClientRect().top + window.pageYOffset - 68, behavior:'smooth'});
+    tocToggle();
+  });
+});
+const _ids = Array.from(document.querySelectorAll('.ti')).map(a => a.getAttribute('href').slice(1));
+function _at() {
+  let c = _ids[0];
+  _ids.forEach(id => { const e = document.getElementById(id); if(e && e.getBoundingClientRect().top <= 120) c = id; });
+  document.querySelectorAll('.ti').forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + c));
+}
+window.addEventListener('scroll', _at, {passive:true}); _at();
+
+/* ═══════════════════════════════════════════
+   CURSOR
+═══════════════════════════════════════════ */
+(function() {
+  const glow = document.getElementById('cursor-glow');
+  const dot  = document.getElementById('cursor-dot');
+  let mx=0, my=0, gx=0, gy=0;
+  document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
+  function animGlow() { gx+=(mx-gx)*.08; gy+=(my-gy)*.08; glow.style.left=gx+'px'; glow.style.top=gy+'px'; requestAnimationFrame(animGlow); }
+  animGlow();
+  document.addEventListener('mouseleave', () => { glow.style.opacity='0'; dot.style.opacity='0'; });
+  document.addEventListener('mouseenter', () => { glow.style.opacity='1'; dot.style.opacity='1'; });
+})();
+
+/* ═══════════════════════════════════════════
    INIT
-══════════════════════════════════════════════════════════ */
+═══════════════════════════════════════════ */
 document.addEventListener("DOMContentLoaded", () => {
-  renderBgWafer();
   renderMetrics();
   renderSpecs(false);
   renderRisks();
@@ -729,66 +1111,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderProcess(false);
   observer.observe(document.getElementById("root"));
 });
-</script>
-
-<style>
-#toc-btn{position:fixed;top:80px;left:14px;z-index:9500;width:30px;height:30px;background:rgba(2,5,18,.92);border:1px solid #22d3ee55;border-left:2px solid #22d3ee;color:rgba(255,255,255,.7);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s}
-#toc-btn:hover{color:#fff;background:#22d3ee22}
-#toc-panel{position:fixed;top:80px;left:14px;z-index:9499;width:200px;background:rgba(2,5,18,.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);border-left:2px solid #22d3ee;transform:translateX(-220px);opacity:0;pointer-events:none;transition:transform .28s cubic-bezier(.16,1,.3,1),opacity .28s}
-#toc-panel.open{transform:translateX(0);opacity:1;pointer-events:auto}
-#toc-head{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.07)}
-#toc-head span{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.25em;color:#22d3ee99}
-#toc-head button{background:none;border:none;color:rgba(255,255,255,.4);cursor:pointer;font-size:16px;line-height:1;padding:0}
-#toc-head button:hover{color:#fff}
-.ti{display:flex;gap:8px;align-items:center;padding:7px 14px;text-decoration:none;border-left:2px solid transparent;margin-left:-2px;transition:background .15s}
-.ti:hover{background:rgba(255,255,255,.04)}
-.ti.on{border-left-color:#22d3ee;background:#22d3ee18}
-.ti span:first-child{font-family:'IBM Plex Mono',monospace;font-size:8px;color:rgba(255,255,255,.3);width:18px;flex-shrink:0}
-.ti span:last-child{font-size:11px;color:rgba(255,255,255,.72)}
-.ti.on span:first-child{color:#22d3ee}
-.ti.on span:last-child{color:#fff}
-@media(max-width:768px){#toc-btn,#toc-panel{display:none!important}}
-</style>
-<button id="toc-btn" onclick="tocToggle()" title="目录">☰</button>
-<div id="toc-panel">
-  <div id="toc-head"><span>目录</span><button onclick="tocToggle()">×</button></div>
-  <a class="ti" href="#s01"><span>01</span><span>核心数据</span></a>
-  <a class="ti" href="#s02"><span>02</span><span>技术规格</span></a>
-  <a class="ti" href="#s03"><span>03</span><span>战略行动</span></a>
-  <a class="ti" href="#s04"><span>04</span><span>风险矩阵</span></a>
-</div>
-<script>
-function tocToggle(){
-  var p=document.getElementById('toc-panel'),b=document.getElementById('toc-btn');
-  var o=p.classList.toggle('open');
-  b.style.cssText=o?"opacity:0;pointer-events:none":"opacity:1;pointer-events:auto";
-}
-document.querySelectorAll('.ti').forEach(function(a){
-  a.addEventListener('click',function(e){
-    e.preventDefault();
-    var el=document.getElementById(a.getAttribute('href').slice(1));
-    if(el){
-      var offset = el.getBoundingClientRect().top + window.pageYOffset - 64;
-      window.scrollTo({top: offset, behavior: 'smooth'});
-    }
-    tocToggle();
-  });
-});
-var _ids=Array.from(document.querySelectorAll('.ti')).map(function(a){return a.getAttribute('href').slice(1);});
-function _at(){var c=_ids[0];_ids.forEach(function(id){var e=document.getElementById(id);if(e&&e.getBoundingClientRect().top<=120)c=id;});document.querySelectorAll('.ti').forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+c);});}
-window.addEventListener('scroll',_at,{passive:true});_at();
-</script>
-
-<script>
-(function(){
-  const glow=document.getElementById('cursor-glow'),dot=document.getElementById('cursor-dot');
-  let mx=0,my=0,gx=0,gy=0;
-  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
-  function animGlow(){gx+=(mx-gx)*.08;gy+=(my-gy)*.08;glow.style.left=gx+'px';glow.style.top=gy+'px';requestAnimationFrame(animGlow);}
-  animGlow();
-  document.addEventListener('mouseleave',()=>{glow.style.opacity='0';dot.style.opacity='0';});
-  document.addEventListener('mouseenter',()=>{glow.style.opacity='1';dot.style.opacity='1';});
-})();
 </script>
 </body>
 </html>
