@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>半导体 SBU · 战略分析 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,700;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,700;1,400&family=Syne:wght@700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet"/>
 <style>
 /* ═══════════════════════════════════════════
    RESET & BASE
@@ -486,8 +486,12 @@ body:has(button:hover) #cursor-dot {
 .grid-2col {
   display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
 }
+.grid-3col {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;
+}
 @media(max-width:640px) {
   .grid-2col { grid-template-columns: 1fr; }
+  .grid-3col { grid-template-columns: 1fr; }
   .china-stats { grid-template-columns: 1fr 1fr !important; }
   .prod-row { grid-template-columns: 90px 1fr 56px !important; }
   .prod-row .prod-process { display: none; }
@@ -597,7 +601,142 @@ body:has(button:hover) #cursor-dot {
 .f-body  { font-size: clamp(12px,1.6vw,14px); }
 
 /* ═══════════════════════════════════════════
+   CHART CONTAINER
+═══════════════════════════════════════════ */
+.chart-wrap {
+  position: relative;
+  background: rgba(6,15,38,.6);
+  border: 1px solid rgba(34,211,238,.09);
+  border-radius: var(--radius-md);
+  padding: 18px 18px 12px;
+  overflow: hidden;
+}
+
+.chart-wrap::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(34,211,238,.4), transparent);
+}
+.chart-title {
+  font-family: var(--mono); font-size: 9px; letter-spacing: .2em;
+  text-transform: uppercase; color: rgba(34,211,238,.5); margin-bottom: 12px;
+}
+
+/* ═══════════════════════════════════════════
+   DRIVER CARDS
+═══════════════════════════════════════════ */
+.driver-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+@media(max-width:900px) { .driver-grid { grid-template-columns: repeat(3,1fr); } }
+@media(max-width:600px) { .driver-grid { grid-template-columns: 1fr 1fr; } }
+
+.driver-card {
+  position: relative;
+  background: rgba(6,15,38,.72);
+  border: 1px solid rgba(34,211,238,.1);
+  border-radius: var(--radius-md);
+  padding: 16px 14px 14px;
+  backdrop-filter: blur(12px);
+  transition: border-color .25s, transform .25s, box-shadow .25s;
+  cursor: default; overflow: hidden;
+  animation: fadeUp .6s ease both;
+}
+.driver-card:hover {
+  border-color: rgba(34,211,238,.3);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(34,211,238,.07);
+}
+.driver-card::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--driver-color, var(--cyan));
+  opacity: .7;
+}
+.driver-num {
+  font-family: var(--mono); font-size: 9px; letter-spacing: .2em;
+  color: var(--driver-color, var(--cyan)); margin-bottom: 8px;
+}
+.driver-stat {
+  font-family: var(--mono); font-size: clamp(16px,2.5vw,22px);
+  font-weight: 700; color: var(--driver-color, var(--cyan));
+  text-shadow: 0 0 16px color-mix(in srgb, var(--driver-color, var(--cyan)) 40%, transparent);
+  line-height: 1; margin-bottom: 2px;
+}
+.driver-label {
+  font-size: 8.5px; color: var(--text-lo); font-family: var(--mono);
+  letter-spacing: .06em; margin-bottom: 10px;
+}
+.driver-title {
+  font-family: var(--sans); font-size: 13px; font-weight: 800;
+  color: var(--text-hi); margin-bottom: 6px; line-height: 1.2;
+}
+.driver-body {
+  font-size: 11px; color: var(--text-mid); line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════
+   PLAYER TABLE
+═══════════════════════════════════════════ */
+.player-row {
+  display: grid;
+  grid-template-columns: 44px 130px 1fr 120px 130px;
+  gap: 10px; align-items: center;
+  padding: 10px 14px;
+  border-radius: 6px;
+  transition: background .2s;
+  cursor: default;
+  animation: fadeUp .5s ease both;
+}
+.player-row:hover { background: rgba(34,211,238,.03); }
+.player-row + .player-row { border-top: 1px solid rgba(255,255,255,.035); }
+.player-rank {
+  width: 36px; height: 36px; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 10px; font-weight: 700;
+  flex-shrink: 0;
+}
+.player-name { font-weight: 700; font-size: 13px; color: var(--text-hi); }
+.player-origin { font-family: var(--mono); font-size: 9px; color: var(--text-lo); margin-top: 2px; }
+.player-focus { font-size: 12px; color: var(--text-mid); }
+.player-note { font-size: 11px; color: var(--text-lo); font-style: italic; }
+@media(max-width:768px) {
+  .player-row { grid-template-columns: 36px 1fr; gap: 8px; }
+  .player-row > *:nth-child(n+3) { display: none; }
+}
+
+/* ═══════════════════════════════════════════
+   COMPETITION ENHANCED — tabs
+═══════════════════════════════════════════ */
+.comp-tabs {
+  display: flex; gap: 4px; margin-bottom: 16px; flex-wrap: wrap;
+}
+.comp-tab {
+  padding: 6px 14px;
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--text-mid);
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 4px; cursor: pointer;
+  transition: all .2s;
+}
+.comp-tab:hover { color: var(--text-hi); background: rgba(255,255,255,.08); }
+.comp-tab.active {
+  color: var(--cyan); border-color: rgba(34,211,238,.35);
+  background: rgba(34,211,238,.08);
+}
+.comp-panel { display: none; }
+.comp-panel.active { display: flex; flex-direction: column; gap: 7px; }
+
+/* ═══════════════════════════════════════════
+   GEMU COMPARISON GRID
+═══════════════════════════════════════════ */
+@media(max-width:640px) {
+  }
+
+/* ═══════════════════════════════════════════
    FOOTER
+   FIX: f-label 最小值提升至 10px（无障碍），f-body 正文提升至 14px max
 ═══════════════════════════════════════════ */
 footer {
   margin-top: clamp(28px,5vw,48px);
@@ -645,6 +784,9 @@ footer {
   <div id="toc-head"><span>目录</span><button onclick="tocToggle()">×</button></div>
   <a class="ti" href="#s01"><span>01</span><span>核心数据</span></a>
   <a class="ti" href="#s02"><span>02</span><span>市场现状</span></a>
+  <a class="ti" href="#s08"><span>08</span><span>市场图表</span></a>
+  <a class="ti" href="#s09"><span>09</span><span>驱动因素</span></a>
+  <a class="ti" href="#s10"><span>10</span><span>主要参与者</span></a>
   <a class="ti" href="#s03"><span>03</span><span>技术规格</span></a>
   <a class="ti" href="#s04"><span>04</span><span>战略行动</span></a>
   <a class="ti" href="#s05"><span>05</span><span>产品矩阵</span></a>
@@ -797,6 +939,258 @@ footer {
       </div>
     </div>
 
+    <!-- ══ MARKET OVERVIEW — Charts ══════════════════ -->
+    <div id="s08" style="margin-bottom:clamp(18px,3vw,26px)">
+      <div class="sec-label" style="margin-bottom:clamp(16px,2.5vw,22px)">
+        <span class="f-label f-mono" style="color:rgba(34,211,238,.45);letter-spacing:.25em;text-transform:uppercase;white-space:nowrap">08 · 市场规模与增速</span>
+        <div class="line"></div>
+        <span class="badge cyan" style="flex-shrink:0">交互图表</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px" class="grid-2col">
+        <div class="chart-wrap">
+          <div class="chart-title">全球半导体 &amp; 设备市场规模（亿美元）</div>
+          <div id="chart-market" style="width:100%"><svg xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" width="580" height="220" style="overflow:visible">
+<defs>
+<linearGradient id="grad0" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#22d3ee" stop-opacity="0.85"/>
+<stop offset="100%" stop-color="#22d3ee" stop-opacity="0.35"/>
+</linearGradient>
+<linearGradient id="grad1" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#67e8f9" stop-opacity="0.85"/>
+<stop offset="100%" stop-color="#67e8f9" stop-opacity="0.35"/>
+</linearGradient>
+</defs>
+<line x1="52" y1="176.0" x2="564" y2="176.0" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+<text x="47" y="179.0" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">0</text>
+<line x1="52" y1="146.4" x2="564" y2="146.4" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+<text x="47" y="149.4" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">2500</text>
+<line x1="52" y1="116.8" x2="564" y2="116.8" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+<text x="47" y="119.8" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">5000</text>
+<line x1="52" y1="87.2" x2="564" y2="87.2" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+<text x="47" y="90.2" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">7500</text>
+<line x1="52" y1="57.6" x2="564" y2="57.6" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+<text x="47" y="60.6" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">10000</text>
+<line x1="52" y1="28.0" x2="564" y2="28.0" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+<text x="47" y="31.0" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">12500</text>
+<rect x="66.9" y="108.3" width="27.7" height="67.7" fill="url(#grad0)" rx="3"/>
+<text x="80.8" y="104.3" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8" font-family="IBM Plex Mono,monospace">5740</text>
+<rect x="152.3" y="113.8" width="27.7" height="62.2" fill="url(#grad0)" rx="3"/>
+<text x="166.1" y="109.8" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8" font-family="IBM Plex Mono,monospace">5270</text>
+<rect x="237.6" y="103.9" width="27.7" height="72.1" fill="url(#grad0)" rx="3"/>
+<text x="251.5" y="99.9" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8" font-family="IBM Plex Mono,monospace">6110</text>
+<rect x="322.9" y="91.1" width="27.7" height="84.9" fill="url(#grad0)" rx="3"/>
+<text x="336.8" y="87.1" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8" font-family="IBM Plex Mono,monospace">7200</text>
+<rect x="408.3" y="61.0" width="27.7" height="115.0" fill="url(#grad0)" rx="3"/>
+<text x="422.1" y="57.0" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8" font-family="IBM Plex Mono,monospace">9750</text>
+<rect x="493.6" y="43.9" width="27.7" height="132.1" fill="url(#grad0)" rx="3"/>
+<text x="507.5" y="39.9" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8" font-family="IBM Plex Mono,monospace">112百</text>
+<rect x="94.7" y="163.4" width="27.7" height="12.6" fill="url(#grad1)" rx="3"/>
+<text x="108.5" y="159.4" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8" font-family="IBM Plex Mono,monospace">1070</text>
+<rect x="180.0" y="165.7" width="27.7" height="10.3" fill="url(#grad1)" rx="3"/>
+<text x="193.9" y="161.7" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8" font-family="IBM Plex Mono,monospace">875</text>
+<rect x="265.3" y="163.7" width="27.7" height="12.3" fill="url(#grad1)" rx="3"/>
+<text x="279.2" y="159.7" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8" font-family="IBM Plex Mono,monospace">1040</text>
+<rect x="350.7" y="160.3" width="27.7" height="15.7" fill="url(#grad1)" rx="3"/>
+<text x="364.5" y="156.3" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8" font-family="IBM Plex Mono,monospace">1330</text>
+<rect x="436.0" y="158.9" width="27.7" height="17.1" fill="url(#grad1)" rx="3"/>
+<text x="449.9" y="154.9" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8" font-family="IBM Plex Mono,monospace">1450</text>
+<rect x="521.3" y="157.6" width="27.7" height="18.4" fill="url(#grad1)" rx="3"/>
+<text x="535.2" y="153.6" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8" font-family="IBM Plex Mono,monospace">1560</text>
+<text x="94.7" y="212" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">2022</text>
+<text x="180.0" y="212" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">2023</text>
+<text x="265.3" y="212" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">2024E</text>
+<text x="350.7" y="212" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">2025E</text>
+<text x="436.0" y="212" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">2026E</text>
+<text x="521.3" y="212" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">2027E</text>
+<rect x="52" y="8" width="10" height="7" fill="#22d3ee" rx="1"/>
+<text x="65" y="16" fill="rgba(255,255,255,0.4)" font-size="8.5" font-family="IBM Plex Mono,monospace">半导体市场</text>
+<rect x="107.5" y="8" width="10" height="7" fill="#67e8f9" rx="1"/>
+<text x="120.5" y="16" fill="rgba(255,255,255,0.4)" font-size="8.5" font-family="IBM Plex Mono,monospace">设备市场</text>
+</svg></div>
+        </div>
+        <div class="chart-wrap">
+          <div class="chart-title">设备市场增速 YoY (%) &amp; 预测走势</div>
+          <div id="chart-growth" style="width:100%"><svg xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" width="580" height="220">
+<defs>
+<linearGradient id="lgrad0" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#22d3ee" stop-opacity="0.25"/>
+<stop offset="100%" stop-color="#22d3ee" stop-opacity="0.02"/>
+</linearGradient>
+</defs>
+<line x1="44" y1="184.0" x2="560" y2="184.0" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+<text x="39" y="187.0" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">-15%</text>
+<line x1="44" y1="151.2" x2="560" y2="151.2" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+<text x="39" y="154.2" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">-2%</text>
+<line x1="44" y1="118.4" x2="560" y2="118.4" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+<text x="39" y="121.4" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">12%</text>
+<line x1="44" y1="85.6" x2="560" y2="85.6" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+<text x="39" y="88.6" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">25%</text>
+<line x1="44" y1="52.8" x2="560" y2="52.8" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+<text x="39" y="55.8" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">38%</text>
+<line x1="44" y1="20.0" x2="560" y2="20.0" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+<text x="39" y="23.0" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">51%</text>
+<line x1="44" y1="146.8" x2="560" y2="146.8" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+<path d="M44.0,184 L44.0,134.2 C80.9,134.2 80.9,36.5 117.7,36.5 C154.6,36.5 154.6,134.2 191.4,134.2 C228.3,134.2 228.3,180.6 265.1,180.6 C302.0,180.6 302.0,128.3 338.9,128.3 C375.7,128.3 375.7,113.0 412.6,113.0 C449.4,113.0 449.4,124.6 486.3,124.6 C523.1,124.6 523.1,128.1 560.0,128.1 L560.0,184Z" fill="url(#lgrad0)"/>
+<path d="M44.0,134.2 C80.9,134.2 80.9,36.5 117.7,36.5 C154.6,36.5 154.6,134.2 191.4,134.2 C228.3,134.2 228.3,180.6 265.1,180.6 C302.0,180.6 302.0,128.3 338.9,128.3 C375.7,128.3 375.7,113.0 412.6,113.0 C449.4,113.0 449.4,124.6 486.3,124.6 C523.1,124.6 523.1,128.1 560.0,128.1" fill="none" stroke="#22d3ee" stroke-width="2"/>
+<circle cx="44.0" cy="134.2" r="3.5" fill="#22d3ee"/>
+<circle cx="44.0" cy="134.2" r="2" fill="#020617"/>
+<circle cx="117.7" cy="36.5" r="3.5" fill="#22d3ee"/>
+<circle cx="117.7" cy="36.5" r="2" fill="#020617"/>
+<circle cx="191.4" cy="134.2" r="3.5" fill="#22d3ee"/>
+<circle cx="191.4" cy="134.2" r="2" fill="#020617"/>
+<circle cx="265.1" cy="180.6" r="3.5" fill="#22d3ee"/>
+<circle cx="265.1" cy="180.6" r="2" fill="#020617"/>
+<circle cx="338.9" cy="128.3" r="3.5" fill="#22d3ee"/>
+<circle cx="338.9" cy="128.3" r="2" fill="#020617"/>
+<circle cx="412.6" cy="113.0" r="3.5" fill="#22d3ee"/>
+<circle cx="412.6" cy="113.0" r="2" fill="#020617"/>
+<circle cx="486.3" cy="124.6" r="3.5" fill="#22d3ee"/>
+<circle cx="486.3" cy="124.6" r="2" fill="#020617"/>
+<circle cx="560.0" cy="128.1" r="3.5" fill="#22d3ee"/>
+<circle cx="560.0" cy="128.1" r="2" fill="#020617"/>
+<text x="44.0" y="215" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">2020</text>
+<text x="117.7" y="215" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">2021</text>
+<text x="191.4" y="215" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">2022</text>
+<text x="265.1" y="215" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">2023</text>
+<text x="338.9" y="215" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">2024</text>
+<text x="412.6" y="215" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">2025E</text>
+<text x="486.3" y="215" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">2026E</text>
+<text x="560.0" y="215" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">2027E</text>
+</svg></div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px" class="grid-3col">
+        <div class="chart-wrap">
+          <div class="chart-title">设备细分市场 2025E（亿美元）</div>
+          <div id="chart-equip" style="width:100%"><svg xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" width="580" height="200" style="overflow:visible">
+<defs>
+</defs>
+<line x1="120.0" y1="28" x2="120.0" y2="156" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+<text x="120.0" y="194" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">0</text>
+<line x1="208.8" y1="28" x2="208.8" y2="156" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+<text x="208.8" y="194" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">149</text>
+<line x1="297.6" y1="28" x2="297.6" y2="156" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+<text x="297.6" y="194" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">298</text>
+<line x1="386.4" y1="28" x2="386.4" y2="156" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+<text x="386.4" y="194" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">447</text>
+<line x1="475.2" y1="28" x2="475.2" y2="156" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+<text x="475.2" y="194" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">596</text>
+<line x1="564.0" y1="28" x2="564.0" y2="156" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+<text x="564.0" y="194" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">745</text>
+<rect x="120.0" y="31.7" width="396.4" height="13.9" fill="#22d3ee" rx="3"/>
+<text x="520.4" y="41.7" fill="rgba(255,255,255,0.4)" font-size="8.5" font-family="IBM Plex Mono,monospace">666</text>
+<rect x="120.0" y="53.1" width="133.9" height="13.9" fill="#67e8f9" rx="3"/>
+<text x="257.9" y="63.0" fill="rgba(255,255,255,0.4)" font-size="8.5" font-family="IBM Plex Mono,monospace">225</text>
+<rect x="120.0" y="74.4" width="83.3" height="13.9" fill="#a5f3fc" rx="3"/>
+<text x="207.3" y="84.3" fill="rgba(255,255,255,0.4)" font-size="8.5" font-family="IBM Plex Mono,monospace">140</text>
+<rect x="120.0" y="95.7" width="66.7" height="13.9" fill="#fbbf24" rx="3"/>
+<text x="190.7" y="105.7" fill="rgba(255,255,255,0.4)" font-size="8.5" font-family="IBM Plex Mono,monospace">112</text>
+<rect x="120.0" y="117.1" width="38.1" height="13.9" fill="#34d399" rx="3"/>
+<text x="162.1" y="127.0" fill="rgba(255,255,255,0.4)" font-size="8.5" font-family="IBM Plex Mono,monospace">64</text>
+<rect x="120.0" y="138.4" width="17.9" height="13.9" fill="#818cf8" rx="3"/>
+<text x="141.9" y="148.3" fill="rgba(255,255,255,0.4)" font-size="8.5" font-family="IBM Plex Mono,monospace">30</text>
+<text x="114" y="42.7" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="9.5" font-family="IBM Plex Mono,monospace">Foundry/Logic</text>
+<text x="114" y="64.0" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="9.5" font-family="IBM Plex Mono,monospace">DRAM</text>
+<text x="114" y="85.3" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="9.5" font-family="IBM Plex Mono,monospace">NAND</text>
+<text x="114" y="106.7" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="9.5" font-family="IBM Plex Mono,monospace">测试设备</text>
+<text x="114" y="128.0" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="9.5" font-family="IBM Plex Mono,monospace">封装设备</text>
+<text x="114" y="149.3" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="9.5" font-family="IBM Plex Mono,monospace">阀门/气路</text>
+</svg></div>
+        </div>
+        <div class="chart-wrap">
+          <div class="chart-title">全球设备采购区域排名 2025E</div>
+          <div id="chart-region" style="width:100%"><svg xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" width="580" height="200" style="overflow:visible">
+<defs>
+</defs>
+<line x1="120.0" y1="28" x2="120.0" y2="156" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+<text x="120.0" y="194" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">0</text>
+<line x1="208.8" y1="28" x2="208.8" y2="156" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+<text x="208.8" y="194" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">9</text>
+<line x1="297.6" y1="28" x2="297.6" y2="156" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+<text x="297.6" y="194" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">18</text>
+<line x1="386.4" y1="28" x2="386.4" y2="156" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+<text x="386.4" y="194" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">28</text>
+<line x1="475.2" y1="28" x2="475.2" y2="156" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+<text x="475.2" y="194" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">37</text>
+<line x1="564.0" y1="28" x2="564.0" y2="156" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+<text x="564.0" y="194" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="IBM Plex Mono,monospace">47</text>
+<rect x="120.0" y="31.7" width="396.4" height="13.9" fill="#22d3ee" rx="3"/>
+<text x="520.4" y="41.7" fill="rgba(255,255,255,0.4)" font-size="8.5" font-family="IBM Plex Mono,monospace">42</text>
+<rect x="120.0" y="53.1" width="207.7" height="13.9" fill="#67e8f9" rx="3"/>
+<text x="331.7" y="63.0" fill="rgba(255,255,255,0.4)" font-size="8.5" font-family="IBM Plex Mono,monospace">22</text>
+<rect x="120.0" y="74.4" width="169.9" height="13.9" fill="#a5f3fc" rx="3"/>
+<text x="293.9" y="84.3" fill="rgba(255,255,255,0.4)" font-size="8.5" font-family="IBM Plex Mono,monospace">18</text>
+<rect x="120.0" y="95.7" width="75.5" height="13.9" fill="#fbbf24" rx="3"/>
+<text x="199.5" y="105.7" fill="rgba(255,255,255,0.4)" font-size="8.5" font-family="IBM Plex Mono,monospace">8</text>
+<rect x="120.0" y="117.1" width="56.6" height="13.9" fill="#818cf8" rx="3"/>
+<text x="180.6" y="127.0" fill="rgba(255,255,255,0.4)" font-size="8.5" font-family="IBM Plex Mono,monospace">6</text>
+<rect x="120.0" y="138.4" width="37.8" height="13.9" fill="#34d399" rx="3"/>
+<text x="161.8" y="148.3" fill="rgba(255,255,255,0.4)" font-size="8.5" font-family="IBM Plex Mono,monospace">4</text>
+<text x="114" y="42.7" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="9.5" font-family="IBM Plex Mono,monospace">中国大陆</text>
+<text x="114" y="64.0" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="9.5" font-family="IBM Plex Mono,monospace">台湾</text>
+<text x="114" y="85.3" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="9.5" font-family="IBM Plex Mono,monospace">韩国</text>
+<text x="114" y="106.7" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="9.5" font-family="IBM Plex Mono,monospace">日本</text>
+<text x="114" y="128.0" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="9.5" font-family="IBM Plex Mono,monospace">美国</text>
+<text x="114" y="149.3" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="9.5" font-family="IBM Plex Mono,monospace">欧洲</text>
+</svg></div>
+        </div>
+        <div class="chart-wrap" style="display:flex;flex-direction:column;gap:0">
+          <div class="chart-title">中国市场深度指标</div>
+          <div style="display:flex;flex-direction:column;gap:8px;flex:1;justify-content:space-between">
+            <div style="display:flex;align-items:center;gap:10px;padding:9px 10px;background:rgba(34,211,238,.04);border-radius:5px;border:1px solid rgba(34,211,238,.09)">
+              <div style="flex:1"><div style="font-size:10px;color:var(--text-lo);font-family:var(--mono);margin-bottom:2px">2024 设备销售额</div><div style="font-size:9.5px;color:var(--text-mid)">全球 42%</div></div>
+              <div style="font-family:var(--mono);font-size:clamp(14px,2vw,18px);font-weight:700;color:#22d3ee;text-shadow:0 0 12px rgba(34,211,238,.5)">$495亿</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:9px 10px;background:rgba(34,211,238,.04);border-radius:5px;border:1px solid rgba(34,211,238,.09)">
+              <div style="flex:1"><div style="font-size:10px;color:var(--text-lo);font-family:var(--mono);margin-bottom:2px">2028E 新建晶圆厂</div><div style="font-size:9.5px;color:var(--text-mid)">全球 108 座中 43%</div></div>
+              <div style="font-family:var(--mono);font-size:clamp(14px,2vw,18px);font-weight:700;color:#67e8f9;text-shadow:0 0 12px rgba(103,232,249,.4)">47座</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:9px 10px;background:rgba(34,211,238,.04);border-radius:5px;border:1px solid rgba(34,211,238,.09)">
+              <div style="flex:1"><div style="font-size:10px;color:var(--text-lo);font-family:var(--mono);margin-bottom:2px">晶圆产能份额 2030E</div><div style="font-size:9.5px;color:var(--text-mid)">2020年仅 20%</div></div>
+              <div style="font-family:var(--mono);font-size:clamp(14px,2vw,18px);font-weight:700;color:#a5f3fc;text-shadow:0 0 12px rgba(165,243,252,.4)">32%</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:9px 10px;background:rgba(34,211,238,.04);border-radius:5px;border:1px solid rgba(34,211,238,.09)">
+              <div style="flex:1"><div style="font-size:10px;color:var(--text-lo);font-family:var(--mono);margin-bottom:2px">国产替代率 2026初</div><div style="font-size:9.5px;color:var(--text-mid)">刻蚀/薄膜 >40%</div></div>
+              <div style="font-family:var(--mono);font-size:clamp(14px,2vw,18px);font-weight:700;color:#22d3ee;text-shadow:0 0 12px rgba(34,211,238,.5)">~35%↑</div>
+            </div>
+            <div style="font-size:9px;color:var(--text-xlo);font-family:var(--mono)">SOURCE: SEMI China · Mar 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ DRIVERS ══════════════════════════════════ -->
+    <div id="s09" style="margin-bottom:clamp(18px,3vw,26px)">
+      <div class="sec-label" style="margin-bottom:clamp(14px,2.2vw,20px)">
+        <span class="f-label f-mono" style="color:rgba(34,211,238,.45);letter-spacing:.25em;text-transform:uppercase;white-space:nowrap">09 · 五大驱动因素</span>
+        <div class="line"></div>
+      </div>
+      <div class="driver-grid" id="driver-grid"></div>
+    </div>
+
+    <!-- ══ KEY PLAYERS ════════════════════════════════ -->
+    <div id="s10" style="margin-bottom:clamp(18px,3vw,26px)">
+      <div class="sec-label" style="margin-bottom:clamp(14px,2.2vw,20px)">
+        <span class="f-label f-mono" style="color:rgba(34,211,238,.45);letter-spacing:.25em;text-transform:uppercase;white-space:nowrap">10 · 主要设备商梯队</span>
+        <div class="line"></div>
+        <span class="badge amber" style="flex-shrink:0;white-space:nowrap">日系关税红利</span>
+      </div>
+      <div class="glass-card" style="padding:clamp(16px,3vw,24px);margin-bottom:14px">
+        <div class="player-row" style="padding-bottom:8px;border-bottom:1px solid rgba(34,211,238,.12);margin-bottom:4px;cursor:default">
+          <div></div>
+          <div class="f-label f-mono" style="color:rgba(34,211,238,.4);letter-spacing:.14em;text-transform:uppercase">设备商</div>
+          <div class="f-label f-mono" style="color:rgba(34,211,238,.4);letter-spacing:.14em;text-transform:uppercase">核心领域</div>
+          <div class="f-label f-mono" style="color:rgba(34,211,238,.4);letter-spacing:.14em;text-transform:uppercase">关税地位</div>
+          <div class="f-label f-mono" style="color:rgba(34,211,238,.4);letter-spacing:.14em;text-transform:uppercase">中国特别说明</div>
+        </div>
+        <div id="player-list"></div>
+        <div style="margin-top:14px;padding:12px 14px;background:rgba(52,211,153,.05);border:1px solid rgba(52,211,153,.18);border-left:3px solid #34d399;border-radius:6px">
+          <div class="f-label f-mono" style="color:#34d399;letter-spacing:.16em;margin-bottom:5px">日系关税红利</div>
+          <p class="f-body" style="color:var(--text-mid);margin:0;line-height:1.65">Tokyo Electron / 富士金 / 信越化学 / SCREEN 等日系厂商处于关税豁免地位，同时掌控涂胶设备（88% 市占）、光刻胶（50%）、硅晶圆（53%）等关键卡位。日本 2025 年承诺向美注入 $5,500 亿资本换取关税豁免，在半导体供应链定价话语权显著上升，中国市场对日本材料依赖度不降反升。</p>
+        </div>
+      </div>
+    </div>
+
     <!-- ══ MAIN GRID ══════════════════════════════════ -->
     <div class="main-grid">
 
@@ -920,58 +1314,6 @@ footer {
         <div id="comp-valve" style="display:flex;flex-direction:column;gap:7px"></div>
       </div>
 
-      <!-- GEMÜ spotlight ────────────────────────────── -->
-      <div class="glass-card accent-red" style="padding:clamp(20px,3.5vw,30px)">
-        <div class="corner-tl"></div><div class="corner-tr"></div>
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:clamp(14px,2.5vw,20px)">
-          <div class="card-header-bar" style="background:linear-gradient(180deg,var(--red),rgba(239,68,68,.06))"></div>
-          <div>
-            <h2 class="card-h2">GEMÜ 中国策略深度</h2>
-            <p class="card-sub">Direct Competitor Spotlight · 德系同类品牌 · 最高重叠度竞品</p>
-          </div>
-          <span class="badge red" style="margin-left:auto;flex-shrink:0">HIGH OVERLAP</span>
-        </div>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px" class="grid-2col">
-          <!-- Left: GEMÜ China facts -->
-          <div style="display:flex;flex-direction:column;gap:8px">
-            <div class="f-label f-mono" style="color:rgba(239,68,68,.55);letter-spacing:.2em;text-transform:uppercase;margin-bottom:4px">基础布局</div>
-            <div class="data-card" style="background:rgba(239,68,68,.04);border-color:rgba(239,68,68,.12)">
-              <div class="data-row"><span class="data-key">中国入驻时间</span><span class="data-val">1998年（上海）</span></div>
-              <div class="data-row"><span class="data-key">亚太生产中心</span><span class="data-val accent">上海莘庄 2.2万m²</span></div>
-              <div class="data-row"><span class="data-key">中国员工</span><span class="data-val">300+ 人（2023）</span></div>
-              <div class="data-row"><span class="data-key">分支机构</span><span class="data-val">京/沪/穗/蓉/沈/港</span></div>
-              <div class="data-row"><span class="data-key">蝶阀年产能</span><span class="data-val accent">24 万套（全球供货）</span></div>
-            </div>
-            <div class="data-card" style="background:rgba(239,68,68,.04);border-color:rgba(239,68,68,.12)">
-              <div class="data-card-label red">中国区规模估算（推算）</div>
-              <div class="data-row"><span class="data-key">集团全球营收量级</span><span class="data-val">3–5 亿欧元</span></div>
-              <div class="data-row"><span class="data-key">中国区占比推算</span><span class="data-val">15–25%</span></div>
-              <div class="data-row"><span class="data-key">中国区年营收粗估</span><span class="data-val amber">5,000–1亿欧元</span></div>
-              <div class="data-row"><span class="data-key">半导体占中国收入</span><span class="data-val red">~20–30%↑</span></div>
-              <div style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(239,68,68,.1)">
-                <span style="color:var(--text-lo);font-size:10px;font-family:var(--mono)">⚠ 家族私营企业不披露财报，以上为推算值</span>
-              </div>
-            </div>
-          </div>
-          <!-- Right: strategy & overlap analysis -->
-          <div style="display:flex;flex-direction:column;gap:8px">
-            <div class="f-label f-mono" style="color:rgba(239,68,68,.55);letter-spacing:.2em;text-transform:uppercase;margin-bottom:4px">竞争交叉分析</div>
-            <div id="gemu-rows" style="display:flex;flex-direction:column;gap:6px"></div>
-          </div>
-        </div>
-
-        <!-- 2021 growth callout -->
-        <div style="display:flex;gap:10px;padding:14px 16px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.18);border-left:3px solid var(--red);border-radius:6px;align-items:flex-start">
-          <div style="flex-shrink:0;font-family:var(--mono);font-size:clamp(18px,3vw,26px);font-weight:700;color:var(--red);line-height:1;text-shadow:0 0 16px rgba(239,68,68,.35)">+143%</div>
-          <div>
-            <div class="f-body" style="font-weight:700;color:rgba(255,255,255,.88);margin-bottom:4px">GEMÜ 中国半导体业务 2021 年增速</div>
-            <p class="f-body" style="color:var(--text-mid);margin:0;line-height:1.6">同年制药食饮（PFB）增长 141%，半导体增速略高——意味着 GEMÜ China 已将半导体定为与制药并列的战略优先级，在中国晶圆厂扩产潮中大幅放量。切入场景为湿法清洗溶剂供液，与我方 Type 8049 湿法清洗产线直接重叠。</p>
-          </div>
-        </div>
-
-      </div>
-
     </div>
 
     <!-- FOOTER -->
@@ -984,9 +1326,7 @@ footer {
 </section>
 
 <script>
-/* ═══════════════════════════════════════════
-   DATA
-═══════════════════════════════════════════ */
+// DATA
 const UHP_SPECS = [
   {icon:"◈", label:"表面粗糙度 (Ra)",  value:"< 0.1 μm",     detail:"全电解抛光工艺 (EP)，符合 SEMI F19 超纯标准",         bar:96},
   {icon:"◎", label:"气体泄漏率",        value:"1×10⁻¹²",      detail:"mbar·l/s 氦质谱检漏，超出行业安全裕度 10×",           bar:99},
@@ -1056,9 +1396,7 @@ const STEPS = [
 
 const URGENCY_COLOR = {high:"#ef4444", amber:"#fbbf24", green:"#34d399", red:"#ef4444"};
 
-/* ═══════════════════════════════════════════
-   COMPETITION DATA
-═══════════════════════════════════════════ */
+// COMPETITION DATA
 const COMP_MFC = [
   {
     brand:"HORIBA STEC", origin:"日本", tier:1,
@@ -1146,24 +1484,343 @@ const COMP_VALVE = [
   },
 ];
 
-const GEMU_ROWS = [
-  {dim:"核心切入场景", gemu:"湿法清洗（SC1/SC2）/ 溶剂供液分配", us:"湿法清洗 Type 8049 + 气体 Type 2030", level:"red", label:"直接竞争"},
-  {dim:"产品线完整度", gemu:"阀门全线，无 MFC", us:"阀门 + MFC 8626 一体化方案", level:"green", label:"我方优势"},
-  {dim:"中国本地制造", gemu:"上海莘庄独立工厂，交期短", us:"德国生产，交期 3–4 个月", level:"red", label:"GEMÜ 优势"},
-  {dim:"先进节点认证", gemu:"主要在成熟制程湿法场景", us:"Type 2030 覆盖 2nm 以下节点", level:"green", label:"我方优势"},
-  {dim:"客户认知背书", gemu:"制药行业溢出，卫生级口碑强", us:"工业流体控制背景，需加强半导体专项案例", level:"amber", label:"需加强"},
-  {dim:"关税合规风险", gemu:"同为德国原产，风险对等", us:"同为德国原产，风险对等", level:"amber", label:"对等风险"},
-];
-
 const TIER_COLOR = {1:"#22d3ee", 2:"#fbbf24", 3:"rgba(255,255,255,.4)"};
 const OVERLAP_COLOR = {"HIGH":"#ef4444", "MED":"#fbbf24", "LOW→MED":"rgba(251,191,36,.6)"};
-const DIM_LEVEL_COLOR = {red:"#ef4444", green:"#34d399", amber:"#fbbf24"};
 
 
 
-/* ═══════════════════════════════════════════
-   RENDER FUNCTIONS
-═══════════════════════════════════════════ */
+
+// PURE CANVAS CHARTS — no external deps
+const CYAN = "#22d3ee", CYAN2 = "#67e8f9", CYAN3 = "#a5f3fc";
+const AMBER = "#fbbf24", RED = "#ef4444", GREEN = "#34d399";
+const INDIGO = "#818cf8";
+const TEXTLO = "rgba(255,255,255,.35)";
+const TEXTMID = "rgba(255,255,255,.55)";
+const GRIDCOL = "rgba(255,255,255,.055)";
+
+function setupHiDPI(canvas, w, h) {
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = w * dpr; canvas.height = h * dpr;
+  canvas.style.width = w + "px"; canvas.style.height = h + "px";
+  const ctx = canvas.getContext("2d");
+  ctx.scale(dpr, dpr);
+  return ctx;
+}
+
+function drawBarChart(canvas, config) {
+  const { labels, datasets, title, horizontal, W: CW = canvas.parentElement.clientWidth - 36, H: CH = 220 } = config;
+  const ctx = setupHiDPI(canvas, CW, CH);
+  const PAD = { t: 16, r: 16, b: 38, l: horizontal ? 108 : 44 };
+  const pw = CW - PAD.l - PAD.r, ph = CH - PAD.t - PAD.b;
+
+  // background
+  ctx.fillStyle = "rgba(0,0,0,0)";
+  ctx.fillRect(0, 0, CW, CH);
+
+  const allVals = datasets.flatMap(d => d.data);
+  const maxV = Math.max(...allVals) * 1.12;
+  const minV = Math.min(0, Math.min(...allVals));
+  const range = maxV - minV;
+
+  // grid lines
+  const ticks = 5;
+  ctx.strokeStyle = GRIDCOL; ctx.lineWidth = 0.5;
+  for (let i = 0; i <= ticks; i++) {
+    const v = minV + (range / ticks) * i;
+    if (horizontal) {
+      const x = PAD.l + (v - minV) / range * pw;
+      ctx.beginPath(); ctx.moveTo(x, PAD.t); ctx.lineTo(x, PAD.t + ph); ctx.stroke();
+      ctx.fillStyle = TEXTLO; ctx.font = "9px 'IBM Plex Mono',monospace";
+      ctx.textAlign = "center";
+      ctx.fillText(Math.round(v), x, CH - 6);
+    } else {
+      const y = PAD.t + ph - (v - minV) / range * ph;
+      ctx.beginPath(); ctx.moveTo(PAD.l, y); ctx.lineTo(PAD.l + pw, y); ctx.stroke();
+      ctx.fillStyle = TEXTLO; ctx.font = "9px 'IBM Plex Mono',monospace";
+      ctx.textAlign = "right";
+      ctx.fillText(Math.round(v), PAD.l - 6, y + 3);
+    }
+  }
+
+  const barGroup = labels.length;
+  const dsCount = datasets.length;
+  const groupW = (horizontal ? ph : pw) / barGroup;
+  const gap = groupW * 0.2;
+  const barW = (groupW - gap) / dsCount;
+
+  datasets.forEach((ds, di) => {
+    ds.data.forEach((val, li) => {
+      const color = Array.isArray(ds.colors) ? ds.colors[li] : ds.color;
+      ctx.fillStyle = color || CYAN;
+
+      if (horizontal) {
+        const y = PAD.t + li * groupW + gap / 2 + di * barW;
+        const barLen = Math.abs(val - minV) / range * pw;
+        const x0 = PAD.l + (Math.min(val, 0) - minV) / range * pw;
+        const r = 3;
+        ctx.beginPath();
+        ctx.moveTo(x0, y + r); ctx.lineTo(x0, y + barW - r);
+        ctx.arcTo(x0, y + barW, x0 + r, y + barW, r);
+        ctx.lineTo(x0 + barLen - r, y + barW);
+        ctx.arcTo(x0 + barLen, y + barW, x0 + barLen, y + barW - r, r);
+        ctx.lineTo(x0 + barLen, y + r);
+        ctx.arcTo(x0 + barLen, y, x0 + barLen - r, y, r);
+        ctx.lineTo(x0 + r, y); ctx.arcTo(x0, y, x0, y + r, r);
+        ctx.fill();
+        // value label
+        ctx.fillStyle = TEXTMID; ctx.font = "8.5px 'IBM Plex Mono',monospace"; ctx.textAlign = "left";
+        ctx.fillText(Math.round(val), x0 + barLen + 4, y + barW / 2 + 3);
+      } else {
+        const x = PAD.l + li * groupW + gap / 2 + di * barW;
+        const barH = Math.abs(val - minV) / range * ph;
+        const y0 = val >= 0 ? PAD.t + ph - (val - minV) / range * ph : PAD.t + ph - (0 - minV) / range * ph;
+        const r = 3;
+        ctx.beginPath();
+        ctx.moveTo(x, y0 + barH - r); ctx.arcTo(x, y0 + barH, x + r, y0 + barH, r);
+        ctx.lineTo(x + barW - r, y0 + barH); ctx.arcTo(x + barW, y0 + barH, x + barW, y0 + barH - r, r);
+        ctx.lineTo(x + barW, y0 + r); ctx.arcTo(x + barW, y0, x + barW - r, y0, r);
+        ctx.lineTo(x + r, y0); ctx.arcTo(x, y0, x, y0 + r, r); ctx.closePath();
+        ctx.fill();
+        // value label above bar
+        ctx.fillStyle = TEXTMID; ctx.font = "8px 'IBM Plex Mono',monospace"; ctx.textAlign = "center";
+        const labelY = val >= 0 ? y0 - 4 : y0 + barH + 10;
+        ctx.fillText(val % 1 === 0 ? Math.round(val) : val.toFixed(1), x + barW / 2, labelY);
+      }
+    });
+  });
+
+  // axis labels
+  ctx.fillStyle = TEXTLO; ctx.font = "9px 'IBM Plex Mono',monospace";
+  labels.forEach((lbl, li) => {
+    if (horizontal) {
+      const y = PAD.t + li * groupW + groupW / 2;
+      ctx.textAlign = "right"; ctx.textBaseline = "middle";
+      ctx.fillText(lbl, PAD.l - 8, y);
+    } else {
+      const x = PAD.l + li * groupW + groupW / 2;
+      ctx.textAlign = "center"; ctx.textBaseline = "top";
+      ctx.fillText(lbl, x, PAD.t + ph + 8);
+    }
+  });
+
+  // legend
+  if (dsCount > 1) {
+    let lx = PAD.l;
+    datasets.forEach(ds => {
+      ctx.fillStyle = ds.color; ctx.fillRect(lx, 4, 10, 6);
+      ctx.fillStyle = TEXTLO; ctx.font = "8px 'IBM Plex Mono',monospace"; ctx.textAlign = "left"; ctx.textBaseline = "top";
+      ctx.fillText(ds.label, lx + 13, 4); lx += ctx.measureText(ds.label).width + 28;
+    });
+  }
+}
+
+function drawLineChart(canvas, config) {
+  const { labels, datasets, W: CW = canvas.parentElement.clientWidth - 36, H: CH = 220 } = config;
+  const ctx = setupHiDPI(canvas, CW, CH);
+  const PAD = { t: 20, r: 20, b: 36, l: 44 };
+  const pw = CW - PAD.l - PAD.r, ph = CH - PAD.t - PAD.b;
+
+  const allVals = datasets.flatMap(d => d.data);
+  const maxV = Math.max(...allVals) * 1.15;
+  const minV = Math.min(...allVals, 0) * 1.1;
+  const range = maxV - minV;
+
+  // grid
+  ctx.strokeStyle = GRIDCOL; ctx.lineWidth = 0.5;
+  for (let i = 0; i <= 5; i++) {
+    const v = minV + range / 5 * i;
+    const y = PAD.t + ph - (v - minV) / range * ph;
+    ctx.beginPath(); ctx.moveTo(PAD.l, y); ctx.lineTo(PAD.l + pw, y); ctx.stroke();
+    ctx.fillStyle = TEXTLO; ctx.font = "9px 'IBM Plex Mono',monospace"; ctx.textAlign = "right";
+    ctx.fillText(v.toFixed(0) + "%", PAD.l - 5, y + 3);
+  }
+
+  // zero line highlight
+  if (minV < 0) {
+    const zy = PAD.t + ph - (0 - minV) / range * ph;
+    ctx.strokeStyle = "rgba(255,255,255,.15)"; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(PAD.l, zy); ctx.lineTo(PAD.l + pw, zy); ctx.stroke();
+  }
+
+  datasets.forEach(ds => {
+    const pts = ds.data.map((v, i) => ({
+      x: PAD.l + i / (labels.length - 1) * pw,
+      y: PAD.t + ph - (v - minV) / range * ph
+    }));
+
+    // fill
+    ctx.beginPath();
+    ctx.moveTo(pts[0].x, PAD.t + ph);
+    pts.forEach(pt => ctx.lineTo(pt.x, pt.y));
+    ctx.lineTo(pts[pts.length - 1].x, PAD.t + ph);
+    ctx.closePath();
+    const grad = ctx.createLinearGradient(0, PAD.t, 0, PAD.t + ph);
+    grad.addColorStop(0, (ds.color || CYAN).replace(")", ",.25)").replace("rgb", "rgba"));
+    grad.addColorStop(1, (ds.color || CYAN).replace(")", ",0)").replace("rgb", "rgba"));
+    ctx.fillStyle = grad; ctx.fill();
+
+    // line
+    ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y);
+    pts.forEach((pt, i) => {
+      if (i === 0) return;
+      const prev = pts[i - 1];
+      const cx = (prev.x + pt.x) / 2;
+      ctx.bezierCurveTo(cx, prev.y, cx, pt.y, pt.x, pt.y);
+    });
+    ctx.strokeStyle = ds.color || CYAN; ctx.lineWidth = 2; ctx.stroke();
+
+    // dots
+    pts.forEach(pt => {
+      ctx.beginPath(); ctx.arc(pt.x, pt.y, 3.5, 0, Math.PI * 2);
+      ctx.fillStyle = ds.color || CYAN; ctx.fill();
+      ctx.strokeStyle = "#020617"; ctx.lineWidth = 1.5; ctx.stroke();
+    });
+  });
+
+  // x labels
+  ctx.fillStyle = TEXTLO; ctx.font = "9px 'IBM Plex Mono',monospace"; ctx.textAlign = "center";
+  labels.forEach((lbl, i) => {
+    ctx.fillText(lbl, PAD.l + i / (labels.length - 1) * pw, PAD.t + ph + 12);
+  });
+}
+
+const _chartConfigs = {
+  "chart-market": () => ({
+    type: "bar", H: 220,
+    labels: ["2022", "2023", "2024E", "2025E", "2026E", "2027E"],
+    datasets: [
+      { label: "半导体市场", data: [5740, 5270, 6110, 7200, 9750, 11200], color: "rgba(34,211,238,.7)" },
+      { label: "设备市场",   data: [1070, 875, 1040, 1330, 1450, 1560],  color: "rgba(103,232,249,.55)" },
+    ]
+  }),
+  "chart-growth": () => ({
+    type: "line", H: 220,
+    labels: ["2020","2021","2022","2023","2024","2025E","2026E","2027E"],
+    datasets: [{ data: [5.1, 44.7, 5.1, -13.7, 7.5, 13.7, 9.0, 7.6], color: CYAN }]
+  }),
+  "chart-equip": () => ({
+    type: "bar", H: 200, horizontal: true,
+    labels: ["Foundry/Logic","DRAM","NAND","测试设备","封装设备","阀门/气路"],
+    datasets: [{ data: [666, 225, 140, 112, 64, 30], colors: [CYAN, CYAN2, CYAN3, AMBER, GREEN, INDIGO] }]
+  }),
+  "chart-region": () => ({
+    type: "bar", H: 200, horizontal: true,
+    labels: ["中国大陆","台湾","韩国","日本","美国","欧洲"],
+    datasets: [{ data: [42, 22, 18, 8, 6, 4], colors: [CYAN, CYAN2, CYAN3, AMBER, INDIGO, GREEN] }]
+  }),
+};
+
+function drawChart(id) {
+  const canvas = document.getElementById(id);
+  if (!canvas) return;
+  const wrap = canvas.parentElement;
+  const W = wrap.offsetWidth - 36;
+  if (W < 50) return; // not laid out yet
+  const cfg = _chartConfigs[id]();
+  cfg.W = W;
+  if (cfg.type === "line") drawLineChart(canvas, cfg);
+  else drawBarChart(canvas, cfg);
+}
+
+function initCharts() {
+  const ids = Object.keys(_chartConfigs);
+  // Draw once after short delay
+  setTimeout(() => ids.forEach(drawChart), 200);
+  // Re-draw on resize
+  if (window.ResizeObserver) {
+    ids.forEach(id => {
+      const canvas = document.getElementById(id);
+      if (!canvas) return;
+      const ro = new ResizeObserver(() => drawChart(id));
+      ro.observe(canvas.parentElement);
+    });
+  }
+}
+
+
+// DRIVERS DATA & RENDER
+const DRIVERS = [
+  {
+    num: "01", color: "#22d3ee",
+    stat: "$4,500亿", statLabel: "2026 全球AI基础设施投资",
+    title: "AI 算力爆发",
+    body: "推理算力首次超训练（>70%），GPU/CoWoS 先进封装需求激增。万亿美元半导体节点较原预期提前 4 年。"
+  },
+  {
+    num: "02", color: "#67e8f9",
+    stat: "+58%", statLabel: "HBM 市场 2025 增速",
+    title: "HBM / 先进存储",
+    body: "HBM 2025 年规模 $546 亿。DRAM 设备 $225→$261亿，测试设备暴增 +48.1%，封装设备 +19.6%。"
+  },
+  {
+    num: "03", color: "#a5f3fc",
+    stat: "47座", statLabel: "2028E 中国新建晶圆厂",
+    title: "中国自主扩产",
+    body: "SMIC/华虹产能利用率 93–106%，国产设备替代率突破 35%，中国设备投资 2024 年增长 29%。"
+  },
+  {
+    num: "04", color: "#fbbf24",
+    stat: "2nm GAA", statLabel: "2026/2027 量产节点目标",
+    title: "先进节点迁移",
+    body: "台积电/三星推进 GAA 架构量产，ALD 循环次数大幅提升对 MFC 响应时间要求更苛刻。"
+  },
+  {
+    num: "05", color: "#34d399",
+    stat: "$550亿", statLabel: "日本承诺注入美国资本",
+    title: "供应链友岸化",
+    body: "日本关税豁免换取产业同盟，Tokyo Electron/信越/富士金定价权上升。CHIPS Act 拉动在岸制造投资。"
+  },
+];
+
+function renderDrivers() {
+  const el = document.getElementById("driver-grid");
+  DRIVERS.forEach((d, i) => {
+    const card = document.createElement("div");
+    card.className = "driver-card";
+    card.style.cssText = `--driver-color:${d.color};animation-delay:${i*80}ms`;
+    card.innerHTML = `
+      <div class="driver-num">${d.num} ·</div>
+      <div class="driver-stat">${d.stat}</div>
+      <div class="driver-label">${d.statLabel}</div>
+      <div class="driver-title">${d.title}</div>
+      <div class="driver-body">${d.body}</div>`;
+    el.appendChild(card);
+  });
+}
+
+// PLAYERS DATA & RENDER
+const PLAYERS = [
+  { rank:"#1",  name:"ASML",            origin:"荷兰", focus:"EUV 光刻机垄断供应",       tariff:"豁免", note:"中国禁运但全球需求不变",         rc:"#22d3ee", tc:"#0B1F3A" },
+  { rank:"#2",  name:"Applied Materials",origin:"美国", focus:"CVD / PVD / CMP",         tariff:"受限", note:"EAR 管制，中国市场受限",          rc:"#ef4444", tc:"#ffffff" },
+  { rank:"#3",  name:"Lam Research",    origin:"美国", focus:"刻蚀 + 薄膜沉积",          tariff:"受限", note:"中国占收入约 31%",                rc:"#ef4444", tc:"#ffffff" },
+  { rank:"#4",  name:"Tokyo Electron",  origin:"日本", focus:"涂胶/显影 + CVD",          tariff:"豁免", note:"中国降至 30%，AI 订单补偿",       rc:"#fbbf24", tc:"#0B1F3A" },
+  { rank:"#5",  name:"北方华创 Naura", origin:"中国", focus:"刻蚀 / 薄膜 / 清洗",       tariff:"受益", note:"2025 年首次进入全球前 5",          rc:"#34d399", tc:"#0B1F3A" },
+  { rank:"#6",  name:"SCREEN",          origin:"日本", focus:"清洗设备 57% 市占",         tariff:"豁免", note:"关税受益，定价权提升",             rc:"#fbbf24", tc:"#0B1F3A" },
+  { rank:"测试", name:"Advantest",      origin:"日本", focus:"测试设备 58% 市占",         tariff:"豁免", note:"+48.1% 增速 2025",                rc:"#67e8f9", tc:"#0B1F3A" },
+  { rank:"#13", name:"AMEC 中微",       origin:"中国", focus:"刻蚀设备",                  tariff:"受益", note:"首次进入全球前 20",                rc:"#34d399", tc:"#0B1F3A" },
+];
+
+function renderPlayers() {
+  const el = document.getElementById("player-list");
+  PLAYERS.forEach((p, i) => {
+    const d = document.createElement("div");
+    d.className = "player-row";
+    d.style.animationDelay = i * 50 + "ms";
+    const tariffC = p.tariff === "豁免" ? "#34d399" : p.tariff === "受益" ? "#22d3ee" : "#ef4444";
+    d.innerHTML = `
+      <div class="player-rank" style="background:${p.rc};color:${p.tc};font-size:9px">${p.rank}</div>
+      <div>
+        <div class="player-name">${p.name}</div>
+        <div class="player-origin">${p.origin}</div>
+      </div>
+      <div class="player-focus">${p.focus}</div>
+      <div><span class="badge" style="border-color:${tariffC}44;color:${tariffC};background:${tariffC}12">${p.tariff}</span></div>
+      <div class="player-note">${p.note}</div>`;
+    el.appendChild(d);
+  });
+}
+
+
 function renderMetrics() {
   const el = document.getElementById("metrics-strip");
   METRICS.forEach((m, i) => {
@@ -1320,35 +1977,8 @@ function renderCompBrand(containerId, data) {
   });
 }
 
-function renderGemuRows() {
-  const el = document.getElementById("gemu-rows");
-  GEMU_ROWS.forEach((r, i) => {
-    const lc = DIM_LEVEL_COLOR[r.level] || "#22d3ee";
-    const d = document.createElement("div");
-    d.style.cssText = `animation:fadeUp .55s ease both;animation-delay:${i*55}ms`;
-    d.innerHTML = `
-      <div style="padding:10px 12px;background:rgba(255,255,255,.018);border:1px solid rgba(255,255,255,.04);border-radius:6px">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;gap:8px;flex-wrap:wrap">
-          <span style="font-family:var(--mono);font-size:9px;letter-spacing:.15em;color:var(--text-lo);text-transform:uppercase">${r.dim}</span>
-          <span style="font-family:var(--mono);font-size:8px;padding:1px 7px;background:${lc}15;border:1px solid ${lc}40;color:${lc};border-radius:3px;letter-spacing:.1em;white-space:nowrap">${r.label}</span>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-          <div style="padding:7px 9px;background:rgba(239,68,68,.05);border-radius:4px;border-left:2px solid rgba(239,68,68,.3)">
-            <div style="font-family:var(--mono);font-size:8px;color:rgba(239,68,68,.5);letter-spacing:.12em;margin-bottom:3px">GEMÜ</div>
-            <p style="margin:0;font-size:11px;color:var(--text-mid);line-height:1.5">${r.gemu}</p>
-          </div>
-          <div style="padding:7px 9px;background:rgba(34,211,238,.04);border-radius:4px;border-left:2px solid rgba(34,211,238,.3)">
-            <div style="font-family:var(--mono);font-size:8px;color:rgba(34,211,238,.5);letter-spacing:.12em;margin-bottom:3px">我方</div>
-            <p style="margin:0;font-size:11px;color:var(--text-mid);line-height:1.5">${r.us}</p>
-          </div>
-        </div>
-      </div>`;
-    el.appendChild(d);
-  });
-}
 
 
-═══════════════════════════════════════════ */
 let visible = false;
 const observer = new IntersectionObserver(([e]) => {
   if (e.isIntersecting && !visible) {
@@ -1364,17 +1994,13 @@ const observer = new IntersectionObserver(([e]) => {
   }
 }, {threshold: 0.05});
 
-/* ═══════════════════════════════════════════
-   NAV SCROLL PROGRESS
-═══════════════════════════════════════════ */
+// NAV SCROLL PROGRESS
 window.addEventListener('scroll', () => {
   const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
   document.getElementById('nav-progress').style.width = pct + '%';
 }, {passive: true});
 
-/* ═══════════════════════════════════════════
-   TOC
-═══════════════════════════════════════════ */
+// TOC
 function tocToggle() {
   const p = document.getElementById('toc-panel');
   const b = document.getElementById('toc-btn');
@@ -1397,9 +2023,7 @@ function _at() {
 }
 window.addEventListener('scroll', _at, {passive:true}); _at();
 
-/* ═══════════════════════════════════════════
-   CURSOR
-═══════════════════════════════════════════ */
+// CURSOR
 (function() {
   const glow = document.getElementById('cursor-glow');
   const dot  = document.getElementById('cursor-dot');
@@ -1411,9 +2035,7 @@ window.addEventListener('scroll', _at, {passive:true}); _at();
   document.addEventListener('mouseenter', () => { glow.style.opacity='1'; dot.style.opacity='1'; });
 })();
 
-/* ═══════════════════════════════════════════
-   INIT
-═══════════════════════════════════════════ */
+// INIT
 document.addEventListener("DOMContentLoaded", () => {
   renderMetrics();
   renderSpecs(false);
@@ -1423,7 +2045,9 @@ document.addEventListener("DOMContentLoaded", () => {
   renderProcess(false);
   renderCompBrand("comp-mfc",   COMP_MFC);
   renderCompBrand("comp-valve", COMP_VALVE);
-  renderGemuRows();
+  renderDrivers();
+  renderPlayers();
+  // charts rendered as static SVG
   observer.observe(document.getElementById("root"));
 });
 </script>
