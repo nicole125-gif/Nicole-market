@@ -149,8 +149,47 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .scollapse{font-family:'DM Mono',monospace;font-size:.53rem;color:var(--t3);cursor:pointer;white-space:nowrap;background:none;border:none;transition:color .15s}
 .scollapse:hover{color:var(--t2)}
 
-/* ── MACRO CONTAINER ── */
-.macro-zone{position:relative;z-index:1;border-bottom:1px solid var(--l1)}
+/* ── MACRO ENTRY CARD ── */
+.macro-entry{
+  display:block;
+  text-decoration:none;
+  position:relative;
+  max-width:var(--content-w);
+  margin:0 auto;
+  border-top:1px solid rgba(240,160,48,.18);
+  overflow:hidden;
+  transition:background .2s;
+}
+.macro-entry:hover{background:rgba(245,166,35,.04)}
+.macro-entry:hover .macro-entry-arrow{transform:translateX(4px)}
+
+.macro-entry-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:2rem;
+  padding:var(--card-pad) var(--page-px);
+}
+
+.macro-entry-left{flex:1;min-width:0}
+
+.macro-entry-right{
+  display:flex;flex-direction:column;align-items:flex-end;gap:1rem;
+  flex-shrink:0;
+}
+
+.macro-entry-score{
+  display:flex;align-items:baseline;gap:.5rem;
+}
+
+.macro-entry-cta{
+  display:flex;align-items:center;gap:.5rem;
+  font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(245,166,35,.7);
+}
+.macro-entry-arrow{
+  font-size:.8rem;transition:transform .2s;
+}
 .macro-zone::before{content:'MACRO · GLOBAL CONTEXT';position:absolute;top:0;left:0;
   font-family:'DM Mono',monospace;font-size:.44rem;letter-spacing:.22em;color:var(--t3);
   padding:.28rem .7rem;background:rgba(240,160,48,.06);border-right:1px solid rgba(240,160,48,.15);
@@ -742,39 +781,37 @@ const macroZone=document.getElementById('macro-zone');
 (()=>{
   const b='Macro',m=BM[b],cv=cc(b);
 
-  // Outer row wrapper
-  const row=document.createElement('div');
-  row.className='sector-row rise';
-  row.style.cssText='border-top:1px solid rgba(240,160,48,.15)';
-
-  // Left: card
-  const cardWrap=document.createElement('div');
-  cardWrap.className='sr-card';
-  cardWrap.style.cssText='border-right:1px solid rgba(240,160,48,.15)';
-  const card=document.createElement('button');
-  card.className='bcard';
-  card.style.cssText=`--c:${cv}`;
-  card.innerHTML=buildCard(b,false);
-  cardWrap.appendChild(card);
-
-  // Right: macro tracks
-  const tracksWrap=document.createElement('div');
-  tracksWrap.className='sr-tracks';
-  tracksWrap.innerHTML=buildTrackHTML(b);
-
-  row.appendChild(cardWrap);
-  row.appendChild(tracksWrap);
-  macroZone.appendChild(row);
-
-  // animate bars
-  requestAnimationFrame(()=>{
-    setTimeout(()=>{
-      tracksWrap.querySelectorAll('.tr-b').forEach(el=>{
-        el.style.transition='width .6s cubic-bezier(.16,1,.3,1)';
-        el.style.width=el.dataset.w+'%';
-      });
-    },80);
-  });
+  // Single full-width entry card — no right track panel
+  const entryCard=document.createElement('a');
+  entryCard.href='macro.html';
+  entryCard.className='macro-entry rise';
+  entryCard.innerHTML=`
+    <div class="bcard-bar" style="transform:scaleX(1);opacity:.5"></div>
+    <div class="macro-entry-inner">
+      <div class="macro-entry-left">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:.7rem">
+          <span class="bbadge" style="--c:${cv}">MACRO</span>
+          <span style="font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.14em;color:var(--t3);text-transform:uppercase">Global Context · 宏观背景</span>
+        </div>
+        <div class="bname">${m.n}</div>
+        <div class="bsum" style="--c:${cv}">
+          <span class="bsum-icon">${m.sumAlert||'⬆'}</span>
+          <span class="bsum-text">${m.sum}</span>
+        </div>
+        <div class="btags">${m.tracks.map(id=>T[id]?.n||'').filter(Boolean).map(n=>`<span class="btag">${n}</span>`).join('')}</div>
+      </div>
+      <div class="macro-entry-right">
+        <div class="macro-entry-score">
+          <div class="bheat ${HC(m.heat)}" style="font-size:3rem">${m.heat}</div>
+          <div style="font-size:1.2rem">${trendEl(m.tr,true)}</div>
+        </div>
+        <div class="macro-entry-cta">
+          <span>深度分析</span>
+          <span class="macro-entry-arrow">→</span>
+        </div>
+      </div>
+    </div>`;
+  macroZone.appendChild(entryCard);
 })();
 
 /* ── RENDER SECTOR ROWS (always-visible inline tracks) ── */
