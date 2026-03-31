@@ -459,7 +459,7 @@ footer{border-top:1px solid var(--l1);padding:var(--space-sm) var(--page-px);dis
       <a href="customers.html" class="nav-link">客户监控</a>
     </div>
     <div class="nav-right">
-      <div class="nav-live"><div class="nav-dot"></div>202603</div>
+      <div class="nav-live"><div class="nav-dot"></div>202603·0331</div>
       <button class="nav-btn" onclick="toggleSrc()">数据溯源</button>
     </div>
   </div>
@@ -469,7 +469,7 @@ footer{border-top:1px solid var(--l1);padding:var(--space-sm) var(--page-px);dis
   <div>
     <div class="hero-eyebrow">Market Intelligence · Live</div>
     <h1>行业景气度<br><span class="dim">监测报告 2026</span></h1>
-    <div class="hero-meta">HEAT SCORE · D×35% + C×30% + P×20% + Pol×15%<br>6 SECTORS · 20 TRACKS · 202603</div>
+    <div class="hero-meta">HEAT SCORE · D×35% + C×30% + P×20% + Pol×15%<br>6 SECTORS · 20 TRACKS · 202603 · 0331</div>
   </div>
   <div class="kpis" id="hkpis"></div>
 </div>
@@ -532,7 +532,7 @@ footer{border-top:1px solid var(--l1);padding:var(--space-sm) var(--page-px);dis
 </div>
 
 <footer>
-  <span>© 2026 PULSE · 行业景气度监测 · 202603</span>
+  <span>© 2026 PULSE · 行业景气度监测 · 202603 · 0331</span>
   <span>国家统计局 / 央行 / 行业协会 / 上市公司公告</span>
 </footer>
 
@@ -543,10 +543,10 @@ const cc=b=>`var(${CV[b]})`;
 const HEAT_RANK={};
 
 const BM={
-  Macro:{n:'宏观背景',    heat:47.3,tr:'up', D:48,C:42,P:54,Pol:58,
-    sum:'FAI +1.8%转正！两会定调落地，3月PMI月底验证',
-    sumAlert:'⬆',href:'macro.html',tracks:['m1','m2','m3'],sparks:[55,50,48],hotIdx:0,
-    insight:'<strong>宏观背景</strong> — FAI实现+1.8%转正，较2025全年-3.8%出现显著逆转；两会定调GDP目标4.5-5%，关税诉讼引入外需不确定性。<span class="ai-src" data-src="国家统计局 · FAI 2026年1-2月">NSB</span>'},
+  Macro:{n:'宏观背景',    heat:50.2,tr:'up', D:50,C:44,P:56,Pol:62,
+    sum:'3月PMI 50.5%重返扩张！Q1开局双信号确认',
+    sumAlert:'🟢',href:'macro.html',tracks:['m1','m2','m3'],sparks:[48,50,53],hotIdx:2,
+    insight:'<strong>宏观背景</strong> — 3月官方PMI 50.5%（+1.5pp），重返扩张区间；生产52.6%、新订单51.8%，中小企业同步改善。FAI+1.8%转正叠加PMI双重确认，Q1开局信号转强。<span class="ai-src" data-src="国家统计局 · 2026-03-31">NSB</span>'},
   EI:{n:'能源·基础设施',  heat:72.5,tr:'up', D:82,C:80,P:68,Pol:86,
     sum:'两会AI基建落地+美半导体232关税双重催化',
     sumAlert:'🔥',href:'hydrogen.html',tracks:['e1','e2','e3','e4'],sparks:[64,72,74,44],hotIdx:2,
@@ -571,7 +571,7 @@ const BM={
 const BO=['Macro','EI','GI','P&B','L&M','F&B'];
 
 const T={
-  m1:{b:'Macro',n:'制造业 PMI',sub:'总体景气指数',heat:45.1,tr:'fl',D:44,C:36,P:48,Pol:62,data:['2月官方PMI 49.0%（-0.3pp），大型企业51.5%扩张，中小企业44.8%深度收缩','财新制造业PMI 50.8（+0.7pp）近三个月高点','两会确认GDP目标4.5%-5%、赤字率4%；3月PMI数据月底发布'],tw:'两会政策已落地，关注点转向：①3月31日PMI数据；②4月美国法院关税听证。关税诉讼增加出口预期不确定性。',act:'等待 · 3月PMI月底发布',src:['国家统计局','财新/标普全球']},
+  m1:{b:'Macro',n:'制造业 PMI',sub:'总体景气指数',heat:50.8,tr:'up',D:50,C:38,P:52,Pol:65,data:['3月官方PMI 50.5%（+1.5pp），重返扩张区间','生产指数52.6%、新订单51.8%，中小企业景气同步改善','财新制造业PMI 4月1日公布，预计维持扩张'],tw:'3月PMI重返50%以上，验证春节扰动消退后制造业景气快速修复。综合PMI 51.4%，三大指数全线扩张，Q1开门红格局确立。',act:'信号确认 · 跟踪4月1日财新PMI交叉验证',src:['国家统计局 2026-03-31','财新/标普全球']},
   m2:{b:'Macro',n:'M2 / 社融',sub:'货币政策综合信号',heat:50.5,tr:'fl',D:47,C:40,P:56,Pol:68,data:['1月M2同比+9%（近两年新高），社融7.22万亿（历史同期最高）','两会已确认：赤字率4%、Q1降准50BP预期仍在'],tw:'两会货币政策定调清晰，但关税诉讼引入外需不确定性。货币宽松重心转向内需提振。',act:'关注 · Q1信贷及3月PMI',src:['中国人民银行']},
   m3:{b:'Macro',n:'固定资产投资',sub:'制造业FAI/规上增加值',heat:48.5,tr:'up',D:48,C:42,P:54,Pol:58,data:['2026年1-2月全国FAI +1.8%（vs 2025全年-3.8%，实现转正）','制造业投资+2.5%；高技术制造业+9.4%'],tw:'FAI转正是年内最重要的宏观好转信号之一。需观察Q1是否延续。',act:'关注 · FAI转正信号，跟踪Q1延续性',src:['国家统计局']},
   e1:{b:'EI',n:'液冷数据中心',sub:'AI液冷渗透率/市场规模',heat:86.1,tr:'up',D:90,C:92,P:72,Pol:84,data:['TrendForce：2026年AI芯片液冷渗透率47%（上调7pp）；北美市场100亿美元','美国对先进AI半导体加征25%关税（232条，1月15日起）','GB200 NVL72单柜功耗130kW+，风冷已触达物理极限'],tw:'美国232关税直接强化国内算力国产化紧迫性，液冷设备作为核心配套，渗透率47%+政策+技术三重驱动维持全表最高优先级。',act:'立即跟进 · CDU/冷板/管路系统',src:['TrendForce','国信证券']},
@@ -623,7 +623,7 @@ DIM_KEYS.forEach(k=>{
 [{v:'86.1',l:'最高 Heat',d:'↑ 液冷+关税双催化',c:'exp'},
  {v:'到期',l:'司美格鲁肽',d:'3/20 仿制战启动',c:'dn'},
  {v:'10%',l:'美国新关税',d:'122条 4月听证',c:'dn'},
- {v:'月底',l:'3月 PMI',d:'→ 关注能否重返50%',c:'fl'}
+ {v:'50.5%',l:'3月 PMI',d:'↑ 重返扩张区间',c:'up'}
 ].forEach(k=>{
   document.getElementById('hkpis').innerHTML+=
     `<div class="kpi"><span class="kpi-v ${k.c}">${k.v}</span><span class="kpi-l">${k.l}</span><span class="kpi-d ${k.c}">${k.d}</span></div>`;
