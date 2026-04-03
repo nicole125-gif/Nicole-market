@@ -6,14 +6,6 @@
 <title>PULSE 2026 · 行业景气度监测</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
-PE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PULSE 2026 · 行业景气度监测</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:15px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
@@ -67,16 +59,19 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 
 /* ── HERO ── */
 .hero{max-width:var(--content-w);margin:0 auto;padding:var(--space-md) var(--page-px) var(--space-sm);border-bottom:1px solid var(--l1);
-  position:relative;z-index:1;display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap}
+  position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap}
+.hero>div:first-child{flex:1;min-width:280px}
 .hero-eyebrow{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.16em;color:var(--blue);
-  text-transform:uppercase;margin-bottom:.7rem;display:flex;align-items:center;gap:9px}
+  text-transform:uppercase;margin-bottom:.85rem;display:flex;align-items:center;gap:9px}
 .hero-eyebrow::before{content:'';width:14px;height:1px;background:var(--blue)}
-.hero h1{font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:600;letter-spacing:-.03em;line-height:1.1;margin-bottom:.55rem}
+.hero h1{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:600;letter-spacing:-.03em;line-height:1.08;margin-bottom:.65rem}
 .hero h1 .dim{color:var(--t2);font-weight:300}
-.hero-meta{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--t2);letter-spacing:.06em;line-height:1.85}
+.hero-tagline{font-size:.72rem;color:var(--t2);letter-spacing:.02em;margin-bottom:.7rem;line-height:1.5;border-left:2px solid var(--blue);padding-left:.6rem}
+.hero-meta{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--t3);letter-spacing:.06em;line-height:2;
+  padding:.55rem .75rem;background:var(--bg2);border:1px solid var(--l1);border-radius:6px;margin-top:.3rem}
 
 /* ── KPI ── */
-.kpis{display:flex;gap:1px;background:var(--l1);border:1px solid var(--l2);border-radius:10px;overflow:hidden;flex-shrink:0;align-self:flex-end}
+.kpis{display:flex;gap:1px;background:var(--l1);border:1px solid var(--l2);border-radius:10px;overflow:hidden;flex-shrink:0;align-self:center}
 .kpi{padding:.95rem 1.3rem;background:var(--bg2);display:flex;flex-direction:column;gap:.22rem;min-width:108px;transition:background .18s}
 .kpi:hover{background:var(--bg3)}
 .kpi-v{font-size:1.25rem;font-weight:600;line-height:1;letter-spacing:-.02em}
@@ -405,7 +400,7 @@ footer{border-top:1px solid var(--l1);padding:var(--space-sm) var(--page-px);dis
 
 /* ── NEW ADDITIONS ── */
 /* Hero tagline */
-.hero-tagline{font-size:.72rem;color:var(--t2);letter-spacing:.02em;margin-bottom:.55rem;line-height:1.5;border-left:2px solid var(--blue);padding-left:.6rem}
+/* hero-tagline defined in hero block above */
 
 /* AI gen note */
 .ai-gen-note{font-family:'DM Mono',monospace;font-size:.52rem;color:var(--t2);letter-spacing:.05em;white-space:nowrap;padding:.14rem .4rem;border:1px solid var(--l2);border-radius:3px;flex-shrink:0}
