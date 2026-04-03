@@ -248,30 +248,12 @@ body{padding-top:56px;background:var(--bg);color:var(--text);font-family:var(--d
 #nav-progress {
   position: absolute; bottom: 0; left: 0; height: 1px;
   background: linear-gradient(90deg, var(--nav-accent, #22d3ee), transparent);
-  width: 0; transition: width .1s linear;
-}
-/* ═══ CURSOR — unified ═══ */
-#cursor-glow {
-  position: fixed; pointer-events: none; z-index: 99999;
-  width: 320px; height: 320px; border-radius: 50%;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(34,211,238,.04) 0%, rgba(0,200,255,.02) 30%, transparent 70%);
-  mix-blend-mode: screen; transition: opacity .3s;
-}
-#cursor-dot {
-  position: fixed; pointer-events: none; z-index: 100000;
-  width: 18px; height: 18px; border-radius: 50%;
-  border: 1px solid rgba(34,211,238,.35); transform: translate(-50%, -50%);
-  transition: width .2s, height .2s, border-color .2s, box-shadow .2s, opacity .2s;
-  opacity: .5;
-}
-
-
- }
+  width: 0; transition: width .1s linear;}
 #cursor-glow{position:fixed;pointer-events:none;z-index:99999;width:320px;height:320px;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,215,0,.07) 0%,rgba(255,215,0,.03) 30%,transparent 70%);transition:opacity .3s ease;mix-blend-mode:screen}
 #cursor-dot{position:fixed;pointer-events:none;z-index:100000;width:24px;height:24px;border-radius:50%;background:transparent;border:1.5px solid rgba(255,215,0,.85);transform:translate(-50%,-50%);box-shadow:0 0 8px rgba(255,215,0,.45),inset 0 0 6px rgba(255,215,0,.2);transition:width .2s ease,height .2s ease,border-color .2s,box-shadow .2s}
 body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([onclick]:hover) #cursor-dot{width:36px;height:36px;border-color:rgba(255,215,0,.9);box-shadow:0 0 16px rgba(255,215,0,.4),inset 0 0 10px rgba(255,215,0,.08)}
 @media(pointer:coarse){#cursor-glow,#cursor-dot{display:none}}
+
 </style>
 </head>
 <body>
@@ -1030,23 +1012,17 @@ function _at(){var c=_SI[0];_SI.forEach(function(id){var e=document.getElementBy
 window.addEventListener('scroll',_at,{passive:true});_at();
 </script>
 
+
+
 <script>
 (function(){
-  const glow = document.getElementById('cursor-glow');
-  const dot  = document.getElementById('cursor-dot');
+  const glow=document.getElementById('cursor-glow'),dot=document.getElementById('cursor-dot');
   let mx=0,my=0,gx=0,gy=0;
-  document.addEventListener('mousemove', e=>{
-    mx=e.clientX; my=e.clientY;
-    dot.style.left=mx+'px'; dot.style.top=my+'px';
-  });
-  function animGlow(){
-    gx+=(mx-gx)*.08; gy+=(my-gy)*.08;
-    glow.style.left=gx+'px'; glow.style.top=gy+'px';
-    requestAnimationFrame(animGlow);
-  }
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+  function animGlow(){gx+=(mx-gx)*.08;gy+=(my-gy)*.08;glow.style.left=gx+'px';glow.style.top=gy+'px';requestAnimationFrame(animGlow);}
   animGlow();
-  document.addEventListener('mouseleave',()=>{ glow.style.opacity='0'; dot.style.opacity='0'; });
-  document.addEventListener('mouseenter',()=>{ glow.style.opacity='1'; dot.style.opacity='1'; });
+  document.addEventListener('mouseleave',()=>{glow.style.opacity='0';dot.style.opacity='0';});
+  document.addEventListener('mouseenter',()=>{glow.style.opacity='1';dot.style.opacity='1';});
 })();
 </script>
 </body>

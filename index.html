@@ -6,6 +6,14 @@
 <title>PULSE 2026 · 行业景气度监测</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+PE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PULSE 2026 · 行业景气度监测</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:15px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
@@ -50,11 +58,10 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   50%{text-shadow:0 0 14px rgba(40,200,122,.7),0 0 28px rgba(40,200,122,.35);transform:translateY(-1.5px)}}
 @keyframes pulse-dn{0%,100%{text-shadow:0 0 0 rgba(232,64,64,0)}
   50%{text-shadow:0 0 14px rgba(232,64,64,.8),0 0 28px rgba(232,64,64,.4)}}
-@keyframes breathe{0%,100%{opacity:.4;box-shadow:0 0 4px var(--c)}
+@keyframes breathe{0%,100%{opacity:.4;box-shadow:0 0 4px var(--c)}}
 .trend-up{animation:pulse-up 2.2s ease-in-out infinite}
 .trend-dn{animation:pulse-dn 1.8s ease-in-out infinite}
 
-/* ── CURSOR ── */
 
 
 
@@ -468,30 +475,12 @@ footer{border-top:1px solid var(--l1);padding:var(--space-sm) var(--page-px);dis
 #nav-progress {
   position: absolute; bottom: 0; left: 0; height: 1px;
   background: linear-gradient(90deg, var(--nav-accent, #22d3ee), transparent);
-  width: 0; transition: width .1s linear;
-}
-/* ═══ CURSOR — unified ═══ */
-#cursor-glow {
-  position: fixed; pointer-events: none; z-index: 99999;
-  width: 320px; height: 320px; border-radius: 50%;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(34,211,238,.04) 0%, rgba(0,200,255,.02) 30%, transparent 70%);
-  mix-blend-mode: screen; transition: opacity .3s;
-}
-#cursor-dot {
-  position: fixed; pointer-events: none; z-index: 100000;
-  width: 18px; height: 18px; border-radius: 50%;
-  border: 1px solid rgba(34,211,238,.35); transform: translate(-50%, -50%);
-  transition: width .2s, height .2s, border-color .2s, box-shadow .2s, opacity .2s;
-  opacity: .5;
-}
-
-
- }
+  width: 0; transition: width .1s linear;}
 #cursor-glow{position:fixed;pointer-events:none;z-index:99999;width:320px;height:320px;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(61,148,255,.07) 0%,rgba(61,148,255,.03) 30%,transparent 70%);transition:opacity .3s ease;mix-blend-mode:screen}
 #cursor-dot{position:fixed;pointer-events:none;z-index:100000;width:24px;height:24px;border-radius:50%;background:transparent;border:1.5px solid rgba(61,148,255,.85);transform:translate(-50%,-50%);box-shadow:0 0 8px rgba(61,148,255,.45),inset 0 0 6px rgba(61,148,255,.2);transition:width .2s ease,height .2s ease,border-color .2s,box-shadow .2s}
 body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([onclick]:hover) #cursor-dot{width:36px;height:36px;border-color:rgba(255,215,0,.9);box-shadow:0 0 16px rgba(255,215,0,.4),inset 0 0 10px rgba(255,215,0,.08)}
 @media(pointer:coarse){#cursor-glow,#cursor-dot{display:none}}
+
 </style>
 </head>
 <body>
@@ -1001,23 +990,17 @@ function toggleSrc(){document.getElementById('spanel').classList.toggle('open');
 </script>
 
 
+
+
 <script>
 (function(){
-  const glow = document.getElementById('cursor-glow');
-  const dot  = document.getElementById('cursor-dot');
+  const glow=document.getElementById('cursor-glow'),dot=document.getElementById('cursor-dot');
   let mx=0,my=0,gx=0,gy=0;
-  document.addEventListener('mousemove', e=>{
-    mx=e.clientX; my=e.clientY;
-    dot.style.left=mx+'px'; dot.style.top=my+'px';
-  });
-  function animGlow(){
-    gx+=(mx-gx)*.08; gy+=(my-gy)*.08;
-    glow.style.left=gx+'px'; glow.style.top=gy+'px';
-    requestAnimationFrame(animGlow);
-  }
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+  function animGlow(){gx+=(mx-gx)*.08;gy+=(my-gy)*.08;glow.style.left=gx+'px';glow.style.top=gy+'px';requestAnimationFrame(animGlow);}
   animGlow();
-  document.addEventListener('mouseleave',()=>{ glow.style.opacity='0'; dot.style.opacity='0'; });
-  document.addEventListener('mouseenter',()=>{ glow.style.opacity='1'; dot.style.opacity='1'; });
+  document.addEventListener('mouseleave',()=>{glow.style.opacity='0';dot.style.opacity='0';});
+  document.addEventListener('mouseenter',()=>{glow.style.opacity='1';dot.style.opacity='1';});
 })();
 </script>
 </body>
