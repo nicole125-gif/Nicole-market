@@ -56,6 +56,11 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .trend-up{animation:pulse-up 2.2s ease-in-out infinite}
 .trend-dn{animation:pulse-dn 1.8s ease-in-out infinite}
 
+/* ── CURSOR ── */
+#cursor-glow{position:fixed;pointer-events:none;z-index:99999;width:320px;height:320px;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(56,139,255,.07) 0%,rgba(0,200,255,.04) 30%,transparent 70%);transition:opacity .3s ease;mix-blend-mode:screen}
+#cursor-dot{position:fixed;pointer-events:none;z-index:100000;width:24px;height:24px;border-radius:50%;background:transparent;border:1.5px solid rgba(56,139,255,.8);transform:translate(-50%,-50%);box-shadow:0 0 8px rgba(56,139,255,.4),inset 0 0 6px rgba(56,139,255,.2);transition:width .2s ease,height .2s ease,border-color .2s,box-shadow .2s}
+body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([onclick]:hover) #cursor-dot{width:36px;height:36px;border-color:rgba(255,215,0,.9);box-shadow:0 0 16px rgba(255,215,0,.4),inset 0 0 10px rgba(255,215,0,.08)}
+
 /* ── NAV ── */
 #site-nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:52px;
   background:rgba(8,14,24,.92);backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid var(--l1)}
@@ -473,6 +478,8 @@ footer{border-top:1px solid var(--l1);padding:var(--space-sm) var(--page-px);dis
 </style>
 </head>
 <body>
+<div id="cursor-glow"></div>
+<div id="cursor-dot"></div>
 
 <nav id="site-nav">
   <div class="nav-inner">
@@ -984,6 +991,17 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 /* ── SOURCES ── */
 document.getElementById('spitems').innerHTML=SOURCES.map(s=>`<div class="spit"><div class="spn">${s.n}</div><div class="spd">${s.d}</div><div class="sptags">${s.tags.map(t=>`<span class="sptag">${t}</span>`).join('')}</div></div>`).join('');
 function toggleSrc(){document.getElementById('spanel').classList.toggle('open');}
+</script>
+<script>
+(function(){
+  const glow=document.getElementById('cursor-glow'),dot=document.getElementById('cursor-dot');
+  let mx=0,my=0,gx=0,gy=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+  function animGlow(){gx+=(mx-gx)*.08;gy+=(my-gy)*.08;glow.style.left=gx+'px';glow.style.top=gy+'px';requestAnimationFrame(animGlow);}
+  animGlow();
+  document.addEventListener('mouseleave',()=>{glow.style.opacity='0';dot.style.opacity='0';});
+  document.addEventListener('mouseenter',()=>{glow.style.opacity='1';dot.style.opacity='1';});
+})();
 </script>
 </body>
 </html>

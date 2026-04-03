@@ -21,9 +21,7 @@ body{padding-top:52px;background:var(--bg);color:var(--text);font-family:var(--d
 /* ── NAV ─────────────────────────────────── */
 
 
-.nav-brand{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.25em;color:var(--white);margin-right:16px}
-.nav-brand span{color:var(--red)}
-.nav-divider{width:1px;height:16px;background:var(--border2);margin:0 4px}
+/* unified nav CSS injected below */
 
 
 
@@ -36,6 +34,10 @@ body{padding-top:52px;background:var(--bg);color:var(--text);font-family:var(--d
 }
 .hero-eyebrow{font-family:var(--mono);font-size:9px;letter-spacing:.35em;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:12px}
 .hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--gold)}
+.hero-eye{font-family:var(--mono);font-size:9px;letter-spacing:.35em;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.hero-eye::before{content:'';width:32px;height:1px;background:var(--gold)}
+.hero-title .a1{color:var(--gold)}
+.hero-title .a2{color:rgba(255,255,255,.45)}
 .hero-title{font-size:clamp(28px,3.5vw,44px);font-weight:800;line-height:1.0;letter-spacing:-.03em;margin-bottom:20px}
 .hero-title .accent{color:var(--gold)}
 .hero-sub{font-size:15px;color:var(--text2);max-width:600px;line-height:1.7;margin-bottom:48px;font-weight:400}
@@ -237,11 +239,25 @@ body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([oncli
 
 
 
-#site-nav{position:fixed;top:0;left:0;right:0;z-index:10000;background:rgba(2,5,18,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.07)}
-.nav-inner{max-width:1380px;margin:0 auto;padding:0 32px;display:flex;align-items:center;height:52px}
-.nav-links{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
-.nav-link{padding:5px 12px;font-size:11px;font-family:'IBM Plex Mono',monospace;letter-spacing:.08em;color:rgba(255,255,255,.65);text-decoration:none;border:1px solid transparent;transition:all .2s;white-space:nowrap}
-.nav-link:hover{color:#fff;border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
+/* ── NAV unified PULSE 2026 ── */
+#site-nav{position:fixed;top:0;left:0;right:0;z-index:10000;background:rgba(8,14,24,.92);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-inner{max-width:1380px;margin:0 auto;padding:0 32px;display:flex;align-items:center;height:52px;gap:0}
+.nav-logo{font-size:.82rem;font-weight:600;letter-spacing:.05em;flex-shrink:0;display:flex;align-items:center;gap:8px;color:#fff;margin-right:8px}
+.nav-logo-mark{width:22px;height:22px;background:#388BFF;border-radius:5px;display:flex;align-items:center;justify-content:center}
+.nav-div-sep{width:1px;height:16px;background:rgba(255,255,255,.12);margin:0 16px;flex-shrink:0}
+.nav-links{display:flex;gap:2px;flex:1;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-link{font-size:.82rem;font-weight:400;color:rgba(255,255,255,.6);text-decoration:none;padding:0 10px;height:30px;display:inline-flex;align-items:center;transition:color .12s,background .12s;white-space:nowrap;border-radius:6px;letter-spacing:.01em}
+.nav-link:hover{color:#fff;background:rgba(255,255,255,.09)}
+.nav-link.active{color:#fff;background:rgba(255,255,255,.09);font-weight:600}
+.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0}
+.nav-live{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.65rem;color:rgba(255,255,255,.5);letter-spacing:.07em}
+.nav-live-dot{width:5px;height:5px;border-radius:50%;background:#00FFB2;animation:blink 2.4s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.nav-btn{font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;color:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.15);border-radius:6px;padding:.3rem .8rem;background:none;cursor:pointer;transition:all .12s;text-transform:uppercase}
+.nav-btn:hover{color:#fff;border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.05)}
+.nav-btn-src{border-color:rgba(56,139,255,.4);color:#388BFF}
+.nav-btn-src:hover{background:rgba(56,139,255,.08);border-color:#388BFF}
 </style>
 </head>
 <body>
@@ -252,16 +268,30 @@ body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([oncli
 <!-- NAV -->
 <nav id="site-nav">
   <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-mark">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <rect x="0" y="7" width="3" height="5" fill="white" rx=".5" opacity=".5"/>
+          <rect x="4.5" y="4" width="3" height="8" fill="white" rx=".5" opacity=".75"/>
+          <rect x="9" y="0" width="3" height="12" fill="white" rx=".5"/>
+        </svg>
+      </div>PULSE 2026
+    </div>
+    <div class="nav-div-sep"></div>
     <div class="nav-links">
       <a href="index.html" class="nav-link">总览</a>
       <a href="macro.html" class="nav-link">宏观脉搏</a>
       <a href="liquid.html" class="nav-link">AI 液冷</a>
       <a href="semiconductor.html" class="nav-link">半导体 SBU</a>
-      <a href="mscc.html" class="nav-link" style="color:#FFD700;border-color:#FFD700;background:rgba(255,215,0,.08)">质谱·色谱</a>
+      <a href="mscc.html" class="nav-link active">质谱·色谱</a>
       <a href="pharma.html" class="nav-link">制药装备</a>
       <a href="food.html" class="nav-link">食品饮料</a>
       <a href="hydrogen.html" class="nav-link">氢能行业</a>
       <a href="customers.html" class="nav-link">客户监控</a>
+    </div>
+    <div class="nav-right">
+      <div class="nav-live"><div class="nav-live-dot"></div>202603 · 0331 UPDATED</div>
+      <button class="nav-btn nav-btn-src" onclick="void(0)">数据溯源 ⓘ</button>
     </div>
   </div>
 </nav>

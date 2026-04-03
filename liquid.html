@@ -207,20 +207,9 @@ body{padding-top:52px;background:linear-gradient(160deg,#040912 0%,#050A18 60%,#
 @media(max-width:559px){.main-grid{grid-template-columns:1fr}}
 .roadmap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(6px,1.5vw,10px)}
 @media(max-width:400px){.roadmap-grid{grid-template-columns:1fr}}
-/* Nav */
-
-
-.nav-brand{display:flex;align-items:center;gap:8px;flex-shrink:0}
-.nav-dot{width:7px;height:7px;border-radius:50%;background:#E30613;box-shadow:0 0 8px #E30613;animation:dotBlink 2.4s ease-in-out infinite}
-.nav-logo{font-family:'Courier New',monospace;font-size:11px;font-weight:700;color:#fff;letter-spacing:.22em}
-.nav-sub{font-family:'Courier New',monospace;font-size:9px;color:rgba(255,255,255,.22);letter-spacing:.15em}
-
-
-
-
-.status-dot{width:5px;height:5px;border-radius:50%;background:#00FFB2;animation:dotBlink 2.8s ease-in-out infinite;display:inline-block}
-.nav-bar{height:2px;background:linear-gradient(90deg,#E30613,transparent);width:0;transition:width .3s}
-@media(max-width:600px){.nav-sub,.nav-link:last-child+span{display:none}}
+/* Nav — unified PULSE 2026 style */
+.nav-dot{width:5px;height:5px;border-radius:50%;background:#00FFB2;animation:blink 2.4s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 
 /* ── CURSOR ── */
 #cursor-glow{position:fixed;pointer-events:none;z-index:99999;width:320px;height:320px;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(0,200,255,.07) 0%,rgba(0,255,178,.04) 30%,transparent 70%);transition:opacity .3s ease;mix-blend-mode:screen}
@@ -251,11 +240,22 @@ body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([oncli
 
 
 
-#site-nav{position:fixed;top:0;left:0;right:0;z-index:10000;background:rgba(2,5,18,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.07)}
-.nav-inner{max-width:1380px;margin:0 auto;padding:0 32px;display:flex;align-items:center;height:52px}
-.nav-links{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
-.nav-link{padding:5px 12px;font-size:11px;font-family:'IBM Plex Mono',monospace;letter-spacing:.08em;color:rgba(255,255,255,.65);text-decoration:none;border:1px solid transparent;transition:all .2s;white-space:nowrap}
-.nav-link:hover{color:#fff;border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
+#site-nav{position:fixed;top:0;left:0;right:0;z-index:10000;background:rgba(8,14,24,.92);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-inner{max-width:1380px;margin:0 auto;padding:0 32px;display:flex;align-items:center;height:52px;gap:0}
+.nav-logo{font-size:.82rem;font-weight:600;letter-spacing:.05em;flex-shrink:0;display:flex;align-items:center;gap:8px;color:#fff;margin-right:8px}
+.nav-logo-mark{width:22px;height:22px;background:#388BFF;border-radius:5px;display:flex;align-items:center;justify-content:center}
+.nav-div{width:1px;height:16px;background:rgba(255,255,255,.12);margin:0 16px;flex-shrink:0}
+.nav-links{display:flex;gap:2px;flex:1;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-link{font-size:.82rem;font-weight:400;color:rgba(255,255,255,.6);text-decoration:none;padding:0 10px;height:30px;display:inline-flex;align-items:center;transition:color .12s,background .12s;white-space:nowrap;border-radius:6px;letter-spacing:.01em}
+.nav-link:hover{color:#fff;background:rgba(255,255,255,.09)}
+.nav-link.active{color:#fff;background:rgba(255,255,255,.09);font-weight:600}
+.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0}
+.nav-live{display:flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:rgba(255,255,255,.5);letter-spacing:.07em}
+.nav-btn{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.06em;color:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.15);border-radius:6px;padding:.3rem .8rem;background:none;cursor:pointer;transition:all .12s;text-transform:uppercase}
+.nav-btn:hover{color:#fff;border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.05)}
+.nav-btn-src{border-color:rgba(56,139,255,.4);color:#388BFF}
+.nav-btn-src:hover{background:rgba(56,139,255,.08);border-color:#388BFF}
 
 /* HERO */
 .hero{padding:40px 40px 40px;max-width:1300px;margin:0 auto}
@@ -273,16 +273,30 @@ body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([oncli
 
 <nav id="site-nav">
   <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-mark">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <rect x="0" y="7" width="3" height="5" fill="white" rx=".5" opacity=".5"/>
+          <rect x="4.5" y="4" width="3" height="8" fill="white" rx=".5" opacity=".75"/>
+          <rect x="9" y="0" width="3" height="12" fill="white" rx=".5"/>
+        </svg>
+      </div>PULSE 2026
+    </div>
+    <div class="nav-div"></div>
     <div class="nav-links">
       <a href="index.html" class="nav-link">总览</a>
       <a href="macro.html" class="nav-link">宏观脉搏</a>
-      <a href="liquid.html" class="nav-link" style="color:#00C8FF;border-color:#00C8FF;background:rgba(0,200,255,.08)">AI 液冷</a>
+      <a href="liquid.html" class="nav-link active">AI 液冷</a>
       <a href="semiconductor.html" class="nav-link">半导体 SBU</a>
       <a href="mscc.html" class="nav-link">质谱·色谱</a>
       <a href="pharma.html" class="nav-link">制药装备</a>
       <a href="food.html" class="nav-link">食品饮料</a>
       <a href="hydrogen.html" class="nav-link">氢能行业</a>
       <a href="customers.html" class="nav-link">客户监控</a>
+    </div>
+    <div class="nav-right">
+      <div class="nav-live"><div class="nav-dot"></div>202603 · 0331 UPDATED</div>
+      <button class="nav-btn nav-btn-src" onclick="void(0)">数据溯源 ⓘ</button>
     </div>
   </div>
 </nav>
