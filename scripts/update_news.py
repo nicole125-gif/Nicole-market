@@ -93,7 +93,7 @@ def fetch_eastmoney_macro():
     }
     for key, query in queries.items():
         try:
-            url = f"https://news.google.com/rss/search?q={query}&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"
+            url = f"https://news.google.com/rss/search?q={quote(query)}&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"
             feed = feedparser.parse(url)
             titles = [e.get("title", "") for e in feed.entries[:6]]
             if not titles:
@@ -133,7 +133,7 @@ def fetch_news_for_track(track, days=35):
     items = []
     cutoff = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=days)
     for kw in track["keywords"]:
-        url = f"https://news.google.com/rss/search?q={kw}&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"
+        url = f"https://news.google.com/rss/search?q={quote(kw)}&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"
         try:
             feed = feedparser.parse(url)
             for entry in feed.entries[:5]:
@@ -272,10 +272,10 @@ def update_data_js(macro_values, today_str):
 # ── 制药装备新闻 ───────────────────────────────────────────
 
 PHARMA_FEEDS = [
-    ("制药装备动态", "https://news.google.com/rss/search?q=制药装备&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"),
-    ("龙头企业", "https://news.google.com/rss/search?q=楚天科技+OR+东富龙+OR+森松国际&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"),
-    ("国产替代", "https://news.google.com/rss/search?q=生物制药设备+国产替代&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"),
-    ("政策监管", "https://news.google.com/rss/search?q=制药装备+政策+NMPA&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"),
+    ("制药装备动态", "https://news.google.com/rss/search?q=%E5%88%B6%E8%8D%AF%E8%A3%85%E5%A4%87&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"),
+    ("龙头企业", "https://news.google.com/rss/search?q=%E6%A5%9A%E5%A4%A9%E7%A7%91%E6%8A%80+OR+%E4%B8%9C%E5%AF%8C%E9%BE%99+OR+%E6%A3%AE%E6%9D%BE%E5%9B%BD%E9%99%85&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"),
+    ("国产替代", "https://news.google.com/rss/search?q=%E7%94%9F%E7%89%A9%E5%88%B6%E8%8D%AF%E8%AE%BE%E5%A4%87+%E5%9B%BD%E4%BA%A7%E6%9B%BF%E4%BB%A3&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"),
+    ("政策监管", "https://news.google.com/rss/search?q=%E5%88%B6%E8%8D%AF%E8%A3%85%E5%A4%87+%E6%94%BF%E7%AD%96+NMPA&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"),
 ]
 
 
