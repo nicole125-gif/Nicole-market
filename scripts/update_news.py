@@ -176,7 +176,7 @@ def score_track(client, track, news_items):
         for key, dim_name, rule in dims:
             q = (
                 f"新闻列表（赛道：{track_name}）：\n{news_text}\n\n"
-                f"根据以上新闻，评估"{dim_name}"维度（{rule}）。\n"
+                f"根据以上新闻，评估【{dim_name}】维度（{rule}）。\n"
                 f"只回答一个0-100的整数，不要任何解释。"
             )
             msg = client.messages.create(
