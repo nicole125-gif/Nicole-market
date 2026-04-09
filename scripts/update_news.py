@@ -203,7 +203,7 @@ def score_track(client, track, news_items):
             ]
 
             msg = client.messages.create(
-                model="MiniMax-M2.5-highspeed",
+                model="abab6.5s-chat",
                 max_tokens=20,
                 temperature=0,
                 messages=messages,
@@ -309,7 +309,7 @@ def summarize_pharma(client, raw_items):
 
     try:
         msg = client.messages.create(
-            model="MiniMax-M2.5-highspeed",
+            model="abab6.5s-chat",
             max_tokens=800,
             temperature=0,
             messages=[{"role": "user", "content": prompt}],
