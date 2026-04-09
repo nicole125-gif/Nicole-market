@@ -284,64 +284,98 @@ def _keyword_score(track_id, titles, pos_words, neg_words, base=58):
     score = base + pos * 5 - neg * 8 + bonus * 8
     return min(95, max(30, score))
 
+def _call_gemini_batch(track_list, news_map):
+    """一次调用打全部赛道，大幅减少 API 请求次数"""
+    import urllib.request, json as _json, time, os
+
+    api_key = os.environ["GEMINI_API_KEY"]
+    url = (
+        "https://generativelanguage.googleapis.com/v1beta"
+        f"/models/gemini-2.0-flash:generateContent?key={api_key}"
+    )
+
+    # 构建批量 prompt
+    lines = []
+    for t in track_list:
+        tid = t["id"]
+        name = t.get("name", tid)
+        titles = news_map.get(tid, [])
+        if not titles:
+            continue
+        news_str = "; ".join(titles[:8])
+        lines.append(f"{tid}({name}): {news_str}")
+
+    if not lines:
+        return {}
+
+    prompt = (
+        "你是中国B2B设备行业景气度分析师。根据各赛道新闻标题打分。\n\n"
+        "打分规则（0-100）：\n"
+        "D=需求动能：强劲订单/扩产/渗透率提升→80+，疲软→40-\n"
+        "C=投资强度：大额招标/融资→80+，FAI收缩→40-\n"
+        "P=价格盈利：反向！涨价→高分，集采降价50%→38\n"
+        "Pol=政策情绪：强补贴/催化→85+，政策空窗→45-\n\n"
+        "各赛道新闻：\n" + "\n".join(lines) + "\n\n"
+        "输出格式（每行一个赛道，严格按此格式）：\n"
+        "赛道id D=数字 C=数字 P=数字 Pol=数字\n\n"
+        "示例：\ne1 D=85 C=78 P=65 Pol=80\ne2 D=90 C=82 P=70 Pol=75"
+    )
+
+    payload = _json.dumps({
+        "contents": [{"parts": [{"text": prompt}]}],
+        "generationConfig": {"temperature": 0, "maxOutputTokens": 400}
+    }).encode()
+
+    for attempt in range(3):
+        try:
+            req = urllib.request.Request(
+                url, data=payload,
+                headers={"Content-Type": "application/json"}
+            )
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                data = _json.loads(resp.read())
+            raw = data["candidates"][0]["content"]["parts"][0]["text"].strip()
+            print(f"  [DEBUG] Gemini batch:\n{raw}")
+            return raw
+        except Exception as ex:
+            if attempt < 2:
+                wait = 20 * (attempt + 1)
+                print(f"  [RATE] {ex}，等待{wait}秒重试...")
+                time.sleep(wait)
+            else:
+                print(f"  [WARN] Gemini batch 失败: {ex}")
+                return ""
+    return ""
+
+
 def score_track(client, track, news_items):
+    # 占位：实际打分在主流程的 batch 调用里完成
+    # 这里只做无新闻的默认处理
     if not news_items:
         print(f"  [WARN] {track['id']} 无新闻，使用默认分 50")
         return {"D": 50, "C": 50, "P": 50, "Pol": 50,
                 "core_data": "本期无有效新闻数据", "comment": "数据不足，参考上期"}
+    return None  # 标记为需要 batch 打分
 
-    news_text = "\n".join([f"- {i['title']}" for i in news_items[:12]])
-    track_name = track.get("name", track["id"])
 
-    prompt = (
-        f"你是中国B2B设备行业景气度分析师。根据以下新闻标题，对赛道【{track_name}】打分。\n\n"
-        f"新闻列表：\n{news_text}\n\n"
-        "打分规则（每项0-100分）：\n"
-        "D=需求动能：强劲订单/渗透率提升→80+，需求疲软→40-\n"
-        "C=投资强度：大额招标/融资扩产→80+，FAI收缩→40-\n"
-        "P=价格盈利：反向指标！行业涨价→高分，集采降价50%→38分\n"
-        "Pol=政策情绪：强补贴/产业催化→85+，政策空窗→45-\n\n"
-        "请直接输出以下格式，不要任何解释：\n"
-        "D=数字 C=数字 P=数字 Pol=数字"
-    )
+def parse_batch_result(raw, track_id):
+    """从批量结果里解析单个赛道的分数"""
+    for line in raw.split("\n"):
+        if line.startswith(track_id + " ") or line.startswith(track_id + "\t"):
+            d   = re.search(r'D\s*=\s*(\d+)', line)
+            c   = re.search(r'C\s*=\s*(\d+)', line)
+            p   = re.search(r'\bP\s*=\s*(\d+)', line)
+            pol = re.search(r'Pol\s*=\s*(\d+)', line)
+            if d and c and p and pol:
+                return {
+                    "D":   min(100, max(0, int(d.group(1)))),
+                    "C":   min(100, max(0, int(c.group(1)))),
+                    "P":   min(100, max(0, int(p.group(1)))),
+                    "Pol": min(100, max(0, int(pol.group(1)))),
+                    "core_data": "", "comment": "",
+                }
+    return None
 
-    try:
-        import urllib.request, json as _json
-        api_key = os.environ["GEMINI_API_KEY"]
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
-        payload = _json.dumps({
-            "contents": [{"parts": [{"text": prompt}]}],
-            "generationConfig": {"temperature": 0, "maxOutputTokens": 40}
-        }).encode()
-        req = urllib.request.Request(url, data=payload,
-                                     headers={"Content-Type": "application/json"})
-        with urllib.request.urlopen(req, timeout=20) as resp:
-            data = _json.loads(resp.read())
-        raw = data["candidates"][0]["content"]["parts"][0]["text"].strip()
-        print(f"  [DEBUG] Gemini: {raw}")
-        import time; time.sleep(5)  # 免费层限速：每分钟15次
-
-        d   = re.search(r'D\s*=\s*(\d+)', raw)
-        c   = re.search(r'C\s*=\s*(\d+)', raw)
-        p   = re.search(r'\bP\s*=\s*(\d+)', raw)
-        pol = re.search(r'Pol\s*=\s*(\d+)', raw)
-
-        if d and c and p and pol:
-            return {
-                "D":         min(100, max(0, int(d.group(1)))),
-                "C":         min(100, max(0, int(c.group(1)))),
-                "P":         min(100, max(0, int(p.group(1)))),
-                "Pol":       min(100, max(0, int(pol.group(1)))),
-                "core_data": "",
-                "comment":   "",
-            }
-        else:
-            print(f"  [WARN] 解析失败: {raw}")
-    except Exception as e:
-        print(f"  [WARN] Gemini 调用失败 {track['id']}: {e}")
-
-    return {"D": 50, "C": 50, "P": 50, "Pol": 50,
-            "core_data": "打分异常", "comment": "请人工核查"}
 
 
 def calc_heat(scores):
@@ -513,19 +547,33 @@ if __name__ == "__main__":
     results = {}
 
     # ── Step 1：子赛道打分 ──────────────────────────────────
-    print("\n--- Heat Score 打分 ---")
+    print("\n--- Heat Score 打分：抓取新闻 ---")
+    news_map = {}
     for track in TRACKS:
-        print(f"  处理: {track['id']}")
-        news   = fetch_news_for_track(track)
-        scores = score_track(client, track, news)
-        heat   = calc_heat(scores)
-        prev   = get_prev_heat(history, track["id"])
-        trend  = calc_trend(heat, prev)
-        results[track["id"]] = {
-            "heat": heat, "trend": trend,
-            "scores": scores, "prev_heat": prev,
-        }
-        print(f"    Heat={heat} ({trend})  D={scores['D']} C={scores['C']} "
+        print(f"  抓取: {track['id']}")
+        items = fetch_news_for_track(track)
+        news_map[track["id"]] = [i["title"] for i in items]
+
+    print("\n--- Heat Score 打分：Gemini 批量打分 ---")
+    batch_raw = _call_gemini_batch(TRACKS, news_map)
+
+    for track in TRACKS:
+        tid = track["id"]
+        items = news_map.get(tid, [])
+        if not items:
+            scores = {"D": 50, "C": 50, "P": 50, "Pol": 50,
+                      "core_data": "本期无有效新闻数据", "comment": "数据不足，参考上期"}
+        else:
+            scores = parse_batch_result(batch_raw, tid)
+            if scores is None:
+                print(f"  [WARN] {tid} 未在批量结果中找到，使用默认50")
+                scores = {"D": 50, "C": 50, "P": 50, "Pol": 50,
+                          "core_data": "解析失败", "comment": "请人工核查"}
+        heat = calc_heat(scores)
+        prev = get_prev_heat(history, tid)
+        trend = calc_trend(heat, prev)
+        results[tid] = {"heat": heat, "trend": trend, "scores": scores, "prev_heat": prev}
+        print(f"  {tid}: Heat={heat} ({trend})  D={scores['D']} C={scores['C']} "
               f"P={scores['P']} Pol={scores['Pol']}")
 
     # ── Step 2：板块综合分 ─────────────────────────────────
