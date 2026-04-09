@@ -74,7 +74,7 @@ TRACKS = [
     {"id": "p5", "name": "CDMO订单景气", "board": "P&B",
      "keywords": [
          "CDMO订单", "药明康德业绩", "凯莱英GLP-1",
-         "TIDES多肽CDMO", "ADC CDMO", "CDMO询单",
+         "TIDES多肽CDMO", "ADC+CDMO", "CDMO询单",
          "博腾股份订单", "九洲药业CDMO",
      ]},
     {"id": "l1", "name": "质谱/色谱仪器国产替代", "board": "L&M",
@@ -126,7 +126,7 @@ TRACKS = [
      ]},
     {"id": "m2", "name": "M2/社融/CPI/PPI", "board": "Macro",
      "keywords": [
-         "中国M2社融", "货币政策央行", "CPI PPI通胀",
+         "中国M2社融", "货币政策央行", "CPI+PPI通胀",
          "社会融资规模", "M2信贷数据", "央行降准降息",
      ]},
     {"id": "m3", "name": "固定资产投资/工业增加值", "board": "Macro",
@@ -319,6 +319,7 @@ def score_track(client, track, news_items):
             data = _json.loads(resp.read())
         raw = data["candidates"][0]["content"]["parts"][0]["text"].strip()
         print(f"  [DEBUG] Gemini: {raw}")
+        import time; time.sleep(5)  # 免费层限速：每分钟15次
 
         d   = re.search(r'D\s*=\s*(\d+)', raw)
         c   = re.search(r'C\s*=\s*(\d+)', raw)
