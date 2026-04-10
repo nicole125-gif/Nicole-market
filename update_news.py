@@ -152,10 +152,8 @@ BOARD_WEIGHTS = {
 # 3. Claude API 客户端
 # ══════════════════════════════════════════════════════════════
 def get_client():
-    return anthropic.Anthropic(
-        api_key=os.environ["MINIMAX_API_KEY"],
-        base_url="https://api.minimaxi.com/anthropic"
-    )
+    # DeepSeek - OpenAI 兼容格式
+    return os.environ["DEEPSEEK_API_KEY"]  # 直接返回 key，score_track 里直接用
 
 
 # ══════════════════════════════════════════════════════════════
@@ -295,63 +293,53 @@ def score_track(client, track, news_items):
 
     prompt = (
         f"你是中国B2B设备行业景气度分析师。根据以下新闻标题，对赛道【{track_name}】打分。\n\n"
-        f"新闻列表：\n{news_text}\n\n"
-        "打分规则（每项0-100分）：\n"
-        "D=需求动能：强劲订单/渗透率提升→80+，需求疲软→40-\n"
-        "C=投资强度：大额招标/融资扩产→80+，FAI收缩→40-\n"
-        "P=价格盈利：反向指标！行业涨价→高分，集采降价50%→38分\n"
+        f"新闻：\n{news_text}\n\n"
+        "打分规则（0-100整数）：\n"
+        "D=需求动能：强劲订单/扩产/渗透率→80+，需求疲软→40-\n"
+        "C=投资强度：大额招标/融资→80+，FAI收缩→40-\n"
+        "P=价格盈利：反向！涨价→高分，集采降价50%→38分\n"
         "Pol=政策情绪：强补贴/产业催化→85+，政策空窗→45-\n\n"
-        "请直接输出以下格式，不要任何解释：\n"
-        "D=数字 C=数字 P=数字 Pol=数字"
+        "只输出一行，格式：D=数字 C=数字 P=数字 Pol=数字"
     )
 
     try:
         import urllib.request, json as _json
-        api_key = os.environ["GEMINI_API_KEY"]
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
+        api_key = client  # client 就是 API key
+        url = "https://api.deepseek.com/chat/completions"
         payload = _json.dumps({
-            "contents": [{"parts": [{"text": prompt}]}],
-            "generationConfig": {"temperature": 0, "maxOutputTokens": 40}
+            "model": "deepseek-chat",
+            "temperature": 0,
+            "max_tokens": 30,
+            "messages": [
+                {"role": "system", "content": "你是打分机器人，只输出格式：D=数字 C=数字 P=数字 Pol=数字，不输出任何其他内容。"},
+                {"role": "user", "content": prompt}
+            ]
         }).encode()
-        req = urllib.request.Request(url, data=payload,
-                                     headers={"Content-Type": "application/json"})
-        import time
-        for attempt in range(3):
-            try:
-                with urllib.request.urlopen(req, timeout=20) as resp:
-                    data = _json.loads(resp.read())
-                break
-            except Exception as ex:
-                if "429" in str(ex) and attempt < 2:
-                    wait = 15 * (attempt + 1)
-                    print(f"  [RATE] 限速，等待{wait}秒后重试...")
-                    time.sleep(wait)
-                    req = urllib.request.Request(url, data=payload,
-                                                 headers={"Content-Type": "application/json"})
-                else:
-                    raise
-        raw = data["candidates"][0]["content"]["parts"][0]["text"].strip()
-        print(f"  [DEBUG] Gemini: {raw}")
-        time.sleep(8)  # 免费层限速保护
+        req = urllib.request.Request(url, data=payload, headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {api_key}"
+        })
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            data = _json.loads(resp.read())
+        raw = data["choices"][0]["message"]["content"].strip()
+        print(f"  [DS] {raw}")
 
         d   = re.search(r'D\s*=\s*(\d+)', raw)
         c   = re.search(r'C\s*=\s*(\d+)', raw)
-        p   = re.search(r'\bP\s*=\s*(\d+)', raw)
+        p   = re.search(r'P\s*=\s*(\d+)', raw)
         pol = re.search(r'Pol\s*=\s*(\d+)', raw)
 
         if d and c and p and pol:
             return {
-                "D":         min(100, max(0, int(d.group(1)))),
-                "C":         min(100, max(0, int(c.group(1)))),
-                "P":         min(100, max(0, int(p.group(1)))),
-                "Pol":       min(100, max(0, int(pol.group(1)))),
-                "core_data": "",
-                "comment":   "",
+                "D":   min(100, max(0, int(d.group(1)))),
+                "C":   min(100, max(0, int(c.group(1)))),
+                "P":   min(100, max(0, int(p.group(1)))),
+                "Pol": min(100, max(0, int(pol.group(1)))),
+                "core_data": "", "comment": "",
             }
-        else:
-            print(f"  [WARN] 解析失败: {raw}")
+        print(f"  [WARN] 解析失败: {raw}")
     except Exception as e:
-        print(f"  [WARN] Gemini 调用失败 {track['id']}: {e}")
+        print(f"  [WARN] DeepSeek 失败 {track['id']}: {e}")
 
     return {"D": 50, "C": 50, "P": 50, "Pol": 50,
             "core_data": "打分异常", "comment": "请人工核查"}
@@ -429,17 +417,20 @@ def summarize_pharma(client, raw_items):
 不要 markdown 代码块，直接输出数组。"""
 
     try:
-        msg = client.messages.create(
-            model="abab6.5s-chat",
-            max_tokens=800,
-            temperature=0,
-            messages=[{"role": "user", "content": prompt}],
-        )
-        raw = ""
-        for b in msg.content:
-            if hasattr(b, "text") and b.text:
-                raw = b.text.strip()
-                break
+        import urllib.request as _ur, json as _j2
+        _api = os.environ["DEEPSEEK_API_KEY"]
+        _payload = _j2.dumps({
+            "model": "deepseek-chat",
+            "temperature": 0,
+            "max_tokens": 800,
+            "messages": [{"role": "user", "content": prompt}]
+        }).encode()
+        _req = _ur.Request("https://api.deepseek.com/chat/completions",
+            data=_payload,
+            headers={"Content-Type":"application/json","Authorization":f"Bearer {_api}"})
+        with _ur.urlopen(_req, timeout=30) as _resp:
+            _data = _j2.loads(_resp.read())
+        raw = _data["choices"][0]["message"]["content"].strip()
         if not raw:
             raw = "[]"
         # strip markdown fences
