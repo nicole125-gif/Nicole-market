@@ -152,10 +152,8 @@ BOARD_WEIGHTS = {
 # 3. Claude API 客户端
 # ══════════════════════════════════════════════════════════════
 def get_client():
-    return anthropic.Anthropic(
-        api_key=os.environ["MINIMAX_API_KEY"],
-        base_url="https://api.minimaxi.com/anthropic"
-    )
+    # DeepSeek - OpenAI 兼容格式
+    return os.environ["DEEPSEEK_API_KEY"]  # 直接返回 key，score_track 里直接用
 
 
 # ══════════════════════════════════════════════════════════════
@@ -285,33 +283,66 @@ def _keyword_score(track_id, titles, pos_words, neg_words, base=58):
     return min(95, max(30, score))
 
 def score_track(client, track, news_items):
-    """关键词规则打分，分数区间 30-85，基准50"""
     if not news_items:
         print(f"  [WARN] {track['id']} 无新闻，使用默认分 50")
         return {"D": 50, "C": 50, "P": 50, "Pol": 50,
                 "core_data": "本期无有效新闻数据", "comment": "数据不足，参考上期"}
 
-    titles = [i["title"] for i in news_items]
-    text = " ".join(titles)
-    tid = track["id"]
+    news_text = "\n".join([f"- {i['title']}" for i in news_items[:12]])
+    track_name = track.get("name", track["id"])
 
-    def score_dim(pos_words, neg_words, bonus_words, base=50):
-        pos = min(3, sum(1 for w in pos_words if w in text))   # 最多计3个
-        neg = min(2, sum(1 for w in neg_words if w in text))   # 最多计2个
-        bonus = min(2, sum(1 for w in bonus_words if w in text))
-        val = base + pos * 8 - neg * 10 + bonus * 6
-        return min(85, max(30, val))
+    prompt = (
+        f"你是中国B2B设备行业景气度分析师。根据以下新闻标题，对赛道【{track_name}】打分。\n\n"
+        f"新闻：\n{news_text}\n\n"
+        "打分规则（0-100整数）：\n"
+        "D=需求动能：强劲订单/扩产/渗透率→80+，需求疲软→40-\n"
+        "C=投资强度：大额招标/融资→80+，FAI收缩→40-\n"
+        "P=价格盈利：反向！涨价→高分，集采降价50%→38分\n"
+        "Pol=政策情绪：强补贴/产业催化→85+，政策空窗→45-\n\n"
+        "只输出一行，格式：D=数字 C=数字 P=数字 Pol=数字"
+    )
 
-    bonus = TRACK_BONUS.get(tid, [])
-    D   = score_dim(POSITIVE_D,   NEGATIVE_D,   bonus)
-    C   = score_dim(POSITIVE_C,   NEGATIVE_C,   bonus, base=48)
-    P   = score_dim(POSITIVE_P,   NEGATIVE_P,   bonus, base=55)
-    Pol = score_dim(POSITIVE_POL, NEGATIVE_POL, bonus, base=52)
+    try:
+        import urllib.request, json as _json
+        api_key = client  # client 就是 API key
+        url = "https://api.deepseek.com/chat/completions"
+        payload = _json.dumps({
+            "model": "deepseek-chat",
+            "temperature": 0,
+            "max_tokens": 30,
+            "messages": [
+                {"role": "system", "content": "你是打分机器人，只输出格式：D=数字 C=数字 P=数字 Pol=数字，不输出任何其他内容。"},
+                {"role": "user", "content": prompt}
+            ]
+        }).encode()
+        req = urllib.request.Request(url, data=payload, headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {api_key}"
+        })
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            data = _json.loads(resp.read())
+        raw = data["choices"][0]["message"]["content"].strip()
+        print(f"  [DS] {raw}")
 
-    print(f"  [RULE] D={D} C={C} P={P} Pol={Pol} (新闻:{len(titles)}条)")
-    return {"D": D, "C": C, "P": P, "Pol": Pol,
-            "core_data": titles[0][:30] if titles else "",
-            "comment": f"基于{len(titles)}条新闻关键词打分"}
+        d   = re.search(r'D\s*=\s*(\d+)', raw)
+        c   = re.search(r'C\s*=\s*(\d+)', raw)
+        p   = re.search(r'P\s*=\s*(\d+)', raw)
+        pol = re.search(r'Pol\s*=\s*(\d+)', raw)
+
+        if d and c and p and pol:
+            return {
+                "D":   min(100, max(0, int(d.group(1)))),
+                "C":   min(100, max(0, int(c.group(1)))),
+                "P":   min(100, max(0, int(p.group(1)))),
+                "Pol": min(100, max(0, int(pol.group(1)))),
+                "core_data": "", "comment": "",
+            }
+        print(f"  [WARN] 解析失败: {raw}")
+    except Exception as e:
+        print(f"  [WARN] DeepSeek 失败 {track['id']}: {e}")
+
+    return {"D": 50, "C": 50, "P": 50, "Pol": 50,
+            "core_data": "打分异常", "comment": "请人工核查"}
 
 
 def calc_heat(scores):
@@ -386,17 +417,20 @@ def summarize_pharma(client, raw_items):
 不要 markdown 代码块，直接输出数组。"""
 
     try:
-        msg = client.messages.create(
-            model="abab6.5s-chat",
-            max_tokens=800,
-            temperature=0,
-            messages=[{"role": "user", "content": prompt}],
-        )
-        raw = ""
-        for b in msg.content:
-            if hasattr(b, "text") and b.text:
-                raw = b.text.strip()
-                break
+        import urllib.request as _ur, json as _j2
+        _api = os.environ["DEEPSEEK_API_KEY"]
+        _payload = _j2.dumps({
+            "model": "deepseek-chat",
+            "temperature": 0,
+            "max_tokens": 800,
+            "messages": [{"role": "user", "content": prompt}]
+        }).encode()
+        _req = _ur.Request("https://api.deepseek.com/chat/completions",
+            data=_payload,
+            headers={"Content-Type":"application/json","Authorization":f"Bearer {_api}"})
+        with _ur.urlopen(_req, timeout=30) as _resp:
+            _data = _j2.loads(_resp.read())
+        raw = _data["choices"][0]["message"]["content"].strip()
         if not raw:
             raw = "[]"
         # strip markdown fences
