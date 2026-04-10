@@ -324,10 +324,10 @@ def score_track(client, track, news_items):
         raw = data["choices"][0]["message"]["content"].strip()
         print(f"  [DS] {raw}")
 
-        d   = re.search(r'D\s*=\s*(\d+)', raw)
-        c   = re.search(r'C\s*=\s*(\d+)', raw)
-        p   = re.search(r'P\s*=\s*(\d+)', raw)
-        pol = re.search(r'Pol\s*=\s*(\d+)', raw)
+        d   = re.search(r'D=(\d+)', raw)
+        c   = re.search(r'C=(\d+)', raw)
+        p   = re.search(r' P=(\d+)', raw)
+        pol = re.search(r'Pol=(\d+)', raw)
 
         if d and c and p and pol:
             return {
