@@ -292,14 +292,18 @@ def score_track(client, track, news_items):
     track_name = track.get("name", track["id"])
 
     prompt = (
-        f"你是中国B2B设备行业景气度分析师。根据以下新闻标题，对赛道【{track_name}】打分。\n\n"
+        f"你是中国B2B设备行业景气度分析师。根据以下新闻标题，对赛道【{track_name}】打分并生成摘要。\n\n"
         f"新闻：\n{news_text}\n\n"
         "打分规则（0-100整数）：\n"
         "D=需求动能：强劲订单/扩产/渗透率→80+，需求疲软→40-\n"
         "C=投资强度：大额招标/融资→80+，FAI收缩→40-\n"
         "P=价格盈利：反向！涨价→高分，集采降价50%→38分\n"
         "Pol=政策情绪：强补贴/产业催化→85+，政策空窗→45-\n\n"
-        "只输出一行，格式：D=数字 C=数字 P=数字 Pol=数字"
+        "严格按以下格式输出，共4行，不要其他内容：\n"
+        "D=数字 C=数字 P=数字 Pol=数字\n"
+        "核心数据：（30字以内，最重要的一个数据点）\n"
+        "结论：（40字以内，本期景气度判断）\n"
+        "行动：（30字以内，具体行动建议）"
     )
 
     try:
@@ -309,9 +313,9 @@ def score_track(client, track, news_items):
         payload = _json.dumps({
             "model": "deepseek-chat",
             "temperature": 0,
-            "max_tokens": 30,
+            "max_tokens": 150,
             "messages": [
-                {"role": "system", "content": "你是打分机器人，只输出格式：D=数字 C=数字 P=数字 Pol=数字，不输出任何其他内容。"},
+                {"role": "system", "content": "你是行业景气度分析机器人，严格按格式输出4行内容，不添加任何额外文字。"},
                 {"role": "user", "content": prompt}
             ]
         }).encode()
@@ -322,22 +326,39 @@ def score_track(client, track, news_items):
         with urllib.request.urlopen(req, timeout=30) as resp:
             data = _json.loads(resp.read())
         raw = data["choices"][0]["message"]["content"].strip()
-        print(f"  [DS] {raw}")
+        print(f"  [DS] {raw[:80]}")
 
-        d   = re.search(r'D=(\d+)', raw)
-        c   = re.search(r'C=(\d+)', raw)
-        p   = re.search(r' P=(\d+)', raw)
-        pol = re.search(r'Pol=(\d+)', raw)
+        lines = raw.strip().split("\n")
+        score_line = lines[0] if lines else ""
+
+        d   = re.search(r'D=(\d+)', score_line)
+        c   = re.search(r'C=(\d+)', score_line)
+        p   = re.search(r' P=(\d+)', score_line)
+        pol = re.search(r'Pol=(\d+)', score_line)
+
+        # 提取文字字段
+        core_data = ""
+        comment   = ""
+        act       = ""
+        for line in lines[1:]:
+            if line.startswith("核心数据：") or line.startswith("核心数据:"):
+                core_data = line.split("：",1)[-1].split(":",1)[-1].strip()
+            elif line.startswith("结论：") or line.startswith("结论:"):
+                comment = line.split("：",1)[-1].split(":",1)[-1].strip()
+            elif line.startswith("行动：") or line.startswith("行动:"):
+                act = line.split("：",1)[-1].split(":",1)[-1].strip()
 
         if d and c and p and pol:
             return {
-                "D":   min(100, max(0, int(d.group(1)))),
-                "C":   min(100, max(0, int(c.group(1)))),
-                "P":   min(100, max(0, int(p.group(1)))),
-                "Pol": min(100, max(0, int(pol.group(1)))),
-                "core_data": "", "comment": "",
+                "D":         min(100, max(0, int(d.group(1)))),
+                "C":         min(100, max(0, int(c.group(1)))),
+                "P":         min(100, max(0, int(p.group(1)))),
+                "Pol":       min(100, max(0, int(pol.group(1)))),
+                "core_data": core_data,
+                "comment":   comment,
+                "act":       act,
             }
-        print(f"  [WARN] 解析失败: {raw}")
+        print(f"  [WARN] 解析失败: {score_line}")
     except Exception as e:
         print(f"  [WARN] DeepSeek 失败 {track['id']}: {e}")
 
@@ -576,7 +597,7 @@ if __name__ == "__main__":
         # 子赛道级
         for tid, r in results.items():
             delta = round(r["heat"] - r["prev_heat"], 1)
-            scores_payload["tracks"][tid] = {
+            entry = {
                 "heat":  r["heat"],
                 "tr":    r["trend"],
                 "delta": delta,
@@ -585,6 +606,14 @@ if __name__ == "__main__":
                 "P":     r["scores"]["P"],
                 "Pol":   r["scores"]["Pol"],
             }
+            # 加入文字字段（如果有）
+            if r["scores"].get("core_data"):
+                entry["core_data"] = r["scores"]["core_data"]
+            if r["scores"].get("comment"):
+                entry["tw"] = r["scores"]["comment"]
+            if r["scores"].get("act"):
+                entry["act"] = r["scores"]["act"]
+            scores_payload["tracks"][tid] = entry
 
         # index.html 在仓库根目录，脚本在 scripts/，所以往上一级
         index_path = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "..", "index.html")
