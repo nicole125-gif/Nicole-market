@@ -1,0 +1,110 @@
+{
+  "vertical_id": "semiconductor",
+  "vertical_name": "半导体",
+  "vertical_en": "Semiconductor",
+  "color": "#ff6b9d",
+  "updated_at": "2026-04-13T06:25:19.370105+00:00",
+  "item_count": 10,
+  "items": [
+    {
+      "id": "86c1b33abf",
+      "title": "Silent Data Corruption:  A Major Reliability Challenge in Large-Scale LLM Training (TU Berlin)",
+      "url": "https://semiengineering.com/silent-data-corruption-a-major-reliability-challenge-in-large-scale-llm-training-tu-berlin/",
+      "summary": "A new technical paper, &#8220;Exploring Silent Data Corruption as a Reliability Challenge in LLM Training,&#8221; was published by researchers at Technische Universitat Berlin. Abstract &#8220;As Large Language Models (LLMs) scale in size and complexity, the consequences of failures during training …",
+      "source": "Semiconductor Engineering",
+      "lang": "en",
+      "pub_date": "2026-04-12T19:19:40+00:00",
+      "pub_ts": 1776021580
+    },
+    {
+      "id": "a385455c7e",
+      "title": "An Engineering Roadmap Toward Completely Neural Computers (Meta AI, KAUST)",
+      "url": "https://semiengineering.com/an-engineering-roadmap-toward-completely-neural-computers-meta-ai-kaust/",
+      "summary": "A new technical paper, &#8220;Neural Computers,&#8221; was published by researchers at Meta AI and KAUST. Abstract &#8220;We propose a new frontier: Neural Computers (NCs) &#8212; an emerging machine form that unifies computation, memory, and I/O in a learned runtime state. Unlike conventional compu…",
+      "source": "Semiconductor Engineering",
+      "lang": "en",
+      "pub_date": "2026-04-12T00:13:37+00:00",
+      "pub_ts": 1775952817
+    },
+    {
+      "id": "d968949730",
+      "title": "Study of EUV Nanostructures Using AFM With High-Aspect Ratio Tip (Purdue, Intel, Bruker)",
+      "url": "https://semiengineering.com/study-of-euv-nanostructures-using-afm-with-high-aspect-ratio-tip-purdue-intel-bruker/",
+      "summary": "A new technical paper, &#8220;Characterizing tip-sample interaction dynamics on extreme ultraviolet nanostructures using atomic force microscopy with a high-aspect ratio tip,&#8221; was released by researchers at Purdue University, Intel Corporation and Bruker Corporation. Abstract &#8220;Accurate m…",
+      "source": "Semiconductor Engineering",
+      "lang": "en",
+      "pub_date": "2026-04-11T20:01:47+00:00",
+      "pub_ts": 1775937707
+    },
+    {
+      "id": "dca166bbed",
+      "title": "Photonic Packaging Resistant to Extreme Environments (NIST, Johns Hopkins, U. Of Maryland)",
+      "url": "https://semiengineering.com/photonic-packaging-resistant-to-extreme-environments-nist-johns-hopkins-u-of-maryland/",
+      "summary": "A new technical paper, &#8220;Photonic chip packaging for extreme environments&#8221; was published by NIST, Johns Hopkins and University of Maryland. Abstract &#8220;Integrated photonic sensors have advanced significantly in the past decade for an ever-increasing range of applications, driven by th…",
+      "source": "Semiconductor Engineering",
+      "lang": "en",
+      "pub_date": "2026-04-11T19:08:59+00:00",
+      "pub_ts": 1775934539
+    },
+    {
+      "id": "fc88f09889",
+      "title": "Impact of Surface States And Band Modulations in Ruthenium Interconnects (Incheon, Hanyang, UT Dallas)",
+      "url": "https://semiengineering.com/impact-of-surface-states-and-band-modulations-in-ruthenium-interconnects-incheon-hanyang-ut-dallas/",
+      "summary": "A new technical paper, &#8220;Role of surface states and band modulations in ultrathin ruthenium interconnects,&#8221; was published by researchers at Incheon National University, Hanyang University and UT Dallas. Abstract &#8220;Mitigating the RC delay from transistor miniaturization is essential f…",
+      "source": "Semiconductor Engineering",
+      "lang": "en",
+      "pub_date": "2026-04-11T18:58:12+00:00",
+      "pub_ts": 1775933892
+    },
+    {
+      "id": "98e2a9aa3c",
+      "title": "The Magic of Agentic AI Will Come From a Holistic Approach to Chip Design",
+      "url": "https://www.eetimes.com/the-magic-of-agentic-ai-will-come-from-a-holistic-approach-to-chip-design/",
+      "summary": "Serial EDA entrepreneur Simon Davidmann explains where AI continues to create new opportunities in EDA.\nThe post The Magic of Agentic AI Will Come From a Holistic Approach to Chip Design appeared first on EE Times.",
+      "source": "EE Times",
+      "lang": "en",
+      "pub_date": "2026-04-10T17:12:42+00:00",
+      "pub_ts": 1775841162
+    },
+    {
+      "id": "4d85a68351",
+      "title": "PQC Timelines Provide Direction, but Not Action",
+      "url": "https://www.eetimes.com/pqc-timelines-provide-direction-but-not-action/",
+      "summary": "U.K. and EU PQC adoption timelines provide direction but lack regulatory teeth. Learn why delaying migration creates critical security risks.\nThe post PQC Timelines Provide Direction, but Not Action appeared first on EE Times.",
+      "source": "EE Times",
+      "lang": "en",
+      "pub_date": "2026-04-10T08:22:48+00:00",
+      "pub_ts": 1775809368
+    },
+    {
+      "id": "e1038a091e",
+      "title": "No Fear to Fail: Secrets Behind Southchip’s Rapid Growth",
+      "url": "https://www.eetimes.com/no-fear-to-fail-secrets-behind-southchips-rapid-growth/",
+      "summary": "Since going public in 2023, Southchip has grown rapidly, driven by core semiconductor technologies and diversification into automotive and industrial sectors.\nThe post No Fear to Fail: Secrets Behind Southchip’s Rapid Growth appeared first on EE Times.",
+      "source": "EE Times",
+      "lang": "en",
+      "pub_date": "2026-04-10T07:06:54+00:00",
+      "pub_ts": 1775804814
+    },
+    {
+      "id": "66f82f1ff4",
+      "title": "Intel Enters Pact With Tesla and SpaceX for Terafab",
+      "url": "https://www.eetimes.com/intel-enters-pact-with-tesla-and-spacex-for-terafab/",
+      "summary": "“Terafab is likely an Intel fab expansion, with Tesla, SpaceX, and xAI as anchor customers, rather than a standalone venture,” said Yole analyst Adrien Sánchez.\nThe post Intel Enters Pact With Tesla and SpaceX for Terafab appeared first on EE Times.",
+      "source": "EE Times",
+      "lang": "en",
+      "pub_date": "2026-04-09T19:28:51+00:00",
+      "pub_ts": 1775762931
+    },
+    {
+      "id": "b4c57c0fb6",
+      "title": "SiFive $400M Round Highlights New CPU Battleground for Agentic AI Demand",
+      "url": "https://www.eetimes.com/sifive-400m-round-highlights-new-cpu-battleground-for-agentic-ai-demand/",
+      "summary": "SiFive raised $400 million Series G to accelerate its data center roadmap, reaching a $3.65 billion valuation.\nThe post SiFive $400M Round Highlights New CPU Battleground for Agentic AI Demand appeared first on EE Times.",
+      "source": "EE Times",
+      "lang": "en",
+      "pub_date": "2026-04-09T13:01:00+00:00",
+      "pub_ts": 1775739660
+    }
+  ]
+}

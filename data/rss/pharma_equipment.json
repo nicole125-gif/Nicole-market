@@ -1,0 +1,60 @@
+{
+  "vertical_id": "pharma_equipment",
+  "vertical_name": "医药设备",
+  "vertical_en": "Pharma Equipment",
+  "color": "#ff8c42",
+  "updated_at": "2026-04-13T06:27:14.915556+00:00",
+  "item_count": 5,
+  "items": [
+    {
+      "id": "5dc385a10f",
+      "title": "BMS and Oxford BioTherapeutics join forces in TCE discovery pact",
+      "url": "https://www.pharmaceutical-technology.com/news/bms-oxford-biotherapeutics-tce-drug-discovery-partnership-interview/",
+      "summary": "OBT's pact with BMS meshes with the former's hybrid partnership-pipeline strategy, which prioritises collaboration to maximise its impact.",
+      "source": "Pharmaceutical Technology",
+      "lang": "en",
+      "pub_date": "2026-04-10T16:32:41+00:00",
+      "pub_ts": 1775838761
+    },
+    {
+      "id": "e8bd03bd82",
+      "title": "Emerging therapies bring hope for frail HNSCC patients unfit for standard treatment",
+      "url": "https://www.pharmaceutical-technology.com/analyst-comment/emerging-therapies-frail-hnscc-patients/",
+      "summary": "Standard of care HNSCC regimens with curative intent demand surgery, radiation, and chemotherapy - treatments that many patients cannot tolerate.",
+      "source": "Pharmaceutical Technology",
+      "lang": "en",
+      "pub_date": "2026-04-10T13:35:18+00:00",
+      "pub_ts": 1775828118
+    },
+    {
+      "id": "035e3717dc",
+      "title": "Advancing single-cell transcriptomics into the mainstream of biomedical research",
+      "url": "https://www.pharmaceutical-technology.com/comment/advancing-single-cell-transcriptomics-into-the-mainstream-of-biomedical-research/",
+      "summary": "Kelly Parliament, staff application scientist at Beckman Coulter Life Sciences, discusses how automation is improving the efficiency of single-cell transcriptomic workflows.",
+      "source": "Pharmaceutical Technology",
+      "lang": "en",
+      "pub_date": "2026-04-10T10:48:22+00:00",
+      "pub_ts": 1775818102
+    },
+    {
+      "id": "3a9274794a",
+      "title": "Roche and C4 Therapeutics to advance degrader-antibody conjugates research",
+      "url": "https://www.pharmaceutical-technology.com/news/roche-c4-therapeutics-degrader-antibody-conjugates/",
+      "summary": "Roche has signed a new collaboration deal with C4 Therapeutics to jointly advance DACs research to introduce a new therapeutic modality for cancer.",
+      "source": "Pharmaceutical Technology",
+      "lang": "en",
+      "pub_date": "2026-04-10T09:19:10+00:00",
+      "pub_ts": 1775812750
+    },
+    {
+      "id": "31c3c2189a",
+      "title": "Precision Medicine in Early Oncology Trials: Biomarkers as Strategic Drivers",
+      "url": "https://www.pharmaceutical-technology.com/sponsored/precision-medicine-in-early-oncology-trials-biomarkers-as-strategic-drivers/",
+      "summary": "Biomarkers are revolutionizing oncology drug development, driving modern precision medicine approaches, targeted clinical trial recruitment strategies, and critical decision-making.",
+      "source": "Pharmaceutical Technology",
+      "lang": "en",
+      "pub_date": "2026-04-10T08:46:22+00:00",
+      "pub_ts": 1775810782
+    }
+  ]
+}

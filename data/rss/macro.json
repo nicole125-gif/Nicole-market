@@ -1,0 +1,60 @@
+{
+  "vertical_id": "macro",
+  "vertical_name": "宏观经济",
+  "vertical_en": "Macro",
+  "color": "#00d4ff",
+  "updated_at": "2026-04-13T06:24:36.227891+00:00",
+  "item_count": 5,
+  "items": [
+    {
+      "id": "629eba151c",
+      "title": "Swiss Bank UBP Buying Gold Again, Forecasting $6,000 Year-End",
+      "url": "https://www.bloomberg.com/news/articles/2026-04-13/swiss-bank-ubp-buying-gold-again-forecasting-6-000-year-end",
+      "summary": "Union Bancaire Privée is buying gold again after cutting a significant position in response to an Iran war-induced slump, saying it believes the long-term outlook remains intact.",
+      "source": "Bloomberg Economics",
+      "lang": "en",
+      "pub_date": "2026-04-13T04:38:19+00:00",
+      "pub_ts": 1776055099
+    },
+    {
+      "id": "2f30999911",
+      "title": "Ships With Iran Oil Anchor Off India as Trump Announces Blockade",
+      "url": "https://www.bloomberg.com/news/articles/2026-04-13/ships-with-iran-oil-anchor-off-india-as-trump-announces-blockade",
+      "summary": "Two sanctioned supertankers laden with Iranian crude have dropped anchor off Indian ports, marking what could be the first such cargoes to arrive in the country in nearly seven years, just as the US escalates efforts to curb Tehran’s exports.",
+      "source": "Bloomberg Economics",
+      "lang": "en",
+      "pub_date": "2026-04-13T02:57:39+00:00",
+      "pub_ts": 1776049059
+    },
+    {
+      "id": "cd145cabdc",
+      "title": "BOK Governor Nominee Sees More Risk for Prices Than Growth",
+      "url": "https://www.bloomberg.com/news/articles/2026-04-13/bank-of-korea-governor-nominee-shin-says-rate-near-neutral-level",
+      "summary": "South Korea’s central bank governor nominee Shin Hyun Song said he sees greater risks of higher inflation than slower growth from the current turmoil in the Middle East, a comment that suggests he may start his tenure with a slightly hawkish tilt on interest rates.",
+      "source": "Bloomberg Economics",
+      "lang": "en",
+      "pub_date": "2026-04-13T02:41:09+00:00",
+      "pub_ts": 1776048069
+    },
+    {
+      "id": "0c54798ea2",
+      "title": "Takaichi Urges Constitutional Reform Talks as Hormuz Risk Looms",
+      "url": "https://www.bloomberg.com/news/articles/2026-04-13/takaichi-urges-constitutional-reform-talks-as-hormuz-risk-looms",
+      "summary": "Japanese Prime Minister Sanae Takaichi urged her ruling party to accelerate talks on constitutional reform &mdash; a move that could make her the first leader to achieve it, but which risks alienating voters if she’s unable to generate broader public support.",
+      "source": "Bloomberg Economics",
+      "lang": "en",
+      "pub_date": "2026-04-13T02:12:40+00:00",
+      "pub_ts": 1776046360
+    },
+    {
+      "id": "000b892ba6",
+      "title": "Forint Surges as Orban’s Loss Starts New Era for Hungary-EU Ties",
+      "url": "https://www.bloomberg.com/news/articles/2026-04-12/forint-jumps-to-three-year-high-as-hungary-s-orban-is-voted-out",
+      "summary": "Hungary’s forint surged to a four-year high after Prime Minister Viktor Orban conceded defeat in Sunday’s election, with the pro-European opposition’s victory expected to help unlock billions of euros in European Union funding.",
+      "source": "Bloomberg Economics",
+      "lang": "en",
+      "pub_date": "2026-04-12T20:06:05+00:00",
+      "pub_ts": 1776024365
+    }
+  ]
+}
