@@ -1,0 +1,302 @@
+{
+  "version": "1.0",
+  "updated": "2026-04",
+  "verticals": {
+    "macro": {
+      "name": "宏观经济",
+      "name_en": "Macro",
+      "color": "#00d4ff",
+      "sources": [
+        {
+          "name": "财新网-宏观",
+          "url": "https://rss.caixin.com/caixin/economy.xml",
+          "lang": "zh",
+          "priority": 1
+        },
+        {
+          "name": "国家统计局",
+          "url": "https://www.stats.gov.cn/rss/tjxw.xml",
+          "lang": "zh",
+          "priority": 1
+        },
+        {
+          "name": "中国人民银行",
+          "url": "http://www.pbc.gov.cn/rss/index.xml",
+          "lang": "zh",
+          "priority": 1
+        },
+        {
+          "name": "Reuters Business",
+          "url": "https://feeds.reuters.com/reuters/businessNews",
+          "lang": "en",
+          "priority": 2
+        },
+        {
+          "name": "Bloomberg Economics",
+          "url": "https://feeds.bloomberg.com/economics/news.rss",
+          "lang": "en",
+          "priority": 2
+        },
+        {
+          "name": "第一财经",
+          "url": "https://www.yicai.com/rss/news.xml",
+          "lang": "zh",
+          "priority": 2
+        }
+      ]
+    },
+    "semiconductor": {
+      "name": "半导体",
+      "name_en": "Semiconductor",
+      "color": "#ff6b9d",
+      "sources": [
+        {
+          "name": "芯东西",
+          "url": "https://xingdongxi.com/feed",
+          "lang": "zh",
+          "priority": 1
+        },
+        {
+          "name": "半导体行业观察",
+          "url": "https://www.semiinsights.com/feed",
+          "lang": "zh",
+          "priority": 1
+        },
+        {
+          "name": "电子工程专辑",
+          "url": "https://www.eet-china.com/rss/news.xml",
+          "lang": "zh",
+          "priority": 1
+        },
+        {
+          "name": "EE Times",
+          "url": "https://www.eetimes.com/feed/",
+          "lang": "en",
+          "priority": 2
+        },
+        {
+          "name": "Semiconductor Engineering",
+          "url": "https://semiengineering.com/feed/",
+          "lang": "en",
+          "priority": 2
+        },
+        {
+          "name": "DIGITIMES半导体",
+          "url": "https://www.digitimes.com/rss/semiconductor.xml",
+          "lang": "en",
+          "priority": 2
+        },
+        {
+          "name": "集微网",
+          "url": "https://www.laoyaoba.com/feed",
+          "lang": "zh",
+          "priority": 1
+        }
+      ]
+    },
+    "ai_liquid_cooling": {
+      "name": "AI液冷",
+      "name_en": "AI Liquid Cooling",
+      "color": "#00ff88",
+      "sources": [
+        {
+          "name": "Data Center Knowledge",
+          "url": "https://www.datacenterknowledge.com/feed",
+          "lang": "en",
+          "priority": 1
+        },
+        {
+          "name": "The Register - Data Center",
+          "url": "https://www.theregister.com/data_centre/headlines.atom",
+          "lang": "en",
+          "priority": 2
+        },
+        {
+          "name": "机房360",
+          "url": "https://www.jifang360.com/rss.xml",
+          "lang": "zh",
+          "priority": 1
+        },
+        {
+          "name": "IDC圈",
+          "url": "https://www.idcquan.com/rss.xml",
+          "lang": "zh",
+          "priority": 1
+        },
+        {
+          "name": "36氪-AI硬件",
+          "url": "https://36kr.com/feed",
+          "lang": "zh",
+          "priority": 2
+        },
+        {
+          "name": "Tom's Hardware",
+          "url": "https://www.tomshardware.com/feeds/all",
+          "lang": "en",
+          "priority": 3
+        }
+      ]
+    },
+    "hydrogen": {
+      "name": "氢能",
+      "name_en": "Hydrogen Energy",
+      "color": "#ffd700",
+      "sources": [
+        {
+          "name": "氢云链",
+          "url": "https://www.h2yunlian.com/rss.xml",
+          "lang": "zh",
+          "priority": 1
+        },
+        {
+          "name": "氢能汇",
+          "url": "https://www.h2energy.cn/feed",
+          "lang": "zh",
+          "priority": 1
+        },
+        {
+          "name": "Hydrogen Central",
+          "url": "https://hydrogen-central.com/feed/",
+          "lang": "en",
+          "priority": 1
+        },
+        {
+          "name": "Fuel Cells Works",
+          "url": "https://fuelcellsworks.com/feed/",
+          "lang": "en",
+          "priority": 1
+        },
+        {
+          "name": "Clean Hydrogen Monitor",
+          "url": "https://www.cleanhydrogenmonitor.eu/feed/",
+          "lang": "en",
+          "priority": 2
+        },
+        {
+          "name": "国际氢能网",
+          "url": "https://www.in-en.com/hydrogen/rss.xml",
+          "lang": "zh",
+          "priority": 2
+        }
+      ]
+    },
+    "pharma_equipment": {
+      "name": "医药设备",
+      "name_en": "Pharma Equipment",
+      "color": "#ff8c42",
+      "sources": [
+        {
+          "name": "医药观察家",
+          "url": "https://www.yaozh.com/rss/news.xml",
+          "lang": "zh",
+          "priority": 1
+        },
+        {
+          "name": "赛柏蓝器械",
+          "url": "https://www.cyzone.cn/rss.xml",
+          "lang": "zh",
+          "priority": 1
+        },
+        {
+          "name": "Pharmaceutical Technology",
+          "url": "https://www.pharmaceutical-technology.com/feed/",
+          "lang": "en",
+          "priority": 1
+        },
+        {
+          "name": "PharmaTech",
+          "url": "https://www.pharmtech.com/rss/all",
+          "lang": "en",
+          "priority": 2
+        },
+        {
+          "name": "生物制药在线",
+          "url": "https://www.biopharmaonline.cn/feed",
+          "lang": "zh",
+          "priority": 2
+        }
+      ]
+    },
+    "food_beverage": {
+      "name": "食品饮料",
+      "name_en": "Food & Beverage",
+      "color": "#ff6b6b",
+      "sources": [
+        {
+          "name": "食品机械设备网",
+          "url": "https://www.foodjx.com/rss.xml",
+          "lang": "zh",
+          "priority": 1
+        },
+        {
+          "name": "食品工业科技",
+          "url": "https://www.spgykj.com/rss.xml",
+          "lang": "zh",
+          "priority": 1
+        },
+        {
+          "name": "Food Engineering",
+          "url": "https://www.foodengineeringmag.com/rss/all",
+          "lang": "en",
+          "priority": 1
+        },
+        {
+          "name": "Food Manufacture",
+          "url": "https://www.foodmanufacture.co.uk/rss/all-articles",
+          "lang": "en",
+          "priority": 2
+        },
+        {
+          "name": "中国食品报",
+          "url": "https://www.cnfood.cn/rss.xml",
+          "lang": "zh",
+          "priority": 2
+        }
+      ]
+    },
+    "mass_spec": {
+      "name": "质谱色谱",
+      "name_en": "Mass Spec & Chromatography",
+      "color": "#c084fc",
+      "sources": [
+        {
+          "name": "Analytical Scientist",
+          "url": "https://theanalyticalscientist.com/feed",
+          "lang": "en",
+          "priority": 1
+        },
+        {
+          "name": "LCGC",
+          "url": "https://www.chromatographyonline.com/rss/all",
+          "lang": "en",
+          "priority": 1
+        },
+        {
+          "name": "Spectroscopy",
+          "url": "https://www.spectroscopyonline.com/rss/all",
+          "lang": "en",
+          "priority": 2
+        },
+        {
+          "name": "分析测试百科网",
+          "url": "https://www.instrument.com.cn/rss/news.xml",
+          "lang": "zh",
+          "priority": 1
+        },
+        {
+          "name": "仪器信息网",
+          "url": "https://www.instrument.com.cn/rss/article.xml",
+          "lang": "zh",
+          "priority": 1
+        }
+      ]
+    }
+  },
+  "global_settings": {
+    "max_items_per_source": 5,
+    "max_items_per_vertical": 20,
+    "max_age_days": 7,
+    "fetch_timeout_seconds": 15,
+    "retry_attempts": 2
+  }
+}
