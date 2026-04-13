@@ -838,7 +838,21 @@ body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([oncli
   </div>
 </div>
 
-<!-- FOOTER -->
+
+    <!-- ══ RSS 行业动态 ══════════════════════════════════ -->
+    <div id="s-rss" style="margin-bottom:clamp(18px,3vw,26px)">
+      <div class="sec-label" style="margin-bottom:clamp(14px,2.2vw,20px)">
+        <span class="f-label f-mono" style="color:rgba(34,211,238,.45);letter-spacing:.25em;text-transform:uppercase;white-space:nowrap">实时行业动态</span>
+        <div class="line"></div>
+        <span class="badge" style="flex-shrink:0;white-space:nowrap;color:#22d3ee;border-color:rgba(34,211,238,.35);background:rgba(34,211,238,.08)">每日自动更新</span>
+      </div>
+      <div class="glass-card" style="overflow:hidden">
+        <div class="corner-tl"></div><div class="corner-tr"></div>
+        <div id="rss-feed"></div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
 <div style="border-top:1px solid var(--border);padding:32px 40px;max-width:1300px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
   <div style="font-family:var(--mono);font-size:8.5px;color:var(--text3);letter-spacing:.15em">
     数据来源：麦肯锡 · 国际氢能委员会 · IEA · 香橙会氢能数据库（2025全年）
@@ -963,6 +977,60 @@ function _at(){var c=_SI[0];_SI.forEach(function(id){var e=document.getElementBy
 window.addEventListener('scroll',_at,{passive:true});_at();
 </script>
 <script>
+// ── RSS WIDGET ────────────────────────────────────────────
+(function() {
+  const BASE_URL = "https://nicole125-gif.github.io/Nicole-intelligence/data/rss";
+  const VERTICAL = "hydrogen";
+
+  function relativeTime(iso) {
+    const diff = (Date.now() - new Date(iso).getTime()) / 1000;
+    if (diff < 3600)  return Math.floor(diff/60) + "分钟前";
+    if (diff < 86400) return Math.floor(diff/3600) + "小时前";
+    return Math.floor(diff/86400) + "天前";
+  }
+
+  function renderRSS(data) {
+    const el = document.getElementById("rss-feed");
+    if (!el) return;
+    const updated = new Date(data.updated_at).toLocaleString("zh-CN",{timeZone:"Asia/Shanghai",month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"});
+    el.innerHTML = `
+      <div style="display:flex;align-items:center;gap:10px;padding:14px 20px;border-bottom:1px solid rgba(34,211,238,.08);background:rgba(34,211,238,.03)">
+        <span style="width:7px;height:7px;border-radius:50%;background:#22d3ee;box-shadow:0 0 8px #22d3ee;flex-shrink:0"></span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.9);text-transform:uppercase;flex:1">行业动态 · ${data.vertical_name}</span>
+        <span style="font-size:10px;color:#475569">更新 ${updated}</span>
+      </div>
+      <div style="max-height:480px;overflow-y:auto;padding:4px 0">
+        ${data.items.length ? data.items.map(item => `
+          <div style="padding:12px 20px;border-bottom:1px solid rgba(255,255,255,.04);transition:background .15s" onmouseenter="this.style.background='rgba(34,211,238,.03)'" onmouseleave="this.style.background='transparent'">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
+              <span style="font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;background:rgba(34,211,238,.12);color:#22d3ee;border:1px solid rgba(34,211,238,.3)">中</span>
+              <span style="font-size:10px;color:#94a3b8;font-weight:500">${item.source}</span>
+              <span style="font-size:10px;color:#475569;margin-left:auto">${relativeTime(item.pub_date)}</span>
+            </div>
+            <a href="${item.url}" target="_blank" rel="noopener" style="display:block;font-size:12.5px;color:#cbd5e1;text-decoration:none;line-height:1.5;font-weight:500;transition:color .15s" onmouseenter="this.style.color='#fff'" onmouseleave="this.style.color='#cbd5e1'">${item.title}</a>
+            ${item.summary ? `<p style="margin:5px 0 0;font-size:11px;color:#475569;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">${item.summary}</p>` : ''}
+          </div>`).join('') : '<p style="padding:24px;text-align:center;color:#475569;font-size:12px">暂无近期动态</p>'}
+      </div>`;
+  }
+
+  async function loadRSS() {
+    const el = document.getElementById("rss-feed");
+    if (!el) return;
+    el.innerHTML = '<p style="padding:20px;text-align:center;color:#475569;font-size:12px">Loading…</p>';
+    try {
+      const res = await fetch(`${BASE_URL}/${VERTICAL}.json?t=${Date.now()}`);
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const data = await res.json();
+      data.items = data.items.filter(item => item.lang === "zh");
+      renderRSS(data);
+    } catch(e) {
+      el.innerHTML = '<p style="padding:20px;text-align:center;color:#f87171;font-size:12px">⚠ 动态加载失败，请稍后刷新</p>';
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", loadRSS);
+})();
+
 (function(){
   const glow=document.getElementById('cursor-glow'),dot=document.getElementById('cursor-dot');
   let mx=0,my=0,gx=0,gy=0;
