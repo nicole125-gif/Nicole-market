@@ -3,158 +3,58 @@
   "vertical_name": "AI液冷",
   "vertical_en": "AI Liquid Cooling",
   "color": "#00ff88",
-  "updated_at": "2026-04-13T07:33:48.029813+00:00",
-  "item_count": 15,
+  "updated_at": "2026-04-13T07:53:30.273740+00:00",
+  "item_count": 5,
   "items": [
     {
-      "id": "a0ef7f221a",
-      "title": "IT manager approved downtime over lunch, but made a meal of it",
-      "url": "https://go.theregister.com/feed/www.theregister.com/2026/04/13/who_me/",
-      "summary": "Optimism is always risky, and defective hardware makes it indigestible Who, Me?  The best part of the working day is lunchtime, but The Register tries to start Mondays in a pleasant fashion by bringing you a new installment of \"Who, Me?\" – the reader-contributed column in which you admit to your mis…",
-      "source": "The Register - Data Center",
-      "lang": "en",
-      "pub_date": "2026-04-13T07:00:06+00:00",
-      "pub_ts": 1776063606
-    },
-    {
-      "id": "f46da7a627",
-      "title": "包容 探索 求真 守正｜2026光幕计划终审阵容与年度面孔公布",
-      "url": "https://36kr.com/p/3764886161048323?f=rss",
-      "summary": "&nbsp;\n  当短剧成为当下备受关注的叙事形态，当AI不断拓展表达的边界，表演这门古老的艺术，也站在了新的岔路口。效率与流量构筑了可见的赛道，而真正的叩问始终沉在深处：在技术的“巧”与媒介的“快”之外，那些源于血肉之躯的、笨拙而恳切的“真”，是否依然拥有抵达人心的力量？\n  辨识这份真实，需要深耕岁月、敬畏专业的目光。为此，我们荣幸地邀请到李少红导演担任第十六届北京国际电影节BE SEEN 光幕计划终评审主席，赵小丁、吴刚、俞白眉、魏钦涛担任终审评委。他们以多年的创作生命为标尺，为这份最终的年度面孔入选演员名单注入了厚重的公信力与深远的期待。\n  “表演有无数个高山要翻跃。”终审现场，评委…",
-      "source": "36氪-AI硬件",
+      "id": "25c0c84fb2",
+      "title": "本养虾人看哭了！字节扣子2.5出生即满级，手机对话就能VibeCoding",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247882538&idx=1&sn=0b47794ab36cb8b3bb0847eb6f2dba8c",
+      "summary": "本养虾人看哭了！字节扣子2.5出生即满级，手机对话就能VibeCoding",
+      "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-13T06:59:19+00:00",
-      "pub_ts": 1776063559
+      "pub_date": "2026-04-13T07:53:26.299511+00:00",
+      "pub_ts": 1776066806
     },
     {
-      "id": "65b86a098a",
-      "title": "这届留学生，用AI看病省出一辆特斯拉",
-      "url": "https://36kr.com/p/3764892434711049?f=rss",
-      "summary": "01. 用AI硬扛20天，省出一辆特斯拉\n  回国做完四颗牙的根管治疗后，英国留学生土土盯着一万多的账单算了算，发现自己回国这一趟，竟然省下了一辆二手“特斯拉”。\n  就在20天前，土土的牙痛又犯了，连吃饭都变成了一种酷刑。他迫切需要找点缓解的办法，但脑海里闪过之前在国外的看牙经历——\n  之前一次，同样是牙疼，土土挂了当地的一家私人医院的牙医号。一套检查下来，医生给出的治疗方案是根管治疗，要先磨牙、清洗，价格1900磅，还要做牙冠，1500磅，再加上4、500磅的手术费，治一颗牙至少要花4000磅，折合人民币近40000块。花了天价不说，效果也一言难尽。治完没多久，土土的牙冠就掉了，技术完全…",
-      "source": "36氪-AI硬件",
+      "id": "0c54a90c9f",
+      "title": "「ClaudeCode之父」其实是野路子来的……",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247882536&idx=1&sn=9569f8db4d048aa54764f3b54e43ced8",
+      "summary": "「ClaudeCode之父」其实是野路子来的……",
+      "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-13T06:50:56+00:00",
-      "pub_ts": 1776063056
+      "pub_date": "2026-04-13T07:53:26.299555+00:00",
+      "pub_ts": 1776066806
     },
     {
-      "id": "80ab3e873c",
-      "title": "对话雅诗兰黛集团总裁兼CEO司泰峰：让一家“慢”公司变快，这是他的第一年｜New Look专访",
-      "url": "https://36kr.com/p/3756542711120640?f=rss",
-      "summary": "文｜贺哲馨\n  编辑｜乔芊\n  从外表看，司泰峰（Stéphane de La Faverie）并不是那类锋芒毕露的“改革派”。\n  他多数时候带着温和的笑意，步伐与语速都偏慢——或许带着一点法国人特有的松弛感。你也很难想象，在成为父亲之前，司泰峰是“狂热的风帆冲浪和跳伞爱好者”。\n  当下消费环境的惊险程度可能不亚于任何冒险运动。但在日前与36氪的专访中，司泰峰展现出一种从容：“我们是一家80年历史的公司，30多年前就进入中国市场，波动对我们来说不是什么新鲜事，我们的应对思路始终是一个——尽可能贴近消费者。”\n  “而且你知道吗，”他接着说，“雅诗兰黛是第一个用中国人作为广告模特的外国美妆品…",
-      "source": "36氪-AI硬件",
+      "id": "622e2e5b95",
+      "title": "HTML-in-Canvas引爆前端！AI时代互联网视觉效果完全不一样了",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247882514&idx=1&sn=7b4891c5e4480b69309ca69618430192",
+      "summary": "HTML-in-Canvas引爆前端！AI时代互联网视觉效果完全不一样了",
+      "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-13T05:19:17+00:00",
-      "pub_ts": 1776057557
+      "pub_date": "2026-04-13T07:53:26.299579+00:00",
+      "pub_ts": 1776066806
     },
     {
-      "id": "654d63766a",
-      "title": "早期项目 | 前大疆工程师创业陪伴机器人，李泽湘连投三轮，产品即将登陆众筹",
-      "url": "https://36kr.com/p/3764777930621705?f=rss",
-      "summary": "作者&nbsp;|&nbsp;乔钰杰\n  编辑&nbsp;|&nbsp;袁斯来\n  陪伴机器人走向同质化的当下，什么样的产品能吸引人？\n  今年年初的CES 2026上，一款身着橙色连体衣的小型机器人COCOMO，意外成为外媒镜头频频捕捉的对象。\n  略带“异质感”的外星宠物气质，37度接近人体的温度，创新的分体式设计既可被抱起，又能主动跟随，吸引了不少现场观众在展台前试玩体验。\n  同一展台上，团队还带来了另一款更轻量的桌面陪伴机器人INU。INU被定义为一款“桌面外星小狗”，通过尾巴摇摆和身体扭动作出反馈，是一个为工作环境打造的更小、更固定的桌面伴侣。\n  这两款产品，均来自陪伴机器人公司…",
-      "source": "36氪-AI硬件",
+      "id": "281cf091bd",
+      "title": "超越人手！中国第一家脑机接口独角兽，要把仿生手带给机器人",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247882513&idx=1&sn=d4c16158273ff392d9636bf5d11912ba",
+      "summary": "超越人手！中国第一家脑机接口独角兽，要把仿生手带给机器人",
+      "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-13T04:53:44+00:00",
-      "pub_ts": 1776056024
+      "pub_date": "2026-04-13T07:53:26.299600+00:00",
+      "pub_ts": 1776066806
     },
     {
-      "id": "c132319bcf",
-      "title": "创业老炮vs00后，谁是下一代“一人公司”的标准样板",
-      "url": "https://36kr.com/p/3764728843289089?f=rss",
-      "summary": "文｜富充\n  编辑｜苏建勋\n  2026年春天，“龙虾”火热异常，也直接带火了另一个概念：OPC（One Person Company，一人公司）。\n  一人公司的概念最早源于2013年英国公司法，原指法律意义上的“一人有限责任公司”。在AI浪潮下，它被重新定义，演变为一种个人或极小型团队，借助AI工具，即可实现全链路闭环的新型创业模式。\n  越来越多的商业领袖为OPC概念站台。周鸿祎说，一人公司是 AI 时代“超级个体”的极端形态。本质是1个人指挥N个AI智能体，人做决策、AI 做执行。美图创始人吴欣鸿则在内部设立专项基金，鼓励10人以下的小团队申请，同时美图也推出新产品Meitu CLI，…",
-      "source": "36氪-AI硬件",
+      "id": "25bd9d5ec9",
+      "title": "Claude复活30年前传奇游戏，仅用一个周末",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247882513&idx=2&sn=095b384bc42eb3b1cfd1c60393c41d68",
+      "summary": "Claude复活30年前传奇游戏，仅用一个周末",
+      "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-13T04:06:46+00:00",
-      "pub_ts": 1776053206
-    },
-    {
-      "id": "a43776fa86",
-      "title": "China wants AI to prepare school lessons and mark homework",
-      "url": "https://go.theregister.com/feed/www.theregister.com/2026/04/13/asia_tech_news_roundup/",
-      "summary": "PLUS: Toyota wheels out basketball bot; Arm scores AI server win with SK Telecom; India ponders payment pauses to foil fraudsters; And more! Asia In Brief  China’s National Data Administration last Friday published its action plan for AI in education which calls for upskilling of the nation’s citize…",
-      "source": "The Register - Data Center",
-      "lang": "en",
-      "pub_date": "2026-04-13T02:09:07+00:00",
-      "pub_ts": 1776046147
-    },
-    {
-      "id": "f2b7710a5b",
-      "title": "Grab MSI’s RTX 5080 gaming laptop for just over $2,000 — offers fast 240 Hz QHD+ display, dual storage slots, and expandable DDR5 memory",
-      "url": "https://www.tomshardware.com/pc-components/grab-msis-rtx-5080-gaming-laptop-for-just-over-usd2-000-offers-fast-240-hz-qhd-display-dual-storage-slots-and-expandable-ddr5-memory",
-      "summary": "Combining a 240Hz QHD+ display, Core Ultra 9 CPU, and RTX 5080 GPU, this deal offers high-end performance at a relatively competitive price point",
-      "source": "Tom's Hardware",
-      "lang": "en",
-      "pub_date": "2026-04-12T17:07:40+00:00",
-      "pub_ts": 1776013660
-    },
-    {
-      "id": "7540cd5a61",
-      "title": "Lenovo hikes Legion Go 2 handheld gaming PC to almost $3,000 for 2 TB model — Handheld now costs more than AMD's Strix Halo devices despite relatively weaker Z2 Extreme chip",
-      "url": "https://www.tomshardware.com/video-games/handheld-gaming/lenovo-hikes-legion-go-2-handheld-gaming-pc-to-almost-usd3-000-for-2-tb-model-handheld-now-costs-more-than-amds-strix-halo-devices-despite-relatively-weaker-z2-extreme-chip",
-      "summary": "Lenovo has raised the prices of its Legion Go 2 handhelds (with Z2 Extreme) across the board, with the worse offended being the 2 TB model, receiving a 93% hike. It went from $1,480 at launch to a staggering $2,850 in the span of just a few months, while the 1 TB model is now $2,000, up from $1,350 …",
-      "source": "Tom's Hardware",
-      "lang": "en",
-      "pub_date": "2026-04-12T15:31:34+00:00",
-      "pub_ts": 1776007894
-    },
-    {
-      "id": "b5657cdc62",
-      "title": "Iran's forced nationwide internet blackout becomes second-longest on record as it passes 1,000 hours offline — possessing Starlink terminals punishable by death, country using 'military-grade jamming' against service",
-      "url": "https://www.tomshardware.com/tech-industry/iran-passes-1000-hours-offline",
-      "summary": "Iran's nationwide Internet blackout has crossed the 1,000-hour mark and is now the second longest nation-scale shutdown ever measured.",
-      "source": "Tom's Hardware",
-      "lang": "en",
-      "pub_date": "2026-04-12T15:20:21+00:00",
-      "pub_ts": 1776007221
-    },
-    {
-      "id": "9c4c8e457b",
-      "title": "Tiny 3-inch cube PCs bring a splash of color to the passive PC market with red, orange, green and blue options — Intel Twin Lake-powered Kubb Mini PCs start at $500",
-      "url": "https://www.tomshardware.com/desktops/mini-pcs/tiny-3-inch-cube-pcs-bring-a-splash-of-color-to-the-passive-pc-market-with-red-orange-green-and-blue-options-intel-twin-lake-powered-kubb-mini-pcs-start-at-usd500",
-      "summary": "Kubb's colorful and compact 3-inch cube PCs are priced from $500 (€430) with 16GB RAM and 256GB SSDs.",
-      "source": "Tom's Hardware",
-      "lang": "en",
-      "pub_date": "2026-04-12T14:38:56+00:00",
-      "pub_ts": 1776004736
-    },
-    {
-      "id": "39b9ced107",
-      "title": "Linux lays down the law on AI-generated code, says yes to Copilot, no to AI slop, and humans take the fall for mistakes — after months of fierce debate, Torvalds and maintainers come to an agreement",
-      "url": "https://www.tomshardware.com/software/linux/linux-lays-down-the-law-on-ai-generated-code-yes-to-copilot-no-to-ai-slop-and-humans-take-the-fall-for-mistakes-after-months-of-fierce-debate-torvalds-and-maintainers-come-to-an-agreement",
-      "summary": "After months of fierce debate, Linus Torvalds and the Linux kernel maintainers have laid down the law on AI-generated code.",
-      "source": "Tom's Hardware",
-      "lang": "en",
-      "pub_date": "2026-04-12T14:18:08+00:00",
-      "pub_ts": 1776003488
-    },
-    {
-      "id": "b01a482990",
-      "title": "Apple update looks like Czech mate for locked-out iPhone user",
-      "url": "https://go.theregister.com/feed/www.theregister.com/2026/04/12/ios_passcode_bug/",
-      "summary": "Lock-screen keyboard no longer accepts háček in student's alphanumeric passcode A university student in the US is in data limbo after Apple removed a character from its Czech keyboard, preventing him from entering his iPhone passcode.…",
-      "source": "The Register - Data Center",
-      "lang": "en",
-      "pub_date": "2026-04-12T08:01:09+00:00",
-      "pub_ts": 1775980869
-    },
-    {
-      "id": "4d3f55104d",
-      "title": "Hungarian government creds left in the safe hands of 'FrankLampard'",
-      "url": "https://go.theregister.com/feed/www.theregister.com/2026/04/11/hungary_government_logins_breach/",
-      "summary": "Nearly 800 state logins surfaced in breach data, including defense and NATO-linked accounts Hungary's government has discovered the hard way that the biggest threat to national security might just be its own password choices.…",
-      "source": "The Register - Data Center",
-      "lang": "en",
-      "pub_date": "2026-04-11T08:30:14+00:00",
-      "pub_ts": 1775896214
-    },
-    {
-      "id": "bfc1813f94",
-      "title": "Electronics industry says FCC's foreign-made router policy is a bit of a mesh",
-      "url": "https://go.theregister.com/feed/www.theregister.com/2026/04/10/gea_fcc_routers/",
-      "summary": "Trade group warns onshoring demands will leave Americans stuck with older gear The Global Electronics Association (GEA) warns that the US ban on foreign-made network routers is impractical because few are made domestically, leaving consumers with little choice and delaying access to next-gen product…",
-      "source": "The Register - Data Center",
-      "lang": "en",
-      "pub_date": "2026-04-10T15:44:59+00:00",
-      "pub_ts": 1775835899
+      "pub_date": "2026-04-13T07:53:26.299622+00:00",
+      "pub_ts": 1776066806
     }
   ]
 }
