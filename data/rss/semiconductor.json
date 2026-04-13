@@ -3,9 +3,109 @@
   "vertical_name": "半导体",
   "vertical_en": "Semiconductor",
   "color": "#ff6b9d",
-  "updated_at": "2026-04-13T07:01:24.226229+00:00",
-  "item_count": 10,
+  "updated_at": "2026-04-13T07:11:59.735905+00:00",
+  "item_count": 15,
   "items": [
+    {
+      "id": "3f21c3579d",
+      "title": "智驾芯片，更卷了",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810037&idx=1&sn=43fda25db1859f86014274dbb3a02720",
+      "summary": "智驾芯片，更卷了",
+      "source": "半导体产业纵横",
+      "lang": "zh",
+      "pub_date": "2026-04-13T07:11:55.720328+00:00",
+      "pub_ts": 1776064315
+    },
+    {
+      "id": "30533dd75c",
+      "title": "AI服务器ODM，繁荣见顶?",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810037&idx=3&sn=75cd687fb398cc4e1dddf4963bf6f863",
+      "summary": "AI服务器ODM，繁荣见顶?",
+      "source": "半导体产业纵横",
+      "lang": "zh",
+      "pub_date": "2026-04-13T07:11:55.720373+00:00",
+      "pub_ts": 1776064315
+    },
+    {
+      "id": "e9f04c9732",
+      "title": "哪些芯片真正重要?",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810037&idx=4&sn=4df934457902cdbe911c0a594d5f8830",
+      "summary": "哪些芯片真正重要?",
+      "source": "半导体产业纵横",
+      "lang": "zh",
+      "pub_date": "2026-04-13T07:11:55.720396+00:00",
+      "pub_ts": 1776064315
+    },
+    {
+      "id": "68f0c66a1a",
+      "title": "两倍价格疯抢内存！苹果正在用供应链绞杀安卓",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810037&idx=5&sn=bed5f79e27cb55185d8aa0e1d198611a",
+      "summary": "两倍价格疯抢内存！苹果正在用供应链绞杀安卓",
+      "source": "半导体产业纵横",
+      "lang": "zh",
+      "pub_date": "2026-04-13T07:11:55.720417+00:00",
+      "pub_ts": 1776064315
+    },
+    {
+      "id": "34c741c90c",
+      "title": "反超OpenAI，Anthropic暴买TPU",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810021&idx=1&sn=7f1cbf395a625f8e7a7c10c943d5f0b1",
+      "summary": "反超OpenAI，Anthropic暴买TPU",
+      "source": "半导体产业纵横",
+      "lang": "zh",
+      "pub_date": "2026-04-13T07:11:55.720436+00:00",
+      "pub_ts": 1776064315
+    },
+    {
+      "id": "e411c99ef9",
+      "title": "TFLN，颠覆光芯片",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247815841&idx=1&sn=6a068ca48f8af7cbee55bc59b19f6f27",
+      "summary": "TFLN，颠覆光芯片",
+      "source": "半导体行业观察",
+      "lang": "zh",
+      "pub_date": "2026-04-13T07:11:45.111810+00:00",
+      "pub_ts": 1776064305
+    },
+    {
+      "id": "8518b1a263",
+      "title": "2050团聚Ⅰ当硅基AI开始设计芯片，碳基人类还能做什么？4月24日杭州AI芯片社",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247815841&idx=2&sn=114693e0358d81e290ec4a4a791c0bb0",
+      "summary": "2050团聚Ⅰ当硅基AI开始设计芯片，碳基人类还能做什么？4月24日杭州AI芯片社",
+      "source": "半导体行业观察",
+      "lang": "zh",
+      "pub_date": "2026-04-13T07:11:45.111856+00:00",
+      "pub_ts": 1776064305
+    },
+    {
+      "id": "95e4f6f8f9",
+      "title": "端侧AI×通信算力芯片，2026深圳闭门会9月启幕",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247815841&idx=3&sn=cf87fa606b4ff57479c5557b1c3a15b7",
+      "summary": "端侧AI×通信算力芯片，2026深圳闭门会9月启幕",
+      "source": "半导体行业观察",
+      "lang": "zh",
+      "pub_date": "2026-04-13T07:11:45.111882+00:00",
+      "pub_ts": 1776064305
+    },
+    {
+      "id": "294ab6861c",
+      "title": "这家卖味精的公司，掌控AI芯片未来",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247815841&idx=4&sn=0b86886c3812d7dce1f9ea5ec83ea181",
+      "summary": "这家卖味精的公司，掌控AI芯片未来",
+      "source": "半导体行业观察",
+      "lang": "zh",
+      "pub_date": "2026-04-13T07:11:45.111905+00:00",
+      "pub_ts": 1776064305
+    },
+    {
+      "id": "6186d0d139",
+      "title": "打破英伟达垄断，只有一个方法",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247815841&idx=5&sn=88cde88b5b11fb0af6e957b43ffe50cc",
+      "summary": "打破英伟达垄断，只有一个方法",
+      "source": "半导体行业观察",
+      "lang": "zh",
+      "pub_date": "2026-04-13T07:11:45.111926+00:00",
+      "pub_ts": 1776064305
+    },
     {
       "id": "86c1b33abf",
       "title": "Silent Data Corruption:  A Major Reliability Challenge in Large-Scale LLM Training (TU Berlin)",
@@ -55,56 +155,6 @@
       "lang": "en",
       "pub_date": "2026-04-11T18:58:12+00:00",
       "pub_ts": 1775933892
-    },
-    {
-      "id": "98e2a9aa3c",
-      "title": "The Magic of Agentic AI Will Come From a Holistic Approach to Chip Design",
-      "url": "https://www.eetimes.com/the-magic-of-agentic-ai-will-come-from-a-holistic-approach-to-chip-design/",
-      "summary": "Serial EDA entrepreneur Simon Davidmann explains where AI continues to create new opportunities in EDA.\nThe post The Magic of Agentic AI Will Come From a Holistic Approach to Chip Design appeared first on EE Times.",
-      "source": "EE Times",
-      "lang": "en",
-      "pub_date": "2026-04-10T17:12:42+00:00",
-      "pub_ts": 1775841162
-    },
-    {
-      "id": "4d85a68351",
-      "title": "PQC Timelines Provide Direction, but Not Action",
-      "url": "https://www.eetimes.com/pqc-timelines-provide-direction-but-not-action/",
-      "summary": "U.K. and EU PQC adoption timelines provide direction but lack regulatory teeth. Learn why delaying migration creates critical security risks.\nThe post PQC Timelines Provide Direction, but Not Action appeared first on EE Times.",
-      "source": "EE Times",
-      "lang": "en",
-      "pub_date": "2026-04-10T08:22:48+00:00",
-      "pub_ts": 1775809368
-    },
-    {
-      "id": "e1038a091e",
-      "title": "No Fear to Fail: Secrets Behind Southchip’s Rapid Growth",
-      "url": "https://www.eetimes.com/no-fear-to-fail-secrets-behind-southchips-rapid-growth/",
-      "summary": "Since going public in 2023, Southchip has grown rapidly, driven by core semiconductor technologies and diversification into automotive and industrial sectors.\nThe post No Fear to Fail: Secrets Behind Southchip’s Rapid Growth appeared first on EE Times.",
-      "source": "EE Times",
-      "lang": "en",
-      "pub_date": "2026-04-10T07:06:54+00:00",
-      "pub_ts": 1775804814
-    },
-    {
-      "id": "66f82f1ff4",
-      "title": "Intel Enters Pact With Tesla and SpaceX for Terafab",
-      "url": "https://www.eetimes.com/intel-enters-pact-with-tesla-and-spacex-for-terafab/",
-      "summary": "“Terafab is likely an Intel fab expansion, with Tesla, SpaceX, and xAI as anchor customers, rather than a standalone venture,” said Yole analyst Adrien Sánchez.\nThe post Intel Enters Pact With Tesla and SpaceX for Terafab appeared first on EE Times.",
-      "source": "EE Times",
-      "lang": "en",
-      "pub_date": "2026-04-09T19:28:51+00:00",
-      "pub_ts": 1775762931
-    },
-    {
-      "id": "b4c57c0fb6",
-      "title": "SiFive $400M Round Highlights New CPU Battleground for Agentic AI Demand",
-      "url": "https://www.eetimes.com/sifive-400m-round-highlights-new-cpu-battleground-for-agentic-ai-demand/",
-      "summary": "SiFive raised $400 million Series G to accelerate its data center roadmap, reaching a $3.65 billion valuation.\nThe post SiFive $400M Round Highlights New CPU Battleground for Agentic AI Demand appeared first on EE Times.",
-      "source": "EE Times",
-      "lang": "en",
-      "pub_date": "2026-04-09T13:01:00+00:00",
-      "pub_ts": 1775739660
     }
   ]
 }

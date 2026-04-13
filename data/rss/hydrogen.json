@@ -3,8 +3,8 @@
   "vertical_name": "氢能",
   "vertical_en": "Hydrogen Energy",
   "color": "#ffd700",
-  "updated_at": "2026-04-13T07:02:58.391692+00:00",
-  "item_count": 10,
+  "updated_at": "2026-04-13T07:13:51.290428+00:00",
+  "item_count": 5,
   "items": [
     {
       "id": "ca902ca5cf",
@@ -55,56 +55,6 @@
       "lang": "en",
       "pub_date": "2026-04-10T15:24:00+00:00",
       "pub_ts": 1775834640
-    },
-    {
-      "id": "df0e3ff9a1",
-      "title": "Aternium ™ selects Kiewit for the pre-FEED study for its first hydrogen / heavy water production facility",
-      "url": "https://hydrogen-central.com/aternium-selects-kiewit-for-the-pre-feed-study-for-its-first-hydrogen-heavy-water-production-facility/",
-      "summary": "Aternium ™ selects Kiewit for the pre-FEED study for its first hydrogen / heavy water production facility WILMINGTON, Del. — Aternium, a producer and developer of heavy water and clean [&#8230;]\nThe post Aternium ™ selects Kiewit for the pre-FEED study for its first hydrogen / heavy water production…",
-      "source": "Hydrogen Central",
-      "lang": "en",
-      "pub_date": "2026-04-09T18:19:28+00:00",
-      "pub_ts": 1775758768
-    },
-    {
-      "id": "4a1ad2bebb",
-      "title": "HD Hyundai Heavy Industries Unveils World’s First Ammonia Zero-Carbon Ship",
-      "url": "https://hydrogen-central.com/hd-hyundai-heavy-industries-unveils-worlds-first-ammonia-zero-carbon-ship/",
-      "summary": "HD Hyundai Heavy Industries Unveils World&#8217;s First Ammonia Zero-Carbon Ship Gas carriers Antwerp and Aarlon with safety tech set for May and July delivery HD Hyundai Heavy Industries announced on [&#8230;]\nThe post HD Hyundai Heavy Industries Unveils World&#8217;s First Ammonia Zero-Carbon Ship…",
-      "source": "Hydrogen Central",
-      "lang": "en",
-      "pub_date": "2026-04-09T18:17:01+00:00",
-      "pub_ts": 1775758621
-    },
-    {
-      "id": "4eae7ef312",
-      "title": "African Development Bank’s Sustainable Energy Fund for Africa Launches Call for Proposals for New Green Hydrogen Programme",
-      "url": "https://hydrogen-central.com/african-development-banks-sustainable-energy-fund-for-africa-launches-call-for-proposals-for-new-green-hydrogen-programme/",
-      "summary": "African Development Bank&#8217;s Sustainable Energy Fund for Africa Launches Call for Proposals for New Green Hydrogen Programme Up to $20 million in total available for strategic pre-investment support to eligible [&#8230;]\nThe post African Development Bank&#8217;s Sustainable Energy Fund for Afric…",
-      "source": "Hydrogen Central",
-      "lang": "en",
-      "pub_date": "2026-04-09T18:16:52+00:00",
-      "pub_ts": 1775758612
-    },
-    {
-      "id": "8ac218fcb6",
-      "title": "Study maps regions with the greatest potential for green hydrogen production and use in Brazil",
-      "url": "https://hydrogen-central.com/study-maps-regions-with-the-greatest-potential-for-green-hydrogen-production-and-use-in-brazil/",
-      "summary": "Study maps regions with the greatest potential for green hydrogen production and use in Brazil Every day, our site receives&#160;millions of automated requests&#160;consuming&#160;terabytes of bandwidth&#160;— most of them from content [&#8230;]\nThe post Study maps regions with the greatest potentia…",
-      "source": "Hydrogen Central",
-      "lang": "en",
-      "pub_date": "2026-04-09T18:06:41+00:00",
-      "pub_ts": 1775758001
-    },
-    {
-      "id": "1eeff356be",
-      "title": "Atawey announces the signing of a contract for three hydrogen refueling stations in Belgium",
-      "url": "https://hydrogen-central.com/atawey-announces-the-signing-of-a-contract-for-three-hydrogen-refueling-stations-in-belgium/",
-      "summary": "Atawey announces the signing of a contract for three hydrogen refueling stations in Belgium Atawey announces the sale of three new hydrogen refueling stations in Europe to Colruyt Group and Virya Energy, for [&#8230;]\nThe post Atawey announces the signing of a contract for three hydrogen refueling s…",
-      "source": "Hydrogen Central",
-      "lang": "en",
-      "pub_date": "2026-04-09T18:06:28+00:00",
-      "pub_ts": 1775757988
     }
   ]
 }
