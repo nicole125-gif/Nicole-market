@@ -8,38 +8,32 @@
       "color": "#00d4ff",
       "sources": [
         {
-          "name": "财新网-宏观",
-          "url": "https://rss.caixin.com/caixin/economy.xml",
+          "name": "财新网",
+          "url": "https://rsshub.app/caixin/article/economy",
+          "lang": "zh",
+          "priority": 1
+        },
+        {
+          "name": "第一财经",
+          "url": "https://rsshub.app/yicai/article/2",
+          "lang": "zh",
+          "priority": 1
+        },
+        {
+          "name": "36氪-宏观",
+          "url": "https://rsshub.app/36kr/search/items/宏观经济",
+          "lang": "zh",
+          "priority": 1
+        },
+        {
+          "name": "华尔街见闻",
+          "url": "https://rsshub.app/wallstreetcn/news/global",
           "lang": "zh",
           "priority": 1
         },
         {
           "name": "国家统计局",
           "url": "https://www.stats.gov.cn/rss/tjxw.xml",
-          "lang": "zh",
-          "priority": 1
-        },
-        {
-          "name": "中国人民银行",
-          "url": "http://www.pbc.gov.cn/rss/index.xml",
-          "lang": "zh",
-          "priority": 1
-        },
-        {
-          "name": "Reuters Business",
-          "url": "https://feeds.reuters.com/reuters/businessNews",
-          "lang": "en",
-          "priority": 2
-        },
-        {
-          "name": "Bloomberg Economics",
-          "url": "https://feeds.bloomberg.com/economics/news.rss",
-          "lang": "en",
-          "priority": 2
-        },
-        {
-          "name": "第一财经",
-          "url": "https://www.yicai.com/rss/news.xml",
           "lang": "zh",
           "priority": 2
         }
@@ -94,38 +88,32 @@
       "color": "#00ff88",
       "sources": [
         {
-          "name": "Data Center Knowledge",
-          "url": "https://www.datacenterknowledge.com/feed",
-          "lang": "en",
+          "name": "36氪-液冷",
+          "url": "https://rsshub.app/36kr/search/items/液冷",
+          "lang": "zh",
           "priority": 1
         },
         {
-          "name": "The Register - Data Center",
-          "url": "https://www.theregister.com/data_centre/headlines.atom",
-          "lang": "en",
-          "priority": 2
+          "name": "36氪-AI算力",
+          "url": "https://rsshub.app/36kr/search/items/AI算力",
+          "lang": "zh",
+          "priority": 1
         },
         {
           "name": "机房360",
-          "url": "https://www.jifang360.com/rss.xml",
+          "url": "https://rsshub.app/36kr/search/items/数据中心",
           "lang": "zh",
           "priority": 1
         },
         {
-          "name": "IDC圈",
-          "url": "https://www.idcquan.com/rss.xml",
-          "lang": "zh",
-          "priority": 1
-        },
-        {
-          "name": "36氪-AI硬件",
-          "url": "https://36kr.com/feed",
+          "name": "量子位-AI硬件",
+          "url": "https://decemberpei.cyou/rssbox/wechat-liangziwei.xml",
           "lang": "zh",
           "priority": 2
         },
         {
-          "name": "Tom's Hardware",
-          "url": "https://www.tomshardware.com/feeds/all",
+          "name": "Data Center Knowledge",
+          "url": "https://www.datacenterknowledge.com/feed",
           "lang": "en",
           "priority": 3
         }
@@ -137,40 +125,34 @@
       "color": "#ffd700",
       "sources": [
         {
-          "name": "氢云链",
-          "url": "https://www.h2yunlian.com/rss.xml",
+          "name": "36氪-氢能",
+          "url": "https://rsshub.app/36kr/search/items/氢能",
           "lang": "zh",
           "priority": 1
         },
         {
-          "name": "氢能汇",
-          "url": "https://www.h2energy.cn/feed",
+          "name": "氢能网",
+          "url": "https://rsshub.app/36kr/search/items/氢燃料电池",
           "lang": "zh",
           "priority": 1
+        },
+        {
+          "name": "高工氢电",
+          "url": "https://rsshub.app/36kr/search/items/电解槽",
+          "lang": "zh",
+          "priority": 2
         },
         {
           "name": "Hydrogen Central",
           "url": "https://hydrogen-central.com/feed/",
           "lang": "en",
-          "priority": 1
+          "priority": 3
         },
         {
           "name": "Fuel Cells Works",
           "url": "https://fuelcellsworks.com/feed/",
           "lang": "en",
-          "priority": 1
-        },
-        {
-          "name": "Clean Hydrogen Monitor",
-          "url": "https://www.cleanhydrogenmonitor.eu/feed/",
-          "lang": "en",
-          "priority": 2
-        },
-        {
-          "name": "国际氢能网",
-          "url": "https://www.in-en.com/hydrogen/rss.xml",
-          "lang": "zh",
-          "priority": 2
+          "priority": 3
         }
       ]
     },
@@ -180,34 +162,34 @@
       "color": "#ff8c42",
       "sources": [
         {
+          "name": "36氪-医药",
+          "url": "https://rsshub.app/36kr/search/items/制药装备",
+          "lang": "zh",
+          "priority": 1
+        },
+        {
           "name": "医药观察家",
-          "url": "https://www.yaozh.com/rss/news.xml",
+          "url": "https://rsshub.app/36kr/search/items/生物制药",
           "lang": "zh",
           "priority": 1
         },
         {
           "name": "赛柏蓝器械",
-          "url": "https://www.cyzone.cn/rss.xml",
+          "url": "https://rsshub.app/36kr/search/items/医疗器械",
           "lang": "zh",
           "priority": 1
+        },
+        {
+          "name": "量子位-生物科技",
+          "url": "https://rsshub.app/36kr/search/items/biopharma",
+          "lang": "zh",
+          "priority": 2
         },
         {
           "name": "Pharmaceutical Technology",
           "url": "https://www.pharmaceutical-technology.com/feed/",
           "lang": "en",
-          "priority": 1
-        },
-        {
-          "name": "PharmaTech",
-          "url": "https://www.pharmtech.com/rss/all",
-          "lang": "en",
-          "priority": 2
-        },
-        {
-          "name": "生物制药在线",
-          "url": "https://www.biopharmaonline.cn/feed",
-          "lang": "zh",
-          "priority": 2
+          "priority": 3
         }
       ]
     },
@@ -217,34 +199,28 @@
       "color": "#ff6b6b",
       "sources": [
         {
-          "name": "食品机械设备网",
-          "url": "https://www.foodjx.com/rss.xml",
+          "name": "36氪-食品",
+          "url": "https://rsshub.app/36kr/search/items/食品饮料",
           "lang": "zh",
           "priority": 1
         },
         {
-          "name": "食品工业科技",
-          "url": "https://www.spgykj.com/rss.xml",
+          "name": "食品工业",
+          "url": "https://rsshub.app/36kr/search/items/食品机械",
           "lang": "zh",
           "priority": 1
+        },
+        {
+          "name": "消费食品",
+          "url": "https://rsshub.app/36kr/search/items/食品安全",
+          "lang": "zh",
+          "priority": 2
         },
         {
           "name": "Food Engineering",
           "url": "https://www.foodengineeringmag.com/rss/all",
           "lang": "en",
-          "priority": 1
-        },
-        {
-          "name": "Food Manufacture",
-          "url": "https://www.foodmanufacture.co.uk/rss/all-articles",
-          "lang": "en",
-          "priority": 2
-        },
-        {
-          "name": "中国食品报",
-          "url": "https://www.cnfood.cn/rss.xml",
-          "lang": "zh",
-          "priority": 2
+          "priority": 3
         }
       ]
     },
@@ -254,34 +230,34 @@
       "color": "#c084fc",
       "sources": [
         {
-          "name": "Analytical Scientist",
-          "url": "https://theanalyticalscientist.com/feed",
-          "lang": "en",
-          "priority": 1
-        },
-        {
-          "name": "LCGC",
-          "url": "https://www.chromatographyonline.com/rss/all",
-          "lang": "en",
-          "priority": 1
-        },
-        {
-          "name": "Spectroscopy",
-          "url": "https://www.spectroscopyonline.com/rss/all",
-          "lang": "en",
-          "priority": 2
-        },
-        {
-          "name": "分析测试百科网",
-          "url": "https://www.instrument.com.cn/rss/news.xml",
+          "name": "36氪-质谱",
+          "url": "https://rsshub.app/36kr/search/items/质谱仪",
           "lang": "zh",
           "priority": 1
         },
         {
           "name": "仪器信息网",
-          "url": "https://www.instrument.com.cn/rss/article.xml",
+          "url": "https://rsshub.app/36kr/search/items/色谱仪器",
           "lang": "zh",
           "priority": 1
+        },
+        {
+          "name": "分析仪器",
+          "url": "https://rsshub.app/36kr/search/items/分析仪器",
+          "lang": "zh",
+          "priority": 2
+        },
+        {
+          "name": "Analytical Scientist",
+          "url": "https://theanalyticalscientist.com/feed",
+          "lang": "en",
+          "priority": 3
+        },
+        {
+          "name": "LCGC",
+          "url": "https://www.chromatographyonline.com/rss/all",
+          "lang": "en",
+          "priority": 3
         }
       ]
     }

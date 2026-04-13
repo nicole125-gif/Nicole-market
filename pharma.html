@@ -903,21 +903,7 @@ body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([oncli
   </div>
 </div>
 
-
-    <!-- ══ RSS 行业动态 ══════════════════════════════════ -->
-    <div id="s-rss" style="margin-bottom:clamp(18px,3vw,26px)">
-      <div class="sec-label" style="margin-bottom:clamp(14px,2.2vw,20px)">
-        <span class="f-label f-mono" style="color:rgba(34,211,238,.45);letter-spacing:.25em;text-transform:uppercase;white-space:nowrap">实时行业动态</span>
-        <div class="line"></div>
-        <span class="badge" style="flex-shrink:0;white-space:nowrap;color:#22d3ee;border-color:rgba(34,211,238,.35);background:rgba(34,211,238,.08)">每日自动更新</span>
-      </div>
-      <div class="glass-card" style="overflow:hidden">
-        <div class="corner-tl"></div><div class="corner-tr"></div>
-        <div id="rss-feed"></div>
-      </div>
-    </div>
-
-    <!-- FOOTER -->
+<!-- FOOTER -->
 <div style="border-top:1px solid var(--border);padding:32px 40px;max-width:1300px;margin:0 auto;display:flex;justify-content:space-between;align-items:center">
   <div style="font-family:var(--mono);font-size:8.5px;color:var(--text3);letter-spacing:.15em">
     数据来源：中国医药设备工程协会 · Frost & Sullivan · 公司公告 · 行业调研
@@ -1001,60 +987,6 @@ window.addEventListener('scroll',_at,{passive:true});_at();
 </script>
 
 <script>
-// ── RSS WIDGET ────────────────────────────────────────────
-(function() {
-  const BASE_URL = "https://nicole125-gif.github.io/Nicole-intelligence/data/rss";
-  const VERTICAL = "pharma_equipment";
-
-  function relativeTime(iso) {
-    const diff = (Date.now() - new Date(iso).getTime()) / 1000;
-    if (diff < 3600)  return Math.floor(diff/60) + "分钟前";
-    if (diff < 86400) return Math.floor(diff/3600) + "小时前";
-    return Math.floor(diff/86400) + "天前";
-  }
-
-  function renderRSS(data) {
-    const el = document.getElementById("rss-feed");
-    if (!el) return;
-    const updated = new Date(data.updated_at).toLocaleString("zh-CN",{timeZone:"Asia/Shanghai",month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"});
-    el.innerHTML = `
-      <div style="display:flex;align-items:center;gap:10px;padding:14px 20px;border-bottom:1px solid rgba(34,211,238,.08);background:rgba(34,211,238,.03)">
-        <span style="width:7px;height:7px;border-radius:50%;background:#22d3ee;box-shadow:0 0 8px #22d3ee;flex-shrink:0"></span>
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.9);text-transform:uppercase;flex:1">行业动态 · ${data.vertical_name}</span>
-        <span style="font-size:10px;color:#475569">更新 ${updated}</span>
-      </div>
-      <div style="max-height:480px;overflow-y:auto;padding:4px 0">
-        ${data.items.length ? data.items.map(item => `
-          <div style="padding:12px 20px;border-bottom:1px solid rgba(255,255,255,.04);transition:background .15s" onmouseenter="this.style.background='rgba(34,211,238,.03)'" onmouseleave="this.style.background='transparent'">
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
-              <span style="font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;background:rgba(34,211,238,.12);color:#22d3ee;border:1px solid rgba(34,211,238,.3)">中</span>
-              <span style="font-size:10px;color:#94a3b8;font-weight:500">${item.source}</span>
-              <span style="font-size:10px;color:#475569;margin-left:auto">${relativeTime(item.pub_date)}</span>
-            </div>
-            <a href="${item.url}" target="_blank" rel="noopener" style="display:block;font-size:12.5px;color:#cbd5e1;text-decoration:none;line-height:1.5;font-weight:500;transition:color .15s" onmouseenter="this.style.color='#fff'" onmouseleave="this.style.color='#cbd5e1'">${item.title}</a>
-            ${item.summary ? `<p style="margin:5px 0 0;font-size:11px;color:#475569;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">${item.summary}</p>` : ''}
-          </div>`).join('') : '<p style="padding:24px;text-align:center;color:#475569;font-size:12px">暂无近期动态</p>'}
-      </div>`;
-  }
-
-  async function loadRSS() {
-    const el = document.getElementById("rss-feed");
-    if (!el) return;
-    el.innerHTML = '<p style="padding:20px;text-align:center;color:#475569;font-size:12px">Loading…</p>';
-    try {
-      const res = await fetch(`${BASE_URL}/${VERTICAL}.json?t=${Date.now()}`);
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      const data = await res.json();
-      data.items = data.items.filter(item => item.lang === "zh");
-      renderRSS(data);
-    } catch(e) {
-      el.innerHTML = '<p style="padding:20px;text-align:center;color:#f87171;font-size:12px">⚠ 动态加载失败，请稍后刷新</p>';
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", loadRSS);
-})();
-
 (function(){
   const glow=document.getElementById('cursor-glow'),dot=document.getElementById('cursor-dot');
   let mx=0,my=0,gx=0,gy=0;
@@ -1065,68 +997,78 @@ window.addEventListener('scroll',_at,{passive:true});_at();
   document.addEventListener('mouseenter',()=>{glow.style.opacity='1';dot.style.opacity='1';});
 })();
 </script>
-<!-- NEWS_BLOCK_START -->
-<section class="news-section" id="latest-news">
-  <div class="news-header">
-    <span class="news-label">行业动态 LATEST NEWS</span>
-    <span class="news-updated">数据更新：2026年04月06日</span>
-  </div>
-  <div class="news-grid">
-        <div class="news-item">
-          <div class="news-meta"><span class="news-source">制药装备动态</span></div>
-          <div class="news-title"><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxQUjVYbjc2TVh6UmtGVmk4R2JXa28waWhaTWlNdENwR0gzS0dOVThGUnplcy1FWXJJblJ3VmlldlpxZTdqaFdjbWNDM0NDbG9oYVBDQXFVTTA3NzlFZUdRLWVFWmVtb1pLbFNhNWZMNmtCVDBlLWtzOHVLbWo3V1c0MTBWSjNkTjl5a1R3ZDNUV2kzTHdMNnVzRGNPcw?oc=5" target="_blank" rel="noopener">制药设备市场规模 [2034] - Fortune Business Insights</a></div>
-          <div class="news-summary">全球制药设备市场持续扩大，2034年前景乐观，智能制造和连续生产技术成为推动市场增长的关键因素，市场规模预计将显著提升。</div>
-        </div>
-        <div class="news-item">
-          <div class="news-meta"><span class="news-source">制药装备动态</span></div>
-          <div class="news-title"><a href="https://news.google.com/rss/articles/CBMiX0FVX3lxTFBsVVdwMU0zZ05WSmpXR2dXM0hEMnRHbGxRczhsS2U0QkFUdWhlZVlpNmtmREJ4dUVKR09idzVXc3dabGd6ekZWWEdBelFXU05pdndyQ0stQ2lLUTZEa2d3?oc=5" target="_blank" rel="noopener">"湖南产"制药装备再上新！这次是让多肽药生产更快更好 - 华声在线</a></div>
-          <div class="news-summary">湖南制药装备企业推出新型多肽药生产设备，通过工艺优化提升生产效率，助力多肽药物产业化发展，满足市场需求。</div>
-        </div>
-        <div class="news-item">
-          <div class="news-meta"><span class="news-source">龙头企业</span></div>
-          <div class="news-title"><a href="https://news.google.com/rss/articles/CBMiYEFVX3lxTFB4QW4xMDNOZ3BmdS1BcEVIWnBNZUVBTHRMV213UGVjMGJocHgxem85YnZEU200cUd2eXQ0Y3BWNEU2ZDV4M0hhREpxWDIzbWEzVGc0bG9zNF9XZkFaTWZ6eQ?oc=5" target="_blank" rel="noopener">深入布局多肽产业 楚天科技以设备创新驱动产业升级 - 东方财富</a></div>
-          <div class="news-summary">楚天科技聚焦多肽产业，通过设备技术创新提升生产能力和产品质量，推动多肽药物制造工艺升级，增强市场竞争力。</div>
-        </div>
-        <div class="news-item">
-          <div class="news-meta"><span class="news-source">龙头企业</span></div>
-          <div class="news-title"><a href="https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5RdXFVeUl3X2Iwd1RERzdBWjRuV1g3X1NNc1prMjZhbExmUEhrd25FdjVIS1RJbnA2R1NyYzVtRFpqcUxncjMyMDBlWHJfVTJLd2ZGcmNmdjFHLVJPZ0xwNzVpT3VsOUE?oc=5" target="_blank" rel="noopener">楚天科技一片式全纸包装生产线亮相，产能提升超50% - 湖南红网</a></div>
-          <div class="news-summary">楚天科技发布一片式全纸包装生产线，采用创新纸包装技术，产能提升超50%，推动医药包装绿色化转型，降低生产成本。</div>
-        </div>
-        <div class="news-item">
-          <div class="news-meta"><span class="news-source">龙头企业</span></div>
-          <div class="news-title"><a href="https://news.google.com/rss/articles/CBMiakFVX3lxTE1oS1lIVXEtLVA4dU9YY1h5MVQ3Y09nSVFOcTRmQ2xhQWU1ZV9aT3d3Q1VGWTNjckVrbDRMekJFMzhXYmk0cUQ5eEp1cTUxUEw2M3BqREIwOVFHdUwwV2ozY2xrWmVyRlpKQkE?oc=5" target="_blank" rel="noopener">一条“全纸线”撬动绿色变革——楚天科技以包装创新延伸多肽产业升级 - 人民网</a></div>
-          <div class="news-summary">楚天科技全纸包装生产线实现绿色突破，以纸代塑创新方案延伸多肽产业链，推动医药包装行业可持续发展。</div>
-        </div>
-        <div class="news-item">
-          <div class="news-meta"><span class="news-source">龙头企业</span></div>
-          <div class="news-title"><a href="楚天科技发布一片式全纸包装生产线，融合绿色环保与智能制造技术，引领医药包装行业向绿色化、智能化方向升级。" target="_blank" rel="noopener">实干开新局 奋进正当时</a></div>
-          <div class="news-summary">楚天科技发布一片式全纸包装生产线，引领医药包装绿色智能革命 - thepaper.cn</div>
-        </div>
-        <div class="news-item">
-          <div class="news-meta"><span class="news-source">制药装备动态</span></div>
-          <div class="news-title"><a href="https://news.google.com/rss/articles/CBMiXkFVX3lxTE5HczZJbTlkUWltdXhyOW1DVHVtaFhpOEVyTThVSVVlZWxmNXZYdUZFUzdNaUVKQzRnTTNfcldBaVlZbXJWcFVwWFFBVlEwZlVoYzBuWkxLVHBSNFZlZlE?oc=5" target="_blank" rel="noopener">设备管理数字化实践专题沙龙圆满举办</a></div>
-          <div class="news-summary">汉鑫科技携手IBM加速设备管理数字化方案落地山东，推动制药企业数字化转型，提升设备管理效率和智能化水平。</div>
-        </div>
-        <div class="news-item">
-          <div class="news-meta"><span class="news-source">龙头企业</span></div>
-          <div class="news-title"><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxNcnNuZlZ4VW1HZjFSMzI4RkZhSEhUcFFGcFJJUlhLLXE5WTZNQVlWVDhoMC1Zci1Yd3VHbEY5aFYzalhfWV80MFBiOUtKRzMtOTJwaWRoaUUzRHplbHpaRkl1ZnBHaU42VE9MNGFSX1NPaklENEZicXctRWJ1a2N1UDl4a1E?oc=5" target="_blank" rel="noopener">东富龙4月2日获融资买入763.38万元，融资余额2.44亿元 - 新浪财经</a></div>
-          <div class="news-summary">东富龙获融资买入763.38万元，融资余额达2.44亿元，反映资本市场对制药装备龙头企业发展前景的看好。</div>
-        </div></div>
-</section>
-<style>
-.news-section{margin:60px auto 40px;max-width:1200px;padding:0 24px;font-family:inherit}
-.news-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #ff2d78;padding-bottom:10px;margin-bottom:24px}
-.news-label{font-size:13px;font-weight:700;letter-spacing:.12em;color:#ff2d78;text-transform:uppercase}
-.news-updated{font-size:11px;color:#888;letter-spacing:.04em}
-.news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
-.news-item{background:#111;border:1px solid #222;border-radius:8px;padding:16px 18px;transition:border-color .2s}
-.news-item:hover{border-color:#ff2d78}
-.news-meta{display:flex;gap:10px;align-items:center;margin-bottom:8px}
-.news-source{font-size:10px;font-weight:700;letter-spacing:.08em;color:#ff2d78;background:rgba(255,45,120,.1);padding:2px 8px;border-radius:20px;text-transform:uppercase}
-.news-title a,.news-title span{font-size:13px;font-weight:600;color:#eee;text-decoration:none;line-height:1.5;display:block;margin-bottom:6px}
-.news-title a:hover{color:#ff2d78}
-.news-summary{font-size:12px;color:#888;line-height:1.7}
+
+<style id="rss-news-style">
+.rss-news-section{margin:40px auto;max-width:1200px;padding:0 24px;font-family:inherit}
+.rss-news-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #ff6b9d;padding-bottom:10px;margin-bottom:24px}
+.rss-news-label{font-size:13px;font-weight:700;letter-spacing:.12em;color:#ff6b9d;text-transform:uppercase}
+.rss-news-updated{font-size:11px;color:#888;letter-spacing:.04em}
+.rss-news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.rss-news-item{background:#111;border:1px solid #222;border-radius:8px;padding:16px 18px;transition:border-color .2s}
+.rss-news-item:hover{border-color:#ff6b9d}
+.rss-news-meta{display:flex;gap:10px;align-items:center;margin-bottom:8px}
+.rss-news-source{font-size:10px;font-weight:700;letter-spacing:.08em;color:#ff6b9d;background:#ff6b9d1a;padding:2px 8px;border-radius:20px}
+.rss-news-title a{font-size:13px;font-weight:600;color:#eee;text-decoration:none;line-height:1.5;display:block;margin-bottom:6px}
+.rss-news-title a:hover{color:#ff6b9d}
+.rss-news-summary{font-size:12px;color:#888;line-height:1.7}
+.rss-news-empty{padding:32px;text-align:center;color:#555;font-size:13px}
+.rss-news-loading{padding:32px;text-align:center;color:#555;font-size:13px}
 </style>
-<!-- NEWS_BLOCK_END -->
+
+
+
+
+<script>
+(function() {
+  var BASE = "https://nicole125-gif.github.io/Nicole-intelligence/data/rss";
+  var VID  = "pharma_equipment";
+
+  function ago(iso) {
+    var d = (Date.now() - new Date(iso).getTime()) / 1000;
+    if (d < 3600)  return Math.floor(d/60)  + "分钟前";
+    if (d < 86400) return Math.floor(d/3600) + "小时前";
+    return Math.floor(d/86400) + "天前";
+  }
+
+  function render(data) {
+    var updated = document.getElementById("rss-news-updated");
+    var grid    = document.getElementById("rss-news-grid");
+    if (!grid) return;
+
+    var items = data.items.filter(function(i){ return i.lang === "zh"; });
+    var dt = new Date(data.updated_at);
+    if (updated) updated.textContent = "数据更新：" + dt.getFullYear() + "年" +
+      (dt.getMonth()+1).toString().padStart(2,"0") + "月" +
+      dt.getDate().toString().padStart(2,"0") + "日";
+
+    if (!items.length) {
+      grid.innerHTML = '<div class="rss-news-empty">暂无近期动态</div>';
+      return;
+    }
+    grid.innerHTML = items.map(function(item) {
+      return '<div class="rss-news-item">' +
+        '<div class="rss-news-meta"><span class="rss-news-source">' + item.source + '</span>' +
+        '<span style="font-size:10px;color:#666;margin-left:auto">' + ago(item.pub_date) + '</span></div>' +
+        '<div class="rss-news-title"><a href="' + item.url + '" target="_blank" rel="noopener">' + item.title + '</a></div>' +
+        (item.summary ? '<div class="rss-news-summary">' + item.summary + '</div>' : '') +
+        '</div>';
+    }).join('');
+  }
+
+  function load() {
+    var grid = document.getElementById("rss-news-grid");
+    if (!grid) return;
+    fetch(BASE + "/" + VID + ".json?t=" + Date.now())
+      .then(function(r){ return r.json(); })
+      .then(render)
+      .catch(function(){ if(grid) grid.innerHTML = '<div class="rss-news-empty">⚠ 动态加载失败</div>'; });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", load);
+  } else { load(); }
+})();
+</script>
+
 </body>
 </html>
