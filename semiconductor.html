@@ -2092,7 +2092,9 @@ window.addEventListener('scroll', _at, {passive:true}); _at();
     try {
       const res = await fetch(`${BASE_URL}/${VERTICAL}.json?t=${Date.now()}`);
       if (!res.ok) throw new Error("HTTP " + res.status);
-      renderRSS(await res.json());
+      const data = await res.json();
+data.items = data.items.filter(item => item.lang === "zh");
+renderRSS(data);
     } catch(e) {
       el.innerHTML = '<p style="padding:20px;text-align:center;color:#f87171;font-size:12px">⚠ 动态加载失败，请稍后刷新</p>';
     }
