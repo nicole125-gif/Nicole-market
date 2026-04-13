@@ -3,7 +3,7 @@
   "vertical_name": "半导体",
   "vertical_en": "Semiconductor",
   "color": "#ff6b9d",
-  "updated_at": "2026-04-13T07:22:35.341388+00:00",
+  "updated_at": "2026-04-13T07:33:02.346981+00:00",
   "item_count": 15,
   "items": [
     {
@@ -13,8 +13,8 @@
       "summary": "智驾芯片，更卷了",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-04-13T07:22:31.243342+00:00",
-      "pub_ts": 1776064951
+      "pub_date": "2026-04-13T07:32:58.334441+00:00",
+      "pub_ts": 1776065578
     },
     {
       "id": "30533dd75c",
@@ -23,8 +23,8 @@
       "summary": "AI服务器ODM，繁荣见顶?",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-04-13T07:22:31.243384+00:00",
-      "pub_ts": 1776064951
+      "pub_date": "2026-04-13T07:32:58.334485+00:00",
+      "pub_ts": 1776065578
     },
     {
       "id": "e9f04c9732",
@@ -33,8 +33,8 @@
       "summary": "哪些芯片真正重要?",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-04-13T07:22:31.243406+00:00",
-      "pub_ts": 1776064951
+      "pub_date": "2026-04-13T07:32:58.334508+00:00",
+      "pub_ts": 1776065578
     },
     {
       "id": "68f0c66a1a",
@@ -43,8 +43,8 @@
       "summary": "两倍价格疯抢内存！苹果正在用供应链绞杀安卓",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-04-13T07:22:31.243426+00:00",
-      "pub_ts": 1776064951
+      "pub_date": "2026-04-13T07:32:58.334529+00:00",
+      "pub_ts": 1776065578
     },
     {
       "id": "34c741c90c",
@@ -53,8 +53,8 @@
       "summary": "反超OpenAI，Anthropic暴买TPU",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-04-13T07:22:31.243446+00:00",
-      "pub_ts": 1776064951
+      "pub_date": "2026-04-13T07:32:58.334549+00:00",
+      "pub_ts": 1776065578
     },
     {
       "id": "e411c99ef9",
@@ -63,8 +63,8 @@
       "summary": "TFLN，颠覆光芯片",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-04-13T07:22:22.265969+00:00",
-      "pub_ts": 1776064942
+      "pub_date": "2026-04-13T07:32:46.416537+00:00",
+      "pub_ts": 1776065566
     },
     {
       "id": "8518b1a263",
@@ -73,8 +73,8 @@
       "summary": "2050团聚Ⅰ当硅基AI开始设计芯片，碳基人类还能做什么？4月24日杭州AI芯片社",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-04-13T07:22:22.266013+00:00",
-      "pub_ts": 1776064942
+      "pub_date": "2026-04-13T07:32:46.416583+00:00",
+      "pub_ts": 1776065566
     },
     {
       "id": "95e4f6f8f9",
@@ -83,8 +83,8 @@
       "summary": "端侧AI×通信算力芯片，2026深圳闭门会9月启幕",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-04-13T07:22:22.266040+00:00",
-      "pub_ts": 1776064942
+      "pub_date": "2026-04-13T07:32:46.416610+00:00",
+      "pub_ts": 1776065566
     },
     {
       "id": "294ab6861c",
@@ -93,8 +93,8 @@
       "summary": "这家卖味精的公司，掌控AI芯片未来",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-04-13T07:22:22.266063+00:00",
-      "pub_ts": 1776064942
+      "pub_date": "2026-04-13T07:32:46.416634+00:00",
+      "pub_ts": 1776065566
     },
     {
       "id": "6186d0d139",
@@ -103,8 +103,38 @@
       "summary": "打破英伟达垄断，只有一个方法",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-04-13T07:22:22.266083+00:00",
-      "pub_ts": 1776064942
+      "pub_date": "2026-04-13T07:32:46.416655+00:00",
+      "pub_ts": 1776065566
+    },
+    {
+      "id": "e38f47f7bc",
+      "title": "Startup Funding: Q1 2026",
+      "url": "https://semiengineering.com/startup-funding-q1-2026/",
+      "summary": "Massive rounds for AI, EDA, and manufacturing; 80 startups raise $8.4B.\nThe post Startup Funding: Q1 2026 appeared first on Semiconductor Engineering.",
+      "source": "Semiconductor Engineering",
+      "lang": "en",
+      "pub_date": "2026-04-13T07:01:58+00:00",
+      "pub_ts": 1776063718
+    },
+    {
+      "id": "1ce9d94093",
+      "title": "Why Hardware Monitoring Needs Infrastructure, Not Just Sensors",
+      "url": "https://semiengineering.com/why-hardware-monitoring-needs-infrastructure-not-just-sensors/",
+      "summary": "Embedded intelligence enables a system to respond to critical events before they cause failures in runtime applications. \nThe post Why Hardware Monitoring Needs Infrastructure, Not Just Sensors appeared first on Semiconductor Engineering.",
+      "source": "Semiconductor Engineering",
+      "lang": "en",
+      "pub_date": "2026-04-13T07:01:56+00:00",
+      "pub_ts": 1776063716
+    },
+    {
+      "id": "136f7ea8c7",
+      "title": "GPU Rowhammer Attacks Beyond Data Corruption (U. of Toronto)",
+      "url": "https://semiengineering.com/gpu-rowhammer-attacks-beyond-data-corruption-u-of-toronto/",
+      "summary": "A new technical paper, &#8220;GPUBreach: Privilege Escalation Attacks via GPU Rowhammer,&#8221; was published by researchers at University of Toronto. Summary &#8220;GPUBreach shows that GPU Rowhammer attacks can move beyond data corruption to real privilege escalation. By corrupting GPU page tables…",
+      "source": "Semiconductor Engineering",
+      "lang": "en",
+      "pub_date": "2026-04-13T07:01:27+00:00",
+      "pub_ts": 1776063687
     },
     {
       "id": "86c1b33abf",
@@ -125,36 +155,6 @@
       "lang": "en",
       "pub_date": "2026-04-12T00:13:37+00:00",
       "pub_ts": 1775952817
-    },
-    {
-      "id": "d968949730",
-      "title": "Study of EUV Nanostructures Using AFM With High-Aspect Ratio Tip (Purdue, Intel, Bruker)",
-      "url": "https://semiengineering.com/study-of-euv-nanostructures-using-afm-with-high-aspect-ratio-tip-purdue-intel-bruker/",
-      "summary": "A new technical paper, &#8220;Characterizing tip-sample interaction dynamics on extreme ultraviolet nanostructures using atomic force microscopy with a high-aspect ratio tip,&#8221; was released by researchers at Purdue University, Intel Corporation and Bruker Corporation. Abstract &#8220;Accurate m…",
-      "source": "Semiconductor Engineering",
-      "lang": "en",
-      "pub_date": "2026-04-11T20:01:47+00:00",
-      "pub_ts": 1775937707
-    },
-    {
-      "id": "dca166bbed",
-      "title": "Photonic Packaging Resistant to Extreme Environments (NIST, Johns Hopkins, U. Of Maryland)",
-      "url": "https://semiengineering.com/photonic-packaging-resistant-to-extreme-environments-nist-johns-hopkins-u-of-maryland/",
-      "summary": "A new technical paper, &#8220;Photonic chip packaging for extreme environments&#8221; was published by NIST, Johns Hopkins and University of Maryland. Abstract &#8220;Integrated photonic sensors have advanced significantly in the past decade for an ever-increasing range of applications, driven by th…",
-      "source": "Semiconductor Engineering",
-      "lang": "en",
-      "pub_date": "2026-04-11T19:08:59+00:00",
-      "pub_ts": 1775934539
-    },
-    {
-      "id": "fc88f09889",
-      "title": "Impact of Surface States And Band Modulations in Ruthenium Interconnects (Incheon, Hanyang, UT Dallas)",
-      "url": "https://semiengineering.com/impact-of-surface-states-and-band-modulations-in-ruthenium-interconnects-incheon-hanyang-ut-dallas/",
-      "summary": "A new technical paper, &#8220;Role of surface states and band modulations in ultrathin ruthenium interconnects,&#8221; was published by researchers at Incheon National University, Hanyang University and UT Dallas. Abstract &#8220;Mitigating the RC delay from transistor miniaturization is essential f…",
-      "source": "Semiconductor Engineering",
-      "lang": "en",
-      "pub_date": "2026-04-11T18:58:12+00:00",
-      "pub_ts": 1775933892
     }
   ]
 }
