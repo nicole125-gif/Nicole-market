@@ -471,6 +471,14 @@ footer{border-top:1px solid var(--l1);padding:var(--space-sm) var(--page-px);dis
   position: absolute; bottom: 0; left: 0; height: 1px;
   background: linear-gradient(90deg, var(--nav-accent, #22d3ee), transparent);
   width: 0; transition: width .1s linear;}
+#lang-toggle {
+  flex-shrink: 0; margin-left: 8px;
+  font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .1em;
+  color: rgba(255,255,255,.55); background: none;
+  border: 1px solid rgba(255,255,255,.14); border-radius: 4px;
+  padding: 4px 9px; cursor: pointer; transition: all .2s; white-space: nowrap;
+}
+#lang-toggle:hover { color: var(--nav-accent, #22d3ee); border-color: rgba(34,211,238,.4); background: rgba(34,211,238,.07); }
 #cursor-glow{position:fixed;pointer-events:none;z-index:99999;width:320px;height:320px;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(61,148,255,.07) 0%,rgba(61,148,255,.03) 30%,transparent 70%);transition:opacity .3s ease;mix-blend-mode:screen}
 #cursor-dot{position:fixed;pointer-events:none;z-index:100000;width:24px;height:24px;border-radius:50%;background:transparent;border:1.5px solid rgba(61,148,255,.85);transform:translate(-50%,-50%);box-shadow:0 0 8px rgba(61,148,255,.45),inset 0 0 6px rgba(61,148,255,.2);transition:width .2s ease,height .2s ease,border-color .2s,box-shadow .2s}
 body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([onclick]:hover) #cursor-dot{width:36px;height:36px;border-color:rgba(255,215,0,.9);box-shadow:0 0 16px rgba(255,215,0,.4),inset 0 0 10px rgba(255,215,0,.08)}
@@ -487,16 +495,17 @@ body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([oncli
   <div class="nav-inner">
     <div class="nav-brand">PULSE 2026</div>
     <div class="nav-links">
-      <a href="index.html" class="nav-link active">总览</a>
-      <a href="macro.html" class="nav-link">宏观脉搏</a>
-      <a href="liquid.html" class="nav-link">AI 液冷</a>
-      <a href="semiconductor.html" class="nav-link">半导体 SBU</a>
-      <a href="mscc.html" class="nav-link">质谱·色谱</a>
-      <a href="pharma.html" class="nav-link">制药装备</a>
-      <a href="food.html" class="nav-link">食品饮料</a>
-      <a href="hydrogen.html" class="nav-link">氢能行业</a>
-      <a href="customers.html" class="nav-link">客户监控</a>
+      <a href="index.html" class="nav-link active" data-i18n="nav.overview">总览</a>
+      <a href="macro.html" class="nav-link" data-i18n="nav.macro">宏观脉搏</a>
+      <a href="liquid.html" class="nav-link" data-i18n="nav.liquid">AI 液冷</a>
+      <a href="semiconductor.html" class="nav-link" data-i18n="nav.semi">半导体 SBU</a>
+      <a href="mscc.html" class="nav-link" data-i18n="nav.mscc">质谱·色谱</a>
+      <a href="pharma.html" class="nav-link" data-i18n="nav.pharma">制药装备</a>
+      <a href="food.html" class="nav-link" data-i18n="nav.food">食品饮料</a>
+      <a href="hydrogen.html" class="nav-link" data-i18n="nav.hydrogen">氢能行业</a>
+      <a href="customers.html" class="nav-link" data-i18n="nav.customers">客户监控</a>
     </div>
+    <button id="lang-toggle" onclick="toggleLang()">EN</button>
     <div id="nav-progress"></div>
   </div>
 </nav>
@@ -505,28 +514,28 @@ body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([oncli
 <div class="hero rise">
   <div>
     <div class="hero-eyebrow">MARKET INTELLIGENCE · LIVE</div>
-    <h1>行业景气度<br><span class="dim">监测报告 2026</span></h1>
-    <div class="hero-tagline">为精密流体控制供应商设计的行业景气度信号系统</div>
-    <div class="hero-meta">HEAT SCORE · D×35% + C×30% + P×20% + Pol×15%<br>6 SECTORS · 20 TRACKS · 最近更新：2026年3月31日 · 下次更新预计：4月末</div>
+    <h1 data-i18n="hero.title">行业景气度<br><span class="dim">监测报告 2026</span></h1>
+    <div class="hero-tagline" data-i18n="hero.tagline">为精密流体控制供应商设计的行业景气度信号系统</div>
+    <div class="hero-meta" data-i18n="hero.meta">HEAT SCORE · D×35% + C×30% + P×20% + Pol×15%<br>6 SECTORS · 20 TRACKS · 最近更新：2026年3月31日 · 下次更新预计：4月末</div>
   </div>
   <div class="kpis" id="hkpis"></div>
 </div>
 
 <div class="ai-banner rise" style="animation-delay:.06s">
-  <span class="ai-badge">AI 简评</span>
+  <span class="ai-badge" data-i18n="ai.badge">AI 简评</span>
   <div class="ai-text" id="ai-text"></div>
-  <span class="ai-gen-note">由 Claude 基于当期数据生成 · 仅供参考</span>
-  <button class="ai-next" onclick="nextInsight()">下一条 ›</button>
+  <span class="ai-gen-note" data-i18n="ai.note">由 Claude 基于当期数据生成 · 仅供参考</span>
+  <button class="ai-next" onclick="nextInsight()" data-i18n="ai.next">下一条 ›</button>
 </div>
 
 <div class="shdr">
-  <span class="slabel">板块总览 · 6 Sectors</span>
+  <span class="slabel" data-i18n="shdr.label">板块总览 · 6 Sectors</span>
   <div class="heat-formula-tip" title="D=需求景气度 Demand · C=资本开支/产能 Capex · P=价格信号 Price · Pol=政策支持 Policy">
     <span class="formula-badge">D · C · P · Pol</span>
     <span class="formula-hint">?</span>
   </div>
   <div class="sline"></div>
-  <button class="scollapse" onclick="collapseAll()">收起 ↑</button>
+  <button class="scollapse" onclick="collapseAll()" data-i18n="shdr.collapse">收起 ↑</button>
 </div>
 
 <!-- 5. MACRO special zone -->
@@ -534,7 +543,7 @@ body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([oncli
 
 <!-- zone divider -->
 <div class="zone-divider">
-  <span class="zone-label">行业板块 · Industry Sectors</span>
+  <span class="zone-label" data-i18n="zone.industry">行业板块 · Industry Sectors</span>
   <div class="zone-dash"></div>
 </div>
 
@@ -557,18 +566,18 @@ body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([oncli
     </div>
     <div class="mbody">
       <div class="m-scs" id="mscs"></div>
-      <div class="msec"><div class="msecl">核心数据</div><div class="mdl" id="mdl"></div></div>
-      <div class="msec"><div class="msecl">关键结论</div><p class="mtw" id="mtw"></p></div>
-      <div class="msec"><div class="msecl">数据来源</div><div class="msrcs" id="msrcs"></div></div>
-      <div class="mact"><span class="mact-l">行动</span><span class="mact-t" id="mact"></span></div>
+      <div class="msec"><div class="msecl" data-i18n="modal.data">核心数据</div><div class="mdl" id="mdl"></div></div>
+      <div class="msec"><div class="msecl" data-i18n="modal.findings">关键结论</div><p class="mtw" id="mtw"></p></div>
+      <div class="msec"><div class="msecl" data-i18n="modal.sources">数据来源</div><div class="msrcs" id="msrcs"></div></div>
+      <div class="mact"><span class="mact-l" data-i18n="modal.action">行动</span><span class="mact-t" id="mact"></span></div>
     </div>
   </div>
 </div>
 
 <div class="spanel" id="spanel">
   <div class="sphd">
-    <div class="spttl">数据溯源</div>
-    <div class="spsub">Data Provenance · 8 核心来源</div>
+    <div class="spttl" data-i18n="src.title">数据溯源</div>
+    <div class="spsub" data-i18n="src.sub">Data Provenance · 8 核心来源</div>
     <div class="spcl" onclick="toggleSrc()">✕</div>
   </div>
   <div class="spitems" id="spitems"></div>
@@ -576,14 +585,14 @@ body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([oncli
 
 <footer>
   <div class="footer-left">
-    <span>© 2026 PULSE · 行业景气度监测系统</span>
+    <span data-i18n="footer.copy">© 2026 PULSE · 行业景气度监测系统</span>
     <span class="footer-divider">·</span>
-    <span>国家统计局 / 央行 / 行业协会 / 上市公司公告</span>
+    <span data-i18n="footer.sources">国家统计局 / 央行 / 行业协会 / 上市公司公告</span>
   </div>
   <div class="footer-right">
-    <span class="footer-disclaimer">本报告仅供内部分析参考，不构成投资建议</span>
+    <span class="footer-disclaimer" data-i18n="footer.disclaimer">本报告仅供内部分析参考，不构成投资建议</span>
     <span class="footer-divider">·</span>
-    <span>最近更新 2026-04-10</span>
+    <span data-i18n="footer.updated">最近更新 2026-03-31</span>
   </div>
 </footer>
 
@@ -594,27 +603,27 @@ const cc=b=>`var(${CV[b]})`;
 const HEAT_RANK={};
 
 const BM={
-  Macro:{n:'宏观背景',    heat:67.3,tr:'fl', D:50,C:44,P:56,Pol:62,
+  Macro:{n:'宏观背景',    heat:50.2,tr:'up', D:50,C:44,P:56,Pol:62,
     sum:'3月制造业PMI 50.4%重返扩张！Q1开局信号确认',
     sumAlert:'🟢',href:'macro.html',tracks:['m1','m2','m3'],sparks:[48,50,53],hotIdx:2,
     insight:'<strong>宏观背景</strong> — 3月制造业PMI 50.4%，重返扩张区间；生产52.6%、新订单51.8%，中小企业同步改善。FAI+1.8%转正叠加PMI确认，Q1开局信号转强。<span class="ai-src" data-src="国家统计局 · 2026-03-31">NSB</span>'},
-  EI:{n:'能源·基础设施',  heat:71.3,tr:'dn', D:82,C:80,P:68,Pol:86,
+  EI:{n:'能源·基础设施',  heat:72.5,tr:'up', D:82,C:80,P:68,Pol:86,
     sum:'两会AI基建落地+美半导体232关税双重催化',
     sumAlert:'🔥',href:'hydrogen.html',tracks:['e1','e2','e3','e4'],sparks:[64,72,74,44],hotIdx:2,
     insight:'<strong>液冷数据中心</strong> — 渗透率被TrendForce上调至47%，美国232关税倒逼国产化，液冷Heat创全周期新高 <strong style="color:var(--hot)">86.1</strong>，D/C双维度超90分。<span class="ai-src" data-src="TrendForce 2026Q1">TF</span>'},
-  GI:{n:'通用工业',       heat:84.0,tr:'fl', D:80,C:82,P:62,Pol:72,
+  GI:{n:'通用工业',       heat:75.8,tr:'fl', D:80,C:82,P:62,Pol:72,
     sum:'CATL三线共振，订单确定性最强',
     sumAlert:'⚡',href:'semiconductor.html',tracks:['g1'],sparks:[70,74,76],hotIdx:2,
     insight:'<strong>通用工业</strong> — CATL匈牙利Q1量产+济宁储能+钠离子三线共振，Capex 82分全板块最高，先导/赢合订单可见度极高。<span class="ai-src" data-src="宁德时代 2026Q1公告">CATL</span>'},
-  'P&B':{n:'制药·生物技术',heat:69.8,tr:'dn', D:72,C:62,P:52,Pol:72,
+  'P&B':{n:'制药·生物技术',heat:63.5,tr:'up', D:72,C:62,P:52,Pol:72,
     sum:'司美格鲁肽3/20已到期！仿制战全面启动',
     sumAlert:'⚠',href:'pharma.html',tracks:['p1','p2','p3','p4','p5'],sparks:[58,62,63,62,70],hotIdx:4,
     insight:'<strong>制药·生物技术</strong> — 司美格鲁肽专利3月20日到期，多肽CDMO询单环比+8%；Demand 72分，进入兑现窗口期。<span class="ai-src" data-src="摩熵医药 / 凯莱英公告">摩熵</span>'},
-  'L&M':{n:'实验室·医疗',  heat:72.0,tr:'dn', D:70,C:62,P:55,Pol:80,
+  'L&M':{n:'实验室·医疗',  heat:62.3,tr:'fl', D:70,C:62,P:55,Pol:80,
     sum:'质谱进口-12.4%，因美纳禁令催化',
     sumAlert:'⚠',href:'mscc.html',tracks:['l1','l2','l3'],sparks:[58,62,62],hotIdx:1,
     insight:'<strong>实验室·医疗</strong> — 因美纳列入不可靠实体清单，质谱进口骤降12.4%，Policy 80分，是L&M国产替代信号最强的时间节点。<span class="ai-src" data-src="商务部公告 / 海关总署">商务部</span>'},
-  'F&B':{n:'食品·饮料',    heat:63.1,tr:'dn', D:66,C:44,P:52,Pol:52,
+  'F&B':{n:'食品·饮料',    heat:54.5,tr:'dn', D:66,C:44,P:52,Pol:52,
     sum:'双FAI降速/转负，发酵唯一亮点',
     sumAlert:'↓',href:'food.html',tracks:['f1','f2','f3','f4'],sparks:[60,56,55,55],hotIdx:3,
     insight:'<strong>食品·饮料</strong> — 酒饮料FAI转负-0.2%，Capex 44分全板块最低；唯一亮点：合成生物发酵设备进入交付期，功能成分>800亿。<span class="ai-src" data-src="国家统计局 FAI 2025全年">NSB</span>'},
@@ -622,26 +631,26 @@ const BM={
 const BO=['Macro','EI','GI','P&B','L&M','F&B'];
 
 const T={
-  m1:{b:'Macro',n:'制造业 PMI',sub:'制造业景气指数',heat:69.5,tr:'fl',delta:+1.4,D:70,C:65,P:75,Pol:70,data:['3月制造业PMI 50.4%，重返扩张区间（荣枯线以上）','生产指数52.6%、新订单51.8%，中小企业景气同步改善','财新制造业PMI 4月1日公布，预计维持扩张'],tw:'制造业景气度回升，供需改善，价格指数上涨，经济起步向好。',act:'关注生产与新订单持续扩张，可适度增加对顺周期板块的配置。',src:['国家统计局 2026-03-31','财新/标普全球']},
-  m2:{b:'Macro',n:'M2 / 社融',sub:'货币政策综合信号',heat:66.2,tr:'fl',delta:1.0,D:70,C:65,P:55,Pol:75,data:['1月M2同比+9%（近两年新高），社融7.22万亿（历史同期最高）','两会已确认：赤字率4%、Q1降准50BP预期仍在'],tw:'社融与M2显示流动性合理充裕，对制造业投资形成支撑，但价格信号偏弱。',act:'关注后续CPI/PPI数据，以确认需求与盈利的实质性改善。',src:['中国人民银行']},
-  m3:{b:'Macro',n:'固定资产投资',sub:'制造业FAI/规上增加值',heat:66.0,tr:'up',delta:+2.1,D:65,C:60,P:70,Pol:75,data:['2026年1-2月全国FAI +1.8%（vs 2025全年-3.8%，实现转正）','制造业投资+2.5%；高技术制造业+9.4%'],tw:'工业增加值增长稳健，高技术制造业动能强劲，但固定资产投资增速偏低。',act:'重点关注高技术制造业产业链，对传统制造业投资保持谨慎。',src:['国家统计局']},
-  e1:{b:'EI',n:'液冷数据中心',sub:'AI液冷渗透率/市场规模',heat:81.9,tr:'fl',delta:+4.2,D:85,C:82,P:78,Pol:80,data:['TrendForce：2026年AI芯片液冷渗透率47%（上调7pp）；北美市场100亿美元','美国对先进AI半导体加征25%关税（232条，1月15日起）','GB200 NVL72单柜功耗130kW+，风冷已触达物理极限'],tw:'AI算力驱动需求爆发，产业加码布局，景气度高涨。',act:'聚焦冷板、CDU及浸没式液冷环节的领先供应商。',src:['TrendForce','国信证券']},
-  e2:{b:'EI',n:'半导体设备国产化',sub:'龙头设备商/前道市场',heat:82.2,tr:'dn',delta:+3.5,D:85,C:80,P:75,Pol:90,data:['DRAM Q1合约价+90-95%，全产业链20+企业发涨价函','WSTS预测2026年全球半导体+26.3%达9750亿美元'],tw:'国产化趋势强劲，政策与需求双重驱动，行业景气度维持高位。',act:'重点关注北方华创、中微公司等平台型龙头标的。',src:['WSTS','北方华创财报']},
-  e3:{b:'EI',n:'绿氢电解槽',sub:'PEM/AEM高壁垒路线',heat:44.9,tr:'dn',delta:+1.8,D:42,C:38,P:45,Pol:65,data:['2025年电解槽招标6055MW（+155.6%），ALK内卷','PEM+AEM增速+263%，卡脖子材料国产化率<20%'],tw:'政策支持新兴技术路线，但市场订单仍以碱性电解槽为主，需求与投资偏弱。',act:'关注AEM/PEM/SOEC技术路线的示范项目进展，规避碱性电解槽红海市场。',src:['香橙会氢能数据库']},
-  e4:{b:'EI',n:'燃料电池',sub:'FCEV重卡/系统集成',heat:72.2,tr:'fl',delta:3.8,D:75,C:70,P:65,Pol:80,data:['2026年1月销量70辆（-47% YoY），政策空窗期','五大示范城市群国补2025年底到期'],tw:'政策与长期需求明确，但短期商业化与目标达成仍存压力。',act:'关注重卡等商用场景落地进展及测试设备配套需求。',src:['中汽协']},
-  g1:{b:'GI',n:'锂电设备',sub:'宁德时代产能扩张',heat:84.0,tr:'fl',delta:0.2,D:85,C:88,P:78,Pol:82,data:['匈牙利工厂Q1量产，海外产能正式兑现','济宁储能基地新增>100GWh','2026-01全球首款量产钠离子电池首发'],tw:'需求强劲，龙头扩产与固态电池技术催化，行业景气度高企。',act:'重点配置宁德时代设备链，关注固态电池设备相关标的。',src:['宁德时代公告']},
-  p1:{b:'P&B',n:'生物药出海',sub:'创新药License-out/BD',heat:62.2,tr:'dn',delta:+2.8,D:65,C:60,P:55,Pol:70,data:['司美格鲁肽核心专利3月20日已正式到期','11款国产上市申请排队；Q3最快获批首仿'],tw:'国内创新药获批与临床推进积极，但部分产能出海信号抑制设备需求动能。',act:'关注核药、GLP-1等新兴领域带来的国内高端产线建设机会。',src:['摩熵医药']},
-  p2:{b:'P&B',n:'合成生物学',sub:'中试车间开工数',heat:67.2,tr:'dn',delta:+1.5,D:70,C:65,P:60,Pol:75,data:['华东中试车间开工数+~30% YoY（2026年2月）','华恒/凯赛/嘉必优新产线2026H1验收'],tw:'行业扩产有序推进，政策与生态建设积极，但盈利与投资强度信号温和。',act:'关注华恒、凯赛等龙头扩产节奏及中试/量产设备招标。',src:['华恒/凯赛年报']},
-  p3:{b:'P&B',n:'生物药融资',sub:'早期融资额',heat:82.8,tr:'fl',delta:0.0,D:85,C:90,P:70,Pol:80,data:['2026年1月生物医药投融资57.66亿元（-11% YoY）','融资→设备需求传导链长达3-5年'],tw:'一级市场融资极为活跃，金额巨大，预示未来数年设备需求强劲。',act:'积极跟进头部融资企业，提前布局其潜在设备采购需求。',src:['动脉网']},
-  p4:{b:'P&B',n:'制药装备Capex',sub:'医药制造业FAI',heat:64.5,tr:'up',delta:3.7,D:65,C:60,P:70,Pol:65,data:['医药FAI 2025年全年-13.5%，设备端最直接负面指标'],tw:'行业需求平稳，政策与投资有支撑，但整体动能未显著增强。',act:'关注楚天科技与东富龙的海外订单及核药等新兴领域进展。',src:['国家统计局FAI']},
-  p5:{b:'P&B',n:'CDMO',sub:'海外大客户询单量',heat:79.2,tr:'fl',delta:+2.0,D:85,C:80,P:75,Pol:70,data:['早期分子询单Index~108（+8% MoM），近期新高','凯莱英GLP-1多肽商业化订单确认'],tw:'龙头公司订单强劲增长，行业需求动能充足，景气度维持高位。',act:'重点关注凯莱英、药明康德在手订单及多肽/ADC新产能进展。',src:['凯莱英公告']},
-  l1:{b:'L&M',n:'质谱/色谱仪器',sub:'高端分析仪器国产替代',heat:57.8,tr:'dn',delta:+0.5,D:55,C:60,P:50,Pol:70,data:['质谱仪进口报关量-12.4% YoY，最强国产替代信号','2026年国内质谱市场预计突破230亿元'],tw:'政策支持明确，但禾信仪器业绩承压，国产替代需求与经营挑战并存。',act:'关注政府采购订单落地情况，暂避禾信，观察行业标准制定进展。',src:['海关总署']},
-  l2:{b:'L&M',n:'基因测序',sub:'测序服务需求',heat:82.2,tr:'fl',delta:+1.2,D:85,C:80,P:75,Pol:90,data:['商务部将因美纳列入"不可靠实体清单"','华大智造CoolMPS受益，三甲医院测序仪替换潮启动'],tw:'国产替代加速，政策与需求共振，行业景气度持续上行。',act:'重点关注华大智造、真迈生物等国产龙头标的。',src:['商务部公告']},
-  l3:{b:'L&M',n:'医疗IVD',sub:'IVD体外诊断',heat:80.5,tr:'fl',delta:-1.0,D:85,C:80,P:70,Pol:85,data:['2025年中国IVD市场规模超1400亿元','化学发光国产化率<30%，第28省集采降价50-70%'],tw:'需求强劲，国产替代加速，政策支持基层医疗，行业景气度高。',act:'重点关注头部企业化学发光与流水线产品的市场拓展。',src:['智研咨询']},
-  f1:{b:'F&B',n:'食品制造FAI',sub:'设备端Capex信号',heat:49.5,tr:'fl',delta:1.0,D:45,C:50,P:60,Pol:45,data:['食品制造业FAI 2025年+2.2%（vs 2024年+22.9%，降速超20pp）'],tw:'宏观投资增速放缓，赛道缺乏直接催化，景气度偏中性。',act:'关注具体食品制造装备招标项目，等待明确需求信号。',src:['国家统计局FAI']},
-  f2:{b:'F&B',n:'酒/饮料制造FAI',sub:'设备端Capex信号',heat:64.2,tr:'fl',delta:0.0,D:70,C:65,P:60,Pol:55,data:['酒饮料制造业FAI 2025年-0.2%（vs 2024年+18%，直接转负）'],tw:'白酒与啤酒产线智能化升级需求显现，但整体投资强度与政策催化温和。',act:'关注白酒产能升级及啤酒柔性产线设备商，跟踪具体招标订单。',src:['国家统计局FAI']},
-  f3:{b:'F&B',n:'食品饮料消费',sub:'春节/年货消费端参考',heat:78.8,tr:'fl',delta:0.0,D:85,C:75,P:80,Pol:70,data:['春节年货市场+17.5%，广州饮料消费+38.5%'],tw:'消费需求强劲复苏，健康与功能化趋势明确，景气度上行。',act:'优先关注功能饮品及预制菜相关设备需求，跟踪餐饮供应链投资。',src:['商务部']},
-  f4:{b:'F&B',n:'食品添加剂',sub:'合成生物学/功能成分',heat:65.8,tr:'dn',delta:+0.9,D:70,C:65,P:60,Pol:65,data:['功能性食品成分市场>800亿，天然甜味剂/益生菌高增长'],tw:'需求前景明确，但短期市场情绪与投资强度偏中性。',act:'关注莱茵生物等公司的合成生物研发中心建设进展。',src:['华恒/凯赛年报']},
+  m1:{b:'Macro',n:'制造业 PMI',sub:'制造业景气指数',heat:50.4,tr:'up',delta:+1.4,D:50,C:38,P:52,Pol:65,data:['3月制造业PMI 50.4%，重返扩张区间（荣枯线以上）','生产指数52.6%、新订单51.8%，中小企业景气同步改善','财新制造业PMI 4月1日公布，预计维持扩张'],tw:'制造业PMI重返50%以上，验证春节扰动消退后制造业景气快速修复。生产与新订单双线扩张，Q1开门红格局确立。后续仅跟踪制造业PMI作为核心景气信号。',act:'信号确认 · 跟踪4月财新制造业PMI交叉验证',src:['国家统计局 2026-03-31','财新/标普全球']},
+  m2:{b:'Macro',n:'M2 / 社融',sub:'货币政策综合信号',heat:50.5,tr:'fl',delta:0,D:47,C:40,P:56,Pol:68,data:['1月M2同比+9%（近两年新高），社融7.22万亿（历史同期最高）','两会已确认：赤字率4%、Q1降准50BP预期仍在'],tw:'两会货币政策定调清晰，但关税诉讼引入外需不确定性。货币宽松重心转向内需提振。',act:'关注 · Q1信贷及3月PMI',src:['中国人民银行']},
+  m3:{b:'Macro',n:'固定资产投资',sub:'制造业FAI/规上增加值',heat:48.5,tr:'up',delta:+2.1,D:48,C:42,P:54,Pol:58,data:['2026年1-2月全国FAI +1.8%（vs 2025全年-3.8%，实现转正）','制造业投资+2.5%；高技术制造业+9.4%'],tw:'FAI转正是年内最重要的宏观好转信号之一。需观察Q1是否延续。',act:'关注 · FAI转正信号，跟踪Q1延续性',src:['国家统计局']},
+  e1:{b:'EI',n:'液冷数据中心',sub:'AI液冷渗透率/市场规模',heat:86.1,tr:'up',delta:+4.2,D:90,C:92,P:72,Pol:84,data:['TrendForce：2026年AI芯片液冷渗透率47%（上调7pp）；北美市场100亿美元','美国对先进AI半导体加征25%关税（232条，1月15日起）','GB200 NVL72单柜功耗130kW+，风冷已触达物理极限'],tw:'美国232关税直接强化国内算力国产化紧迫性，液冷设备作为核心配套，渗透率47%+政策+技术三重驱动维持全表最高优先级。',act:'立即跟进 · CDU/冷板/管路系统',src:['TrendForce','国信证券']},
+  e2:{b:'EI',n:'半导体设备国产化',sub:'龙头设备商/前道市场',heat:80.1,tr:'up',delta:+3.5,D:82,C:82,P:68,Pol:88,data:['DRAM Q1合约价+90-95%，全产业链20+企业发涨价函','WSTS预测2026年全球半导体+26.3%达9750亿美元'],tw:'全产业链涨价潮确认AI需求爆发，Policy分88全表最高之一。出口管制倒逼国产替代升级为必选项。',act:'持续跟进 · 存储/设备/封测多环节',src:['WSTS','北方华创财报']},
+  e3:{b:'EI',n:'绿氢电解槽',sub:'PEM/AEM高壁垒路线',heat:68.7,tr:'up',delta:+1.8,D:68,C:72,P:55,Pol:82,data:['2025年电解槽招标6055MW（+155.6%），ALK内卷','PEM+AEM增速+263%，卡脖子材料国产化率<20%'],tw:'《能源法》氢能入法是历史性信号，精准切入质子交换膜/铱催化剂国产替代，规避ALK内卷。',act:'布局 · 质子交换膜/铱催化剂',src:['香橙会氢能数据库']},
+  e4:{b:'EI',n:'燃料电池',sub:'FCEV重卡/系统集成',heat:47.1,tr:'dn',delta:-3.2,D:40,C:50,P:38,Pol:70,data:['2026年1月销量70辆（-47% YoY），政策空窗期','五大示范城市群国补2025年底到期'],tw:'1月-47%彻底验证2025数据失真，等待十五五接续补贴，港口/钢厂封闭场景是唯一确定性机会。',act:'暂缓 · 仅盯质子交换膜/碳纸',src:['中汽协']},
+  g1:{b:'GI',n:'锂电设备',sub:'宁德时代产能扩张',heat:75.8,tr:'fl',delta:0,D:80,C:82,P:62,Pol:72,data:['匈牙利工厂Q1量产，海外产能正式兑现','济宁储能基地新增>100GWh','2026-01全球首款量产钠离子电池首发'],tw:'CATL三线共振支撑景气度高位，先导/赢合设备订单确定性全板块最强。',act:'稳步跟进 · 先导智能/赢合科技',src:['宁德时代公告']},
+  p1:{b:'P&B',n:'生物药出海',sub:'创新药License-out/BD',heat:69.7,tr:'up',delta:+2.8,D:80,C:72,P:48,Pol:70,data:['司美格鲁肽核心专利3月20日已正式到期','11款国产上市申请排队；Q3最快获批首仿'],tw:'专利已到期是P&B本月最重要里程碑。多肽CDMO产线订单爆发确定性高。',act:'立即跟进 · 多肽CDMO/仿制药产线',src:['摩熵医药']},
+  p2:{b:'P&B',n:'合成生物学',sub:'中试车间开工数',heat:67.75,tr:'up',delta:+1.5,D:70,C:68,P:58,Pol:75,data:['华东中试车间开工数+~30% YoY（2026年2月）','华恒/凯赛/嘉必优新产线2026H1验收'],tw:'进入中试→量产转化关键期，发酵罐+分离纯化设备需求从预期变为实质交付。',act:'立即跟进 · 发酵罐/分离纯化',src:['华恒/凯赛年报']},
+  p3:{b:'P&B',n:'生物药融资',sub:'早期融资额',heat:47.55,tr:'dn',delta:-2.1,D:55,C:35,P:50,Pol:52,data:['2026年1月生物医药投融资57.66亿元（-11% YoY）','融资→设备需求传导链长达3-5年'],tw:'早期融资收缩是3-5年滞后指标，勿用于短期Capex判断。',act:'观察 · 勿用于短期Capex判断',src:['动脉网']},
+  p4:{b:'P&B',n:'制药装备Capex',sub:'医药制造业FAI',heat:59.6,tr:'dn',delta:-1.4,D:72,C:46,P:55,Pol:72,data:['医药FAI 2025年全年-13.5%，设备端最直接负面指标'],tw:'FAI-13.5%是最直接负面信号，H2仿制药产线建设是中期转折。',act:'暂缓 · 精选ADC/多肽专线',src:['国家统计局FAI']},
+  p5:{b:'P&B',n:'CDMO',sub:'海外大客户询单量',heat:67.55,tr:'up',delta:+2.0,D:72,C:65,P:58,Pol:62,data:['早期分子询单Index~108（+8% MoM），近期新高','凯莱英GLP-1多肽商业化订单确认'],tw:'询单+8%是本月最强P&B正面信号，TIDES/ADC/CGT三条高附加值产线是精准切入方向。',act:'跟进 · TIDES/GLP-1多肽专线',src:['凯莱英公告']},
+  l1:{b:'L&M',n:'质谱/色谱仪器',sub:'高端分析仪器国产替代',heat:68,tr:'fl',delta:+0.5,D:72,C:65,P:58,Pol:78,data:['质谱仪进口报关量-12.4% YoY，最强国产替代信号','2026年国内质谱市场预计突破230亿元'],tw:'进口-12.4%是最强国产替代确认信号，Policy分78。禾信/谱育是近期最高优先级拓展客户。',act:'跟进 · 禾信/谱育客户拓展',src:['海关总署']},
+  l2:{b:'L&M',n:'基因测序',sub:'测序服务需求',heat:66.4,tr:'fl',delta:+1.2,D:70,C:62,P:55,Pol:82,data:['商务部将因美纳列入"不可靠实体清单"','华大智造CoolMPS受益，三甲医院测序仪替换潮启动'],tw:'因美纳禁令是最强催化，Policy分82。华大智造/真迈生物是直接受益标的。',act:'跟进 · 测序仪替换+耗材双线',src:['商务部公告']},
+  l3:{b:'L&M',n:'医疗IVD',sub:'IVD体外诊断',heat:52.55,tr:'dn',delta:-1.8,D:62,C:45,P:38,Pol:65,data:['2025年中国IVD市场规模超1400亿元','化学发光国产化率<30%，第28省集采降价50-70%'],tw:'Price分38全表最低，集采降价50-70%最强负面信号。',act:'精选 · 基层POCT/化学发光国产',src:['智研咨询']},
+  f1:{b:'F&B',n:'食品制造FAI',sub:'设备端Capex信号',heat:54.6,tr:'dn',delta:-2.3,D:62,C:48,P:55,Pol:50,data:['食品制造业FAI 2025年+2.2%（vs 2024年+22.9%，降速超20pp）'],tw:'FAI从+22.9%骤降至+2.2%，新建逻辑彻底终结，存量替换是切入点。',act:'存量替换 · 预制菜/烘焙产线',src:['国家统计局FAI']},
+  f2:{b:'F&B',n:'酒/饮料制造FAI',sub:'设备端Capex信号',heat:48,tr:'dn',delta:-1.5,D:58,C:35,P:50,Pol:48,data:['酒饮料制造业FAI 2025年-0.2%（vs 2024年+18%，直接转负）'],tw:'F&B最强负面信号：FAI直接转负，传统酒饮料扩产逻辑彻底终结。',act:'暂停 · 规避白酒/碳酸新建产线',src:['国家统计局FAI']},
+  f3:{b:'F&B',n:'食品饮料消费',sub:'春节/年货消费端参考',heat:54.3,tr:'dn',delta:-0.8,D:68,C:40,P:55,Pol:50,data:['春节年货市场+17.5%，广州饮料消费+38.5%'],tw:'消费端超预期但与设备投资有3-6月滞后，功能饮品/预制菜是值得跟进的品类方向。',act:'观察 · 功能饮品/预制菜方向',src:['商务部']},
+  f4:{b:'F&B',n:'食品添加剂',sub:'合成生物学/功能成分',heat:61.15,tr:'fl',delta:+0.9,D:70,C:55,P:52,Pol:65,data:['功能性食品成分市场>800亿，天然甜味剂/益生菌高增长'],tw:'F&B板块最强结构性机会：发酵罐+分离纯化设备迎来替代窗口。聚焦益生菌/胶原肽。',act:'跟进 · 发酵罐/纯化设备商',src:['华恒/凯赛年报']},
 };
 
 const SOURCES=[
@@ -997,6 +1006,432 @@ function toggleSrc(){document.getElementById('spanel').classList.toggle('open');
   document.addEventListener('mouseleave',()=>{glow.style.opacity='0';dot.style.opacity='0';});
   document.addEventListener('mouseenter',()=>{glow.style.opacity='1';dot.style.opacity='1';});
 })();
+</script>
+
+<script>
+/* ══════════════════════════════════════════════════════
+   LANGUAGE TOGGLE SYSTEM — index.html
+   ══════════════════════════════════════════════════════ */
+let currentLang = 'zh';
+
+const I18N = {
+  zh: {
+    'nav.overview':   '总览',
+    'nav.macro':      '宏观脉搏',
+    'nav.liquid':     'AI 液冷',
+    'nav.semi':       '半导体 SBU',
+    'nav.mscc':       '质谱·色谱',
+    'nav.pharma':     '制药装备',
+    'nav.food':       '食品饮料',
+    'nav.hydrogen':   '氢能行业',
+    'nav.customers':  '客户监控',
+    'hero.title':     '行业景气度<br><span class="dim">监测报告 2026</span>',
+    'hero.tagline':   '为精密流体控制供应商设计的行业景气度信号系统',
+    'hero.meta':      'HEAT SCORE · D×35% + C×30% + P×20% + Pol×15%<br>6 SECTORS · 20 TRACKS · 最近更新：2026年3月31日 · 下次更新预计：4月末',
+    'ai.badge':       'AI 简评',
+    'ai.note':        '由 Claude 基于当期数据生成 · 仅供参考',
+    'ai.next':        '下一条 ›',
+    'shdr.label':     '板块总览 · 6 Sectors',
+    'shdr.collapse':  '收起 ↑',
+    'zone.industry':  '行业板块 · Industry Sectors',
+    'modal.data':     '核心数据',
+    'modal.findings': '关键结论',
+    'modal.sources':  '数据来源',
+    'modal.action':   '行动',
+    'src.title':      '数据溯源',
+    'src.sub':        'Data Provenance · 8 核心来源',
+    'footer.copy':    '© 2026 PULSE · 行业景气度监测系统',
+    'footer.sources': '国家统计局 / 央行 / 行业协会 / 上市公司公告',
+    'footer.disclaimer': '本报告仅供内部分析参考，不构成投资建议',
+    'footer.updated': '最近更新 2026-03-31',
+  },
+  en: {
+    'nav.overview':   'Overview',
+    'nav.macro':      'Macro Pulse',
+    'nav.liquid':     'AI Liquid Cooling',
+    'nav.semi':       'Semiconductor SBU',
+    'nav.mscc':       'Mass Spec · Chromatography',
+    'nav.pharma':     'Pharma Equipment',
+    'nav.food':       'Food & Beverage',
+    'nav.hydrogen':   'Hydrogen Energy',
+    'nav.customers':  'Customer Monitor',
+    'hero.title':     'Industry Vitality<br><span class="dim">Intelligence Report 2026</span>',
+    'hero.tagline':   'A sector heat-score signal system for precision fluid control suppliers',
+    'hero.meta':      'HEAT SCORE · D×35% + C×30% + P×20% + Pol×15%<br>6 SECTORS · 20 TRACKS · Last updated: 2026-03-31 · Next update: late April',
+    'ai.badge':       'AI Briefing',
+    'ai.note':        'Generated by Claude from current data · For reference only',
+    'ai.next':        'Next ›',
+    'shdr.label':     'Sector Overview · 6 Sectors',
+    'shdr.collapse':  'Collapse ↑',
+    'zone.industry':  'Industry Sectors',
+    'modal.data':     'Key Data',
+    'modal.findings': 'Key Findings',
+    'modal.sources':  'Data Sources',
+    'modal.action':   'Action',
+    'src.title':      'Data Provenance',
+    'src.sub':        'Data Provenance · 8 Core Sources',
+    'footer.copy':    '© 2026 PULSE · Industry Intelligence System',
+    'footer.sources': 'NBS / PBoC / Industry Associations / Listed Company Filings',
+    'footer.disclaimer': 'For internal analysis only. Not investment advice.',
+    'footer.updated': 'Last updated 2026-03-31',
+  }
+};
+
+/* English overrides for sector board data */
+const BM_EN = {
+  Macro: { n:'Macro Context',       sum:'Mar Mfg PMI 50.4% back in expansion! Q1 opening signal confirmed' },
+  EI:    { n:'Energy & Infrastructure', sum:'NPC AI infra policy + US semiconductor 232 tariff dual catalyst' },
+  GI:    { n:'General Industry',    sum:'CATL three-line resonance, strongest order visibility' },
+  'P&B': { n:'Pharma & Biotech',    sum:'Semaglutide 3/20 patent expired! Generic war fully launched' },
+  'L&M': { n:'Lab & Medical',       sum:'Mass spec imports −12.4%, Illumina ban catalyzes substitution' },
+  'F&B': { n:'Food & Beverage',     sum:'Dual FAI slowdown/contraction, fermentation is the only bright spot' },
+};
+
+const T_EN = {
+  m1: { n:'Mfg PMI',       sub:'Manufacturing prosperity index',
+        data:['Mar Mfg PMI 50.4%, back above expansion threshold (50%)','Output 52.6%, new orders 51.8%; SME sentiment improved simultaneously','Caixin Mfg PMI due April 1, expected to remain in expansion'],
+        tw:'PMI returning above 50% confirms that post-CNY disruption has cleared and manufacturing is recovering quickly. Output and new orders both expanding — Q1 off to a strong start. Only manufacturing PMI tracked as the core signal going forward.',
+        act:'Signal confirmed · Track April Caixin Mfg PMI for cross-validation' },
+  m2: { n:'M2 / Social Financing', sub:'Monetary policy composite signal',
+        data:['Jan M2 YoY +9% (2-year high); social financing CNY 7.22 trn (historical YoY high)','NPC confirmed: deficit ratio 4%, Q1 RRR cut 50bp still expected'],
+        tw:'Monetary policy clearly set at NPC, but tariff headwinds introduce external demand uncertainty. Easing focus shifting toward domestic demand stimulus.',
+        act:'Watch · Q1 credit data and March PMI' },
+  m3: { n:'Fixed Asset Investment', sub:'Mfg FAI / Industrial value-added',
+        data:['Jan–Feb 2026 national FAI +1.8% (vs 2025 FY −3.8%, turns positive)','Mfg investment +2.5%; high-tech manufacturing +9.4%'],
+        tw:'FAI turning positive is one of the most important macro improvement signals of the year. Need to watch whether Q1 sustains this.',
+        act:'Watch · FAI turnaround signal, track Q1 continuity' },
+  e1: { n:'AI Liquid Cooling',   sub:'AI chip liquid cooling penetration / market size',
+        data:['TrendForce: 2026 AI chip liquid cooling penetration 47% (raised +7pp); N. America market USD 10bn','US 25% tariff on advanced AI semiconductors (Sec. 232, effective Jan 15)','GB200 NVL72 single-rack power 130kW+, air cooling hitting physical limits'],
+        tw:'US 232 tariff directly intensifies domestic AI compute localization urgency. Liquid cooling as core infrastructure, 47% penetration + policy + tech triple driver keeps this the highest priority on the board.',
+        act:'Immediate follow-up · CDU / cold plate / piping systems' },
+  e2: { n:'Semiconductor Equipment Localization', sub:'Leading equipment makers / front-end market',
+        data:['DRAM Q1 contract price +90–95%; 20+ companies across supply chain issued price-hike letters','WSTS forecast: 2026 global semiconductor +26.3% to USD 975bn'],
+        tw:'Industry-wide price hikes confirm AI demand explosion. Policy score 88 — one of highest on board. Export controls make domestic substitution a must-do.',
+        act:'Ongoing follow-up · Memory / equipment / advanced packaging' },
+  e3: { n:'Green Hydrogen Electrolyzers', sub:'PEM/AEM high-barrier technology track',
+        data:['2025 electrolyzer tenders 6,055 MW (+155.6%), ALK commoditized','PEM+AEM growth +263%; domestic content of key materials <20%'],
+        tw:'Energy Law enshrining hydrogen is a historic signal. Precise entry into PEM membrane / iridium catalyst domestic substitution avoids ALK commoditization.',
+        act:'Position · PEM membranes / iridium catalyst' },
+  e4: { n:'Fuel Cell',          sub:'FCEV heavy trucks / system integration',
+        data:['Jan 2026 sales 70 units (−47% YoY), policy gap period','Five demo city clusters\' national subsidies expired end-2025'],
+        tw:'Jan −47% fully validates 2025 data distortion. Awaiting 15th Five-Year Plan follow-on subsidies. Port / steel-plant closed-loop scenarios are the only high-certainty opportunity.',
+        act:'Hold · Only watch PEM membrane / carbon paper' },
+  g1: { n:'Li-ion Battery Equipment', sub:'CATL capex expansion',
+        data:['Hungary plant in volume production Q1, overseas capacity realized','Jining energy storage base adds >100 GWh','World\'s first mass-produced sodium-ion battery launched Jan 2026'],
+        tw:'CATL three-line resonance supports elevated sector momentum. Leaderd/YingHe equipment order visibility is the strongest on the board.',
+        act:'Steady follow-up · Lead Intelligent / Yinghe Technology' },
+  p1: { n:'Biopharma Overseas',  sub:'Innovative drug License-out / BD',
+        data:['Semaglutide core patent officially expired March 20','11 domestic NDA applications in queue; fastest approval expected Q3'],
+        tw:'Patent expiry is the biggest P&B milestone this month. Peptide CDMO line order explosion is highly certain.',
+        act:'Immediate follow-up · Peptide CDMO / generic production lines' },
+  p2: { n:'Synthetic Biology',   sub:'Pilot plant opening count',
+        data:['East China pilot plant openings +~30% YoY (Feb 2026)','Huaheng / Kaisai / JiabiYou new lines to be accepted in H1 2026'],
+        tw:'Entering critical pilot-to-mass-production transition. Fermentation tank + separation/purification equipment demand shifting from expectation to actual delivery.',
+        act:'Immediate follow-up · Fermentation tanks / separation & purification' },
+  p3: { n:'Biopharma Funding',   sub:'Early-stage financing volume',
+        data:['Jan 2026 biomedical investment CNY 5.77 bn (−11% YoY)','Funding → equipment demand transmission lag: 3–5 years'],
+        tw:'Early-stage funding contraction is a 3–5 year lagging indicator. Do not use for short-term capex judgment.',
+        act:'Observe · Do not use for short-term capex judgment' },
+  p4: { n:'Pharma Equipment Capex', sub:'Pharma manufacturing FAI',
+        data:['Pharma FAI 2025 FY −13.5%, the most direct negative indicator for equipment'],
+        tw:'FAI −13.5% is the most direct negative signal. H2 generic drug line construction is the medium-term turning point.',
+        act:'Hold · Selectively focus on ADC / peptide dedicated lines' },
+  p5: { n:'CDMO',               sub:'Overseas key customer inquiry volume',
+        data:['Early-stage molecule inquiry Index ~108 (+8% MoM), near recent high','Asymchem GLP-1 peptide commercial order confirmed'],
+        tw:'Inquiry +8% is the strongest positive P&B signal this month. TIDES / ADC / CGT three high-value production lines are the precise entry points.',
+        act:'Follow up · TIDES / GLP-1 peptide dedicated lines' },
+  l1: { n:'Mass Spec / Chromatography', sub:'High-end analytical instrument domestic substitution',
+        data:['Mass spec import customs volume −12.4% YoY, strongest domestic substitution signal','2026 domestic mass spec market expected to exceed CNY 23 bn'],
+        tw:'Import −12.4% is the strongest substitution confirmation signal. Policy score 78. Hexin / Puyuan are highest-priority new customer targets.',
+        act:'Follow up · Hexin / Puyuan customer outreach' },
+  l2: { n:'Gene Sequencing',     sub:'Sequencing service demand',
+        data:['Ministry of Commerce added Illumina to "unreliable entity list"','BGI Genomics CoolMPS benefits; tertiary hospital sequencer replacement wave starting'],
+        tw:'Illumina ban is the strongest catalyst. Policy score 82. BGI Genomics / Genalyte are the direct beneficiaries.',
+        act:'Follow up · Sequencer replacement + consumables dual track' },
+  l3: { n:'Medical IVD',         sub:'In-vitro diagnostics',
+        data:['2025 China IVD market size >CNY 140 bn','Chemiluminescence domestic content <30%; 28th-province centralized procurement cut prices 50–70%'],
+        tw:'Price score 38 — lowest on the board. Centralized procurement 50–70% cuts are the strongest negative signal.',
+        act:'Selective · Grassroots POCT / chemiluminescence domestic' },
+  f1: { n:'Food Manufacturing FAI', sub:'Equipment-side capex signal',
+        data:['Food manufacturing FAI 2025 FY +2.2% (vs 2024 +22.9%, down 20pp+)'],
+        tw:'FAI from +22.9% to +2.2% — new-build logic fully terminated. Existing-line replacement is the entry point.',
+        act:'Replacement focus · Ready-to-cook / bakery production lines' },
+  f2: { n:'Beverages & Spirits FAI', sub:'Equipment-side capex signal',
+        data:['Spirits & beverages manufacturing FAI 2025 FY −0.2% (vs 2024 +18%, turns negative)'],
+        tw:'Strongest F&B negative signal: FAI goes negative. Traditional spirits/beverages capacity expansion logic fully terminated.',
+        act:'Pause · Avoid spirits / carbonated drink new-build lines' },
+  f3: { n:'F&B Consumption',     sub:'CNY / food-gift consumption reference',
+        data:['CNY gift market +17.5%; Guangzhou beverage consumption +38.5%'],
+        tw:'Consumer side beat expectations but equipment investment lags 3–6 months. Functional beverages / ready-to-cook are the worth-tracking category directions.',
+        act:'Observe · Functional beverages / ready-to-cook direction' },
+  f4: { n:'Food Additives',      sub:'Synthetic biology / functional ingredients',
+        data:['Functional food ingredient market >CNY 80 bn; natural sweeteners / probiotics high growth'],
+        tw:'Strongest structural opportunity in F&B: fermentation tanks + separation/purification equipment entering replacement window. Focus on probiotics / collagen peptides.',
+        act:'Follow up · Fermentation tank / purification equipment suppliers' },
+};
+
+const KPI_EN = [
+  {v:'86.1',l:'Peak Heat',d:'↑ Liquid cooling + tariff dual catalyst',c:'exp'},
+  {v:'Expired',l:'Semaglutide',d:'3/20 Generic war launched',c:'dn'},
+  {v:'10%',l:'US New Tariff',d:'Sec. 232 hearing Apr',c:'dn'},
+  {v:'50.4%',l:'Mar Mfg PMI',d:'↑ Back in expansion',c:'up'},
+];
+
+const SOURCES_EN = [
+  {n:'National Bureau of Statistics',d:'Monthly PMI, FAI by sector, industrial value-added',tags:['Macro','F&B','P&B']},
+  {n:'People\'s Bank of China',d:'M2, social financing, credit data, monthly release',tags:['Macro']},
+  {n:'NAURA / CATL Filings',d:'Quarterly/annual financial data and capacity announcements',tags:['EI','GI']},
+  {n:'Caixin / S&P Global',d:'Caixin Manufacturing PMI, focused on SME sentiment',tags:['Macro']},
+  {n:'TrendForce / Industry Research',d:'Liquid cooling penetration, semiconductor market size, DRAM price cycle',tags:['EI']},
+  {n:'WSTS',d:'World Semiconductor Trade Statistics, annual/quarterly; 2026 forecast +26.3%',tags:['EI']},
+  {n:'PharmaCube / Insight Health',d:'Domestic innovative drug BD transaction data, biopharma early-stage financing',tags:['P&B']},
+  {n:'MOFCOM / Customs',d:'Unreliable entity list, import customs volume data',tags:['L&M','EI']},
+];
+
+function applyLang(lang) {
+  const dict = I18N[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+
+  // Update lang toggle button label
+  document.getElementById('lang-toggle').textContent = lang === 'zh' ? 'EN' : '中';
+
+  // Update KPIs
+  const kpiContainer = document.getElementById('hkpis');
+  const kpis = lang === 'en' ? KPI_EN : [
+    {v:'86.1',l:'最高 Heat',d:'↑ 液冷+关税双催化',c:'exp'},
+    {v:'到期',l:'司美格鲁肽',d:'3/20 仿制战启动',c:'dn'},
+    {v:'10%',l:'美国新关税',d:'122条 4月听证',c:'dn'},
+    {v:'50.4%',l:'3月制造业PMI',d:'↑ 重返扩张区间',c:'up'},
+  ];
+  kpiContainer.innerHTML = kpis.map(k =>
+    `<div class="kpi"><span class="kpi-v ${k.c}">${k.v}</span><span class="kpi-l">${k.l}</span><span class="kpi-d ${k.c}">${k.d}</span></div>`
+  ).join('');
+
+  // Update sources panel
+  const sources = lang === 'en' ? SOURCES_EN : SOURCES;
+  document.getElementById('spitems').innerHTML = sources.map(s =>
+    `<div class="spit"><div class="spn">${s.n}</div><div class="spd">${s.d}</div><div class="sptags">${s.tags.map(t=>`<span class="sptag">${t}</span>`).join('')}</div></div>`
+  ).join('');
+
+  // Re-render sector rows and macro zone
+  reRenderAll(lang);
+}
+
+function toggleLang() {
+  currentLang = currentLang === 'zh' ? 'en' : 'zh';
+  applyLang(currentLang);
+}
+
+/* ── LANGUAGE-AWARE RENDER FUNCTIONS ── */
+function getLangBM(b) {
+  if (currentLang === 'en' && BM_EN[b]) {
+    return Object.assign({}, BM[b], BM_EN[b]);
+  }
+  return BM[b];
+}
+function getLangT(id) {
+  if (currentLang === 'en' && T_EN[id]) {
+    return Object.assign({}, T[id], T_EN[id]);
+  }
+  return T[id];
+}
+
+function buildTrackHTML_lang(b) {
+  const m = getLangBM(b);
+  const cv = cc(b);
+  const tracks = m.tracks.map(id => getLangT(id)).filter(Boolean);
+  const deepLink = currentLang === 'en' ? 'Deep Analysis →' : '深度分析 →';
+  return `<div class="sr-tracks-inner">
+    <div class="tp-hdr">
+      <span class="tp-badge" style="background:color-mix(in srgb,${cv} 10%,transparent);color:${cv};border:1px solid color-mix(in srgb,${cv} 25%,transparent)">${b} · ${m.n}</span>
+      <a class="tp-link" href="${m.href}">${deepLink}</a>
+    </div>
+    <div class="tp-title">${m.sum}</div>
+    <div class="trows">${m.tracks.map(id => {
+      const t = getLangT(id);
+      return `
+      <div class="trow" onclick="openModal('${id}')">
+        <div>
+        <div class="tr-name-row">
+          <div class="tr-n">${t.n}</div>
+          <div class="tr-s">${t.sub}</div>
+        </div>
+        <div class="tr-bw">
+          <div class="tr-b50"></div>
+          <div class="tr-b" data-w="${t.heat}" style="width:${t.heat}%;background:${cv};opacity:.6;transition:width .6s cubic-bezier(.16,1,.3,1)"></div>
+        </div>
+        <div class="tr-scs">
+          <span class="tr-sc ${SC(t.D)}">D<b>${t.D}</b></span>
+          <span class="tr-sc ${SC(t.C)}">C<b>${t.C}</b></span>
+          <span class="tr-sc ${SC(t.P)}">P<b>${t.P}</b></span>
+          <span class="tr-sc ${SC(t.Pol)}">Pol<b>${t.Pol}</b></span>
+        </div>
+        </div>
+        <div class="tr-hv ${HC(t.heat)}">${t.heat}${t.delta!==undefined?`<span class="tr-delta ${t.delta>=0?'up':'dn'}">${t.delta>=0?'+':''}${t.delta}</span>`:''}</div>
+        <div class="tr-tr">${trendEl(t.tr)}</div>
+        <div class="tr-src-ico" title="${(t.src||[]).join(' / ')}" onclick="event.stopPropagation()">ⓘ<span class="tr-src-tip">${(t.src||[]).join(' · ')}</span></div>
+      </div>`;
+    }).join('')}
+    </div>
+  </div>`;
+}
+
+function buildCard_lang(b, isMacro=false) {
+  const m = getLangBM(b);
+  const cv = cc(b);
+  const tn = m.tracks.map(id => getLangT(id)?.n||'').filter(Boolean);
+  const mx = Math.max(...m.sparks);
+  const sp = m.sparks.map((v,i) => {
+    const isPk = v===mx;
+    const isHot = i===m.hotIdx && m.heat>=70;
+    return `<div class="bbar${isPk?' pk':''}${isHot?' breathe':''}" style="height:${Math.round(v/mx*100)}%;--c:${cv}"></div>`;
+  }).join('');
+  const sumIcon = m.sumAlert||'›';
+  const sumHTML = `<div class="bsum"><span class="bsum-icon">${sumIcon}</span><span class="bsum-text">${m.sum}</span></div>`;
+  const tracksLabel = currentLang === 'en' ? 'tracks' : 'tracks';
+  if (isMacro) {
+    return `<div class="bcard-bar"></div>
+      <div class="bcard-body">
+        <div style="display:flex;align-items:center;gap:1rem;flex-shrink:0">
+          <span class="bbadge">${b}</span>
+        </div>
+        <div class="bsum-wrap bcard-left">
+          <div class="bname">${m.n}</div>
+          ${sumHTML}
+          <div class="btags">${tn.map(n=>`<span class="btag">${n}</span>`).join('')}</div>
+          <div class="bfoot"><span class="bcount">${m.tracks.length} ${tracksLabel}</span><span class="bchev">›</span></div>
+        </div>
+        <div class="bcard-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:.5rem;flex-shrink:0">
+          <div style="display:flex;align-items:baseline;gap:.5rem">
+            <div class="bheat ${HC(m.heat)}">${m.heat}</div>
+            ${trendEl(m.tr,true)}
+          </div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <div>${makeRadar(b,m.D,m.C,m.P,m.Pol)}</div>
+            <div class="radar-labels">${[{l:'D',v:m.D},{l:'C',v:m.C},{l:'P',v:m.P},{l:'Pol',v:m.Pol}].map(s=>`<div class="radar-lbl">${s.l} <span>${s.v}</span></div>`).join('')}</div>
+          </div>
+        </div>
+      </div>`;
+  }
+  return `<div class="bcard-bar"></div>
+    <div class="bcard-body">
+      <div class="bcard-left">
+        <div class="bcard-top">
+          <span class="bbadge">${b}</span>
+          <div class="bheat-wrap">
+            <div class="bheat ${HC(m.heat)}">${m.heat}</div>
+            ${trendEl(m.tr)}
+          </div>
+        </div>
+        <div class="bname">${m.n}</div>
+        ${sumHTML}
+        <div class="bspark">${sp}</div>
+        <div class="btags">${tn.slice(0,3).map(n=>`<span class="btag">${n}</span>`).join('')}${tn.length>3?`<span class="btag">+${tn.length-3}</span>`:''}</div>
+        <div class="bfoot"><span class="bcount">${m.tracks.length} ${tracksLabel}</span><span class="bchev">›</span></div>
+      </div>
+      <div class="bcard-right">${radarScoreRow(b,m.D,m.C,m.P,m.Pol)}</div>
+    </div>`;
+}
+
+function reRenderAll(lang) {
+  // Re-render MACRO zone
+  const macroZone = document.getElementById('macro-zone');
+  macroZone.innerHTML = '';
+  (()=>{
+    const b='Macro', m=getLangBM(b), cv=cc(b);
+    const deepLabel = lang === 'en' ? 'Deep Analysis' : '深度分析';
+    const entryCard=document.createElement('a');
+    entryCard.href='macro.html';
+    entryCard.className='macro-entry rise';
+    entryCard.innerHTML=`
+      <div class="bcard-bar" style="transform:scaleX(1);opacity:.5"></div>
+      <div class="macro-entry-inner">
+        <div class="macro-entry-left">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:.7rem">
+            <span class="bbadge" style="--c:${cv}">MACRO</span>
+            <span style="font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.14em;color:var(--t3);text-transform:uppercase">GLOBAL CONTEXT · ${lang==='en'?'MACRO BACKDROP':'宏观背景'}</span>
+          </div>
+          <div class="bname">${m.n}</div>
+          <div class="bsum" style="--c:${cv}">
+            <span class="bsum-icon">${m.sumAlert||'⬆'}</span>
+            <span class="bsum-text">${m.sum}</span>
+          </div>
+          <div class="btags">${m.tracks.map(id=>getLangT(id)?.n||'').filter(Boolean).map(n=>`<span class="btag">${n}</span>`).join('')}</div>
+        </div>
+        <div class="macro-entry-right">
+          <div class="macro-entry-score">
+            <div class="bheat ${HC(m.heat)}" style="font-size:3rem">${m.heat}</div>
+            <div style="font-size:1.2rem">${trendEl(m.tr,true)}</div>
+          </div>
+          <div class="macro-entry-cta">
+            <span>${deepLabel}</span>
+            <span class="macro-entry-arrow">→</span>
+          </div>
+        </div>
+      </div>`;
+    macroZone.appendChild(entryCard);
+  })();
+
+  // Re-render sector rows
+  const sectorRows = document.getElementById('sector-rows');
+  sectorRows.innerHTML = '';
+  ['EI','GI','P&B','L&M','F&B'].forEach((b,bi)=>{
+    const cv=cc(b);
+    const row=document.createElement('div');
+    row.className='sector-row rise';
+    row.style.animationDelay=`${(bi+1)*55}ms`;
+    const cardWrap=document.createElement('div');
+    cardWrap.className='sr-card';
+    const card=document.createElement('button');
+    card.className='bcard';card.dataset.b=b;
+    card.style.cssText=`--c:${cv}`;
+    card.innerHTML=buildCard_lang(b,false);
+    cardWrap.appendChild(card);
+    const tracksWrap=document.createElement('div');
+    tracksWrap.className='sr-tracks';
+    tracksWrap.innerHTML=buildTrackHTML_lang(b);
+    row.appendChild(cardWrap);
+    row.appendChild(tracksWrap);
+    sectorRows.appendChild(row);
+    card.onclick=()=>openModal_board(b);
+  });
+
+  // Re-render AI insights (keep language-neutral for now; insights are in Chinese data)
+  // Optionally re-render in English if desired
+  showInsight(insIdx);
+}
+
+// Patch openModal to support current language
+const _origOpenModal = openModal;
+window.openModal = function(id) {
+  const orig = T[id]; if(!orig) return;
+  const t = getLangT(id);
+  const cv=cc(t.b),hc=HC(t.heat);
+  document.getElementById('macc').style.background=cv;
+  document.getElementById('mbg').textContent=t.b;
+  document.getElementById('mbg').style.cssText=`background:color-mix(in srgb,${cv} 10%,transparent);color:${cv};border:1px solid color-mix(in srgb,${cv} 25%,transparent)`;
+  document.getElementById('mtt').textContent=t.n;
+  document.getElementById('msb').textContent=t.sub;
+  document.getElementById('mht').textContent=t.heat;
+  document.getElementById('mht').className=`m-ht ${hc}`;
+  document.getElementById('mtr').innerHTML=trendEl(t.tr,true);
+  document.getElementById('mscs').innerHTML=[{l:'Demand',v:t.D,w:'35%'},{l:'Capex',v:t.C,w:'30%'},{l:'Price',v:t.P,w:'20%'},{l:'Policy',v:t.Pol,w:'15%'}].map(s=>{
+    const c=s.v>=70?'var(--up)':s.v>=55?'var(--fl)':'var(--dn)';
+    return `<div class="msc"><span class="msc-l">${s.l}</span><span class="msc-v" style="color:${c}">${s.v}</span><span class="msc-w">× ${s.w}</span><div class="msc-b"><div class="msc-f" style="width:${s.v}%;background:${c}"></div></div></div>`;
+  }).join('');
+  document.getElementById('mdl').innerHTML=t.data.map((d,i)=>{
+    const chip=t.src&&t.src[i%t.src.length]?`<span class="src-inline">${t.src[i%t.src.length]}</span>`:'';
+    return `<div class="mdi">${d}${chip}</div>`;
+  }).join('');
+  document.getElementById('mtw').textContent=t.tw;
+  document.getElementById('mact').textContent=t.act;
+  document.getElementById('msrcs').innerHTML=(t.src||[]).map(s=>`<span class="mstag">${s}</span>`).join('');
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+};
 </script>
 </body>
 </html>
