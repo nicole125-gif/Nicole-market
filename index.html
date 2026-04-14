@@ -592,7 +592,7 @@ body:has(a:hover) #cursor-dot,body:has(button:hover) #cursor-dot,body:has([oncli
   <div class="footer-right">
     <span class="footer-disclaimer" data-i18n="footer.disclaimer">本报告仅供内部分析参考，不构成投资建议</span>
     <span class="footer-divider">·</span>
-    <span data-i18n="footer.updated">最近更新 2026-04-13</span>
+    <span data-i18n="footer.updated">最近更新 2026-04-14</span>
   </div>
 </footer>
 
@@ -603,27 +603,27 @@ const cc=b=>`var(${CV[b]})`;
 const HEAT_RANK={};
 
 const BM={
-  Macro:{n:'宏观背景',    heat:50.0,tr:'dn', D:50,C:44,P:56,Pol:62,
+  Macro:{n:'宏观背景',    heat:50.0,tr:'fl', D:50,C:44,P:56,Pol:62,
     sum:'3月制造业PMI 50.4%重返扩张！Q1开局信号确认',
     sumAlert:'🟢',href:'macro.html',tracks:['m1','m2','m3'],sparks:[48,50,53],hotIdx:2,
     insight:'<strong>宏观背景</strong> — 3月制造业PMI 50.4%，重返扩张区间；生产52.6%、新订单51.8%，中小企业同步改善。FAI+1.8%转正叠加PMI确认，Q1开局信号转强。<span class="ai-src" data-src="国家统计局 · 2026-03-31">NSB</span>'},
-  EI:{n:'能源·基础设施',  heat:50.0,tr:'dn', D:82,C:80,P:68,Pol:86,
+  EI:{n:'能源·基础设施',  heat:50.0,tr:'fl', D:82,C:80,P:68,Pol:86,
     sum:'两会AI基建落地+美半导体232关税双重催化',
     sumAlert:'🔥',href:'hydrogen.html',tracks:['e1','e2','e3','e4'],sparks:[64,72,74,44],hotIdx:2,
     insight:'<strong>液冷数据中心</strong> — 渗透率被TrendForce上调至47%，美国232关税倒逼国产化，液冷Heat创全周期新高 <strong style="color:var(--hot)">86.1</strong>，D/C双维度超90分。<span class="ai-src" data-src="TrendForce 2026Q1">TF</span>'},
-  GI:{n:'通用工业',       heat:50.0,tr:'dn', D:80,C:82,P:62,Pol:72,
+  GI:{n:'通用工业',       heat:50.0,tr:'fl', D:80,C:82,P:62,Pol:72,
     sum:'CATL三线共振，订单确定性最强',
     sumAlert:'⚡',href:'semiconductor.html',tracks:['g1'],sparks:[70,74,76],hotIdx:2,
     insight:'<strong>通用工业</strong> — CATL匈牙利Q1量产+济宁储能+钠离子三线共振，Capex 82分全板块最高，先导/赢合订单可见度极高。<span class="ai-src" data-src="宁德时代 2026Q1公告">CATL</span>'},
-  'P&B':{n:'制药·生物技术',heat:50.0,tr:'dn', D:72,C:62,P:52,Pol:72,
+  'P&B':{n:'制药·生物技术',heat:50.0,tr:'fl', D:72,C:62,P:52,Pol:72,
     sum:'司美格鲁肽3/20已到期！仿制战全面启动',
     sumAlert:'⚠',href:'pharma.html',tracks:['p1','p2','p3','p4','p5'],sparks:[58,62,63,62,70],hotIdx:4,
     insight:'<strong>制药·生物技术</strong> — 司美格鲁肽专利3月20日到期，多肽CDMO询单环比+8%；Demand 72分，进入兑现窗口期。<span class="ai-src" data-src="摩熵医药 / 凯莱英公告">摩熵</span>'},
-  'L&M':{n:'实验室·医疗',  heat:50.0,tr:'dn', D:70,C:62,P:55,Pol:80,
+  'L&M':{n:'实验室·医疗',  heat:50.0,tr:'fl', D:70,C:62,P:55,Pol:80,
     sum:'质谱进口-12.4%，因美纳禁令催化',
     sumAlert:'⚠',href:'mscc.html',tracks:['l1','l2','l3'],sparks:[58,62,62],hotIdx:1,
     insight:'<strong>实验室·医疗</strong> — 因美纳列入不可靠实体清单，质谱进口骤降12.4%，Policy 80分，是L&M国产替代信号最强的时间节点。<span class="ai-src" data-src="商务部公告 / 海关总署">商务部</span>'},
-  'F&B':{n:'食品·饮料',    heat:50.0,tr:'dn', D:66,C:44,P:52,Pol:52,
+  'F&B':{n:'食品·饮料',    heat:50.0,tr:'fl', D:66,C:44,P:52,Pol:52,
     sum:'双FAI降速/转负，发酵唯一亮点',
     sumAlert:'↓',href:'food.html',tracks:['f1','f2','f3','f4'],sparks:[60,56,55,55],hotIdx:3,
     insight:'<strong>食品·饮料</strong> — 酒饮料FAI转负-0.2%，Capex 44分全板块最低；唯一亮点：合成生物发酵设备进入交付期，功能成分>800亿。<span class="ai-src" data-src="国家统计局 FAI 2025全年">NSB</span>'},
@@ -631,26 +631,26 @@ const BM={
 const BO=['Macro','EI','GI','P&B','L&M','F&B'];
 
 const T={
-  m1:{b:'Macro',n:'制造业 PMI',sub:'制造业景气指数',heat:50.0,tr:'dn',delta:+1.4,D:50,C:50,P:50,Pol:50,data:['数据获取异常'],tw:'请人工核查',act:'暂缓决策',src:['国家统计局 2026-03-31','财新/标普全球']},
-  m2:{b:'Macro',n:'M2 / 社融',sub:'货币政策综合信号',heat:50.0,tr:'dn',delta:-16.2,D:50,C:50,P:50,Pol:50,data:['数据获取异常'],tw:'请人工核查',act:'暂缓决策',src:['中国人民银行']},
-  m3:{b:'Macro',n:'固定资产投资',sub:'制造业FAI/规上增加值',heat:50.0,tr:'dn',delta:+2.1,D:50,C:50,P:50,Pol:50,data:['数据获取异常'],tw:'请人工核查',act:'暂缓决策',src:['国家统计局']},
-  e1:{b:'EI',n:'液冷数据中心',sub:'AI液冷渗透率/市场规模',heat:50.0,tr:'dn',delta:+4.2,D:50,C:50,P:50,Pol:50,data:['数据获取异常'],tw:'请人工核查',act:'暂缓决策',src:['TrendForce','国信证券']},
-  e2:{b:'EI',n:'半导体设备国产化',sub:'龙头设备商/前道市场',heat:50.0,tr:'dn',delta:+3.5,D:50,C:50,P:50,Pol:50,data:['数据获取异常'],tw:'请人工核查',act:'暂缓决策',src:['WSTS','北方华创财报']},
-  e3:{b:'EI',n:'绿氢电解槽',sub:'PEM/AEM高壁垒路线',heat:50.0,tr:'up',delta:+1.8,D:50,C:50,P:50,Pol:50,data:['数据获取异常'],tw:'请人工核查',act:'暂缓决策',src:['香橙会氢能数据库']},
-  e4:{b:'EI',n:'燃料电池',sub:'FCEV重卡/系统集成',heat:50.0,tr:'dn',delta:-16.0,D:50,C:50,P:50,Pol:50,data:['数据获取异常'],tw:'请人工核查',act:'暂缓决策',src:['中汽协']},
-  g1:{b:'GI',n:'锂电设备',sub:'宁德时代产能扩张',heat:50.0,tr:'dn',delta:-34.0,D:50,C:50,P:50,Pol:50,data:['数据获取异常'],tw:'请人工核查',act:'暂缓决策',src:['宁德时代公告']},
-  p1:{b:'P&B',n:'生物药出海',sub:'创新药License-out/BD',heat:50.0,tr:'dn',delta:+2.8,D:50,C:50,P:50,Pol:50,data:['数据获取异常'],tw:'请人工核查',act:'暂缓决策',src:['摩熵医药']},
-  p2:{b:'P&B',n:'合成生物学',sub:'中试车间开工数',heat:50.0,tr:'dn',delta:+1.5,D:50,C:50,P:50,Pol:50,data:['数据获取异常'],tw:'请人工核查',act:'暂缓决策',src:['华恒/凯赛年报']},
-  p3:{b:'P&B',n:'生物药融资',sub:'早期融资额',heat:50.0,tr:'dn',delta:-32.8,D:50,C:50,P:50,Pol:50,data:['数据获取异常'],tw:'请人工核查',act:'暂缓决策',src:['动脉网']},
-  p4:{b:'P&B',n:'制药装备Capex',sub:'医药制造业FAI',heat:50.0,tr:'dn',delta:-14.5,D:50,C:50,P:50,Pol:50,data:['数据获取异常'],tw:'请人工核查',act:'暂缓决策',src:['国家统计局FAI']},
-  p5:{b:'P&B',n:'CDMO',sub:'海外大客户询单量',heat:50.0,tr:'dn',delta:+2.0,D:50,C:50,P:50,Pol:50,data:['数据获取异常'],tw:'请人工核查',act:'暂缓决策',src:['凯莱英公告']},
-  l1:{b:'L&M',n:'质谱/色谱仪器',sub:'高端分析仪器国产替代',heat:50.0,tr:'dn',delta:+0.5,D:50,C:50,P:50,Pol:50,data:['质谱仪进口报关量-12.4% YoY，最强国产替代信号','2026年国内质谱市场预计突破230亿元'],tw:'请人工核查',act:'暂缓决策',src:['海关总署']},
-  l2:{b:'L&M',n:'基因测序',sub:'测序服务需求',heat:50.0,tr:'dn',delta:+1.2,D:50,C:50,P:50,Pol:50,data:['商务部将因美纳列入"不可靠实体清单"','华大智造CoolMPS受益，三甲医院测序仪替换潮启动'],tw:'请人工核查',act:'暂缓决策',src:['商务部公告']},
-  l3:{b:'L&M',n:'医疗IVD',sub:'IVD体外诊断',heat:50.0,tr:'dn',delta:-30.5,D:50,C:50,P:50,Pol:50,data:['2025年中国IVD市场规模超1400亿元','化学发光国产化率<30%，第28省集采降价50-70%'],tw:'请人工核查',act:'暂缓决策',src:['智研咨询']},
-  f1:{b:'F&B',n:'食品制造FAI',sub:'设备端Capex信号',heat:50.0,tr:'fl',delta:0.5,D:50,C:50,P:50,Pol:50,data:['数据获取异常'],tw:'请人工核查',act:'暂缓决策',src:['国家统计局FAI']},
-  f2:{b:'F&B',n:'酒/饮料制造FAI',sub:'设备端Capex信号',heat:50.0,tr:'dn',delta:-14.2,D:50,C:50,P:50,Pol:50,data:['数据获取异常'],tw:'请人工核查',act:'暂缓决策',src:['国家统计局FAI']},
-  f3:{b:'F&B',n:'食品饮料消费',sub:'春节/年货消费端参考',heat:50.0,tr:'dn',delta:-28.8,D:50,C:50,P:50,Pol:50,data:['数据获取异常'],tw:'请人工核查',act:'暂缓决策',src:['商务部']},
-  f4:{b:'F&B',n:'食品添加剂',sub:'合成生物学/功能成分',heat:50.0,tr:'dn',delta:+0.9,D:50,C:50,P:50,Pol:50,data:['数据获取异常'],tw:'请人工核查',act:'暂缓决策',src:['华恒/凯赛年报']},
+  m1:{b:'Macro',n:'制造业 PMI',sub:'制造业景气指数',heat:50.0,tr:'fl',delta:+1.4,D:50,C:50,P:50,Pol:50,data:['本期无有效新闻数据'],tw:'数据不足，参考上期',act:'暂缓决策',src:['国家统计局 2026-03-31','财新/标普全球']},
+  m2:{b:'Macro',n:'M2 / 社融',sub:'货币政策综合信号',heat:50.0,tr:'fl',delta:0.0,D:50,C:50,P:50,Pol:50,data:['本期无有效新闻数据'],tw:'数据不足，参考上期',act:'暂缓决策',src:['中国人民银行']},
+  m3:{b:'Macro',n:'固定资产投资',sub:'制造业FAI/规上增加值',heat:50.0,tr:'fl',delta:+2.1,D:50,C:50,P:50,Pol:50,data:['本期无有效新闻数据'],tw:'数据不足，参考上期',act:'暂缓决策',src:['国家统计局']},
+  e1:{b:'EI',n:'液冷数据中心',sub:'AI液冷渗透率/市场规模',heat:50.0,tr:'fl',delta:+4.2,D:50,C:50,P:50,Pol:50,data:['本期无有效新闻数据'],tw:'数据不足，参考上期',act:'暂缓决策',src:['TrendForce','国信证券']},
+  e2:{b:'EI',n:'半导体设备国产化',sub:'龙头设备商/前道市场',heat:50.0,tr:'fl',delta:+3.5,D:50,C:50,P:50,Pol:50,data:['本期无有效新闻数据'],tw:'数据不足，参考上期',act:'暂缓决策',src:['WSTS','北方华创财报']},
+  e3:{b:'EI',n:'绿氢电解槽',sub:'PEM/AEM高壁垒路线',heat:50.0,tr:'fl',delta:+1.8,D:50,C:50,P:50,Pol:50,data:['本期无有效新闻数据'],tw:'数据不足，参考上期',act:'暂缓决策',src:['香橙会氢能数据库']},
+  e4:{b:'EI',n:'燃料电池',sub:'FCEV重卡/系统集成',heat:50.0,tr:'fl',delta:0.0,D:50,C:50,P:50,Pol:50,data:['本期无有效新闻数据'],tw:'数据不足，参考上期',act:'暂缓决策',src:['中汽协']},
+  g1:{b:'GI',n:'锂电设备',sub:'宁德时代产能扩张',heat:50.0,tr:'fl',delta:0.0,D:50,C:50,P:50,Pol:50,data:['本期无有效新闻数据'],tw:'数据不足，参考上期',act:'暂缓决策',src:['宁德时代公告']},
+  p1:{b:'P&B',n:'生物药出海',sub:'创新药License-out/BD',heat:50.0,tr:'fl',delta:+2.8,D:50,C:50,P:50,Pol:50,data:['本期无有效新闻数据'],tw:'数据不足，参考上期',act:'暂缓决策',src:['摩熵医药']},
+  p2:{b:'P&B',n:'合成生物学',sub:'中试车间开工数',heat:50.0,tr:'fl',delta:+1.5,D:50,C:50,P:50,Pol:50,data:['本期无有效新闻数据'],tw:'数据不足，参考上期',act:'暂缓决策',src:['华恒/凯赛年报']},
+  p3:{b:'P&B',n:'生物药融资',sub:'早期融资额',heat:50.0,tr:'fl',delta:0.0,D:50,C:50,P:50,Pol:50,data:['本期无有效新闻数据'],tw:'数据不足，参考上期',act:'暂缓决策',src:['动脉网']},
+  p4:{b:'P&B',n:'制药装备Capex',sub:'医药制造业FAI',heat:50.0,tr:'fl',delta:0.0,D:50,C:50,P:50,Pol:50,data:['本期无有效新闻数据'],tw:'数据不足，参考上期',act:'暂缓决策',src:['国家统计局FAI']},
+  p5:{b:'P&B',n:'CDMO',sub:'海外大客户询单量',heat:50.0,tr:'fl',delta:+2.0,D:50,C:50,P:50,Pol:50,data:['本期无有效新闻数据'],tw:'数据不足，参考上期',act:'暂缓决策',src:['凯莱英公告']},
+  l1:{b:'L&M',n:'质谱/色谱仪器',sub:'高端分析仪器国产替代',heat:50.0,tr:'fl',delta:+0.5,D:50,C:50,P:50,Pol:50,data:['质谱仪进口报关量-12.4% YoY，最强国产替代信号','2026年国内质谱市场预计突破230亿元'],tw:'数据不足，参考上期',act:'暂缓决策',src:['海关总署']},
+  l2:{b:'L&M',n:'基因测序',sub:'测序服务需求',heat:50.0,tr:'fl',delta:+1.2,D:50,C:50,P:50,Pol:50,data:['商务部将因美纳列入"不可靠实体清单"','华大智造CoolMPS受益，三甲医院测序仪替换潮启动'],tw:'数据不足，参考上期',act:'暂缓决策',src:['商务部公告']},
+  l3:{b:'L&M',n:'医疗IVD',sub:'IVD体外诊断',heat:50.0,tr:'fl',delta:0.0,D:50,C:50,P:50,Pol:50,data:['2025年中国IVD市场规模超1400亿元','化学发光国产化率<30%，第28省集采降价50-70%'],tw:'数据不足，参考上期',act:'暂缓决策',src:['智研咨询']},
+  f1:{b:'F&B',n:'食品制造FAI',sub:'设备端Capex信号',heat:50.0,tr:'fl',delta:0.0,D:50,C:50,P:50,Pol:50,data:['本期无有效新闻数据'],tw:'数据不足，参考上期',act:'暂缓决策',src:['国家统计局FAI']},
+  f2:{b:'F&B',n:'酒/饮料制造FAI',sub:'设备端Capex信号',heat:50.0,tr:'fl',delta:0.0,D:50,C:50,P:50,Pol:50,data:['本期无有效新闻数据'],tw:'数据不足，参考上期',act:'暂缓决策',src:['国家统计局FAI']},
+  f3:{b:'F&B',n:'食品饮料消费',sub:'春节/年货消费端参考',heat:50.0,tr:'fl',delta:0.0,D:50,C:50,P:50,Pol:50,data:['本期无有效新闻数据'],tw:'数据不足，参考上期',act:'暂缓决策',src:['商务部']},
+  f4:{b:'F&B',n:'食品添加剂',sub:'合成生物学/功能成分',heat:50.0,tr:'fl',delta:+0.9,D:50,C:50,P:50,Pol:50,data:['本期无有效新闻数据'],tw:'数据不足，参考上期',act:'暂缓决策',src:['华恒/凯赛年报']},
 };
 
 const SOURCES=[
@@ -1043,7 +1043,7 @@ const I18N = {
     'footer.copy':    '© 2026 PULSE · 行业景气度监测系统',
     'footer.sources': '国家统计局 / 央行 / 行业协会 / 上市公司公告',
     'footer.disclaimer': '本报告仅供内部分析参考，不构成投资建议',
-    'footer.updated': '最近更新 2026-04-13',
+    'footer.updated': '最近更新 2026-04-14',
   },
   en: {
     'nav.overview':   'Overview',
