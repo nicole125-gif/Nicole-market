@@ -357,7 +357,7 @@ def score_track(client, track, news_items):
             system="你是行业景气度分析机器人，严格按格式输出4行内容，不添加任何额外文字。",
             messages=[{"role": "user", "content": prompt}]
         )
-        raw = msg.content[0].text.strip()
+        raw = next((b.text for b in msg.content if hasattr(b, "text") and b.type == "text"), "").strip()
         print(f"  [Claude] {raw[:80]}")
 
         lines = raw.strip().split("\n")
