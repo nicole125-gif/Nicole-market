@@ -3,9 +3,39 @@
   "vertical_name": "医药设备",
   "vertical_en": "Pharma Equipment",
   "color": "#ff8c42",
-  "updated_at": "2026-04-13T07:53:53.311638+00:00",
+  "updated_at": "2026-04-14T03:25:17.141979+00:00",
   "item_count": 5,
   "items": [
+    {
+      "id": "b3d3350f17",
+      "title": "AbbVie bets on Chinese biopharma’s pain pipeline in $745m bid",
+      "url": "https://www.pharmaceutical-technology.com/news/abbvie-haisco-745m-pain-drug-licensing-deal/",
+      "summary": "AbbVie's deal with Haisco comes as many pharma companies look to restock their pipelines amid looming global patent expiries.",
+      "source": "Pharmaceutical Technology",
+      "lang": "en",
+      "pub_date": "2026-04-13T11:07:32+00:00",
+      "pub_ts": 1776078452
+    },
+    {
+      "id": "99abb27fe8",
+      "title": "Telix and Regeneron sign $4.3bn deal to co-develop radiopharmaceutical therapies",
+      "url": "https://www.pharmaceutical-technology.com/news/telix-regeneron-radiopharmaceutical-therapies/",
+      "summary": "Telix and Regeneron have entered a partnership for the development and commercialisation of new radiopharmaceutical therapies.",
+      "source": "Pharmaceutical Technology",
+      "lang": "en",
+      "pub_date": "2026-04-13T09:48:53+00:00",
+      "pub_ts": 1776073733
+    },
+    {
+      "id": "704bd8a61f",
+      "title": "FDA issues complete response letter to Replimune’s RP1 for melanoma",
+      "url": "https://www.pharmaceutical-technology.com/news/fda-complete-response-letter-replimune-rp1/",
+      "summary": "The FDA has issued a complete response letter to Replimune’s biologics license application concerning the RP1 therapy.",
+      "source": "Pharmaceutical Technology",
+      "lang": "en",
+      "pub_date": "2026-04-13T08:45:44+00:00",
+      "pub_ts": 1776069944
+    },
     {
       "id": "5dc385a10f",
       "title": "BMS and Oxford BioTherapeutics join forces in TCE discovery pact",
@@ -25,36 +55,6 @@
       "lang": "en",
       "pub_date": "2026-04-10T13:35:18+00:00",
       "pub_ts": 1775828118
-    },
-    {
-      "id": "035e3717dc",
-      "title": "Advancing single-cell transcriptomics into the mainstream of biomedical research",
-      "url": "https://www.pharmaceutical-technology.com/comment/advancing-single-cell-transcriptomics-into-the-mainstream-of-biomedical-research/",
-      "summary": "Kelly Parliament, staff application scientist at Beckman Coulter Life Sciences, discusses how automation is improving the efficiency of single-cell transcriptomic workflows.",
-      "source": "Pharmaceutical Technology",
-      "lang": "en",
-      "pub_date": "2026-04-10T10:48:22+00:00",
-      "pub_ts": 1775818102
-    },
-    {
-      "id": "3a9274794a",
-      "title": "Roche and C4 Therapeutics to advance degrader-antibody conjugates research",
-      "url": "https://www.pharmaceutical-technology.com/news/roche-c4-therapeutics-degrader-antibody-conjugates/",
-      "summary": "Roche has signed a new collaboration deal with C4 Therapeutics to jointly advance DACs research to introduce a new therapeutic modality for cancer.",
-      "source": "Pharmaceutical Technology",
-      "lang": "en",
-      "pub_date": "2026-04-10T09:19:10+00:00",
-      "pub_ts": 1775812750
-    },
-    {
-      "id": "31c3c2189a",
-      "title": "Precision Medicine in Early Oncology Trials: Biomarkers as Strategic Drivers",
-      "url": "https://www.pharmaceutical-technology.com/sponsored/precision-medicine-in-early-oncology-trials-biomarkers-as-strategic-drivers/",
-      "summary": "Biomarkers are revolutionizing oncology drug development, driving modern precision medicine approaches, targeted clinical trial recruitment strategies, and critical decision-making.",
-      "source": "Pharmaceutical Technology",
-      "lang": "en",
-      "pub_date": "2026-04-10T08:46:22+00:00",
-      "pub_ts": 1775810782
     }
   ]
 }

@@ -3,108 +3,118 @@
   "vertical_name": "半导体",
   "vertical_en": "Semiconductor",
   "color": "#ff6b9d",
-  "updated_at": "2026-04-13T07:53:16.727416+00:00",
+  "updated_at": "2026-04-14T03:24:37.713353+00:00",
   "item_count": 15,
   "items": [
     {
-      "id": "3f21c3579d",
-      "title": "智驾芯片，更卷了",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810037&idx=1&sn=43fda25db1859f86014274dbb3a02720",
-      "summary": "智驾芯片，更卷了",
+      "id": "9c094ca851",
+      "title": "供应告急！PCB产业链正在经历什么?",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810081&idx=1&sn=51b62e710cd1004e556909d2c4fd8eec",
+      "summary": "供应告急！PCB产业链正在经历什么?",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-04-13T07:53:12.536124+00:00",
-      "pub_ts": 1776066792
+      "pub_date": "2026-04-14T03:24:33.597088+00:00",
+      "pub_ts": 1776137073
     },
     {
-      "id": "30533dd75c",
-      "title": "AI服务器ODM，繁荣见顶?",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810037&idx=3&sn=75cd687fb398cc4e1dddf4963bf6f863",
-      "summary": "AI服务器ODM，繁荣见顶?",
+      "id": "4f527778c9",
+      "title": "存储长约潮蔓延，铠侠正洽谈三年长期供货协议",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810081&idx=2&sn=c8924512449e5d8a842df695ba224a94",
+      "summary": "存储长约潮蔓延，铠侠正洽谈三年长期供货协议",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-04-13T07:53:12.536171+00:00",
-      "pub_ts": 1776066792
+      "pub_date": "2026-04-14T03:24:33.597127+00:00",
+      "pub_ts": 1776137073
     },
     {
-      "id": "e9f04c9732",
-      "title": "哪些芯片真正重要?",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810037&idx=4&sn=4df934457902cdbe911c0a594d5f8830",
-      "summary": "哪些芯片真正重要?",
+      "id": "a43f5e5a62",
+      "title": "10×10nm！全球最小的商用传感器",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810081&idx=3&sn=12ed56ead53e91f0399b212043fb43e6",
+      "summary": "10×10nm！全球最小的商用传感器",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-04-13T07:53:12.536199+00:00",
-      "pub_ts": 1776066792
+      "pub_date": "2026-04-14T03:24:33.597147+00:00",
+      "pub_ts": 1776137073
     },
     {
-      "id": "68f0c66a1a",
-      "title": "两倍价格疯抢内存！苹果正在用供应链绞杀安卓",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810037&idx=5&sn=bed5f79e27cb55185d8aa0e1d198611a",
-      "summary": "两倍价格疯抢内存！苹果正在用供应链绞杀安卓",
+      "id": "a54b9cded8",
+      "title": "3DIC和Chiplet技术正成为竞争焦点",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810081&idx=4&sn=3d588a1f5af96c87cce05aee77b51a23",
+      "summary": "3DIC和Chiplet技术正成为竞争焦点",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-04-13T07:53:12.536223+00:00",
-      "pub_ts": 1776066792
+      "pub_date": "2026-04-14T03:24:33.597165+00:00",
+      "pub_ts": 1776137073
     },
     {
-      "id": "34c741c90c",
-      "title": "反超OpenAI，Anthropic暴买TPU",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810021&idx=1&sn=7f1cbf395a625f8e7a7c10c943d5f0b1",
-      "summary": "反超OpenAI，Anthropic暴买TPU",
+      "id": "81bd2e8a52",
+      "title": "台积电先进封装，全面提速",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810081&idx=5&sn=785b6f6af0f5eb74dc2ec8c167b2863e",
+      "summary": "台积电先进封装，全面提速",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-04-13T07:53:12.536245+00:00",
-      "pub_ts": 1776066792
+      "pub_date": "2026-04-14T03:24:33.597180+00:00",
+      "pub_ts": 1776137073
     },
     {
-      "id": "e411c99ef9",
-      "title": "TFLN，颠覆光芯片",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247815841&idx=1&sn=6a068ca48f8af7cbee55bc59b19f6f27",
-      "summary": "TFLN，颠覆光芯片",
+      "id": "12bf4a8c0a",
+      "title": "华为重申：不造车",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247815877&idx=1&sn=ac4d341e80e00dbb62f7efe631fee66f",
+      "summary": "华为重申：不造车",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-04-13T07:52:58.716004+00:00",
-      "pub_ts": 1776066778
+      "pub_date": "2026-04-14T03:24:21.777606+00:00",
+      "pub_ts": 1776137061
     },
     {
-      "id": "8518b1a263",
-      "title": "2050团聚Ⅰ当硅基AI开始设计芯片，碳基人类还能做什么？4月24日杭州AI芯片社",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247815841&idx=2&sn=114693e0358d81e290ec4a4a791c0bb0",
-      "summary": "2050团聚Ⅰ当硅基AI开始设计芯片，碳基人类还能做什么？4月24日杭州AI芯片社",
+      "id": "5c25831150",
+      "title": "被看好的3D DRAM",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247815870&idx=1&sn=e473d5ae1536c8d1498e55413f9244b9",
+      "summary": "被看好的3D DRAM",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-04-13T07:52:58.716068+00:00",
-      "pub_ts": 1776066778
+      "pub_date": "2026-04-14T03:24:21.777654+00:00",
+      "pub_ts": 1776137061
     },
     {
-      "id": "95e4f6f8f9",
-      "title": "端侧AI×通信算力芯片，2026深圳闭门会9月启幕",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247815841&idx=3&sn=cf87fa606b4ff57479c5557b1c3a15b7",
-      "summary": "端侧AI×通信算力芯片，2026深圳闭门会9月启幕",
+      "id": "d1500ff415",
+      "title": "先进封装，疯狂扩产",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247815870&idx=2&sn=80fe255c0275743d51e75f03abcfa7a8",
+      "summary": "先进封装，疯狂扩产",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-04-13T07:52:58.716096+00:00",
-      "pub_ts": 1776066778
+      "pub_date": "2026-04-14T03:24:21.777673+00:00",
+      "pub_ts": 1776137061
     },
     {
-      "id": "294ab6861c",
-      "title": "这家卖味精的公司，掌控AI芯片未来",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247815841&idx=4&sn=0b86886c3812d7dce1f9ea5ec83ea181",
-      "summary": "这家卖味精的公司，掌控AI芯片未来",
+      "id": "2136d8b471",
+      "title": "应用牵引，全链协同|Chiplet与先进封装产业协同论坛圆满举行",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247815870&idx=3&sn=05eff9c18e8c8a871a6f5ca1a7819f45",
+      "summary": "应用牵引，全链协同|Chiplet与先进封装产业协同论坛圆满举行",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-04-13T07:52:58.716119+00:00",
-      "pub_ts": 1776066778
+      "pub_date": "2026-04-14T03:24:21.777690+00:00",
+      "pub_ts": 1776137061
     },
     {
-      "id": "6186d0d139",
-      "title": "打破英伟达垄断，只有一个方法",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247815841&idx=5&sn=88cde88b5b11fb0af6e957b43ffe50cc",
-      "summary": "打破英伟达垄断，只有一个方法",
+      "id": "ae49fa21fd",
+      "title": "这项技术，或颠覆芯片测试",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247815870&idx=4&sn=401676f0097eb0928f7ea0d1c2d5e868",
+      "summary": "这项技术，或颠覆芯片测试",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-04-13T07:52:58.716141+00:00",
-      "pub_ts": 1776066778
+      "pub_date": "2026-04-14T03:24:21.777706+00:00",
+      "pub_ts": 1776137061
+    },
+    {
+      "id": "f5df53dee1",
+      "title": "EDA And IP Numbers Up Again, But Numbers Are More Nuanced",
+      "url": "https://semiengineering.com/eda-and-ip-numbers-up-again-but-numbers-are-more-nuanced/",
+      "summary": "Q4 numbers reflect strengths and weaknesses in different segments.\nThe post EDA And IP Numbers Up Again, But Numbers Are More Nuanced appeared first on Semiconductor Engineering.",
+      "source": "Semiconductor Engineering",
+      "lang": "en",
+      "pub_date": "2026-04-13T14:00:04+00:00",
+      "pub_ts": 1776088804
     },
     {
       "id": "e38f47f7bc",
@@ -145,16 +155,6 @@
       "lang": "en",
       "pub_date": "2026-04-12T19:19:40+00:00",
       "pub_ts": 1776021580
-    },
-    {
-      "id": "a385455c7e",
-      "title": "An Engineering Roadmap Toward Completely Neural Computers (Meta AI, KAUST)",
-      "url": "https://semiengineering.com/an-engineering-roadmap-toward-completely-neural-computers-meta-ai-kaust/",
-      "summary": "A new technical paper, &#8220;Neural Computers,&#8221; was published by researchers at Meta AI and KAUST. Abstract &#8220;We propose a new frontier: Neural Computers (NCs) &#8212; an emerging machine form that unifies computation, memory, and I/O in a learned runtime state. Unlike conventional compu…",
-      "source": "Semiconductor Engineering",
-      "lang": "en",
-      "pub_date": "2026-04-12T00:13:37+00:00",
-      "pub_ts": 1775952817
     }
   ]
 }
