@@ -415,37 +415,43 @@ def calc_trend(heat, prev_heat):
 # ══════════════════════════════════════════════════════════════
 # 7. 制药装备行业动态（注入 pharma.html）
 # ══════════════════════════════════════════════════════════════
-PHARMA_FEEDS = [
-    ("制药装备动态",
-     "https://news.google.com/rss/search?q=制药装备&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"),
-    ("龙头企业",
-     "https://news.google.com/rss/search?q=楚天科技+OR+东富龙+OR+森松国际&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"),
-    ("国产替代",
-     "https://news.google.com/rss/search?q=生物制药设备+国产替代&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"),
-    ("政策监管",
-     "https://news.google.com/rss/search?q=制药装备+政策+NMPA&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"),
-]
-
 def fetch_pharma_news(days=30):
+    import urllib.request, urllib.parse, json as _json
     items = []
-    cutoff = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=days)
-    for label, url in PHARMA_FEEDS:
+    api_key = os.environ.get("BRAVE_API_KEY", "")
+    keywords = [
+        "制药装备 楚天科技", "制药装备 东富龙",
+        "制药设备 国产替代", "制药装备 招标",
+        "生物制药设备 新建", "CDMO 制药装备",
+    ]
+    for kw in keywords:
         try:
-            feed = feedparser.parse(url)
-            for entry in feed.entries[:6]:
-                pub = entry.get("published_parsed")
-                if pub:
-                    pub_dt = datetime.datetime(*pub[:6], tzinfo=datetime.timezone.utc)
-                    if pub_dt < cutoff:
-                        continue
+            params = urllib.parse.urlencode({
+                "q": kw,
+                "count": 5,
+                "search_lang": "zh",
+                "country": "CN",
+                "freshness": "pm",
+            })
+            req = urllib.request.Request(
+                f"https://api.search.brave.com/res/v1/news/search?{params}",
+                headers={
+                    "Accept": "application/json",
+                    "Accept-Encoding": "gzip",
+                    "X-Subscription-Token": api_key,
+                }
+            )
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                data = _json.loads(resp.read())
+            for r in data.get("results", []):
                 items.append({
-                    "title":   entry.get("title", "").strip(),
-                    "link":    entry.get("link", ""),
-                    "summary": entry.get("summary", "")[:300],
-                    "source":  label,
+                    "title":   r.get("title", "").strip(),
+                    "link":    r.get("url", ""),
+                    "summary": r.get("description", "")[:300],
+                    "source":  "制药装备",
                 })
         except Exception as e:
-            print(f"  [WARN] {label}: {e}")
+            print(f"  [WARN] Brave pharma 抓取失败 {kw}: {e}")
     # 去重
     seen, unique = set(), []
     for i in items:
@@ -454,8 +460,6 @@ def fetch_pharma_news(days=30):
             seen.add(k)
             unique.append(i)
     return unique[:16]
-
-
 def summarize_pharma(client, raw_items):
     titles = "\n".join([f"- {i['title']}" for i in raw_items[:14]])
     prompt = f"""以下是制药装备行业近期新闻标题，请筛选出最有价值的5条，
