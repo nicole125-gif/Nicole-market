@@ -1,21 +1,18 @@
 """
-update_news.py  —  PULSE 2026 每月自动更新脚本 (Claude API + web_search 版)
+update_news.py  —  PULSE 2026 每周自动更新脚本
 功能：
-  1. 调用 Claude API (with web_search) 搜索 20 个子赛道最新动态并打分
+  1. 抓取 Google News RSS → 对 20 个子赛道打分（D/C/P/Pol + heat）
   2. 计算 6 个板块综合分
   3. 保存历史到 data/history.json
   4. 注入 index.html（调用 inject_scores.py）
   5. 抓取制药装备行业动态 → 注入 pharma.html
-
-依赖：anthropic>=0.40.0
-GitHub Secret：ANTHROPIC_API_KEY
 """
 
 import os
 import re
 import json
-import time
 import datetime
+import feedparser
 import anthropic
 
 # ══════════════════════════════════════════════════════════════
@@ -23,65 +20,120 @@ import anthropic
 # ══════════════════════════════════════════════════════════════
 TRACKS = [
     {"id": "e1", "name": "液冷数据中心", "board": "EI",
-     "search_query": "AI液冷数据中心 CDU冷板 液冷渗透率 2026",
-     "strategy": "聚焦AI液冷（CDU/冷板/浸没式），关注算力基础设施液冷渗透率提升。"},
+     "keywords": [
+         "液冷数据中心", "数据中心液冷", "CDU液冷",
+         "冷板液冷", "浸没式液冷", "液冷渗透率",
+         "AI液冷", "液冷设备市场",
+     ]},
     {"id": "e2", "name": "半导体设备国产化", "board": "EI",
-     "search_query": "半导体设备国产化 北方华创 中微公司 DRAM涨价 晶圆厂扩产 2026",
-     "strategy": "聚焦半导体设备国产化，关注晶圆厂扩产和出口管制带来的国产替代机会。"},
+     "keywords": [
+         "半导体设备国产化", "北方华创半导体", "中微公司刻蚀",
+         "DRAM涨价", "晶圆厂扩产", "半导体国产替代",
+         "存储芯片涨价", "封测设备先进封装",
+     ]},
     {"id": "e3", "name": "绿氢电解槽", "board": "EI",
-     "search_query": "PEM电解槽 绿氢 AEM电解槽招标 质子交换膜制氢 2026",
-     "strategy": "只关注PEM/AEM/SOEC技术路线。ALK/碱性电解槽不计入打分（价格战内卷）。如果新闻全是ALK，D/C均给40分以下。"},
+     "keywords": [
+         "PEM电解槽", "绿氢电解槽", "氢能电解槽招标",
+         "ALK电解槽", "绿氢项目中标", "质子交换膜制氢",
+         "电解水制氢", "阳光氢能招标",
+     ]},
     {"id": "e4", "name": "燃料电池", "board": "EI",
-     "search_query": "燃料电池重卡 FCEV销量 氢燃料电池补贴政策 2026",
-     "strategy": "关注燃料电池重卡/港口/钢厂场景，以及燃料电池测试台设备需求。"},
+     "keywords": [
+         "燃料电池重卡", "氢燃料电池销量", "燃料电池补贴",
+         "氢能汽车政策", "燃料电池商业化", "FCEV销量",
+     ]},
     {"id": "g1", "name": "锂电设备", "board": "GI",
-     "search_query": "宁德时代扩产 先导智能订单 赢合科技 固态电池产线 锂电设备 2026",
-     "strategy": "关注宁德时代/先导智能/赢合科技锂电设备链，聚焦固态电池和海外产能扩张设备需求。"},
+     "keywords": [
+         "锂电设备订单", "先导智能订单", "赢合科技业绩",
+         "宁德时代扩产", "动力电池产能", "固态电池产线",
+         "锂电设备海外", "钠离子电池产线",
+     ]},
     {"id": "p1", "name": "生物药国内产线", "board": "P&B",
-     "search_query": "司美格鲁肽仿制药 GLP-1国内产能 ADC国内生产 多肽CDMO国内 2026",
-     "strategy": "关注国内生物药产业链在建项目和本土需求。国内临床/NMPA获批/本土扩产→D分高；License-out出海→D分低（产能外流）。"},
+     "keywords": [
+         "生物药新建产线", "GMP认证新建", "创新药国内获批",
+         "NMPA受理创新药", "多肽药物国内产能", "ADC国内生产",
+         "生物制药扩产", "司美格鲁肽国内仿制",
+     ]},
     {"id": "p2", "name": "合成生物学", "board": "P&B",
-     "search_query": "合成生物学中试 华恒生物 凯赛生物扩产 生物制造发酵罐 2026",
-     "strategy": "关注合成生物学中试和量产设备（发酵罐/分离纯化），华恒/凯赛等扩产信号优先。"},
+     "keywords": [
+         "合成生物学中试", "华恒生物发酵", "凯赛生物产能",
+         "合成生物十五五", "生物制造设备", "合成生物学融资",
+         "生物基材料扩产", "发酵罐合成生物",
+     ]},
     {"id": "p3", "name": "生物药融资", "board": "P&B",
-     "search_query": "生物医药投融资 创新药融资 生物科技一级市场 2026",
-     "strategy": "关注生物医药一级市场融资，作为3-5年后设备需求的领先指标。"},
-    {"id": "p4", "name": "制药装备Capex", "board": "P&B",
-     "search_query": "制药装备招标 楚天科技订单 东富龙业绩 医药固定资产投资 FAI 2026",
-     "strategy": "关注制药装备资本支出（楚天科技/东富龙），医药FAI是最直接的设备需求信号。"},
+     "keywords": [
+         "生物医药投融资", "创新药融资亿", "生物科技一级市场",
+         "医药IPO上市", "生物技术融资", "创新药投资",
+     ]},
+    {"id": "p4", "name": "制药装备Capex/FAI", "board": "P&B",
+     "keywords": [
+         "医药制造业固定资产投资", "制药装备招标",
+         "楚天科技订单", "东富龙业绩", "制药设备新建",
+         "原料药设备投资", "医药FAI统计局",
+     ]},
     {"id": "p5", "name": "CDMO订单景气", "board": "P&B",
-     "search_query": "CDMO订单 凯莱英GLP-1 药明康德业绩 TIDES多肽 ADC CDMO询单 2026",
-     "strategy": "关注CDMO订单景气（药明康德/凯莱英），聚焦TIDES多肽/ADC/GLP-1产线询单。"},
-    {"id": "l1", "name": "质谱色谱仪器", "board": "L&M",
-     "search_query": "质谱仪国产替代 禾信仪器 谱育科技 色谱仪进口替代 分析仪器 2026",
-     "strategy": "关注质谱/色谱仪器国产替代（禾信/谱育），聚焦进口替代率和政府采购国产化政策。"},
+     "keywords": [
+         "CDMO订单", "药明康德业绩", "凯莱英GLP-1",
+         "TIDES多肽CDMO", "ADC+CDMO", "CDMO询单",
+         "博腾股份订单", "九洲药业CDMO",
+     ]},
+    {"id": "l1", "name": "质谱/色谱仪器国产替代", "board": "L&M",
+     "keywords": [
+         "质谱仪国产替代", "禾信仪器", "谱育科技质谱",
+         "色谱仪进口替代", "分析仪器国产化", "质谱招标",
+         "液相色谱国产", "科学仪器国产化",
+     ]},
     {"id": "l2", "name": "基因测序", "board": "L&M",
-     "search_query": "华大智造测序仪 因美纳禁令 测序仪国产替代 基因测序市场 2026",
-     "strategy": "关注基因测序国产替代（华大智造/真迈），因美纳禁令是最强催化信号。"},
-    {"id": "l3", "name": "医疗IVD", "board": "L&M",
-     "search_query": "IVD体外诊断集采 化学发光国产化 迈瑞医疗 POCT市场 2026",
-     "strategy": "关注IVD仪器（化学发光/POCT/分子诊断）销量信号，包括采购扩张、国产替代。"},
-    {"id": "f1", "name": "食品制造FAI", "board": "F&B",
-     "search_query": "食品制造固定资产投资 预制菜产线 食品装备招标 烘焙食品机械 2026",
-     "strategy": "关注食品制造装备（预制菜/烘焙产线），FAI是核心信号。"},
-    {"id": "f2", "name": "酒饮料制造FAI", "board": "F&B",
-     "search_query": "白酒产能投资 酒饮料固定资产投资 碳酸饮料扩产 啤酒产线 2026",
-     "strategy": "关注白酒/饮料制造设备，白酒新建产能和存量替换，碳酸饮料产线同样跟踪。"},
+     "keywords": [
+         "华大智造测序", "因美纳禁令", "测序仪国产替代",
+         "华大智造订单", "真迈生物测序仪", "基因测序市场",
+         "三代测序国产", "WGS肿瘤检测",
+     ]},
+    {"id": "l3", "name": "医疗IVD体外诊断", "board": "L&M",
+     "keywords": [
+         "IVD集采降价", "化学发光国产化", "体外诊断市场规模",
+         "迈瑞医疗IVD", "POCT基层医疗", "体外诊断国产替代",
+         "化学发光进口替代", "IVD市场增长",
+     ]},
+    {"id": "f1", "name": "食品制造业FAI", "board": "F&B",
+     "keywords": [
+         "食品制造固定资产投资", "食品装备预制菜",
+         "食品机械招标", "预制菜产线投资", "食品设备新建",
+         "烘焙食品装备", "食品制造FAI",
+     ]},
+    {"id": "f2", "name": "酒/饮料制造FAI", "board": "F&B",
+     "keywords": [
+         "白酒产能投资", "酒饮料固定资产投资", "碳酸饮料扩产",
+         "白酒新建产能", "饮料制造投资", "啤酒产线",
+         "白酒资本支出",
+     ]},
     {"id": "f3", "name": "食品饮料消费端", "board": "F&B",
-     "search_query": "食品饮料消费 功能饮品无糖茶 餐饮消费 预制菜消费增长 社零数据 2026",
-     "strategy": "关注食品饮料消费端，功能饮品/预制菜消费增长优先，作为设备投资滞后指标。"},
-    {"id": "f4", "name": "食品添加剂合成生物", "board": "F&B",
-     "search_query": "赤藓糖醇代糖扩产 益生菌产能 天然甜味剂市场 合成生物发酵 2026",
-     "strategy": "关注食品添加剂合成生物发酵设备（赤藓糖醇/益生菌/天然甜味剂产能扩张）。"},
+     "keywords": [
+         "食品饮料消费数据", "功能饮品无糖茶", "餐饮消费复苏",
+         "食品社零数据", "预制菜消费增长", "饮料销量增长",
+         "功能食品市场规模",
+     ]},
+    {"id": "f4", "name": "食品添加剂/合成生物发酵", "board": "F&B",
+     "keywords": [
+         "食品添加剂合成生物", "赤藓糖醇代糖", "益生菌扩产",
+         "功能性食品成分市场", "天然甜味剂市场", "代糖生物发酵",
+         "功能性糖醇产能",
+     ]},
     {"id": "m1", "name": "制造业PMI", "board": "Macro",
-     "search_query": "中国制造业PMI 财新PMI 官方PMI 制造业景气指数 2026",
-     "strategy": "关注制造业PMI作为宏观景气核心信号，聚焦生产/新订单/中小企业分项。"},
-    {"id": "m2", "name": "M2社融CPI", "board": "Macro",
-     "search_query": "中国M2 社会融资规模 央行货币政策 降准降息 CPI PPI 2026",
-     "strategy": "关注M2/社融/降准降息货币政策信号，对制造业投资的流动性支撑。"},
-    {"id": "m3", "name": "固定资产投资工业增加值", "board": "Macro",
-     "search_query": "中国固定资产投资 制造业FAI 规上工业增加值 高技术制造业 2026",
-     "strategy": "关注固定资产投资（尤其制造业FAI）和规上工业增加值，高技术制造业优先。"},
+     "keywords": [
+         "中国制造业PMI", "财新制造业PMI", "PMI扩张区间",
+         "制造业景气指数", "官方PMI统计局", "PMI新订单",
+     ]},
+    {"id": "m2", "name": "M2/社融/CPI/PPI", "board": "Macro",
+     "keywords": [
+         "中国M2社融", "货币政策央行", "CPI+PPI通胀",
+         "社会融资规模", "M2信贷数据", "央行降准降息",
+     ]},
+    {"id": "m3", "name": "固定资产投资/工业增加值", "board": "Macro",
+     "keywords": [
+         "固定资产投资统计局", "规上工业增加值", "制造业FAI增速",
+         "工业增加值增速", "高技术制造业投资", "工业生产复苏",
+     ]},
 ]
 
 # ══════════════════════════════════════════════════════════════
@@ -97,7 +149,17 @@ BOARD_WEIGHTS = {
 }
 
 # ══════════════════════════════════════════════════════════════
-# 3. 历史数据 I/O
+# 3. Claude API 客户端
+# ══════════════════════════════════════════════════════════════
+def get_client():
+    return anthropic.Anthropic(
+        api_key=os.environ["CLAUDE_API_KEY"],
+        base_url="https://key.simpleai.com.cn"
+    )
+
+
+# ══════════════════════════════════════════════════════════════
+# 4. 历史数据 I/O
 # ══════════════════════════════════════════════════════════════
 HISTORY_PATH = "data/history.json"
 
@@ -125,6 +187,7 @@ def save_history(history, period, results):
     print(f"[OK] 历史已保存 → {HISTORY_PATH}")
 
 def get_prev_heat(history, track_id):
+    """返回上一期的 heat，找不到返回 50。"""
     periods = sorted(history.keys(), reverse=True)
     for p in periods:
         if track_id in history[p]:
@@ -132,166 +195,293 @@ def get_prev_heat(history, track_id):
     return 50.0
 
 # ══════════════════════════════════════════════════════════════
-# 4. Claude API — 核心打分函数
+# 5. 新闻抓取
 # ══════════════════════════════════════════════════════════════
-def score_track_with_claude(client: anthropic.Anthropic, track: dict) -> dict:
-    """
-    让 Claude 用 web_search 搜索赛道最新动态，然后打分并生成摘要。
-    返回: {D, C, P, Pol, core_data, comment, act}
-    """
-    today = datetime.date.today().strftime("%Y年%m月")
-    track_name = track["name"]
-    tid = track["id"]
-    strategy = track.get("strategy", "")
-    query = track["search_query"]
+def fetch_news_for_track(track, days=35):
+    items = []
+    cutoff = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=days)
+    for kw in track["keywords"]:
+        url = f"https://news.google.com/rss/search?q={kw}&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"
+        try:
+            feed = feedparser.parse(url)
+            for entry in feed.entries[:5]:
+                pub = entry.get("published_parsed")
+                if pub:
+                    pub_dt = datetime.datetime(*pub[:6], tzinfo=datetime.timezone.utc)
+                    if pub_dt < cutoff:
+                        continue
+                items.append({
+                    "title": entry.get("title", "").strip(),
+                    "summary": entry.get("summary", "")[:200],
+                })
+        except Exception as e:
+            print(f"  [WARN] 抓取失败 {kw}: {e}")
+    # 去重
+    seen, unique = set(), []
+    for i in items:
+        k = i["title"][:15]
+        if k and k not in seen:
+            seen.add(k)
+            unique.append(i)
+    print(f"  [INFO] {track['id']} 抓到 {len(unique)} 条新闻")
+    return unique[:12]
 
-    system_prompt = (
-        "你是中国B2B工业设备行业景气度分析师，专注为精密流体控制阀门供应商服务。"
-        "你会使用web_search工具搜索最新行业动态，然后基于搜索结果进行打分分析。"
-        "打分严格按格式输出，不添加任何额外解释。"
+
+# ══════════════════════════════════════════════════════════════
+# 6. 打分逻辑
+# ══════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════
+# 关键词规则打分 — 不依赖任何 AI API
+# ══════════════════════════════════════════════════════════════
+
+# 通用关键词
+POSITIVE_D = ["扩产","大单","订单","渗透率","需求旺","出货","销量增","增长","爆发",
+              "新高","放量","旺盛","景气","中标","量产","交付","供不应求"]
+NEGATIVE_D = ["需求疲","订单下滑","出货下降","销量降","萎缩","去库存","下行","低迷","收缩"]
+
+POSITIVE_C = ["招标","融资","投资","Capex","扩建","新基地","开工","产能","募资","并购",
+              "新建","上马","立项","开建","签约","中标","资本支出"]
+NEGATIVE_C = ["FAI下滑","投资收缩","暂缓","推迟","缩减","降速","停工","撤资","亏损"]
+
+POSITIVE_P = ["涨价","提价","价格上涨","盈利提升","毛利率提升","量价齐升","价格回升","涨幅"]
+NEGATIVE_P = ["降价","集采","价格下跌","亏损","毛利下滑","价格战","内卷","杀价","降本"]
+
+POSITIVE_POL = ["补贴","政策支持","利好政策","入法","规划","十五五","国家战略","催化",
+                "专项资金","政策红利","重点支持","列入","优先","加快推进"]
+NEGATIVE_POL = ["政策空窗","监管收紧","限制","禁令","处罚","暂停审批","叫停","整顿"]
+
+# 赛道专属加分词（命中即额外+8）
+TRACK_BONUS = {
+    "e1": ["液冷","CDU","冷板","TrendForce","浸没","算力","液冷渗透率"],
+    "e2": ["北方华创","中微","晶圆","DRAM","HBM","封测","出口管制","国产设备"],
+    "e3": ["电解槽","绿氢","PEM","AEM","质子交换膜","制氢","招标"],
+    "e4": ["燃料电池","FCEV","氢车","氢重卡","示范城市"],
+    "g1": ["宁德时代","CATL","先导智能","赢合科技","动力电池","固态电池"],
+    "p1": ["司美格鲁肽","GLP-1","ADC","License-out","BD交易","仿制药","多肽"],
+    "p2": ["合成生物","华恒生物","凯赛生物","中试","发酵罐","生物制造"],
+    "p3": ["生物医药融资","创新药融资","IPO","风险投资","一级市场"],
+    "p4": ["楚天科技","东富龙","制药装备","原料药","GMP","FAI"],
+    "p5": ["药明康德","凯莱英","CDMO","TIDES","博腾","九洲"],
+    "l1": ["质谱仪","禾信","谱育","色谱","分析仪器","进口替代","国产仪器"],
+    "l2": ["华大智造","因美纳","测序仪","基因测序","WGS","真迈生物"],
+    "l3": ["IVD","化学发光","迈瑞","体外诊断","POCT","集采"],
+    "f1": ["预制菜","食品装备","食品机械","冷链","食品产线"],
+    "f2": ["白酒","碳酸饮料","啤酒","饮料产线","酒类投资"],
+    "f3": ["社零","餐饮","功能饮品","无糖","预制菜消费"],
+    "f4": ["赤藓糖醇","益生菌","天然甜味剂","代糖","功能成分","生物发酵"],
+    "m1": ["PMI","采购经理","扩张区间","荣枯线","景气指数"],
+    "m2": ["M2","社融","央行","降准","降息","货币政策","社会融资"],
+    "m3": ["工业增加值","FAI","固定资产投资","规上工业","高技术制造"],
+}
+
+def _keyword_score(track_id, titles, pos_words, neg_words, base=58):
+    text = " ".join(titles)
+    pos = sum(1 for w in pos_words if w in text)
+    neg = sum(1 for w in neg_words if w in text)
+    # 赛道专属词加分
+    bonus_words = TRACK_BONUS.get(track_id, [])
+    bonus = sum(1 for w in bonus_words if w in text)
+    score = base + pos * 5 - neg * 8 + bonus * 8
+    return min(95, max(30, score))
+
+def score_track(client, track, news_items):
+    if not news_items:
+        print(f"  [WARN] {track['id']} 无新闻，使用默认分 50")
+        return {"D": 50, "C": 50, "P": 50, "Pol": 50,
+                "core_data": "本期无有效新闻数据", "comment": "数据不足，参考上期"}
+
+    news_text = "\n".join([f"- {i['title']}" for i in news_items[:12]])
+    track_name = track.get("name", track["id"])
+    tid = track["id"]
+
+    TRACK_STRATEGY = {
+        "e1": "聚焦AI液冷（CDU/冷板/浸没式），关注算力基础设施液冷渗透率提升。",
+        "e2": "聚焦半导体设备国产化（北方华创/中微），关注晶圆厂扩产和出口管制带来的国产替代机会。",
+        "e3": "只关注PEM/AEM/SOEC/SOFC技术路线。ALK/碱性电解槽订单不计入任何维度打分（已严重内卷，价格战，无商业价值）。D分只看PEM/AEM/SOEC/SOFC的订单和融资；C分只看PEM/AEM相关设备招标；Pol分只看支持PEM/AEM/SOEC路线的政策。如果新闻全是ALK，则D/C均给40分以下。",
+        "e4": "关注所有使用燃料电池的场景（重卡/港口/钢厂/船舶/轨交），同时关注燃料电池测试台设备需求。",
+        "g1": "关注宁德时代/先导智能/赢合科技锂电设备链，聚焦固态电池和海外产能扩张设备需求。",
+        "p1": "关注国内生物药产业链的在建项目和本土需求信号。打分逻辑：国内临床推进/NMPA获批/本土扩产/新建GMP产线→D分高；出海/License-out/海外合作消息→D分低（意味着产能外流，国内设备需求减少）。C分关注国内制药装备招标和多肽/ADC产线新建投资。Pol分关注国内医药产业政策支持和医保/集采对国内生产的促进。",
+        "p2": "关注合成生物学中试和量产设备（发酵罐/分离纯化），华恒/凯赛等扩产信号优先。",
+        "p3": "关注生物医药一级市场融资，作为3-5年后设备需求的领先指标。",
+        "p4": "关注制药装备资本支出（楚天科技/东富龙），医药FAI是最直接的设备需求信号。",
+        "p5": "关注CDMO订单景气（药明康德/凯莱英），聚焦TIDES多肽/ADC/GLP-1产线询单。",
+        "l1": "关注质谱/色谱仪器国产替代（禾信/谱育），聚焦进口替代率和政府采购国产化政策。",
+        "l2": "关注基因测序国产替代（华大智造/真迈），因美纳禁令是最强催化信号。",
+        "l3": "关注所有影响IVD仪器（化学发光/POCT/分子诊断）销量的信号，包括采购扩张、国产替代。",
+        "f1": "关注食品制造装备（预制菜/烘焙产线），FAI是核心信号。",
+        "f2": "关注白酒/饮料制造设备，白酒新建产能和存量替换都关注，碳酸饮料产线同样跟踪。",
+        "f3": "关注食品饮料消费端，功能饮品/预制菜消费增长优先，作为设备投资滞后指标。",
+        "f4": "关注食品添加剂合成生物发酵设备（赤藓糖醇/益生菌/天然甜味剂产能扩张）。",
+        "m1": "关注制造业PMI作为宏观景气核心信号，聚焦生产/新订单/中小企业分项。",
+        "m2": "关注M2/社融/降准降息货币政策信号，对制造业投资的流动性支撑。",
+        "m3": "关注固定资产投资（尤其制造业FAI）和规上工业增加值，高技术制造业优先。",
+    }
+    strategy = TRACK_STRATEGY.get(tid, "")
+    strategy_line = f"赛道策略：{strategy}\n\n" if strategy else ""
+
+    prompt = (
+        f"你是中国B2B设备行业景气度分析师。根据以下新闻标题，对赛道【{track_name}】打分并生成摘要。\n\n"
+        + strategy_line
+        + f"新闻：\n{news_text}\n\n"
+        "打分规则（0-100整数）：\n"
+        "D=需求动能：强劲订单/扩产/渗透率→80+，需求疲软→40-\n"
+        "C=投资强度：大额招标/融资→80+，FAI收缩→40-\n"
+        "P=价格盈利：反向！涨价→高分，集采降价50%→38分\n"
+        "Pol=政策情绪：强补贴/产业催化→85+，政策空窗→45-\n\n"
+        "严格按以下格式输出，共4行，不要其他内容：\n"
+        "D=数字 C=数字 P=数字 Pol=数字\n"
+        "核心数据：（30字以内，最重要的一个数据点）\n"
+        "结论：（40字以内，本期景气度判断）\n"
+        "行动：（30字以内，具体行动建议）"
     )
 
-    user_prompt = f"""请搜索【{track_name}】赛道在{today}的最新动态，然后进行景气度打分。
-
-搜索建议关键词：{query}
-
-赛道分析策略：{strategy}
-
-搜索完成后，按以下规则打分（0-100整数）：
-D = 需求动能：强劲订单/扩产/渗透率提升→80+，需求疲软/去库存→40-
-C = 投资强度：大额招标/融资/Capex扩张→80+，FAI收缩/暂缓→40-
-P = 价格盈利：涨价/毛利改善→高分，集采降价50%→38分（反向指标）
-Pol = 政策情绪：强补贴/产业催化/入法→85+，政策空窗/监管收紧→45-
-
-严格按以下格式输出4行，不要其他内容：
-D=数字 C=数字 P=数字 Pol=数字
-核心数据：（30字以内，最重要的一个数据点，含具体数字）
-结论：（40字以内，本期景气度判断）
-行动：（30字以内，对流体控制阀门供应商的具体行动建议）"""
-
     try:
-        response = client.messages.create(
-            model="claude-opus-4-5",
-            max_tokens=400,
-            system=system_prompt,
-            tools=[{"type": "web_search_20250305", "name": "web_search"}],
-            messages=[{"role": "user", "content": user_prompt}],
+        msg = client.messages.create(
+            model="claude-haiku-4-5-20251001",
+            max_tokens=150,
+            temperature=0,
+            system="你是行业景气度分析机器人，严格按格式输出4行内容，不添加任何额外文字。",
+            messages=[{"role": "user", "content": prompt}]
         )
+        raw = msg.content[0].text.strip()
+        print(f"  [Claude] {raw[:80]}")
 
-        # 提取文本输出（忽略 tool_use / tool_result blocks）
-        raw = ""
-        for block in response.content:
-            if block.type == "text":
-                raw += block.text
+        lines = raw.strip().split("\n")
+        score_line = lines[0] if lines else ""
 
-        print(f"  [Claude] {tid}: {raw[:100]}")
-        return _parse_score_output(raw, tid)
+        d   = re.search(r'D=(\d+)', score_line)
+        c   = re.search(r'C=(\d+)', score_line)
+        p   = re.search(r' P=(\d+)', score_line)
+        pol = re.search(r'Pol=(\d+)', score_line)
 
+        # 提取文字字段
+        core_data = ""
+        comment   = ""
+        act       = ""
+        for line in lines[1:]:
+            if line.startswith("核心数据：") or line.startswith("核心数据:"):
+                core_data = line.split("：",1)[-1].split(":",1)[-1].strip()
+            elif line.startswith("结论：") or line.startswith("结论:"):
+                comment = line.split("：",1)[-1].split(":",1)[-1].strip()
+            elif line.startswith("行动：") or line.startswith("行动:"):
+                act = line.split("：",1)[-1].split(":",1)[-1].strip()
+
+        if d and c and p and pol:
+            return {
+                "D":         min(100, max(0, int(d.group(1)))),
+                "C":         min(100, max(0, int(c.group(1)))),
+                "P":         min(100, max(0, int(p.group(1)))),
+                "Pol":       min(100, max(0, int(pol.group(1)))),
+                "core_data": core_data,
+                "comment":   comment,
+                "act":       act,
+            }
+        print(f"  [WARN] 解析失败: {score_line}")
     except Exception as e:
-        print(f"  [ERROR] Claude API 失败 {tid}: {e}")
-        return _default_scores(tid)
+        print(f"  [WARN] DeepSeek 失败 {track['id']}: {e}")
 
-
-def _parse_score_output(raw: str, tid: str) -> dict:
-    """解析 Claude 返回的4行格式文本。"""
-    lines = raw.strip().split("\n")
-    score_line = ""
-    for line in lines:
-        if re.search(r"D=\d+", line):
-            score_line = line
-            break
-
-    d   = re.search(r"D=(\d+)",   score_line)
-    c   = re.search(r"C=(\d+)",   score_line)
-    p   = re.search(r" P=(\d+)",  score_line)
-    pol = re.search(r"Pol=(\d+)", score_line)
-
-    core_data, comment, act = "", "", ""
-    for line in lines:
-        line = line.strip()
-        if line.startswith("核心数据"):
-            core_data = re.split(r"[：:]", line, 1)[-1].strip()
-        elif line.startswith("结论"):
-            comment = re.split(r"[：:]", line, 1)[-1].strip()
-        elif line.startswith("行动"):
-            act = re.split(r"[：:]", line, 1)[-1].strip()
-
-    if d and c and p and pol:
-        return {
-            "D":         min(100, max(0, int(d.group(1)))),
-            "C":         min(100, max(0, int(c.group(1)))),
-            "P":         min(100, max(0, int(p.group(1)))),
-            "Pol":       min(100, max(0, int(pol.group(1)))),
-            "core_data": core_data,
-            "comment":   comment,
-            "act":       act,
-        }
-
-    print(f"  [WARN] 解析失败 {tid}: '{score_line}'")
-    return _default_scores(tid)
-
-
-def _default_scores(tid: str) -> dict:
     return {"D": 50, "C": 50, "P": 50, "Pol": 50,
-            "core_data": "数据获取异常", "comment": "请人工核查", "act": "暂缓决策"}
+            "core_data": "打分异常", "comment": "请人工核查"}
 
 
-# ══════════════════════════════════════════════════════════════
-# 5. 计算工具
-# ══════════════════════════════════════════════════════════════
-def calc_heat(scores: dict) -> float:
+def calc_heat(scores):
     """加权公式：D×35% + C×30% + P×20% + Pol×15%"""
     h = (scores["D"] * 0.35 + scores["C"] * 0.30 +
          scores["P"] * 0.20 + scores["Pol"] * 0.15)
     return round(h, 1)
 
-def calc_trend(heat: float, prev_heat: float) -> str:
-    if heat - prev_heat >= 2:   return "up"
-    if heat - prev_heat <= -2:  return "dn"
+
+def calc_trend(heat, prev_heat):
+    if heat - prev_heat >= 2:
+        return "up"
+    if heat - prev_heat <= -2:
+        return "dn"
     return "fl"
 
+
 # ══════════════════════════════════════════════════════════════
-# 6. 制药装备行业动态（注入 pharma.html）
+# 7. 制药装备行业动态（注入 pharma.html）
 # ══════════════════════════════════════════════════════════════
-def fetch_pharma_news_with_claude(client: anthropic.Anthropic) -> dict:
-    """让 Claude 搜索制药装备行业最新动态，返回结构化新闻数据。"""
-    today = datetime.date.today().strftime("%Y年%m月")
+PHARMA_FEEDS = [
+    ("制药装备动态",
+     "https://news.google.com/rss/search?q=制药装备&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"),
+    ("龙头企业",
+     "https://news.google.com/rss/search?q=楚天科技+OR+东富龙+OR+森松国际&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"),
+    ("国产替代",
+     "https://news.google.com/rss/search?q=生物制药设备+国产替代&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"),
+    ("政策监管",
+     "https://news.google.com/rss/search?q=制药装备+政策+NMPA&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"),
+]
 
-    response = client.messages.create(
-        model="claude-opus-4-5",
-        max_tokens=1000,
-        tools=[{"type": "web_search_20250305", "name": "web_search"}],
-        messages=[{
-            "role": "user",
-            "content": f"""请搜索{today}制药装备行业最新动态，包括：
-1. 楚天科技、东富龙、森松国际等龙头企业动态
-2. 制药装备招标、新建产线投资
-3. 国产替代进展（生物反应器、冻干机等）
-4. NMPA监管政策、GMP相关政策
+def fetch_pharma_news(days=30):
+    items = []
+    cutoff = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=days)
+    for label, url in PHARMA_FEEDS:
+        try:
+            feed = feedparser.parse(url)
+            for entry in feed.entries[:6]:
+                pub = entry.get("published_parsed")
+                if pub:
+                    pub_dt = datetime.datetime(*pub[:6], tzinfo=datetime.timezone.utc)
+                    if pub_dt < cutoff:
+                        continue
+                items.append({
+                    "title":   entry.get("title", "").strip(),
+                    "link":    entry.get("link", ""),
+                    "summary": entry.get("summary", "")[:300],
+                    "source":  label,
+                })
+        except Exception as e:
+            print(f"  [WARN] {label}: {e}")
+    # 去重
+    seen, unique = set(), []
+    for i in items:
+        k = i["title"][:15]
+        if k and k not in seen:
+            seen.add(k)
+            unique.append(i)
+    return unique[:16]
 
-搜索完成后，筛选最有价值的5条新闻，严格按以下JSON格式输出（不要markdown代码块）：
-[{{"title":"新闻标题","summary":"30字中文摘要","tag":"政策|企业|市场|技术之一","link":""}}]"""
-        }],
-    )
 
-    raw = ""
-    for block in response.content:
-        if block.type == "text":
-            raw += block.text
+def summarize_pharma(client, raw_items):
+    titles = "\n".join([f"- {i['title']}" for i in raw_items[:14]])
+    prompt = f"""以下是制药装备行业近期新闻标题，请筛选出最有价值的5条，
+并为每条生成：①30字中文摘要 ②来源标签（政策/企业/市场/技术之一）。
+
+新闻列表：
+{titles}
+
+只返回 JSON，格式：
+[{{"title":"原标题","summary":"摘要","tag":"来源标签"}}]
+不要 markdown 代码块，直接输出数组。"""
 
     try:
-        raw = re.sub(r"^```[a-z]*\s*|```$", "", raw.strip(), flags=re.MULTILINE).strip()
+        msg = client.messages.create(
+            model="claude-haiku-4-5-20251001",
+            max_tokens=800,
+            temperature=0,
+            messages=[{"role": "user", "content": prompt}]
+        )
+        raw = msg.content[0].text.strip()
+        if not raw:
+            raw = "[]"
+        # strip markdown fences
+        raw = re.sub(r"^```[a-z]*\s*|```$", "", raw, flags=re.MULTILINE).strip()
+        # find JSON array
         m = re.search(r"\[.*\]", raw, re.DOTALL)
-        if m:
-            items = json.loads(m.group(0))
-            return {"items": items[:5], "updated": datetime.date.today().strftime("%Y-%m-%d")}
+        raw = m.group(0) if m else "[]"
+        parsed = json.loads(raw)
+        # 补充原始链接
+        title_to_link = {i["title"]: i["link"] for i in raw_items}
+        for item in parsed:
+            item["link"] = title_to_link.get(item["title"], "")
+        return {"items": parsed[:5], "updated": datetime.date.today().strftime("%Y-%m-%d")}
     except Exception as e:
-        print(f"  [WARN] 制药新闻解析失败: {e}")
+        print(f"  [WARN] summarize_pharma 失败: {e}")
+        return {"items": [], "updated": datetime.date.today().strftime("%Y-%m-%d")}
 
-    return {"items": [], "updated": datetime.date.today().strftime("%Y-%m-%d")}
 
-
-def build_news_html(data: dict) -> str:
+def build_news_html(data):
     items_html = ""
     for item in data["items"]:
         lo = f'<a href="{item["link"]}" target="_blank" rel="noopener">' if item.get("link") else "<span>"
@@ -329,7 +519,7 @@ def build_news_html(data: dict) -> str:
 <!-- NEWS_BLOCK_END -->"""
 
 
-def inject_html(news_html: str, path: str):
+def inject_html(news_html, path):
     if not os.path.exists(path):
         print(f"  [SKIP] {path} 不存在，跳过")
         return
@@ -346,7 +536,7 @@ def inject_html(news_html: str, path: str):
 
 
 # ══════════════════════════════════════════════════════════════
-# 7. 主流程
+# 8. 主流程
 # ══════════════════════════════════════════════════════════════
 if __name__ == "__main__":
     today     = datetime.date.today()
@@ -354,29 +544,27 @@ if __name__ == "__main__":
     today_str = today.strftime("%Y-%m-%d")
     print(f"=== PULSE 2026 开始更新 {today_str} ===")
 
-    client  = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+    client  = get_client()
     history = load_history()
     results = {}
 
-    # ── Step 1：子赛道打分（Claude + web_search）──────────────
-    print("\n--- Heat Score 打分 (Claude web_search) ---")
+    # ── Step 1：子赛道打分 ──────────────────────────────────
+    print("\n--- Heat Score 打分 ---")
     for track in TRACKS:
-        tid = track["id"]
-        print(f"  处理: {tid} [{track['name']}]")
-        scores = score_track_with_claude(client, track)
+        print(f"  处理: {track['id']}")
+        news   = fetch_news_for_track(track)
+        scores = score_track(client, track, news)
         heat   = calc_heat(scores)
-        prev   = get_prev_heat(history, tid)
+        prev   = get_prev_heat(history, track["id"])
         trend  = calc_trend(heat, prev)
-        results[tid] = {
+        results[track["id"]] = {
             "heat": heat, "trend": trend,
             "scores": scores, "prev_heat": prev,
         }
         print(f"    Heat={heat} ({trend})  D={scores['D']} C={scores['C']} "
               f"P={scores['P']} Pol={scores['Pol']}")
-        # 礼貌性等待，避免触发速率限制
-        time.sleep(3)
 
-    # ── Step 2：板块综合分 ─────────────────────────────────────
+    # ── Step 2：板块综合分 ─────────────────────────────────
     board_heats = {}
     for board, weights in BOARD_WEIGHTS.items():
         total_w, total_score = 0, 0
@@ -390,14 +578,14 @@ if __name__ == "__main__":
     for b, h in board_heats.items():
         print(f"  {b}: {h}")
 
-    # ── Step 3：保存历史 ───────────────────────────────────────
+    # ── Step 3：保存历史 ───────────────────────────────────
     save_history(history, period, results)
 
-    # ── Step 4：注入 index.html ────────────────────────────────
+    # ── Step 4：注入 index.html ────────────────────────────
     print("\n--- 注入 index.html ---")
     try:
-        import sys
-        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import sys, os as _os
+        sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
         from inject_scores import inject_scores
 
         scores_payload = {
@@ -408,6 +596,7 @@ if __name__ == "__main__":
 
         # 板块级
         for b, heat in board_heats.items():
+            # 用板块内子赛道的平均 prev 估算板块趋势
             tids = list(BOARD_WEIGHTS[b].keys())
             prev_heats = [results[t]["prev_heat"] for t in tids if t in results]
             prev_board = round(sum(prev_heats) / len(prev_heats), 1) if prev_heats else 50
@@ -428,7 +617,9 @@ if __name__ == "__main__":
                 "P":     r["scores"]["P"],
                 "Pol":   r["scores"]["Pol"],
             }
+            # 加入文字字段（如果有）
             if r["scores"].get("core_data"):
+                # data 字段是数组格式
                 entry["data"] = [r["scores"]["core_data"]]
             if r["scores"].get("comment"):
                 entry["tw"] = r["scores"]["comment"]
@@ -436,28 +627,27 @@ if __name__ == "__main__":
                 entry["act"] = r["scores"]["act"]
             scores_payload["tracks"][tid] = entry
 
-        index_path = os.path.join(
-            os.path.dirname(os.path.abspath(__file__)), "..", "index.html"
-        )
+        # index.html 在仓库根目录，脚本在 scripts/，所以往上一级
+        index_path = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "..", "index.html")
         inject_scores(scores_payload, index_path=index_path)
 
     except Exception as e:
-        print(f"  [ERROR] inject_scores 失败: {e}")
-        import traceback; traceback.print_exc()
+        print(f"  [WARN] inject_scores 失败，跳过 index.html 更新: {e}")
 
-    # ── Step 5：制药装备行业动态 → pharma.html ─────────────────
-    print("\n--- 制药装备行业动态 (Claude web_search) ---")
-    try:
-        pharma_data = fetch_pharma_news_with_claude(client)
-        print(f"  获取 {len(pharma_data['items'])} 条新闻")
+    # ── Step 5：制药装备行业动态 → pharma.html ─────────────
+    print("\n--- 制药装备行业动态 ---")
+    pharma_raw = fetch_pharma_news()
+    print(f"  抓取 {len(pharma_raw)} 条原始新闻")
+    if pharma_raw:
+        pharma_data = summarize_pharma(client, pharma_raw)
         if pharma_data["items"]:
-            pharma_path = os.path.join(
-                os.path.dirname(os.path.abspath(__file__)), "..", "pharma.html"
+            pharma_path = _os.path.join(
+                _os.path.dirname(_os.path.abspath(__file__)), "..", "pharma.html"
             )
             inject_html(build_news_html(pharma_data), pharma_path)
         else:
-            print("  [SKIP] 无有效新闻条目")
-    except Exception as e:
-        print(f"  [ERROR] 制药新闻失败: {e}")
+            print("  [SKIP] Claude 未返回有效摘要")
+    else:
+        print("  [SKIP] 无新闻条目，跳过")
 
     print(f"\n=== 全部完成 {today_str} ===")
