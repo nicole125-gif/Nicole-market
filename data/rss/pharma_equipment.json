@@ -3,208 +3,58 @@
   "vertical_name": "医药设备",
   "vertical_en": "Pharma Equipment",
   "color": "#ff8c42",
-  "updated_at": "2026-04-14T13:48:49.874820+00:00",
-  "item_count": 20,
+  "updated_at": "2026-04-15T03:23:17.120253+00:00",
+  "item_count": 5,
   "items": [
     {
-      "id": "5e8f03f8f2",
-      "title": "Lyophilization Explained: Key Questions Answered - Patheon pharma services",
-      "url": "https://www.patheon.com/us/en/insights-resources/blog/your-lyophilization-questions-answered.html",
-      "summary": "Lyophilization is <strong>a critical process in the sterile fill-finish phase of pharmaceutical manufacturing, particularly for products that require high levels of stability and a longer shelf life</strong>.",
-      "source": "patheon.com",
+      "id": "656fb7e5b4",
+      "title": "EU sees 2025 pharma export uptick amid competitiveness concerns",
+      "url": "https://www.pharmaceutical-technology.com/news/eu-2025-pharma-import-export-statistics/",
+      "summary": "An analyst noted that this uptick may be a case of “frontloading”, meaning the EU’s 2026 pharma export growth outlook may not be as strong.",
+      "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-04-14T13:48:49.058548+00:00",
-      "pub_ts": 1776174529
+      "pub_date": "2026-04-14T15:00:34+00:00",
+      "pub_ts": 1776178834
     },
     {
-      "id": "3756abd232",
-      "title": "How Lyophilisation Preserves Pharmaceutical Products",
-      "url": "https://www.hometownstation.com/featured-stories/how-lyophilisation-preserves-pharmaceutical-products-587484",
-      "summary": "In practice, pharmaceutical manufacturers rely on advanced cold-chain infrastructure to ensure process consistency. The integration of specialized refrigeration systems plays a decisive role because a lyophilizer for a pharmaceutical production environment must operate with high reliability, stable",
-      "source": "hometownstation.com",
+      "id": "ec57ae7fff",
+      "title": "Pharma 5.0, Sustainability & Security: PHARMAP 2026 brings pharma’s future into focus",
+      "url": "https://www.pharmaceutical-technology.com/news/pharma-5-0-sustainability-security-pharmap-2026-brings-pharmas-future-into-focus/",
+      "summary": "Leading pharmaceutical industry players will convene at PHARMAP Congress 2026 on 20-21 April in the Netherlands, bringing together experts from manufacturing and packaging to quality assurance and regulatory fields for a broad, cross-sector view of emerging trends.",
+      "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-04-14T13:48:49.059014+00:00",
-      "pub_ts": 1776174529
+      "pub_date": "2026-04-14T13:24:01+00:00",
+      "pub_ts": 1776173041
     },
     {
-      "id": "4aca14b697",
-      "title": "Lyophilization: A Primer | Pharmaceutical Technology",
-      "url": "https://www.pharmtech.com/view/lyophilization-primer",
-      "summary": "<strong>Sublimation is achieved through varying the temperature and pressure of the material so that the solvent does not pass through the liquid stage, but moves directly from the solid phase to the gas phase (see Figure 1). Lyophilization takes place in three main stages: freezing, primary drying,",
-      "source": "pharmtech.com",
+      "id": "917b3cbd61",
+      "title": "Travere Therapeutics gains FDA approval for sparsentan in FSGS",
+      "url": "https://www.pharmaceutical-technology.com/news/travere-therapeutics-fda-approval-sparsentan/",
+      "summary": "Travere Therapeutics has received FDA approval for Filspari to reduce proteinuria in patients aged eight years and over with FSGS without nephrotic syndrome.",
+      "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-04-14T13:48:49.059137+00:00",
-      "pub_ts": 1776174529
+      "pub_date": "2026-04-14T10:24:21+00:00",
+      "pub_ts": 1776162261
     },
     {
-      "id": "3827d2e5a0",
-      "title": "The Inner Circle acknowledges, Melvin Colón as a Pinnacle Professional Member Inner Circle of Excellence",
-      "url": "https://www.prnewswire.com/news-releases/the-inner-circle-acknowledges-melvin-colon-as-a-pinnacle-professional-member-inner-circle-of-excellence-302735005.html",
-      "summary": "Colón poses Strong background in Solid Dosage (Tablets/Capsules), Medical Devices, Combination of Products, Biotechnology, Biosimilar, Cell &amp; Gene Therapy, Parenteral, Analytical Testing, Microbiology, Validation, Product Development, and Product Transfer in Aseptic Manufacturing (Microbiology,",
-      "source": "prnewswire.com",
+      "id": "cfb7fa450a",
+      "title": "Novo Nordisk and OpenAI forge alliance to drive speedy drug development",
+      "url": "https://www.pharmaceutical-technology.com/news/novo-nordisk-openai-drug-development-partnership/",
+      "summary": "Novo Nordisk inks this deal with OpenAI as the total value of AI partnerships took a 120% YoY uptick between 2024 and 2025.",
+      "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-04-14T13:48:49.059246+00:00",
-      "pub_ts": 1776174529
+      "pub_date": "2026-04-14T10:00:15+00:00",
+      "pub_ts": 1776160815
     },
     {
-      "id": "8839778ee3",
-      "title": "Lyophilization Equipment Market Set for 5.9% CAGR Through 2033 | Persistence Market Research",
-      "url": "https://www.openpr.com/news/4450280/lyophilization-equipment-market-set-for-5-9-cagr-through-2033",
-      "summary": "Get Custom Insights Designed for Your Businecss: https://www.persistencemarketresearch.com/request-customization/36253 Category-wise Analysis By Product <strong>Tray-style lyophilizers dominate the market, projected to capture a 41.6% revenue share in 2026</strong>.",
-      "source": "openpr.com",
+      "id": "b300de3609",
+      "title": "MSD, Daiichi Sankyo’s ifinatamab deruxtecan receives FDA priority",
+      "url": "https://www.pharmaceutical-technology.com/news/msd-daiichi-sankyos-ifinatamab-fda-priority/",
+      "summary": "MSD and Daiichi Sankyo have received priority review from the FDA for ifinatamab deruxtecan’s BLA to treat ES-SCLC.",
+      "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-04-14T13:48:49.059352+00:00",
-      "pub_ts": 1776174529
-    },
-    {
-      "id": "d914e20bdd",
-      "title": "The Inner Circle acknowledges, Melvin Colón as a Pinnacle Professional Member Inner Circle of Excellence",
-      "url": "https://www.streetinsider.com/PRNewswire/The+Inner+Circle+acknowledges,+Melvin+Col%C3%B3n+as+a+Pinnacle+Professional+Member+Inner+Circle+of+Excellence/26277852.html",
-      "summary": "Vial Washer, Depyrogenation tunnels, Lyophilizer, Smoke Studies, Aseptic Area Qualification), Solid Dosage Manufacturing and Packaging (granulation, blending, milling, micronization, compression, coating, blister, samples, and bottles lines), Liquids, Quality Assurance, Technical Services, and Plann",
-      "source": "streetinsider.com",
-      "lang": "en",
-      "pub_date": "2026-04-14T13:48:49.059870+00:00",
-      "pub_ts": 1776174529
-    },
-    {
-      "id": "888cc879dc",
-      "title": "Drug-Device Combination Products: 4 Evolving Platforms For 2026",
-      "url": "https://www.meddeviceonline.com/doc/drug-device-combination-products-evolving-platforms-for-0001",
-      "summary": "SHL Medical’s Reunite is an easy-to-use dual-chamber cartridge autoinjector designed for automated reconstitution and delivery of lyophilized formulations. The device’s three-step sequence – unlock, twist, push – is explicitly aimed at reducing the risks of manual mixing and dosing.11,12,13 Ypsomed’",
-      "source": "meddeviceonline.com",
-      "lang": "en",
-      "pub_date": "2026-04-14T13:48:49.060011+00:00",
-      "pub_ts": 1776174529
-    },
-    {
-      "id": "f84eaca120",
-      "title": "Lyophilizer Insights: Revolutionizing Freeze-Drying",
-      "url": "https://www.toffonfreeze.com/news/Lyophilizer-Insights-Revolutionizing-Freeze-Drying.html",
-      "summary": "Discover how lyophilizers enhance the freeze-drying process in pharmaceutical manufacturing. Learn about their importance for drug stability, challenges faced, and innovative solutions that <strong>TOFFON FreezeDryer</strong> provides for effective lyophilization.",
-      "source": "toffonfreeze.com",
-      "lang": "en",
-      "pub_date": "2026-04-14T13:48:49.060126+00:00",
-      "pub_ts": 1776174529
-    },
-    {
-      "id": "dd8f70cde3",
-      "title": "The Future of Freeze-Drying: Lyophilization R&D Innovation Trends to Watch - Linknovate Stories",
-      "url": "https://blog.linknovate.com/lyophilization-innovation-trends-to-watch/",
-      "summary": "Lyocontract (Germany): While operating as a highly specialized CDMO, <strong>Lyocontract is a key player to watch in 2026 as they finalize a €50M expansion of their sterile freeze-drying facilities</strong>.",
-      "source": "blog.linknovate.com",
-      "lang": "en",
-      "pub_date": "2026-04-14T13:48:49.060224+00:00",
-      "pub_ts": 1776174529
-    },
-    {
-      "id": "05da40cdfe",
-      "title": "Injectable Liquid Filling Machines Market Forecast Points Higher Toward 2035, Driven by Biologics Demand - News and Statistics - IndexBox",
-      "url": "https://www.indexbox.io/blog/injectable-liquid-filling-machines-market-forecast-points-higher-toward-2035-driven-by-biologics-demand/",
-      "summary": "The global market for injectable liquid filling machines is entering a critical phase of technological and commercial evolution, with <strong>demand projected to accelerate significantly through the 2026-2035 forecast horizon</strong>.",
-      "source": "indexbox.io",
-      "lang": "en",
-      "pub_date": "2026-04-14T13:48:49.060325+00:00",
-      "pub_ts": 1776174529
-    },
-    {
-      "id": "484ece106b",
-      "title": "UCB to Build New U.S. Biologics Manufacturing Facility in Georgia | Contract Pharma",
-      "url": "https://www.contractpharma.com/breaking-news/ucb-to-build-new-u-s-biologics-manufacturing-facility-in-georgia/",
-      "summary": "March 25, 2026 · By: Kristin Brooks · Managing Editor, Contract Pharma · <strong>UCB is building a new U.S. biologics manufacturing facility in Gwinnett County, Georgia</strong>. The state-of-the art campus will leverage AI, robotics, and automation.",
-      "source": "contractpharma.com",
-      "lang": "en",
-      "pub_date": "2026-04-14T13:48:45.032795+00:00",
-      "pub_ts": 1776174525
-    },
-    {
-      "id": "e682004b20",
-      "title": "INTERPHEX USA: The Complete Guide to America's Premier Pharma Manufacturing Show - TEEPTRAK - Connect to your industrial potential",
-      "url": "https://teeptrak.com/en/interphex-usa-complete-guide-pharma-manufacturing-show/",
-      "summary": "<strong>INTERPHEX USA 2026</strong> features extensive programming on supply chain optimization, alternative sourcing strategies, and manufacturing technologies that support operational resilience during market disruptions.",
-      "source": "teeptrak.com",
-      "lang": "en",
-      "pub_date": "2026-04-14T13:48:45.033666+00:00",
-      "pub_ts": 1776174525
-    },
-    {
-      "id": "d6f0e2040a",
-      "title": "AGC Biologics Adopts Modular Bioreactors and Scale-Out Strategy to Enhance Biopharmaceutical Manufacturing Efficiency - GeneOnline News",
-      "url": "https://www.geneonline.com/agc-biologics-adopts-modular-bioreactors-and-scale-out-strategy-to-enhance-biopharmaceutical-manufacturing-efficiency/",
-      "summary": "2026-04-13| by GOAI · A recent discussion with Principal Scientist Anders Cai Holm Hansen has shed light on how CDMO AGC Biologics is leveraging modular bioreactor technology to address challenges in biopharmaceutical manufacturing.",
-      "source": "geneonline.com",
-      "lang": "en",
-      "pub_date": "2026-04-14T13:48:45.033983+00:00",
-      "pub_ts": 1776174525
-    },
-    {
-      "id": "366ed6850a",
-      "title": "Single-Use Bioreactor Market Expected to Witness Rapid Expansion Through 2033 |Danaher, Merck KgaA",
-      "url": "https://natlawreview.com/press-releases/single-use-bioreactor-market-expected-witness-rapid-expansion-through-2033",
-      "summary": "The Single-Use Bioreactor Market is projected to experience substantial growth during the forecast period from 2026 to 2033. In 2026, <strong>the market is expected to expand steadily</strong>, with major players increasingly adopting strategic initiatives to drive growth beyond initial forecasts.",
-      "source": "natlawreview.com",
-      "lang": "en",
-      "pub_date": "2026-04-14T13:48:45.034045+00:00",
-      "pub_ts": 1776174525
-    },
-    {
-      "id": "bcd35579f4",
-      "title": "Are Single Use Bioreactors Key to Biopharma’s Safer in 2026?",
-      "url": "https://www.tecnic.eu/why-single-use-bioreactors-the-future-of-biopharma/",
-      "summary": "Single-use bioreactors have become one of the most important technologies in modern biopharma because they <strong>combine flexibility, lower turnaround time and reduced cross-contamination risk in one process platform</strong>.",
-      "source": "tecnic.eu",
-      "lang": "en",
-      "pub_date": "2026-04-14T13:48:45.034096+00:00",
-      "pub_ts": 1776174525
-    },
-    {
-      "id": "550bccf31b",
-      "title": "The Myth of Bioreactor Scale-Up: A Biology-First Approach to Achieving Robust Manufacturing | Pharmaceutical Engineering",
-      "url": "https://ispe.org/pharmaceutical-engineering/ispeak/myth-bioreactor-scale-biology-first-approach-achieving-robust",
-      "summary": "<strong>Bioreactor scale-up remains one of the most critical challenges in pharmaceutical manufacturing</strong>. Traditionally, the industry has approached this challenge through the lens of engineering equivalence, focusing on matching normalized parameters ...",
-      "source": "ispe.org",
-      "lang": "en",
-      "pub_date": "2026-04-14T13:48:45.034149+00:00",
-      "pub_ts": 1776174525
-    },
-    {
-      "id": "06cbd025e6",
-      "title": "Samsung Biologics expands into the United States: Acquisition of Rockville biologics manufacturing facility",
-      "url": "https://news.samsung.com/us/samsung-biologics-expands-united-states-acquisition-rockville-biologics-manufacturing-facility",
-      "summary": "4/2/2026 · <strong>The newly acquired Rockville site includes two drug manufacturing plants with a combined 60,000-liter drug substance capacity</strong>, supporting both clinical-stage and commercial pharmaceutical production.",
-      "source": "news.samsung.com",
-      "lang": "en",
-      "pub_date": "2026-04-14T13:48:45.034198+00:00",
-      "pub_ts": 1776174525
-    },
-    {
-      "id": "b0da4808fb",
-      "title": "Single-Use Bioreactors Market Worth US$8.5 Bn by 2033 | Persistence Market Research",
-      "url": "https://www.openpr.com/news/4457385/single-use-bioreactors-market-worth-us-8-5-bn-by-2033",
-      "summary": "Micro bioreactors range in complexity ... The findings reviewed by GME stated that <strong>the Global Membrane Bioreactor Market will expand with a CAGR value of 7.0 percent from 2021 to 2026</strong>......",
-      "source": "openpr.com",
-      "lang": "en",
-      "pub_date": "2026-04-14T13:48:45.034245+00:00",
-      "pub_ts": 1776174525
-    },
-    {
-      "id": "bd2738dfe2",
-      "title": "Pharmaceutical Equipment Market Size & Growth to 2031",
-      "url": "https://www.mordorintelligence.com/industry-reports/pharmaceutical-equipment-market",
-      "summary": "The pharmaceutical equipment market size is expected to increase from USD 25.93 billion in 2025 to <strong>USD 27.10 billion</strong> in 2026 and reach USD 33.79 billion by 2031, growing at a CAGR of 4.51% over 2026-2031.",
-      "source": "mordorintelligence.com",
-      "lang": "en",
-      "pub_date": "2026-04-14T13:48:45.034292+00:00",
-      "pub_ts": 1776174525
-    },
-    {
-      "id": "3fb67b4413",
-      "title": "Pharmaceutical Grade Washer Market Forecast Points Higher Toward 2035, Driven by Biologics Expansion - News and Statistics - IndexBox",
-      "url": "https://www.indexbox.io/blog/pharmaceutical-grade-washer-market-forecast-points-higher-toward-2035-driven-by-biologics-expansion/",
-      "summary": "<strong>This analysis forecasts the market from 2026 to 2035</strong>, a period defined by the scaling of advanced therapies and intensified regulatory scrutiny. Growth will be structurally supported by the expansion of biologics and cell &amp; gene therapy ...",
-      "source": "indexbox.io",
-      "lang": "en",
-      "pub_date": "2026-04-14T13:48:45.034340+00:00",
-      "pub_ts": 1776174525
+      "pub_date": "2026-04-14T09:02:04+00:00",
+      "pub_ts": 1776157324
     }
   ]
 }
