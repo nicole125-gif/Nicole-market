@@ -1,0 +1,38 @@
+name: 制药情报每日更新
+
+on:
+  schedule:
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+
+jobs:
+  fetch-and-score:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 lxml
+
+      - name: 抓取制药信号
+        run: python fetch_pharma.py
+
+      - name: DeepSeek 深度评分
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: python score_pharma.py
+
+      - name: 注入 PULSE data.js
+        run: python inject_pharma.py
+
+      - name: Commit & Push
+        run: |
+          git config user.name  "pharma-intel-bot"
+          git config user.email "bot@pulse-intel.local"
+          git add data/ data.js
+          git diff --staged --quiet || git commit -m "pharma intel: $(date +'%Y-%m-%d') 自动更新"
+          git push
