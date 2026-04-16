@@ -3,58 +3,58 @@
   "vertical_name": "医药设备",
   "vertical_en": "Pharma Equipment",
   "color": "#ff8c42",
-  "updated_at": "2026-04-15T03:23:17.120253+00:00",
+  "updated_at": "2026-04-16T03:31:34.896964+00:00",
   "item_count": 5,
   "items": [
     {
-      "id": "656fb7e5b4",
-      "title": "EU sees 2025 pharma export uptick amid competitiveness concerns",
-      "url": "https://www.pharmaceutical-technology.com/news/eu-2025-pharma-import-export-statistics/",
-      "summary": "An analyst noted that this uptick may be a case of “frontloading”, meaning the EU’s 2026 pharma export growth outlook may not be as strong.",
+      "id": "f6f218777d",
+      "title": "FDA shares guide on genome editing best practices",
+      "url": "https://www.pharmaceutical-technology.com/news/fda-draft-guidance-genome-editing-gene-therapy/",
+      "summary": "The FDA's guidance emphasises the potential of NGS methods to mitigate safety risks associated with therapies incorporating genome editing.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-04-14T15:00:34+00:00",
-      "pub_ts": 1776178834
+      "pub_date": "2026-04-15T15:03:27+00:00",
+      "pub_ts": 1776265407
     },
     {
-      "id": "ec57ae7fff",
-      "title": "Pharma 5.0, Sustainability & Security: PHARMAP 2026 brings pharma’s future into focus",
-      "url": "https://www.pharmaceutical-technology.com/news/pharma-5-0-sustainability-security-pharmap-2026-brings-pharmas-future-into-focus/",
-      "summary": "Leading pharmaceutical industry players will convene at PHARMAP Congress 2026 on 20-21 April in the Netherlands, bringing together experts from manufacturing and packaging to quality assurance and regulatory fields for a broad, cross-sector view of emerging trends.",
+      "id": "a118233c71",
+      "title": "Amazon launches AI drug discovery platform",
+      "url": "https://www.pharmaceutical-technology.com/news/amazon-launches-ai-drug-discovery-platform/",
+      "summary": "Amazon has already collaborated with Memorial Sloan Kettering Cancer Center with its AI drug discovery software.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-04-14T13:24:01+00:00",
-      "pub_ts": 1776173041
+      "pub_date": "2026-04-15T14:58:40+00:00",
+      "pub_ts": 1776265120
     },
     {
-      "id": "917b3cbd61",
-      "title": "Travere Therapeutics gains FDA approval for sparsentan in FSGS",
-      "url": "https://www.pharmaceutical-technology.com/news/travere-therapeutics-fda-approval-sparsentan/",
-      "summary": "Travere Therapeutics has received FDA approval for Filspari to reduce proteinuria in patients aged eight years and over with FSGS without nephrotic syndrome.",
+      "id": "41584c78fc",
+      "title": "J&J sets the tone for Q1 earnings with strong oncology growth",
+      "url": "https://www.pharmaceutical-technology.com/news/jj-q1-2026-earnings-pharma-oncology/",
+      "summary": "Off the back of J&amp;J's positive Q1, CEO Joaquin Duato forecasts strong growth acceleration for 2026, driven partially by psoriasis med Icotyde",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-04-14T10:24:21+00:00",
-      "pub_ts": 1776162261
+      "pub_date": "2026-04-15T10:29:41+00:00",
+      "pub_ts": 1776248981
     },
     {
-      "id": "cfb7fa450a",
-      "title": "Novo Nordisk and OpenAI forge alliance to drive speedy drug development",
-      "url": "https://www.pharmaceutical-technology.com/news/novo-nordisk-openai-drug-development-partnership/",
-      "summary": "Novo Nordisk inks this deal with OpenAI as the total value of AI partnerships took a 120% YoY uptick between 2024 and 2025.",
+      "id": "2bc5e5fb9f",
+      "title": "Adcendo secures $75m in Series C funding for ADC development",
+      "url": "https://www.pharmaceutical-technology.com/news/adcendo-75m-funding-adc-development/",
+      "summary": "Adcendo, a clinical-stage biotechnology company developing ADCs for cancer treatment, has raised $75m in a Series C funding round.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-04-14T10:00:15+00:00",
-      "pub_ts": 1776160815
+      "pub_date": "2026-04-15T09:38:36+00:00",
+      "pub_ts": 1776245916
     },
     {
-      "id": "b300de3609",
-      "title": "MSD, Daiichi Sankyo’s ifinatamab deruxtecan receives FDA priority",
-      "url": "https://www.pharmaceutical-technology.com/news/msd-daiichi-sankyos-ifinatamab-fda-priority/",
-      "summary": "MSD and Daiichi Sankyo have received priority review from the FDA for ifinatamab deruxtecan’s BLA to treat ES-SCLC.",
+      "id": "ee43c733f6",
+      "title": "Lilly to acquire CrossBridge Bio for up to $300m",
+      "url": "https://www.pharmaceutical-technology.com/news/lilly-to-acquire-crossbridge-bio/",
+      "summary": "Eli Lilly and Company has agreed to acquire all outstanding shares of CrossBridge Bio for up to $300m in cash.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-04-14T09:02:04+00:00",
-      "pub_ts": 1776157324
+      "pub_date": "2026-04-15T08:59:16+00:00",
+      "pub_ts": 1776243556
     }
   ]
 }

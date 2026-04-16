@@ -3,58 +3,58 @@
   "vertical_name": "氢能",
   "vertical_en": "Hydrogen Energy",
   "color": "#ffd700",
-  "updated_at": "2026-04-15T03:23:04.277185+00:00",
+  "updated_at": "2026-04-16T03:31:22.537789+00:00",
   "item_count": 10,
   "items": [
     {
-      "id": "b57b93e634",
-      "title": "Bloom Energy and Oracle Expand Strategic Partnership to Deploy up to 2.8 GW to Accelerate AI Infrastructure Build-Out",
-      "url": "https://fuelcellsworks.com/2026/04/14/fuel-cells/bloom-energy-and-oracle-expand-strategic-partnership-to-deploy-up-to-2-8-gw-to-accelerate-ai-infrastructure-build-out",
+      "id": "922dc8a6fc",
+      "title": "Italian Electrolyser Maker ErreDue Extends ENEA Research Partnership to 2028",
+      "url": "https://fuelcellsworks.com/2026/04/15/electrolyzer/italian-electrolyser-maker-erredue-extends-enea-research-partnership-to-2028",
       "summary": "",
       "source": "Fuel Cells Works",
       "lang": "en",
-      "pub_date": "2026-04-14T16:10:51+00:00",
-      "pub_ts": 1776183051
+      "pub_date": "2026-04-15T15:36:18+00:00",
+      "pub_ts": 1776267378
     },
     {
-      "id": "796704641d",
-      "title": "KELAG Has Opened Carinthia's First Electrolysis Plant in Arnoldstein",
-      "url": "https://fuelcellsworks.com/2026/04/13/clean-energy/kelag-has-opened-carinthia-s-first-electrolysis-plant-in-arnoldstein",
+      "id": "de5dd97599",
+      "title": "Hydrogen-Powered Heavy Machinery Moves From Trial to Frontline Deployment in Mining Sector",
+      "url": "https://fuelcellsworks.com/2026/04/11/fuel-cells/hydrogen-powered-heavy-machinery-moves-from-trial-to-frontline-deployment-in-mining-sector",
       "summary": "",
       "source": "Fuel Cells Works",
       "lang": "en",
-      "pub_date": "2026-04-14T16:03:37+00:00",
-      "pub_ts": 1776182617
+      "pub_date": "2026-04-15T15:20:28+00:00",
+      "pub_ts": 1776266428
     },
     {
-      "id": "d882c88c39",
-      "title": "Beyond Aero and Luxaviation Partner to Prepare Hydrogen-Electric Business Aviation Operations",
-      "url": "https://fuelcellsworks.com/2026/04/14/energy-innovation/beyond-aero-and-luxaviation-partner-to-prepare-hydrogen-electric-business-aviation-operations",
+      "id": "b79a963aa2",
+      "title": "MB Energy Receives Permit to Build Ammonia Import Terminal in Hamburg",
+      "url": "https://fuelcellsworks.com/2026/04/15/clean-energy/mb-energy-receives-permit-to-build-ammonia-import-terminal-in-hamburg",
       "summary": "",
       "source": "Fuel Cells Works",
       "lang": "en",
-      "pub_date": "2026-04-14T15:58:32+00:00",
-      "pub_ts": 1776182312
+      "pub_date": "2026-04-15T15:04:41+00:00",
+      "pub_ts": 1776265481
     },
     {
-      "id": "27eb334fc2",
-      "title": "Government of Minas Gerais Launches Low-Emission Hydrogen State Plan",
-      "url": "https://fuelcellsworks.com/2026/04/12/h2/government-of-minas-gerais-launches-low-emission-hydrogen-state-plan",
+      "id": "4d2e4a380c",
+      "title": "Indian State Steelmaker Tests Hydrogen Injection in Blast Furnace",
+      "url": "https://fuelcellsworks.com/2026/04/14/h2/indian-state-steelmaker-tests-hydrogen-injection-in-blast-furnace",
       "summary": "",
       "source": "Fuel Cells Works",
       "lang": "en",
-      "pub_date": "2026-04-14T15:49:31+00:00",
-      "pub_ts": 1776181771
+      "pub_date": "2026-04-15T14:54:44+00:00",
+      "pub_ts": 1776264884
     },
     {
-      "id": "42c240ff82",
-      "title": "Element One Advances Patent-Pending Technology for Real-Time Hydrogen Production From Naturally Occuring Rock Systems",
-      "url": "https://fuelcellsworks.com/2026/04/14/hydrogen/element-one-advances-patent-pending-technology-for-real-time-hydrogen-production-from-naturally-occuring-rock-systems",
+      "id": "7f050bfcbd",
+      "title": "Germany Provides €200M Concessional Loan to Support South Africa’s Grid and Renewable Energy Capacity Expansion",
+      "url": "https://fuelcellsworks.com/2026/04/15/green-hydrogen/germany-provides-200m-concessional-loan-to-support-south-africa-s-grid-and-renewable-energy-capacity-expansion",
       "summary": "",
       "source": "Fuel Cells Works",
       "lang": "en",
-      "pub_date": "2026-04-14T15:49:31+00:00",
-      "pub_ts": 1776181771
+      "pub_date": "2026-04-15T14:41:28+00:00",
+      "pub_ts": 1776264088
     },
     {
       "id": "df0e3ff9a1",

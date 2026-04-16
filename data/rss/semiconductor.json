@@ -3,68 +3,128 @@
   "vertical_name": "半导体",
   "vertical_en": "Semiconductor",
   "color": "#ff6b9d",
-  "updated_at": "2026-04-15T03:22:36.796031+00:00",
-  "item_count": 11,
+  "updated_at": "2026-04-16T03:30:57.281483+00:00",
+  "item_count": 14,
   "items": [
     {
-      "id": "f79251d92c",
-      "title": "疯狂囤光刻机，DRAM双雄在怕什么？",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810129&idx=1&sn=c247316697cdd7502143f804b636dfe2",
-      "summary": "疯狂囤光刻机，DRAM双雄在怕什么？",
+      "id": "2b66c3a7c9",
+      "title": "同比暴增341.53%，佰维存储发布Q1亮眼成绩单",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810177&idx=1&sn=abb288043e20b97dcc0d9b359ffb6469",
+      "summary": "同比暴增341.53%，佰维存储发布Q1亮眼成绩单",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-04-15T03:22:32.727423+00:00",
-      "pub_ts": 1776223352
+      "pub_date": "2026-04-16T03:30:53.125804+00:00",
+      "pub_ts": 1776310253
     },
     {
-      "id": "bf6f7e8b05",
-      "title": "神州数码×英特尔亮相CITE2026，共筑AI算力新生态",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810129&idx=2&sn=f4bb1faf89b787cbda9eee83ff8f7917",
-      "summary": "神州数码×英特尔亮相CITE2026，共筑AI算力新生态",
+      "id": "c35096a8af",
+      "title": "300多台机器人大战21公里，谁能活着冲过终点线?",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810171&idx=1&sn=04f64371d000c4861721b0c3c8eec9e2",
+      "summary": "300多台机器人大战21公里，谁能活着冲过终点线?",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-04-15T03:22:32.727466+00:00",
-      "pub_ts": 1776223352
+      "pub_date": "2026-04-16T03:30:53.125871+00:00",
+      "pub_ts": 1776310253
     },
     {
-      "id": "15f3f3244b",
-      "title": "3月，中国集成电路出口增长84.92%",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810129&idx=3&sn=c5620da27d41977188860f1acc2a4c5a",
-      "summary": "3月，中国集成电路出口增长84.92%",
+      "id": "22d488ded0",
+      "title": "ASMLQ1财报，披露最新产品路线图",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810171&idx=2&sn=a8489e38c7cad89f27d49d5a67ee2bcd",
+      "summary": "ASMLQ1财报，披露最新产品路线图",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-04-15T03:22:32.727490+00:00",
-      "pub_ts": 1776223352
+      "pub_date": "2026-04-16T03:30:53.125895+00:00",
+      "pub_ts": 1776310253
     },
     {
-      "id": "f6f4095557",
-      "title": "2026年Q1，半导体初创企业融资一览",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810129&idx=4&sn=bc5e96833be593b026b8811b05a40682",
-      "summary": "2026年Q1，半导体初创企业融资一览",
+      "id": "d440525be7",
+      "title": "Meta、博通联手，XPU新局",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810171&idx=3&sn=2c178f074dfa4aee9affd95994b7a5e1",
+      "summary": "Meta、博通联手，XPU新局",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-04-15T03:22:32.727523+00:00",
-      "pub_ts": 1776223352
+      "pub_date": "2026-04-16T03:30:53.125916+00:00",
+      "pub_ts": 1776310253
     },
     {
-      "id": "29e1555816",
-      "title": "CPO量产，卡在关键一环",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810129&idx=5&sn=740f1537332cbc775c1d94a8c523cfb5",
-      "summary": "CPO量产，卡在关键一环",
-      "source": "半导体产业纵横",
-      "lang": "zh",
-      "pub_date": "2026-04-15T03:22:32.727544+00:00",
-      "pub_ts": 1776223352
-    },
-    {
-      "id": "bb76b0522a",
-      "title": "王忠林调研长江存储并召开存算一体化产业基地建设推进会",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247816085&idx=1&sn=94b985a8c3049a3c987aa59a29cfc1d8",
-      "summary": "王忠林调研长江存储并召开存算一体化产业基地建设推进会",
+      "id": "28f85949a8",
+      "title": "佰维存储营收增长341.53%，净利28.99亿元",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247816160&idx=1&sn=a4d3df0292bf92c1eb35586296ffafaf",
+      "summary": "佰维存储营收增长341.53%，净利28.99亿元",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-04-15T03:22:23.870832+00:00",
-      "pub_ts": 1776223343
+      "pub_date": "2026-04-16T03:30:45.420791+00:00",
+      "pub_ts": 1776310245
+    },
+    {
+      "id": "ff550ad18d",
+      "title": "AI芯片，新混战",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247816120&idx=1&sn=0ce88b1d9bac7c9f3a0bfd2a36602107",
+      "summary": "AI芯片，新混战",
+      "source": "半导体行业观察",
+      "lang": "zh",
+      "pub_date": "2026-04-16T03:30:45.420838+00:00",
+      "pub_ts": 1776310245
+    },
+    {
+      "id": "c6d3aa9049",
+      "title": "Arm下场造芯，RISC-V发展加速",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247816120&idx=2&sn=45e144b0a71fc6c4c2fe53e623f79e16",
+      "summary": "Arm下场造芯，RISC-V发展加速",
+      "source": "半导体行业观察",
+      "lang": "zh",
+      "pub_date": "2026-04-16T03:30:45.420864+00:00",
+      "pub_ts": 1776310245
+    },
+    {
+      "id": "f661157e32",
+      "title": "1nm，关键一战",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247816120&idx=3&sn=5697293105dc5f97efb4eb609ef9af9c",
+      "summary": "1nm，关键一战",
+      "source": "半导体行业观察",
+      "lang": "zh",
+      "pub_date": "2026-04-16T03:30:45.420886+00:00",
+      "pub_ts": 1776310245
+    },
+    {
+      "id": "93a56f54e0",
+      "title": "芯片关键原材料，俄罗斯实施出口管控",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247816120&idx=4&sn=1725830e5c974fb31d974b4ca439a8bf",
+      "summary": "芯片关键原材料，俄罗斯实施出口管控",
+      "source": "半导体行业观察",
+      "lang": "zh",
+      "pub_date": "2026-04-16T03:30:45.420908+00:00",
+      "pub_ts": 1776310245
+    },
+    {
+      "id": "9a52a032b4",
+      "title": "Why More CPUs Are Needed For Agentic AI",
+      "url": "https://semiengineering.com/why-more-cpus-are-needed-for-agentic-ai/",
+      "summary": "General-purpose processing demands will multiply once machines are talking to machines.\nThe post Why More CPUs Are Needed For Agentic AI appeared first on Semiconductor Engineering.",
+      "source": "Semiconductor Engineering",
+      "lang": "en",
+      "pub_date": "2026-04-15T07:15:55+00:00",
+      "pub_ts": 1776237355
+    },
+    {
+      "id": "34e83e3603",
+      "title": "Blog Review: Apr. 15",
+      "url": "https://semiengineering.com/blog-review-apr-15/",
+      "summary": "eUSB2-V2 advances; capacitor demystification; custom AI chips; GaN chiplet; prompts and infrastructure.\nThe post Blog Review: Apr. 15 appeared first on Semiconductor Engineering.",
+      "source": "Semiconductor Engineering",
+      "lang": "en",
+      "pub_date": "2026-04-15T07:01:43+00:00",
+      "pub_ts": 1776236503
+    },
+    {
+      "id": "6a8931f92d",
+      "title": "AI Growing Impact On Chip Design And EDA Tools",
+      "url": "https://semiengineering.com/ai-growing-impact-on-chip-design-and-eda-tools/",
+      "summary": "Demand for faster design and more automation grows from key customers.\nThe post AI Growing Impact On Chip Design And EDA Tools appeared first on Semiconductor Engineering.",
+      "source": "Semiconductor Engineering",
+      "lang": "en",
+      "pub_date": "2026-04-15T07:01:38+00:00",
+      "pub_ts": 1776236498
     },
     {
       "id": "c0fa1e367c",
@@ -85,36 +145,6 @@
       "lang": "en",
       "pub_date": "2026-04-14T07:02:00+00:00",
       "pub_ts": 1776150120
-    },
-    {
-      "id": "61738a6538",
-      "title": "Research Bits: Apr. 14",
-      "url": "https://semiengineering.com/research-bits-apr-14/",
-      "summary": "Memristors: Authentication for edge devices; ultra-high temperature operation; DNA plus perovskites.\nThe post Research Bits: Apr. 14 appeared first on Semiconductor Engineering.",
-      "source": "Semiconductor Engineering",
-      "lang": "en",
-      "pub_date": "2026-04-14T07:01:59+00:00",
-      "pub_ts": 1776150119
-    },
-    {
-      "id": "ed06a4e31a",
-      "title": "Chip Industry Technical Paper Roundup: Apr. 14",
-      "url": "https://semiengineering.com/chip-industry-technical-paper-roundup-apr-14/",
-      "summary": "Silicon spin qubits based on GAA; causal AI for AMS design; wide-bandgap automotive reliability; agentic HLS; co-packaged optics; constraint programming for semiconductor manufacturing; automated security assertions with LLMs.\nThe post Chip Industry Technical Paper Roundup: Apr. 14 appeared first on…",
-      "source": "Semiconductor Engineering",
-      "lang": "en",
-      "pub_date": "2026-04-14T07:01:37+00:00",
-      "pub_ts": 1776150097
-    },
-    {
-      "id": "f5df53dee1",
-      "title": "EDA And IP Numbers Up Again, But Numbers Are More Nuanced",
-      "url": "https://semiengineering.com/eda-and-ip-numbers-up-again-but-numbers-are-more-nuanced/",
-      "summary": "Q4 numbers reflect strengths and weaknesses in different segments.\nThe post EDA And IP Numbers Up Again, But Numbers Are More Nuanced appeared first on Semiconductor Engineering.",
-      "source": "Semiconductor Engineering",
-      "lang": "en",
-      "pub_date": "2026-04-13T14:00:04+00:00",
-      "pub_ts": 1776088804
     }
   ]
 }
