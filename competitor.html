@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>竞品监控 · PULSE</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500&display=swap');
+
+  :root {
+    --bg:       #0a0c0f;
+    --bg2:      #0f1218;
+    --bg3:      #141920;
+    --border:   #1e2530;
+    --border2:  #252d3a;
+    --text:     #c8d0dc;
+    --muted:    #4a5568;
+    --dim:      #2d3748;
+    --b-accent: #378ADD;
+    --b-glow:   rgba(55,138,221,0.12);
+    --g-accent: #1D9E75;
+    --g-glow:   rgba(29,158,117,0.12);
+    --e-accent: #BA7517;
+    --e-glow:   rgba(186,117,23,0.12);
+    --red:      #E24B4A;
+    --amber:    #EF9F27;
+    --green:    #639922;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    min-height: 100vh;
+  }
+
+  /* ── Nav ── */
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 24px;
+    height: 44px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    overflow-x: auto;
+  }
+
+  .nav-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--b-accent);
+    box-shadow: 0 0 8px var(--b-accent);
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+
+  .nav-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--b-accent);
+    letter-spacing: .12em;
+    margin-right: 16px;
+    white-space: nowrap;
+  }
+
+  nav a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 4px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    transition: color .15s;
+  }
+  nav a:hover { color: var(--text); }
+  nav a.active {
+    color: var(--text);
+    background: var(--border);
+  }
+
+  /* ── Layout ── */
+  .page { padding: 24px; max-width: 1400px; margin: 0 auto; }
+
+  .page-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .page-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: .04em;
+  }
+
+  .page-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: .08em;
+  }
+
+  .updated {
+    margin-left: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+  }
+
+  /* ── Summary Cards ── */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .summary-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color .2s;
+  }
+  .summary-card:hover { border-color: var(--border2); }
+  .summary-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+  .summary-card.b::before { background: var(--b-accent); }
+  .summary-card.g::before { background: var(--g-accent); }
+  .summary-card.e::before { background: var(--e-accent); }
+
+  .card-company {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .b .card-company { color: var(--b-accent); }
+  .g .card-company { color: var(--g-accent); }
+  .e .card-company { color: var(--e-accent); }
+
+  .card-name {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .card-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .stat { }
+  .stat-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .b .stat-val { color: var(--b-accent); }
+  .g .stat-val { color: var(--g-accent); }
+  .e .stat-val { color: var(--e-accent); }
+
+  .stat-label {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: .06em;
+    margin-top: 2px;
+  }
+
+  .threat-bar {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .threat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .bar-track {
+    flex: 1;
+    height: 4px;
+    background: var(--border2);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width .6s ease;
+  }
+  .b .bar-fill { background: var(--b-accent); }
+  .g .bar-fill { background: var(--g-accent); }
+  .e .bar-fill { background: var(--e-accent); }
+
+  .threat-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    min-width: 24px;
+    text-align: right;
+  }
+  .b .threat-val { color: var(--b-accent); }
+  .g .threat-val { color: var(--g-accent); }
+  .e .threat-val { color: var(--e-accent); }
+
+  .top-industries {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    border: 1px solid;
+  }
+  .b .tag { border-color: rgba(55,138,221,.3); color: #85B7EB; background: rgba(55,138,221,.06); }
+  .g .tag { border-color: rgba(29,158,117,.3); color: #5DCAA5; background: rgba(29,158,117,.06); }
+  .e .tag { border-color: rgba(186,117,23,.3);  color: #EF9F27; background: rgba(186,117,23,.06); }
+
+  /* ── Section title ── */
+  .section-hdr {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 24px 0 12px;
+  }
+  .section-hdr-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .1em;
+    color: var(--muted);
+  }
+  .section-hdr-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── Filter bar ── */
+  .filter-bar {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .08em;
+    padding: 4px 12px;
+    border-radius: 4px;
+    border: 1px solid var(--border2);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .filter-btn:hover { color: var(--text); border-color: var(--dim); }
+  .filter-btn.active-b { border-color: var(--b-accent); color: var(--b-accent); background: var(--b-glow); }
+  .filter-btn.active-g { border-color: var(--g-accent); color: var(--g-accent); background: var(--g-glow); }
+  .filter-btn.active-e { border-color: var(--e-accent); color: var(--e-accent); background: var(--e-glow); }
+  .filter-btn.active-all { border-color: var(--border2); color: var(--text); background: var(--bg3); }
+
+  /* ── Product table ── */
+  .prod-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .prod-table th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .08em;
+    color: var(--muted);
+    text-align: left;
+    padding: 6px 12px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
+  .prod-table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+    font-size: 12px;
+  }
+
+  .prod-table tr:hover td { background: var(--bg3); }
+
+  .co-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 3px;
+    border: 1px solid;
+    white-space: nowrap;
+  }
+  .co-b { border-color: rgba(55,138,221,.4); color: var(--b-accent); background: var(--b-glow); }
+  .co-g { border-color: rgba(29,158,117,.4); color: var(--g-accent); background: var(--g-glow); }
+  .co-e { border-color: rgba(186,117,23,.4);  color: var(--e-accent); background: var(--e-glow); }
+
+  .prod-name { color: #e2e8f0; font-weight: 500; }
+  .prod-type { color: var(--muted); font-size: 11px; }
+
+  .ind-tags { display: flex; gap: 4px; flex-wrap: wrap; }
+  .ind-tag {
+    font-size: 10px;
+    padding: 1px 6px;
+    border-radius: 2px;
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .threat-dot {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .dot5, .dot4 { color: var(--red); }
+  .dot3 { color: var(--amber); }
+  .dot2, .dot1 { color: var(--green); }
+
+  .tier-badge {
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .opp-text {
+    font-size: 11px;
+    color: var(--muted);
+    max-width: 200px;
+  }
+
+  .source-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--dim);
+    padding: 1px 5px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+  }
+  .source-live { color: var(--g-accent); border-color: rgba(29,158,117,.3); }
+
+  /* ── Threat legend ── */
+  .legend {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+  }
+  .legend-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .summary-grid { grid-template-columns: 1fr; }
+    .prod-table th:nth-child(n+5),
+    .prod-table td:nth-child(n+5) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-dot"></div>
+  <span class="nav-title">PULSE · 竞品监控</span>
+  <a href="index.html">总览</a>
+  <a href="macro.html">宏观脉搏</a>
+  <a href="liquid.html">AI 液冷</a>
+  <a href="semiconductor.html">半导体 SBU</a>
+  <a href="mscc.html">质谱·色谱</a>
+  <a href="pharma.html">制药装备</a>
+  <a href="food.html">食品饮料</a>
+  <a href="hydrogen.html">氢能行业</a>
+  <a href="customers.html">客户监控</a>
+  <a href="competitor.html" class="active">竞品监控</a>
+</nav>
+
+<div class="page">
+
+  <div class="page-header">
+    <div class="page-title">竞品监控</div>
+    <div class="page-sub">COMPETITOR · INTELLIGENCE</div>
+    <div class="updated" id="updated-time">UPDATED —</div>
+  </div>
+
+  <!-- Summary Cards -->
+  <div class="summary-grid" id="summary-grid"></div>
+
+  <!-- Product Table -->
+  <div class="section-hdr">
+    <span class="section-hdr-title">产品列表</span>
+    <div class="section-hdr-line"></div>
+    <span class="section-hdr-title" id="prod-count">— 条</span>
+  </div>
+
+  <div class="filter-bar" id="filter-bar">
+    <button class="filter-btn active-all" data-co="all" onclick="setFilter('all',this)">全部</button>
+    <button class="filter-btn" data-co="Bürkert" onclick="setFilter('Bürkert',this)">Bürkert</button>
+    <button class="filter-btn" data-co="Gemü" onclick="setFilter('Gemü',this)">Gemü</button>
+    <button class="filter-btn" data-co="ESG" onclick="setFilter('ESG',this)">ESG</button>
+    <button class="filter-btn" data-threat="high" onclick="setFilter('high',this)">威胁 ≥4</button>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div>威胁 5 极高</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#E8593C"></div>威胁 4 高</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--amber)"></div>威胁 3 中</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div>威胁 ≤2 低</div>
+  </div>
+
+  <div style="overflow-x:auto">
+    <table class="prod-table">
+      <thead>
+        <tr>
+          <th>公司</th>
+          <th>产品名称</th>
+          <th>产品类型</th>
+          <th>目标行业</th>
+          <th>威胁</th>
+          <th>价格带</th>
+          <th>机会点</th>
+          <th>数据源</th>
+        </tr>
+      </thead>
+      <tbody id="prod-tbody"></tbody>
+    </table>
+  </div>
+
+</div>
+
+<script>
+const DATA_URL = 'data/products_analysis.json';
+
+// ── 颜色映射 ──
+const CO = {
+  'Bürkert': { cls:'b', badge:'co-b' },
+  'Gemü':    { cls:'g', badge:'co-g' },
+  'ESG':     { cls:'e', badge:'co-e' },
+};
+
+const THREAT_COLOR = {5:'#E24B4A', 4:'#E8593C', 3:'#EF9F27', 2:'#639922', 1:'#639922'};
+
+let allProducts = [];
+let currentFilter = 'all';
+
+// ── 加载数据 ──
+async function load() {
+  let data;
+  try {
+    const r = await fetch(DATA_URL);
+    data = await r.json();
+  } catch(e) {
+    // fallback demo
+    data = DEMO_DATA;
+  }
+
+  document.getElementById('updated-time').textContent =
+    'UPDATED ' + (data.analyzed_at || '—').replace(' ', ' · ');
+
+  allProducts = data.products || [];
+  renderSummary(data.summary || {});
+  renderTable(allProducts);
+}
+
+// ── Summary Cards ──
+function renderSummary(summary) {
+  const grid = document.getElementById('summary-grid');
+  const companies = [
+    { key: 'Bürkert', cls: 'b', label: '宝帝流体控制系统' },
+    { key: 'Gemü',    cls: 'g', label: '盖米阀门（中国）' },
+    { key: 'ESG',     cls: 'e', label: '青岛精锐机械' },
+  ];
+
+  grid.innerHTML = companies.map(co => {
+    const s = summary[co.key] || {};
+    const threat = s.avg_threat_level || 0;
+    const pct = (threat / 5 * 100).toFixed(0);
+    const industries = (s.top_industries || []).slice(0,4);
+    const highProds = (s.high_threat_products || []).slice(0,3);
+
+    return `
+    <div class="summary-card ${co.cls}">
+      <div class="card-company">${co.key}</div>
+      <div class="card-name">${co.label}</div>
+      <div class="card-stats">
+        <div class="stat">
+          <div class="stat-val">${s.product_count || 0}</div>
+          <div class="stat-label">监控产品数</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">${threat.toFixed(1)}</div>
+          <div class="stat-label">平均威胁指数</div>
+        </div>
+      </div>
+      <div class="threat-bar">
+        <span class="threat-label">威胁</span>
+        <div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div>
+        <span class="threat-val">${threat.toFixed(1)}/5</span>
+      </div>
+      <div class="top-industries">
+        ${industries.map(i => `<span class="tag">${i}</span>`).join('')}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── Table ──
+function renderTable(products) {
+  const tbody = document.getElementById('prod-tbody');
+  document.getElementById('prod-count').textContent = products.length + ' 条';
+
+  if (!products.length) {
+    tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;color:var(--muted);padding:32px">暂无数据</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = products.map(p => {
+    const a = p.analysis || {};
+    const co = CO[p.company] || { cls:'', badge:'' };
+    const threat = a.threat_level || 0;
+    const color = THREAT_COLOR[threat] || '#639922';
+    const inds = (a.target_industries || []).filter(i => i !== '通用工业').slice(0,3);
+    const isLive = p.source && !p.source.includes('cache');
+
+    return `<tr>
+      <td><span class="co-badge ${co.badge}">${p.company}</span></td>
+      <td>
+        <div class="prod-name">${p.name}</div>
+        <div class="prod-type">${a.product_type || '—'}</div>
+      </td>
+      <td class="prod-type">${a.product_type || '—'}</td>
+      <td>
+        <div class="ind-tags">
+          ${inds.length ? inds.map(i => `<span class="ind-tag">${i}</span>`).join('') : '<span class="ind-tag">通用工业</span>'}
+        </div>
+      </td>
+      <td>
+        <span class="threat-dot" style="color:${color}">
+          ${'■'.repeat(Math.min(threat,5))}${'□'.repeat(Math.max(0,5-threat))} ${threat}
+        </span>
+      </td>
+      <td><span class="tier-badge">${a.price_tier || '—'}</span></td>
+      <td><div class="opp-text">${a.opportunity || '—'}</div></td>
+      <td><span class="source-badge ${isLive ? 'source-live' : ''}">${isLive ? 'LIVE' : 'CACHE'}</span></td>
+    </tr>`;
+  }).join('');
+}
+
+// ── Filter ──
+function setFilter(val, btn) {
+  currentFilter = val;
+  document.querySelectorAll('.filter-btn').forEach(b => {
+    b.className = 'filter-btn';
+  });
+
+  if (val === 'all') btn.className = 'filter-btn active-all';
+  else if (val === 'Bürkert') btn.className = 'filter-btn active-b';
+  else if (val === 'Gemü')    btn.className = 'filter-btn active-g';
+  else if (val === 'ESG')     btn.className = 'filter-btn active-e';
+  else btn.className = 'filter-btn active-all';
+
+  let filtered = allProducts;
+  if (val === 'high') {
+    filtered = allProducts.filter(p => (p.analysis?.threat_level || 0) >= 4);
+  } else if (val !== 'all') {
+    filtered = allProducts.filter(p => p.company === val);
+  }
+  renderTable(filtered);
+}
+
+// ── Demo fallback ──
+const DEMO_DATA = {
+  analyzed_at: '2026-04-16 07:03',
+  summary: {
+    'Bürkert': { product_count:15, avg_threat_level:4.7, top_industries:['制药','食品饮料','化工'], high_threat_products:['电磁阀','过程控制阀'] },
+    'Gemü':    { product_count:9,  avg_threat_level:3.9, top_industries:['制药','生物制品','水处理'], high_threat_products:['Series 515 无菌隔膜阀'] },
+    'ESG':     { product_count:25, avg_threat_level:2.8, top_industries:['食品饮料','制药','新能源'], high_threat_products:[] },
+  },
+  products: []
+};
+
+load();
+</script>
+</body>
+</html>
