@@ -3,58 +3,58 @@
   "vertical_name": "医药设备",
   "vertical_en": "Pharma Equipment",
   "color": "#ff8c42",
-  "updated_at": "2026-04-16T03:31:34.896964+00:00",
+  "updated_at": "2026-04-17T03:26:48.509854+00:00",
   "item_count": 5,
   "items": [
     {
-      "id": "f6f218777d",
-      "title": "FDA shares guide on genome editing best practices",
-      "url": "https://www.pharmaceutical-technology.com/news/fda-draft-guidance-genome-editing-gene-therapy/",
-      "summary": "The FDA's guidance emphasises the potential of NGS methods to mitigate safety risks associated with therapies incorporating genome editing.",
+      "id": "d678773848",
+      "title": "The definitive infrastructure for modern drug development",
+      "url": "https://www.pharmaceutical-technology.com/sponsored/the-definitive-infrastructure-for-modern-drug-development/",
+      "summary": "",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-04-15T15:03:27+00:00",
-      "pub_ts": 1776265407
+      "pub_date": "2026-04-16T15:04:20+00:00",
+      "pub_ts": 1776351860
     },
     {
-      "id": "a118233c71",
-      "title": "Amazon launches AI drug discovery platform",
-      "url": "https://www.pharmaceutical-technology.com/news/amazon-launches-ai-drug-discovery-platform/",
-      "summary": "Amazon has already collaborated with Memorial Sloan Kettering Cancer Center with its AI drug discovery software.",
+      "id": "803d6fcb36",
+      "title": "Lilly debuts more Foundayo data as FDA requests post-marketing trials",
+      "url": "https://www.pharmaceutical-technology.com/news/fda-requests-postmarketing-safety-studies-eli-lilly-foundayo/",
+      "summary": "The FDA requires Eli Lilly to evaluate “unexpected serious” risks associated with Foundayo – some of which have been addressed by the ACHIEVE-4 trial.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-04-15T14:58:40+00:00",
-      "pub_ts": 1776265120
+      "pub_date": "2026-04-16T14:27:10+00:00",
+      "pub_ts": 1776349630
     },
     {
-      "id": "41584c78fc",
-      "title": "J&J sets the tone for Q1 earnings with strong oncology growth",
-      "url": "https://www.pharmaceutical-technology.com/news/jj-q1-2026-earnings-pharma-oncology/",
-      "summary": "Off the back of J&amp;J's positive Q1, CEO Joaquin Duato forecasts strong growth acceleration for 2026, driven partially by psoriasis med Icotyde",
+      "id": "ad85cb96f7",
+      "title": "Terremoto wins $108m in Series C to drive cancer and rare disease programmes",
+      "url": "https://www.pharmaceutical-technology.com/news/terremoto-108m-series-c-cancer-rare-disease-programmes/",
+      "summary": "Terremoto says that its AKT1 blockers can overcome toxicity challenges associated with PI3K/AKT inhibitors through selective activity.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-04-15T10:29:41+00:00",
-      "pub_ts": 1776248981
+      "pub_date": "2026-04-16T09:39:21+00:00",
+      "pub_ts": 1776332361
     },
     {
-      "id": "2bc5e5fb9f",
-      "title": "Adcendo secures $75m in Series C funding for ADC development",
-      "url": "https://www.pharmaceutical-technology.com/news/adcendo-75m-funding-adc-development/",
-      "summary": "Adcendo, a clinical-stage biotechnology company developing ADCs for cancer treatment, has raised $75m in a Series C funding round.",
+      "id": "d18804d6a4",
+      "title": "Nucleai and Sirona Dx to provide new proteomics solution for pharma companies",
+      "url": "https://www.pharmaceutical-technology.com/news/nucleai-sirona-dx-proteomics-solution/",
+      "summary": "Nucleai has partnered with Sirona Dx to provide an integrated spatial proteomics solution for pharmaceutical and biotechnology firms for drug development.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-04-15T09:38:36+00:00",
-      "pub_ts": 1776245916
+      "pub_date": "2026-04-16T08:51:02+00:00",
+      "pub_ts": 1776329462
     },
     {
-      "id": "ee43c733f6",
-      "title": "Lilly to acquire CrossBridge Bio for up to $300m",
-      "url": "https://www.pharmaceutical-technology.com/news/lilly-to-acquire-crossbridge-bio/",
-      "summary": "Eli Lilly and Company has agreed to acquire all outstanding shares of CrossBridge Bio for up to $300m in cash.",
+      "id": "2741a91e65",
+      "title": "Boehringer Ingelheim and Zai Lab team up for dual DLL3 therapy study",
+      "url": "https://www.pharmaceutical-technology.com/news/boehringer-zai-lab-dual-dll3-therapy/",
+      "summary": "Boehringer Ingelheim and Zai Lab have entered into a clinical collaboration to investigate a dual DLL3-targeting approach for patients with ES-SCLC and other NECs.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-04-15T08:59:16+00:00",
-      "pub_ts": 1776243556
+      "pub_date": "2026-04-16T08:08:37+00:00",
+      "pub_ts": 1776326917
     }
   ]
 }

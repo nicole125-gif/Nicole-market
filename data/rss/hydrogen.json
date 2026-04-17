@@ -3,108 +3,58 @@
   "vertical_name": "氢能",
   "vertical_en": "Hydrogen Energy",
   "color": "#ffd700",
-  "updated_at": "2026-04-16T03:31:22.537789+00:00",
-  "item_count": 10,
+  "updated_at": "2026-04-17T03:26:36.135335+00:00",
+  "item_count": 5,
   "items": [
     {
-      "id": "922dc8a6fc",
-      "title": "Italian Electrolyser Maker ErreDue Extends ENEA Research Partnership to 2028",
-      "url": "https://fuelcellsworks.com/2026/04/15/electrolyzer/italian-electrolyser-maker-erredue-extends-enea-research-partnership-to-2028",
+      "id": "97f0a0feec",
+      "title": "Hydrogen and Ammonia as a Structural Response to the Hormuz Shock. Warsaw, Budapest, and Tokyo Sign Two Agreements on the Same Day",
+      "url": "https://fuelcellsworks.com/2026/04/16/clean-energy/hydrogen-and-ammonia-as-a-structural-response-to-the-hormuz-shock-warsaw-budapest-and-tokyo-sign-two-agreements-on-the-same-day",
       "summary": "",
       "source": "Fuel Cells Works",
       "lang": "en",
-      "pub_date": "2026-04-15T15:36:18+00:00",
-      "pub_ts": 1776267378
+      "pub_date": "2026-04-16T15:56:35+00:00",
+      "pub_ts": 1776354995
     },
     {
-      "id": "de5dd97599",
-      "title": "Hydrogen-Powered Heavy Machinery Moves From Trial to Frontline Deployment in Mining Sector",
-      "url": "https://fuelcellsworks.com/2026/04/11/fuel-cells/hydrogen-powered-heavy-machinery-moves-from-trial-to-frontline-deployment-in-mining-sector",
+      "id": "e401ddc259",
+      "title": "Over 100 Hydrogen Projects Registered Across China in Q1",
+      "url": "https://fuelcellsworks.com/2026/04/13/green-investment/over-100-hydrogen-projects-registered-across-china-in-q1",
       "summary": "",
       "source": "Fuel Cells Works",
       "lang": "en",
-      "pub_date": "2026-04-15T15:20:28+00:00",
-      "pub_ts": 1776266428
+      "pub_date": "2026-04-16T15:27:27+00:00",
+      "pub_ts": 1776353247
     },
     {
-      "id": "b79a963aa2",
-      "title": "MB Energy Receives Permit to Build Ammonia Import Terminal in Hamburg",
-      "url": "https://fuelcellsworks.com/2026/04/15/clean-energy/mb-energy-receives-permit-to-build-ammonia-import-terminal-in-hamburg",
+      "id": "6fa7a5b607",
+      "title": "Bosch Chairman Calls Out Europe's Hydrogen Paralysis — 'There's Currently No Market' As Policy Inaction Bites",
+      "url": "https://fuelcellsworks.com/2026/04/16/energy-policy/bosch-chairman-calls-out-europe-s-hydrogen-paralysis-there-s-currently-no-market-as-policy-inaction-bites",
       "summary": "",
       "source": "Fuel Cells Works",
       "lang": "en",
-      "pub_date": "2026-04-15T15:04:41+00:00",
-      "pub_ts": 1776265481
+      "pub_date": "2026-04-16T15:24:32+00:00",
+      "pub_ts": 1776353072
     },
     {
-      "id": "4d2e4a380c",
-      "title": "Indian State Steelmaker Tests Hydrogen Injection in Blast Furnace",
-      "url": "https://fuelcellsworks.com/2026/04/14/h2/indian-state-steelmaker-tests-hydrogen-injection-in-blast-furnace",
+      "id": "f84ba5e025",
+      "title": "Natural Hydrogen in Béarn: 45-8 Energy's Field Surveys Slip Again — Now Targeting Second Half of 2026",
+      "url": "https://fuelcellsworks.com/2026/04/15/green-hydrogen/natural-hydrogen-in-bearn-45-8-energy-s-field-surveys-slip-again-now-targeting-second-half-of-2026",
       "summary": "",
       "source": "Fuel Cells Works",
       "lang": "en",
-      "pub_date": "2026-04-15T14:54:44+00:00",
-      "pub_ts": 1776264884
+      "pub_date": "2026-04-16T15:12:15+00:00",
+      "pub_ts": 1776352335
     },
     {
-      "id": "7f050bfcbd",
-      "title": "Germany Provides €200M Concessional Loan to Support South Africa’s Grid and Renewable Energy Capacity Expansion",
-      "url": "https://fuelcellsworks.com/2026/04/15/green-hydrogen/germany-provides-200m-concessional-loan-to-support-south-africa-s-grid-and-renewable-energy-capacity-expansion",
+      "id": "a4b3571c69",
+      "title": "Kent Awarded EPCm Contract for MorGen Energy's West Wales 20MW Green Hydrogen Plant",
+      "url": "https://fuelcellsworks.com/2026/04/16/green-hydrogen/kent-awarded-epcm-contract-for-morgen-energy-s-west-wales-20mw-green-hydrogen-plant",
       "summary": "",
       "source": "Fuel Cells Works",
       "lang": "en",
-      "pub_date": "2026-04-15T14:41:28+00:00",
-      "pub_ts": 1776264088
-    },
-    {
-      "id": "df0e3ff9a1",
-      "title": "Aternium ™ selects Kiewit for the pre-FEED study for its first hydrogen / heavy water production facility",
-      "url": "https://hydrogen-central.com/aternium-selects-kiewit-for-the-pre-feed-study-for-its-first-hydrogen-heavy-water-production-facility/",
-      "summary": "Aternium ™ selects Kiewit for the pre-FEED study for its first hydrogen / heavy water production facility WILMINGTON, Del. — Aternium, a producer and developer of heavy water and clean [&#8230;]\nThe post Aternium ™ selects Kiewit for the pre-FEED study for its first hydrogen / heavy water production…",
-      "source": "Hydrogen Central",
-      "lang": "en",
-      "pub_date": "2026-04-09T18:19:28+00:00",
-      "pub_ts": 1775758768
-    },
-    {
-      "id": "4a1ad2bebb",
-      "title": "HD Hyundai Heavy Industries Unveils World’s First Ammonia Zero-Carbon Ship",
-      "url": "https://hydrogen-central.com/hd-hyundai-heavy-industries-unveils-worlds-first-ammonia-zero-carbon-ship/",
-      "summary": "HD Hyundai Heavy Industries Unveils World&#8217;s First Ammonia Zero-Carbon Ship Gas carriers Antwerp and Aarlon with safety tech set for May and July delivery HD Hyundai Heavy Industries announced on [&#8230;]\nThe post HD Hyundai Heavy Industries Unveils World&#8217;s First Ammonia Zero-Carbon Ship…",
-      "source": "Hydrogen Central",
-      "lang": "en",
-      "pub_date": "2026-04-09T18:17:01+00:00",
-      "pub_ts": 1775758621
-    },
-    {
-      "id": "4eae7ef312",
-      "title": "African Development Bank’s Sustainable Energy Fund for Africa Launches Call for Proposals for New Green Hydrogen Programme",
-      "url": "https://hydrogen-central.com/african-development-banks-sustainable-energy-fund-for-africa-launches-call-for-proposals-for-new-green-hydrogen-programme/",
-      "summary": "African Development Bank&#8217;s Sustainable Energy Fund for Africa Launches Call for Proposals for New Green Hydrogen Programme Up to $20 million in total available for strategic pre-investment support to eligible [&#8230;]\nThe post African Development Bank&#8217;s Sustainable Energy Fund for Afric…",
-      "source": "Hydrogen Central",
-      "lang": "en",
-      "pub_date": "2026-04-09T18:16:52+00:00",
-      "pub_ts": 1775758612
-    },
-    {
-      "id": "8ac218fcb6",
-      "title": "Study maps regions with the greatest potential for green hydrogen production and use in Brazil",
-      "url": "https://hydrogen-central.com/study-maps-regions-with-the-greatest-potential-for-green-hydrogen-production-and-use-in-brazil/",
-      "summary": "Study maps regions with the greatest potential for green hydrogen production and use in Brazil Every day, our site receives&#160;millions of automated requests&#160;consuming&#160;terabytes of bandwidth&#160;— most of them from content [&#8230;]\nThe post Study maps regions with the greatest potentia…",
-      "source": "Hydrogen Central",
-      "lang": "en",
-      "pub_date": "2026-04-09T18:06:41+00:00",
-      "pub_ts": 1775758001
-    },
-    {
-      "id": "1eeff356be",
-      "title": "Atawey announces the signing of a contract for three hydrogen refueling stations in Belgium",
-      "url": "https://hydrogen-central.com/atawey-announces-the-signing-of-a-contract-for-three-hydrogen-refueling-stations-in-belgium/",
-      "summary": "Atawey announces the signing of a contract for three hydrogen refueling stations in Belgium Atawey announces the sale of three new hydrogen refueling stations in Europe to Colruyt Group and Virya Energy, for [&#8230;]\nThe post Atawey announces the signing of a contract for three hydrogen refueling s…",
-      "source": "Hydrogen Central",
-      "lang": "en",
-      "pub_date": "2026-04-09T18:06:28+00:00",
-      "pub_ts": 1775757988
+      "pub_date": "2026-04-16T15:05:12+00:00",
+      "pub_ts": 1776351912
     }
   ]
 }

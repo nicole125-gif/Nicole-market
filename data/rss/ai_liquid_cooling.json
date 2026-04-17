@@ -3,58 +3,58 @@
   "vertical_name": "AI液冷",
   "vertical_en": "AI Liquid Cooling",
   "color": "#00ff88",
-  "updated_at": "2026-04-16T03:31:11.278960+00:00",
+  "updated_at": "2026-04-17T03:26:24.927087+00:00",
   "item_count": 5,
   "items": [
     {
-      "id": "216ab80d23",
-      "title": "全球首创16cm极致外扩超级机械臂，MOVA扫地机开启清洁新纪元",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247883643&idx=1&sn=38021396ee15e8b1c896050a96a2a96f",
-      "summary": "全球首创16cm极致外扩超级机械臂，MOVA扫地机开启清洁新纪元",
+      "id": "4e406ec66a",
+      "title": "刚刚，机器人练成了宁次的「白眼」：∞帧画面边看边3D重建我们的世界！",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247883890&idx=1&sn=2f2b46fb4b33278005caffab386e840c",
+      "summary": "刚刚，机器人练成了宁次的「白眼」：∞帧画面边看边3D重建我们的世界！",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-16T03:31:06.646084+00:00",
-      "pub_ts": 1776310266
+      "pub_date": "2026-04-17T03:26:18.940138+00:00",
+      "pub_ts": 1776396378
     },
     {
-      "id": "104d9c101f",
-      "title": "谷歌最强具身大脑发布！波士顿机器狗瞬间人模人样",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247883643&idx=2&sn=115d784068d62e175338148fbcdca96d",
-      "summary": "谷歌最强具身大脑发布！波士顿机器狗瞬间人模人样",
+      "id": "236edfcef2",
+      "title": "72天，从0到千万小时产能，这个具身「新锐派」凭什么接管数据赛道?",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247883890&idx=2&sn=7a9009af721e24ad0987e61fd4a3c469",
+      "summary": "72天，从0到千万小时产能，这个具身「新锐派」凭什么接管数据赛道?",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-16T03:31:06.646122+00:00",
-      "pub_ts": 1776310266
+      "pub_date": "2026-04-17T03:26:18.940177+00:00",
+      "pub_ts": 1776396378
     },
     {
-      "id": "9a2cedbdee",
-      "title": "新ViduQ3参考生，这是冲着「剧」来的！万物皆可参考：特效音效场景都...",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247883563&idx=1&sn=3010a2451e000e6e213cb45f63e28b10",
-      "summary": "新ViduQ3参考生，这是冲着「剧」来的！万物皆可参考：特效音效场景都...",
+      "id": "ce76da32d8",
+      "title": "视频世界模型跑长序列不「崩」了！用光流约束+历史记忆+多步训练，让动...",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247883890&idx=3&sn=542d3c26f9dec066fa87b25cedf859d8",
+      "summary": "视频世界模型跑长序列不「崩」了！用光流约束+历史记忆+多步训练，让动...",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-16T03:31:06.646146+00:00",
-      "pub_ts": 1776310266
+      "pub_date": "2026-04-17T03:26:18.940221+00:00",
+      "pub_ts": 1776396378
     },
     {
-      "id": "6e56c0e076",
-      "title": "黄仁勋率先开源量子AI大模型",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247883563&idx=2&sn=f7aafc44c8b289b05f242a0e886b9c9f",
-      "summary": "黄仁勋率先开源量子AI大模型",
+      "id": "600c0364b0",
+      "title": "扔掉你的Token账单吧，荣耀YOYOClaw技术把养虾成本打下来了",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247883814&idx=1&sn=bdfd388eefd8480592feee5087dde476",
+      "summary": "扔掉你的Token账单吧，荣耀YOYOClaw技术把养虾成本打下来了",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-16T03:31:06.646168+00:00",
-      "pub_ts": 1776310266
+      "pub_date": "2026-04-17T03:26:18.940244+00:00",
+      "pub_ts": 1776396378
     },
     {
-      "id": "f37e0c79a8",
-      "title": "柔体操作最缺数据、最怕仿真失真？新研究让布料物理真实再现",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247883563&idx=3&sn=f632f71df97c1ac20bc64c6cfeebce20",
-      "summary": "柔体操作最缺数据、最怕仿真失真？新研究让布料物理真实再现",
+      "id": "8407151086",
+      "title": "把屁声发给ChatGPT，它说这是艺术",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247883814&idx=2&sn=3e9f3f99169b7983e106dcdb9213e913",
+      "summary": "把屁声发给ChatGPT，它说这是艺术",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-16T03:31:06.646189+00:00",
-      "pub_ts": 1776310266
+      "pub_date": "2026-04-17T03:26:18.940265+00:00",
+      "pub_ts": 1776396378
     }
   ]
 }
