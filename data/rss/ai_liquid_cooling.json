@@ -3,58 +3,58 @@
   "vertical_name": "AI液冷",
   "vertical_en": "AI Liquid Cooling",
   "color": "#00ff88",
-  "updated_at": "2026-04-18T02:57:33.568064+00:00",
+  "updated_at": "2026-04-19T03:33:29.135319+00:00",
   "item_count": 5,
   "items": [
     {
-      "id": "68be77d58c",
-      "title": "4.55亿美金！中国具身智能最大单笔融资诞生，高领红杉联手押注具身大脑",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247884218&idx=1&sn=3cdada2b117db3dafb1e7f97432d8739",
-      "summary": "4.55亿美金！中国具身智能最大单笔融资诞生，高领红杉联手押注具身大脑",
+      "id": "3d0afd8bff",
+      "title": "OpenClaw的风，已经吹进了奶茶圈",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247884413&idx=1&sn=10b43030630ca4c1995462510e6f81e4",
+      "summary": "OpenClaw的风，已经吹进了奶茶圈",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-18T02:57:29.326743+00:00",
-      "pub_ts": 1776481049
+      "pub_date": "2026-04-19T03:33:25.042874+00:00",
+      "pub_ts": 1776569605
     },
     {
-      "id": "14748d9a4d",
-      "title": "Claude降智实锤了！还变相涨价，Opus跌下神坛",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247884218&idx=2&sn=ffeb0108358887aa3489a34e4c0b11e5",
-      "summary": "Claude降智实锤了！还变相涨价，Opus跌下神坛",
+      "id": "232463a068",
+      "title": "AI开始接管实验室了！玻尔·跃迁实验室：试剂、设备、数据一个入口搞定...",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247884413&idx=2&sn=b1ba4663befe724d0146e2b79ee61489",
+      "summary": "AI开始接管实验室了！玻尔·跃迁实验室：试剂、设备、数据一个入口搞定...",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-18T02:57:29.326783+00:00",
-      "pub_ts": 1776481049
+      "pub_date": "2026-04-19T03:33:25.042919+00:00",
+      "pub_ts": 1776569605
     },
     {
-      "id": "d817546a53",
-      "title": "Claude有的，国产也有！紫东太初科研龙虾ScienceClaw，已经把Harness卷...",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247884140&idx=1&sn=8b10e7bed0f3e947651e609e7c613df0",
-      "summary": "Claude有的，国产也有！紫东太初科研龙虾ScienceClaw，已经把Harness卷...",
+      "id": "f6ca4d2658",
+      "title": "RAG搜对了却答错？德国萨尔大学找到了真相|ACL'26",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247884413&idx=3&sn=92ebd9e047716196e4960463fc494ba4",
+      "summary": "RAG搜对了却答错？德国萨尔大学找到了真相|ACL'26",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-18T02:57:29.326803+00:00",
-      "pub_ts": 1776481049
+      "pub_date": "2026-04-19T03:33:25.042943+00:00",
+      "pub_ts": 1776569605
     },
     {
-      "id": "a0ef8bf768",
-      "title": "πO.7发布，VLA押出了机器人的GPT-3时刻",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247884140&idx=2&sn=a26f0706c04bc3c8dd53f152e4133e38",
-      "summary": "πO.7发布，VLA押出了机器人的GPT-3时刻",
+      "id": "88f2da8cb7",
+      "title": "DeepSeek被曝融资20亿...可幻方一年就挣50亿啊？",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247884385&idx=1&sn=27ab434a26a45e7cbd2b4ce2bb429c61",
+      "summary": "DeepSeek被曝融资20亿...可幻方一年就挣50亿啊？",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-18T02:57:29.326822+00:00",
-      "pub_ts": 1776481049
+      "pub_date": "2026-04-19T03:33:25.042964+00:00",
+      "pub_ts": 1776569605
     },
     {
-      "id": "84034ef3f9",
-      "title": "NatureⅠ告别「炼丹」！Al+机器人闭环搞光伏：效率 27.18%，可重复性直接...",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247884140&idx=3&sn=92ad696d7367b42e1b4c2b1a0c35f2d9",
-      "summary": "NatureⅠ告别「炼丹」！Al+机器人闭环搞光伏：效率 27.18%，可重复性直接...",
+      "id": "5c74417ed1",
+      "title": "Sora之父跑路！OpenAl一日流失三高管，资本还密谋换掉奥特曼",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247884351&idx=1&sn=3be14bdbb494efe371b9e708104d57aa",
+      "summary": "Sora之父跑路！OpenAl一日流失三高管，资本还密谋换掉奥特曼",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-18T02:57:29.326840+00:00",
-      "pub_ts": 1776481049
+      "pub_date": "2026-04-19T03:33:25.042984+00:00",
+      "pub_ts": 1776569605
     }
   ]
 }
