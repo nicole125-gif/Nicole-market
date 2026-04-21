@@ -12,10 +12,16 @@ _bm25 = None
 _all_texts = None
 
 INJECTION_KEYWORDS = [
-    "忽略之前", "ignore previous", "你是Claude", "you are Claude",
-    "I am Claude", "我是Claude", "不能假扮", "can't fulfill",
-    "Anthropic", "由Anthropic", "developed by", "I need to clarify",
-    "I appreciate you", "我需要澄清", "我理解你的请求"
+   "忽略之前", "ignore previous",
+    "你是Claude", "you are Claude", "I am Claude", "我是Claude",
+    "不能假扮", "can't fulfill", "cannot fulfill",
+    "Anthropic", "由Anthropic", "developed by",
+    "I need to clarify", "I appreciate you",
+    "我需要澄清", "我理解你的请求", "我注意到",
+    "身份澄清", "坦诚地说", "需要说明",
+    "我的角色", "我的能力", "我的限制",
+    "language model", "大语言模型",
+    "作为AI", "作为一个AI", "as an AI",
 ]
 
 
