@@ -3,58 +3,58 @@
   "vertical_name": "AI液冷",
   "vertical_en": "AI Liquid Cooling",
   "color": "#00ff88",
-  "updated_at": "2026-04-20T03:35:35.978816+00:00",
+  "updated_at": "2026-04-21T03:27:38.483484+00:00",
   "item_count": 5,
   "items": [
     {
-      "id": "d024cf0dc2",
-      "title": "倒计时1周|值得关注的下一个AI爆款是谁？",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247884589&idx=1&sn=c226c5a25d0f34ad427822ec640109cb",
-      "summary": "倒计时1周|值得关注的下一个AI爆款是谁？",
+      "id": "96e942ad79",
+      "title": "跨维智能DexWorldModel斩获榜首，世界模型真正的考场在机器人执行里",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247884789&idx=1&sn=162416bd7f7fe4dbc29830096205d920",
+      "summary": "跨维智能DexWorldModel斩获榜首，世界模型真正的考场在机器人执行里",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-20T03:35:31.942616+00:00",
-      "pub_ts": 1776656131
+      "pub_date": "2026-04-21T03:27:33.213908+00:00",
+      "pub_ts": 1776742053
     },
     {
-      "id": "f54242f6ec",
-      "title": "下周六，做具身的一起来聊聊",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247884588&idx=1&sn=c2826631d58267240c4fa4b8d7d8f42a",
-      "summary": "下周六，做具身的一起来聊聊",
+      "id": "e0c29457d6",
+      "title": "把人类驾驶员赶出机场，复旦大牛校友要港股IPO了",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247884789&idx=2&sn=80b3e36d72023e21bfafeeaa57b8e44b",
+      "summary": "把人类驾驶员赶出机场，复旦大牛校友要港股IPO了",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-20T03:35:31.942661+00:00",
-      "pub_ts": 1776656131
+      "pub_date": "2026-04-21T03:27:33.213949+00:00",
+      "pub_ts": 1776742053
     },
     {
-      "id": "7706ed57ea",
-      "title": "大模型架构的下半场",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247884587&idx=1&sn=b3d3d7a70618660eebe06c83a0708504",
-      "summary": "大模型架构的下半场",
+      "id": "885171ec48",
+      "title": "晶圆级芯片和存算一体结合：中科院提出15万tokens/s晶圆级芯片方案...",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247884789&idx=3&sn=0cd1a2e9a75d5a9b2b61ada1744c884a",
+      "summary": "晶圆级芯片和存算一体结合：中科院提出15万tokens/s晶圆级芯片方案...",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-20T03:35:31.942684+00:00",
-      "pub_ts": 1776656131
+      "pub_date": "2026-04-21T03:27:33.213972+00:00",
+      "pub_ts": 1776742053
     },
     {
-      "id": "da706f52f5",
-      "title": "Kimi新论文：把KVCache玩成新商业模式了",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247884587&idx=2&sn=65ce8977c6b01ffd80277eacb909830f",
-      "summary": "Kimi新论文：把KVCache玩成新商业模式了",
+      "id": "d02e0b3d22",
+      "title": "Mythos架构被22岁小伙“逆推”开源了！MoE和注意力借鉴DeepSeek",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247884771&idx=1&sn=557d1a4d731bd2588e87396481118883",
+      "summary": "Mythos架构被22岁小伙“逆推”开源了！MoE和注意力借鉴DeepSeek",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-20T03:35:31.942704+00:00",
-      "pub_ts": 1776656131
+      "pub_date": "2026-04-21T03:27:33.213994+00:00",
+      "pub_ts": 1776742053
     },
     {
-      "id": "80660dfed4",
-      "title": "横扫全球15项SOTA！高德首个面向AGI的全栈具身技术体系大公开",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247884586&idx=1&sn=9bf96cc00105a72306c125f3513f7d07",
-      "summary": "横扫全球15项SOTA！高德首个面向AGI的全栈具身技术体系大公开",
+      "id": "805933096d",
+      "title": "一帮机器人公司苦练一年，冠军被搞手机的给抢了",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247884771&idx=2&sn=78417a4e26ccac7e869d69de2ae6f466",
+      "summary": "一帮机器人公司苦练一年，冠军被搞手机的给抢了",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-20T03:35:31.942723+00:00",
-      "pub_ts": 1776656131
+      "pub_date": "2026-04-21T03:27:33.214014+00:00",
+      "pub_ts": 1776742053
     }
   ]
 }

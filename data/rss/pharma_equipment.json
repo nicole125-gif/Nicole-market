@@ -3,58 +3,58 @@
   "vertical_name": "医药设备",
   "vertical_en": "Pharma Equipment",
   "color": "#ff8c42",
-  "updated_at": "2026-04-20T03:35:59.072757+00:00",
+  "updated_at": "2026-04-21T03:28:01.699655+00:00",
   "item_count": 5,
   "items": [
     {
-      "id": "089b35a2d3",
-      "title": "Kailera makes history with record-breaking $625m IPO",
-      "url": "https://www.pharmaceutical-technology.com/news/kailera-therapeutics-625m-biotech-ipo/",
-      "summary": "Kailera's IPO will allow the biotech to take oral and injectable forms of its lead candidate, ribupatide, through late-stage obesity trials.",
+      "id": "4bd61db0be",
+      "title": "Boehringer Ingelheim launches AI centre in London",
+      "url": "https://www.pharmaceutical-technology.com/news/boehringer-ingelheim-launches-ai-centre-in-london/",
+      "summary": "The new site will focus on the use of AI models for purposes including the discovery and development of targeted medicines for patients with unmet medical needs.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-04-17T14:30:13+00:00",
-      "pub_ts": 1776436213
+      "pub_date": "2026-04-20T14:36:09+00:00",
+      "pub_ts": 1776695769
     },
     {
-      "id": "7389e45e5a",
-      "title": "Aligos and Xiamen Amoytop sign deal for HBV therapy",
-      "url": "https://www.pharmaceutical-technology.com/news/aligos-xiamen-amoytop-hbv-therapy/",
-      "summary": "Aligos Therapeutics and Xiamen Amoytop Biotech are to develop and commercialise pevifoscorvir sodium in Greater China for chronic HBV infection.",
+      "id": "cd51da4a9f",
+      "title": "Beyond GLP-1Rs: emerging targets poised to gain share of obesity market",
+      "url": "https://www.pharmaceutical-technology.com/analyst-comment/beyond-glp-1rs-emerging-targets-obesity-market/",
+      "summary": "Non-GLP-1 obesity drugs are emerging in the market, with this landscape expected to surge 50-fold, generating $15.5bn in 2031.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-04-17T09:54:34+00:00",
-      "pub_ts": 1776419674
+      "pub_date": "2026-04-20T13:33:33+00:00",
+      "pub_ts": 1776692013
     },
     {
-      "id": "b77a772d16",
-      "title": "The innovators working to make in vivo cell therapy a reality",
-      "url": "https://www.pharmaceutical-technology.com/features/the-innovators-working-to-make-in-vivo-cell-therapy-a-reality/",
-      "summary": "As in vivo cell therapies enter clinical trials, suppliers tackle the technical and logistical barriers to commercial viability.",
+      "id": "cb98db0b2f",
+      "title": "Trump backs psychedelics for mental health in new executive order",
+      "url": "https://www.pharmaceutical-technology.com/news/trump-executive-order-psychedelics-regulation-review-research/",
+      "summary": "Trump's executive order sets out to speed up the review of psychedelics, while supporting research into this burgeoning field.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-04-17T09:44:22+00:00",
-      "pub_ts": 1776419062
+      "pub_date": "2026-04-20T10:30:55+00:00",
+      "pub_ts": 1776681055
     },
     {
-      "id": "0ff86ec60a",
-      "title": "Daiichi Sankyo and Interna partner for MNM-targeted delivery solutions",
-      "url": "https://www.pharmaceutical-technology.com/news/daiichi-sankyo-interna-mnm-delivery-solutions/",
-      "summary": "Daiichi Sankyo has partnered with Interna Therapeutics to develop targeted delivery solutions based on molecular nano motor (MNM) technology.",
+      "id": "8d5cfc594d",
+      "title": "UCB to purchase Neurona and NRTX-1001 for $1.15bn",
+      "url": "https://www.pharmaceutical-technology.com/news/ucb-to-buy-neurona-nrtx1001/",
+      "summary": "UCB has signed a definitive agreement to acquire Neurona Therapeutics in a deal worth up to $1.15bn, adding the latter’s lead asset NRTX-1001 to its epilepsy portfolio.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-04-17T09:01:01+00:00",
-      "pub_ts": 1776416461
+      "pub_date": "2026-04-20T09:50:06+00:00",
+      "pub_ts": 1776678606
     },
     {
-      "id": "9ccdf27294",
-      "title": "Developers back Alzheimer’s drugs despite report suggesting lack of efficacy",
-      "url": "https://www.pharmaceutical-technology.com/news/developers-back-alzheimers-drugs-despite-report-suggesting-lack-of-efficacy/",
-      "summary": "Cochrane’s research looked at 17 clinical trials of anti-amyloid drugs in Alzheimer’s disease.",
+      "id": "fc7b35e563",
+      "title": "Magazine: Digital twins become the new battleground for CDMOs",
+      "url": "https://www.pharmaceutical-technology.com/features/magazine-digital-twins-become-the-new-battleground-for-cdmos/",
+      "summary": "In this issue: CDMOs use of digital twins to realise a strategic advantage, Physical AI's rise in pharma manufacturing, and more.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-04-16T15:23:46+00:00",
-      "pub_ts": 1776353026
+      "pub_date": "2026-04-20T09:47:15+00:00",
+      "pub_ts": 1776678435
     }
   ]
 }

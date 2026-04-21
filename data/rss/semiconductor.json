@@ -3,108 +3,128 @@
   "vertical_name": "半导体",
   "vertical_en": "Semiconductor",
   "color": "#ff6b9d",
-  "updated_at": "2026-04-20T03:35:21.983461+00:00",
+  "updated_at": "2026-04-21T03:27:23.628216+00:00",
   "item_count": 15,
   "items": [
     {
-      "id": "ba0dbda28a",
-      "title": "先进封装，大战再起",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810376&idx=1&sn=4190a0e41faeeb3a26d2544fd66b1f14",
-      "summary": "先进封装，大战再起",
+      "id": "3230a769e5",
+      "title": "DDR3第二春：一场没得选的狂欢",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810423&idx=1&sn=3b5daf2d7d5ed907b1a6ffc7258eca6e",
+      "summary": "DDR3第二春：一场没得选的狂欢",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-04-20T03:35:17.888671+00:00",
-      "pub_ts": 1776656117
+      "pub_date": "2026-04-21T03:27:19.469613+00:00",
+      "pub_ts": 1776742039
     },
     {
-      "id": "ed45fe5221",
-      "title": "下周！2026北京国际汽车展览会即将开幕，超全展位图及购票须知来了",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810376&idx=2&sn=81ac35102e9cceadff59445c052de197",
-      "summary": "下周！2026北京国际汽车展览会即将开幕，超全展位图及购票须知来了",
+      "id": "333c4a2e8f",
+      "title": "大厂ALLINAI烧钱不止，硬件持续涨价，字节利润暴跌超70%",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810423&idx=2&sn=e79d873b5d66d20eaa9aed88cd743904",
+      "summary": "大厂ALLINAI烧钱不止，硬件持续涨价，字节利润暴跌超70%",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-04-20T03:35:17.888717+00:00",
-      "pub_ts": 1776656117
+      "pub_date": "2026-04-21T03:27:19.469657+00:00",
+      "pub_ts": 1776742039
     },
     {
-      "id": "c2c0e69618",
-      "title": "三星电子，停产LPDDR4/4X",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810376&idx=3&sn=d2aa2b3f1c1de05755f58d328baa2894",
-      "summary": "三星电子，停产LPDDR4/4X",
+      "id": "0f4270c03a",
+      "title": "华为首发麒麟9030S芯片，手机后续或迎涨价",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810423&idx=3&sn=f94d7aea0e3b7baf7e9f4c1aa7d2d26b",
+      "summary": "华为首发麒麟9030S芯片，手机后续或迎涨价",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-04-20T03:35:17.888743+00:00",
-      "pub_ts": 1776656117
+      "pub_date": "2026-04-21T03:27:19.469683+00:00",
+      "pub_ts": 1776742039
     },
     {
-      "id": "0ad7371c1f",
-      "title": "从猎物到棋手，中国显示产业的崛起之路",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810376&idx=4&sn=c17d866206273fcef7b7a6616c303b85",
-      "summary": "从猎物到棋手，中国显示产业的崛起之路",
+      "id": "2d98b82b01",
+      "title": "SK海力士正式量产192GB容量SOCAMM2",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810423&idx=4&sn=83f8434bef7adc5985d88cf277a35270",
+      "summary": "SK海力士正式量产192GB容量SOCAMM2",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-04-20T03:35:17.888765+00:00",
-      "pub_ts": 1776656117
+      "pub_date": "2026-04-21T03:27:19.469707+00:00",
+      "pub_ts": 1776742039
     },
     {
-      "id": "fe927e3cd9",
-      "title": "英特尔9连涨，CPU仍被低估了",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810376&idx=5&sn=7315808328de2c726ca9dbb0991b8f91",
-      "summary": "英特尔9连涨，CPU仍被低估了",
+      "id": "e3fca0040c",
+      "title": "随着2DNAND谢幕，联电困境重重",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810423&idx=5&sn=a17d84232b45f908af69c34b14998d20",
+      "summary": "随着2DNAND谢幕，联电困境重重",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-04-20T03:35:17.888785+00:00",
-      "pub_ts": 1776656117
+      "pub_date": "2026-04-21T03:27:19.469728+00:00",
+      "pub_ts": 1776742039
     },
     {
-      "id": "db1af2c153",
-      "title": "巨头都在抢光芯片",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247816662&idx=1&sn=2607735c250635de1653a6439ef72dfb",
-      "summary": "巨头都在抢光芯片",
+      "id": "cdd44cacf5",
+      "title": "不用EUV，也能做3nm？",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247816716&idx=1&sn=1d5ea73850d41dfca4ea398099461442",
+      "summary": "不用EUV，也能做3nm？",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-04-20T03:35:08.438260+00:00",
-      "pub_ts": 1776656108
+      "pub_date": "2026-04-21T03:27:11.885573+00:00",
+      "pub_ts": 1776742031
     },
     {
-      "id": "cb6849e339",
-      "title": "AI芯片初创企业融资，创纪录",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247816662&idx=2&sn=6634f4584fb83e7d42b43534fba9b86d",
-      "summary": "AI芯片初创企业融资，创纪录",
+      "id": "b13b0d0914",
+      "title": "传联电进军2DNAND代工",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247816716&idx=2&sn=12b06913f3370ee319e6c03848c1bb25",
+      "summary": "传联电进军2DNAND代工",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-04-20T03:35:08.438319+00:00",
-      "pub_ts": 1776656108
+      "pub_date": "2026-04-21T03:27:11.885623+00:00",
+      "pub_ts": 1776742031
     },
     {
-      "id": "d08ba3a294",
-      "title": "ASML：内存芯片EUV订单量首次反超",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247816662&idx=3&sn=fd17d6cab56d4af3c688f300a3ce8cf7",
-      "summary": "ASML：内存芯片EUV订单量首次反超",
+      "id": "f45af3492a",
+      "title": "一位芯片老兵，要取代CPO",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247816716&idx=3&sn=c365c39d088a8843207985d9cf97aca0",
+      "summary": "一位芯片老兵，要取代CPO",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-04-20T03:35:08.438343+00:00",
-      "pub_ts": 1776656108
+      "pub_date": "2026-04-21T03:27:11.885648+00:00",
+      "pub_ts": 1776742031
     },
     {
-      "id": "7cbb925671",
-      "title": "“芯片短缺2.0”时代，正在到来",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247816662&idx=4&sn=830f103c479c7cd51220d9ccae788924",
-      "summary": "“芯片短缺2.0”时代，正在到来",
+      "id": "17cf550cb2",
+      "title": "40年前今日，美国DRAM反击日本",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247816716&idx=4&sn=9934fdba821b6cf712fc1086ccf657d5",
+      "summary": "40年前今日，美国DRAM反击日本",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-04-20T03:35:08.438378+00:00",
-      "pub_ts": 1776656108
+      "pub_date": "2026-04-21T03:27:11.885670+00:00",
+      "pub_ts": 1776742031
     },
     {
-      "id": "6b6af1ca86",
-      "title": "晶圆代工订单，涌向Intel",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247816662&idx=5&sn=c6a4666d3f98a95469fd13c77c8e723d",
-      "summary": "晶圆代工订单，涌向Intel",
+      "id": "f021fefadb",
+      "title": "SK海力士拟发323万奖金惹争议，韩国网友：最好与公众分享",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247816716&idx=5&sn=aac2f72443caa08a2ba9ad082544271d",
+      "summary": "SK海力士拟发323万奖金惹争议，韩国网友：最好与公众分享",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-04-20T03:35:08.438399+00:00",
-      "pub_ts": 1776656108
+      "pub_date": "2026-04-21T03:27:11.885691+00:00",
+      "pub_ts": 1776742031
+    },
+    {
+      "id": "160d821c78",
+      "title": "Why Proof Convergence Matters",
+      "url": "https://semiengineering.com/why-proof-convergence-matters/",
+      "summary": "Leveraging patterns in formal verification to reach sign-off faster.\nThe post Why Proof Convergence Matters appeared first on Semiconductor Engineering.",
+      "source": "Semiconductor Engineering",
+      "lang": "en",
+      "pub_date": "2026-04-20T07:15:16+00:00",
+      "pub_ts": 1776669316
+    },
+    {
+      "id": "71dc198f3c",
+      "title": "Batteries Charge To The Edge",
+      "url": "https://semiengineering.com/batteries-charge-to-the-edge/",
+      "summary": "Chemistry is becoming the determining factor across many markets as focus shifts to power.\nThe post Batteries Charge To The Edge appeared first on Semiconductor Engineering.",
+      "source": "Semiconductor Engineering",
+      "lang": "en",
+      "pub_date": "2026-04-20T07:01:56+00:00",
+      "pub_ts": 1776668516
     },
     {
       "id": "57ac218498",
@@ -135,26 +155,6 @@
       "lang": "en",
       "pub_date": "2026-04-16T07:10:14+00:00",
       "pub_ts": 1776323414
-    },
-    {
-      "id": "6d4ba435d6",
-      "title": "Chiplet Standards Aim For Plug-n-Play",
-      "url": "https://semiengineering.com/chiplet-standards-aim-for-plug-n-play/",
-      "summary": "They're necessary, but insufficient for a marketplace.\nThe post Chiplet Standards Aim For Plug-n-Play appeared first on Semiconductor Engineering.",
-      "source": "Semiconductor Engineering",
-      "lang": "en",
-      "pub_date": "2026-04-16T07:09:44+00:00",
-      "pub_ts": 1776323384
-    },
-    {
-      "id": "c713025576",
-      "title": "Silicon Photonics Lights The Way To More Efficient Data Centers",
-      "url": "https://semiengineering.com/silicon-photonics-lights-the-way-to-more-efficient-data-centers/",
-      "summary": "Optical is the future, but getting there is harder than it looks.\nThe post Silicon Photonics Lights The Way To More Efficient Data Centers appeared first on Semiconductor Engineering.",
-      "source": "Semiconductor Engineering",
-      "lang": "en",
-      "pub_date": "2026-04-16T07:08:26+00:00",
-      "pub_ts": 1776323306
     }
   ]
 }

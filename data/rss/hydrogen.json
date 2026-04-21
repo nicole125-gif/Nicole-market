@@ -3,58 +3,68 @@
   "vertical_name": "氢能",
   "vertical_en": "Hydrogen Energy",
   "color": "#ffd700",
-  "updated_at": "2026-04-20T03:35:46.552718+00:00",
-  "item_count": 5,
+  "updated_at": "2026-04-21T03:27:49.092860+00:00",
+  "item_count": 6,
   "items": [
     {
-      "id": "875af26be6",
-      "title": "Arequipa Sets Its Sights on 5% of Global Green Hydrogen Demand",
-      "url": "https://fuelcellsworks.com/2026/04/16/h2/arequipa-sets-its-sights-on-5-percent-of-global-green-hydrogen-demand",
-      "summary": "",
-      "source": "Fuel Cells Works",
+      "id": "129eb98011",
+      "title": "Why hydrogen must be a building block in global energy system resilience",
+      "url": "https://hydrogen-central.com/why-hydrogen-must-be-a-building-block-in-global-energy-system-resilience/",
+      "summary": "Why hydrogen must be a building block in global energy system resilience &#8211; An outlook on the landscape for electrolysis ahead of the World Hydrogen Summit Author: Lennart Welter, director [&#8230;]\nThe post Why hydrogen must be a building block in global energy system resilience appeared first…",
+      "source": "Hydrogen Central",
       "lang": "en",
-      "pub_date": "2026-04-17T16:02:55+00:00",
-      "pub_ts": 1776441775
+      "pub_date": "2026-04-20T23:04:53+00:00",
+      "pub_ts": 1776726293
     },
     {
-      "id": "9dc34347a3",
-      "title": "FPH2 Expands California Renewable Hydrogen Supply Partnerships to Support Public Fleets, Data Infrastructure, and Energy Resilience",
-      "url": "https://fuelcellsworks.com/2026/04/17/h2/fph2-expands-california-renewable-hydrogen-supply-partnerships-to-support-public-fleets-data-infrastructure-and-energy-resilience",
+      "id": "38c61dd939",
+      "title": "Atlántico, a Department in the Colombian Caribbean, Strengthens Its Leadership in the Energy Transition Within the Framework of the National Congress",
+      "url": "https://fuelcellsworks.com/2026/04/20/green-hydrogen/atlantico-a-department-in-the-colombian-caribbean-strengthens-its-leadership-in-the-energy-transition-within-the-framework-of-the-national-congress",
       "summary": "",
       "source": "Fuel Cells Works",
       "lang": "en",
-      "pub_date": "2026-04-17T15:57:51+00:00",
-      "pub_ts": 1776441471
+      "pub_date": "2026-04-20T16:26:51+00:00",
+      "pub_ts": 1776702411
     },
     {
-      "id": "a8786ca87c",
-      "title": "South Korea's Seosan City Wins Government Backing to Build Hydrogen Transport Hub at Daesan Industrial Complex",
-      "url": "https://fuelcellsworks.com/2026/04/14/h2/south-korea-s-seosan-city-wins-government-backing-to-build-hydrogen-transport-hub-at-daesan-industrial-complex",
+      "id": "68424b1542",
+      "title": "Kaunas Airport Tests Hydrogen-Powered Truck",
+      "url": "https://fuelcellsworks.com/2026/04/20/energy-innovation/kaunas-airport-tests-hydrogen-powered-truck",
       "summary": "",
       "source": "Fuel Cells Works",
       "lang": "en",
-      "pub_date": "2026-04-17T15:50:05+00:00",
-      "pub_ts": 1776441005
+      "pub_date": "2026-04-20T15:53:03+00:00",
+      "pub_ts": 1776700383
     },
     {
-      "id": "466e89a05e",
-      "title": "Watami Launches Fuel Cell Truck Trial to Decarbonise Logistics in Aichi",
-      "url": "https://fuelcellsworks.com/2026/04/17/fuel-cells/watami-launches-fuel-cell-truck-trial-to-decarbonise-logistics-in-aichi",
+      "id": "254e013096",
+      "title": "Prominence Secures CSIRO Kick-Start Funding to Advance Gawler Natural Hydrogen Project",
+      "url": "https://fuelcellsworks.com/2026/04/20/green-hydrogen/prominence-secures-csiro-kick-start-funding-to-advance-gawler-natural-hydrogen-project",
       "summary": "",
       "source": "Fuel Cells Works",
       "lang": "en",
-      "pub_date": "2026-04-17T15:45:42+00:00",
-      "pub_ts": 1776440742
+      "pub_date": "2026-04-20T15:45:50+00:00",
+      "pub_ts": 1776699950
     },
     {
-      "id": "021e22aedf",
-      "title": "France Studies 850 Km Hydrogen Pipeline From Marseille to German Border Led by NaTran",
-      "url": "https://fuelcellsworks.com/2026/04/16/h2/france-studies-850-km-hydrogen-pipeline-from-marseille-to-german-border-led-by-natran",
+      "id": "7a6cd8c541",
+      "title": "Fuel Cell and Hydrogen News Highlights From China: April 12-April 17 2026",
+      "url": "https://fuelcellsworks.com/2026/04/17/clean-energy/fuel-cell-and-hydrogen-news-highlights-from-china-april-12-april-17-2026",
       "summary": "",
       "source": "Fuel Cells Works",
       "lang": "en",
-      "pub_date": "2026-04-17T15:36:59+00:00",
-      "pub_ts": 1776440219
+      "pub_date": "2026-04-20T15:28:33+00:00",
+      "pub_ts": 1776698913
+    },
+    {
+      "id": "54e6710aab",
+      "title": "How Hydrogen Fuel Cells Support the Power Grid",
+      "url": "https://fuelcellsworks.com/2026/04/20/energy-innovation/how-hydrogen-fuel-cells-support-the-power-grid",
+      "summary": "",
+      "source": "Fuel Cells Works",
+      "lang": "en",
+      "pub_date": "2026-04-20T15:25:15+00:00",
+      "pub_ts": 1776698715
     }
   ]
 }
