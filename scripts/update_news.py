@@ -11,15 +11,26 @@ update_news.py  —  PULSE 2026 每周自动更新脚本
 import os
 import re
 import json
+import hashlib
 import datetime
 import anthropic
-try:
-    from rag_helper import retrieve as rag_retrieve
-except ImportError:
-    def rag_retrieve(query, top_k=3): return ""
+
+# ── 打分缓存 ──────────────────────────────────────────────────
+SCORE_CACHE_FILE = "data/score_cache.json"
+
+def _load_score_cache():
+    if os.path.exists(SCORE_CACHE_FILE):
+        with open(SCORE_CACHE_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {}
+
+def _save_score_cache(cache):
+    os.makedirs("data", exist_ok=True)
+    with open(SCORE_CACHE_FILE, "w", encoding="utf-8") as f:
+        json.dump(cache, f, ensure_ascii=False, indent=2)
 
 # ══════════════════════════════════════════════════════════════
-# 1. 子赛道配置（id 必须和 index.html 里的 T 对象 key 对应）
+# 1. 子赛道配置
 # ══════════════════════════════════════════════════════════════
 TRACKS = [
     {"id": "e1", "name": "液冷数据中心", "board": "EI",
@@ -160,7 +171,6 @@ def get_client():
         base_url="https://key.simpleai.com.cn"
     )
 
-
 # ══════════════════════════════════════════════════════════════
 # 4. 历史数据 I/O
 # ══════════════════════════════════════════════════════════════
@@ -190,7 +200,6 @@ def save_history(history, period, results):
     print(f"[OK] 历史已保存 → {HISTORY_PATH}")
 
 def get_prev_heat(history, track_id):
-    """返回上一期的 heat，找不到返回 50。"""
     periods = sorted(history.keys(), reverse=True)
     for p in periods:
         if track_id in history[p]:
@@ -198,7 +207,7 @@ def get_prev_heat(history, track_id):
     return 50.0
 
 # ══════════════════════════════════════════════════════════════
-# 5. 新闻抓取（Brave Search API）
+# 5. 新闻抓取
 # ══════════════════════════════════════════════════════════════
 def fetch_news_for_track(track, days=30):
     import urllib.request, urllib.parse, json as _json
@@ -207,10 +216,7 @@ def fetch_news_for_track(track, days=30):
 
     for kw in track["keywords"][:5]:
         try:
-            params = urllib.parse.urlencode({
-                "q": kw,
-                "count": 8,
-            })
+            params = urllib.parse.urlencode({"q": kw, "count": 8})
             req = urllib.request.Request(
                 f"https://api.search.brave.com/res/v1/web/search?{params}",
                 headers={
@@ -220,7 +226,6 @@ def fetch_news_for_track(track, days=30):
             )
             with urllib.request.urlopen(req, timeout=15) as resp:
                 raw = resp.read()
-                # 处理 gzip 压缩响应
                 if resp.info().get("Content-Encoding") == "gzip":
                     import gzip as _gz
                     raw = _gz.decompress(raw)
@@ -234,7 +239,6 @@ def fetch_news_for_track(track, days=30):
         except Exception as e:
             print(f"  [WARN] Brave 抓取失败 {kw}: {e}")
 
-    # 去重
     seen, unique = set(), []
     for i in items:
         k = i["title"][:15]
@@ -244,31 +248,21 @@ def fetch_news_for_track(track, days=30):
     print(f"  [INFO] {track['id']} 抓到 {len(unique)} 条新闻")
     return unique[:12]
 
-
 # ══════════════════════════════════════════════════════════════
 # 6. 打分逻辑
 # ══════════════════════════════════════════════════════════════
-# ══════════════════════════════════════════════════════════════
-# 关键词规则打分 — 不依赖任何 AI API
-# ══════════════════════════════════════════════════════════════
-
-# 通用关键词
 POSITIVE_D = ["扩产","大单","订单","渗透率","需求旺","出货","销量增","增长","爆发",
               "新高","放量","旺盛","景气","中标","量产","交付","供不应求"]
 NEGATIVE_D = ["需求疲","订单下滑","出货下降","销量降","萎缩","去库存","下行","低迷","收缩"]
-
 POSITIVE_C = ["招标","融资","投资","Capex","扩建","新基地","开工","产能","募资","并购",
               "新建","上马","立项","开建","签约","中标","资本支出"]
 NEGATIVE_C = ["FAI下滑","投资收缩","暂缓","推迟","缩减","降速","停工","撤资","亏损"]
-
 POSITIVE_P = ["涨价","提价","价格上涨","盈利提升","毛利率提升","量价齐升","价格回升","涨幅"]
 NEGATIVE_P = ["降价","集采","价格下跌","亏损","毛利下滑","价格战","内卷","杀价","降本"]
-
 POSITIVE_POL = ["补贴","政策支持","利好政策","入法","规划","十五五","国家战略","催化",
                 "专项资金","政策红利","重点支持","列入","优先","加快推进"]
 NEGATIVE_POL = ["政策空窗","监管收紧","限制","禁令","处罚","暂停审批","叫停","整顿"]
 
-# 赛道专属加分词（命中即额外+8）
 TRACK_BONUS = {
     "e1": ["液冷","CDU","冷板","TrendForce","浸没","算力","液冷渗透率"],
     "e2": ["北方华创","中微","晶圆","DRAM","HBM","封测","出口管制","国产设备"],
@@ -292,16 +286,6 @@ TRACK_BONUS = {
     "m3": ["工业增加值","FAI","固定资产投资","规上工业","高技术制造"],
 }
 
-def _keyword_score(track_id, titles, pos_words, neg_words, base=58):
-    text = " ".join(titles)
-    pos = sum(1 for w in pos_words if w in text)
-    neg = sum(1 for w in neg_words if w in text)
-    # 赛道专属词加分
-    bonus_words = TRACK_BONUS.get(track_id, [])
-    bonus = sum(1 for w in bonus_words if w in text)
-    score = base + pos * 5 - neg * 8 + bonus * 8
-    return min(95, max(30, score))
-
 def score_track(client, track, news_items):
     if not news_items:
         print(f"  [WARN] {track['id']} 无新闻，使用默认分 50")
@@ -311,6 +295,17 @@ def score_track(client, track, news_items):
     news_text = "\n".join([f"- {i['title']}" for i in news_items[:12]])
     track_name = track.get("name", track["id"])
     tid = track["id"]
+
+    # RAG 检索
+    try:
+        import sys, os as _os
+        sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+        from rag_helper import retrieve as rag_retrieve
+    except ImportError:
+        def rag_retrieve(query, top_k=3): return ""
+
+    rag_query = f"{track_name} 市场需求 营收 竞争格局"
+    rag_context = rag_retrieve(rag_query, top_k=3)
 
     TRACK_STRATEGY = {
         "e1": "聚焦AI液冷（CDU/冷板/浸没式），关注算力基础设施液冷渗透率提升。",
@@ -336,10 +331,6 @@ def score_track(client, track, news_items):
     }
     strategy = TRACK_STRATEGY.get(tid, "")
     strategy_line = f"赛道策略：{strategy}\n\n" if strategy else ""
-
-# RAG：检索相关年报背景
-    rag_query = f"{track_name} 市场需求 营收 竞争格局"
-    rag_context = rag_retrieve(rag_query, top_k=3)
 
     prompt = (
         f"你是中国B2B设备行业景气度分析师。根据以下新闻标题，对赛道【{track_name}】打分并生成摘要。\n\n"
@@ -369,17 +360,14 @@ def score_track(client, track, news_items):
         raw = next((b.text for b in msg.content if hasattr(b, "text") and b.type == "text"), "").strip()
         print(f"  [Claude] {raw[:80]}")
 
-        # 清理 markdown 粗体和多余空格，然后在整个回答里搜索分数
         clean = re.sub(r'[*_`]', '', raw).replace("\n", " ")
         lines = raw.strip().split("\n")
-        score_line = lines[0] if lines else ""
 
         d   = re.search(r'D\s*=\s*(\d+)', clean)
         c   = re.search(r'C\s*=\s*(\d+)', clean)
         p   = re.search(r'(?<![A-Z])P\s*=\s*(\d+)', clean)
         pol = re.search(r'Pol\s*=\s*(\d+)', clean)
 
-        # 提取文字字段
         core_data = ""
         comment   = ""
         act       = ""
@@ -401,16 +389,15 @@ def score_track(client, track, news_items):
                 "comment":   comment,
                 "act":       act,
             }
-        print(f"  [WARN] 解析失败: {score_line}")
+        print(f"  [WARN] 解析失败: {raw[:80]}")
     except Exception as e:
-        print(f"  [WARN] DeepSeek 失败 {track['id']}: {e}")
+        print(f"  [WARN] Claude 失败 {track['id']}: {e}")
 
     return {"D": 50, "C": 50, "P": 50, "Pol": 50,
             "core_data": "打分异常", "comment": "请人工核查"}
 
 
 def calc_heat(scores):
-    """加权公式：D×35% + C×30% + P×20% + Pol×15%"""
     h = (scores["D"] * 0.35 + scores["C"] * 0.30 +
          scores["P"] * 0.20 + scores["Pol"] * 0.15)
     return round(h, 1)
@@ -425,7 +412,7 @@ def calc_trend(heat, prev_heat):
 
 
 # ══════════════════════════════════════════════════════════════
-# 7. 制药装备行业动态（注入 pharma.html）
+# 7. 制药装备行业动态
 # ══════════════════════════════════════════════════════════════
 def fetch_pharma_news(days=30):
     import urllib.request, urllib.parse, json as _json
@@ -442,11 +429,8 @@ def fetch_pharma_news(days=30):
     for kw in keywords:
         try:
             params = urllib.parse.urlencode({
-                "q": kw,
-                "count": 5,
-                "search_lang": "zh",
-                "country": "CN",
-                "freshness": "pm",
+                "q": kw, "count": 5,
+                "search_lang": "zh", "country": "CN", "freshness": "pm",
             })
             req = urllib.request.Request(
                 f"https://api.search.brave.com/res/v1/web/search?{params}",
@@ -457,7 +441,6 @@ def fetch_pharma_news(days=30):
             )
             with urllib.request.urlopen(req, timeout=15) as resp:
                 raw = resp.read()
-                # 处理 gzip 压缩响应
                 if resp.info().get("Content-Encoding") == "gzip":
                     import gzip as _gz
                     raw = _gz.decompress(raw)
@@ -471,7 +454,7 @@ def fetch_pharma_news(days=30):
                 })
         except Exception as e:
             print(f"  [WARN] Brave pharma 抓取失败 {kw}: {e}")
-    # 去重
+
     seen, unique = set(), []
     for i in items:
         k = i["title"][:15]
@@ -479,6 +462,8 @@ def fetch_pharma_news(days=30):
             seen.add(k)
             unique.append(i)
     return unique[:16]
+
+
 def summarize_pharma(client, raw_items):
     titles = "\n".join([f"- {i['title']}" for i in raw_items[:14]])
     prompt = f"""以下是制药装备行业近期新闻标题，请筛选出最有价值的5条，
@@ -501,13 +486,10 @@ def summarize_pharma(client, raw_items):
         raw = next((b.text for b in msg.content if hasattr(b, "text") and b.type == "text"), "").strip()
         if not raw:
             raw = "[]"
-        # strip markdown fences
         raw = re.sub(r"^```[a-z]*\s*|```$", "", raw, flags=re.MULTILINE).strip()
-        # find JSON array
         m = re.search(r"\[.*\]", raw, re.DOTALL)
         raw = m.group(0) if m else "[]"
         parsed = json.loads(raw)
-        # 补充原始链接
         title_to_link = {i["title"]: i["link"] for i in raw_items}
         for item in parsed:
             item["link"] = title_to_link.get(item["title"], "")
@@ -580,19 +562,32 @@ if __name__ == "__main__":
     today_str = today.strftime("%Y-%m-%d")
     print(f"=== PULSE 2026 开始更新 {today_str} ===")
 
-    client  = get_client()
-    history = load_history()
-    results = {}
+    client      = get_client()
+    history     = load_history()
+    results     = {}
+    score_cache = _load_score_cache()
 
     # ── Step 1：子赛道打分 ──────────────────────────────────
     print("\n--- Heat Score 打分 ---")
     for track in TRACKS:
         print(f"  处理: {track['id']}")
-        news   = fetch_news_for_track(track)
-        scores = score_track(client, track, news)
-        heat   = calc_heat(scores)
-        prev   = get_prev_heat(history, track["id"])
-        trend  = calc_trend(heat, prev)
+        news = fetch_news_for_track(track)
+
+        # 生成缓存 key
+        news_str  = "".join(i["title"] for i in news[:12])
+        cache_key = hashlib.md5((track["id"] + news_str).encode()).hexdigest()
+
+        if cache_key in score_cache:
+            print(f"  [CACHE] {track['id']} 命中缓存，跳过打分")
+            scores = score_cache[cache_key]
+        else:
+            scores = score_track(client, track, news)
+            score_cache[cache_key] = scores
+            _save_score_cache(score_cache)
+
+        heat  = calc_heat(scores)
+        prev  = get_prev_heat(history, track["id"])
+        trend = calc_trend(heat, prev)
         results[track["id"]] = {
             "heat": heat, "trend": trend,
             "scores": scores, "prev_heat": prev,
@@ -630,9 +625,7 @@ if __name__ == "__main__":
             "tracks":  {},
         }
 
-        # 板块级
         for b, heat in board_heats.items():
-            # 用板块内子赛道的平均 prev 估算板块趋势
             tids = list(BOARD_WEIGHTS[b].keys())
             prev_heats = [results[t]["prev_heat"] for t in tids if t in results]
             prev_board = round(sum(prev_heats) / len(prev_heats), 1) if prev_heats else 50
@@ -641,7 +634,6 @@ if __name__ == "__main__":
                 "tr":   calc_trend(heat, prev_board),
             }
 
-        # 子赛道级
         for tid, r in results.items():
             delta = round(r["heat"] - r["prev_heat"], 1)
             entry = {
@@ -653,9 +645,7 @@ if __name__ == "__main__":
                 "P":     r["scores"]["P"],
                 "Pol":   r["scores"]["Pol"],
             }
-            # 加入文字字段（如果有）
             if r["scores"].get("core_data"):
-                # data 字段是数组格式
                 entry["data"] = [r["scores"]["core_data"]]
             if r["scores"].get("comment"):
                 entry["tw"] = r["scores"]["comment"]
@@ -663,14 +653,15 @@ if __name__ == "__main__":
                 entry["act"] = r["scores"]["act"]
             scores_payload["tracks"][tid] = entry
 
-        # index.html 在仓库根目录，脚本在 scripts/，所以往上一级
-        index_path = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "..", "index.html")
+        index_path = _os.path.join(
+            _os.path.dirname(_os.path.abspath(__file__)), "..", "index.html"
+        )
         inject_scores(scores_payload, index_path=index_path)
 
     except Exception as e:
         print(f"  [WARN] inject_scores 失败，跳过 index.html 更新: {e}")
 
-    # ── Step 5：制药装备行业动态 → pharma.html ─────────────
+    # ── Step 5：制药装备行业动态 ───────────────────────────
     print("\n--- 制药装备行业动态 ---")
     pharma_raw = fetch_pharma_news()
     print(f"  抓取 {len(pharma_raw)} 条原始新闻")
