@@ -1,6 +1,6 @@
 """
 rag_helper.py — 年报向量检索模块
-包含：Reranking + Query Expansion
+包含：Query Expansion + Hybrid Search(BM25) + Reranking
 """
 from pathlib import Path
 
@@ -8,10 +8,12 @@ _DB_DIR = Path(__file__).parent.parent / "pulse_vectordb"
 _embedder = None
 _collection = None
 _reranker = None
+_bm25 = None
+_all_texts = None
 
 
 def _init():
-    global _embedder, _collection, _reranker
+    global _embedder, _collection, _reranker, _bm25, _all_texts
     if _collection is not None:
         return
     if not _DB_DIR.exists():
@@ -20,17 +22,29 @@ def _init():
     try:
         from sentence_transformers import SentenceTransformer, CrossEncoder
         import chromadb
+        import jieba
+        from rank_bm25 import BM25Okapi
+
         _embedder = SentenceTransformer("BAAI/bge-small-zh-v1.5")
         _reranker = CrossEncoder("BAAI/bge-reranker-base")
+
         client = chromadb.PersistentClient(path=str(_DB_DIR))
         _collection = client.get_collection("reports")
-        print(f"[RAG] 已加载，共 {_collection.count()} 个文本块")
+
+        # 构建 BM25 索引（从向量库读取所有文本）
+        print("[RAG] 构建 BM25 索引...")
+        all_results = _collection.get()
+        _all_texts = all_results["documents"]
+        tokenized = [list(jieba.cut(t)) for t in _all_texts]
+        _bm25 = BM25Okapi(tokenized)
+
+        print(f"[RAG] 已加载，共 {_collection.count()} 个文本块，BM25 索引完成")
     except Exception as e:
         print(f"[RAG] 初始化失败，跳过: {e}")
 
 
 def _expand_query(query: str) -> list:
-    """基于规则扩展查询词，零成本，覆盖更多年报表达方式。"""
+    """基于规则扩展查询词，覆盖更多年报表达方式。"""
     expansions = {
         "液冷数据中心": ["AI算力 数据中心冷却 设备投资", "CDU冷板 浸没式液冷 渗透率", "服务器散热 热管理 算力基础设施"],
         "半导体设备":   ["晶圆厂 国产替代 设备采购", "刻蚀机 薄膜沉积 国产化", "北方华创 中微 设备收入"],
@@ -50,13 +64,11 @@ def _expand_query(query: str) -> list:
         "M2":           ["货币政策 央行 降准降息", "社会融资 信贷 流动性", "M2增速 宽松 收紧"],
         "固定资产投资":  ["制造业FAI 增速", "规上工业增加值 高技术制造", "工业生产 资本支出 统计局"],
     }
-
     extras = [query]
     for keyword, variants in expansions.items():
         if keyword in query:
             extras.extend(variants)
             break
-
     return extras[:4]
 
 
@@ -65,13 +77,15 @@ def retrieve(query: str, top_k: int = 3) -> str:
     if _collection is None or _embedder is None:
         return ""
     try:
-        # 1. Query Expansion
+        import jieba
+
         queries = _expand_query(query)
         print(f"[RAG] 查询扩展: {len(queries)} 个变体")
 
-        # 2. 多查询检索，合并去重
         all_candidates = []
         seen = set()
+
+        # ── 1. 向量搜索（多查询）──
         for q in queries:
             vector = _embedder.encode(q).tolist()
             results = _collection.query(
@@ -84,12 +98,25 @@ def retrieve(query: str, top_k: int = 3) -> str:
                     seen.add(key)
                     all_candidates.append(doc)
 
+        # ── 2. BM25 关键词搜索（补充精确命中）──
+        if _bm25 is not None and _all_texts is not None:
+            tokens = list(jieba.cut(query))
+            scores = _bm25.get_scores(tokens)
+            top_idx = sorted(range(len(scores)),
+                           key=lambda i: scores[i], reverse=True)[:15]
+            for idx in top_idx:
+                doc = _all_texts[idx]
+                key = doc[:50]
+                if key not in seen and scores[idx] > 0:
+                    seen.add(key)
+                    all_candidates.append(doc)
+
         if not all_candidates:
             return ""
 
-        print(f"[RAG] 召回候选: {len(all_candidates)} 条")
+        print(f"[RAG] 召回候选: {len(all_candidates)} 条（向量+BM25）")
 
-        # 3. Reranking 精选
+        # ── 3. Reranking 精选 Top K ──
         if _reranker is not None:
             pairs = [(query, doc) for doc in all_candidates]
             scores = _reranker.predict(pairs)
