@@ -1,0 +1,48 @@
+"""
+rag_helper.py — 年报向量检索模块
+在 score_track() 调用前检索相关背景，增强打分质量
+"""
+
+from pathlib import Path
+from sentence_transformers import SentenceTransformer
+import chromadb
+
+# 数据库路径（相对于项目根目录）
+_DB_DIR = Path(__file__).parent.parent / "pulse_vectordb"
+_embedder = None
+_collection = None
+
+def _init():
+    global _embedder, _collection
+    if _collection is not None:
+        return
+    if not _DB_DIR.exists():
+        print("[RAG] 向量数据库不存在，跳过 RAG 增强")
+        return
+    try:
+        _embedder = SentenceTransformer("BAAI/bge-small-zh-v1.5")
+        client = chromadb.PersistentClient(path=str(_DB_DIR))
+        _collection = client.get_collection("reports")
+        print(f"[RAG] 已加载向量数据库，共 {_collection.count()} 个文本块")
+    except Exception as e:
+        print(f"[RAG] 初始化失败，跳过 RAG 增强: {e}")
+
+def retrieve(query: str, top_k: int = 3) -> str:
+    """
+    检索最相关的年报片段，返回拼接好的背景文本。
+    找不到或出错时返回空字符串。
+    """
+    _init()
+    if _collection is None or _embedder is None:
+        return ""
+    try:
+        vector = _embedder.encode(query).tolist()
+        results = _collection.query(query_embeddings=[vector], n_results=top_k)
+        chunks = results["documents"][0]
+        if not chunks:
+            return ""
+        context = "\n---\n".join(chunks)
+        return f"\n## 相关年报背景\n{context}\n"
+    except Exception as e:
+        print(f"[RAG] 检索失败: {e}")
+        return ""
