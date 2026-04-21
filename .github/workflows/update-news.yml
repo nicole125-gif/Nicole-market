@@ -18,7 +18,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install anthropic chromadb sentence-transformers pypdf langchain-community langchain-text-splitters
+        run: pip install anthropic chromadb sentence-transformers pypdf langchain-community langchain-text-splitters rank-bm25 jieba
 
       - name: Build RAG vector database
         run: |
