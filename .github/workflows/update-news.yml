@@ -24,20 +24,36 @@ jobs:
         run: |
           python - <<'EOF'
           from pathlib import Path
+          import hashlib, json
+
+          REPORTS_DIR = Path("reports")
+          DB_DIR = "pulse_vectordb"
+          HASH_FILE = Path("data/reports_hash.json")
+
+          # 计算当前所有PDF的哈希
+          current_hash = {}
+          for p in sorted(REPORTS_DIR.glob("*.pdf")):
+              current_hash[p.name] = hashlib.md5(p.read_bytes()).hexdigest()
+
+          # 读取上次的哈希
+          prev_hash = {}
+          if HASH_FILE.exists():
+              prev_hash = json.loads(HASH_FILE.read_text())
+
+          # 没有变化就跳过
+          if current_hash == prev_hash:
+              print("PDF未变化，跳过向量库重建")
+              exit()
+
+          print("PDF有变化，重建向量库...")
+
           from langchain_community.document_loaders import PyPDFLoader
           from langchain_text_splitters import RecursiveCharacterTextSplitter
           from sentence_transformers import SentenceTransformer
           import chromadb
 
-          REPORTS_DIR = Path("reports")
-          DB_DIR = "pulse_vectordb"
-          pdf_files = list(REPORTS_DIR.glob("*.pdf"))
-          if not pdf_files:
-              print("No PDFs found, skipping RAG build")
-              exit()
-
           all_docs = []
-          for p in pdf_files:
+          for p in sorted(REPORTS_DIR.glob("*.pdf")):
               try:
                   loader = PyPDFLoader(str(p))
                   docs = loader.load()
@@ -48,7 +64,9 @@ jobs:
               except Exception as e:
                   print(f"Skip {p.name}: {e}")
 
-          chunks = RecursiveCharacterTextSplitter(chunk_size=600, chunk_overlap=100).split_documents(all_docs)
+          chunks = RecursiveCharacterTextSplitter(
+              chunk_size=600, chunk_overlap=100
+          ).split_documents(all_docs)
           print(f"Chunks: {len(chunks)}")
 
           embedder = SentenceTransformer("BAAI/bge-small-zh-v1.5")
@@ -67,6 +85,12 @@ jobs:
               collection.add(ids=ids, embeddings=vectors, documents=texts, metadatas=metas)
 
           print(f"RAG DB ready: {collection.count()} chunks")
+
+          # 保存新哈希
+          import os
+          os.makedirs("data", exist_ok=True)
+          HASH_FILE.write_text(json.dumps(current_hash, ensure_ascii=False))
+          print("哈希已保存")
           EOF
 
       - name: Run update script
@@ -79,7 +103,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add index.html pharma.html data/history.json
+          git add index.html pharma.html data/history.json data/reports_hash.json
           git diff --staged --quiet || git commit -m "chore: auto update PULSE $(date +'%Y-%m')"
           git pull --rebase origin main
           git push
