@@ -610,7 +610,16 @@ if __name__ == "__main__":
         print(f"  {b}: {h}")
 
     # ── Step 3：保存历史 ───────────────────────────────────
-    # 过滤掉打分失败的赛道（D=C=P=Pol=50 视为无效）     valid_results = {         tid: r for tid, r in results.items()         if not (r["scores"]["D"] == 50 and                 r["scores"]["C"] == 50 and                 r["scores"]["P"] == 50 and                 r["scores"]["Pol"] == 50)     }     print(f"[INFO] 有效打分 {len(valid_results)}/{len(results)} 个赛道")     save_history(history, period, valid_results)
+    # 过滤掉打分失败的赛道（D=C=P=Pol=50 视为无效）     valid_results = {         tid: r for tid, r in results.items()         if not (r["scores"]["D"] == 50 and                 r["scores"]["C"] == 50 and                 r["scores"]["P"] == 50 and                 r["scores"]["Pol"] == 50)     }     print(f"[INFO] 有效打分 {len(valid_results)}/{len(results)} 个赛道")     # 过滤掉打分失败的赛道（D=C=P=Pol=50 视为无效）
+    valid_results = {
+        tid: r for tid, r in results.items()
+        if not (r["scores"]["D"] == 50 and
+                r["scores"]["C"] == 50 and
+                r["scores"]["P"] == 50 and
+                r["scores"]["Pol"] == 50)
+    }
+    print(f"[INFO] 有效打分 {len(valid_results)}/{len(results)} 个赛道")
+    save_history(history, period, valid_results)
 
     # ── Step 4：注入 index.html ────────────────────────────
     print("\n--- 注入 index.html ---")
