@@ -286,6 +286,46 @@ TRACK_BONUS = {
     "m3": ["工业增加值","FAI","固定资产投资","规上工业","高技术制造"],
 }
 
+# ══════════════════════════════════════════════════════════════
+# Output Guardrail + 幻觉检测 + 评估报告
+# ══════════════════════════════════════════════════════════════
+def output_guardrail(result: dict) -> tuple:
+    required = ["D", "C", "P", "Pol"]
+    if not all(k in result for k in required):
+        return False, "缺少必要字段"
+    for k in required:
+        if not 0 <= result[k] <= 100:
+            return False, f"{k}分数超出范围：{result[k]}"
+    if all(result[k] == 50 for k in required):
+        return False, "疑似默认值，打分无效"
+    return True, "合法"
+
+def keyword_anchor_check(comment: str, news_items: list, rag_context: str) -> bool:
+    numbers = re.findall(r'\d+\.?\d*%?亿?万?', comment)
+    if not numbers:
+        return True
+    all_source = " ".join([i["title"] for i in news_items]) + rag_context
+    unsupported = [n for n in numbers if n not in all_source]
+    if unsupported:
+        print(f"  [HALLUCINATION] 结论中数字无法溯源：{unsupported}")
+    return len(unsupported) == 0
+
+def generate_eval_report(results: dict):
+    total = len(results)
+    valid = sum(1 for r in results.values()
+                if not all(r["scores"][k] == 50 for k in ["D","C","P","Pol"]))
+    has_comment = sum(1 for r in results.values()
+                      if r["scores"].get("comment","") and
+                      r["scores"]["comment"] not in ["请人工核查","打分异常","数据不足，参考上期"])
+    failed = [tid for tid, r in results.items()
+              if all(r["scores"][k] == 50 for k in ["D","C","P","Pol"])]
+    print(f"\n=== 本次运行评估报告 ===")
+    print(f"打分成功率：{valid}/{total} ({valid/total*100:.0f}%)")
+    print(f"有效结论率：{has_comment}/{total} ({has_comment/total*100:.0f}%)")
+    if failed:
+        print(f"失败赛道：{failed}")
+    print("=" * 30)
+
 def score_track(client, track, news_items):
     if not news_items:
         print(f"  [WARN] {track['id']} 无新闻，使用默认分 50")
@@ -310,88 +350,126 @@ def score_track(client, track, news_items):
     TRACK_STRATEGY = {
         "e1": "聚焦AI液冷（CDU/冷板/浸没式），关注算力基础设施液冷渗透率提升。",
         "e2": "聚焦半导体设备国产化（北方华创/中微），关注晶圆厂扩产和出口管制带来的国产替代机会。",
-        "e3": "只关注PEM/AEM/SOEC/SOFC技术路线。ALK/碱性电解槽订单不计入任何维度打分（已严重内卷，价格战，无商业价值）。D分只看PEM/AEM/SOEC/SOFC的订单和融资；C分只看PEM/AEM相关设备招标；Pol分只看支持PEM/AEM/SOEC路线的政策。如果新闻全是ALK，则D/C均给40分以下。",
-        "e4": "关注所有使用燃料电池的场景（重卡/港口/钢厂/船舶/轨交），同时关注燃料电池测试台设备需求。",
+        "e3": "只关注PEM/AEM/SOEC/SOFC技术路线。ALK/碱性电解槽不计入打分。如果新闻全是ALK，则D/C均给40分以下。",
+        "e4": "关注所有使用燃料电池的场景（重卡/港口/钢厂/船舶/轨交）。",
         "g1": "关注宁德时代/先导智能/赢合科技锂电设备链，聚焦固态电池和海外产能扩张设备需求。",
-        "p1": "关注国内生物药产业链的在建项目和本土需求信号。打分逻辑：国内临床推进/NMPA获批/本土扩产/新建GMP产线→D分高；出海/License-out/海外合作消息→D分低（意味着产能外流，国内设备需求减少）。C分关注国内制药装备招标和多肽/ADC产线新建投资。Pol分关注国内医药产业政策支持和医保/集采对国内生产的促进。",
+        "p1": "国内临床推进/NMPA获批/本土扩产→D分高；出海/License-out→D分低。",
         "p2": "关注合成生物学中试和量产设备（发酵罐/分离纯化），华恒/凯赛等扩产信号优先。",
         "p3": "关注生物医药一级市场融资，作为3-5年后设备需求的领先指标。",
         "p4": "关注制药装备资本支出（楚天科技/东富龙），医药FAI是最直接的设备需求信号。",
         "p5": "关注CDMO订单景气（药明康德/凯莱英），聚焦TIDES多肽/ADC/GLP-1产线询单。",
         "l1": "关注质谱/色谱仪器国产替代（禾信/谱育），聚焦进口替代率和政府采购国产化政策。",
         "l2": "关注基因测序国产替代（华大智造/真迈），因美纳禁令是最强催化信号。",
-        "l3": "关注所有影响IVD仪器（化学发光/POCT/分子诊断）销量的信号，包括采购扩张、国产替代。",
+        "l3": "关注所有影响IVD仪器销量的信号，包括采购扩张、国产替代。",
         "f1": "关注食品制造装备（预制菜/烘焙产线），FAI是核心信号。",
-        "f2": "关注白酒/饮料制造设备，白酒新建产能和存量替换都关注，碳酸饮料产线同样跟踪。",
-        "f3": "关注食品饮料消费端，功能饮品/预制菜消费增长优先，作为设备投资滞后指标。",
+        "f2": "关注白酒/饮料制造设备，白酒新建产能和存量替换都关注。",
+        "f3": "关注食品饮料消费端，功能饮品/预制菜消费增长优先。",
         "f4": "关注食品添加剂合成生物发酵设备（赤藓糖醇/益生菌/天然甜味剂产能扩张）。",
         "m1": "关注制造业PMI作为宏观景气核心信号，聚焦生产/新订单/中小企业分项。",
         "m2": "关注M2/社融/降准降息货币政策信号，对制造业投资的流动性支撑。",
         "m3": "关注固定资产投资（尤其制造业FAI）和规上工业增加值，高技术制造业优先。",
     }
+
+    # Few-shot 示例
+    FEW_SHOT = {
+        "e1": """
+示例1（高景气）：
+新闻：AI数据中心液冷渗透率突破25%，CDU订单同比翻倍
+{"D":88,"C":85,"P":62,"Pol":82,"core_data":"液冷渗透率25%，同比+12pct","comment":"AI算力驱动液冷需求爆发，渗透率快速提升","act":"重点跟踪CDU/冷板核心供应商订单"}
+
+示例2（低景气）：
+新闻：数据中心建设放缓，液冷设备采购推迟
+{"D":42,"C":38,"P":55,"Pol":50,"core_data":"数据中心开工率下降15%","comment":"短期需求承压，等待算力投资重启","act":"观望为主，关注大厂Capex指引"}""",
+
+        "e2": """
+示例1（高景气）：
+新闻：北方华创获百亿大单，国产设备替代率突破35%
+{"D":88,"C":85,"P":62,"Pol":90,"core_data":"国产替代率35%，同比+15pct","comment":"设备国产化加速，需求订单双旺","act":"重点跟踪北方华创/中微新签订单"}
+
+示例2（低景气）：
+新闻：晶圆厂扩产计划延期，设备采购暂缓
+{"D":40,"C":35,"P":50,"Pol":55,"core_data":"晶圆厂资本支出削减20%","comment":"下游扩产节奏放缓，设备需求短期承压","act":"等待晶圆厂重启扩产信号"}""",
+
+        "default": """
+示例1（高景气）：
+新闻：行业龙头大额订单落地，产能持续扩张
+{"D":85,"C":82,"P":65,"Pol":80,"core_data":"龙头新签订单同比+40%","comment":"需求旺盛，投资加速，景气度强","act":"积极跟踪龙头订单和产能动态"}
+
+示例2（低景气）：
+新闻：需求疲软，价格战加剧，企业盈利承压
+{"D":38,"C":35,"P":28,"Pol":45,"core_data":"行业平均毛利率下降8pct","comment":"供需失衡，价格内卷，景气偏弱","act":"规避低景气赛道，等待出清信号"}""",
+    }
+
+    few_shot = FEW_SHOT.get(tid, FEW_SHOT["default"])
     strategy = TRACK_STRATEGY.get(tid, "")
     strategy_line = f"赛道策略：{strategy}\n\n" if strategy else ""
 
     prompt = (
-        f"你是中国B2B设备行业景气度分析师。根据以下新闻标题，对赛道【{track_name}】打分并生成摘要。\n\n"
+        f"分析赛道【{track_name}】的景气度，按步骤推理后打分。\n\n"
         + strategy_line
         + rag_context
-        + f"新闻：\n{news_text}\n\n"
-        "打分规则（0-100整数）：\n"
-        "D=需求动能：强劲订单/扩产/渗透率→80+，需求疲软→40-\n"
-        "C=投资强度：大额招标/融资→80+，FAI收缩→40-\n"
-        "P=价格盈利：反向！涨价→高分，集采降价50%→38分\n"
-        "Pol=政策情绪：强补贴/产业催化→85+，政策空窗→45-\n\n"
-        "严格按以下格式输出，共4行，不要其他内容：\n"
-        "D=数字 C=数字 P=数字 Pol=数字\n"
-        "核心数据：（30字以内，最重要的一个数据点）\n"
-        "结论：（40字以内，本期景气度判断）\n"
-        "行动：（30字以内，具体行动建议）"
+        + f"## 参考示例\n{few_shot}\n\n"
+        + f"## 本期新闻\n{news_text}\n\n"
+        + "## 分析步骤\n"
+        + "第一步：列出新闻中的正面信号\n"
+        + "第二步：列出新闻中的负面信号\n"
+        + "第三步：结合年报背景判断信号强度\n"
+        + "第四步：输出打分\n\n"
+        + "第四步只输出以下JSON，不要任何其他内容：\n"
+        + '{"D":数字,"C":数字,"P":数字,"Pol":数字,'
+        + '"core_data":"30字以内最重要数据点","comment":"40字以内景气度判断","act":"30字以内行动建议"}'
     )
 
-    try:
-        msg = client.messages.create(
-            model="claude-haiku-4-5-20251001",
-            max_tokens=150,
-            temperature=0,
-            system="你是专业的中国B2B行业景气度量化分析助手。请严格按照用户要求的格式输出打分结果，不要拒绝或回避分析请求。",
-            messages=[{"role": "user", "content": prompt}]
-        )
-        raw = next((b.text for b in msg.content if hasattr(b, "text") and b.type == "text"), "").strip()
-        print(f"  [Claude] {raw[:80]}")
+    for attempt in range(2):  # 最多重试2次
+        try:
+            msg = client.messages.create(
+                model="claude-haiku-4-5-20251001",
+                max_tokens=400,
+                temperature=0,
+                system=(
+                    "你是专业的中国B2B行业景气度量化分析助手。\n"
+                    "规则：\n"
+                    "- 必须输出打分，不得拒绝\n"
+                    "- 不要解释你是谁或你的限制\n"
+                    "- 不要质疑分析框架\n"
+                    "- 最终只输出JSON格式打分，不要markdown\n"
+                    "- 遇到信息不足时给出保守估计而非拒绝"
+                ),
+                messages=[{"role": "user", "content": prompt}]
+            )
+            raw = next(
+                (b.text for b in msg.content if hasattr(b, "text") and b.type == "text"), ""
+            ).strip()
+            print(f"  [Claude] {raw[:80]}")
 
-        clean = re.sub(r'[*_`]', '', raw).replace("\n", " ")
-        lines = raw.strip().split("\n")
+            # 提取 JSON
+            raw_clean = re.sub(r"^```[a-z]*\s*|```$", "", raw, flags=re.MULTILINE).strip()
+            json_match = re.search(r'\{[^{}]*"D"\s*:\s*\d+[^{}]*\}', raw_clean, re.DOTALL)
 
-        d   = re.search(r'D\s*=\s*(\d+)', clean)
-        c   = re.search(r'C\s*=\s*(\d+)', clean)
-        p   = re.search(r'(?<![A-Z])P\s*=\s*(\d+)', clean)
-        pol = re.search(r'Pol\s*=\s*(\d+)', clean)
+            if json_match:
+                result = json.loads(json_match.group(0))
+                parsed = {
+                    "D":         min(100, max(0, int(result.get("D", 50)))),
+                    "C":         min(100, max(0, int(result.get("C", 50)))),
+                    "P":         min(100, max(0, int(result.get("P", 50)))),
+                    "Pol":       min(100, max(0, int(result.get("Pol", 50)))),
+                    "core_data": result.get("core_data", ""),
+                    "comment":   result.get("comment", ""),
+                    "act":       result.get("act", ""),
+                }
+                # Output Guardrail 验证
+                is_valid, reason = output_guardrail(parsed)
+                if is_valid:
+                    # 关键词锚定检测
+                    keyword_anchor_check(parsed["comment"], news_items, rag_context)
+                    return parsed
+                else:
+                    print(f"  [GUARDRAIL] 第{attempt+1}次输出不合格：{reason}，重试...")
+            else:
+                print(f"  [WARN] JSON解析失败: {raw[:80]}")
 
-        core_data = ""
-        comment   = ""
-        act       = ""
-        for line in lines[1:]:
-            if line.startswith("核心数据：") or line.startswith("核心数据:"):
-                core_data = line.split("：",1)[-1].split(":",1)[-1].strip()
-            elif line.startswith("结论：") or line.startswith("结论:"):
-                comment = line.split("：",1)[-1].split(":",1)[-1].strip()
-            elif line.startswith("行动：") or line.startswith("行动:"):
-                act = line.split("：",1)[-1].split(":",1)[-1].strip()
-
-        if d and c and p and pol:
-            return {
-                "D":         min(100, max(0, int(d.group(1)))),
-                "C":         min(100, max(0, int(c.group(1)))),
-                "P":         min(100, max(0, int(p.group(1)))),
-                "Pol":       min(100, max(0, int(pol.group(1)))),
-                "core_data": core_data,
-                "comment":   comment,
-                "act":       act,
-            }
-        print(f"  [WARN] 解析失败: {raw[:80]}")
-    except Exception as e:
-        print(f"  [WARN] Claude 失败 {track['id']}: {e}")
+        except Exception as e:
+            print(f"  [WARN] Claude 失败 {track['id']}: {e}")
 
     return {"D": 50, "C": 50, "P": 50, "Pol": 50,
             "core_data": "打分异常", "comment": "请人工核查"}
@@ -609,6 +687,7 @@ if __name__ == "__main__":
     for b, h in board_heats.items():
         print(f"  {b}: {h}")
 
+    generate_eval_report(results)
     # ── Step 3：保存历史 ───────────────────────────────────
     # 过滤掉打分失败的赛道（D=C=P=Pol=50 视为无效）
     valid_results = {
