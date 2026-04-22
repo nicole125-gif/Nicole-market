@@ -18,7 +18,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install anthropic chromadb sentence-transformers pypdf langchain-community langchain-text-splitters rank-bm25 jieba
+        run: pip install anthropic chromadb sentence-transformers pypdf langchain-community langchain-text-splitters rank-bm25 jieba unstructured
 
       - name: Build RAG vector database
         run: |
@@ -30,9 +30,11 @@ jobs:
           DB_DIR = "pulse_vectordb"
           HASH_FILE = Path("data/reports_hash.json")
 
-          # 计算当前所有PDF的哈希
+          # 计算当前所有文件的哈希（PDF + HTML）
           current_hash = {}
           for p in sorted(REPORTS_DIR.glob("*.pdf")):
+              current_hash[p.name] = hashlib.md5(p.read_bytes()).hexdigest()
+          for p in sorted(REPORTS_DIR.glob("*.html")):
               current_hash[p.name] = hashlib.md5(p.read_bytes()).hexdigest()
 
           # 读取上次的哈希
@@ -42,17 +44,20 @@ jobs:
 
           # 没有变化就跳过
           if current_hash == prev_hash:
-              print("PDF未变化，跳过向量库重建")
+              print("文件未变化，跳过向量库重建")
               exit()
 
-          print("PDF有变化，重建向量库...")
+          print("文件有变化，重建向量库...")
 
           from langchain_community.document_loaders import PyPDFLoader
+          from langchain_community.document_loaders import UnstructuredHTMLLoader
           from langchain_text_splitters import RecursiveCharacterTextSplitter
           from sentence_transformers import SentenceTransformer
           import chromadb
 
           all_docs = []
+
+          # 加载 PDF
           for p in sorted(REPORTS_DIR.glob("*.pdf")):
               try:
                   loader = PyPDFLoader(str(p))
@@ -60,9 +65,25 @@ jobs:
                   for d in docs:
                       d.metadata["company"] = p.stem
                   all_docs.extend(docs)
-                  print(f"Loaded: {p.name}")
+                  print(f"Loaded PDF: {p.name}")
               except Exception as e:
-                  print(f"Skip {p.name}: {e}")
+                  print(f"Skip PDF {p.name}: {e}")
+
+          # 加载 HTML
+          for p in sorted(REPORTS_DIR.glob("*.html")):
+              try:
+                  loader = UnstructuredHTMLLoader(str(p))
+                  docs = loader.load()
+                  for d in docs:
+                      d.metadata["company"] = p.stem
+                  all_docs.extend(docs)
+                  print(f"Loaded HTML: {p.name}")
+              except Exception as e:
+                  print(f"Skip HTML {p.name}: {e}")
+
+          if not all_docs:
+              print("No docs loaded, skipping")
+              exit()
 
           chunks = RecursiveCharacterTextSplitter(
               chunk_size=600, chunk_overlap=100
@@ -103,7 +124,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add index.html pharma.html data/history.json data/reports_hash.json
+          git add index.html pharma.html data/history.json data/reports_hash.json data/score_cache.json
           git diff --staged --quiet || git commit -m "chore: auto update PULSE $(date +'%Y-%m')"
           git pull --rebase origin main
           git push
