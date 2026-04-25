@@ -3,108 +3,118 @@
   "vertical_name": "半导体",
   "vertical_en": "Semiconductor",
   "color": "#ff6b9d",
-  "updated_at": "2026-04-24T03:31:29.915036+00:00",
+  "updated_at": "2026-04-25T03:16:08.051672+00:00",
   "item_count": 15,
   "items": [
     {
-      "id": "fc17e8bf72",
-      "title": "晶圆代工，角逐1nm",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810577&idx=1&sn=69f22f099c241eafcaf356f0f5f97d7d",
-      "summary": "晶圆代工，角逐1nm",
+      "id": "f9fff134fb",
+      "title": "2026北京车展，车企在抢什么芯片？",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810683&idx=1&sn=12382de7cc32ac74c8434270c6fb93db",
+      "summary": "2026北京车展，车企在抢什么芯片？",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-04-24T03:31:25.903857+00:00",
-      "pub_ts": 1777001485
+      "pub_date": "2026-04-25T03:16:03.995625+00:00",
+      "pub_ts": 1777086963
     },
     {
-      "id": "e25e02e291",
-      "title": "锁定北京车展直播！智能汽车下半场，核心全在芯片",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810577&idx=2&sn=a4dcae689c7354ee1da35d09610e3130",
-      "summary": "锁定北京车展直播！智能汽车下半场，核心全在芯片",
+      "id": "df4bf2cc13",
+      "title": "即刻生效！三星、金士顿宣布SSD涨价，涨幅至少10%",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810683&idx=2&sn=8a48031883c4c252015ce2a8c8abb7e9",
+      "summary": "即刻生效！三星、金士顿宣布SSD涨价，涨幅至少10%",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-04-24T03:31:25.903904+00:00",
-      "pub_ts": 1777001485
+      "pub_date": "2026-04-25T03:16:03.995670+00:00",
+      "pub_ts": 1777086963
     },
     {
-      "id": "4800bf97f7",
-      "title": "又一家MCU公司，发布涨价函！",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810577&idx=3&sn=9274e6e3a4668fd9675bc93695333015",
-      "summary": "又一家MCU公司，发布涨价函！",
+      "id": "88c206cc65",
+      "title": "意法半导体最新财报：预计到2027年数据中心收入将超过10亿美元",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810683&idx=3&sn=cc7e04ae4d5a08931860a6e1a4afb684",
+      "summary": "意法半导体最新财报：预计到2027年数据中心收入将超过10亿美元",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-04-24T03:31:25.903930+00:00",
-      "pub_ts": 1777001485
+      "pub_date": "2026-04-25T03:16:03.995697+00:00",
+      "pub_ts": 1777086963
     },
     {
-      "id": "64e2e98d0c",
-      "title": "2030年CPU增量市场达600亿美元",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810577&idx=4&sn=b5fcd6ba6f3e41112dd22c521081f30c",
-      "summary": "2030年CPU增量市场达600亿美元",
+      "id": "bb8e72668c",
+      "title": "被忽视的关键原料危机，正在拖垮设备与芯片厂商",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810683&idx=4&sn=d7fc5612026ab0e0abfbec290850aaf5",
+      "summary": "被忽视的关键原料危机，正在拖垮设备与芯片厂商",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-04-24T03:31:25.903953+00:00",
-      "pub_ts": 1777001485
+      "pub_date": "2026-04-25T03:16:03.995721+00:00",
+      "pub_ts": 1777086963
     },
     {
-      "id": "3c4d02ad37",
-      "title": "20栈HBM、EMIB封装，OpenAI芯片藏大招！",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810577&idx=5&sn=b0846fa95d50883347a9b0142db20820",
-      "summary": "20栈HBM、EMIB封装，OpenAI芯片藏大招！",
+      "id": "c63e8567df",
+      "title": "数千万美元，20O0颗BlackwellGPU，SK海力士AI基建来了！",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247810683&idx=5&sn=d69e81ce601461548a49a9894013adb3",
+      "summary": "数千万美元，20O0颗BlackwellGPU，SK海力士AI基建来了！",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-04-24T03:31:25.903972+00:00",
-      "pub_ts": 1777001485
+      "pub_date": "2026-04-25T03:16:03.995743+00:00",
+      "pub_ts": 1777086963
     },
     {
-      "id": "7a32784117",
-      "title": "谷歌撰文，剖析最新TPU架构",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247817138&idx=1&sn=38e25ed59f698285c176863d76599cc6",
-      "summary": "谷歌撰文，剖析最新TPU架构",
+      "id": "600f120b6b",
+      "title": "英特尔盘前大涨30%，股价创历史新高",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247817331&idx=1&sn=0303e61752b6ecd616725b07a95d4052",
+      "summary": "英特尔盘前大涨30%，股价创历史新高",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-04-24T03:31:17.829604+00:00",
-      "pub_ts": 1777001477
+      "pub_date": "2026-04-25T03:15:55.427954+00:00",
+      "pub_ts": 1777086955
     },
     {
-      "id": "b19ff28228",
-      "title": "AI自主设计了一颗CPU：RISC-V架构，主频1.48GHz，可跑Linux",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247817124&idx=1&sn=1344ccd20bafe5c94a6d630fd8690803",
-      "summary": "AI自主设计了一颗CPU：RISC-V架构，主频1.48GHz，可跑Linux",
+      "id": "149fcd826a",
+      "title": "软件定义汽车时代：西门子EDA以全面数字孪生重新定义高效研发模式",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247817214&idx=1&sn=5950177a3294e4fca6290b21f887976a",
+      "summary": "软件定义汽车时代：西门子EDA以全面数字孪生重新定义高效研发模式",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-04-24T03:31:17.829658+00:00",
-      "pub_ts": 1777001477
+      "pub_date": "2026-04-25T03:15:55.428005+00:00",
+      "pub_ts": 1777086955
     },
     {
-      "id": "8f99bba68d",
-      "title": "TSV，太难了",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247817124&idx=2&sn=6504f76012738c1082a47de02e584249",
-      "summary": "TSV，太难了",
+      "id": "ef31694dd3",
+      "title": "0.2nm芯片路线图，首次披露",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247817214&idx=2&sn=3f6776fc6bd81f1874eb4c25f59be81a",
+      "summary": "0.2nm芯片路线图，首次披露",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-04-24T03:31:17.829683+00:00",
-      "pub_ts": 1777001477
+      "pub_date": "2026-04-25T03:15:55.428030+00:00",
+      "pub_ts": 1777086955
     },
     {
-      "id": "db088602a1",
-      "title": "关于“2026年度中国汽车芯片产业创新成果”公示的通知",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247817124&idx=3&sn=1492ed514037d3f2babf3e06a20f4e72",
-      "summary": "关于“2026年度中国汽车芯片产业创新成果”公示的通知",
+      "id": "b7a394dd22",
+      "title": "芯片营收增幅，今年暴涨62.7%",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247817214&idx=3&sn=07ae717a89e5fdd2197dcf81aa58f81b",
+      "summary": "芯片营收增幅，今年暴涨62.7%",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-04-24T03:31:17.829704+00:00",
-      "pub_ts": 1777001477
+      "pub_date": "2026-04-25T03:15:55.428053+00:00",
+      "pub_ts": 1777086955
     },
     {
-      "id": "78b5e50363",
-      "title": "JEDEC发布LPDDR6路线图",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247817124&idx=4&sn=21cdb019550e79175380c3f55d93cefa",
-      "summary": "JEDEC发布LPDDR6路线图",
+      "id": "75ddc289d6",
+      "title": "特斯拉新芯片，意义重大",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247817214&idx=4&sn=9337d6fc15cba1ca7043d5ec7daa6972",
+      "summary": "特斯拉新芯片，意义重大",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-04-24T03:31:17.829725+00:00",
-      "pub_ts": 1777001477
+      "pub_date": "2026-04-25T03:15:55.428074+00:00",
+      "pub_ts": 1777086955
+    },
+    {
+      "id": "44fbe84220",
+      "title": "Chip Industry Week In Review",
+      "url": "https://semiengineering.com/chip-industry-week-in-review-135/",
+      "summary": "Marvell's plasmonics buy; Onto's process control stake; TSMC A14/13 and EDA flows; Apple shuffle; LPDDR6; SOCAMM2 chipset; MATCH Act progress; EUV resist crunch; India 3D packaging fab; digital test card for HPC; telemetry platform for power management; edge AI MCU for voice; new Google TPUs.\nThe po…",
+      "source": "Semiconductor Engineering",
+      "lang": "en",
+      "pub_date": "2026-04-24T07:01:37+00:00",
+      "pub_ts": 1777014097
     },
     {
       "id": "8bee964fb3",
@@ -145,16 +155,6 @@
       "lang": "en",
       "pub_date": "2026-04-22T07:01:40+00:00",
       "pub_ts": 1776841300
-    },
-    {
-      "id": "0dd4d86f0d",
-      "title": "Chip Industry Technical Paper Roundup: Apr. 21",
-      "url": "https://semiengineering.com/chip-industry-technical-paper-roundup-apr-21/",
-      "summary": "Neural computers; AFM on EUV nanostructures; photonic chip packaging; extreme-environment photonics; SSD emulation for GPU-centric storage; ruthenium interconnects; DRAM power delivery on CIM; silent data corruption; LLM training reliability; GPU Rowhammer; privilege escalation.\nThe post Chip Indust…",
-      "source": "Semiconductor Engineering",
-      "lang": "en",
-      "pub_date": "2026-04-21T07:01:46+00:00",
-      "pub_ts": 1776754906
     }
   ]
 }

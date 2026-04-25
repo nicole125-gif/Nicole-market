@@ -3,58 +3,58 @@
   "vertical_name": "AI液冷",
   "vertical_en": "AI Liquid Cooling",
   "color": "#00ff88",
-  "updated_at": "2026-04-24T03:31:43.879170+00:00",
+  "updated_at": "2026-04-25T03:16:21.879379+00:00",
   "item_count": 5,
   "items": [
     {
-      "id": "e180931165",
-      "title": "河南师傅，左手扳手，右手飞书，竞然能搞数据分析！",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247885704&idx=1&sn=8ecca1420de794f9db99ecb337ecc29b",
-      "summary": "河南师傅，左手扳手，右手飞书，竞然能搞数据分析！",
+      "id": "4750450038",
+      "title": "真有人做AI小猫啊？！生产力和情绪价值都拉满了",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247886187&idx=1&sn=55aa60ba455ea55e5b10fc17af772c71",
+      "summary": "真有人做AI小猫啊？！生产力和情绪价值都拉满了",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-24T03:31:39.859957+00:00",
-      "pub_ts": 1777001499
+      "pub_date": "2026-04-25T03:16:17.408134+00:00",
+      "pub_ts": 1777086977
     },
     {
-      "id": "2fa3290e59",
-      "title": "国内首家百亿估值纯推理GPU独角兽诞生！专访曦望联席CEO王湛：谁的推.",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247885704&idx=2&sn=410c14d6e72dbf340a6214836fa856f9",
-      "summary": "国内首家百亿估值纯推理GPU独角兽诞生！专访曦望联席CEO王湛：谁的推.",
+      "id": "5f20a34800",
+      "title": "谷歌再发香蕉！通用视觉模型VisionBanana刷新2D/3D多项SOTA，何恺..",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247886187&idx=2&sn=9f927f680d372f7fa0b5193758ac3ce7",
+      "summary": "谷歌再发香蕉！通用视觉模型VisionBanana刷新2D/3D多项SOTA，何恺..",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-24T03:31:39.860016+00:00",
-      "pub_ts": 1777001499
+      "pub_date": "2026-04-25T03:16:17.408178+00:00",
+      "pub_ts": 1777086977
     },
     {
-      "id": "5d350d6140",
-      "title": "27B秒了自家397B旗舰，Qwen3.6-27B开源，智能体编程全面超越前代",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247885704&idx=3&sn=589e625a5a883b4860acd1fb717c5fed",
-      "summary": "27B秒了自家397B旗舰，Qwen3.6-27B开源，智能体编程全面超越前代",
+      "id": "ed10c65f07",
+      "title": "倒计时3天！我们在寻找能代表今年AI的企业与产品|榜单申报",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247886187&idx=3&sn=e5484016ce912537db73c4a3b66e15a1",
+      "summary": "倒计时3天！我们在寻找能代表今年AI的企业与产品|榜单申报",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-24T03:31:39.860039+00:00",
-      "pub_ts": 1777001499
+      "pub_date": "2026-04-25T03:16:17.408202+00:00",
+      "pub_ts": 1777086977
     },
     {
-      "id": "e52146c25a",
-      "title": "倒计时4天！我们在寻找能代表今年AI的企业与产品|榜单申报",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247885704&idx=4&sn=0f7fb29afd06390fbd1c6585d682eb5f",
-      "summary": "倒计时4天！我们在寻找能代表今年AI的企业与产品|榜单申报",
+      "id": "084f1ee679",
+      "title": "华人再破硅谷天花板！AI黑马新任CTO，中科大80后",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247886113&idx=1&sn=a100f9761f09706e471a473fd06b9c19",
+      "summary": "华人再破硅谷天花板！AI黑马新任CTO，中科大80后",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-24T03:31:39.860060+00:00",
-      "pub_ts": 1777001499
+      "pub_date": "2026-04-25T03:16:17.408222+00:00",
+      "pub_ts": 1777086977
     },
     {
-      "id": "9688fe4dc2",
-      "title": "刚刚，姚顺雨首次交卷！腾讯混元3Preview大模型发布",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247885643&idx=1&sn=d16dd2b8fcf6885e21e21c04d0fa2903",
-      "summary": "刚刚，姚顺雨首次交卷！腾讯混元3Preview大模型发布",
+      "id": "69fe93457a",
+      "title": "Coordination Engineering关键一环，JiuwenClaw再发布TeamSkills 技能..",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247886113&idx=2&sn=2fad4b0ef5d9c5931bfc971499d5a68d",
+      "summary": "Coordination Engineering关键一环，JiuwenClaw再发布TeamSkills 技能..",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-24T03:31:39.860079+00:00",
-      "pub_ts": 1777001499
+      "pub_date": "2026-04-25T03:16:17.408243+00:00",
+      "pub_ts": 1777086977
     }
   ]
 }

@@ -3,58 +3,98 @@
   "vertical_name": "氢能",
   "vertical_en": "Hydrogen Energy",
   "color": "#ffd700",
-  "updated_at": "2026-04-24T03:31:54.845046+00:00",
+  "updated_at": "2026-04-25T03:16:32.724483+00:00",
   "item_count": 10,
   "items": [
     {
-      "id": "55ff84e46d",
-      "title": "KIMM and Germany's DLR Establish Cooperation Center for Hydrogen Energy Production and Utilization Technology",
-      "url": "https://fuelcellsworks.com/2026/04/22/h2/kimm-and-germany-s-dlr-establish-cooperation-center-for-hydrogen-energy-production-and-utilization-technology",
-      "summary": "",
-      "source": "Fuel Cells Works",
+      "id": "e973ccfd49",
+      "title": "GAZ-SYSTEM is Europe’s first hydrogen transmission network operator on the path to obtaining the certificate of independence",
+      "url": "https://hydrogen-central.com/gaz-system-is-europes-first-hydrogen-transmission-network-operator-on-the-path-to-obtaining-the-certificate-of-independence/",
+      "summary": "GAZ-SYSTEM is Europe’s first hydrogen transmission network operator on the path to obtaining the certificate of independence The European Commission has issued a positive opinion in the process of certifying [&#8230;]\nThe post GAZ-SYSTEM is Europe’s first hydrogen transmission network operator on th…",
+      "source": "Hydrogen Central",
       "lang": "en",
-      "pub_date": "2026-04-23T15:22:11+00:00",
-      "pub_ts": 1776957731
+      "pub_date": "2026-04-24T18:06:19+00:00",
+      "pub_ts": 1777053979
     },
     {
-      "id": "7aa960e65c",
-      "title": "Toyota Patents Hydrogen Scooter",
-      "url": "https://fuelcellsworks.com/2026/04/23/energy-innovation/toyota-patents-hydrogen-scooter",
-      "summary": "",
-      "source": "Fuel Cells Works",
+      "id": "8c5cf82065",
+      "title": "Teledyne Energy Systems Advances Low-Carbon Industrial Infrastructure with On-Site Hydrogen Generation",
+      "url": "https://hydrogen-central.com/teledyne-energy-systems-advances-low-carbon-industrial-infrastructure-with-on-site-hydrogen-generation/",
+      "summary": "Teledyne Energy Systems Advances Low-Carbon Industrial Infrastructure with On-Site Hydrogen Generation HUNT VALLEY, Md.&#8211;(BUSINESS WIRE)&#8211;Teledyne Energy Systems, Inc. is enabling a major step forward in industrial decarbonization with the deployment [&#8230;]\nThe post Teledyne Energy Syst…",
+      "source": "Hydrogen Central",
       "lang": "en",
-      "pub_date": "2026-04-23T15:19:18+00:00",
-      "pub_ts": 1776957558
+      "pub_date": "2026-04-24T18:03:37+00:00",
+      "pub_ts": 1777053817
     },
     {
-      "id": "eecd0b7e2a",
-      "title": "New Hydrogen Station Near Rotterdam Airport Nears Completion",
-      "url": "https://fuelcellsworks.com/2026/04/20/h2/new-hydrogen-station-near-rotterdam-airport-nears-completion",
-      "summary": "",
-      "source": "Fuel Cells Works",
+      "id": "6cda93f9f5",
+      "title": "ITM Power – Strategic collaboration with Rheinmetall for the Giga PtX project",
+      "url": "https://hydrogen-central.com/itm-power-strategic-collaboration-with-rheinmetall-for-the-giga-ptx-project/",
+      "summary": "ITM Power &#8211; Strategic collaboration with Rheinmetall for the Giga PtX project We are pleased to announce that we have entered a strategic collaboration with Rheinmetall AG, a leading international [&#8230;]\nThe post ITM Power &#8211; Strategic collaboration with Rheinmetall for the Giga PtX pr…",
+      "source": "Hydrogen Central",
       "lang": "en",
-      "pub_date": "2026-04-23T14:59:10+00:00",
-      "pub_ts": 1776956350
+      "pub_date": "2026-04-24T18:03:22+00:00",
+      "pub_ts": 1777053802
     },
     {
-      "id": "265deca1d8",
-      "title": "ECL 35MW FlexGrid-Powered Data Center in Santa Clara Builds Atop On-Grid Power for High-Density AI Delivery",
-      "url": "https://fuelcellsworks.com/2026/04/23/clean-energy/ecl-35mw-flexgrid-powered-data-center-in-santa-clara-builds-atop-on-grid-power-for-high-density-ai-delivery",
-      "summary": "",
-      "source": "Fuel Cells Works",
+      "id": "72f1da0d6a",
+      "title": "Kent Awarded EPCm Contract for MorGen Energy’s West Wales 20MW Green Hydrogen Plant",
+      "url": "https://hydrogen-central.com/kent-awarded-epcm-contract-for-morgen-energys-west-wales-20mw-green-hydrogen-plant/",
+      "summary": "Kent Awarded EPCm Contract for MorGen Energy’s West Wales 20MW Green Hydrogen Plant Kent, a leading global engineering and project delivery company at the forefront of the energy transition, has [&#8230;]\nThe post Kent Awarded EPCm Contract for MorGen Energy’s West Wales 20MW Green Hydrogen Plant ap…",
+      "source": "Hydrogen Central",
       "lang": "en",
-      "pub_date": "2026-04-23T14:46:41+00:00",
-      "pub_ts": 1776955601
+      "pub_date": "2026-04-24T17:59:36+00:00",
+      "pub_ts": 1777053576
     },
     {
-      "id": "824c85062d",
-      "title": "Throwback Thursday Story:  Wienerberger Secures Funding to Deliver the World’s First Commercial Scale Hydrogen Fired Brick Kiln",
-      "url": "https://fuelcellsworks.com/2026/04/23/green-hydrogen/throwback-thursday-story-wienerberger-secures-funding-to-deliver-the-world-s-first-commercial-scale-hydrogen-fired-brick-kiln",
+      "id": "c4452d07ae",
+      "title": "Official Opening and Commissioning of the New Logistics Area in Bernau for Hydrogen Mobility",
+      "url": "https://fuelcellsworks.com/2026/04/24/h2/official-opening-and-commissioning-of-the-new-logistics-area-in-bernau-for-hydrogen-mobility",
       "summary": "",
       "source": "Fuel Cells Works",
       "lang": "en",
-      "pub_date": "2026-04-23T14:34:54+00:00",
-      "pub_ts": 1776954894
+      "pub_date": "2026-04-24T15:44:32+00:00",
+      "pub_ts": 1777045472
+    },
+    {
+      "id": "b6fe25c96c",
+      "title": "Qair Opens Its First Renewable Hydrogen Station in Béziers",
+      "url": "https://fuelcellsworks.com/2026/04/24/fuel-cells/qair-opens-its-first-renewable-hydrogen-station-in-beziers",
+      "summary": "",
+      "source": "Fuel Cells Works",
+      "lang": "en",
+      "pub_date": "2026-04-24T15:35:17+00:00",
+      "pub_ts": 1777044917
+    },
+    {
+      "id": "108c6090ac",
+      "title": "Hydrogen Costs Stable Week on Week but Volatility Elevated Amid Middle East Tensions",
+      "url": "https://fuelcellsworks.com/2026/04/22/h2/hydrogen-costs-stable-week-on-week-but-volatility-elevated-amid-middle-east-tensions",
+      "summary": "",
+      "source": "Fuel Cells Works",
+      "lang": "en",
+      "pub_date": "2026-04-24T15:32:14+00:00",
+      "pub_ts": 1777044734
+    },
+    {
+      "id": "304cf3790b",
+      "title": "ABS, Marinteknik, Seatech, and VINSSEN Launch Hydrogen Fuel Cell Harbor Craft Pilot Study in Singapore",
+      "url": "https://fuelcellsworks.com/2026/04/24/energy-innovation/abs-marinteknik-seatech-and-vinssen-launch-hydrogen-fuel-cell-harbor-craft-pilot-study-in-singapore",
+      "summary": "",
+      "source": "Fuel Cells Works",
+      "lang": "en",
+      "pub_date": "2026-04-24T15:27:49+00:00",
+      "pub_ts": 1777044469
+    },
+    {
+      "id": "d1f148f680",
+      "title": "Tokyo Launches Japan's First Government-Operated Hydrogen Fuel Cell Ships",
+      "url": "https://fuelcellsworks.com/2026/04/22/news/tokyo-launches-japan-s-first-government-operated-hydrogen-fuel-cell-ships",
+      "summary": "",
+      "source": "Fuel Cells Works",
+      "lang": "en",
+      "pub_date": "2026-04-24T15:06:23+00:00",
+      "pub_ts": 1777043183
     },
     {
       "id": "cad7e3ef85",
@@ -65,46 +105,6 @@
       "lang": "en",
       "pub_date": "2026-04-22T06:29:27+00:00",
       "pub_ts": 1776839367
-    },
-    {
-      "id": "f2cac93605",
-      "title": "CHARBONE Advances Strategic Expansion in Malaysia and Confirms Intent to Participate and Operate in Green Hydrogen ASIAPAC",
-      "url": "https://hydrogen-central.com/charbone-advances-strategic-expansion-in-malaysia-and-confirms-intent-to-participate-and-operate-in-green-hydrogen-asiapac/",
-      "summary": "CHARBONE Advances Strategic Expansion in Malaysia and Confirms Intent to Participate and Operate in Green Hydrogen ASIAPAC Brossard, Quebec, April 21, 2026 &#8211; TheNewswire – CHARBONE CORPORATION (TSXV: CH; OTCQB: [&#8230;]\nThe post CHARBONE Advances Strategic Expansion in Malaysia and Confirms I…",
-      "source": "Hydrogen Central",
-      "lang": "en",
-      "pub_date": "2026-04-22T06:29:05+00:00",
-      "pub_ts": 1776839345
-    },
-    {
-      "id": "4692421bfa",
-      "title": "Aberdeen’s failed hydrogen bus fleet cost almost £14m",
-      "url": "https://hydrogen-central.com/aberdeens-failed-hydrogen-bus-fleet-cost-almost-14m/",
-      "summary": "Aberdeen&#8217;s failed hydrogen bus fleet cost almost £14m The world&#8217;s first hydrogen double-decker bus fleet which was ditched in Aberdeen cost almost £14m, figures have revealed. The project involving 25 [&#8230;]\nThe post Aberdeen&#8217;s failed hydrogen bus fleet cost almost £14m appeared…",
-      "source": "Hydrogen Central",
-      "lang": "en",
-      "pub_date": "2026-04-22T06:28:39+00:00",
-      "pub_ts": 1776839319
-    },
-    {
-      "id": "971b411f63",
-      "title": "PyroGenesis Converts Plasma Gas to Battery-Grade Carbon Black and Hydrogen",
-      "url": "https://hydrogen-central.com/pyrogenesis-converts-plasma-gas-to-battery-grade-carbon-black-and-hydrogen/",
-      "summary": "PyroGenesis Converts Plasma Gas to Battery-Grade Carbon Black and Hydrogen MONTREAL, April 21, 2026 (GLOBE NEWSWIRE) &#8212; PyroGenesis Inc. (“PyroGenesis” or “the Company”) (TSX: PYR) (OTCQX: PYRGF) (FRA: 8PY1), a [&#8230;]\nThe post PyroGenesis Converts Plasma Gas to Battery-Grade Carbon Black and…",
-      "source": "Hydrogen Central",
-      "lang": "en",
-      "pub_date": "2026-04-22T06:27:38+00:00",
-      "pub_ts": 1776839258
-    },
-    {
-      "id": "9ed23bdd63",
-      "title": "FPH2 Expands California Renewable Hydrogen Supply Partnerships to Support Public Fleets, Data Infrastructure, and Energy Resilience",
-      "url": "https://hydrogen-central.com/fph2-expands-california-renewable-hydrogen-supply-partnerships-to-support-public-fleets-data-infrastructure-and-energy-resilience/",
-      "summary": "FPH2 Expands California Renewable Hydrogen Supply Partnerships to Support Public Fleets, Data Infrastructure, and Energy Resilience New project collaborations strengthen in-state clean energy production and advance long-term hydrogen affordability LANCASTER, [&#8230;]\nThe post FPH2 Expands Californi…",
-      "source": "Hydrogen Central",
-      "lang": "en",
-      "pub_date": "2026-04-22T06:17:00+00:00",
-      "pub_ts": 1776838620
     }
   ]
 }

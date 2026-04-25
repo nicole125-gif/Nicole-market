@@ -3,58 +3,58 @@
   "vertical_name": "医药设备",
   "vertical_en": "Pharma Equipment",
   "color": "#ff8c42",
-  "updated_at": "2026-04-24T03:32:07.244144+00:00",
+  "updated_at": "2026-04-25T03:16:45.108857+00:00",
   "item_count": 5,
   "items": [
     {
-      "id": "325c05bfa5",
-      "title": "ESCMID Global 2026: Zelicapavir demonstrates benefits for high-risk adults with RSV",
-      "url": "https://www.pharmaceutical-technology.com/analyst-comment/escmid-global-2026-zelicapavir-demonstrates-benefits-for-high-risk-adults-with-rsv/",
-      "summary": "Enanta is in a strong position to dominate the largely untapped RSV therapeutics market with a Phase III trial on the horizon.",
+      "id": "612f778f3f",
+      "title": "The slow march of clinical biomarkers to become surrogate endpoints",
+      "url": "https://www.pharmaceutical-technology.com/features/the-slow-march-of-clinical-biomarkers-to-become-surrogate-endpoints/",
+      "summary": "Ann Mongan, director of translational research at BMS, outlines how biomarkers hold pivotal roles in clinical trials.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-04-23T21:18:30+00:00",
-      "pub_ts": 1776979110
+      "pub_date": "2026-04-24T19:14:03+00:00",
+      "pub_ts": 1777058043
     },
     {
-      "id": "09a8d00b90",
-      "title": "Pharma Meets AI Conference 2026: Key barriers to scaling AI in drug development",
-      "url": "https://www.pharmaceutical-technology.com/analyst-comment/pharma-meets-ai-conference-2026-key-barriers-to-scaling-ai-in-drug-development/",
-      "summary": "Strong systems that enable trust and governance are key to enabling the growth of AI technologies in drug development.",
+      "id": "3355659788",
+      "title": "AAN 2026: Tavapadon post-hoc analysis strengthens its D1/D5 agonist pitch",
+      "url": "https://www.pharmaceutical-technology.com/analyst-comment/aan-2026-tavapadon-post-hoc-analysis-strengthens-its-d1-d5-agonist-pitch/",
+      "summary": "Tavapadon will enter a competitive but commercially attractive market after a likely regulatory submission following post-hoc data.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-04-23T20:42:35+00:00",
-      "pub_ts": 1776976955
+      "pub_date": "2026-04-24T16:04:27+00:00",
+      "pub_ts": 1777046667
     },
     {
-      "id": "1fe7611aff",
-      "title": "ESCMID Global 2026: Adibelivir emerges as potential disease-modifying therapy for HSV",
-      "url": "https://www.pharmaceutical-technology.com/analyst-comment/escmid-global-2026-adibelivir-emerges-as-potential-disease-modifying-therapy-for-hsv/",
-      "summary": "Innovative Molecules' adibelivir had a favourable pharmacokinetic profile and proved safe and efficacious in Phase I clinical trials.",
+      "id": "9e8fd122ad",
+      "title": "AAN 2026: Head-to-head trial shows superiority of Qulipta for migraine prevention",
+      "url": "https://www.pharmaceutical-technology.com/analyst-comment/aan-2026-temple-data-shows-superiority-of-qulipta-for-migraine-prevention/",
+      "summary": "Results provide evidence needed to challenge the step-through reimbursement requirements that have restricted Qulipta's uptake in Europe.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-04-23T19:17:53+00:00",
-      "pub_ts": 1776971873
+      "pub_date": "2026-04-24T15:55:35+00:00",
+      "pub_ts": 1777046135
     },
     {
-      "id": "3d181ac0df",
-      "title": "500,000 patients’ data for sale online after UK Biobank breach",
-      "url": "https://www.pharmaceutical-technology.com/news/500000-patients-data-for-sale-online-after-uk-biobank-breach/",
-      "summary": "UK Biobank data from all 500,000 participants within the charity’s health database was put up for sale on the Chinese e-commerce website Alibaba.",
+      "id": "54328f0b7e",
+      "title": "Biogen seeks Darzalex rivalry in China for multiple myeloma with felzartamab deal",
+      "url": "https://www.pharmaceutical-technology.com/analyst-comment/biogen-darzalex-rivalry-china-multiple-myeloma-felzartamab/",
+      "summary": "In April 2026, Biogen announced that it would acquire exclusive rights to TJ Biopharma’s felzartamab in Greater China for up to $850m.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-04-23T15:15:37+00:00",
-      "pub_ts": 1776957337
+      "pub_date": "2026-04-24T14:54:32+00:00",
+      "pub_ts": 1777042472
     },
     {
-      "id": "67fabe20de",
-      "title": "Sanofi receives FDA approval for Tzield in paediatric diabetes",
-      "url": "https://www.pharmaceutical-technology.com/news/sanofi-fda-approval-tzield/",
-      "summary": "Sanofi has received approval from the US FDA for a supplemental biologic licence application for Tzield, allowing its use to delay stage 3 T1D onset in children as young as one year diagnosed with stage 2 T1D.",
+      "id": "0e9a8b8793",
+      "title": "Regulatory round-up: Novartis, Sanofi and Arrowhead secure CHMP blessings",
+      "url": "https://www.pharmaceutical-technology.com/news/chmp-positive-opinions-novartis-arrowhead-sanofi-drugs/",
+      "summary": "The EMA’s CHMP has stated its positive opinions on three drugs for autoimmune, muscle wasting and rare genetic diseases.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-04-23T09:57:52+00:00",
-      "pub_ts": 1776938272
+      "pub_date": "2026-04-24T13:45:58+00:00",
+      "pub_ts": 1777038358
     }
   ]
 }
