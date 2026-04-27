@@ -3,58 +3,58 @@
   "vertical_name": "AI液冷",
   "vertical_en": "AI Liquid Cooling",
   "color": "#00ff88",
-  "updated_at": "2026-04-26T03:38:36.187177+00:00",
+  "updated_at": "2026-04-27T03:42:11.402542+00:00",
   "item_count": 5,
   "items": [
     {
-      "id": "16f1ba6aff",
-      "title": "不愧是DeepSeek！V4一手实测：推理编程能力给到夯，熟悉的D老师也回来了",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247886511&idx=1&sn=f197e647633ae70188413d4b2d39531e",
-      "summary": "不愧是DeepSeek！V4一手实测：推理编程能力给到夯，熟悉的D老师也回来了",
+      "id": "5d368a85d0",
+      "title": "首波嘉宾来了！5月20日，来AIGC峰会一起AI",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247886574&idx=1&sn=024a34d77b8261cc9fb061c83d19cb6a",
+      "summary": "首波嘉宾来了！5月20日，来AIGC峰会一起AI",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-26T03:38:32.138248+00:00",
-      "pub_ts": 1777174712
+      "pub_date": "2026-04-27T03:42:06.902236+00:00",
+      "pub_ts": 1777261326
     },
     {
-      "id": "58ca53997b",
-      "title": "量化公司，正在批量生产AI独角兽创始人",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247886511&idx=2&sn=c252f95bbe42e1899d48d996dd27c694",
-      "summary": "量化公司，正在批量生产AI独角兽创始人",
+      "id": "26010023ad",
+      "title": "虽然OpenClaw为DeepSeekV4又更了一版，但“更新新版需谨慎”",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247886574&idx=2&sn=ba35bc6ecc8edba0a761702228afe14e",
+      "summary": "虽然OpenClaw为DeepSeekV4又更了一版，但“更新新版需谨慎”",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-26T03:38:32.138291+00:00",
-      "pub_ts": 1777174712
+      "pub_date": "2026-04-27T03:42:06.902283+00:00",
+      "pub_ts": 1777261326
     },
     {
-      "id": "b82d485c94",
-      "title": "硬刚GPT-Image-2！国产AI生图“天花板”又被捅破了?",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247886510&idx=1&sn=102ef776dea9e874d38f1f9dbde3e76e",
-      "summary": "硬刚GPT-Image-2！国产AI生图“天花板”又被捅破了?",
+      "id": "1cb8bec3bc",
+      "title": "全球首个医疗视频理解大模型开源！6k+组精标测试集与英雄榜同步上线，…..",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247886522&idx=1&sn=e8863f01ab4d3b8bad8cc3c0b49ffad1",
+      "summary": "全球首个医疗视频理解大模型开源！6k+组精标测试集与英雄榜同步上线，…..",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-26T03:38:32.138315+00:00",
-      "pub_ts": 1777174712
+      "pub_date": "2026-04-27T03:42:06.902306+00:00",
+      "pub_ts": 1777261326
     },
     {
-      "id": "f3bcc7c37f",
-      "title": "最后3天！2026年最值得关注的AI企业&产品申报即将截止",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247886510&idx=2&sn=cf97183baab23087cb5c70721585f633",
-      "summary": "最后3天！2026年最值得关注的AI企业&产品申报即将截止",
+      "id": "22fc1fb63f",
+      "title": "Skill也有语言虚拟机了！上交大开源SkVM，实现一次编写，处处高效",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247886522&idx=2&sn=47ce59a04d9eeda4afbbd9a5aeca7b6b",
+      "summary": "Skill也有语言虚拟机了！上交大开源SkVM，实现一次编写，处处高效",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-26T03:38:32.138337+00:00",
-      "pub_ts": 1777174712
+      "pub_date": "2026-04-27T03:42:06.902328+00:00",
+      "pub_ts": 1777261326
     },
     {
-      "id": "50b3951bb1",
-      "title": "燃油SUV车主熬出头了！华为乾崑智驾加持，全新奥迪Q5L率先实现智能化",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247886503&idx=1&sn=683ea7db9b500099f6b5537b5336a1d1",
-      "summary": "燃油SUV车主熬出头了！华为乾崑智驾加持，全新奥迪Q5L率先实现智能化",
+      "id": "9544edb81b",
+      "title": "最后1天！2026年最值得关注的AI企业&产品Ⅰ申报即将截止",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247886522&idx=3&sn=5d5289100fb6cbcdb0e3d5ff0299aec1",
+      "summary": "最后1天！2026年最值得关注的AI企业&产品Ⅰ申报即将截止",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-04-26T03:38:32.138358+00:00",
-      "pub_ts": 1777174712
+      "pub_date": "2026-04-27T03:42:06.902348+00:00",
+      "pub_ts": 1777261326
     }
   ]
 }
