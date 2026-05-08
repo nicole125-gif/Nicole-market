@@ -3,58 +3,58 @@
   "vertical_name": "医药设备",
   "vertical_en": "Pharma Equipment",
   "color": "#ff8c42",
-  "updated_at": "2026-05-07T03:46:13.669329+00:00",
+  "updated_at": "2026-05-08T03:38:21.425063+00:00",
   "item_count": 5,
   "items": [
     {
-      "id": "45d547b99a",
-      "title": "An essential framework to navigating technical challenges in contemporary OSD development",
-      "url": "https://www.pharmaceutical-technology.com/sponsored/an-essential-framework-to-navigating-technical-challenges-in-contemporary-osd-development/",
-      "summary": "Navigate key challenge in OSD development with an early risk-identification framework to improve bioavailability, stability, and scale-up with CDMO support.",
+      "id": "e90513a329",
+      "title": "GSK spends $1bn on rights to SiranBio’s metabolic oligonucleotide",
+      "url": "https://www.pharmaceutical-technology.com/news/gsk-siranbio-1bn-licensing-deal-sa030-metabolic-disease/",
+      "summary": "This deal aligns with GSK's focus on addressing the complications of obesity, while restocking its pipeline amid key patent expiries.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-05-06T20:44:49+00:00",
-      "pub_ts": 1778100289
+      "pub_date": "2026-05-07T16:13:14+00:00",
+      "pub_ts": 1778170394
     },
     {
-      "id": "b77da816d1",
-      "title": "Bayer looks to uphold Eylea legacy with $2.45bn Perfuse buyout",
-      "url": "https://www.pharmaceutical-technology.com/news/bayer-perfuse-therapeutics-buyout-ophthalmology-per-001/",
-      "summary": "If approved, Perfuse's PER-001 could continue Bayer’s ophthalmology legacy defined by blockbuster retinal disease therapy, Eylea.",
+      "id": "42f71a2cfb",
+      "title": "Podcast: Autonomous labs redefine the role of biopharma researchers",
+      "url": "https://www.pharmaceutical-technology.com/interviews/podcast-autonomous-labs-redefine-the-role-of-biopharma-researchers/",
+      "summary": "Ginkgo Bioworks CEO Jason Kelly discusses the company’s work on autonomous labs and their impact on biopharma R&amp;D.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-05-06T15:13:21+00:00",
-      "pub_ts": 1778080401
+      "pub_date": "2026-05-07T13:32:46+00:00",
+      "pub_ts": 1778160766
     },
     {
-      "id": "2bd2dab0d3",
-      "title": "Citius raises $36.5m for Lymphir commercialisation",
-      "url": "https://www.pharmaceutical-technology.com/news/citius-oncology-raises-36m-lymphir-commercialisation/",
-      "summary": "Citius Oncology has secured up to $36.5m to accelerate the commercialisation of Lymphir, a recombinant fusion protein immune therapy.",
+      "id": "c5d5288d86",
+      "title": "Eli Lilly pledges $4.5bn to bolster Indiana-based manufacturing",
+      "url": "https://www.pharmaceutical-technology.com/news/eli-lilly-4-5bn-indiana-manufacturing-expansion-api-genetic-medicines/",
+      "summary": "When Eli Lilly's Lebanon campus is complete, it will manufacture several of the pharma's APIs and genetic medicines to serve US patients.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-05-06T12:04:52+00:00",
-      "pub_ts": 1778069092
+      "pub_date": "2026-05-07T10:30:55+00:00",
+      "pub_ts": 1778149855
     },
     {
-      "id": "ff798f3fc6",
-      "title": "DDW 2026: key readouts from the conference",
-      "url": "https://www.pharmaceutical-technology.com/news/ddw-2026-key-trial-roundup-digestive-oncology-ibd-oesophageal-disease-2/",
-      "summary": "Pharmaceutical Technology rounds up the key readouts from the 2026 Digestive Disease Week conference held in Chicago.",
+      "id": "2050b6f0ea",
+      "title": "Daiichi Sankyo and Waiv partner for ADC biomarkers",
+      "url": "https://www.pharmaceutical-technology.com/news/daiichi-sankyo-waiv-adc-biomarkers/",
+      "summary": "Daiichi Sankyo has entered into a collaboration with Paris-based Waiv intended at digital pathology biomarker discovery for an ADC programme.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-05-06T11:27:32+00:00",
-      "pub_ts": 1778066852
+      "pub_date": "2026-05-07T09:03:01+00:00",
+      "pub_ts": 1778144581
     },
     {
-      "id": "d933a6d388",
-      "title": "MSD concludes Terns acquisition to expand CML pipeline",
-      "url": "https://www.pharmaceutical-technology.com/news/msd-concludes-terns-acquisition/",
-      "summary": "MSD has completed its acquisition of Terns Pharmaceuticals, expanding its pipeline of treatments for chronic myeloid leukaemia (CML).",
+      "id": "e92bc57f0e",
+      "title": "Halozyme and Oruka sign agreement for Hypercon technology",
+      "url": "https://www.pharmaceutical-technology.com/news/halozyme-oruka-agreement-hypercon-technology/",
+      "summary": "Halozyme Hypercon has signed an exclusive global collaboration and licence agreement with Oruka Therapeutics to develop ORKA-001 using Hypercon Technology.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-05-06T08:47:44+00:00",
-      "pub_ts": 1778057264
+      "pub_date": "2026-05-07T08:07:28+00:00",
+      "pub_ts": 1778141248
     }
   ]
 }

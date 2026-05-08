@@ -3,158 +3,118 @@
   "vertical_name": "半导体",
   "vertical_en": "Semiconductor",
   "color": "#ff6b9d",
-  "updated_at": "2026-05-07T03:45:35.710022+00:00",
-  "item_count": 15,
+  "updated_at": "2026-05-08T03:37:44.386360+00:00",
+  "item_count": 11,
   "items": [
     {
-      "id": "d357e7c813",
-      "title": "最高27亿美元！英伟达投资康宁",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811198&idx=1&sn=c00f04ab5cc1b2ff4eaf2a20fe6d072e",
-      "summary": "最高27亿美元！英伟达投资康宁",
+      "id": "580a6dee1f",
+      "title": "160%、155%、75%！国产A1芯片集体向上",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811226&idx=1&sn=03b71ab9d0e2aea691c7c2d8767a9585",
+      "summary": "160%、155%、75%！国产A1芯片集体向上",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-05-07T03:45:31.668889+00:00",
-      "pub_ts": 1778125531
+      "pub_date": "2026-05-08T03:37:40.361690+00:00",
+      "pub_ts": 1778211460
     },
     {
-      "id": "d2779dc65a",
-      "title": "SOCAMM2，引爆内存圈",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811193&idx=1&sn=7b336f97bba24c19d9e2024efe43ee53",
-      "summary": "SOCAMM2，引爆内存圈",
+      "id": "74df76a6d1",
+      "title": "ARM2026财年成绩亮眼，AGICPU需求将超20亿美元",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811226&idx=2&sn=5bd992769c2cd121d55b8c0b41d8af01",
+      "summary": "ARM2026财年成绩亮眼，AGICPU需求将超20亿美元",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-05-07T03:45:31.668930+00:00",
-      "pub_ts": 1778125531
+      "pub_date": "2026-05-08T03:37:40.361733+00:00",
+      "pub_ts": 1778211460
     },
     {
-      "id": "2693611382",
-      "title": "英伟达入场！4亿美元融资背后，RISC-V迎来春天",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811193&idx=2&sn=e7932d495a0084c91d0b0a7bc093f020",
-      "summary": "英伟达入场！4亿美元融资背后，RISC-V迎来春天",
+      "id": "7c6312eb2f",
+      "title": "FPGA制造商，进军固件领域",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811226&idx=3&sn=6e5969eb814d3ed746b9b27c18b9a952",
+      "summary": "FPGA制造商，进军固件领域",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-05-07T03:45:31.668957+00:00",
-      "pub_ts": 1778125531
+      "pub_date": "2026-05-08T03:37:40.361757+00:00",
+      "pub_ts": 1778211460
     },
     {
-      "id": "72c58c71e2",
-      "title": "苹果芯片代工订单，考虑英特尔、三星",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811193&idx=3&sn=494499458945c428be9b3ff28834c397",
-      "summary": "苹果芯片代工订单，考虑英特尔、三星",
+      "id": "032f300d6e",
+      "title": "2035年，全球功率半导体市场规模将超过7万亿日元",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811226&idx=4&sn=81dbf626088adbef85d26e7945dec41d",
+      "summary": "2035年，全球功率半导体市场规模将超过7万亿日元",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-05-07T03:45:31.668981+00:00",
-      "pub_ts": 1778125531
+      "pub_date": "2026-05-08T03:37:40.361779+00:00",
+      "pub_ts": 1778211460
     },
     {
-      "id": "b6b2643f75",
-      "title": "华海清科：离子注入机交付国内先进存储龙头企业",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811193&idx=4&sn=e38e4ebbacb402196db845f65bb4edd5",
-      "summary": "华海清科：离子注入机交付国内先进存储龙头企业",
+      "id": "c2b4d42cc3",
+      "title": "1000层超高密度3D NAND，迎来重要里程碑",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811226&idx=5&sn=2b77f4c3447e336a12afd396d3dda742",
+      "summary": "1000层超高密度3D NAND，迎来重要里程碑",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-05-07T03:45:31.669003+00:00",
-      "pub_ts": 1778125531
+      "pub_date": "2026-05-08T03:37:40.361800+00:00",
+      "pub_ts": 1778211460
     },
     {
-      "id": "ae7aaf7a81",
-      "title": "刚刚，英伟达投资康宁",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247818445&idx=1&sn=40ba848020b83f8d4b1191d78a488ef1",
-      "summary": "刚刚，英伟达投资康宁",
+      "id": "0e68d90729",
+      "title": "AMD LisaSu：CPU需求会超过GPU",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247818507&idx=7&sn=4c3b557c086b3d61dae9a8e449d76fe4",
+      "summary": "AMD LisaSu：CPU需求会超过GPU",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-05-07T03:45:23.492108+00:00",
-      "pub_ts": 1778125523
+      "pub_date": "2026-05-08T03:37:26.958011+00:00",
+      "pub_ts": 1778211446
     },
     {
-      "id": "5ba56e041d",
-      "title": "三星家电官宣：退出中国大陆",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247818440&idx=1&sn=b32c8f98b32f4b7e7b07d222b7bb61df",
-      "summary": "三星家电官宣：退出中国大陆",
-      "source": "半导体行业观察",
-      "lang": "zh",
-      "pub_date": "2026-05-07T03:45:23.492159+00:00",
-      "pub_ts": 1778125523
-    },
-    {
-      "id": "6040de461e",
-      "title": "国产芯片，集体大涨",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247818417&idx=1&sn=b3d5583d7ee68243446122d20f3d47c8",
-      "summary": "国产芯片，集体大涨",
-      "source": "半导体行业观察",
-      "lang": "zh",
-      "pub_date": "2026-05-07T03:45:23.492185+00:00",
-      "pub_ts": 1778125523
-    },
-    {
-      "id": "48caf3e7ad",
-      "title": "SPECCPU 2026发布，更新了什么?",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247818405&idx=1&sn=f53354252698218917e03124718e65e7",
-      "summary": "SPECCPU 2026发布，更新了什么?",
-      "source": "半导体行业观察",
-      "lang": "zh",
-      "pub_date": "2026-05-07T03:45:23.492209+00:00",
-      "pub_ts": 1778125523
-    },
-    {
-      "id": "19baf55a2b",
-      "title": "一年暴涨3963%，闪迪成为大赢家",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247818405&idx=2&sn=3b8d95d3523227fa48ad6f06541a4ef4",
-      "summary": "一年暴涨3963%，闪迪成为大赢家",
-      "source": "半导体行业观察",
-      "lang": "zh",
-      "pub_date": "2026-05-07T03:45:23.492231+00:00",
-      "pub_ts": 1778125523
-    },
-    {
-      "id": "3c259da2c3",
-      "title": "High-NA EU Lithography: Extending The STCC Formula (Science Tokyo)",
-      "url": "https://semiengineering.com/high-na-eu-lithography-extending-the-stcc-formula-science-tokyo/",
-      "summary": "A new technical paper, &#8220;Source-position-dependent transmission cross coefficient formula including polarization and mask three-dimensional effects in high-numerical-aperture extreme ultraviolet lithography&#8221; was published by researchers at Institute of Science Tokyo. This work is based on…",
+      "id": "70949b7736",
+      "title": "The Emergence Of Electronics Digital Twins For Software-Defined Vehicles",
+      "url": "https://semiengineering.com/the-emergence-of-electronics-digital-twins-for-software-defined-vehicles/",
+      "summary": "Why it's no longer sufficient to simulate a physical vehicle or subsystem.\nThe post The Emergence Of Electronics Digital Twins For Software-Defined Vehicles appeared first on Semiconductor Engineering.",
       "source": "Semiconductor Engineering",
       "lang": "en",
-      "pub_date": "2026-05-06T19:49:49+00:00",
-      "pub_ts": 1778096989
+      "pub_date": "2026-05-07T07:09:56+00:00",
+      "pub_ts": 1778137796
     },
     {
-      "id": "94fa9852cb",
-      "title": "Hardware From Specifications Using AI",
-      "url": "https://semiengineering.com/hardware-from-specifications-using-ai/",
-      "summary": "Can AI really generate hardware from specifications? It may not matter, because that's only a small part of the problem.\nThe post Hardware From Specifications Using AI appeared first on Semiconductor Engineering.",
+      "id": "57327bffa2",
+      "title": "Securing Chiplet-Based Platforms: Distributed Trust With Centralized Authority",
+      "url": "https://semiengineering.com/securing-chiplet-based-platforms-distributed-trust-with-centralized-authority/",
+      "summary": "A security model where every chiplet can prove identity, boot correctly, and communicate securely without becoming the weak link.\nThe post Securing Chiplet-Based Platforms: Distributed Trust With Centralized Authority appeared first on Semiconductor Engineering.",
       "source": "Semiconductor Engineering",
       "lang": "en",
-      "pub_date": "2026-05-06T07:05:41+00:00",
-      "pub_ts": 1778051141
+      "pub_date": "2026-05-07T07:09:42+00:00",
+      "pub_ts": 1778137782
     },
     {
-      "id": "408aab89e7",
-      "title": "Blog Review: May 6",
-      "url": "https://semiengineering.com/blog-review-may-6-3/",
-      "summary": "AI data center challenges; C-PHY's 18 wire state mode; changes in CFD; ITA inspection cobot.\nThe post Blog Review: May 6 appeared first on Semiconductor Engineering.",
+      "id": "2249cc99f0",
+      "title": "Powering AI At Scale: Why 3D-ICs Demand A New Approach To Power Integrity",
+      "url": "https://semiengineering.com/powering-ai-at-scale-why-3d-ics-demand-a-new-approach-to-power-integrity/",
+      "summary": "Connectivity density and power delivery complexity have made power integrity one of the most critical constraints in modern system design.\nThe post Powering AI At Scale: Why 3D-ICs Demand A New Approach To Power Integrity appeared first on Semiconductor Engineering.",
       "source": "Semiconductor Engineering",
       "lang": "en",
-      "pub_date": "2026-05-06T07:01:53+00:00",
-      "pub_ts": 1778050913
+      "pub_date": "2026-05-07T07:08:52+00:00",
+      "pub_ts": 1778137732
     },
     {
-      "id": "ccd3275f17",
-      "title": "Enabling A Critical Phase in SoC Development",
-      "url": "https://semiengineering.com/enabling-a-critical-phase-in-soc-development/",
-      "summary": "For SoC designs that include high-speed, voluminous I/O, it is essential that the prototype be exercised with large amounts of real-world I/O over extended periods.\nThe post Enabling A Critical Phase in SoC Development appeared first on Semiconductor Engineering.",
+      "id": "48ed0c1e7f",
+      "title": "How OCP S.O.L.I.D. Completes The Data Center Security Picture",
+      "url": "https://semiengineering.com/how-ocp-s-o-l-i-d-completes-the-data-center-security-picture/",
+      "summary": "A framework that establishes concrete device-specific security requirements upfront and verifies them at the end.\nThe post How OCP S.O.L.I.D. Completes The Data Center Security Picture appeared first on Semiconductor Engineering.",
       "source": "Semiconductor Engineering",
       "lang": "en",
-      "pub_date": "2026-05-06T07:01:52+00:00",
-      "pub_ts": 1778050912
+      "pub_date": "2026-05-07T07:05:41+00:00",
+      "pub_ts": 1778137541
     },
     {
-      "id": "60d2052ddf",
-      "title": "Power And Sensing – Selection Guide 2026",
-      "url": "https://semiengineering.com/power-and-sensing-selection-guide-2026/",
-      "summary": "The latest power and sensing innovations - solutions, applications, and product highlights in one comprehensive guide.\nThe post Power And Sensing &#8211; Selection Guide 2026 appeared first on Semiconductor Engineering.",
+      "id": "b4fa855389",
+      "title": "Building AI Without Guardrails",
+      "url": "https://semiengineering.com/building-ai-without-guardrails/",
+      "summary": "The semiconductor ecosystem is wrestling with fragmented standards, IP exposure, and the urgent need for runtime assurance.\nThe post Building AI Without Guardrails appeared first on Semiconductor Engineering.",
       "source": "Semiconductor Engineering",
       "lang": "en",
-      "pub_date": "2026-05-06T07:01:43+00:00",
-      "pub_ts": 1778050903
+      "pub_date": "2026-05-07T07:05:12+00:00",
+      "pub_ts": 1778137512
     }
   ]
 }

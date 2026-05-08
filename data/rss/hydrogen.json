@@ -3,58 +3,58 @@
   "vertical_name": "氢能",
   "vertical_en": "Hydrogen Energy",
   "color": "#ffd700",
-  "updated_at": "2026-05-07T03:46:01.060236+00:00",
+  "updated_at": "2026-05-08T03:38:08.925474+00:00",
   "item_count": 10,
   "items": [
     {
-      "id": "10285e8daa",
-      "title": "Van Der Vlist Introduces Its New Hydrogen Truck",
-      "url": "https://fuelcellsworks.com/2026/05/05/h2/van-der-vlist-introduces-its-new-hydrogen-truck",
+      "id": "ec870db371",
+      "title": "Hyundai Motor Launches New 2027 Xcient Hydrogen Fuel Cell Truck",
+      "url": "https://fuelcellsworks.com/2026/05/07/fuel-cells/hyundai-motor-launches-new-2027-xcient-hydrogen-fuel-cell-truck",
       "summary": "",
       "source": "Fuel Cells Works",
       "lang": "en",
-      "pub_date": "2026-05-06T16:07:42+00:00",
-      "pub_ts": 1778083662
+      "pub_date": "2026-05-07T16:17:39+00:00",
+      "pub_ts": 1778170659
     },
     {
-      "id": "892e906ad4",
-      "title": "Rux Energy Wins AU$857,000 [$547K] to Build AI-Driven Hydrogen Storage for Singapore Export",
-      "url": "https://fuelcellsworks.com/2026/05/06/h2/rux-energy-wins-au-857-000-547k-to-build-ai-driven-hydrogen-storage-for-singapore-export",
+      "id": "56d5f7255d",
+      "title": "Brazil Bets R$ 9.5M [$1.7M] on Homegrown Green Hydrogen Electrolyzer Technology",
+      "url": "https://fuelcellsworks.com/2026/05/05/green-investment/clark-solutions-receives-r-9-5-million-investment-from-finep-for-a-national-electrolyzer",
       "summary": "",
       "source": "Fuel Cells Works",
       "lang": "en",
-      "pub_date": "2026-05-06T16:05:00+00:00",
-      "pub_ts": 1778083500
+      "pub_date": "2026-05-07T16:09:41+00:00",
+      "pub_ts": 1778170181
     },
     {
-      "id": "86d4309f8a",
-      "title": "Swiss Geo Energy Secures Surface Exploration Permit for Jorat Project in the Canton of Vaud",
-      "url": "https://fuelcellsworks.com/2026/05/06/clean-hydrogen/swiss-geo-energy-secures-surface-exploration-permit-for-jorat-project-in-the-canton-of-vaud",
+      "id": "6364b38faa",
+      "title": "Accelerating Hydrogen Production: A Research Collaboration Between the BRGM and VEMA Hydrogen",
+      "url": "https://fuelcellsworks.com/2026/05/07/energy-innovation/accelerating-hydrogen-production-a-research-collaboration-between-the-brgm-and-vema-hydrogen-i07909413",
       "summary": "",
       "source": "Fuel Cells Works",
       "lang": "en",
-      "pub_date": "2026-05-06T16:00:52+00:00",
-      "pub_ts": 1778083252
+      "pub_date": "2026-05-07T16:01:26+00:00",
+      "pub_ts": 1778169686
     },
     {
-      "id": "34472f153b",
-      "title": "China Advances Underground Hydrogen Storage Projects",
-      "url": "https://fuelcellsworks.com/2026/05/03/h2/china-advances-underground-hydrogen-storage-projects",
+      "id": "6de24e9842",
+      "title": "Hydrogen Combustion Goes Small: Suzuki and AVL Put H2 Engine in Swift Compact Car",
+      "url": "https://fuelcellsworks.com/2026/05/07/fuel-cells/hydrogen-combustion-goes-small-suzuki-and-avl-put-h2-engine-in-swift-compact-car",
       "summary": "",
       "source": "Fuel Cells Works",
       "lang": "en",
-      "pub_date": "2026-05-06T15:46:08+00:00",
-      "pub_ts": 1778082368
+      "pub_date": "2026-05-07T15:38:28+00:00",
+      "pub_ts": 1778168308
     },
     {
-      "id": "8ea77b4142",
-      "title": "UL Solutions Launches Certification Services for Hydrogen Fueling Components, Helping to Build Safety Into the Adoption of Hydrogen Power",
-      "url": "https://fuelcellsworks.com/2026/05/06/hydrogen/ul-solutions-launches-certification-services-for-hydrogen-fueling-components-helping-to-build-safety-into-the-adoption-of-hydrogen-power",
+      "id": "c1d2dc33f7",
+      "title": "South Korea's Hydrogen Vehicle Fleet Nears 50,000 Units",
+      "url": "https://fuelcellsworks.com/2026/05/04/fuel-cells/south-korea-s-hydrogen-vehicle-fleet-nears-50-000-units",
       "summary": "",
       "source": "Fuel Cells Works",
       "lang": "en",
-      "pub_date": "2026-05-06T15:42:01+00:00",
-      "pub_ts": 1778082121
+      "pub_date": "2026-05-07T15:37:36+00:00",
+      "pub_ts": 1778168256
     },
     {
       "id": "475ec8235c",
