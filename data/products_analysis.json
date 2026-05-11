@@ -1,5 +1,5 @@
 {
-  "analyzed_at": "2026-05-04 05:42",
+  "analyzed_at": "2026-05-11 06:07",
   "model": "claude-sonnet-4-6",
   "total": 49,
   "summary": {
@@ -13,10 +13,11 @@
       ],
       "product_type_dist": {
         "电磁阀": 7,
-        "调节阀": 3,
+        "调节阀": 2,
         "隔膜阀/调节阀/电磁阀": 1,
         "传感器/变送器/控制器": 1,
         "微流量控制阀/泵": 1,
+        "电磁阀/隔膜阀/调节阀": 1,
         "过程阀和调节阀": 1,
         "传感器": 1
       },
@@ -30,7 +31,7 @@
     },
     "Gemü": {
       "product_count": 9,
-      "avg_threat_level": 4.0,
+      "avg_threat_level": 4.1,
       "top_industries": [
         "食品饮料",
         "精细化工",
@@ -53,7 +54,7 @@
     },
     "ESG": {
       "product_count": 25,
-      "avg_threat_level": 2.4,
+      "avg_threat_level": 2.3,
       "top_industries": [
         "食品饮料",
         "制药",
@@ -63,21 +64,19 @@
         "信息不足，无法判断": 1,
         "工业级阀门": 1,
         "通用工业阀门": 1,
-        "未明确": 1,
-        "隔膜阀": 5,
+        "未知": 4,
+        "隔膜阀": 4,
         "卫生级阀门": 1,
-        "产品系列": 2,
         "测控仪表": 1,
         "角座阀": 2,
-        "调节阀": 2,
+        "调节阀": 3,
         "灌装阀": 1,
         "止回阀": 1,
         "过滤器": 1,
-        "溢流阀": 1,
         "疏水阀": 1,
         "其它阀门": 1,
         "注液总成": 1,
-        "三通梭阀": 1
+        "梭阀": 1
       },
       "high_threat_products": []
     }
@@ -102,13 +101,13 @@
           "精细化工"
         ],
         "key_features": [
-          "高卫生标准设计（如3A, EHEDG认证）",
+          "高卫生标准（如EHEDG认证）",
           "快速响应与精确控制",
           "模块化设计，易于清洁与维护"
         ],
         "price_tier": "高端",
         "threat_level": 4,
-        "threat_reason": "品牌认知度高，技术标准严苛，客户粘性强。",
+        "threat_reason": "品牌认知度高，技术成熟，客户粘性强。",
         "opportunity": "在特定细分应用（如超纯介质）或性价比上寻求突破。"
       }
     },
@@ -137,7 +136,7 @@
         "price_tier": "高端",
         "threat_level": 4,
         "threat_reason": "品牌认知度高，技术成熟，客户粘性强。",
-        "opportunity": "在特定细分工艺或性价比上建立优势。"
+        "opportunity": "在特定细分工艺或性价比上寻求突破。"
       }
     },
     {
@@ -150,21 +149,22 @@
       "source": "burkert.com.cn",
       "scraped": "2026-04-16",
       "analysis": {
-        "product_type": "调节阀",
+        "product_type": "电磁阀",
         "target_industries": [
-          "生物制药",
+          "制药",
           "食品饮料",
-          "精细化工"
+          "生物技术",
+          "半导体"
         ],
         "key_features": [
-          "高精度流量控制",
+          "高精度流体控制",
           "模块化设计便于维护",
-          "符合EHEDG卫生标准"
+          "符合卫生级标准"
         ],
         "price_tier": "高端",
         "threat_level": 4,
-        "threat_reason": "品牌与技术壁垒高，客户粘性强。",
-        "opportunity": "提供更优性价比与本地化服务响应。"
+        "threat_reason": "品牌认知度高，技术成熟，客户粘性强。",
+        "opportunity": "提供更优性价比或定制化解决方案。"
       }
     },
     {
@@ -220,8 +220,8 @@
         ],
         "price_tier": "高端",
         "threat_level": 4,
-        "threat_reason": "提供完整过程控制解决方案，客户粘性高。",
-        "opportunity": "在特定细分应用或性价比上寻求突破。"
+        "threat_reason": "提供完整自动化控制解决方案，客户粘性高。",
+        "opportunity": "在特定工艺段提供更专业的阀门解决方案。"
       }
     },
     {
@@ -237,20 +237,19 @@
         "product_type": "微流量控制阀/泵",
         "target_industries": [
           "生物制药",
-          "实验室",
-          "分析仪器",
           "半导体",
-          "精细化工"
+          "精密化工",
+          "分析仪器"
         ],
         "key_features": [
           "超高精度微流量控制",
-          "模块化设计，易于集成",
+          "模块化设计与集成",
           "高洁净度与耐腐蚀材料"
         ],
         "price_tier": "高端",
         "threat_level": 4,
-        "threat_reason": "在精密流体控制领域技术领先，品牌认知度高。",
-        "opportunity": "提供更具性价比的定制化解决方案。"
+        "threat_reason": "技术壁垒高，品牌认知度强。",
+        "opportunity": "提供更优性价比或定制化服务。"
       }
     },
     {
@@ -300,8 +299,8 @@
         ],
         "key_features": [
           "高精度流体控制",
-          "模块化设计，易于维护",
-          "符合卫生级标准（如EHEDG, 3-A）"
+          "模块化设计便于维护",
+          "符合卫生级标准（如EHEDG、3-A）"
         ],
         "price_tier": "高端",
         "threat_level": 4,
@@ -334,7 +333,7 @@
         ],
         "price_tier": "高端",
         "threat_level": 4,
-        "threat_reason": "通讯集成度高，品牌认知强。",
+        "threat_reason": "通讯集成度高，品牌溢价强。",
         "opportunity": "提供更灵活的定制化通讯方案。"
       }
     },
@@ -357,13 +356,13 @@
         ],
         "key_features": [
           "高精度流体控制",
-          "模块化设计便于维护",
-          "符合卫生级标准"
+          "模块化设计",
+          "符合卫生标准"
         ],
         "price_tier": "高端",
         "threat_level": 4,
-        "threat_reason": "品牌认知度高，技术成熟，客户粘性强。",
-        "opportunity": "提供更灵活的定制化解决方案或更快的本地化服务。"
+        "threat_reason": "品牌认知度高，技术领先",
+        "opportunity": "提供更具性价比的定制化解决方案"
       }
     },
     {
@@ -391,8 +390,8 @@
         ],
         "price_tier": "高端",
         "threat_level": 4,
-        "threat_reason": "智能化与模块化设计领先",
-        "opportunity": "强化定制化与本地服务响应"
+        "threat_reason": "智能化与模块化领先，客户粘性高。",
+        "opportunity": "提供更灵活的定制化与本地化服务。"
       }
     },
     {
@@ -405,23 +404,23 @@
       "source": "burkert.com.cn",
       "scraped": "2026-04-16",
       "analysis": {
-        "product_type": "电磁阀",
+        "product_type": "电磁阀/隔膜阀/调节阀",
         "target_industries": [
           "制药",
           "食品饮料",
           "生物技术",
           "半导体",
-          "精细化工"
+          "化工"
         ],
         "key_features": [
-          "高精度流体控制",
-          "模块化设计，易于清洁和维护",
-          "广泛的介质兼容性"
+          "高洁净度设计",
+          "模块化结构",
+          "智能控制与诊断"
         ],
         "price_tier": "高端",
         "threat_level": 4,
-        "threat_reason": "品牌认知度高，技术领先，客户粘性强。",
-        "opportunity": "在特定细分应用或性价比上寻求突破。"
+        "threat_reason": "品牌与技术壁垒高，客户粘性强。",
+        "opportunity": "在特定细分市场提供更优性价比或定制化服务。"
       }
     },
     {
@@ -443,13 +442,13 @@
         ],
         "key_features": [
           "高精度流体控制",
-          "符合卫生级标准（如EHEDG, 3-A）",
-          "模块化设计，易于清洁和维护"
+          "模块化设计便于维护",
+          "符合卫生级标准"
         ],
         "price_tier": "高端",
-        "threat_level": 4,
-        "threat_reason": "品牌认知度高，技术标准严格，客户粘性强。",
-        "opportunity": "提供更具性价比的定制化解决方案或更快的本地化服务。"
+        "threat_level": 5,
+        "threat_reason": "品牌与技术壁垒高，客户粘性强。",
+        "opportunity": "提供更灵活的定制化解决方案与快速响应服务。"
       }
     },
     {
@@ -467,7 +466,7 @@
           "制药",
           "生物技术",
           "食品饮料",
-          "半导体"
+          "化工"
         ],
         "key_features": [
           "高精度测量",
@@ -501,12 +500,12 @@
         "key_features": [
           "高精度流体控制",
           "模块化设计便于维护",
-          "符合卫生级标准（如EHEDG）"
+          "符合卫生级标准（如EHEDG, 3-A）"
         ],
         "price_tier": "高端",
         "threat_level": 4,
         "threat_reason": "品牌认知度高，技术成熟，客户粘性强。",
-        "opportunity": "在特定细分应用或性价比上寻求突破。"
+        "opportunity": "在特定细分应用（如超纯介质）或性价比上寻求突破。"
       }
     },
     {
@@ -530,13 +529,13 @@
         ],
         "key_features": [
           "无菌设计",
-          "高纯度流体控制",
+          "高洁净度",
           "易于清洁和维护"
         ],
         "price_tier": "高端",
-        "threat_level": 4,
-        "threat_reason": "品牌认知度高，技术成熟，客户粘性强。",
-        "opportunity": "在特定工艺或定制化服务上寻求突破。"
+        "threat_level": 5,
+        "threat_reason": "在无菌应用领域品牌认知度高，技术成熟。",
+        "opportunity": "在特定工艺或定制化解决方案上寻求突破。"
       }
     },
     {
@@ -567,8 +566,8 @@
         ],
         "price_tier": "高端",
         "threat_level": 4,
-        "threat_reason": "品牌认知度高，技术成熟，客户粘性强。",
-        "opportunity": "在定制化解决方案或特定工况的性价比上寻求突破。"
+        "threat_reason": "在高端卫生级市场品牌认知度高，技术成熟。",
+        "opportunity": "在特定工艺或定制化解决方案上寻求突破。"
       }
     },
     {
@@ -586,20 +585,20 @@
       "analysis": {
         "product_type": "隔膜阀",
         "target_industries": [
-          "制药",
-          "生物技术",
+          "生物制药",
           "食品饮料",
-          "精细化工"
+          "精细化工",
+          "半导体"
         ],
         "key_features": [
-          "无菌设计，符合卫生标准",
-          "模块化结构，易于维护",
-          "高密封性，适用于高纯度介质"
+          "无菌设计，符合EHEDG/3A标准",
+          "模块化结构，易于维护和更换",
+          "高精度流量控制，适用于敏感介质"
         ],
         "price_tier": "高端",
         "threat_level": 4,
         "threat_reason": "在高端卫生级市场品牌认知度高，技术成熟。",
-        "opportunity": "在特定工况或定制化服务上提供更优性价比。"
+        "opportunity": "在特定工艺或定制化服务上提供更优方案。"
       }
     },
     {
@@ -623,13 +622,13 @@
         ],
         "key_features": [
           "高精度流量控制",
-          "卫生级设计（3-A, EHEDG认证）",
-          "模块化结构，易于维护"
+          "模块化设计便于维护",
+          "符合EHEDG卫生标准"
         ],
         "price_tier": "高端",
         "threat_level": 4,
-        "threat_reason": "在高端生物制药领域品牌认可度高，技术成熟。",
-        "opportunity": "在性价比、定制化服务或特定工况适应性上寻找突破。"
+        "threat_reason": "品牌认知度高，技术成熟，客户粘性强。",
+        "opportunity": "提供更优性价比或定制化解决方案。"
       }
     },
     {
@@ -650,7 +649,7 @@
           "食品饮料",
           "制药",
           "生物技术",
-          "化工"
+          "精细化工"
         ],
         "key_features": [
           "卫生级设计，符合EHEDG/3A标准",
@@ -660,7 +659,7 @@
         "price_tier": "高端",
         "threat_level": 4,
         "threat_reason": "品牌认知度高，卫生级市场标杆。",
-        "opportunity": "在特定工况下提供更优性价比或定制化解决方案。"
+        "opportunity": "提供更优性价比或定制化解决方案。"
       }
     },
     {
@@ -680,17 +679,18 @@
         "target_industries": [
           "生物制药",
           "食品饮料",
-          "精细化工"
+          "精细化工",
+          "半导体"
         ],
         "key_features": [
-          "卫生级设计，符合3A/DIN标准",
-          "全通径流道，低流阻",
-          "模块化设计，易于维护"
+          "全通径设计，流阻小",
+          "符合ASME BPE标准，表面光洁度高",
+          "模块化设计，易于维护和更换"
         ],
         "price_tier": "高端",
         "threat_level": 4,
-        "threat_reason": "品牌认知度高，技术成熟，客户粘性强。",
-        "opportunity": "在特定工况（如高粘度、颗粒介质）或定制化服务上寻求突破。"
+        "threat_reason": "品牌认知度高，技术标准严格。",
+        "opportunity": "在特定工况下提供更优性价比或定制化服务。"
       }
     },
     {
@@ -719,8 +719,8 @@
         ],
         "price_tier": "高端",
         "threat_level": 4,
-        "threat_reason": "品牌认知度高，技术成熟，客户粘性强。",
-        "opportunity": "在特定工况下提供更优性价比或定制化解决方案。"
+        "threat_reason": "在无菌流体控制领域技术领先，品牌认可度高。",
+        "opportunity": "在特定工况下的性价比或定制化服务。"
       }
     },
     {
@@ -779,8 +779,8 @@
         ],
         "price_tier": "高端",
         "threat_level": 4,
-        "threat_reason": "在高端卫生级调节阀市场占据主导地位。",
-        "opportunity": "提供更具性价比的同等精度解决方案。"
+        "threat_reason": "在高端生物制药领域品牌认知度高，技术壁垒强。",
+        "opportunity": "在性价比、定制化服务或特定细分应用上寻求突破。"
       }
     },
     {
@@ -802,7 +802,7 @@
         "price_tier": "信息不足，无法判断",
         "threat_level": 1,
         "threat_reason": "提供的信息仅为公司官网通用内容，无具体产品信息。",
-        "opportunity": "可针对其信息不透明，提供更专业、透明的产品方案。"
+        "opportunity": "可针对其信息不透明，提供更清晰的产品技术与应用方案。"
       }
     },
     {
@@ -816,17 +816,18 @@
       "analysis": {
         "product_type": "工业级阀门",
         "target_industries": [
-          "通用工业"
+          "通用工业",
+          "流体控制"
         ],
         "key_features": [
           "工业级应用",
-          "标准化产品",
-          "广泛适用性"
+          "品牌体系完善",
+          "技术支持服务"
         ],
         "price_tier": "中端",
         "threat_level": 2,
-        "threat_reason": "定位通用，缺乏卫生级专业性。",
-        "opportunity": "强调卫生级专业认证与定制化服务。"
+        "threat_reason": "信息模糊，定位不清晰，威胁有限。",
+        "opportunity": "聚焦卫生级细分市场，强化技术参数与认证优势。"
       }
     },
     {
@@ -850,8 +851,8 @@
         ],
         "price_tier": "中端",
         "threat_level": 2,
-        "threat_reason": "通用型产品，缺乏明确技术差异化。",
-        "opportunity": "聚焦卫生级/高洁净度细分市场，强化技术壁垒。"
+        "threat_reason": "通用型产品，缺乏明确卫生级定位。",
+        "opportunity": "聚焦卫生级细分市场，强化技术认证与定制化服务。"
       }
     },
     {
@@ -863,17 +864,17 @@
       "source": "esgvalve.cn",
       "scraped": "2026-04-16",
       "analysis": {
-        "product_type": "未明确",
+        "product_type": "未知",
         "target_industries": [
           "新能源"
         ],
         "key_features": [
-          "未明确"
+          "信息不足，无法判断"
         ],
-        "price_tier": "未明确",
+        "price_tier": "未知",
         "threat_level": 1,
-        "threat_reason": "信息不足，无法评估具体产品威胁。",
-        "opportunity": "可针对其信息模糊，提供更专业、透明的产品方案。"
+        "threat_reason": "信息严重不足，无法评估具体产品威胁。",
+        "opportunity": "可针对其信息不透明，提供更专业透明的产品方案。"
       }
     },
     {
@@ -896,8 +897,8 @@
         ],
         "price_tier": "中高端",
         "threat_level": 3,
-        "threat_reason": "在橡塑行业有明确应用案例和品牌认知。",
-        "opportunity": "可强调更广泛的行业适用性或定制化解决方案。"
+        "threat_reason": "专注橡塑行业，品牌有一定影响力。",
+        "opportunity": "可强调更广泛的行业应用与定制化服务。"
       }
     },
     {
@@ -913,7 +914,8 @@
         "target_industries": [
           "食品饮料",
           "制药",
-          "生物工程"
+          "生物工程",
+          "乳制品"
         ],
         "key_features": [
           "符合卫生级标准",
@@ -923,7 +925,7 @@
         "price_tier": "中高端",
         "threat_level": 3,
         "threat_reason": "品牌有一定知名度，产品线覆盖基础卫生级需求。",
-        "opportunity": "在特定工艺（如无菌、高粘度）或定制化服务上建立技术壁垒。"
+        "opportunity": "在高端定制化、智能控制或特定工艺适配性上建立优势。"
       }
     },
     {
@@ -935,17 +937,17 @@
       "source": "esgvalve.cn",
       "scraped": "2026-04-16",
       "analysis": {
-        "product_type": "产品系列",
+        "product_type": "未知",
         "target_industries": [
-          "未明确"
+          "未知"
         ],
         "key_features": [
-          "未明确"
+          "信息不足，无法判断"
         ],
-        "price_tier": "未明确",
+        "price_tier": "未知",
         "threat_level": 1,
-        "threat_reason": "信息不足，无法评估具体威胁。",
-        "opportunity": "需获取其具体产品参数与定位信息。"
+        "threat_reason": "提供的信息仅为公司官网框架，无具体产品技术参数。",
+        "opportunity": "可针对其信息不透明，提供详细技术参数与案例。"
       }
     },
     {
@@ -983,17 +985,17 @@
       "source": "esgvalve.cn",
       "scraped": "2026-04-16",
       "analysis": {
-        "product_type": "产品系列",
+        "product_type": "未知",
         "target_industries": [
-          "未明确"
+          "未知"
         ],
         "key_features": [
           "信息不足，无法判断"
         ],
-        "price_tier": "未明确",
+        "price_tier": "未知",
         "threat_level": 1,
-        "threat_reason": "信息不足，无法评估威胁。",
-        "opportunity": "可针对其信息不透明进行差异化沟通。"
+        "threat_reason": "提供的信息为公司官网通用内容，无具体产品技术参数。",
+        "opportunity": "需获取其具体产品型号与技术规格进行分析。"
       }
     },
     {
@@ -1005,22 +1007,17 @@
       "source": "esgvalve.cn",
       "scraped": "2026-04-16",
       "analysis": {
-        "product_type": "隔膜阀",
+        "product_type": "未知",
         "target_industries": [
-          "制药",
-          "生物工程",
-          "食品饮料",
-          "精细化工"
+          "未知"
         ],
         "key_features": [
-          "卫生级设计",
-          "无死角流道",
-          "高洁净度材料"
+          "信息不足，无法判断"
         ],
-        "price_tier": "中高端",
-        "threat_level": 3,
-        "threat_reason": "品牌知名度高，行业应用广泛。",
-        "opportunity": "在特定细分领域或定制化服务上建立优势。"
+        "price_tier": "未知",
+        "threat_level": 1,
+        "threat_reason": "提供的信息不完整，无法评估威胁。",
+        "opportunity": "需获取完整产品信息以分析差异化机会。"
       }
     },
     {
@@ -1046,8 +1043,8 @@
         ],
         "price_tier": "中高端",
         "threat_level": 3,
-        "threat_reason": "品牌有一定知名度，产品线覆盖基础卫生级应用。",
-        "opportunity": "在高端定制化、特殊介质或极端工况应用上建立技术壁垒。"
+        "threat_reason": "在卫生级角座阀市场有成熟应用和品牌认知。",
+        "opportunity": "可强调更优的密封材料或定制化流体控制方案。"
       }
     },
     {
@@ -1073,8 +1070,8 @@
         ],
         "price_tier": "中高端",
         "threat_level": 3,
-        "threat_reason": "在卫生级调节阀细分市场有直接竞争。",
-        "opportunity": "强化在特定工况下的性能与可靠性优势。"
+        "threat_reason": "在卫生级比例调节领域有成熟产品线。",
+        "opportunity": "可强调更优的响应速度或控制精度。"
       }
     },
     {
@@ -1094,14 +1091,14 @@
           "精细化工"
         ],
         "key_features": [
-          "多通道设计",
+          "多通道集成设计",
           "卫生级标准",
           "气动控制"
         ],
         "price_tier": "中高端",
         "threat_level": 3,
-        "threat_reason": "多通道设计满足复杂流体控制需求。",
-        "opportunity": "强调更优的密封性或定制化服务。"
+        "threat_reason": "多通道设计集成度高，可能简化客户管路系统。",
+        "opportunity": "强调在特定介质或极端工况下的性能与可靠性优势。"
       }
     },
     {
@@ -1121,13 +1118,13 @@
         ],
         "key_features": [
           "卫生级设计",
-          "无菌灌装",
-          "快速拆装"
+          "快速拆装结构",
+          "高洁净度材料"
         ],
         "price_tier": "中高端",
         "threat_level": 3,
-        "threat_reason": "专注卫生级灌装，品牌有一定行业认知度。",
-        "opportunity": "在定制化、智能化或特定介质兼容性上寻求突破。"
+        "threat_reason": "在灌装领域有成熟应用和品牌认知。",
+        "opportunity": "可强调更优的流体控制精度或定制化服务。"
       }
     },
     {
@@ -1144,17 +1141,17 @@
           "制药",
           "生物技术",
           "食品饮料",
-          "精细化工"
+          "个人护理"
         ],
         "key_features": [
           "卫生级设计",
-          "无菌流体控制",
-          "符合GMP标准"
+          "防止介质回流",
+          "易于清洁和维护"
         ],
         "price_tier": "中高端",
         "threat_level": 3,
-        "threat_reason": "品牌在卫生级领域有成熟渠道和资质。",
-        "opportunity": "可强调更优的密封性或定制化服务。"
+        "threat_reason": "品牌在卫生级领域有一定认知度。",
+        "opportunity": "强调更优的密封性能或定制化服务。"
       }
     },
     {
@@ -1175,13 +1172,13 @@
         ],
         "key_features": [
           "卫生级设计",
-          "在线清洗/灭菌能力",
+          "在线清洗/灭菌",
           "高过滤精度"
         ],
         "price_tier": "中高端",
         "threat_level": 3,
-        "threat_reason": "品牌在卫生级领域有成熟渠道和案例。",
-        "opportunity": "强调定制化解决方案与快速响应服务。"
+        "threat_reason": "品牌在卫生级领域有一定认知度。",
+        "opportunity": "强调更优的性价比或定制化服务。"
       }
     },
     {
@@ -1196,16 +1193,18 @@
         "product_type": "调节阀",
         "target_industries": [
           "工业流体控制",
-          "过程工业"
+          "过程工业",
+          "一般工业"
         ],
         "key_features": [
           "压力调节功能",
-          "工业级应用"
+          "工业级应用",
+          "标准化产品"
         ],
         "price_tier": "中端",
         "threat_level": 2,
-        "threat_reason": "信息不足，定位模糊，威胁有限。",
-        "opportunity": "聚焦卫生级细分市场，强化技术参数与认证优势。"
+        "threat_reason": "通用型产品，缺乏明确卫生级定位。",
+        "opportunity": "强调卫生级设计与认证优势。"
       }
     },
     {
@@ -1217,19 +1216,22 @@
       "source": "esgvalve.cn",
       "scraped": "2026-04-16",
       "analysis": {
-        "product_type": "溢流阀",
+        "product_type": "调节阀",
         "target_industries": [
-          "流体控制",
-          "工业管道系统"
+          "食品饮料",
+          "制药",
+          "生物工程",
+          "精细化工"
         ],
         "key_features": [
-          "溢流控制功能",
-          "工业级应用"
+          "卫生级设计",
+          "溢流保护功能",
+          "符合GMP标准"
         ],
-        "price_tier": "中端",
-        "threat_level": 2,
-        "threat_reason": "产品信息模糊，定位不清晰。",
-        "opportunity": "明确技术参数与卫生级认证优势。"
+        "price_tier": "中高端",
+        "threat_level": 3,
+        "threat_reason": "品牌有一定行业认知度，产品定位明确。",
+        "opportunity": "在定制化、响应速度或特定行业解决方案上建立优势。"
       }
     },
     {
@@ -1249,13 +1251,13 @@
         ],
         "key_features": [
           "蒸汽系统专用",
-          "热能管理",
-          "节能降耗"
+          "热能回收",
+          "防冻设计"
         ],
         "price_tier": "中端",
         "threat_level": 2,
-        "threat_reason": "产品线单一，非核心流体控制产品。",
-        "opportunity": "可强调全系列流体控制解决方案优势。"
+        "threat_reason": "产品线单一，技术信息不明确。",
+        "opportunity": "提供更全面的流体控制解决方案。"
       }
     },
     {
@@ -1277,7 +1279,7 @@
         "price_tier": "未明确",
         "threat_level": 1,
         "threat_reason": "产品信息模糊，威胁极低。",
-        "opportunity": "明确自身产品定位与技术优势。"
+        "opportunity": "可强调自身产品信息透明与专业性。"
       }
     },
     {
@@ -1292,19 +1294,19 @@
         "product_type": "隔膜阀",
         "target_industries": [
           "制药",
-          "生物工程",
+          "生物技术",
           "食品饮料",
           "精细化工"
         ],
         "key_features": [
           "卫生级设计",
           "无死角流道",
-          "耐腐蚀隔膜材料"
+          "易于清洁和灭菌"
         ],
         "price_tier": "中高端",
         "threat_level": 3,
-        "threat_reason": "品牌在卫生级领域有一定认知度。",
-        "opportunity": "强调更优的密封性能或定制化服务。"
+        "threat_reason": "品牌在卫生级领域有成熟渠道和认知度。",
+        "opportunity": "在特定工艺（如高粘度介质）或定制化服务上建立优势。"
       }
     },
     {
@@ -1325,12 +1327,12 @@
         "key_features": [
           "卫生级设计",
           "无死角结构",
-          "易于清洁和灭菌"
+          "易于清洁与灭菌"
         ],
         "price_tier": "中高端",
         "threat_level": 3,
-        "threat_reason": "品牌在卫生级领域有一定知名度。",
-        "opportunity": "强调更优的密封性能或定制化服务。"
+        "threat_reason": "品牌在卫生级领域有一定认知度。",
+        "opportunity": "可强调更优的密封性能或定制化服务。"
       }
     },
     {
@@ -1350,13 +1352,13 @@
         ],
         "key_features": [
           "集成化设计",
-          "高精度注液控制",
-          "卫生级标准"
+          "高洁净度",
+          "精密流体控制"
         ],
         "price_tier": "中高端",
         "threat_level": 3,
-        "threat_reason": "集成化方案可能抢占单一阀门市场",
-        "opportunity": "提供更灵活的模块化解决方案"
+        "threat_reason": "集成化方案可能简化客户采购流程。",
+        "opportunity": "强调模块化与定制化服务优势。"
       }
     },
     {
@@ -1368,22 +1370,22 @@
       "source": "esgvalve.cn",
       "scraped": "2026-04-16",
       "analysis": {
-        "product_type": "三通梭阀",
+        "product_type": "梭阀",
         "target_industries": [
+          "食品饮料",
           "制药",
           "生物技术",
-          "食品饮料",
-          "精细化工"
+          "乳制品"
         ],
         "key_features": [
-          "卫生级设计",
-          "快速切换流路",
-          "无死角结构"
+          "三通流路设计",
+          "卫生级标准",
+          "快速切换功能"
         ],
         "price_tier": "中高端",
         "threat_level": 3,
-        "threat_reason": "品牌知名度高，产品线完整。",
-        "opportunity": "强调定制化服务与本地化技术支持。"
+        "threat_reason": "品牌有一定行业认知度，产品定位明确。",
+        "opportunity": "强调更优的密封性能或定制化服务。"
       }
     },
     {
@@ -1405,12 +1407,12 @@
         "key_features": [
           "卫生级设计",
           "无菌切断",
-          "易清洁结构"
+          "易于清洁和维护"
         ],
         "price_tier": "中高端",
         "threat_level": 3,
-        "threat_reason": "品牌在卫生级领域有成熟应用案例。",
-        "opportunity": "可强调更优的密封性能或定制化服务。"
+        "threat_reason": "品牌在卫生级领域有成熟渠道和认知度。",
+        "opportunity": "在定制化、快速响应或特定行业认证上建立优势。"
       }
     }
   ]
