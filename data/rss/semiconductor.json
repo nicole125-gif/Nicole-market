@@ -3,68 +3,128 @@
   "vertical_name": "半导体",
   "vertical_en": "Semiconductor",
   "color": "#ff6b9d",
-  "updated_at": "2026-05-11T04:05:55.439251+00:00",
-  "item_count": 11,
+  "updated_at": "2026-05-12T03:49:38.645321+00:00",
+  "item_count": 15,
   "items": [
     {
-      "id": "b6a158159a",
-      "title": "芯片产业的最大金主们，花钱逻辑变了",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811356&idx=1&sn=7667f7c2962e52fb3e0eff025afc5682",
-      "summary": "芯片产业的最大金主们，花钱逻辑变了",
+      "id": "5c9e825731",
+      "title": "国产晶圆最大并购：中芯国际406亿并购，今日正式过会！",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811389&idx=1&sn=65f9eb9b7bef1726765732400044baed",
+      "summary": "国产晶圆最大并购：中芯国际406亿并购，今日正式过会！",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-05-11T04:05:51.332309+00:00",
-      "pub_ts": 1778472351
+      "pub_date": "2026-05-12T03:49:34.507786+00:00",
+      "pub_ts": 1778557774
     },
     {
-      "id": "09e0568155",
-      "title": "世界先进新加坡1期晶圆厂产能预售售罄",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811356&idx=2&sn=44d2415eeba2676906810cdf0fa5564e",
-      "summary": "世界先进新加坡1期晶圆厂产能预售售罄",
+      "id": "46ffc228fc",
+      "title": "AI付费潮来袭，算力租赁躺赢",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811380&idx=1&sn=68cf0e3f716f07ab153a60182942644d",
+      "summary": "AI付费潮来袭，算力租赁躺赢",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-05-11T04:05:51.332371+00:00",
-      "pub_ts": 1778472351
+      "pub_date": "2026-05-12T03:49:34.507833+00:00",
+      "pub_ts": 1778557774
     },
     {
-      "id": "c43b44abf0",
-      "title": "光子技术，取得三项前沿进展",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811356&idx=3&sn=c9a88313608843bb1d4f40d5b6055fb6",
-      "summary": "光子技术，取得三项前沿进展",
+      "id": "57e7028f04",
+      "title": "龙芯中科：和长江存储、长鑫存储有适配合作",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811380&idx=2&sn=011ab1d4e6275e51acf6863605fa1f57",
+      "summary": "龙芯中科：和长江存储、长鑫存储有适配合作",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-05-11T04:05:51.332401+00:00",
-      "pub_ts": 1778472351
+      "pub_date": "2026-05-12T03:49:34.507860+00:00",
+      "pub_ts": 1778557774
     },
     {
-      "id": "7958081346",
-      "title": "存储现货部分“闪崩”最全详解：该离场，还是该囤货",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811356&idx=4&sn=d294e22ad1e60daf38738669bae0f49a",
-      "summary": "存储现货部分“闪崩”最全详解：该离场，还是该囤货",
+      "id": "e3991c0cfb",
+      "title": "味之素确认ABF涨价",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811380&idx=3&sn=2f72266f8c9b469a847a13260a91e24a",
+      "summary": "味之素确认ABF涨价",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-05-11T04:05:51.332423+00:00",
-      "pub_ts": 1778472351
+      "pub_date": "2026-05-12T03:49:34.507884+00:00",
+      "pub_ts": 1778557774
     },
     {
-      "id": "938f1b925e",
-      "title": "人形机器人七小龙：谁真能卖，谁在讲故事？",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811356&idx=5&sn=216ed33f1cb4dd2642635c7ca37e9832",
-      "summary": "人形机器人七小龙：谁真能卖，谁在讲故事？",
+      "id": "7e2b4b4cd3",
+      "title": "存储器行业加大对下一代技术“HBM-PNM”的研究力度",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811380&idx=4&sn=5f8dff019ff7cee0c154d4603789ab7b",
+      "summary": "存储器行业加大对下一代技术“HBM-PNM”的研究力度",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-05-11T04:05:51.332443+00:00",
-      "pub_ts": 1778472351
+      "pub_date": "2026-05-12T03:49:34.507905+00:00",
+      "pub_ts": 1778557774
     },
     {
-      "id": "7ec814873d",
-      "title": "三雄争霸DDR6",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247818802&idx=5&sn=60e61ecebb37333e9aa5c90de9e560ed",
-      "summary": "三雄争霸DDR6",
+      "id": "cd5843dc39",
+      "title": "中芯国际406亿元并购，重组过会",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247818973&idx=1&sn=0131b395aef473fcf5d35b364d335904",
+      "summary": "中芯国际406亿元并购，重组过会",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-05-11T04:05:28.980040+00:00",
-      "pub_ts": 1778472328
+      "pub_date": "2026-05-12T03:49:25.058282+00:00",
+      "pub_ts": 1778557765
+    },
+    {
+      "id": "4c99525b67",
+      "title": "澜起科技，市值突破3000亿",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247818862&idx=1&sn=4c1d54468b7c83d1e71ec23a4e12ab07",
+      "summary": "澜起科技，市值突破3000亿",
+      "source": "半导体行业观察",
+      "lang": "zh",
+      "pub_date": "2026-05-12T03:49:25.058334+00:00",
+      "pub_ts": 1778557765
+    },
+    {
+      "id": "ee597f6b21",
+      "title": "E3系列市占登顶，芯驰凭什么打进全球车芯第一梯队?",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247818855&idx=1&sn=ed77928fff9708426053e9d1c82b6df5",
+      "summary": "E3系列市占登顶，芯驰凭什么打进全球车芯第一梯队?",
+      "source": "半导体行业观察",
+      "lang": "zh",
+      "pub_date": "2026-05-12T03:49:25.058360+00:00",
+      "pub_ts": 1778557765
+    },
+    {
+      "id": "888f9dcaa3",
+      "title": "玻璃基板，转折点！",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247818855&idx=2&sn=559c31f3904525078d2a6bac7ee1e3ed",
+      "summary": "玻璃基板，转折点！",
+      "source": "半导体行业观察",
+      "lang": "zh",
+      "pub_date": "2026-05-12T03:49:25.058382+00:00",
+      "pub_ts": 1778557765
+    },
+    {
+      "id": "20a5032816",
+      "title": "Meta做了一颗CIS",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247818855&idx=3&sn=6e5e543368c48209316a2ca23e972b20",
+      "summary": "Meta做了一颗CIS",
+      "source": "半导体行业观察",
+      "lang": "zh",
+      "pub_date": "2026-05-12T03:49:25.058402+00:00",
+      "pub_ts": 1778557765
+    },
+    {
+      "id": "aafa70a807",
+      "title": "Research Bits: May 11",
+      "url": "https://semiengineering.com/research-bits-may-11/",
+      "summary": "Non-destructive terahertz inspection; piezoelectric step-down converter; silicon oscillatory Ising machine.\nThe post Research Bits: May 11 appeared first on Semiconductor Engineering.",
+      "source": "Semiconductor Engineering",
+      "lang": "en",
+      "pub_date": "2026-05-11T07:01:44+00:00",
+      "pub_ts": 1778482904
+    },
+    {
+      "id": "6b35c5dedb",
+      "title": "Chip Industry Technical Paper Roundup: May 11",
+      "url": "https://semiengineering.com/chip-industry-technical-paper-roundup-may-11/",
+      "summary": "High-NA EUV litho; MRDIMM performance; GPU power estimation for AI workloads; RISC-V verification; inverse-designed grating couplers; SDV drive architectures; multi-chiplet memory-centric attention serving; GAA transistor leakage.\nThe post Chip Industry Technical Paper Roundup: May 11 appeared first…",
+      "source": "Semiconductor Engineering",
+      "lang": "en",
+      "pub_date": "2026-05-11T07:01:30+00:00",
+      "pub_ts": 1778482890
     },
     {
       "id": "6a29172c68",
@@ -95,26 +155,6 @@
       "lang": "en",
       "pub_date": "2026-05-07T07:09:42+00:00",
       "pub_ts": 1778137782
-    },
-    {
-      "id": "2249cc99f0",
-      "title": "Powering AI At Scale: Why 3D-ICs Demand A New Approach To Power Integrity",
-      "url": "https://semiengineering.com/powering-ai-at-scale-why-3d-ics-demand-a-new-approach-to-power-integrity/",
-      "summary": "Connectivity density and power delivery complexity have made power integrity one of the most critical constraints in modern system design.\nThe post Powering AI At Scale: Why 3D-ICs Demand A New Approach To Power Integrity appeared first on Semiconductor Engineering.",
-      "source": "Semiconductor Engineering",
-      "lang": "en",
-      "pub_date": "2026-05-07T07:08:52+00:00",
-      "pub_ts": 1778137732
-    },
-    {
-      "id": "48ed0c1e7f",
-      "title": "How OCP S.O.L.I.D. Completes The Data Center Security Picture",
-      "url": "https://semiengineering.com/how-ocp-s-o-l-i-d-completes-the-data-center-security-picture/",
-      "summary": "A framework that establishes concrete device-specific security requirements upfront and verifies them at the end.\nThe post How OCP S.O.L.I.D. Completes The Data Center Security Picture appeared first on Semiconductor Engineering.",
-      "source": "Semiconductor Engineering",
-      "lang": "en",
-      "pub_date": "2026-05-07T07:05:41+00:00",
-      "pub_ts": 1778137541
     }
   ]
 }

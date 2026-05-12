@@ -3,9 +3,49 @@
   "vertical_name": "医药设备",
   "vertical_en": "Pharma Equipment",
   "color": "#ff8c42",
-  "updated_at": "2026-05-11T04:06:32.286890+00:00",
+  "updated_at": "2026-05-12T03:50:18.252468+00:00",
   "item_count": 5,
   "items": [
+    {
+      "id": "ea58530e7c",
+      "title": "Cellular Intelligence licenses Novo’s shelved Parkinson’s cell therapy programme",
+      "url": "https://www.pharmaceutical-technology.com/news/cellular-intelligence-licenses-novos-shelved-parkinsons-cell-therapy-programme/",
+      "summary": "Novo Nordisk shuttered its cell therapy unit in October 2025, with assets now moving to new hands.",
+      "source": "Pharmaceutical Technology",
+      "lang": "en",
+      "pub_date": "2026-05-11T16:05:13+00:00",
+      "pub_ts": 1778515513
+    },
+    {
+      "id": "7069af95d0",
+      "title": "FDA locks down post-approval pregnancy safety data framework",
+      "url": "https://www.pharmaceutical-technology.com/news/fda-final-guidance-pregnancy-post-approval-safety-studies/",
+      "summary": "This FDA framework comes as significant knowledge gaps remain around the efficacy and safety of drugs in pregnancy and lactation.",
+      "source": "Pharmaceutical Technology",
+      "lang": "en",
+      "pub_date": "2026-05-11T10:24:36+00:00",
+      "pub_ts": 1778495076
+    },
+    {
+      "id": "b8a599f68b",
+      "title": "ACROBiosystems upgrades HEK293 licence solution for R&D compliance",
+      "url": "https://www.pharmaceutical-technology.com/news/acrobiosystems-upgrades-hek293-license-solution/",
+      "summary": "ACROBiosystems has upgraded its global license solution for HEK293 functional cell lines to expedite biopharmaceutical R&amp;D.",
+      "source": "Pharmaceutical Technology",
+      "lang": "en",
+      "pub_date": "2026-05-11T09:25:15+00:00",
+      "pub_ts": 1778491515
+    },
+    {
+      "id": "d4dbb507e7",
+      "title": "BMS’ Sotyktu secures EC approval for psoriatic arthritis",
+      "url": "https://www.pharmaceutical-technology.com/news/bms-sotyktu-secures-ec-approval/",
+      "summary": "BMS has secured approval from the European Commission for Sotyktu (deucravacitinib) to treat active psoriatic arthritis (PsA).",
+      "source": "Pharmaceutical Technology",
+      "lang": "en",
+      "pub_date": "2026-05-11T08:32:52+00:00",
+      "pub_ts": 1778488372
+    },
     {
       "id": "d2adeb2e95",
       "title": "Japan’s FY26 price revision expands G1 repricing and drives price reduction",
@@ -15,46 +55,6 @@
       "lang": "en",
       "pub_date": "2026-05-08T15:59:59+00:00",
       "pub_ts": 1778255999
-    },
-    {
-      "id": "86b59138ce",
-      "title": "Gilead posts positive Q1 buoyed by HIV drug growth",
-      "url": "https://www.pharmaceutical-technology.com/news/gilead-sciences-q1-results-hiv-biktarvy-yeztugo/",
-      "summary": "Biktarvy continues to be a strong growth asset for Gilead, while Yeztugo’s launch rides an upward trajectory.",
-      "source": "Pharmaceutical Technology",
-      "lang": "en",
-      "pub_date": "2026-05-08T15:59:53+00:00",
-      "pub_ts": 1778255993
-    },
-    {
-      "id": "e8acc7e847",
-      "title": "AI-guided labs are approaching full autonomy",
-      "url": "https://www.pharmaceutical-technology.com/features/ai-guided-labs-are-approaching-full-autonomy/",
-      "summary": "Autonomous labs guided by AI can operate with increasing independence and are beginning to outperform human researchers.",
-      "source": "Pharmaceutical Technology",
-      "lang": "en",
-      "pub_date": "2026-05-08T14:57:21+00:00",
-      "pub_ts": 1778252241
-    },
-    {
-      "id": "43d6293a56",
-      "title": "Novo’s CEO champions “record-breaking start” for Wegovy pill in US market",
-      "url": "https://www.pharmaceutical-technology.com/news/novos-ceo-champions-record-breaking-start-for-wegovy-pill-in-us-market/",
-      "summary": "Novo Nordisk’s Wegovy pill is already providing financial fuel in the company’s bid to catch Eli Lilly.",
-      "source": "Pharmaceutical Technology",
-      "lang": "en",
-      "pub_date": "2026-05-08T10:34:07+00:00",
-      "pub_ts": 1778236447
-    },
-    {
-      "id": "4845670207",
-      "title": "Construction begins on Novartis’ RLT centre in Texas, US",
-      "url": "https://www.pharmaceutical-technology.com/news/construction-begins-on-novartis-rlt-centre/",
-      "summary": "Novartis has begun construction on its new 46,000ft² RLT manufacturing facility in Denton, Texas, marking the latest step in its $23bn investment in US manufacturing and research.",
-      "source": "Pharmaceutical Technology",
-      "lang": "en",
-      "pub_date": "2026-05-08T09:54:49+00:00",
-      "pub_ts": 1778234089
     }
   ]
 }

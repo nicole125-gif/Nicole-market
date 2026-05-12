@@ -3,18 +3,68 @@
   "vertical_name": "氢能",
   "vertical_en": "Hydrogen Energy",
   "color": "#ffd700",
-  "updated_at": "2026-05-11T04:06:19.928454+00:00",
+  "updated_at": "2026-05-12T03:50:05.806689+00:00",
   "item_count": 10,
   "items": [
     {
-      "id": "96eb017ae0",
-      "title": "Hyundai Motor to Sign Hydrogen Business Agreement With Korea South-East Power",
-      "url": "https://fuelcellsworks.com/2026/05/10/electrolyzer/hyundai-motor-to-sign-hydrogen-business-agreement-with-korea-south-east-power",
+      "id": "2c828b43d8",
+      "title": "From Baking Powder to Backbone Infrastructure: AKROS Energy Demonstrates a New Path for Hydrogen Storage",
+      "url": "https://hydrogen-central.com/baking-powder-backbone-infrastructure-akros-energy-hydrogen-storage/",
+      "summary": "From Baking Powder to Backbone Infrastructure: AKROS Energy Demonstrates a New Path for Hydrogen Storage Rostock-Laage, Germany — Industrial-scale validation begins for a chemical hydrogen carrier that promises pressureless, non-toxic, [&#8230;]\nThe post From Baking Powder to Backbone Infrastructure…",
+      "source": "Hydrogen Central",
+      "lang": "en",
+      "pub_date": "2026-05-12T00:16:38+00:00",
+      "pub_ts": 1778544998
+    },
+    {
+      "id": "b36dc1b4ae",
+      "title": "NASA Fuel Cell Tests Pave Way for Energy Storage on Moon",
+      "url": "https://fuelcellsworks.com/2026/05/11/clean-energy/nasa-fuel-cell-tests-pave-way-for-energy-storage-on-moon",
       "summary": "",
       "source": "Fuel Cells Works",
       "lang": "en",
-      "pub_date": "2026-05-10T18:40:28+00:00",
-      "pub_ts": 1778438428
+      "pub_date": "2026-05-11T15:51:09+00:00",
+      "pub_ts": 1778514669
+    },
+    {
+      "id": "692f1600bc",
+      "title": "Fuel Cell and Hydrogen News Highlights From China: May 02-May 08, 2026",
+      "url": "https://fuelcellsworks.com/2026/05/09/clean-energy/fuel-cell-and-hydrogen-news-highlights-from-china-april-20-may-01-2026-m02174711",
+      "summary": "",
+      "source": "Fuel Cells Works",
+      "lang": "en",
+      "pub_date": "2026-05-11T15:39:45+00:00",
+      "pub_ts": 1778513985
+    },
+    {
+      "id": "6ec7e28986",
+      "title": "Purem by Eberspaecher De-Hydrator Reduces Steam Formation in Fuel Cells",
+      "url": "https://fuelcellsworks.com/2026/05/11/fuel-cells/purem-by-eberspaecher-de-hydrator-reduces-steam-formation-in-fuel-cells-m58414005",
+      "summary": "",
+      "source": "Fuel Cells Works",
+      "lang": "en",
+      "pub_date": "2026-05-11T15:36:28+00:00",
+      "pub_ts": 1778513788
+    },
+    {
+      "id": "45169d133c",
+      "title": "ISIA Florence, Toyota Material Handling, and Beste: Design Imagines the Hydrogen Service Stations of the Future",
+      "url": "https://fuelcellsworks.com/2026/05/11/education/isia-florence-toyota-material-handling-and-beste-design-imagines-the-hydrogen-service-stations-of-the-future",
+      "summary": "",
+      "source": "Fuel Cells Works",
+      "lang": "en",
+      "pub_date": "2026-05-11T15:29:45+00:00",
+      "pub_ts": 1778513385
+    },
+    {
+      "id": "fa0cb6b8e5",
+      "title": "SFC Energy AG Publishes Its Audited Sustainability Report 2025 – Substantial Progress Towards Sustainability Goals and Enhanced Commitment to Reporting Transparency",
+      "url": "https://fuelcellsworks.com/2026/05/11/fuel-cells/sfc-energy-ag-publishes-its-audited-sustainability-report-2025-substantial-progress-towards-sustainability-goals-and-enhanced-commitment-to-reporting-transparency",
+      "summary": "",
+      "source": "Fuel Cells Works",
+      "lang": "en",
+      "pub_date": "2026-05-11T15:24:49+00:00",
+      "pub_ts": 1778513089
     },
     {
       "id": "5dfa449b95",
@@ -55,56 +105,6 @@
       "lang": "en",
       "pub_date": "2026-05-08T17:29:42+00:00",
       "pub_ts": 1778261382
-    },
-    {
-      "id": "c7d3a5d49a",
-      "title": "Liquid Wind submits environmental permit application for large‑scale eFuel facility in Örnsköldsvik",
-      "url": "https://hydrogen-central.com/liquid-wind-submits-environmental-permit-application-for-large-scale-efuel-facility-in-ornskoldsvik/",
-      "summary": "Liquid Wind submits environmental permit application for large‑scale eFuel facility in Örnsköldsvik Liquid Wind is applying for an environmental permit for EFÖvik (eFuel Facility Övik) at the Land and Environment [&#8230;]\nThe post Liquid Wind submits environmental permit application for large‑scale…",
-      "source": "Hydrogen Central",
-      "lang": "en",
-      "pub_date": "2026-05-08T16:34:17+00:00",
-      "pub_ts": 1778258057
-    },
-    {
-      "id": "635f712b37",
-      "title": "Carinthia Is Taking Off with Hydrogen: ÖBB Postbuses and a Hydrogen Filling Station Are Now in Operation",
-      "url": "https://fuelcellsworks.com/2026/05/08/energy-innovation/carinthia-is-taking-off-with-hydrogen-obb-postbuses-and-a-hydrogen-filling-station-are-now-in-operation",
-      "summary": "",
-      "source": "Fuel Cells Works",
-      "lang": "en",
-      "pub_date": "2026-05-08T15:54:55+00:00",
-      "pub_ts": 1778255695
-    },
-    {
-      "id": "c81b6589c8",
-      "title": "Five Years On, Dutch Fuel Operator Greenpoint Clocks 40,000 Hydrogen Fills Across Three Stations — With More to Come",
-      "url": "https://fuelcellsworks.com/2026/05/08/clean-energy/five-years-on-dutch-fuel-operator-greenpoint-clocks-40-000-hydrogen-fills-across-three-stations-with-more-to-come",
-      "summary": "",
-      "source": "Fuel Cells Works",
-      "lang": "en",
-      "pub_date": "2026-05-08T15:50:09+00:00",
-      "pub_ts": 1778255409
-    },
-    {
-      "id": "1a44a9f46a",
-      "title": "Fusion Fuel Reports Revenue Growth to €14.4 Million in Fiscal Year 2025 and Provides Business Update",
-      "url": "https://fuelcellsworks.com/2026/05/08/green-investment/fusion-fuel-reports-revenue-growth-to-14-4-million-in-fiscal-year-2025-and-provides-business-update",
-      "summary": "",
-      "source": "Fuel Cells Works",
-      "lang": "en",
-      "pub_date": "2026-05-08T15:39:06+00:00",
-      "pub_ts": 1778254746
-    },
-    {
-      "id": "26e23a2b17",
-      "title": "1 MW Green Hydrogen Electrolyzer Goes Live at Italian Steel Mill Cogne Acciai",
-      "url": "https://fuelcellsworks.com/2026/05/05/clean-hydrogen/1-mw-green-hydrogen-electrolyzer-goes-live-at-italian-steel-mill-cogne-acciai",
-      "summary": "",
-      "source": "Fuel Cells Works",
-      "lang": "en",
-      "pub_date": "2026-05-08T15:11:19+00:00",
-      "pub_ts": 1778253079
     }
   ]
 }
