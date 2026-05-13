@@ -3,58 +3,58 @@
   "vertical_name": "医药设备",
   "vertical_en": "Pharma Equipment",
   "color": "#ff8c42",
-  "updated_at": "2026-05-12T03:50:18.252468+00:00",
+  "updated_at": "2026-05-13T03:58:45.395663+00:00",
   "item_count": 5,
   "items": [
     {
-      "id": "ea58530e7c",
-      "title": "Cellular Intelligence licenses Novo’s shelved Parkinson’s cell therapy programme",
-      "url": "https://www.pharmaceutical-technology.com/news/cellular-intelligence-licenses-novos-shelved-parkinsons-cell-therapy-programme/",
-      "summary": "Novo Nordisk shuttered its cell therapy unit in October 2025, with assets now moving to new hands.",
+      "id": "cb932a9c7c",
+      "title": "Makary resigns, with Diamantas named as acting FDA commissioner",
+      "url": "https://www.pharmaceutical-technology.com/news/makary-resigns-with-diamantas-named-as-acting-fda-commissioner/",
+      "summary": "The resignation comes after reports suggested the President was considering firing him.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-05-11T16:05:13+00:00",
-      "pub_ts": 1778515513
+      "pub_date": "2026-05-12T18:49:10+00:00",
+      "pub_ts": 1778611750
     },
     {
-      "id": "7069af95d0",
-      "title": "FDA locks down post-approval pregnancy safety data framework",
-      "url": "https://www.pharmaceutical-technology.com/news/fda-final-guidance-pregnancy-post-approval-safety-studies/",
-      "summary": "This FDA framework comes as significant knowledge gaps remain around the efficacy and safety of drugs in pregnancy and lactation.",
+      "id": "c665b2ffa5",
+      "title": "BMS and Hengrui forge $15.2bn alliance for early-stage drugs",
+      "url": "https://www.pharmaceutical-technology.com/news/bms-hengrui-15-2bn-collaboration-early-stage-drugs/",
+      "summary": "BMS and Hengrui will trade the greater Chinese and US rights to certain programmes, while joining forces to progress five innovative assets.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-05-11T10:24:36+00:00",
-      "pub_ts": 1778495076
+      "pub_date": "2026-05-12T14:10:42+00:00",
+      "pub_ts": 1778595042
     },
     {
-      "id": "b8a599f68b",
-      "title": "ACROBiosystems upgrades HEK293 licence solution for R&D compliance",
-      "url": "https://www.pharmaceutical-technology.com/news/acrobiosystems-upgrades-hek293-license-solution/",
-      "summary": "ACROBiosystems has upgraded its global license solution for HEK293 functional cell lines to expedite biopharmaceutical R&amp;D.",
+      "id": "a80dc5b17d",
+      "title": "FDA weighs drug repurposing pathway for underserved diseases",
+      "url": "https://www.pharmaceutical-technology.com/news/fda-weighs-drug-repurposing-pathway-for-underserved-diseases/",
+      "summary": "Approved drugs could be expanded into disease areas with limited commercial potential, providing supporting data is available.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-05-11T09:25:15+00:00",
-      "pub_ts": 1778491515
+      "pub_date": "2026-05-12T10:55:04+00:00",
+      "pub_ts": 1778583304
     },
     {
-      "id": "d4dbb507e7",
-      "title": "BMS’ Sotyktu secures EC approval for psoriatic arthritis",
-      "url": "https://www.pharmaceutical-technology.com/news/bms-sotyktu-secures-ec-approval/",
-      "summary": "BMS has secured approval from the European Commission for Sotyktu (deucravacitinib) to treat active psoriatic arthritis (PsA).",
+      "id": "979b421b15",
+      "title": "Pharma’s manufacturing reconfigurations provide CDMOs with expansion opportunities",
+      "url": "https://www.pharmaceutical-technology.com/analyst-comment/pharma-manufacturing-reconfigurations-cdmos-expansion-opportunities/",
+      "summary": "Manufacturing deals saw an unusual burst of recent activity, with a spike in the number of CDMOs acquiring facilities from pharma companies.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-05-11T08:32:52+00:00",
-      "pub_ts": 1778488372
+      "pub_date": "2026-05-12T10:42:19+00:00",
+      "pub_ts": 1778582539
     },
     {
-      "id": "d2adeb2e95",
-      "title": "Japan’s FY26 price revision expands G1 repricing and drives price reduction",
-      "url": "https://www.pharmaceutical-technology.com/analyst-comment/japan-fy26-price-revision/",
-      "summary": "Japan’s latest NHI drug price revision for FY26 has now come into effect, with an average 4.02% drop in prices on a spending basis across 15,800 products.",
+      "id": "554886b6e1",
+      "title": "BridgeBio’s Attruby challenges Pfizer’s Vyndamax legacy in pivotal ATTR trial",
+      "url": "https://www.pharmaceutical-technology.com/news/bridgebio-attruby-acoramidis-attr-cm-hf-2026-2/",
+      "summary": "An indirect comparison highlights the potential of BridgeBio's Attruby to best Pfizer’s tafamidis in frontline ATTR-CM.",
       "source": "Pharmaceutical Technology",
       "lang": "en",
-      "pub_date": "2026-05-08T15:59:59+00:00",
-      "pub_ts": 1778255999
+      "pub_date": "2026-05-12T10:39:45+00:00",
+      "pub_ts": 1778582385
     }
   ]
 }

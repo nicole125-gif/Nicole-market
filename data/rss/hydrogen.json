@@ -3,9 +3,69 @@
   "vertical_name": "氢能",
   "vertical_en": "Hydrogen Energy",
   "color": "#ffd700",
-  "updated_at": "2026-05-12T03:50:05.806689+00:00",
+  "updated_at": "2026-05-13T03:58:33.037706+00:00",
   "item_count": 10,
   "items": [
+    {
+      "id": "d08e6d3c35",
+      "title": "AKROS Energy Inaugurates Pilot Plant for Salt-Based Hydrogen Storage",
+      "url": "https://hydrogen-central.com/akros-energy-pilot-plant-salt-based-hydrogen-storage/",
+      "summary": "AKROS Energy Inaugurates Pilot Plant for Salt-Based Hydrogen Storage Industrial-scale validation of a chemical hydrogen carrier enabling pressureless, non-toxic storage and transport. ROSTOCK-LAAGE, Germany&#8211;(BUSINESS WIRE)&#8211;AKROS Energy GmbH has inaugurated its [&#8230;]\nThe post AKROS En…",
+      "source": "Hydrogen Central",
+      "lang": "en",
+      "pub_date": "2026-05-13T00:27:03+00:00",
+      "pub_ts": 1778632023
+    },
+    {
+      "id": "e7145a3f61",
+      "title": "Toyota and Government Partnership Marks Key Step Forward for Hydrogen Mobility in South Africa",
+      "url": "https://fuelcellsworks.com/2026/05/12/energy-innovation/toyota-and-government-partnership-marks-key-step-forward-for-hydrogen-mobility-in-south-africa",
+      "summary": "",
+      "source": "Fuel Cells Works",
+      "lang": "en",
+      "pub_date": "2026-05-12T16:35:27+00:00",
+      "pub_ts": 1778603727
+    },
+    {
+      "id": "13f7fedc96",
+      "title": "InterContinental Energy’s P2(H2)Node™ Integrates AI Data Centre for Low Cost, Ultra-Reliable Green Compute in Asia",
+      "url": "https://fuelcellsworks.com/2026/05/12/h2/intercontinental-energy-s-p2-h2-node-integrates-ai-data-centre-for-low-cost-ultra-reliable-green-compute-in-asia",
+      "summary": "",
+      "source": "Fuel Cells Works",
+      "lang": "en",
+      "pub_date": "2026-05-12T16:33:00+00:00",
+      "pub_ts": 1778603580
+    },
+    {
+      "id": "69d0c9a580",
+      "title": "Testing of Hydrogen Trucks in Hamburg",
+      "url": "https://fuelcellsworks.com/2026/05/10/fuel-cells/testing-of-hydrogen-trucks-in-hamburg",
+      "summary": "",
+      "source": "Fuel Cells Works",
+      "lang": "en",
+      "pub_date": "2026-05-12T16:15:25+00:00",
+      "pub_ts": 1778602525
+    },
+    {
+      "id": "37b0342367",
+      "title": "First Ammonia Partners with Cox Group USA on Victoria Green Ammonia Project in Texas",
+      "url": "https://fuelcellsworks.com/2026/05/12/clean-energy/first-ammonia-partners-with-cox-group-usa-on-victoria-green-ammonia-project-in-texas",
+      "summary": "",
+      "source": "Fuel Cells Works",
+      "lang": "en",
+      "pub_date": "2026-05-12T16:14:01+00:00",
+      "pub_ts": 1778602441
+    },
+    {
+      "id": "5680ac9519",
+      "title": "Singaporean Researchers Develop Naval Engine that Generates Its Own Hydrogen From Ammonia and Avoids Storing It on Board",
+      "url": "https://fuelcellsworks.com/2026/05/12/energy-innovation/singaporean-researchers-develop-naval-engine-that-generates-its-own-hydrogen-from-ammonia-and-avoids-storing-it-on-board",
+      "summary": "",
+      "source": "Fuel Cells Works",
+      "lang": "en",
+      "pub_date": "2026-05-12T16:06:05+00:00",
+      "pub_ts": 1778601965
+    },
     {
       "id": "2c828b43d8",
       "title": "From Baking Powder to Backbone Infrastructure: AKROS Energy Demonstrates a New Path for Hydrogen Storage",
@@ -15,56 +75,6 @@
       "lang": "en",
       "pub_date": "2026-05-12T00:16:38+00:00",
       "pub_ts": 1778544998
-    },
-    {
-      "id": "b36dc1b4ae",
-      "title": "NASA Fuel Cell Tests Pave Way for Energy Storage on Moon",
-      "url": "https://fuelcellsworks.com/2026/05/11/clean-energy/nasa-fuel-cell-tests-pave-way-for-energy-storage-on-moon",
-      "summary": "",
-      "source": "Fuel Cells Works",
-      "lang": "en",
-      "pub_date": "2026-05-11T15:51:09+00:00",
-      "pub_ts": 1778514669
-    },
-    {
-      "id": "692f1600bc",
-      "title": "Fuel Cell and Hydrogen News Highlights From China: May 02-May 08, 2026",
-      "url": "https://fuelcellsworks.com/2026/05/09/clean-energy/fuel-cell-and-hydrogen-news-highlights-from-china-april-20-may-01-2026-m02174711",
-      "summary": "",
-      "source": "Fuel Cells Works",
-      "lang": "en",
-      "pub_date": "2026-05-11T15:39:45+00:00",
-      "pub_ts": 1778513985
-    },
-    {
-      "id": "6ec7e28986",
-      "title": "Purem by Eberspaecher De-Hydrator Reduces Steam Formation in Fuel Cells",
-      "url": "https://fuelcellsworks.com/2026/05/11/fuel-cells/purem-by-eberspaecher-de-hydrator-reduces-steam-formation-in-fuel-cells-m58414005",
-      "summary": "",
-      "source": "Fuel Cells Works",
-      "lang": "en",
-      "pub_date": "2026-05-11T15:36:28+00:00",
-      "pub_ts": 1778513788
-    },
-    {
-      "id": "45169d133c",
-      "title": "ISIA Florence, Toyota Material Handling, and Beste: Design Imagines the Hydrogen Service Stations of the Future",
-      "url": "https://fuelcellsworks.com/2026/05/11/education/isia-florence-toyota-material-handling-and-beste-design-imagines-the-hydrogen-service-stations-of-the-future",
-      "summary": "",
-      "source": "Fuel Cells Works",
-      "lang": "en",
-      "pub_date": "2026-05-11T15:29:45+00:00",
-      "pub_ts": 1778513385
-    },
-    {
-      "id": "fa0cb6b8e5",
-      "title": "SFC Energy AG Publishes Its Audited Sustainability Report 2025 – Substantial Progress Towards Sustainability Goals and Enhanced Commitment to Reporting Transparency",
-      "url": "https://fuelcellsworks.com/2026/05/11/fuel-cells/sfc-energy-ag-publishes-its-audited-sustainability-report-2025-substantial-progress-towards-sustainability-goals-and-enhanced-commitment-to-reporting-transparency",
-      "summary": "",
-      "source": "Fuel Cells Works",
-      "lang": "en",
-      "pub_date": "2026-05-11T15:24:49+00:00",
-      "pub_ts": 1778513089
     },
     {
       "id": "5dfa449b95",
@@ -95,16 +105,6 @@
       "lang": "en",
       "pub_date": "2026-05-08T17:30:48+00:00",
       "pub_ts": 1778261448
-    },
-    {
-      "id": "736440287b",
-      "title": "MorGen Energy secures European Hydrogen Bank support for 300MW Njordkraft green hydrogen project in Denmark",
-      "url": "https://hydrogen-central.com/morgen-energy-secures-european-hydrogen-bank-support-for-300mw-njordkraft-green-hydrogen-project-in-denmark/",
-      "summary": "MorGen Energy secures European Hydrogen Bank support for 300MW Njordkraft green hydrogen project in Denmark Esbjerg, 7 May 2026 – MorGen Energy, a European developer of large-scale green hydrogen projects [&#8230;]\nThe post MorGen Energy secures European Hydrogen Bank support for 300MW Njordkraft gr…",
-      "source": "Hydrogen Central",
-      "lang": "en",
-      "pub_date": "2026-05-08T17:29:42+00:00",
-      "pub_ts": 1778261382
     }
   ]
 }

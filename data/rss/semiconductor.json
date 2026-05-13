@@ -3,158 +3,118 @@
   "vertical_name": "半导体",
   "vertical_en": "Semiconductor",
   "color": "#ff6b9d",
-  "updated_at": "2026-05-12T03:49:38.645321+00:00",
-  "item_count": 15,
+  "updated_at": "2026-05-13T03:58:05.216114+00:00",
+  "item_count": 11,
   "items": [
     {
-      "id": "5c9e825731",
-      "title": "国产晶圆最大并购：中芯国际406亿并购，今日正式过会！",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811389&idx=1&sn=65f9eb9b7bef1726765732400044baed",
-      "summary": "国产晶圆最大并购：中芯国际406亿并购，今日正式过会！",
+      "id": "4b214bbda7",
+      "title": "MRAM产业化进入“临界点”",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811417&idx=1&sn=6791af54501adadd12996a445febacb8",
+      "summary": "MRAM产业化进入“临界点”",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-05-12T03:49:34.507786+00:00",
-      "pub_ts": 1778557774
+      "pub_date": "2026-05-13T03:58:01.255017+00:00",
+      "pub_ts": 1778644681
     },
     {
-      "id": "46ffc228fc",
-      "title": "AI付费潮来袭，算力租赁躺赢",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811380&idx=1&sn=68cf0e3f716f07ab153a60182942644d",
-      "summary": "AI付费潮来袭，算力租赁躺赢",
+      "id": "59bb779e81",
+      "title": "Wi-Fi8芯片，将集成AI能力",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811417&idx=2&sn=c7dfe6f67e05927186393041c9f14c75",
+      "summary": "Wi-Fi8芯片，将集成AI能力",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-05-12T03:49:34.507833+00:00",
-      "pub_ts": 1778557774
+      "pub_date": "2026-05-13T03:58:01.255084+00:00",
+      "pub_ts": 1778644681
     },
     {
-      "id": "57e7028f04",
-      "title": "龙芯中科：和长江存储、长鑫存储有适配合作",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811380&idx=2&sn=011ab1d4e6275e51acf6863605fa1f57",
-      "summary": "龙芯中科：和长江存储、长鑫存储有适配合作",
+      "id": "100157d10a",
+      "title": "AI服务器的挑战：大规模功耗测试",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811417&idx=3&sn=08925bf8f04aeebeb250fc3f3c17534c",
+      "summary": "AI服务器的挑战：大规模功耗测试",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-05-12T03:49:34.507860+00:00",
-      "pub_ts": 1778557774
+      "pub_date": "2026-05-13T03:58:01.255106+00:00",
+      "pub_ts": 1778644681
     },
     {
-      "id": "e3991c0cfb",
-      "title": "味之素确认ABF涨价",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811380&idx=3&sn=2f72266f8c9b469a847a13260a91e24a",
-      "summary": "味之素确认ABF涨价",
+      "id": "789aaaf894",
+      "title": "复旦微电拟与复旦大学、国盛投资共建集成电路技术中心",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811417&idx=4&sn=acc552c04371c4c5495912d3960fe184",
+      "summary": "复旦微电拟与复旦大学、国盛投资共建集成电路技术中心",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-05-12T03:49:34.507884+00:00",
-      "pub_ts": 1778557774
+      "pub_date": "2026-05-13T03:58:01.255127+00:00",
+      "pub_ts": 1778644681
     },
     {
-      "id": "7e2b4b4cd3",
-      "title": "存储器行业加大对下一代技术“HBM-PNM”的研究力度",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811380&idx=4&sn=5f8dff019ff7cee0c154d4603789ab7b",
-      "summary": "存储器行业加大对下一代技术“HBM-PNM”的研究力度",
-      "source": "半导体产业纵横",
-      "lang": "zh",
-      "pub_date": "2026-05-12T03:49:34.507905+00:00",
-      "pub_ts": 1778557774
-    },
-    {
-      "id": "cd5843dc39",
-      "title": "中芯国际406亿元并购，重组过会",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247818973&idx=1&sn=0131b395aef473fcf5d35b364d335904",
-      "summary": "中芯国际406亿元并购，重组过会",
+      "id": "6cf484f210",
+      "title": "两家芯片公司CEO随特朗普访华，没有黄仁勋",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247819064&idx=1&sn=b60e1a3ccb8cc5cb562022c83ea3c7a1",
+      "summary": "两家芯片公司CEO随特朗普访华，没有黄仁勋",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-05-12T03:49:25.058282+00:00",
-      "pub_ts": 1778557765
+      "pub_date": "2026-05-13T03:57:52.235072+00:00",
+      "pub_ts": 1778644672
     },
     {
-      "id": "4c99525b67",
-      "title": "澜起科技，市值突破3000亿",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247818862&idx=1&sn=4c1d54468b7c83d1e71ec23a4e12ab07",
-      "summary": "澜起科技，市值突破3000亿",
+      "id": "19584163a1",
+      "title": "双州验：，李想谈自研芯片：不是烧钱跟风",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247819037&idx=1&sn=841cdafa3565e8e595e6ca788f445042",
+      "summary": "双州验：，李想谈自研芯片：不是烧钱跟风",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-05-12T03:49:25.058334+00:00",
-      "pub_ts": 1778557765
+      "pub_date": "2026-05-13T03:57:52.235122+00:00",
+      "pub_ts": 1778644672
     },
     {
-      "id": "ee597f6b21",
-      "title": "E3系列市占登顶，芯驰凭什么打进全球车芯第一梯队?",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247818855&idx=1&sn=ed77928fff9708426053e9d1c82b6df5",
-      "summary": "E3系列市占登顶，芯驰凭什么打进全球车芯第一梯队?",
-      "source": "半导体行业观察",
-      "lang": "zh",
-      "pub_date": "2026-05-12T03:49:25.058360+00:00",
-      "pub_ts": 1778557765
-    },
-    {
-      "id": "888f9dcaa3",
-      "title": "玻璃基板，转折点！",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247818855&idx=2&sn=559c31f3904525078d2a6bac7ee1e3ed",
-      "summary": "玻璃基板，转折点！",
-      "source": "半导体行业观察",
-      "lang": "zh",
-      "pub_date": "2026-05-12T03:49:25.058382+00:00",
-      "pub_ts": 1778557765
-    },
-    {
-      "id": "20a5032816",
-      "title": "Meta做了一颗CIS",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247818855&idx=3&sn=6e5e543368c48209316a2ca23e972b20",
-      "summary": "Meta做了一颗CIS",
-      "source": "半导体行业观察",
-      "lang": "zh",
-      "pub_date": "2026-05-12T03:49:25.058402+00:00",
-      "pub_ts": 1778557765
-    },
-    {
-      "id": "aafa70a807",
-      "title": "Research Bits: May 11",
-      "url": "https://semiengineering.com/research-bits-may-11/",
-      "summary": "Non-destructive terahertz inspection; piezoelectric step-down converter; silicon oscillatory Ising machine.\nThe post Research Bits: May 11 appeared first on Semiconductor Engineering.",
+      "id": "3b08204d3d",
+      "title": "A Comprehensive Study Of Integrating 2D Materials With CFET Architecture (SKKU, et al.)",
+      "url": "https://semiengineering.com/a-comprehensive-study-on-integrating-2d-materials-with-cfet-architecture-skku-et-al/",
+      "summary": "A new technical paper, &#8220;Challenges and prospects of 2D electronics for future monolithic complementary field-effect transistors,&#8221; was published by researchers at Sungkyunkwan University, Hangyang University, Istituto Italiano di Tecnologia, Shanghai University, Jeonbuk National Universit…",
       "source": "Semiconductor Engineering",
       "lang": "en",
-      "pub_date": "2026-05-11T07:01:44+00:00",
-      "pub_ts": 1778482904
+      "pub_date": "2026-05-12T16:09:26+00:00",
+      "pub_ts": 1778602166
     },
     {
-      "id": "6b35c5dedb",
-      "title": "Chip Industry Technical Paper Roundup: May 11",
-      "url": "https://semiengineering.com/chip-industry-technical-paper-roundup-may-11/",
-      "summary": "High-NA EUV litho; MRDIMM performance; GPU power estimation for AI workloads; RISC-V verification; inverse-designed grating couplers; SDV drive architectures; multi-chiplet memory-centric attention serving; GAA transistor leakage.\nThe post Chip Industry Technical Paper Roundup: May 11 appeared first…",
+      "id": "8310ceaa1d",
+      "title": "ANN Framework for Thermal-Aware Modeling of GAAFETs (NYCU)",
+      "url": "https://semiengineering.com/ann-framework-for-thermal-aware-modeling-of-gaafets-nycu/",
+      "summary": "A new technical paper, &#8220;A Device-Physics-Informed Artificial Neural Network Approach for Thermal-Aware I-V and C-V Modeling of GAA FETs,&#8221; was published by researchers at National Yang Ming Chiao Tung University. Abstract &#8220;This work introduces a device-physics-informed neural networ…",
       "source": "Semiconductor Engineering",
       "lang": "en",
-      "pub_date": "2026-05-11T07:01:30+00:00",
-      "pub_ts": 1778482890
+      "pub_date": "2026-05-12T16:04:45+00:00",
+      "pub_ts": 1778601885
     },
     {
-      "id": "6a29172c68",
-      "title": "Chip Industry Week In Review",
-      "url": "https://semiengineering.com/chip-industry-week-in-review-137/",
-      "summary": "New Taiwan adv. packaging site; M&#038;A activity; GF's CPO solution; Apple looks beyond TSMC; EU chip companies map; strong earnings; MIT's new lidar chip; gallium production; AI inferencing at sea; quantum HW funding; PCIe 7 tool; home data centers; AI security warnings; temperature impact on EVs.…",
+      "id": "8c7588e6cd",
+      "title": "Silicon Photonics: Integrated Grating-Based Antennas for Optical Phased Arrays (MIT)",
+      "url": "https://semiengineering.com/silicon-photonics-integrated-grating-based-antennas-for-optical-phased-arrays-mit/",
+      "summary": "A new technical paper, &#8220;Reduced-crosstalk antennas for grating-lobe-free and wide-field-of-view integrated optical phased arrays,&#8221; was published by researchers at MIT. Abstract &#8220;Integrated optical phased arrays (OPAs) have emerged as a promising technology for many applications due…",
       "source": "Semiconductor Engineering",
       "lang": "en",
-      "pub_date": "2026-05-08T07:01:11+00:00",
-      "pub_ts": 1778223671
+      "pub_date": "2026-05-12T15:56:31+00:00",
+      "pub_ts": 1778601391
     },
     {
-      "id": "70949b7736",
-      "title": "The Emergence Of Electronics Digital Twins For Software-Defined Vehicles",
-      "url": "https://semiengineering.com/the-emergence-of-electronics-digital-twins-for-software-defined-vehicles/",
-      "summary": "Why it's no longer sufficient to simulate a physical vehicle or subsystem.\nThe post The Emergence Of Electronics Digital Twins For Software-Defined Vehicles appeared first on Semiconductor Engineering.",
+      "id": "367d411d36",
+      "title": "HW-Based Image Generation Using FTJs (SNU, Sungkyunkwan U., SK hynix et al.)",
+      "url": "https://semiengineering.com/hw-based-image-generation-using-ftjs-snu-sungkyunkwan-u-sk-hynix-et-al/",
+      "summary": "A new technical paper, &#8220;CMOS-compatible ferroelectric tunnel junctions integrate stochastic sampling and deterministic computing for image generation,&#8221; was published by researchers at Seoul National University, Sungkyunkwan University, Hanyang University, Sogang University, and SK Hynix.…",
       "source": "Semiconductor Engineering",
       "lang": "en",
-      "pub_date": "2026-05-07T07:09:56+00:00",
-      "pub_ts": 1778137796
+      "pub_date": "2026-05-12T15:47:03+00:00",
+      "pub_ts": 1778600823
     },
     {
-      "id": "57327bffa2",
-      "title": "Securing Chiplet-Based Platforms: Distributed Trust With Centralized Authority",
-      "url": "https://semiengineering.com/securing-chiplet-based-platforms-distributed-trust-with-centralized-authority/",
-      "summary": "A security model where every chiplet can prove identity, boot correctly, and communicate securely without becoming the weak link.\nThe post Securing Chiplet-Based Platforms: Distributed Trust With Centralized Authority appeared first on Semiconductor Engineering.",
+      "id": "1a65f81e20",
+      "title": "Supporting Safety Requirements from RTL Exploration Through Implementation in Semiconductor Devices (Politecnico di Torino, Synopsys)",
+      "url": "https://semiengineering.com/supporting-safety-requirements-from-rtl-exploration-through-implementation-in-semiconductor-devices-politecnico-di-torino-synopsys/",
+      "summary": "A new technical paper, &#8220;Early Functional Safety and PPA evaluation for faster digital design development,&#8221; was published by researchers at Politecnico di Torino and Synopsys. Abstract &#8220;The use of semiconductor devices in safety-critical applications is increasing in both volume and…",
       "source": "Semiconductor Engineering",
       "lang": "en",
-      "pub_date": "2026-05-07T07:09:42+00:00",
-      "pub_ts": 1778137782
+      "pub_date": "2026-05-12T15:38:45+00:00",
+      "pub_ts": 1778600325
     }
   ]
 }
