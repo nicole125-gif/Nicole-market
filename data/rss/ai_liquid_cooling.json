@@ -3,58 +3,58 @@
   "vertical_name": "AI液冷",
   "vertical_en": "AI Liquid Cooling",
   "color": "#00ff88",
-  "updated_at": "2026-05-13T03:58:19.466124+00:00",
+  "updated_at": "2026-05-14T03:58:01.783300+00:00",
   "item_count": 5,
   "items": [
     {
-      "id": "fee63ca13d",
-      "title": "原来Ilya还有70亿美元OpenAl股权",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247890036&idx=1&sn=7ce547f30769e5f7a6f39aacd0ac582a",
-      "summary": "原来Ilya还有70亿美元OpenAl股权",
+      "id": "768d37f3f3",
+      "title": "倒计时一周，520来量子位峰会一起聊AI！",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247890496&idx=1&sn=09c37800fc219fab68e6c4cdd18ae9d5",
+      "summary": "倒计时一周，520来量子位峰会一起聊AI！",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-05-13T03:58:14.937036+00:00",
-      "pub_ts": 1778644694
+      "pub_date": "2026-05-14T03:57:40.331107+00:00",
+      "pub_ts": 1778731060
     },
     {
-      "id": "3122b802ed",
-      "title": "A拿婚外情写勒索邮件，查一年告诉我科幻小说教坏的",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247890036&idx=2&sn=227c6fa8fe2a0261db56a035e0393186",
-      "summary": "A拿婚外情写勒索邮件，查一年告诉我科幻小说教坏的",
+      "id": "fab87e23ea",
+      "title": "挑战扩散自回归统治！字节提出视觉生成第三种路线，让模型像人类一样边画边改",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247890479&idx=1&sn=b266ed272248b79a32d1be46c1e01ee7",
+      "summary": "挑战扩散自回归统治！字节提出视觉生成第三种路线，让模型像人类一样边画边改",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-05-13T03:58:14.937078+00:00",
-      "pub_ts": 1778644694
+      "pub_date": "2026-05-14T03:57:40.331144+00:00",
+      "pub_ts": 1778731060
     },
     {
-      "id": "95ded882a4",
-      "title": "AI第一金主黄仁勋：日均花掉20亿",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247890004&idx=1&sn=b98b6c8f253a7fbdb6c0b8b188caf9d3",
-      "summary": "AI第一金主黄仁勋：日均花掉20亿",
+      "id": "7c47d82906",
+      "title": "8岁小学生idea直接变应用，秒哒3.0刚刚把AI应用门槛打没了",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247890479&idx=2&sn=a40210b8417cd7e914892b6cb2c2d669",
+      "summary": "8岁小学生idea直接变应用，秒哒3.0刚刚把AI应用门槛打没了",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-05-13T03:58:14.937101+00:00",
-      "pub_ts": 1778644694
+      "pub_date": "2026-05-14T03:57:40.331167+00:00",
+      "pub_ts": 1778731060
     },
     {
-      "id": "73ada81464",
-      "title": "爱思唯尔把Meta告了：拿Sci-Hub盗版论文训练大模型",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247890004&idx=2&sn=444a27d1e40c33deab21d9f0a9f76492",
-      "summary": "爱思唯尔把Meta告了：拿Sci-Hub盗版论文训练大模型",
+      "id": "ced1a5a6a8",
+      "title": "倒计时一周，AIGC峰会嘉宾又上新了！一起来看第三波嘉宾",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247890479&idx=3&sn=3cce67882406076ede0d3171ee36552d",
+      "summary": "倒计时一周，AIGC峰会嘉宾又上新了！一起来看第三波嘉宾",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-05-13T03:58:14.937123+00:00",
-      "pub_ts": 1778644694
+      "pub_date": "2026-05-14T03:57:40.331187+00:00",
+      "pub_ts": 1778731060
     },
     {
-      "id": "1dd688749f",
-      "title": "Markdown要凉...卡帕西也站HTML了",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247889960&idx=1&sn=2bd3ec4cc76776ca709eb6d2be8a3ed8",
-      "summary": "Markdown要凉...卡帕西也站HTML了",
+      "id": "f9a6985a2e",
+      "title": "微信聊天记录喂AI（腾讯官方版）",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247890479&idx=4&sn=6241b79af2c45be3798f29d9a593c82b",
+      "summary": "微信聊天记录喂AI（腾讯官方版）",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-05-13T03:58:14.937144+00:00",
-      "pub_ts": 1778644694
+      "pub_date": "2026-05-14T03:57:40.331206+00:00",
+      "pub_ts": 1778731060
     }
   ]
 }

@@ -3,9 +3,49 @@
   "vertical_name": "医药设备",
   "vertical_en": "Pharma Equipment",
   "color": "#ff8c42",
-  "updated_at": "2026-05-13T03:58:45.395663+00:00",
+  "updated_at": "2026-05-14T03:58:25.649700+00:00",
   "item_count": 5,
   "items": [
+    {
+      "id": "6d7ff303e1",
+      "title": "ECO 2026: REDEFINE-1 demonstrates CagriSema’s improvement in body composition",
+      "url": "https://www.pharmaceutical-technology.com/analyst-comment/eco-2026-redefine-1-cagrisema-body-composition/",
+      "summary": "Data from the REDEFINE-1 trial (NCT05567796) were recently presented in Türkiye, assessing Novo Nordisk's CagriSema in adults with obesity.",
+      "source": "Pharmaceutical Technology",
+      "lang": "en",
+      "pub_date": "2026-05-13T13:52:51+00:00",
+      "pub_ts": 1778680371
+    },
+    {
+      "id": "d319b7265a",
+      "title": "EU advances plans to reduce reliance on drug imports",
+      "url": "https://www.pharmaceutical-technology.com/news/eu-advances-plans-to-reduce-reliance-on-drug-imports/",
+      "summary": "Agreement on the proposed Critical Medicines Act (CMA) represents an important step for boosting the EU pharma sector.",
+      "source": "Pharmaceutical Technology",
+      "lang": "en",
+      "pub_date": "2026-05-13T10:33:20+00:00",
+      "pub_ts": 1778668400
+    },
+    {
+      "id": "2a80fdd2c9",
+      "title": "UAE approves AstraZeneca’s Baxfendy for hypertension",
+      "url": "https://www.pharmaceutical-technology.com/news/uae-approves-astrazeneca-baxfendy-hypertension/",
+      "summary": "AstraZeneca has received approval from the EDE in the UAE for Baxfendy, a medicine using the active ingredient baxdrostat, for uncontrolled hypertension.",
+      "source": "Pharmaceutical Technology",
+      "lang": "en",
+      "pub_date": "2026-05-13T10:14:57+00:00",
+      "pub_ts": 1778667297
+    },
+    {
+      "id": "19e46cd6de",
+      "title": "Isomorphic Labs receives $2.1bn for AI drug development",
+      "url": "https://www.pharmaceutical-technology.com/news/isomorphic-labs-ai-drug-development/",
+      "summary": "Isomorphic Labs has secured $2.1bn in funding to expedite its transition from developing AI models to deploying them on a larger scale.",
+      "source": "Pharmaceutical Technology",
+      "lang": "en",
+      "pub_date": "2026-05-13T08:07:33+00:00",
+      "pub_ts": 1778659653
+    },
     {
       "id": "cb932a9c7c",
       "title": "Makary resigns, with Diamantas named as acting FDA commissioner",
@@ -15,46 +55,6 @@
       "lang": "en",
       "pub_date": "2026-05-12T18:49:10+00:00",
       "pub_ts": 1778611750
-    },
-    {
-      "id": "c665b2ffa5",
-      "title": "BMS and Hengrui forge $15.2bn alliance for early-stage drugs",
-      "url": "https://www.pharmaceutical-technology.com/news/bms-hengrui-15-2bn-collaboration-early-stage-drugs/",
-      "summary": "BMS and Hengrui will trade the greater Chinese and US rights to certain programmes, while joining forces to progress five innovative assets.",
-      "source": "Pharmaceutical Technology",
-      "lang": "en",
-      "pub_date": "2026-05-12T14:10:42+00:00",
-      "pub_ts": 1778595042
-    },
-    {
-      "id": "a80dc5b17d",
-      "title": "FDA weighs drug repurposing pathway for underserved diseases",
-      "url": "https://www.pharmaceutical-technology.com/news/fda-weighs-drug-repurposing-pathway-for-underserved-diseases/",
-      "summary": "Approved drugs could be expanded into disease areas with limited commercial potential, providing supporting data is available.",
-      "source": "Pharmaceutical Technology",
-      "lang": "en",
-      "pub_date": "2026-05-12T10:55:04+00:00",
-      "pub_ts": 1778583304
-    },
-    {
-      "id": "979b421b15",
-      "title": "Pharma’s manufacturing reconfigurations provide CDMOs with expansion opportunities",
-      "url": "https://www.pharmaceutical-technology.com/analyst-comment/pharma-manufacturing-reconfigurations-cdmos-expansion-opportunities/",
-      "summary": "Manufacturing deals saw an unusual burst of recent activity, with a spike in the number of CDMOs acquiring facilities from pharma companies.",
-      "source": "Pharmaceutical Technology",
-      "lang": "en",
-      "pub_date": "2026-05-12T10:42:19+00:00",
-      "pub_ts": 1778582539
-    },
-    {
-      "id": "554886b6e1",
-      "title": "BridgeBio’s Attruby challenges Pfizer’s Vyndamax legacy in pivotal ATTR trial",
-      "url": "https://www.pharmaceutical-technology.com/news/bridgebio-attruby-acoramidis-attr-cm-hf-2026-2/",
-      "summary": "An indirect comparison highlights the potential of BridgeBio's Attruby to best Pfizer’s tafamidis in frontline ATTR-CM.",
-      "source": "Pharmaceutical Technology",
-      "lang": "en",
-      "pub_date": "2026-05-12T10:39:45+00:00",
-      "pub_ts": 1778582385
     }
   ]
 }

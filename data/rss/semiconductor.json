@@ -3,68 +3,148 @@
   "vertical_name": "半导体",
   "vertical_en": "Semiconductor",
   "color": "#ff6b9d",
-  "updated_at": "2026-05-13T03:58:05.216114+00:00",
-  "item_count": 11,
+  "updated_at": "2026-05-14T03:57:30.736604+00:00",
+  "item_count": 15,
   "items": [
     {
-      "id": "4b214bbda7",
-      "title": "MRAM产业化进入“临界点”",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811417&idx=1&sn=6791af54501adadd12996a445febacb8",
-      "summary": "MRAM产业化进入“临界点”",
+      "id": "31e1afacc2",
+      "title": "模拟芯片新周期之下，谁能抢占红利?",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811471&idx=1&sn=3634e13b814a3b30796155690bc10410",
+      "summary": "模拟芯片新周期之下，谁能抢占红利?",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-05-13T03:58:01.255017+00:00",
-      "pub_ts": 1778644681
+      "pub_date": "2026-05-14T03:57:26.704904+00:00",
+      "pub_ts": 1778731046
     },
     {
-      "id": "59bb779e81",
-      "title": "Wi-Fi8芯片，将集成AI能力",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811417&idx=2&sn=c7dfe6f67e05927186393041c9f14c75",
-      "summary": "Wi-Fi8芯片，将集成AI能力",
+      "id": "59da6ade1c",
+      "title": "这七大芯片，决定AI上限",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811471&idx=2&sn=3b1153d10ccb0da5f5b4367cad5c9465",
+      "summary": "这七大芯片，决定AI上限",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-05-13T03:58:01.255084+00:00",
-      "pub_ts": 1778644681
+      "pub_date": "2026-05-14T03:57:26.704943+00:00",
+      "pub_ts": 1778731046
     },
     {
-      "id": "100157d10a",
-      "title": "AI服务器的挑战：大规模功耗测试",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811417&idx=3&sn=08925bf8f04aeebeb250fc3f3c17534c",
-      "summary": "AI服务器的挑战：大规模功耗测试",
+      "id": "b21f4701fb",
+      "title": "CPU与GPU跑本地AI，谁速度更快?",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811471&idx=3&sn=5786eaa5e0146049993840feb9c8743e",
+      "summary": "CPU与GPU跑本地AI，谁速度更快?",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-05-13T03:58:01.255106+00:00",
-      "pub_ts": 1778644681
+      "pub_date": "2026-05-14T03:57:26.704969+00:00",
+      "pub_ts": 1778731046
     },
     {
-      "id": "789aaaf894",
-      "title": "复旦微电拟与复旦大学、国盛投资共建集成电路技术中心",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811417&idx=4&sn=acc552c04371c4c5495912d3960fe184",
-      "summary": "复旦微电拟与复旦大学、国盛投资共建集成电路技术中心",
+      "id": "b7b44efd47",
+      "title": "半导体材料，全球需求旺盛",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811471&idx=4&sn=0865231679115f4b2802d02d89e18f5b",
+      "summary": "半导体材料，全球需求旺盛",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-05-13T03:58:01.255127+00:00",
-      "pub_ts": 1778644681
+      "pub_date": "2026-05-14T03:57:26.704992+00:00",
+      "pub_ts": 1778731046
     },
     {
-      "id": "6cf484f210",
-      "title": "两家芯片公司CEO随特朗普访华，没有黄仁勋",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247819064&idx=1&sn=b60e1a3ccb8cc5cb562022c83ea3c7a1",
-      "summary": "两家芯片公司CEO随特朗普访华，没有黄仁勋",
+      "id": "1f6e030a63",
+      "title": "百倍性能！NASA研发新一代航天芯片",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811471&idx=5&sn=38a07d0ddc70e83b20198b57026db9ab",
+      "summary": "百倍性能！NASA研发新一代航天芯片",
+      "source": "半导体产业纵横",
+      "lang": "zh",
+      "pub_date": "2026-05-14T03:57:26.705012+00:00",
+      "pub_ts": 1778731046
+    },
+    {
+      "id": "38556650f5",
+      "title": "大普微，继续大涨，市值逼近3000亿",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247819146&idx=1&sn=f82c6702ffc7b34b0a00e186af811a84",
+      "summary": "大普微，继续大涨，市值逼近3000亿",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-05-13T03:57:52.235072+00:00",
-      "pub_ts": 1778644672
+      "pub_date": "2026-05-14T03:57:13.716318+00:00",
+      "pub_ts": 1778731033
     },
     {
-      "id": "19584163a1",
-      "title": "双州验：，李想谈自研芯片：不是烧钱跟风",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247819037&idx=1&sn=841cdafa3565e8e595e6ca788f445042",
-      "summary": "双州验：，李想谈自研芯片：不是烧钱跟风",
+      "id": "6e390b691e",
+      "title": "Keysight World Tech Day 2026，重磅启动",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247819138&idx=1&sn=eeb94def3beee67d446334cee7953c5e",
+      "summary": "Keysight World Tech Day 2026，重磅启动",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-05-13T03:57:52.235122+00:00",
-      "pub_ts": 1778644672
+      "pub_date": "2026-05-14T03:57:13.716364+00:00",
+      "pub_ts": 1778731033
+    },
+    {
+      "id": "5698281c82",
+      "title": "英伟达确认：黄仁勋随特朗普访华",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247819128&idx=1&sn=96e8360917d1aa30ccf7c6656397cc47",
+      "summary": "英伟达确认：黄仁勋随特朗普访华",
+      "source": "半导体行业观察",
+      "lang": "zh",
+      "pub_date": "2026-05-14T03:57:13.716389+00:00",
+      "pub_ts": 1778731033
+    },
+    {
+      "id": "ae6063c2e1",
+      "title": "ASIL D最后一块拼图：纳芯微撬开隔离栅极驱动的“铁门”",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247819119&idx=1&sn=459b9ba1cf18ec226cfc5c93d4766ff0",
+      "summary": "ASIL D最后一块拼图：纳芯微撬开隔离栅极驱动的“铁门”",
+      "source": "半导体行业观察",
+      "lang": "zh",
+      "pub_date": "2026-05-14T03:57:13.716411+00:00",
+      "pub_ts": 1778731033
+    },
+    {
+      "id": "3aa6930d6c",
+      "title": "从RTL到芯片：EDA最强科普",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247819119&idx=2&sn=b9f60277054dd96b8b0ffa6a2366b405",
+      "summary": "从RTL到芯片：EDA最强科普",
+      "source": "半导体行业观察",
+      "lang": "zh",
+      "pub_date": "2026-05-14T03:57:13.716432+00:00",
+      "pub_ts": 1778731033
+    },
+    {
+      "id": "accba5b985",
+      "title": "DFT In Automotive",
+      "url": "https://semiengineering.com/dft-in-automotive/",
+      "summary": "What's needed to ensure reliability of automotive chips, and why it’s about to get even tougher.\nThe post DFT In Automotive appeared first on Semiconductor Engineering.",
+      "source": "Semiconductor Engineering",
+      "lang": "en",
+      "pub_date": "2026-05-13T07:05:08+00:00",
+      "pub_ts": 1778655908
+    },
+    {
+      "id": "c2dfde20a9",
+      "title": "Lasers Are The Heartbeat Of The Optical AI Data Center",
+      "url": "https://semiengineering.com/lasers-are-the-heartbeat-of-the-optical-ai-data-center/",
+      "summary": "These III-V semiconductors are essential for super-high-bandwidth optical interconnects.\nThe post Lasers Are The Heartbeat Of The Optical AI Data Center appeared first on Semiconductor Engineering.",
+      "source": "Semiconductor Engineering",
+      "lang": "en",
+      "pub_date": "2026-05-13T07:01:57+00:00",
+      "pub_ts": 1778655717
+    },
+    {
+      "id": "74606b56e2",
+      "title": "Scaling PCIe Controllers for AI Bandwidth:  A Multistream Architecture Analysis for 64 GT/s and 128 GT/s",
+      "url": "https://semiengineering.com/scaling-pcie-controllers-for-ai-bandwidth-a-multistream-architecture-analysis-for-64-gt-s-and-128-gt-s/",
+      "summary": "As PCIe moves toward 128 GT/s and beyond, multistream architecture transitions from an optimization to a requirement. \nThe post Scaling PCIe Controllers for AI Bandwidth:  A Multistream Architecture Analysis for 64 GT/s and 128 GT/s appeared first on Semiconductor Engineering.",
+      "source": "Semiconductor Engineering",
+      "lang": "en",
+      "pub_date": "2026-05-13T07:01:26+00:00",
+      "pub_ts": 1778655686
+    },
+    {
+      "id": "744f12cc8e",
+      "title": "Blog Review: May 13",
+      "url": "https://semiengineering.com/blog-review-may-13-3/",
+      "summary": "GPU rasterizer for computational lithography; restructuring techniques; inline memory encryption; automotive electronic stability program.\nThe post Blog Review: May 13 appeared first on Semiconductor Engineering.",
+      "source": "Semiconductor Engineering",
+      "lang": "en",
+      "pub_date": "2026-05-13T07:01:11+00:00",
+      "pub_ts": 1778655671
     },
     {
       "id": "3b08204d3d",
@@ -75,46 +155,6 @@
       "lang": "en",
       "pub_date": "2026-05-12T16:09:26+00:00",
       "pub_ts": 1778602166
-    },
-    {
-      "id": "8310ceaa1d",
-      "title": "ANN Framework for Thermal-Aware Modeling of GAAFETs (NYCU)",
-      "url": "https://semiengineering.com/ann-framework-for-thermal-aware-modeling-of-gaafets-nycu/",
-      "summary": "A new technical paper, &#8220;A Device-Physics-Informed Artificial Neural Network Approach for Thermal-Aware I-V and C-V Modeling of GAA FETs,&#8221; was published by researchers at National Yang Ming Chiao Tung University. Abstract &#8220;This work introduces a device-physics-informed neural networ…",
-      "source": "Semiconductor Engineering",
-      "lang": "en",
-      "pub_date": "2026-05-12T16:04:45+00:00",
-      "pub_ts": 1778601885
-    },
-    {
-      "id": "8c7588e6cd",
-      "title": "Silicon Photonics: Integrated Grating-Based Antennas for Optical Phased Arrays (MIT)",
-      "url": "https://semiengineering.com/silicon-photonics-integrated-grating-based-antennas-for-optical-phased-arrays-mit/",
-      "summary": "A new technical paper, &#8220;Reduced-crosstalk antennas for grating-lobe-free and wide-field-of-view integrated optical phased arrays,&#8221; was published by researchers at MIT. Abstract &#8220;Integrated optical phased arrays (OPAs) have emerged as a promising technology for many applications due…",
-      "source": "Semiconductor Engineering",
-      "lang": "en",
-      "pub_date": "2026-05-12T15:56:31+00:00",
-      "pub_ts": 1778601391
-    },
-    {
-      "id": "367d411d36",
-      "title": "HW-Based Image Generation Using FTJs (SNU, Sungkyunkwan U., SK hynix et al.)",
-      "url": "https://semiengineering.com/hw-based-image-generation-using-ftjs-snu-sungkyunkwan-u-sk-hynix-et-al/",
-      "summary": "A new technical paper, &#8220;CMOS-compatible ferroelectric tunnel junctions integrate stochastic sampling and deterministic computing for image generation,&#8221; was published by researchers at Seoul National University, Sungkyunkwan University, Hanyang University, Sogang University, and SK Hynix.…",
-      "source": "Semiconductor Engineering",
-      "lang": "en",
-      "pub_date": "2026-05-12T15:47:03+00:00",
-      "pub_ts": 1778600823
-    },
-    {
-      "id": "1a65f81e20",
-      "title": "Supporting Safety Requirements from RTL Exploration Through Implementation in Semiconductor Devices (Politecnico di Torino, Synopsys)",
-      "url": "https://semiengineering.com/supporting-safety-requirements-from-rtl-exploration-through-implementation-in-semiconductor-devices-politecnico-di-torino-synopsys/",
-      "summary": "A new technical paper, &#8220;Early Functional Safety and PPA evaluation for faster digital design development,&#8221; was published by researchers at Politecnico di Torino and Synopsys. Abstract &#8220;The use of semiconductor devices in safety-critical applications is increasing in both volume and…",
-      "source": "Semiconductor Engineering",
-      "lang": "en",
-      "pub_date": "2026-05-12T15:38:45+00:00",
-      "pub_ts": 1778600325
     }
   ]
 }
