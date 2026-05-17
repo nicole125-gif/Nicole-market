@@ -3,58 +3,58 @@
   "vertical_name": "AI液冷",
   "vertical_en": "AI Liquid Cooling",
   "color": "#00ff88",
-  "updated_at": "2026-05-16T03:42:55.815259+00:00",
+  "updated_at": "2026-05-17T04:02:08.305681+00:00",
   "item_count": 5,
   "items": [
     {
-      "id": "c35d486fba",
-      "title": "Need is all you need:Al接手Coding后，程序员最值钱的能力只剩这一项?",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891073&idx=1&sn=94cb23c36914201cc6505eac281ba0d5",
-      "summary": "Need is all you need:Al接手Coding后，程序员最值钱的能力只剩这一项?",
+      "id": "42cef88d2e",
+      "title": "虾马之后又火一个！OpenHuman用20分钟了解你的一切，存成卡帕西式知识库",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891192&idx=1&sn=1e616d38f9318e76085825355e549b97",
+      "summary": "虾马之后又火一个！OpenHuman用20分钟了解你的一切，存成卡帕西式知识库",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-05-16T03:42:51.314764+00:00",
-      "pub_ts": 1778902971
+      "pub_date": "2026-05-17T04:02:03.425904+00:00",
+      "pub_ts": 1778990523
     },
     {
-      "id": "4b39728f27",
-      "title": "5大看点拿走不谢！离中国AIGC产业峰会只有5天啦",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891073&idx=2&sn=b56d875c90a58fbea5aac32b249380ce",
-      "summary": "5大看点拿走不谢！离中国AIGC产业峰会只有5天啦",
+      "id": "d139da88b3",
+      "title": "扩散模型也有「Skills」了！魔搭开源11个现成模板，风格、修图、超清一键搞定",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891192&idx=2&sn=59cf8f803f3aa91c9c62664404519709",
+      "summary": "扩散模型也有「Skills」了！魔搭开源11个现成模板，风格、修图、超清一键搞定",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-05-16T03:42:51.314805+00:00",
-      "pub_ts": 1778902971
+      "pub_date": "2026-05-17T04:02:03.425945+00:00",
+      "pub_ts": 1778990523
     },
     {
-      "id": "5678cfbb89",
-      "title": "坐到马斯克和库克中间的湖南女人",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891045&idx=1&sn=b6eb933b578dd5b601cc5c8d573b3271",
-      "summary": "坐到马斯克和库克中间的湖南女人",
+      "id": "06e67a92f1",
+      "title": "中国500万医生的新AI：顶刊独家联手，卷的就是证据源",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891178&idx=1&sn=dde06ec33d0bb3d63b7823b5654a18d3",
+      "summary": "中国500万医生的新AI：顶刊独家联手，卷的就是证据源",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-05-16T03:42:51.314827+00:00",
-      "pub_ts": 1778902971
+      "pub_date": "2026-05-17T04:02:03.425969+00:00",
+      "pub_ts": 1778990523
     },
     {
-      "id": "d43f1b560f",
-      "title": "Codex和ChatGPT合体！补上24小时干活的最后一块拼图",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891045&idx=2&sn=27b0ad46d221d83be16dc2ef2dc94ce2",
-      "summary": "Codex和ChatGPT合体！补上24小时干活的最后一块拼图",
+      "id": "c359fb2a80",
+      "title": "Codex直接剪视频，剪辑软件都不用开，PRAE瑟瑟发抖",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891178&idx=2&sn=a8430999a86998d5f34a90fe6a255a6a",
+      "summary": "Codex直接剪视频，剪辑软件都不用开，PRAE瑟瑟发抖",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-05-16T03:42:51.314848+00:00",
-      "pub_ts": 1778902971
+      "pub_date": "2026-05-17T04:02:03.425990+00:00",
+      "pub_ts": 1778990523
     },
     {
-      "id": "5cacfa879b",
-      "title": "8B模型做生物实验：实验步骤顺序不乱、剂量无幻觉|ICLR2026",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891045&idx=3&sn=5108749d597029716135c0d3eada68fa",
-      "summary": "8B模型做生物实验：实验步骤顺序不乱、剂量无幻觉|ICLR2026",
+      "id": "37060bfae9",
+      "title": "解决视频生成穿帮问题！浙大&微软3000条纯文本让模型理解3D",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891178&idx=3&sn=6012fc3aeb577e254889d2372effaa6f",
+      "summary": "解决视频生成穿帮问题！浙大&微软3000条纯文本让模型理解3D",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-05-16T03:42:51.314869+00:00",
-      "pub_ts": 1778902971
+      "pub_date": "2026-05-17T04:02:03.426010+00:00",
+      "pub_ts": 1778990523
     }
   ]
 }
