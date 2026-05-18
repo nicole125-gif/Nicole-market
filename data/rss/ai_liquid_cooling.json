@@ -3,58 +3,58 @@
   "vertical_name": "AI液冷",
   "vertical_en": "AI Liquid Cooling",
   "color": "#00ff88",
-  "updated_at": "2026-05-17T04:02:08.305681+00:00",
+  "updated_at": "2026-05-18T04:15:02.821871+00:00",
   "item_count": 5,
   "items": [
     {
-      "id": "42cef88d2e",
-      "title": "虾马之后又火一个！OpenHuman用20分钟了解你的一切，存成卡帕西式知识库",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891192&idx=1&sn=1e616d38f9318e76085825355e549b97",
-      "summary": "虾马之后又火一个！OpenHuman用20分钟了解你的一切，存成卡帕西式知识库",
+      "id": "e7ee871afb",
+      "title": "一只机器狗，把英伟达的算力王座拱翻了",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891358&idx=1&sn=db9c28d37f97b773a6e05036cca72452",
+      "summary": "一只机器狗，把英伟达的算力王座拱翻了",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-05-17T04:02:03.425904+00:00",
-      "pub_ts": 1778990523
+      "pub_date": "2026-05-18T04:14:56.407456+00:00",
+      "pub_ts": 1779077696
     },
     {
-      "id": "d139da88b3",
-      "title": "扩散模型也有「Skills」了！魔搭开源11个现成模板，风格、修图、超清一键搞定",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891192&idx=2&sn=59cf8f803f3aa91c9c62664404519709",
-      "summary": "扩散模型也有「Skills」了！魔搭开源11个现成模板，风格、修图、超清一键搞定",
+      "id": "6d9a740ca0",
+      "title": "无需构造偏好对：TGO用标量反馈对齐视觉生成模型IICML'26",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891358&idx=2&sn=d63e568f68be834df8cd92ecc2e35ddc",
+      "summary": "无需构造偏好对：TGO用标量反馈对齐视觉生成模型IICML'26",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-05-17T04:02:03.425945+00:00",
-      "pub_ts": 1778990523
+      "pub_date": "2026-05-18T04:14:56.407500+00:00",
+      "pub_ts": 1779077696
     },
     {
-      "id": "06e67a92f1",
-      "title": "中国500万医生的新AI：顶刊独家联手，卷的就是证据源",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891178&idx=1&sn=dde06ec33d0bb3d63b7823b5654a18d3",
-      "summary": "中国500万医生的新AI：顶刊独家联手，卷的就是证据源",
+      "id": "d90c89cb4c",
+      "title": "Agent、多模态、应用、算力一天看尽，峰会亮点在此|5.20日，来现场一起AI",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891356&idx=1&sn=7455a89a31dca7b2da4a3a07da01a7cf",
+      "summary": "Agent、多模态、应用、算力一天看尽，峰会亮点在此|5.20日，来现场一起AI",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-05-17T04:02:03.425969+00:00",
-      "pub_ts": 1778990523
+      "pub_date": "2026-05-18T04:14:56.407524+00:00",
+      "pub_ts": 1779077696
     },
     {
-      "id": "c359fb2a80",
-      "title": "Codex直接剪视频，剪辑软件都不用开，PRAE瑟瑟发抖",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891178&idx=2&sn=a8430999a86998d5f34a90fe6a255a6a",
-      "summary": "Codex直接剪视频，剪辑软件都不用开，PRAE瑟瑟发抖",
+      "id": "ac241bb2a0",
+      "title": "龙虾之父月烧940万元的token！要不是入职OpenAl还真用不起",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891254&idx=1&sn=15c819b94afcf736d17c26bbb7b40d91",
+      "summary": "龙虾之父月烧940万元的token！要不是入职OpenAl还真用不起",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-05-17T04:02:03.425990+00:00",
-      "pub_ts": 1778990523
+      "pub_date": "2026-05-18T04:14:56.407546+00:00",
+      "pub_ts": 1779077696
     },
     {
-      "id": "37060bfae9",
-      "title": "解决视频生成穿帮问题！浙大&微软3000条纯文本让模型理解3D",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891178&idx=3&sn=6012fc3aeb577e254889d2372effaa6f",
-      "summary": "解决视频生成穿帮问题！浙大&微软3000条纯文本让模型理解3D",
+      "id": "baac859a0b",
+      "title": "6.4kStars！用ClaudeCode 写论文的全套流水线，有人打包开源了",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891239&idx=1&sn=09d58d3b40d7b98fe41e313a1b2bb1c9",
+      "summary": "6.4kStars！用ClaudeCode 写论文的全套流水线，有人打包开源了",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-05-17T04:02:03.426010+00:00",
-      "pub_ts": 1778990523
+      "pub_date": "2026-05-18T04:14:56.407567+00:00",
+      "pub_ts": 1779077696
     }
   ]
 }
