@@ -1,0 +1,5 @@
+period: "2026-06"
+tracks: {}
+track_use: {}
+review_notes:
+  - "请重点核查自动抓取失败的数据源，以及 Heat 变化幅度最大的赛道。"

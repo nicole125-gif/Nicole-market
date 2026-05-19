@@ -169,6 +169,35 @@ def _patch_kpis(html: str, kpis: list) -> str:
     return html[:m.start()] + js_arr + html[m.end():]
 
 
+def _patch_track_use(html: str, track_use: dict) -> tuple[str, int]:
+    """Patch TRACK_USE.zh entries used by the homepage use-case workbench."""
+    changed = 0
+
+    for key, value in track_use.items():
+        if isinstance(value, dict):
+            label = value.get("label") or value.get("use") or value.get("title")
+            desc = value.get("description") or value.get("why") or value.get("purpose")
+        elif isinstance(value, (list, tuple)) and len(value) >= 2:
+            label, desc = value[0], value[1]
+        else:
+            print(f"  [WARN] track_use.{key} must be [label, description] or object")
+            continue
+
+        new_js = _js_str([str(label), str(desc)])
+        key_pat = re.escape(key)
+        pattern = rf"(?P<prefix>(?<!\w){key_pat}\s*:\s*)\[(?:[^\[\]]|\n)*?\]"
+        replacement = rf"\g<prefix>{new_js}"
+        new_html, n = re.subn(pattern, replacement, html, count=1)
+        if n:
+            html = new_html
+            changed += 1
+            print(f"  [TRACK_USE] {key} → {label}")
+        else:
+            print(f"  [WARN] TRACK_USE entry '{key}' not found")
+
+    return html, changed
+
+
 # ──────────────────────────────────────────────────────────
 # 主入口
 # ──────────────────────────────────────────────────────────
@@ -256,6 +285,11 @@ def inject_scores(
         html = _patch_kpis(html, scores["kpis"])
         print(f"  [kpis] → {len(scores['kpis'])} slots updated")
         changed += 1
+
+    # ── 5. 首页用途分组 ──
+    if "track_use" in scores:
+        html, use_changed = _patch_track_use(html, scores["track_use"])
+        changed += use_changed
 
     path.write_text(html, encoding="utf-8")
     print(f"[inject] ✅ 完成，共更新 {changed} 个字段 → {path}")

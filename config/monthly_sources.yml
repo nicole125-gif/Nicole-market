@@ -1,0 +1,52 @@
+period: "2026-06"
+report_sources:
+  macro:
+    domains:
+      - stats.gov.cn
+      - pbc.gov.cn
+    queries:
+      - 中国 制造业 PMI 2026 5月
+      - 固定资产投资 制造业 2026 5月
+      - 中国 M2 社融 2026 5月
+  semiconductor:
+    domains:
+      - sse.com.cn
+      - szse.cn
+      - wsts.org
+      - semi.org
+    queries:
+      - 半导体设备 国产化 月度 2026
+      - 北方华创 中微公司 半导体设备 订单
+  ai_liquid_cooling:
+    domains:
+      - trendforce.com
+      - idcquan.com
+      - jifang360.com
+    queries:
+      - AI 数据中心 液冷 渗透率 2026
+      - CDU 冷板 浸没式液冷 月度
+  pharma_biotech:
+    domains:
+      - sse.com.cn
+      - szse.cn
+      - yaozh.com
+      - pharmtech.com
+    queries:
+      - CDMO 多肽 ADC 订单 2026
+      - 合成生物 中试 发酵 设备 2026
+  lab_medical:
+    domains:
+      - instrument.com.cn
+      - sse.com.cn
+      - szse.cn
+    queries:
+      - 质谱 色谱 国产替代 2026
+      - 基因测序 国产替代 华大智造 2026
+  food_beverage:
+    domains:
+      - stats.gov.cn
+      - foodjx.com
+      - cnfood.cn
+    queries:
+      - 食品制造 固定资产投资 2026
+      - 功能成分 发酵 食品添加剂 2026

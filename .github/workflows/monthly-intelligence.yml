@@ -1,0 +1,78 @@
+name: Nicole Intelligence Monthly Update
+
+on:
+  schedule:
+    # Beijing 08:30 on the 5th = UTC 00:30 on the 5th.
+    - cron: "30 0 5 * *"
+  workflow_dispatch:
+    inputs:
+      period:
+        description: "Update period in YYYY-MM format. Empty = current month."
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  monthly-update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          pip install \
+            anthropic \
+            beautifulsoup4 \
+            chromadb \
+            feedparser \
+            jieba \
+            langchain-community \
+            langchain-text-splitters \
+            lxml \
+            pypdf \
+            python-dateutil \
+            pyyaml \
+            rank-bm25 \
+            requests \
+            sentence-transformers \
+            unstructured
+
+      - name: Resolve period
+        id: period
+        run: |
+          if [ -n "${{ github.event.inputs.period }}" ]; then
+            echo "value=${{ github.event.inputs.period }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "value=$(date -u +'%Y-%m')" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run monthly intelligence update
+        env:
+          BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
+          CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+        run: python scripts/monthly_update.py --period "${{ steps.period.outputs.value }}"
+
+      - name: Run monthly unit tests
+        run: python -m unittest tests.test_monthly_update -v
+
+      - name: Create draft pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: monthly-intel/${{ steps.period.outputs.value }}
+          title: "Monthly intelligence update: ${{ steps.period.outputs.value }}"
+          commit-message: "chore: monthly intelligence update ${{ steps.period.outputs.value }}"
+          body-path: data/monthly/${{ steps.period.outputs.value }}-summary.md
+          draft: true
+          delete-branch: true
