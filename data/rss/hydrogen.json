@@ -3,108 +3,58 @@
   "vertical_name": "氢能",
   "vertical_en": "Hydrogen Energy",
   "color": "#ffd700",
-  "updated_at": "2026-05-19T04:10:03.396505+00:00",
-  "item_count": 10,
+  "updated_at": "2026-05-20T04:10:56.559328+00:00",
+  "item_count": 5,
   "items": [
     {
-      "id": "72b29e7928",
-      "title": "Hiringa Energy, TR Group and Booth’s Logistics Demonstrate Hydrogen Freight in Action",
-      "url": "https://fuelcellsworks.com/2026/05/18/energy-innovation/hiringa-energy-tr-group-and-booth-s-logistics-demonstrate-hydrogen-freight-in-action",
+      "id": "6224e85ba0",
+      "title": "White Hydrogen Discovered in Billion-Year-Old Canadian Shield Rock Points to Potential New Energy Source",
+      "url": "https://fuelcellsworks.com/2026/05/19/clean-energy/mannysaraklis-gmail-com-10-54-am-0-minutes-ago-to-me-white-hydrogen-discovered-in-billion-year-old-canadian-shield-rock-points-to-potential-new-energy-source",
       "summary": "",
       "source": "Fuel Cells Works",
       "lang": "en",
-      "pub_date": "2026-05-18T16:20:30+00:00",
-      "pub_ts": 1779121230
+      "pub_date": "2026-05-19T16:07:46+00:00",
+      "pub_ts": 1779206866
     },
     {
-      "id": "5b6c0ad78c",
-      "title": "Fuel Cell and Hydrogen News Highlights From China: May 09-May 14, 2026",
-      "url": "https://fuelcellsworks.com/2026/05/16/clean-energy/fuel-cell-and-hydrogen-news-highlights-from-china-may-09-may-14-2026",
+      "id": "677e39e179",
+      "title": "Italy's H-Dual Project Retrofits a Ford Truck to Run on HVO Plus Hydrogen",
+      "url": "https://fuelcellsworks.com/2026/05/16/h2/italy-s-h-dual-project-retrofits-a-ford-truck-to-run-on-hvo-plus-hydrogen",
       "summary": "",
       "source": "Fuel Cells Works",
       "lang": "en",
-      "pub_date": "2026-05-18T16:15:24+00:00",
-      "pub_ts": 1779120924
+      "pub_date": "2026-05-19T15:54:49+00:00",
+      "pub_ts": 1779206089
     },
     {
-      "id": "5dd3968aa1",
-      "title": "NamX Wins European Patent  for Hydrogen Capsule Technology",
-      "url": "https://fuelcellsworks.com/2026/05/16/clean-technology/namx-wins-european-patent-for-hydrogen-capsule-technology",
+      "id": "0fbe4bddd5",
+      "title": "National Highways Pilots Groundbreaking Green Hydrogen on Merseyside Scheme",
+      "url": "https://fuelcellsworks.com/2026/05/19/energy-innovation/national-highways-pilots-groundbreaking-green-hydrogen-on-merseyside-scheme",
       "summary": "",
       "source": "Fuel Cells Works",
       "lang": "en",
-      "pub_date": "2026-05-18T16:11:25+00:00",
-      "pub_ts": 1779120685
+      "pub_date": "2026-05-19T15:43:43+00:00",
+      "pub_ts": 1779205423
     },
     {
-      "id": "84bdaa176c",
-      "title": "EVREC Files Environmental Impact Statement for One of Canada’s Largest Wind-to-Green Hydrogen and Ammonia Projects",
-      "url": "https://fuelcellsworks.com/2026/05/18/clean-energy/evrec-files-environmental-impact-statement-for-one-of-canada-s-largest-wind-to-green-hydrogen-and-ammonia-projects",
+      "id": "7269d32486",
+      "title": "Hynet Opens Urban Hydrogen Station in Yongin",
+      "url": "https://fuelcellsworks.com/2026/05/12/electrolyzer/hynet-opens-urban-hydrogen-station-in-yongin",
       "summary": "",
       "source": "Fuel Cells Works",
       "lang": "en",
-      "pub_date": "2026-05-18T16:09:43+00:00",
-      "pub_ts": 1779120583
+      "pub_date": "2026-05-19T15:39:02+00:00",
+      "pub_ts": 1779205142
     },
     {
-      "id": "1d6bce8031",
-      "title": "Turn2X Powers Europe's First Green Synthetic Methane Plant in Spain's Extremadura",
-      "url": "https://fuelcellsworks.com/2026/05/16/clean-energy/turn2x-powers-europe-s-first-green-synthetic-methane-plant-in-spain-s-extremadura",
+      "id": "d1b76cb437",
+      "title": "Air Liquide and OXEA Lock In 12-Year Syngas and Hydrogen Supply Deal for Oberhausen",
+      "url": "https://fuelcellsworks.com/2026/05/19/clean-energy/air-liquide-and-oxea-lock-in-12-year-syngas-and-hydrogen-supply-deal-for-oberhausen",
       "summary": "",
       "source": "Fuel Cells Works",
       "lang": "en",
-      "pub_date": "2026-05-18T16:03:23+00:00",
-      "pub_ts": 1779120203
-    },
-    {
-      "id": "02029ff586",
-      "title": "Max Power Signs MOU with City of Moose Jaw to Advance Natural Hydrogen Commercialization Within Saskatchewan’s Largest Industrial Corridor",
-      "url": "https://hydrogen-central.com/max-power-signs-mou-with-city-of-moose-jaw-to-advance-natural-hydrogen-commercialization-within-saskatchewans-largest-industrial-corridor/",
-      "summary": "Max Power Signs MOU with City of Moose Jaw to Advance Natural Hydrogen Commercialization Within Saskatchewan’s Largest Industrial Corridor MOU supports “months to molecules” commercialization strategy tied to the advancement [&#8230;]\nThe post Max Power Signs MOU with City of Moose Jaw to Advance Na…",
-      "source": "Hydrogen Central",
-      "lang": "en",
-      "pub_date": "2026-05-15T17:14:27+00:00",
-      "pub_ts": 1778865267
-    },
-    {
-      "id": "6f4b177936",
-      "title": "Federal Pacific Awarded Bloom Energy Contract Supporting AI Data Center Infrastructure",
-      "url": "https://hydrogen-central.com/federal-pacific-awarded-bloom-energy-contract-supporting-ai-data-center-infrastructure/",
-      "summary": "Federal Pacific Awarded Bloom Energy Contract Supporting AI Data Center Infrastructure BRISTOL, Va.&#8211;(BUSINESS WIRE)&#8211;Federal Pacific today announced a large contract award from Bloom Energy to supply medium-voltage switchgear and engineering [&#8230;]\nThe post Federal Pacific Awarded Bloo…",
-      "source": "Hydrogen Central",
-      "lang": "en",
-      "pub_date": "2026-05-15T17:13:37+00:00",
-      "pub_ts": 1778865217
-    },
-    {
-      "id": "8ec9140d61",
-      "title": "Uniper Hydrogen GmbH has launched an Open Season for capacity at its planned Hydrogen Import Terminal in Wilhelmshaven",
-      "url": "https://hydrogen-central.com/uniper-hydrogen-gmbh-has-launched-an-open-season-for-capacity-at-its-planned-hydrogen-import-terminal-in-wilhelmshaven/",
-      "summary": "Uniper Hydrogen GmbH has launched an Open Season for capacity at its planned Hydrogen Import Terminal in Wilhelmshaven The&#160;Wilhelmshaven hydrogen import terminal will enable the import of hydrogen via ammonia.&#160;Once [&#8230;]\nThe post Uniper Hydrogen GmbH has launched an Open Season for cap…",
-      "source": "Hydrogen Central",
-      "lang": "en",
-      "pub_date": "2026-05-15T17:09:58+00:00",
-      "pub_ts": 1778864998
-    },
-    {
-      "id": "6e2700c78c",
-      "title": "Protium Secures Future of Highland Green Hydrogen Economy",
-      "url": "https://hydrogen-central.com/protium-secures-future-of-highland-green-hydrogen-economy/",
-      "summary": "Protium Secures Future of Highland Green Hydrogen Economy Protium,&#160;one of the UK’s leading green hydrogen energy companies, today announces the strategic acquisition of the&#160;Storegga&#160;Scottish portfolio, including the flagship Cromarty Hydrogen [&#8230;]\nThe post Protium Secures Future …",
-      "source": "Hydrogen Central",
-      "lang": "en",
-      "pub_date": "2026-05-15T17:09:06+00:00",
-      "pub_ts": 1778864946
-    },
-    {
-      "id": "135df3683c",
-      "title": "Ballard Announces Resignation of Weichai’s Nominee Directors and Sale of Weichai’s Shares",
-      "url": "https://hydrogen-central.com/ballard-announces-resignation-of-weichais-nominee-directors-and-sale-of-weichais-shares/",
-      "summary": "Ballard Announces Resignation of Weichai’s Nominee Directors and Sale of Weichai’s Shares VANCOUVER, CANADA – Ballard Power Systems (NASDAQ: BLDP; TSX: BLDP) today announced the resignation of Weichai Power Co., [&#8230;]\nThe post Ballard Announces Resignation of Weichai’s Nominee Directors and Sale…",
-      "source": "Hydrogen Central",
-      "lang": "en",
-      "pub_date": "2026-05-15T17:05:13+00:00",
-      "pub_ts": 1778864713
+      "pub_date": "2026-05-19T15:23:53+00:00",
+      "pub_ts": 1779204233
     }
   ]
 }

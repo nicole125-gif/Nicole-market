@@ -3,9 +3,39 @@
   "vertical_name": "医药设备",
   "vertical_en": "Pharma Equipment",
   "color": "#ff8c42",
-  "updated_at": "2026-05-19T04:10:17.236971+00:00",
+  "updated_at": "2026-05-20T04:11:08.987427+00:00",
   "item_count": 5,
   "items": [
+    {
+      "id": "0d5293fcdf",
+      "title": "UK government bolsters antiviral supply for hantavirus",
+      "url": "https://www.pharmaceutical-technology.com/news/uk-government-bolsters-antiviral-supply-for-hantavirus/",
+      "summary": "The UK has received a supply of favipiravir from the Japanese government to aid Hantavirus preparedness.",
+      "source": "Pharmaceutical Technology",
+      "lang": "en",
+      "pub_date": "2026-05-19T14:18:52+00:00",
+      "pub_ts": 1779200332
+    },
+    {
+      "id": "8b4b202f38",
+      "title": "VERTANICAL’s VER-01 gains FDA breakthrough status for low back pain",
+      "url": "https://www.pharmaceutical-technology.com/news/vertanicals-ver01-gains-fda-status/",
+      "summary": "VERTANICAL has received breakthrough therapy designation from the US FDA for VER-01, its investigational non-opioid treatment for chronic low back pain.",
+      "source": "Pharmaceutical Technology",
+      "lang": "en",
+      "pub_date": "2026-05-19T09:45:40+00:00",
+      "pub_ts": 1779183940
+    },
+    {
+      "id": "551aff6e40",
+      "title": "Regeneron signs $2.32bn deal with Parabilis for Helicon conjugates",
+      "url": "https://www.pharmaceutical-technology.com/news/regeneron-parabilis-deal-helicon-conjugates/",
+      "summary": "Regeneron Pharmaceuticals has signed a $2.32bn deal with Parabilis Medicines to develop therapeutic candidates, with a focus on AHCs.",
+      "source": "Pharmaceutical Technology",
+      "lang": "en",
+      "pub_date": "2026-05-19T09:16:55+00:00",
+      "pub_ts": 1779182215
+    },
     {
       "id": "6bdec17770",
       "title": "Vaccine void means current Ebola outbreak declared international emergency",
@@ -25,36 +55,6 @@
       "lang": "en",
       "pub_date": "2026-05-18T09:57:15+00:00",
       "pub_ts": 1779098235
-    },
-    {
-      "id": "a3de888ecb",
-      "title": "Japan’s MHLW approves Boehringer’s Jascayd for IPF and PPF",
-      "url": "https://www.pharmaceutical-technology.com/news/japans-mhlw-boehringers-jascayd-approval/",
-      "summary": "Boehringer Ingelheim has received Japan’s MHLW approval for Jascayd (nerandomilast) to treat adults with IPF and PPF.",
-      "source": "Pharmaceutical Technology",
-      "lang": "en",
-      "pub_date": "2026-05-18T09:54:45+00:00",
-      "pub_ts": 1779098085
-    },
-    {
-      "id": "0a17f9f3a8",
-      "title": "The Ovarian Cancer Opportunity: Overcoming Complexity in Global Studies",
-      "url": "https://www.pharmaceutical-technology.com/sponsored/the-ovarian-cancer-opportunity-overcoming-complexity-in-global-studies/",
-      "summary": "Ovarian cancer research is entering a pivotal era characterized by increasing complexity for large, global studies.",
-      "source": "Pharmaceutical Technology",
-      "lang": "en",
-      "pub_date": "2026-05-18T09:19:11+00:00",
-      "pub_ts": 1779095951
-    },
-    {
-      "id": "c136e14145",
-      "title": "FDA approves Enhertu for two HER2-positive early breast cancer indications",
-      "url": "https://www.pharmaceutical-technology.com/news/fda-enhertu-breast-cancer/",
-      "summary": "The FDA has approved Daiichi Sankyo and AstraZeneca’s Enhertu for two new indications in HER2-positive early breast cancer.",
-      "source": "Pharmaceutical Technology",
-      "lang": "en",
-      "pub_date": "2026-05-18T07:49:17+00:00",
-      "pub_ts": 1779090557
     }
   ]
 }

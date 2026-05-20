@@ -3,98 +3,128 @@
   "vertical_name": "半导体",
   "vertical_en": "Semiconductor",
   "color": "#ff6b9d",
-  "updated_at": "2026-05-19T04:09:22.884599+00:00",
-  "item_count": 14,
+  "updated_at": "2026-05-20T04:09:59.855815+00:00",
+  "item_count": 15,
   "items": [
     {
-      "id": "344c6fdeae",
-      "title": "封测厂商“疯狂”扩产，供应链却还没准备好",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811696&idx=1&sn=7809297afd7ef3df713a626a37d7018a",
-      "summary": "封测厂商“疯狂”扩产，供应链却还没准备好",
+      "id": "feb3f09fa1",
+      "title": "芯片下沉，AI硬件全面开花",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811759&idx=1&sn=d5ee616bcceb4201a883c9e67e9acd1b",
+      "summary": "芯片下沉，AI硬件全面开花",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-05-19T04:09:18.821713+00:00",
-      "pub_ts": 1779163758
+      "pub_date": "2026-05-20T04:09:55.803269+00:00",
+      "pub_ts": 1779250195
     },
     {
-      "id": "4f4575e406",
-      "title": "谷歌TensorG6芯片详解",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811696&idx=2&sn=e94386a6519ec24cfcbe7d661858871f",
-      "summary": "谷歌TensorG6芯片详解",
+      "id": "f5bf388f54",
+      "title": "韩美半导体利润暴跌近 90%，HBM 设备不香了?",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811759&idx=2&sn=23c4defa4d683d6e73b7263b84e40496",
+      "summary": "韩美半导体利润暴跌近 90%，HBM 设备不香了?",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-05-19T04:09:18.821773+00:00",
-      "pub_ts": 1779163758
+      "pub_date": "2026-05-20T04:09:55.803317+00:00",
+      "pub_ts": 1779250195
     },
     {
-      "id": "74773ebb50",
-      "title": "互连方案太多，芯片设计选型犯难",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811696&idx=3&sn=4a3c509c506a1f65eafb9f0a77e2f01e",
-      "summary": "互连方案太多，芯片设计选型犯难",
+      "id": "8d23b2834b",
+      "title": "慕尼黑上海电子展要来了，众多头部连接器展商已就位",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811759&idx=3&sn=60e3b0f7b6d46a19c7e51deffda5f531",
+      "summary": "慕尼黑上海电子展要来了，众多头部连接器展商已就位",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-05-19T04:09:18.821790+00:00",
-      "pub_ts": 1779163758
+      "pub_date": "2026-05-20T04:09:55.803343+00:00",
+      "pub_ts": 1779250195
     },
     {
-      "id": "17bb87801a",
-      "title": "应用材料：半导体短缺将持续到2030年",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811696&idx=4&sn=4dead6836763a33b9a97e194cdb80dc5",
-      "summary": "应用材料：半导体短缺将持续到2030年",
+      "id": "207cd8d70f",
+      "title": "别只盯芯片！四大底层架构决定AI未来上限",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811759&idx=4&sn=da4bc82aac47535f60173f56de69536a",
+      "summary": "别只盯芯片！四大底层架构决定AI未来上限",
       "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-05-19T04:09:18.821806+00:00",
-      "pub_ts": 1779163758
+      "pub_date": "2026-05-20T04:09:55.803365+00:00",
+      "pub_ts": 1779250195
     },
     {
-      "id": "4fc82c1db0",
-      "title": "何立峰会见苏姿丰，AMD承诺加大在华投资",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247819687&idx=1&sn=3de5168c801e0f4aec0f273f388e8a31",
-      "summary": "何立峰会见苏姿丰，AMD承诺加大在华投资",
-      "source": "半导体行业观察",
+      "id": "0e0336aa2e",
+      "title": "AI需求火热，存储厂商“冷落”苹果",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkxMjIyNzU0MA==&mid=2247811759&idx=5&sn=02b96f3132c9ce05908bd59cd2a3c87d",
+      "summary": "AI需求火热，存储厂商“冷落”苹果",
+      "source": "半导体产业纵横",
       "lang": "zh",
-      "pub_date": "2026-05-19T04:09:09.455148+00:00",
-      "pub_ts": 1779163749
+      "pub_date": "2026-05-20T04:09:55.803385+00:00",
+      "pub_ts": 1779250195
     },
     {
-      "id": "5ba37e9156",
-      "title": "CoWoS，变了",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247819561&idx=1&sn=977d7b01edde71d3d4c92b6f9f4bdd27",
-      "summary": "CoWoS，变了",
+      "id": "6391f5d492",
+      "title": "传ADI将斥100亿收购",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247819785&idx=1&sn=67c20782e89ed315aaaff6b2ab776a5a",
+      "summary": "传ADI将斥100亿收购",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-05-19T04:09:09.455194+00:00",
-      "pub_ts": 1779163749
+      "pub_date": "2026-05-20T04:09:46.353749+00:00",
+      "pub_ts": 1779250186
     },
     {
-      "id": "551090c440",
-      "title": "铜互联，走到尽头？",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247819561&idx=2&sn=823e8117b5d8609465c9daff5fa48aac",
-      "summary": "铜互联，走到尽头？",
+      "id": "be3497d787",
+      "title": "长江存储母公司：长存集团启动IPO辅导",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247819776&idx=1&sn=c9deeacfff17599670559e57236c127e",
+      "summary": "长江存储母公司：长存集团启动IPO辅导",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-05-19T04:09:09.455213+00:00",
-      "pub_ts": 1779163749
+      "pub_date": "2026-05-20T04:09:46.353819+00:00",
+      "pub_ts": 1779250186
     },
     {
-      "id": "5ee27852d0",
-      "title": "AI芯片，太热了！热得让人害怕",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247819561&idx=3&sn=032b660b7ac4f59a08a6d342efa6b87b",
-      "summary": "AI芯片，太热了！热得让人害怕",
+      "id": "46f48e8590",
+      "title": "长江存储，上市辅导备案",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247819767&idx=1&sn=a33aca80efb66bd8fe9b8767a98e49a3",
+      "summary": "长江存储，上市辅导备案",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-05-19T04:09:09.455230+00:00",
-      "pub_ts": 1779163749
+      "pub_date": "2026-05-20T04:09:46.353845+00:00",
+      "pub_ts": 1779250186
     },
     {
-      "id": "1486f6fcd9",
-      "title": "铜烧结，愈发重要",
-      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247819561&idx=4&sn=be5e7716aa147df64b957c16a5bd073a",
-      "summary": "铜烧结，愈发重要",
+      "id": "35962458a1",
+      "title": "刚刚，Lisa Su在上海发表演讲",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247819744&idx=1&sn=f772d0323125668ecb9ca3a78f216dab",
+      "summary": "刚刚，Lisa Su在上海发表演讲",
       "source": "半导体行业观察",
       "lang": "zh",
-      "pub_date": "2026-05-19T04:09:09.455245+00:00",
-      "pub_ts": 1779163749
+      "pub_date": "2026-05-20T04:09:46.353866+00:00",
+      "pub_ts": 1779250186
+    },
+    {
+      "id": "3fd13fa66e",
+      "title": "BCD工艺，站上风口",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzg2NDgzNTQ4MA==&mid=2247819716&idx=1&sn=7f390ef21192095ef7dd6ddced32615a",
+      "summary": "BCD工艺，站上风口",
+      "source": "半导体行业观察",
+      "lang": "zh",
+      "pub_date": "2026-05-20T04:09:46.353886+00:00",
+      "pub_ts": 1779250186
+    },
+    {
+      "id": "bf69e20f16",
+      "title": "Research Bits: May 19",
+      "url": "https://semiengineering.com/research-bits-may-19/",
+      "summary": "Photonics: Programmable PIC; small optical features in hydrogels; on-chip UV generation.\nThe post Research Bits: May 19 appeared first on Semiconductor Engineering.",
+      "source": "Semiconductor Engineering",
+      "lang": "en",
+      "pub_date": "2026-05-19T07:01:44+00:00",
+      "pub_ts": 1779174104
+    },
+    {
+      "id": "2aea5a624f",
+      "title": "Chip Industry Technical Paper Roundup: May 19",
+      "url": "https://semiengineering.com/chip-industry-technical-paper-roundup-may-19/",
+      "summary": "Micro-transfer printing for silicon photonics; 2D electronics for CFETs; ANN thermal-aware GAA FET modeling; optical phased arrays; ferroelectric tunnel junctions for image generation; functional safety and PPA evaluation.\nThe post Chip Industry Technical Paper Roundup: May 19 appeared first on Semi…",
+      "source": "Semiconductor Engineering",
+      "lang": "en",
+      "pub_date": "2026-05-19T07:01:41+00:00",
+      "pub_ts": 1779174101
     },
     {
       "id": "4e000bd7ef",
@@ -125,26 +155,6 @@
       "lang": "en",
       "pub_date": "2026-05-18T20:24:00+00:00",
       "pub_ts": 1779135840
-    },
-    {
-      "id": "9c2bc9dd1d",
-      "title": "Workflow-Level Design For Trustworthy GenAI Integration in Vehicles (UOL, Denso)",
-      "url": "https://semiengineering.com/workflow-level-design-for-trustworthy-genai-integration-in-vehicle-systems-uol-denso/",
-      "summary": "A new technical paper, &#8220;Workflow-Level Design Principles for Trustworthy GenAI in Automotive System Engineering,&#8221; was published by researchers at University of Oldenburg and Denso Automotive. Abstract &#8220;The adoption of large language models in safety-critical system engineering is c…",
-      "source": "Semiconductor Engineering",
-      "lang": "en",
-      "pub_date": "2026-05-18T20:12:32+00:00",
-      "pub_ts": 1779135152
-    },
-    {
-      "id": "b11d356e99",
-      "title": "HW-Native, GPU Compiler for Large-scale ML Production Systems (UC San Diego, Meta)",
-      "url": "https://semiengineering.com/hw-native-gpu-compiler-for-large-scale-ml-production-systems-uc-san-diego-meta/",
-      "summary": "A new technical paper, &#8220;TLX: Hardware-Native, Evolvable MIMW GPU Compiler for Large-scale Production Environments,&#8221; was published by researchers at UC San Diego and Meta. Abstract &#8220;Modern GPUs increasingly rely on specialized hardware units and asynchronous coordination mechanisms,…",
-      "source": "Semiconductor Engineering",
-      "lang": "en",
-      "pub_date": "2026-05-18T17:16:41+00:00",
-      "pub_ts": 1779124601
     }
   ]
 }

@@ -3,58 +3,58 @@
   "vertical_name": "AI液冷",
   "vertical_en": "AI Liquid Cooling",
   "color": "#00ff88",
-  "updated_at": "2026-05-19T04:09:36.572702+00:00",
+  "updated_at": "2026-05-20T04:10:13.943817+00:00",
   "item_count": 5,
   "items": [
     {
-      "id": "57dc4cd39e",
-      "title": "字节会师何恺明！开源连续扩散语言模型Cola DLM",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891586&idx=1&sn=da792c8f70b22c4af5bfc194639c483d",
-      "summary": "字节会师何恺明！开源连续扩散语言模型Cola DLM",
+      "id": "c5f9a829a3",
+      "title": "苏姿丰上海开讲：AI正在重新定义计算的每一层",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891843&idx=1&sn=e0ab2e35808b799fc78ecf96d6fcbd54",
+      "summary": "苏姿丰上海开讲：AI正在重新定义计算的每一层",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-05-19T04:09:32.378546+00:00",
-      "pub_ts": 1779163772
+      "pub_date": "2026-05-20T04:10:09.579571+00:00",
+      "pub_ts": 1779250209
     },
     {
-      "id": "e79d16708f",
-      "title": "DeepSeek开招Harness产品经理！「参与Agent桌面端产品全过程」",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891586&idx=2&sn=a5a0ae6b1bf8c8042c7f8dfa4e257b5b",
-      "summary": "DeepSeek开招Harness产品经理！「参与Agent桌面端产品全过程」",
+      "id": "5bd72347ea",
+      "title": "机器人搬冰箱成了！洗碗之后又一痛点，网友：解放我的骸关节",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891843&idx=2&sn=696df07e22d0420462f918b371ce00b9",
+      "summary": "机器人搬冰箱成了！洗碗之后又一痛点，网友：解放我的骸关节",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-05-19T04:09:32.378583+00:00",
-      "pub_ts": 1779163772
+      "pub_date": "2026-05-20T04:10:09.579616+00:00",
+      "pub_ts": 1779250209
     },
     {
-      "id": "751f743da9",
-      "title": "AI水论文封一年，署名连坐！arXiv最严新规来了，陶哲轩附议",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891568&idx=1&sn=546594b3bf01ea8754f431a21f4a2acf",
-      "summary": "AI水论文封一年，署名连坐！arXiv最严新规来了，陶哲轩附议",
+      "id": "1a7bca4e1e",
+      "title": "抢先李飞飞！世界模型能多人联机玩FPS游戏了",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891759&idx=1&sn=f740f98282614031e02f5309d0f6b3b6",
+      "summary": "抢先李飞飞！世界模型能多人联机玩FPS游戏了",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-05-19T04:09:32.378600+00:00",
-      "pub_ts": 1779163772
+      "pub_date": "2026-05-20T04:10:09.579638+00:00",
+      "pub_ts": 1779250209
     },
     {
-      "id": "d12cc6e408",
-      "title": "openJiuwen社区开源新招：重磅发布JiuwenSwarm，拉开群体智能“养蜂.….",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891568&idx=2&sn=7628f5f4f36049d72c93c19860e1e982",
-      "summary": "openJiuwen社区开源新招：重磅发布JiuwenSwarm，拉开群体智能“养蜂.….",
+      "id": "194a969979",
+      "title": "国产GPU开始造世界！国内首个全栈具身智能仿真平台来了",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891759&idx=2&sn=dae11b5c3de28b554fc3823dd823198a",
+      "summary": "国产GPU开始造世界！国内首个全栈具身智能仿真平台来了",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-05-19T04:09:32.378616+00:00",
-      "pub_ts": 1779163772
+      "pub_date": "2026-05-20T04:10:09.579658+00:00",
+      "pub_ts": 1779250209
     },
     {
-      "id": "5414a58e4d",
-      "title": "Agent学会自己「长」Skill了！从失败里长出经验，比人类写的更好用IICML..",
-      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891568&idx=3&sn=798782569e8d7450ac5d2adf5e592159",
-      "summary": "Agent学会自己「长」Skill了！从失败里长出经验，比人类写的更好用IICML..",
+      "id": "24ae4916c5",
+      "title": "让大模型学会「自己教自己」！京东&中科院信工所连发三篇论文定义Self..",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247891759&idx=3&sn=fc47242b1d6ce6aa4b33c64d792977d3",
+      "summary": "让大模型学会「自己教自己」！京东&中科院信工所连发三篇论文定义Self..",
       "source": "量子位-AI硬件",
       "lang": "zh",
-      "pub_date": "2026-05-19T04:09:32.378632+00:00",
-      "pub_ts": 1779163772
+      "pub_date": "2026-05-20T04:10:09.579678+00:00",
+      "pub_ts": 1779250209
     }
   ]
 }
